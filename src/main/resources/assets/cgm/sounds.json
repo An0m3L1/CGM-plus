@@ -19,8 +19,6 @@
    "item.bazooka.fire":                 { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/bazooka/fire", "stream": true, "volume": 0.5 }]},
    "item.bazooka.reload":               { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/bazooka/reload" }]},
    "item.mini_gun.fire":                { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/mini_gun/fire" }]},
-   "item.mini_gun.reload":              { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/mini_gun/reload" }]},
-   "item.mini_gun.cock":                { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/mini_gun/cock" }]},
    "item.machine_pistol.fire":          { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/machine_pistol/fire" }]},
    "item.machine_pistol.reload":        { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/machine_pistol/reload" }]},
    "item.machine_pistol.cock":          { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/machine_pistol/cock" }]},

@@ -1,12 +1,10 @@
-Add new attachment types for magazines (quick reload, extended, incendiary), gadgets (laser), cosmetic (skins)
+Add new attachment types for magazines (quick, extended), cosmetic slot (skins)
 Add remaining guns from CS2
 Add new items for crafting and recipes
-Add new particle for non-blood hits
 Add move speed stat to guns
-Add new sounds (from where?)
 
 Overhaul models (add moving and removable parts)
-Overhaul reload animations and sounds (geckolib)
+Overhaul reload animations and sounds
 Overhaul blood particles (check extra gore)
 
-Fix sounds (remove cut-offs and reduce volume)
+Fix sounds (reduce volume)

@@ -15,7 +15,7 @@ description="MrCrayfish's Gun Mod adds in simple and straight forward weapons in
 [[dependencies.cgm]]
     modId="forge"
     mandatory=true
-    versionRange="[43.2.0,)"
+    versionRange="[43.2.3,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.cgm]]
@@ -46,6 +46,12 @@ description="MrCrayfish's Gun Mod adds in simple and straight forward weapons in
     modId="backpacked"
     mandatory=false
     versionRange="[2.1.9,)"
+    ordering="AFTER"
+    side="CLIENT"
+[[dependencies.cgm]]
+    modId="shouldersurfing"
+    mandatory=false
+    versionRange="[1.19.2-4.1.4,)"
     ordering="AFTER"
     side="CLIENT"
 

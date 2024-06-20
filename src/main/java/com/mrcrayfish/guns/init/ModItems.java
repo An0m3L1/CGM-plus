@@ -50,40 +50,14 @@ public class ModItems
     public static final RegistryObject<Item> LONG_SCOPE = REGISTER.register("long_scope", () -> new ScopeItem(Attachments.LONG_SCOPE, new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
 
     /* Barrels */
-    public static final RegistryObject<Item> SILENCER = REGISTER.register("silencer", () -> new BarrelItem(Barrel.create(12f,
-            GunModifiers.ADS_SLOW_S,
-            GunModifiers.SPREAD_RED_S,
-            GunModifiers.RECOIL_INC_S,
-            GunModifiers.SILENCED
-    ), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
+    public static final RegistryObject<Item> SILENCER = REGISTER.register("silencer", () -> new BarrelItem(Barrel.create(10f, GunModifiers.SILENCER), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
 
     /* Stocks */
-    public static final RegistryObject<Item> LIGHT_STOCK = REGISTER.register("light_stock", () -> new StockItem(Stock.create(
-            GunModifiers.ADS_FAST_S,
-            GunModifiers.RECOIL_RED_M
-    ), new Item.Properties().stacksTo(1).tab(GunMod.GROUP), false));
-
-    public static final RegistryObject<Item> TACTICAL_STOCK = REGISTER.register("tactical_stock", () -> new StockItem(Stock.create(
-            GunModifiers.ADS_SLOW_S,
-            GunModifiers.SPREAD_RED_M,
-            GunModifiers.RECOIL_RED_M
-    ), new Item.Properties().stacksTo(1).tab(GunMod.GROUP), false));
-
-    public static final RegistryObject<Item> WEIGHTED_STOCK = REGISTER.register("weighted_stock", () -> new StockItem(Stock.create(
-            GunModifiers.ADS_SLOW_L,
-            GunModifiers.SPREAD_RED_M,
-            GunModifiers.RECOIL_RED_L
-    ), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
+    public static final RegistryObject<Item> LIGHT_STOCK = REGISTER.register("light_stock", () -> new StockItem(Stock.create(GunModifiers.LIGHT_STOCK), new Item.Properties().stacksTo(1).tab(GunMod.GROUP), false));
+    public static final RegistryObject<Item> TACTICAL_STOCK = REGISTER.register("tactical_stock", () -> new StockItem(Stock.create(GunModifiers.TACTICAL_STOCK), new Item.Properties().stacksTo(1).tab(GunMod.GROUP), false));
+    public static final RegistryObject<Item> WEIGHTED_STOCK = REGISTER.register("weighted_stock", () -> new StockItem(Stock.create(GunModifiers.WEIGHTED_STOCK  ), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
 
     /* Grips */
-    public static final RegistryObject<Item> LIGHT_GRIP = REGISTER.register("light_grip", () -> new UnderBarrelItem(UnderBarrel.create(
-            GunModifiers.ADS_FAST_S,
-            GunModifiers.SPREAD_RED_S
-    ), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
-
-    public static final RegistryObject<Item> SPECIALISED_GRIP = REGISTER.register("specialised_grip", () -> new UnderBarrelItem(UnderBarrel.create(
-            GunModifiers.ADS_SLOW_S,
-            GunModifiers.SPREAD_RED_S,
-            GunModifiers.RECOIL_RED_S
-    ), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
+    public static final RegistryObject<Item> LIGHT_GRIP = REGISTER.register("light_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.LIGHT_GRIP), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
+    public static final RegistryObject<Item> SPECIALISED_GRIP = REGISTER.register("specialised_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.SPECIALISED_GRIP), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
 }

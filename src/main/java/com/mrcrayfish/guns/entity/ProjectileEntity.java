@@ -551,8 +551,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
             if (!isDead)
             {
-                //To implement Collateral again, uncomment the code block and remove the code below this comment
-
                 int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
                 if(collateralLevel == 0)
                 {
@@ -560,17 +558,16 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 }
                 else
                 {
-                    if (this.pierceDamageFraction<=0.05F || this.pierceCount>100)
+                    int maxPierceCount = projectile.getMaxPierceCount(); //(projectile.getMaxPierceCount()>0 ? projectile.getMaxPierceCount()+(collateralLevel*4) : 0);
+                    if (this.pierceCount>maxPierceCount && maxPierceCount>0)
                         this.remove(RemovalReason.KILLED);
                     else
                     {
                         this.pierceCount++;
-                        this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
+                        //this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
                     }
                 }
-
             }
-
             entity.invulnerableTime = 0;
         }
     }

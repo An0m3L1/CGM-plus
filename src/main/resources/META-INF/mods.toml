@@ -10,7 +10,7 @@ updateJSONURL="https://raw.githubusercontent.com/MrCrayfish/ModUpdates/master/cg
 displayURL="https://mrcrayfish.com/"
 logoFile="cgm_banner.png"
 authors="MrCrayfish"
-description="MrCrayfish's Gun Mod adds in simple and straight forward weapons into Minecraft. They can be configured with many different attachments to add extra stats to your weapon and coloured to your personal liking. This mod adds ten weapons into the game! (Expander Fork by NineZero)"
+description="MrCrayfish's Gun Mod adds in simple and straight forward weapons into Minecraft. They can be configured with many different attachments to add extra stats to your weapon and coloured to your personal liking. This mod adds ten weapons into the game!"
 
 [[dependencies.cgm]]
     modId="forge"
@@ -31,6 +31,12 @@ description="MrCrayfish's Gun Mod adds in simple and straight forward weapons in
     ordering="NONE"
     side="BOTH"
 [[dependencies.cgm]]
+    modId="create"
+    mandatory=true
+    versionRange="[0.5.1,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.cgm]]
     modId="controllable"
     mandatory=false
     versionRange="[0.16.3,)"
@@ -46,4 +52,4 @@ description="MrCrayfish's Gun Mod adds in simple and straight forward weapons in
 [modproperties.cgm]
     catalogueImageIcon="cgm_icon.png"
     catalogueBackground="cgm_background.png"
-    configuredBackground="minecraft:textures/block/stone_bricks.png"
+    configuredBackground="minecraft:textures/block/gray_concrete.png"

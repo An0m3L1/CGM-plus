@@ -7,15 +7,24 @@
     }
   },
   "general": {
-    "alwaysSpread": true,
     "gripType": "cgm:two_handed",
-    "maxAmmo": 4,
-    "rate": 40,
-    "recoilAdsReduction": 0.4,
-    "recoilAngle": 10.0,
+    "auto": false,
+    "rate": 29,
+
+    "adsSpeed": 0.6,
+    "recoilAdsReduction": 0.5,
+    "spreadAdsReduction": 1.0,
+
+    "recoilAngle": 6.0,
+    "recoilKick": 2.0,
     "recoilDurationOffset": 0.5,
-    "recoilKick": 1.0,
-    "spread": 1.0
+    "spread": 24.0,
+    "restingSpread": 8.0,
+
+    "maxAmmo": 5,
+    "useMagReload": true,
+    "magReloadTime": 70,
+    "reloadRate": 70
   },
   "modules": {
     "attachments": {
@@ -40,18 +49,21 @@
     }
   },
   "projectile": {
-    "damage": 18.0,
-    "gravity": true,
-    "item": "cgm:advanced_bullet",
-    "life": 30,
-    "size": 0.0625,
-    "speed": 25.0
+    "damage": 22.0,
+    "pierceDamagePenalty": 0.05,
+    "size": 0.1,
+    "speed": 10.0,
+    "life": 20,
+    "headshotMultiplierOverride": 1.0,
+    "headshotExtraDamage": 18.0,
+    "armorBypass": 0.8,
+    "protectionBypass": 0.25,
+    "item": "cgm:advanced_bullet"
   },
   "sounds": {
     "cock": "cgm:item.heavy_rifle.cock",
-    "enchantedFire": "cgm:item.heavy_rifle.enchanted_fire",
     "fire": "cgm:item.heavy_rifle.fire",
-    "reload": "cgm:item.pistol.reload",
+    "reload": "cgm:item.heavy_rifle.reload",
     "silencedFire": "cgm:item.heavy_rifle.silenced_fire"
   }
 }

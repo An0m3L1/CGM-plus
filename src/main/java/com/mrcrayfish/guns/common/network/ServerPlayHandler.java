@@ -187,11 +187,16 @@ public class ServerPlayHandler
                     CompoundTag tag = heldItem.getOrCreateTag();
                     if(!Gun.hasInfiniteAmmo(heldItem))
                     {
+                        //To implement Over Capacity again, uncomment the code block and remove line below the comment
+
+                        tag.putInt("AmmoCount", Math.max(0, tag.getInt("AmmoCount") - 1));
+                        /*
                         int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.RECLAIMED.get(), heldItem);
                         if(level == 0 || player.level.random.nextInt(4 - Mth.clamp(level, 1, 3)) != 0)
                         {
                             tag.putInt("AmmoCount", Math.max(0, tag.getInt("AmmoCount") - 1));
                         }
+                        */
                     }
                     if (Gun.usesEnergy(heldItem))
                     {

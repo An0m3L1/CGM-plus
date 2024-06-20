@@ -74,24 +74,23 @@ public class ClientPlayHandler
         {
             return;
         }
-    	ParticleOptions particle = ParticleTypes.SMOKE;
         Level world = Minecraft.getInstance().level;
         if(world != null)
         {
-        	if (Config.CLIENT.particle.enableBlood.get() && message.getAllowBlood())
-        	{
-	        	for(int i = 0; i < 10; i++)
-	            {
-	                world.addParticle(ModParticleTypes.BLOOD.get(), true, message.getX(), message.getY(), message.getZ(), 0.5, 0, 0.5);
-	            }
-        	}
-        	else
-        	{
-        		for(int i = 0; i < 4; i++)
-	            {
-	                world.addParticle(particle, true, message.getX(), message.getY(), message.getZ(), (Math.random()-0.5)*0.15, (Math.random()*0.02)-0.04, (Math.random()-0.5)*0.15);
-	            }
-        	}
+            if (Config.CLIENT.particle.enableBlood.get() && message.getAllowBlood())
+            {
+                for(int i = 0; i < 10; i++)
+                {
+                    world.addParticle(ModParticleTypes.BLOOD.get(), true, message.getX(), message.getY(), message.getZ(), 0.5, 0, 0.5);
+                }
+            }
+            else
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    world.addParticle(ParticleTypes.SMOKE, true, message.getX(), message.getY(), message.getZ(), (Math.random()-0.5)*0.15, (Math.random()*0.02)-0.04, (Math.random()-0.5)*0.15);
+                }
+            }
             if (message.isHeadshot())
             {
                 for(int i = 0; i < 3; i++)

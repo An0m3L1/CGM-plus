@@ -6,24 +6,36 @@
     }
   },
   "general": {
-    "alwaysSpread": true,
-    "auto": true,
     "gripType": "cgm:mini_gun",
-    "maxAmmo": 100,
-    "rate": 2,
-    "recoilAngle": 1.0,
-    "reloadAmount": 10,
-    "spread": 7.0
+    "auto": true,
+    "rate": 1,
+
+    "spreadAdsReduction": 0.0,
+
+    "recoilAngle": 0.1,
+    "recoilKick": 0.1,
+    "recoilDurationOffset": 0.0,
+    "spread": 5.0,
+    "restingSpread": 1.0,
+
+    "maxAmmo": 200,
+    "useMagReload": true,
+    "magReloadTime": 90,
+    "reloadRate": 90
   },
   "projectile": {
-    "damage": 5.0,
-    "item": "cgm:basic_bullet",
-    "life": 30,
-    "size": 0.2,
-    "speed": 8.0
+    "damage": 4.0,
+    "pierceDamagePenalty": 0.15,
+    "size": 0.1,
+    "speed": 20.0,
+    "life": 10,
+    "headshotMultiplierOverride": 1.5,
+    "armorBypass": 0.5,
+    "protectionBypass": 0.5,
+    "damageReduceOverLife": true,
+    "item": "cgm:medium_bullet"
   },
   "sounds": {
-    "enchantedFire": "cgm:item.mini_gun.enchanted_fire",
     "fire": "cgm:item.mini_gun.fire",
     "reload": "cgm:item.pistol.reload"
   }

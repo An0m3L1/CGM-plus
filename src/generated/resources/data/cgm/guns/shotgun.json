@@ -6,24 +6,27 @@
     }
   },
   "general": {
-    "alwaysSpread": true,
     "gripType": "cgm:two_handed",
-    "maxAmmo": 8,
-    "projectileAmount": 5,
-    "rate": 8,
-    "recoilAdsReduction": 0.4,
-    "recoilAngle": 10.0,
-    "recoilKick": 0.5,
-    "reloadAmount": 2,
-    "spread": 20.0
+    "auto": true,
+    "rate": 7,
+
+    "adsSpeed": 0.8,
+    "recoilAdsReduction": 0.75,
+    "spreadAdsReduction": 0.25,
+
+    "recoilAngle": 5.0,
+    "recoilKick": 1.0,
+    "recoilDurationOffset": 0.25,
+    "spread": 8.0,
+    "alwaysSpread": true,
+
+    "maxAmmo": 7,
+    "projectileAmount": 8,
+    "reloadAmount": 1,
+    "reloadRate": 11
   },
   "modules": {
     "attachments": {
-      "barrel": {
-        "scale": 0.5,
-        "yOffset": 3.6506,
-        "zOffset": -3.8
-      },
       "scope": {
         "yOffset": 4.4,
         "zOffset": 4.0
@@ -40,17 +43,20 @@
     }
   },
   "projectile": {
-    "damage": 18.0,
-    "item": "cgm:shell",
+    "damage": 16.0,
+    "pierceDamagePenalty": 0.5,
+    "size": 0.5,
+    "speed": 20.0,
     "life": 5,
-    "size": 1.0,
-    "speed": 10.0
+    "headshotMultiplierOverride": 1.0,
+    "headshotExtraDamage": 1.0,
+    "armorBypass": 0.5,
+    "protectionBypass": 0.5,
+    "damageReduceOverLife": true,
+    "item": "cgm:shell"
   },
   "sounds": {
-    "cock": "cgm:item.shotgun.cock",
-    "enchantedFire": "cgm:item.shotgun.enchanted_fire",
     "fire": "cgm:item.shotgun.fire",
-    "reload": "cgm:item.pistol.reload",
-    "silencedFire": "cgm:item.shotgun.silenced_fire"
+    "reload": "cgm:item.shotgun.reload"
   }
 }

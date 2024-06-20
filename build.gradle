@@ -2,6 +2,7 @@ plugins {
     id 'eclipse'
     id 'maven-publish'
     id 'net.minecraftforge.gradle' version '5.1.+'
+    id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     id 'org.spongepowered.mixin' version '0.7.+'
 }
 
@@ -19,7 +20,7 @@ mixin {
 }
 
 minecraft {
-    mappings channel: 'official', version: '1.19.2'
+    mappings channel: 'parchment', version: '2022.08.14-1.19.2'
 
     runs {
         client {
@@ -66,14 +67,6 @@ minecraft {
     }
 }
 
-//processResources {
-//    doLast {
-//        fileTree(dir: outputs.files.asPath, include: "**/*.json").each {
-//            File file -> file.text = JsonOutput.toJson(new JsonSlurper().parse(file))
-//        }
-//    }
-//}
-
 repositories {
     mavenLocal()
     maven {
@@ -86,12 +79,18 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.0'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.2.3'
     implementation fg.deobf('curse.maven:framework-549225:4718247')
+    implementation fg.deobf("curse.maven:create-328085:4835190")
     implementation fg.deobf('curse.maven:configured-457570:4011355')
     implementation fg.deobf('curse.maven:catalogue-459701:4171024')
     implementation fg.deobf('curse.maven:backpacked-352835:3923045')
-    implementation files('ShoulderSurfing-Forge-1.19.2-3.2.0-c83950e.jar')
+
+    implementation fg.deobf("curse.maven:shoulder-surfing-reloaded-243190:5441683")
+    implementation fg.deobf("curse.maven:collective-342584:5363789")
+    implementation fg.deobf("curse.maven:extended-creative-inventory-411224:4397639")
+    implementation fg.deobf("curse.maven:torohealth-damage-indicators-245733:3895068")
+
     compileOnly fg.deobf('curse.maven:controllable-317269:3936915')
     compileOnly fg.deobf("mezz.jei:jei-1.19.2-common-api:11.4.0.274")
     compileOnly fg.deobf("mezz.jei:jei-1.19.2-forge-api:11.4.0.274")
@@ -102,14 +101,14 @@ dependencies {
 jar {
     manifest {
         attributes([
-            "Specification-Title": "Gun Mod",
-            "Specification-Vendor": "MrCrayfish",
-            "Specification-Version": "1",
-            "Implementation-Title": "Gun Mod",
-            "Implementation-Version": project.version,
-            "Implementation-Vendor" : "MrCrayfish",
-            "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
-            "MixinConfigs": "cgm.mixins.json"
+                "Specification-Title": "Gun Mod",
+                "Specification-Vendor": "MrCrayfish",
+                "Specification-Version": "1",
+                "Implementation-Title": "Gun Mod",
+                "Implementation-Version": project.version,
+                "Implementation-Vendor" : "MrCrayfish",
+                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "MixinConfigs": "cgm.mixins.json"
         ])
     }
 }

@@ -255,8 +255,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 endVec = result.getLocation();
             }
-
             List<EntityResult> hitEntities = null;
+
+            //To implement Collateral again, uncomment the code block and remove the code below this comment
+            hitEntities = this.findEntitiesOnPath(startVec, endVec);
+
+            /*
             int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), this.weapon);
             if(level == 0)
             {
@@ -270,6 +274,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 hitEntities = this.findEntitiesOnPath(startVec, endVec);
             }
+            */
 
             if(hitEntities != null && hitEntities.size() > 0)
             {
@@ -500,6 +505,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 bell.attemptToRing(this.level, pos, blockHitResult.getDirection());
             }
 
+            //To implement Fire Starter again, uncomment the code block
+
+            /*
             int fireStarterLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FIRE_STARTER.get(), this.weapon);
             if(fireStarterLevel > 0 && Config.COMMON.gameplay.griefing.setFireToBlocks.get())
             {
@@ -511,6 +519,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     ((ServerLevel) this.level).sendParticles(ParticleTypes.LAVA, hitVec.x - 1.0 + this.random.nextDouble() * 2.0, hitVec.y, hitVec.z - 1.0 + this.random.nextDouble() * 2.0, 4, 0, 0, 0, 0);
                 }
             }
+            */
             return;
         }
 
@@ -530,33 +539,48 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 }
             }
 
+            //To implement Fire Starter again, uncomment the code block
+
+            /*
             int fireStarterLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FIRE_STARTER.get(), this.weapon);
             if(fireStarterLevel > 0)
             {
                 entity.setSecondsOnFire(2);
             }
+            */
 
             boolean isDead = (entity instanceof LivingEntity ? ((LivingEntity) entity).isDeadOrDying() : false);
             this.onHitEntity(entity, result.getLocation(), startVec, endVec, entityHitResult.isHeadshot());
 
-        	if (!isDead)
-        	{
-        		int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
-            	if(collateralLevel == 0)
-            	{
-                	this.remove(RemovalReason.KILLED);
-            	}
-            	else
-            	{
-            		if (this.pierceDamageFraction<=0.05F || this.pierceCount>100)
-                	this.remove(RemovalReason.KILLED);
-            		else
-            		{
-            			this.pierceCount++;
-            			this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
-            		}
-            	}
-        	}
+            if (!isDead)
+            {
+                //To implement Collateral again, uncomment the code block and remove the code below this comment
+                if (this.pierceDamageFraction<=0.05F || this.pierceCount>100)
+                    this.remove(RemovalReason.KILLED);
+                else
+                {
+                    this.pierceCount++;
+                    this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
+                }
+
+                /*
+                int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
+                if(collateralLevel == 0)
+                {
+                    this.remove(RemovalReason.KILLED);
+                }
+                else
+                {
+                    if (this.pierceDamageFraction<=0.05F || this.pierceCount>100)
+                        this.remove(RemovalReason.KILLED);
+                    else
+                    {
+                        this.pierceCount++;
+                        this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
+                    }
+                }
+                */
+            }
 
             entity.invulnerableTime = 0;
         }
@@ -728,7 +752,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         float damage = initialDamage / this.general.getProjectileAmount();
         damage = GunModifierHelper.getModifiedDamage(this.weapon, this.modifiedGun, damage);
         damage = GunEnchantmentHelper.getAcceleratorDamage(this.weapon, damage);
-        damage *= pierceDamageFraction;
+        //damage *= pierceDamageFraction;
         return Math.max(0F, damage);
     }
 

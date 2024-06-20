@@ -23,7 +23,7 @@ import javax.annotation.Nullable;
  * Modified by zaeonNineZero
  * Attachment detection logic based off of code from Mo' Guns by Bomb787 and AlanorMiga (MigaMi)
  */
-public class PistolCustomModel implements IOverrideModel
+public class PistolModel implements IOverrideModel
 {
     @Override
 	// This class renders a multi-part model that supports animations and removeable parts.
@@ -42,7 +42,7 @@ public class PistolCustomModel implements IOverrideModel
 		ItemStack attachmentStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
         if(!attachmentStack.isEmpty())
 		{
-            RenderUtil.renderModel(SpecialModels.PISTOL_SIGHTMOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.PISTOL_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
 		}
 
 		// Next, we do the animated parts.

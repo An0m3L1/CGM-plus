@@ -7,31 +7,30 @@
     }
   },
   "general": {
-    "alwaysSpread": true,
+    "gripType": "cgm:pistol_custom",
     "auto": true,
-    "gripType": "cgm:one_handed",
-    "maxAmmo": 80,
-    "rate": 2,
-    "recoilAdsReduction": 0.5,
-    "recoilAngle": 4.0,
-    "recoilKick": 0.25,
-    "reloadAmount": 20,
-    "spread": 6.0
+    "rate": 3,
+
+    "adsSpeed": 1.2,
+    "recoilAdsReduction": 0.25,
+    "spreadAdsReduction": 0.25,
+
+    "recoilAngle": 3.0,
+    "recoilKick": 0.75,
+    "recoilDurationOffset": 0.25,
+    "spread": 4.5,
+    "alwaysSpread": false,
+
+    "maxAmmo": 18,
+    "useMagReload": true,
+    "magReloadTime": 40,
+    "reloadRate": 40
   },
   "modules": {
     "attachments": {
-      "barrel": {
-        "scale": 0.5,
-        "yOffset": 3.2,
-        "zOffset": 2.2
-      },
       "scope": {
         "yOffset": 4.0,
         "zOffset": 5.5
-      },
-      "stock": {
-        "yOffset": 3.2,
-        "zOffset": 8.2
       }
     },
     "zoom": {
@@ -41,17 +40,20 @@
     }
   },
   "projectile": {
-    "damage": 3.0,
-    "item": "cgm:basic_bullet",
-    "life": 20,
-    "size": 0.2,
-    "speed": 10.0
+    "damage": 5.0,
+    "pierceDamagePenalty": 0.5,
+    "size": 0.1,
+    "speed": 20.0,
+    "life": 5,
+    "headshotMultiplierOverride": 2.0,
+    "armorBypass": 0.25,
+    "protectionBypass": 0.25,
+    "damageReduceOverLife": true,
+    "item": "cgm:basic_bullet"
   },
   "sounds": {
-    "cock": "cgm:item.rifle.cock",
-    "enchantedFire": "cgm:item.machine_pistol.enchanted_fire",
+    "cock": "cgm:item.machine_pistol.cock",
     "fire": "cgm:item.machine_pistol.fire",
-    "reload": "cgm:item.pistol.reload",
-    "silencedFire": "cgm:item.machine_pistol.silenced_fire"
+    "reload": "cgm:item.machine_pistol.reload"
   }
 }

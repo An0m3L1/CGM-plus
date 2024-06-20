@@ -4,7 +4,7 @@
     },
     "cgm:barrel": {
         "muzzleFlash": {
-            "translation": [8.0, 8.0, -0.1]
+            "translation": [8.0, 8.0, -2.1]
         }
     }
 }

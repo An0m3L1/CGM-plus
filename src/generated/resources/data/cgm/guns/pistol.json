@@ -6,14 +6,24 @@
     }
   },
   "general": {
-    "alwaysSpread": true,
-    "gripType": "cgm:one_handed",
-    "maxAmmo": 16,
-    "rate": 4,
-    "recoilAdsReduction": 0.5,
-    "recoilAngle": 10.0,
-    "reloadAmount": 4,
-    "spread": 1.0
+    "gripType": "cgm:pistol_custom",
+    "auto": false,
+    "rate": 2,
+
+    "adsSpeed": 1.2,
+    "recoilAdsReduction": 0.25,
+    "spreadAdsReduction": 0.25,
+
+    "recoilAngle": 3.0,
+    "recoilKick": 0.25,
+    "recoilDurationOffset": 0.25,
+    "spread": 3.0,
+    "alwaysSpread": false,
+
+    "maxAmmo": 12,
+    "useMagReload": true,
+    "magReloadTime": 30,
+    "reloadRate": 30
   },
   "modules": {
     "attachments": {
@@ -26,10 +36,6 @@
         "scale": 0.75,
         "yOffset": 3.7,
         "zOffset": 6.0
-      },
-      "stock": {
-        "yOffset": 3.3,
-        "zOffset": 7.95
       }
     },
     "zoom": {
@@ -39,15 +45,19 @@
     }
   },
   "projectile": {
-    "damage": 9.0,
-    "item": "cgm:basic_bullet",
-    "life": 25,
-    "size": 0.2,
-    "speed": 10.0
+    "damage": 5.0,
+    "pierceDamagePenalty": 0.5,
+    "size": 0.1,
+    "speed": 20.0,
+    "life": 5,
+    "headshotMultiplierOverride": 3.0,
+    "armorBypass": 0.25,
+    "protectionBypass": 0.25,
+    "damageReduceOverLife": true,
+    "item": "cgm:basic_bullet"
   },
   "sounds": {
     "cock": "cgm:item.pistol.cock",
-    "enchantedFire": "cgm:item.pistol.enchanted_fire",
     "fire": "cgm:item.pistol.fire",
     "reload": "cgm:item.pistol.reload",
     "silencedFire": "cgm:item.pistol.silenced_fire"

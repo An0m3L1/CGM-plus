@@ -16,22 +16,28 @@ import net.minecraftforge.fml.common.Mod;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public enum SpecialModels
 {
-    ASSAULT_RIFLE("gun/assault_rifle"),
-    BAZOOKA("gun/bazooka"),
-    HEAVY_RIFLE("gun/heavy_rifle"),
-    MACHINE_PISTOL("gun/machine_pistol"),
-    PISTOL("gun/pistol"),
-    RIFLE("gun/rifle"),
-    SHOTGUN("gun/shotgun"),
+    ASSAULT_RIFLE("z_gun/assault_rifle"),
+    BAZOOKA("z_gun/bazooka"),
+    HEAVY_RIFLE("z_gun/heavy_rifle"),
+    MACHINE_PISTOL("z_gun/machine_pistol"),
+    PISTOL("z_gun/pistol"),
+    RIFLE("z_gun/rifle"),
+    SHOTGUN("z_gun/shotgun"),
     FLAME("flame"),
-    MINI_GUN_BASE("mini_gun_base"),
-    MINI_GUN_BARRELS("mini_gun_barrels"),
-    GRENADE_LAUNCHER_BASE("grenade_launcher_base"),
-    GRENADE_LAUNCHER_CYLINDER("grenade_launcher_cylinder"),
-    
-    PISTOL_BASE("pistol_base"),
-    PISTOL_SLIDE("pistol_slide"),
-    PISTOL_SIGHTMOUNT("pistol_sightmount");
+
+    MINI_GUN_BASE("mini_gun/mini_gun_base"),
+    MINI_GUN_BARRELS("mini_gun/mini_gun_barrels"),
+
+    GRENADE_LAUNCHER_BASE("grenade_launcher/grenade_launcher_base"),
+    GRENADE_LAUNCHER_CYLINDER("grenade_launcher/grenade_launcher_cylinder"),
+
+    ASSAULT_RIFLE_BASE("assault_rifle/assault_rifle_base"),
+    ASSAULT_RIFLE_SIGHTS("assault_rifle/assault_rifle_sights"),
+    ASSAULT_RIFLE_NO_SIGHTS("assault_rifle/assault_rifle_no_sights"),
+
+    PISTOL_BASE("pistol/pistol_base"),
+    PISTOL_SLIDE("pistol/pistol_slide"),
+    PISTOL_MOUNT("pistol/pistol_mount");
 
     /**
      * The location of an item model in the [MOD_ID]/models/special/[NAME] folder

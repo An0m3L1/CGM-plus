@@ -46,7 +46,7 @@
   },
   "projectile": {
     "damage": 5.0,
-    "pierceDamagePenalty": 0.5,
+    "maxPierceCount": 2,
     "size": 0.1,
     "speed": 20.0,
     "life": 5,

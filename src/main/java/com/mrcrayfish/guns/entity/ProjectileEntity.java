@@ -257,8 +257,11 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 endVec = result.getLocation();
             }
             List<EntityResult> hitEntities = null;
+            int maxPierceCount = (projectile.getMaxPierceCount()-1);
+            /*
             int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), this.weapon);
     		int maxPierceCount = (collateralLevel == 0 ? projectile.getMaxPierceCount() : projectile.getCollateralMaxPierce());
+    		*/
             if(maxPierceCount == 0)
             {
                 EntityResult entityResult = this.findEntityOnPath(startVec, endVec);
@@ -561,8 +564,11 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         	if (!isDead)
         	{
+                int maxPierceCount = (projectile.getMaxPierceCount()-1);
+                /*
         		int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
         		int maxPierceCount = (collateralLevel == 0 ? projectile.getMaxPierceCount() : projectile.getCollateralMaxPierce());
+        		*/
         		if(maxPierceCount == 0)
             	{
                 	this.remove(RemovalReason.KILLED);

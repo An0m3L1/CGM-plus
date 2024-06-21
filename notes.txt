@@ -1,8 +1,17 @@
-Add new attachment types for magazines (quick, extended), cosmetic slot (skins)
-Add remaining guns from CS2
-Add new items for crafting and recipes
+Add new attachment types (magazine, cosmetic)
+Add more attachments (angled grip, compensator, extended barrel, flash hider, tactical silencer, holo sight, 8x scope, 4x night vision scope)
+    - Barrels: compensator, flash hider, extended barrel, tactical silencer
+    - Grips: angled, thumb, laser sight
+    - Magazines: extended, quick
+    - Scopes: holo, 4x night vision, 8x, 16x
+    - Stocks: skeleton
+Add items (night vision goggles, armor, melee weapons, more grenades)
+Add guns (CS2, rocket jumper, flamethrower)
+Add new materials for crafting
 Add move speed stat to guns
+Add new sounds
 
-Overhaul models (add moving and removable parts)
+Overhaul gun models (add moving and removable parts)
+Overhaul light grip (change it to angled foregrip)
 Overhaul reload animations and sounds
 Overhaul blood particles (check extra gore)

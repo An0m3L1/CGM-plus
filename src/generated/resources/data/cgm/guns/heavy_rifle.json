@@ -11,7 +11,7 @@
     "auto": false,
     "rate": 29,
 
-    "adsSpeed": 0.6,
+    "adsSpeed": 0.5,
     "recoilAdsReduction": 0.5,
     "spreadAdsReduction": 1.0,
 
@@ -49,15 +49,21 @@
     }
   },
   "projectile": {
-    "damage": 22.0,
-    "maxPierceCount": 8,
+    "damage": 20.0,
     "size": 0.1,
     "speed": 10.0,
     "life": 20,
+
     "headshotMultiplierOverride": 1.0,
     "headshotExtraDamage": 18.0,
-    "armorBypass": 0.8,
+
+    "armorBypass": 1.0,
     "protectionBypass": 0.25,
+
+    "maxPierceCount": 5,
+    "pierceDamagePenalty": 0.2,
+    "pierceDamageMaxPenalty": 0.4,
+
     "item": "cgm:advanced_bullet"
   },
   "sounds": {

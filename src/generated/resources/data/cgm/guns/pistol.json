@@ -18,7 +18,6 @@
     "recoilKick": 0.25,
     "recoilDurationOffset": 0.25,
     "spread": 3.0,
-    "alwaysSpread": false,
 
     "maxAmmo": 12,
     "useMagReload": true,
@@ -45,15 +44,21 @@
     }
   },
   "projectile": {
-    "damage": 5.0,
-    "maxPierceCount": 2,
+    "damage": 4.0,
+    "damageReduceOverLife": true,
     "size": 0.1,
     "speed": 20.0,
     "life": 5,
-    "headshotMultiplierOverride": 3.0,
+
+    "headshotMultiplierOverride": 4.0,
+
     "armorBypass": 0.25,
     "protectionBypass": 0.25,
-    "damageReduceOverLife": true,
+
+    "maxPierceCount": 2,
+    "pierceDamagePenalty": 0.25,
+    "pierceDamageMaxPenalty": 0.5,
+
     "item": "cgm:basic_bullet"
   },
   "sounds": {

@@ -44,15 +44,21 @@
   },
   "projectile": {
     "damage": 16.0,
-    "maxPierceCount": 1,
+    "damageReduceOverLife": true,
     "size": 0.5,
     "speed": 20.0,
     "life": 5,
+
     "headshotMultiplierOverride": 1.0,
     "headshotExtraDamage": 1.0,
+
     "armorBypass": 0.5,
-    "protectionBypass": 0.5,
-    "damageReduceOverLife": true,
+    "protectionBypass": 0.25,
+
+    "maxPierceCount": 4,
+    "pierceDamagePenalty": 0.25,
+    "pierceDamageMaxPenalty": 0.5,
+
     "item": "cgm:shell"
   },
   "sounds": {

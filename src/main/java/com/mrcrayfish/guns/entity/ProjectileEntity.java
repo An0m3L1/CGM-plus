@@ -377,7 +377,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
                 if(result == null)
                     continue;
-                hitEntities.add(result);
+                int maxPierceCount = projectile.getMaxPierceCount(); //(projectile.getMaxPierceCount()>0 ? projectile.getMaxPierceCount()+(collateralLevel*4) : 0);
+        		if (this.pierceCount<=maxPierceCount || maxPierceCount<=0)
+        		{
+        			hitEntities.add(result);
+        			this.pierceCount++;
+        		}
             }
         }
         Collections.reverse(hitEntities);
@@ -549,36 +554,27 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             boolean isDead = (entity instanceof LivingEntity ? ((LivingEntity) entity).isDeadOrDying() : false);
             this.onHitEntity(entity, result.getLocation(), startVec, endVec, entityHitResult.isHeadshot());
 
-            if (!isDead)
-            {
-                //To implement Collateral again, uncomment the code block and remove code below this comment
-                int maxPierceCount = projectile.getMaxPierceCount();
-                if (this.pierceCount>=maxPierceCount && maxPierceCount>0)
-                {
-                    this.remove(RemovalReason.KILLED);
-                }
-                else
-                {
-                    this.pierceCount++;
-                }
+        	if (!isDead)
+        	{
                 /*
-                int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
-                if(collateralLevel == 0)
-                {
-                    this.remove(RemovalReason.KILLED);
-                }
-                else
-                {
-                    int maxPierceCount = projectile.getMaxPierceCount(); //(projectile.getMaxPierceCount()>0 ? projectile.getMaxPierceCount()+(collateralLevel*4) : 0);
-                    if (this.pierceCount>maxPierceCount && maxPierceCount>0)
-                        this.remove(RemovalReason.KILLED);
-                    else
-                    {
-                        this.pierceCount++;
-                    }
-                }
+        		int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
+            	if(collateralLevel == 0)
+            	{
+                	this.remove(RemovalReason.KILLED);
+            	}
                 */
-            }
+            	/*else
+            	{
+            		int maxPierceCount = projectile.getMaxPierceCount(); //(projectile.getMaxPierceCount()>0 ? projectile.getMaxPierceCount()+(collateralLevel*4) : 0);
+            		if (this.pierceCount>=maxPierceCount && maxPierceCount>0)
+                	this.remove(RemovalReason.KILLED);
+            		else
+            		{
+            			this.pierceCount++;
+            			//this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
+            		}
+            	}*/
+        	}
             entity.invulnerableTime = 0;
         }
     }

@@ -6,5 +6,3 @@ Add move speed stat to guns
 Overhaul models (add moving and removable parts)
 Overhaul reload animations and sounds
 Overhaul blood particles (check extra gore)
-
-Fix sounds (reduce volume)

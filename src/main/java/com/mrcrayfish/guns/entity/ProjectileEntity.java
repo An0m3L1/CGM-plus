@@ -377,15 +377,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
                 if(result == null)
                     continue;
-                int maxPierceCount = projectile.getMaxPierceCount(); //(projectile.getMaxPierceCount()>0 ? projectile.getMaxPierceCount()+(collateralLevel*4) : 0);
-        		if (this.pierceCount<=maxPierceCount || maxPierceCount<=0)
+                boolean isDead = (entity instanceof LivingEntity ? ((LivingEntity) entity).isDeadOrDying() : false);
+                int maxPierceCount = projectile.getMaxPierceCount()-1;
+        		if ((this.pierceCount<=maxPierceCount || maxPierceCount<=0) && !isDead)
         		{
         			hitEntities.add(result);
         			this.pierceCount++;
         		}
             }
         }
-        Collections.reverse(hitEntities);
         return hitEntities;
     }
 

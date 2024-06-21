@@ -255,10 +255,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 endVec = result.getLocation();
             }
             List<EntityResult> hitEntities = null;
-
-            //To implement Collateral again, uncomment the code block and remove the code below this comment
-            hitEntities = this.findEntitiesOnPath(startVec, endVec);
-            /*
             int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), this.weapon);
             if(level == 0)
             {
@@ -272,7 +268,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 hitEntities = this.findEntitiesOnPath(startVec, endVec);
             }
-            */
             if(hitEntities != null && hitEntities.size() > 0)
             {
                 for(EntityResult entityResult : hitEntities)
@@ -556,24 +551,11 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         	if (!isDead)
         	{
-                /*
         		int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
             	if(collateralLevel == 0)
             	{
                 	this.remove(RemovalReason.KILLED);
             	}
-                */
-            	/*else
-            	{
-            		int maxPierceCount = projectile.getMaxPierceCount(); //(projectile.getMaxPierceCount()>0 ? projectile.getMaxPierceCount()+(collateralLevel*4) : 0);
-            		if (this.pierceCount>=maxPierceCount && maxPierceCount>0)
-                	this.remove(RemovalReason.KILLED);
-            		else
-            		{
-            			this.pierceCount++;
-            			//this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
-            		}
-            	}*/
         	}
             entity.invulnerableTime = 0;
         }

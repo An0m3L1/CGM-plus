@@ -29,7 +29,6 @@ public class PacketHandler
                 .registerPlayMessage(S2CMessageProjectileHitBlock.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(S2CMessageProjectileHitEntity.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(S2CMessageRemoveProjectile.class, MessageDirection.PLAY_CLIENT_BOUND)
-                .registerPlayMessage(C2SMessageFireSwitch.class, MessageDirection.PLAY_SERVER_BOUND)
                 .build();
     }
 

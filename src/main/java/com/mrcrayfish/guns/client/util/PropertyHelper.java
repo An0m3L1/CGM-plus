@@ -376,17 +376,196 @@ public final class PropertyHelper
 		return Vec3.ZERO;
 	}
     
-    public static double getHandPosScalar(ItemStack weapon) {
-		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands");
-        if(handObject.has("posScalar", DataType.NUMBER))
+    
+    // Gun animation stuff
+
+	public static boolean hasAttachmentAnimation(ItemStack weapon, Type type) {
+		DataObject scopeObject = getObjectByPath(weapon, WEAPON_KEY, "attachments", type.getSerializeKey());
+        return scopeObject.has("animTranslate", DataType.ARRAY);
+	}
+	public static boolean hasHandAnimation(ItemStack weapon, boolean isRearHand) {
+		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands", isRearHand ? "rear" : "forward");
+        return handObject.has("animTranslate", DataType.ARRAY);
+	}
+	
+
+	public static float getCooldownDivider(ItemStack weapon) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation");
+        if(animationObject.has("cooldownDivider", DataType.NUMBER))
         {
-        	DataNumber animScalar = handObject.getDataNumber("posScalar");
+        	DataNumber cooldownDivider = animationObject.getDataNumber("cooldownDivider");
+        	return cooldownDivider.asFloat();
+		}
+        
+        return 1F;
+	}
+	public static float getCooldownOffset(ItemStack weapon) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation");
+        if(animationObject.has("cooldownOffset", DataType.NUMBER))
+        {
+        	DataNumber cooldownOffset = animationObject.getDataNumber("cooldownOffset");
+            return cooldownOffset.asFloat();
+		}
+        
+        return 0F;
+	}
+	public static float getAnimIntensity(ItemStack weapon) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation");
+        if(animationObject.has("animIntensity", DataType.NUMBER))
+        {
+        	DataNumber animIntensity = animationObject.getDataNumber("animIntensity");
+            return animIntensity.asFloat();
+		}
+        
+        return 1F;
+	}
+	public static float getBoltLeadTime(ItemStack weapon) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation");
+        if(animationObject.has("boltLeadTime", DataType.NUMBER))
+        {
+        	DataNumber boltLeadTime = animationObject.getDataNumber("boltLeadTime");
+            return boltLeadTime.asFloat();
+		}
+        
+        return 0F;
+	}
+	public static float getViewmodelBoltLeadTime(ItemStack weapon) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation", "viewModel");
+        if(animationObject.has("boltLeadTime", DataType.NUMBER))
+        {
+        	DataNumber boltLeadTime = animationObject.getDataNumber("boltLeadTime");
+            return boltLeadTime.asFloat();
+		}
+        
+        return 0F;
+	}
+	public static float getHandBoltLeadTime(ItemStack weapon, boolean isRearHand) {
+		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands", isRearHand ? "rear" : "forward");
+        if(handObject.has("boltLeadTime", DataType.NUMBER))
+        {
+        	DataNumber boltLeadTime = handObject.getDataNumber("boltLeadTime");
+            return boltLeadTime.asFloat();
+		}
+        
+        return getBoltLeadTime(weapon);
+	}
+	
+
+	public static double getHandAnimScalar(ItemStack weapon) {
+		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands");
+        if(handObject.has("animScalar", DataType.NUMBER))
+        {
+        	DataNumber animScalar = handObject.getDataNumber("animScalar");
         	return animScalar.asDouble()*2.0;
 		}
         
         return 1.6;
 	}
 	
+
+	public static Vec3 getViewModelAnimTranslation(ItemStack weapon, boolean isBoltAnim) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation", "viewModel");
+		if (animationObject.has("animTranslate", DataType.ARRAY) && !isBoltAnim)
+		{
+			DataArray translationArray = animationObject.getDataArray("animTranslate");
+			if (translationArray!=null)
+            return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		if (animationObject.has("boltAnimTranslate", DataType.ARRAY) && isBoltAnim)
+		{
+			DataArray translationArray = animationObject.getDataArray("boltAnimTranslate");
+			if (translationArray!=null)
+            return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		
+		return Vec3.ZERO;
+	}
+	public static Vec3 getViewModelAnimRotation(ItemStack weapon, boolean isBoltAnim) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation", "viewModel");
+		if (animationObject.has("animRotation", DataType.ARRAY) && !isBoltAnim)
+		{
+			DataArray rotationArray = animationObject.getDataArray("animRotation");
+			if (rotationArray!=null)
+            return arrayToVec3(rotationArray, Vec3.ZERO);
+		}
+		if (animationObject.has("boltAnimRotation", DataType.ARRAY) && isBoltAnim)
+		{
+			DataArray rotationArray = animationObject.getDataArray("boltAnimRotation");
+			if (rotationArray!=null)
+            return arrayToVec3(rotationArray, Vec3.ZERO);
+		}
+		
+		return Vec3.ZERO;
+	}
+	
+	public static Vec3 getComponentAnimTranslation(ItemStack weapon, boolean isBoltAnim) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation", "component");
+		if (animationObject.has("animTranslate", DataType.ARRAY) && !isBoltAnim)
+		{
+			DataArray translationArray = animationObject.getDataArray("animTranslate");
+			if (translationArray!=null)
+            return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		if (animationObject.has("boltAnimTranslate", DataType.ARRAY) && isBoltAnim)
+		{
+			DataArray translationArray = animationObject.getDataArray("boltAnimTranslate");
+			if (translationArray!=null)
+            return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		
+		return Vec3.ZERO;
+	}
+	public static Vec3 getComponentAnimRotation(ItemStack weapon, boolean isBoltAnim) {
+		DataObject animationObject = getObjectByPath(weapon, WEAPON_KEY, "animation", "component");
+		if (animationObject.has("animRotation", DataType.ARRAY) && !isBoltAnim)
+		{
+			DataArray rotationArray = animationObject.getDataArray("animRotation");
+			if (rotationArray!=null)
+            return arrayToVec3(rotationArray, Vec3.ZERO);
+		}
+		if (animationObject.has("boltAnimRotation", DataType.ARRAY) && isBoltAnim)
+		{
+			DataArray rotationArray = animationObject.getDataArray("boltAnimRotation");
+			if (rotationArray!=null)
+            return arrayToVec3(rotationArray, Vec3.ZERO);
+		}
+		
+		return Vec3.ZERO;
+	}
+	
+	public static Vec3 getAttachmentAnimTranslation(ItemStack weapon, IAttachment.Type type) {
+		DataObject scopeObject = getObjectByPath(weapon, WEAPON_KEY, "attachments", type.getSerializeKey());
+		if (scopeObject.has("animTranslate", DataType.ARRAY))
+		{
+			DataArray translationArray = scopeObject.getDataArray("animTranslate");
+			if (translationArray!=null)
+            return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		
+		return Vec3.ZERO;
+	}
+	
+	public static Vec3 getHandAnimationTranslation(ItemStack weapon, boolean isRearHand, boolean isBoltAnim) {
+		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands", isRearHand ? "rear" : "forward");
+		if (handObject.has("animTranslate", DataType.ARRAY) && !isBoltAnim)
+		{
+			DataArray translationArray = handObject.getDataArray("animTranslate");
+			if (translationArray!=null)
+            return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		if (handObject.has("boltAnimTranslate", DataType.ARRAY) && isBoltAnim)
+		{
+			DataArray translationArray = handObject.getDataArray("boltAnimTranslate");
+			if (translationArray!=null)
+            return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		
+		return Vec3.ZERO;
+	}
+	
+	
+	
+
     private static SightAnimation objectToSightAnimation(DataObject object)
     {
         ObjectCache cache = ObjectCache.getInstance(CACHE_KEY);
@@ -410,7 +589,7 @@ public final class PropertyHelper
         return Optional.empty();
     }
 
-    static DataObject getObjectByPath(ItemStack stack, String ... path)
+    private static DataObject getObjectByPath(ItemStack stack, String ... path)
     {
         DataObject result = PropertyHelper.getCustomData(stack);
         for(String key : path)
@@ -425,7 +604,7 @@ public final class PropertyHelper
         return result;
     }
 
-    static Vec3 arrayToVec3(DataArray array, Vec3 defaultValue)
+    private static Vec3 arrayToVec3(DataArray array, Vec3 defaultValue)
     {
         // Ignore immediately if not correct length
         if(array.length() != 3)

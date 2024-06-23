@@ -35,7 +35,7 @@ public class GunModifiers
             return true;
         }
         @Override
-        public double modifyMuzzleFlashScale(double scale) {return 0.5f;}
+        public double modifyMuzzleFlashScale(double scale) {return 0.25f;}
 
         @Override
         public double modifyFireSoundRadius(double radius)
@@ -55,9 +55,6 @@ public class GunModifiers
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.9F;}
-
-        @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
     };
 
@@ -66,7 +63,7 @@ public class GunModifiers
         @Override
         public float recoilModifier()
         {
-            return 0.7F;
+            return 0.65F;
         }
         @Override
         public float kickModifier()
@@ -75,7 +72,7 @@ public class GunModifiers
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.85F;}
+        public float modifyProjectileSpread(float spread) {return spread * 0.8F;}
 
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;}
@@ -96,13 +93,13 @@ public class GunModifiers
         public float modifyProjectileSpread(float spread) {return spread * 0.7F;}
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.8F;}
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
     };
     public static final IGunModifier WEIGHTED_STOCK = new IGunModifier() {
         @Override
         public float recoilModifier()
         {
-            return 0.5F;
+            return 0.55F;
         }
         @Override
         public float kickModifier()
@@ -111,10 +108,10 @@ public class GunModifiers
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.55F;}
+        public float modifyProjectileSpread(float spread) {return spread * 0.6F;}
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.75F;}
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
     };
 
     /* Grips*/
@@ -131,28 +128,32 @@ public class GunModifiers
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.95F;}
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.9F;
+        }
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 1.1F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 1.1F;
+        }
     };
     public static final IGunModifier SPECIALISED_GRIP = new IGunModifier() {
         @Override
         public float recoilModifier()
         {
-            return 0.8F;
+            return 0.7F;
         }
         @Override
         public float kickModifier()
         {
-            return 0.9F;
+            return 0.85F;
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.8F;}
+        public float modifyProjectileSpread(float spread) {return spread * 0.7F;}
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
     };
 
     //Old modifiers kept for compatibility reasons

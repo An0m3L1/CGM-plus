@@ -23,8 +23,8 @@
 
     "maxAmmo": 30,
     "useMagReload": true,
-    "magReloadTime": 40,
-    "reloadRate": 40
+    "magReloadTime": 50,
+    "reloadRate": 50
   },
   "fireModes": {
     "useFireModes": true,
@@ -80,10 +80,12 @@
   "sounds": {
     "fire": "cgm:item.assault_rifle.fire",
     "silencedFire": "cgm:item.assault_rifle.silenced_fire",
-    "reloadStart": "cgm:item.assault_rifle.reload_start",
-    "magReloadMiddle2": "cgm:item.assault_rifle.reload_middle",
-    "magReloadEnd": "cgm:item.assault_rifle.reload_end",
     "fireSwitch": "cgm:item.fire_switch",
-    "weaponSelect": "cgm:item.assault_rifle.select"
+
+    "reloadClipOut": "cgm:item.assault_rifle.reload_start",
+    "reloadClipOutThreshold": 0.25,
+    "reloadClipIn": "cgm:item.assault_rifle.reload_middle",
+    "reloadClipInThreshold": 0.75,
+    "reloadEnd": "cgm:item.assault_rifle.reload_end"
   }
 }

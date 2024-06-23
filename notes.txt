@@ -8,7 +8,7 @@ Add more attachments (angled grip, compensator, extended barrel, flash hider, ta
 Add items (night vision goggles, armor, melee weapons, more grenades)
 Add guns (CS2, rocket jumper, flamethrower)
 Add new materials for crafting
-Add move speed stat to guns
+Add move speed stat to guns (Method changeGunSpeedMod in ServerPlayHandler)
 Add reloadStart sounds for mag type weapons
 
 Overhaul gun models (add moving and removable parts)

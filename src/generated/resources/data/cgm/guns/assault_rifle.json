@@ -10,6 +10,7 @@
     "gripType": "cgm:two_handed",
     "auto": true,
     "rate": 2,
+    "burstCooldown": 6,
 
     "adsSpeed": 0.8,
     "recoilAdsReduction": 0.5,
@@ -22,8 +23,16 @@
 
     "maxAmmo": 30,
     "useMagReload": true,
-    "magReloadTime": 50,
-    "reloadRate": 50
+    "magReloadTime": 40,
+    "reloadRate": 40
+  },
+  "fireModes": {
+    "useFireModes": true,
+    "hasSemiMode": true,
+    "hasAutoMode": true,
+    "hasBurstMode": true,
+    "useAutoBurst": true,
+    "burstCount": 3
   },
   "modules": {
     "attachments": {
@@ -72,7 +81,9 @@
     "fire": "cgm:item.assault_rifle.fire",
     "silencedFire": "cgm:item.assault_rifle.silenced_fire",
     "reloadStart": "cgm:item.assault_rifle.reload_start",
-    "reload": "cgm:item.assault_rifle.reload",
-    "cock": "cgm:item.assault_rifle.cock"
+    "magReloadMiddle2": "cgm:item.assault_rifle.reload_middle",
+    "magReloadEnd": "cgm:item.assault_rifle.reload_end",
+    "fireSwitch": "cgm:item.fire_switch",
+    "weaponSelect": "cgm:item.assault_rifle.select"
   }
 }

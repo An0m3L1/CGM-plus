@@ -69,9 +69,10 @@
     "item": "cgm:medium_bullet"
   },
   "sounds": {
-    "cock": "cgm:item.assault_rifle.cock",
     "fire": "cgm:item.assault_rifle.fire",
+    "silencedFire": "cgm:item.assault_rifle.silenced_fire",
+    "reloadStart": "cgm:item.assault_rifle.reload_start",
     "reload": "cgm:item.assault_rifle.reload",
-    "silencedFire": "cgm:item.assault_rifle.silenced_fire"
+    "cock": "cgm:item.assault_rifle.cock"
   }
 }

@@ -9,9 +9,12 @@ Add items (night vision goggles, armor, melee weapons, more grenades)
 Add guns (CS2, rocket jumper, flamethrower)
 Add new materials for crafting
 Add move speed stat to guns
-Add new sounds
+Add reloadStart sounds for mag type weapons
 
 Overhaul gun models (add moving and removable parts)
 Overhaul light grip (change it to angled foregrip)
 Overhaul reload animations and sounds
 Overhaul blood particles (check extra gore)
+Overhaul existing sounds
+
+Reduce ADS penalties for attachments

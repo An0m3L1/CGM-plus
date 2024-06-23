@@ -12,6 +12,7 @@
    "item.assault_rifle.fire":           { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/assault_rifle/fire", "volume": 0.5 }]},
    "item.assault_rifle.silenced_fire":  { "subtitle": "subtitle.cgm.fire.silenced",  "sounds": [{ "name": "cgm:item/assault_rifle/silenced_fire", "volume": 0.5 }]},
    "item.assault_rifle.reload":         { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/assault_rifle/reload" }]},
+   "item.assault_rifle.reload_start":   { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/assault_rifle/reload_start" }]},
    "item.assault_rifle.cock":           { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/assault_rifle/cock" }]},
    "item.grenade_launcher.fire":        { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/grenade_launcher/fire", "volume": 0.5 }]},
    "item.grenade_launcher.reload":      { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/grenade_launcher/reload" }]},
@@ -29,5 +30,6 @@
    "item.grenade.pin":                  { "subtitle": "subtitle.cgm.grenade.pin",    "sounds": [{ "name": "cgm:item/grenade/pin" }]},
    "entity.stun_grenade.explosion":     { "subtitle": "subtitle.cgm.stun.explosion", "sounds": [{ "name": "cgm:entity/stun_grenade/explosion" }]},
    "entity.stun_grenade.ring":          { "subtitle": "subtitle.cgm.stun.ring",      "sounds": [{ "name": "cgm:entity/stun_grenade/ring", "stream": true }]},
+   "item.empty_click":                  { "subtitle": "subtitle.cgm.empty",          "sounds": [{ "name": "cgm:item/empty_click" }]},
    "ui.weapon.attach":                  { "subtitle": "subtitle.cgm.attach",         "sounds": [{ "name": "cgm:ui/weapon/attach" }]}
 }

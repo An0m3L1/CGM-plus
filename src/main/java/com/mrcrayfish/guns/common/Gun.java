@@ -46,6 +46,7 @@ import java.util.function.Supplier;
 public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 {
     protected General general = new General();
+    protected FireModes fireModes = new FireModes();
     protected Projectile projectile = new Projectile();
     protected Sounds sounds = new Sounds();
     protected Display display = new Display();
@@ -54,6 +55,11 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     public General getGeneral()
     {
         return this.general;
+    }
+
+    public FireModes getFireModes()
+    {
+        return this.fireModes;
     }
 
     public Projectile getProjectile()
@@ -337,6 +343,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             Preconditions.checkArgument(this.defaultColor == -1 || this.defaultColor>=0, "Default color must be a valid RGBA-integer-format color; use -1 to disable this.");
             Preconditions.checkArgument(this.maxAmmo > 0, "Max ammo must be more than zero");
             Preconditions.checkArgument(this.burstCount >= 0, "Burst count cannot be negative; set to zero to disable bursts");
+            Preconditions.checkArgument(this.burstCount != 1, "Burst count must be greater than one, or equal to zero; set to zero to disable bursts");
             Preconditions.checkArgument(this.burstCooldown >= 0, "Burst cooldown cannot be negative; set to zero to disable the cooldown");
             Preconditions.checkArgument(this.overCapacityAmmo > 0, "Over Capacity bonus ammo must be more than zero");
             Preconditions.checkArgument(this.reloadAmount >= 1, "Reload amount must be more than or equal to one");
@@ -454,7 +461,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 		}
 
         /**
-         * @return How many shots per burst this gun has
+         * @return How many shots this weapon fires per burst.
+         * A value of zero disables burst fire.
          */
         public int getBurstCount()
         {
@@ -466,11 +474,11 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          */
         public int getBurstCooldown()
         {
-        	if (burstCooldown<0)
+        	/*if (burstCooldown<0)
         	{
         		int defaultBurstCooldown = (isAuto() ? 3 : 1 );
         		return defaultBurstCooldown;
-        	}
+        	}*/
         	
             return this.burstCooldown;
         }
@@ -693,6 +701,151 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public int getRampUpShotsNeeded()
         {
             return this.rampUpShotsNeeded;
+        }
+    }
+
+    public static class FireModes implements INBTSerializable<CompoundTag>
+    {
+    	@Optional
+        private boolean useFireModes;
+    	@Optional
+        private boolean hasSemiMode;
+    	@Optional
+        private boolean hasAutoMode;
+    	@Optional
+        private boolean hasBurstMode;
+    	@Optional
+        private boolean useAutoBurst;
+    	@Optional
+        private int burstCount;
+
+        @Override
+        public CompoundTag serializeNBT()
+        {
+            CompoundTag tag = new CompoundTag();
+            tag.putBoolean("UseFireModes", this.useFireModes);
+            tag.putBoolean("HasSemiMode", this.hasSemiMode);
+            tag.putBoolean("HasAutoMode", this.hasAutoMode);
+            tag.putBoolean("HasBurstMode", this.hasBurstMode);
+            tag.putBoolean("UseAutoBurst", this.useAutoBurst);
+            tag.putInt("BurstCount", this.burstCount);
+            return tag;
+        }
+
+        @Override
+        public void deserializeNBT(CompoundTag tag)
+        {
+            if(tag.contains("UseFireModes", Tag.TAG_ANY_NUMERIC))
+            {
+                this.useFireModes = tag.getBoolean("UseFireModes");
+            }
+            if(tag.contains("HasSemiMode", Tag.TAG_ANY_NUMERIC))
+            {
+                this.hasSemiMode = tag.getBoolean("HasSemiMode");
+            }
+            if(tag.contains("HasAutoMode", Tag.TAG_ANY_NUMERIC))
+            {
+                this.hasAutoMode = tag.getBoolean("HasAutoMode");
+            }
+            if(tag.contains("HasBurstMode", Tag.TAG_ANY_NUMERIC))
+            {
+                this.hasBurstMode = tag.getBoolean("HasBurstMode");
+            }
+            if(tag.contains("UseAutoBurst", Tag.TAG_ANY_NUMERIC))
+            {
+                this.useAutoBurst = tag.getBoolean("UseAutoBurst");
+            }
+            if(tag.contains("BurstCount", Tag.TAG_ANY_NUMERIC))
+            {
+                this.burstCount = tag.getInt("BurstCount");
+            }
+        }
+
+        public JsonObject toJsonObject()
+        {
+            JsonObject object = new JsonObject();
+            Preconditions.checkArgument(this.burstCount > 1 || this.burstCount == 0, "Burst count must be greater than one, or equal to zero; set to zero to use general.burstCount.");
+            object.addProperty("useFireModes", this.useFireModes);
+            if(this.hasSemiMode) object.addProperty("hasSemiMode", this.hasSemiMode);
+            if(this.hasAutoMode) object.addProperty("hasAutoMode", this.hasAutoMode);
+            if(this.hasBurstMode) object.addProperty("hasBurstMode", this.hasBurstMode);
+            if(this.useAutoBurst) object.addProperty("useAutoBurst", this.useAutoBurst);
+            if(this.burstCount != 0) object.addProperty("burstCount", this.burstCount);
+            return object;
+        }
+
+        public FireModes copy()
+        {
+        	FireModes fireModes = new FireModes();
+            fireModes.useFireModes = this.useFireModes;
+            fireModes.hasSemiMode = this.hasSemiMode;
+            fireModes.hasAutoMode = this.hasAutoMode;
+            fireModes.hasBurstMode = this.hasBurstMode;
+            fireModes.useAutoBurst = this.useAutoBurst;
+            fireModes.burstCount = this.burstCount;
+            return fireModes;
+        }
+
+        /**
+         * @return Whether this weapon uses the new fire mode system.
+         */
+        public boolean usesFireModes()
+        {
+            return this.useFireModes;
+        }
+
+        /**
+         * @return Whether this weapon uses the new fire mode system.
+         */
+        public boolean hasAnyFireMode()
+        {
+            return this.hasSemiMode || this.hasAutoMode || this.hasBurstMode;
+        }
+
+        /**
+         * @return Whether this weapon has the semi-automatic fire mode.
+         */
+        public boolean hasSemiMode()
+        {
+            return this.hasSemiMode;
+        }
+
+        /**
+         * @return Whether this weapon has the automatic fire mode.
+         */
+        public boolean hasAutoMode()
+        {
+            return this.hasAutoMode;
+        }
+
+        /**
+         * @return Whether this weapon has the burst fire mode.
+         */
+        public boolean hasBurstMode()
+        {
+            return this.hasBurstMode;
+        }
+
+        /**
+         * @return Whether the weapon uses 'auto-burst' when in the burst fire mode.
+         * 'Auto-burst' causes the gun to automatically fire another burst after a short delay,
+         * as long as the fire button is held. This is the same behavior that occurs when 'isAuto'
+         * is set to true with a burst-fire weapon.
+         */
+        public boolean usesAutoBurst()
+        {
+            return this.useAutoBurst;
+        }
+
+        /**
+         * @return How many shots this weapon fires per burst in burst-fire mode.
+         * The weapon must have access to the burst fire mode for this to have any effect.
+         * A value of zero indicates the gun should use the general.burstCount parameter.
+         */
+        @Nullable
+        public int getBurstCount()
+        {
+            return this.burstCount;
         }
     }
 
@@ -1191,7 +1344,31 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         private ResourceLocation reloadStart;
         @Optional
         @Nullable
+        private ResourceLocation reloadCycleMiddle1;
+        @Optional
+        @Nullable
+        private ResourceLocation reloadCycleMiddle2;
+        @Optional
+        @Nullable
+        private ResourceLocation reloadEnd;
+        @Optional
+        @Nullable
+        private ResourceLocation magReloadMiddle1;
+        @Optional
+        @Nullable
+        private ResourceLocation magReloadMiddle2;
+        @Optional
+        @Nullable
+        private ResourceLocation magReloadMiddle3;
+        @Optional
+        @Nullable
+        private ResourceLocation magReloadEnd;
+        @Optional
+        @Nullable
         private ResourceLocation cock;
+        @Optional
+        @Nullable
+        private ResourceLocation drawGun;
         @Optional
         @Nullable
         private ResourceLocation silencedFire;
@@ -1200,7 +1377,13 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         private ResourceLocation enchantedFire;
         @Optional
         @Nullable
+        private ResourceLocation weaponSelect;
+        @Optional
+        @Nullable
         private ResourceLocation emptyClick;
+        @Optional
+        @Nullable
+        private ResourceLocation fireSwitch;
 
         @Override
         public CompoundTag serializeNBT()
@@ -1214,10 +1397,37 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 tag.putString("Reload", this.reload.toString());
             }
+            
             if(this.reloadStart != null)
             {
                 tag.putString("ReloadStart", this.reloadStart.toString());
             }
+            if(this.reloadCycleMiddle1 != null)
+            {
+                tag.putString("ReloadCycleMiddle1", this.reloadCycleMiddle1.toString());
+            }
+            if(this.reloadCycleMiddle2 != null)
+            {
+                tag.putString("ReloadCycleMiddle2", this.reloadCycleMiddle2.toString());
+            }
+            
+            if(this.magReloadMiddle1 != null)
+            {
+                tag.putString("MagReloadMiddle1", this.magReloadMiddle1.toString());
+            }
+            if(this.magReloadMiddle2 != null)
+            {
+                tag.putString("MagReloadMiddle2", this.magReloadMiddle2.toString());
+            }
+            if(this.magReloadMiddle3 != null)
+            {
+                tag.putString("MagReloadMiddle3", this.magReloadMiddle3.toString());
+            }
+            if(this.magReloadEnd != null)
+            {
+                tag.putString("MagReloadEnd", this.magReloadEnd.toString());
+            }
+            
             if(this.cock != null)
             {
                 tag.putString("Cock", this.cock.toString());
@@ -1230,9 +1440,17 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 tag.putString("EnchantedFire", this.enchantedFire.toString());
             }
+            if(this.weaponSelect != null)
+            {
+                tag.putString("WeaponSelect", this.weaponSelect.toString());
+            }
             if(this.emptyClick != null)
             {
                 tag.putString("EmptyClick", this.emptyClick.toString());
+            }
+            if(this.fireSwitch != null)
+            {
+                tag.putString("FireSwitch", this.fireSwitch.toString());
             }
             return tag;
         }
@@ -1252,6 +1470,33 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 this.reloadStart = this.createSound(tag, "ReloadStart");
             }
+
+            if(tag.contains("ReloadCycleMiddle1", Tag.TAG_STRING))
+            {
+                this.reloadCycleMiddle1 = this.createSound(tag, "ReloadCycleMiddle1");
+            }
+            if(tag.contains("ReloadCycleMiddle2", Tag.TAG_STRING))
+            {
+                this.reloadCycleMiddle2 = this.createSound(tag, "ReloadCycleMiddle2");
+            }
+            
+            if(tag.contains("MagReloadMiddle1", Tag.TAG_STRING))
+            {
+                this.magReloadMiddle1 = this.createSound(tag, "MagReloadMiddle1");
+            }
+            if(tag.contains("MagReloadMiddle2", Tag.TAG_STRING))
+            {
+                this.magReloadMiddle2 = this.createSound(tag, "MagReloadMiddle2");
+            }
+            if(tag.contains("MagReloadMiddle3", Tag.TAG_STRING))
+            {
+                this.magReloadMiddle3 = this.createSound(tag, "MagReloadMiddle3");
+            }
+            if(tag.contains("MagReloadEnd", Tag.TAG_STRING))
+            {
+                this.magReloadEnd = this.createSound(tag, "MagReloadEnd");
+            }
+            
             if(tag.contains("Cock", Tag.TAG_STRING))
             {
                 this.cock = this.createSound(tag, "Cock");
@@ -1264,9 +1509,17 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 this.enchantedFire = this.createSound(tag, "EnchantedFire");
             }
+            if(tag.contains("WeaponSelect", Tag.TAG_STRING))
+            {
+                this.weaponSelect = this.createSound(tag, "WeaponSelect");
+            }
             if(tag.contains("EmptyClick", Tag.TAG_STRING))
             {
                 this.emptyClick = this.createSound(tag, "EmptyClick");
+            }
+            if(tag.contains("FireSwitch", Tag.TAG_STRING))
+            {
+                this.fireSwitch = this.createSound(tag, "FireSwitch");
             }
         }
 
@@ -1281,10 +1534,37 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 object.addProperty("reload", this.reload.toString());
             }
-            if(this.reload != null)
+            if(this.reloadStart != null)
             {
                 object.addProperty("reloadStart", this.reloadStart.toString());
             }
+            
+            if(this.reloadCycleMiddle1 != null)
+            {
+                object.addProperty("reloadCycleMiddle1", this.reloadCycleMiddle1.toString());
+            }
+            if(this.reloadCycleMiddle2 != null)
+            {
+                object.addProperty("reloadCycleMiddle2", this.reloadCycleMiddle2.toString());
+            }
+            
+            if(this.magReloadMiddle1 != null)
+            {
+                object.addProperty("magReloadMiddle1", this.magReloadMiddle1.toString());
+            }
+            if(this.magReloadMiddle2 != null)
+            {
+                object.addProperty("magReloadMiddle2", this.magReloadMiddle2.toString());
+            }
+            if(this.magReloadMiddle3 != null)
+            {
+                object.addProperty("magReloadMiddle3", this.magReloadMiddle3.toString());
+            }
+            if(this.magReloadEnd != null)
+            {
+                object.addProperty("magReloadEnd", this.magReloadEnd.toString());
+            }
+            
             if(this.cock != null)
             {
                 object.addProperty("cock", this.cock.toString());
@@ -1297,9 +1577,17 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 object.addProperty("enchantedFire", this.enchantedFire.toString());
             }
+            if(this.weaponSelect != null)
+            {
+                object.addProperty("weaponSelect", this.weaponSelect.toString());
+            }
             if(this.emptyClick != null)
             {
                 object.addProperty("emptyClick", this.emptyClick.toString());
+            }
+            if(this.fireSwitch != null)
+            {
+                object.addProperty("fireSwitch", this.fireSwitch.toString());
             }
             return object;
         }
@@ -1310,10 +1598,18 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             sounds.fire = this.fire;
             sounds.reload = this.reload;
             sounds.reloadStart = this.reloadStart;
+            sounds.reloadCycleMiddle1 = this.reloadCycleMiddle1;
+            sounds.reloadCycleMiddle2 = this.reloadCycleMiddle2;
+            sounds.magReloadMiddle1 = this.magReloadMiddle1;
+            sounds.magReloadMiddle2 = this.magReloadMiddle2;
+            sounds.magReloadMiddle3 = this.magReloadMiddle3;
+            sounds.magReloadEnd = this.magReloadEnd;
             sounds.cock = this.cock;
             sounds.silencedFire = this.silencedFire;
             sounds.enchantedFire = this.enchantedFire;
+            sounds.weaponSelect = this.weaponSelect;
             sounds.emptyClick = this.emptyClick;
+            sounds.fireSwitch = this.fireSwitch;
             return sounds;
         }
 
@@ -1352,7 +1648,68 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
+         * @return The registry id of the first sound event when reloading a weapon with cyclic reloads
+         * This plays at 25% of the mag reload time by default.
+         */
+        @Nullable
+        public ResourceLocation getReloadCycleMiddle1()
+        {
+            return this.reloadCycleMiddle1;
+        }
+
+        /**
+         * @return The registry id of the second sound event when reloading a weapon with cyclic reloads
+         * This plays at 50% of the mag reload time by default.
+         */
+        @Nullable
+        public ResourceLocation getReloadCycleMiddle2()
+        {
+            return this.reloadCycleMiddle2;
+        }
+
+        /**
+         * @return The registry id of the first sound event when reloading a weapon with mag reloads
+         * This plays at 25% of the mag reload time by default.
+         */
+        @Nullable
+        public ResourceLocation getMagReloadMiddle1()
+        {
+            return this.magReloadMiddle1;
+        }
+
+        /**
+         * @return The registry id of the second sound event when reloading a weapon with mag reloads
+         * This plays at 50% of the mag reload time by default.
+         */
+        @Nullable
+        public ResourceLocation getMagReloadMiddle2()
+        {
+            return this.magReloadMiddle2;
+        }
+
+        /**
+         * @return The registry id of the third sound event when reloading a weapon with mag reloads
+         * This plays at 75% of the mag reload time by default.
+         */
+        @Nullable
+        public ResourceLocation getMagReloadMiddle3()
+        {
+            return this.magReloadMiddle3;
+        }
+
+        /**
+         * @return The registry id of the sound event when finishing reloading a weapon with mag reloads
+         */
+        @Nullable
+        public ResourceLocation getMagReloadEnd()
+        {
+            return this.magReloadEnd;
+        }
+
+        /**
          * @return The registry id of the sound event when cocking/chambering this weapon
+         * This normally plays when finishing reloading a weapon without mag reloads, but can also be called
+         * as a fallback for the mag reload end and weapon draw sound.
          */
         @Nullable
         public ResourceLocation getCock()
@@ -1379,7 +1736,18 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The registry id of the sound event when attempting to shoot while the gun is empty.
+         * @return The registry id of the sound event when selecting this weapon.
+         */
+        @Nullable
+        public ResourceLocation getWeaponSelect()
+        {
+            if (this.weaponSelect==null)
+            	return getCock();
+        	return this.weaponSelect;
+        }
+
+        /**
+         * @return The registry id of the sound event when attempting to shoot while the weapon is empty or out of energy.
          */
         @Nullable
         public ResourceLocation getEmptyClick()
@@ -1387,6 +1755,17 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if (this.emptyClick==null)
             	return new ResourceLocation(Reference.MOD_ID, "item.empty_click");
         	return this.emptyClick;
+        }
+
+        /**
+         * @return The registry id of the sound event when switching the weapon's fire mode.
+         */
+        @Nullable
+        public ResourceLocation getFireSwitch()
+        {
+            if (this.fireSwitch==null)
+            	return getEmptyClick();
+        	return this.fireSwitch;
         }
     }
 
@@ -2123,6 +2502,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     {
         CompoundTag tag = new CompoundTag();
         tag.put("General", this.general.serializeNBT());
+        tag.put("FireModes", this.fireModes.serializeNBT());
         tag.put("Projectile", this.projectile.serializeNBT());
         tag.put("Sounds", this.sounds.serializeNBT());
         tag.put("Display", this.display.serializeNBT());
@@ -2136,6 +2516,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         if(tag.contains("General", Tag.TAG_COMPOUND))
         {
             this.general.deserializeNBT(tag.getCompound("General"));
+        }
+        if(tag.contains("FireModes", Tag.TAG_COMPOUND))
+        {
+            this.fireModes.deserializeNBT(tag.getCompound("FireModes"));
         }
         if(tag.contains("Projectile", Tag.TAG_COMPOUND))
         {
@@ -2160,6 +2544,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         JsonObject object = new JsonObject();
         object.add("general", this.general.toJsonObject());
         object.add("projectile", this.projectile.toJsonObject());
+        GunJsonUtil.addObjectIfNotEmpty(object, "fireModes", this.fireModes.toJsonObject());
         GunJsonUtil.addObjectIfNotEmpty(object, "sounds", this.sounds.toJsonObject());
         GunJsonUtil.addObjectIfNotEmpty(object, "display", this.display.toJsonObject());
         GunJsonUtil.addObjectIfNotEmpty(object, "modules", this.modules.toJsonObject());
@@ -2177,6 +2562,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     {
         Gun gun = new Gun();
         gun.general = this.general.copy();
+        gun.fireModes = this.fireModes.copy();
         gun.projectile = this.projectile.copy();
         gun.sounds = this.sounds.copy();
         gun.display = this.display.copy();
@@ -2386,6 +2772,135 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     {
         Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
         return modifiedGun.getGeneral().getEnergyPerShot()>0 && modifiedGun.getGeneral().getEnergyCapacity()>0;
+    }
+    
+    public static int getDefaultFireMode(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        
+        if (modifiedGun.getFireModes().usesFireModes() && modifiedGun.getFireModes().hasAnyFireMode())
+        {
+        	if (modifiedGun.getFireModes().hasAutoMode())
+            	return 1;
+        	else
+        	if (modifiedGun.getFireModes().hasBurstMode())
+            	return 2;
+        	else
+        	if (modifiedGun.getFireModes().hasSemiMode())
+            	return 0;
+        }
+        else
+        {
+        	if (modifiedGun.getGeneral().hasBurstFire())
+            	return 2;
+        	else
+            if (modifiedGun.getGeneral().isAuto())
+            	return 1;
+        }
+        
+    	return 0;
+    }
+
+    public static int getFireMode(ItemStack gunStack)
+    {
+        CompoundTag tag = gunStack.getOrCreateTag();
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        
+        if ((!tag.contains("FireMode", Tag.TAG_INT)) || (tag.getInt("FireMode")<0 || tag.getInt("FireMode")>2))
+        	return getDefaultFireMode(gunStack);
+        
+        if (modifiedGun.getFireModes().usesFireModes())
+        {
+        	return tag.getInt("FireMode");
+        }
+        else
+        {
+        	if (modifiedGun.getGeneral().hasBurstFire())
+        		return 2;
+        	else
+            if (modifiedGun.getGeneral().isAuto())
+            	return 1;
+            else
+            	return 0;
+        }
+    }
+
+    public static boolean isAuto(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        return (modifiedGun.getFireModes().usesFireModes() && getFireMode(gunStack)==1) || (!modifiedGun.getFireModes().usesFireModes() && modifiedGun.getGeneral().isAuto());
+    }
+
+    public static boolean hasBurstFire(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        return (modifiedGun.getFireModes().usesFireModes() && getFireMode(gunStack)==2) || (!modifiedGun.getFireModes().usesFireModes() && modifiedGun.getGeneral().hasBurstFire());
+    }
+
+    public static int getBurstCount(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        int finalBurstCount = 3;
+        if (modifiedGun.getFireModes().usesFireModes())
+        {
+        	if (modifiedGun.getFireModes().getBurstCount()>1)
+        	finalBurstCount = modifiedGun.getFireModes().getBurstCount();
+        	else
+            if (modifiedGun.getGeneral().getBurstCount()>1)
+        	finalBurstCount = modifiedGun.getGeneral().getBurstCount();
+        }
+        else
+        finalBurstCount = modifiedGun.getGeneral().getBurstCount();
+        
+        return finalBurstCount;
+    }
+
+    public static int getBurstCooldown(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        int finalBurstCooldown = (hasAutoBurst(gunStack) ? 3 : 1 );
+        
+        if (modifiedGun.getGeneral().getBurstCooldown()>=0)
+        finalBurstCooldown = modifiedGun.getGeneral().getBurstCooldown();
+        
+        return finalBurstCooldown;
+    }
+
+    public static boolean hasAutoBurst(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        if (modifiedGun.getFireModes().usesFireModes())
+        {
+        	if (modifiedGun.getFireModes().hasBurstMode() && modifiedGun.getFireModes().usesAutoBurst())
+            	return true;
+        	else
+            if (!modifiedGun.getFireModes().hasAnyFireMode() && modifiedGun.getGeneral().hasBurstFire() && modifiedGun.getGeneral().isAuto())
+            	return true;
+        }
+        else
+        if (modifiedGun.getGeneral().hasBurstFire() && modifiedGun.getGeneral().isAuto())
+        	return true;
+        
+        return false;
+        //return (modifiedGun.getFireModes().usesFireModes() && modifiedGun.getFireModes().usesAutoBurst()) || (!modifiedGun.getFireModes().hasAnyFireMode() && modifiedGun.getGeneral().isAuto());
+    }
+
+    public static boolean canDoSemiFire(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        return modifiedGun.getFireModes().hasSemiMode() || (!modifiedGun.getFireModes().hasAnyFireMode());
+    }
+
+    public static boolean canDoAutoFire(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        return modifiedGun.getFireModes().hasAutoMode() || (!modifiedGun.getFireModes().hasAnyFireMode() && modifiedGun.getGeneral().isAuto() && !modifiedGun.getGeneral().hasBurstFire());
+    }
+
+    public static boolean canDoBurstFire(ItemStack gunStack)
+    {
+        Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
+        return modifiedGun.getFireModes().hasBurstMode() || (!modifiedGun.getFireModes().hasAnyFireMode() && modifiedGun.getGeneral().hasBurstFire());
     }
 
     public static float getFovModifier(ItemStack stack, Gun modifiedGun)

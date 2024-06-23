@@ -73,7 +73,7 @@ public class BurstTracker
     private int getBurstDelayTicks(Player player)
     {
         //int minTickDelay = GunEnchantmentHelper.getRampUpMaxRate(stack,gun)+1;
-        int minTickDelay = GunCompositeStatHelper.getCompositeRate(stack,gun,player)+gun.getGeneral().getBurstCooldown();
+        int minTickDelay = GunCompositeStatHelper.getCompositeRate(stack,gun,player)+Gun.getBurstCooldown(stack);
         return minTickDelay-1;
     }
 
@@ -99,8 +99,7 @@ public class BurstTracker
           	if(player.getInventory().getSelected().getItem() instanceof GunItem)
             {
             	GunItem gunItem = (GunItem) tracker.stack.getItem();
-            	Gun modifiedGun = gunItem.getModifiedGun(tracker.stack);
-            	if (ModSyncedDataKeys.SHOOTING.getValue(player) && modifiedGun.getGeneral().hasBurstFire())
+            	if (ModSyncedDataKeys.SHOOTING.getValue(player) && Gun.hasBurstFire(tracker.stack))
                 {
                    	tracker.burstTick = player.tickCount;
                 }
@@ -114,7 +113,7 @@ public class BurstTracker
                 		ModSyncedDataKeys.ONBURSTCOOLDOWN.setValue(player, false);
                     }
                 	else
-                	if (modifiedGun.getGeneral().hasBurstFire())
+                	if (Gun.hasBurstFire(tracker.stack))
                 	ModSyncedDataKeys.ONBURSTCOOLDOWN.setValue(player, true);
             	}
             	else

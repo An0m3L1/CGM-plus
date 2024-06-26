@@ -36,6 +36,11 @@ public enum SpecialModels
     ASSAULT_RIFLE_SIGHTS("assault_rifle/sights"),
     ASSAULT_RIFLE_NO_SIGHTS("assault_rifle/no_sights"),
 
+    COMBAT_RIFLE_BASE("combat_rifle/base"),
+    COMBAT_RIFLE_MAG("combat_rifle/mag"),
+    COMBAT_RIFLE_SIGHTS("combat_rifle/sights"),
+    COMBAT_RIFLE_NO_SIGHTS("combat_rifle/no_sights"),
+
     PISTOL_BASE("pistol/pistol_base"),
     PISTOL_SLIDE("pistol/pistol_slide"),
     PISTOL_MOUNT("pistol/pistol_mount");

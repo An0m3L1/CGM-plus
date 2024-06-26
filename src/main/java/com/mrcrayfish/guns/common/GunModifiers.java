@@ -46,16 +46,11 @@ public class GunModifiers
         @Override
         public float recoilModifier()
         {
-            return 1.15F;
-        }
-        @Override
-        public float kickModifier()
-        {
-            return 1.05f;
+            return 1.10F;
         }
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
     };
 
     /* Stocks */
@@ -141,16 +136,16 @@ public class GunModifiers
         @Override
         public float recoilModifier()
         {
-            return 0.7F;
+            return 0.8F;
         }
         @Override
         public float kickModifier()
         {
-            return 0.85F;
+            return 0.9F;
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.7F;}
+        public float modifyProjectileSpread(float spread) {return spread * 0.8F;}
 
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}

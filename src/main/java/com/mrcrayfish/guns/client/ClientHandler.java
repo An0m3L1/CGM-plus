@@ -130,6 +130,7 @@ public class ClientHandler
         /* Weapons */
         //ModelOverrides.register(ModItems.ASSAULT_RIFLE.get(), new SimpleModel(SpecialModels.ASSAULT_RIFLE::getModel));
         ModelOverrides.register(ModItems.ASSAULT_RIFLE.get(), new AssaultRifleModel());
+        ModelOverrides.register(ModItems.COMBAT_RIFLE.get(), new CombatRifleModel());
         ModelOverrides.register(ModItems.BAZOOKA.get(), new SimpleModel(SpecialModels.BAZOOKA::getModel));
         ModelOverrides.register(ModItems.GRENADE_LAUNCHER.get(), new GrenadeLauncherModel());
         ModelOverrides.register(ModItems.HEAVY_RIFLE.get(), new SimpleModel(SpecialModels.HEAVY_RIFLE::getModel));

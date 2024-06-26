@@ -22,89 +22,109 @@
             "translation": [8.0, 3.75, 1.4],
             "scale": [0.5, 0.5, 0.5]
         },
-        "reloadAnimation": {
-            "frames": 8,
-            "viewModel": {
-                "frame0": {
-                    "translation": [0.0, 0.0, -1.0],
-                    "rotation": [0.0, 0.0, -5.0]
-                },
-                "frame1": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [34.0, 12.0, -24.0]
-                },
-                "frame2": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [33.0, 12.0, -23.0]
-                },
-                "frame3": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [35.5, 12.0, -26.0]
-                },
-                "frame4": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [36.0, 12.0, -27.0]
-                },
-                "frame5": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [36.5, 12.0, -27.5]
-                },
-                "frame6": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [40.0, 12.0, -25.0]
-                },
-                "frame7": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [38.0, 12.0, -25.0]
-                },
-                "frame8": {
-                    "translation": [-4.0, 4.0, -4.0],
-                    "rotation": [34.0, 12.0, -25.0]
+		"reloadAnimation": {
+			"frames": 10,
+			"viewModel": {
+				"0": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [34.0, 12.0, -24.0]
+				},
+				"1": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [33.0, 12.0, -23.0]
+				},
+				"2": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [35.5, 12.0, -26.0]
+				},
+				"3": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [36.0, 12.0, -27.0]
+				},
+				"4": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [36.5, 12.0, -27.5]
+				},
+				"5": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [40.0, 12.0, -25.0]
+				},
+				"6": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [38.0, 12.0, -25.0]
+				},
+				"7": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [37.0, 12.0, -25.0]
+				},
+				"8": {
+					"translation": [-4.0, 4.0, -4.0],
+					"rotation": [34.0, 12.0, -25.0]
+				},
+				"9": {
+					"translation": [-2.0, 2.0, -2.0],
+					"rotation": [17.0, 6.0, -12.5]
+				},
+				"10":{
+				    "translation": [0, 0, 0],
+				    "rotation": [0, 0, 0]
+				}
+			},
+			"forwardHand": {
+				"0": {
+					"translation": [0.0, -4, 8.0]
+				},
+				"1": {
+					"translation": [0.0, -4, 8.0]
+				},
+				"2": {
+					"translation": [0.0, -16, 9.0]
+				},
+				"3": {
+					"translation": [0.0, -24, 13.0]
+				},
+				"4": {
+					"translation": [0.0, -16, 9.0]
+				},
+				"5": {
+					"translation": [0.0, -4, 8.0]
+				},
+				"6": {
+					"translation": [0.0, -4, 8.0]
+				},
+				"7": {
+					"translation": [-6.0, -1, 8.0]
+				},
+				"8": {
+					"translation": [-1.0, 0, 8.0]
+				},
+				"9": {
+					"translation": [-2.0, -1, 7.0]
+				},
+				"10":{
+                	"translation": [0, 0, 0]
                 }
-            },
-            "magazine": {
-                "frame2": {
-                    "translation": [0, 0, 0]
-                },
-                "frame3": {
-                    "translation": [0, -30, 4]
-                },
-                "frame4": {
-                    "translation": [0, -33, 5]
-                },
-                "frame5": {
-                    "translation": [0, 0, 4]
-                },
-                "frame6": {
-                    "translation": [0, 0, 0]
-                }
-            },
-            "forwardHand": {
-                "frame1": {
-                    "translation": [0.0, -3, 8.0]
-                },
-                "frame2": {
-                    "translation": [0.0, -4, 8.0]
-                },
-                "frame3": {
-                    "translation": [0.0, -30, 12.0]
-                },
-                "frame4": {
-                    "translation": [0.0, -33, 13.0]
-                },
-                "frame5": {
-                    "translation": [0.0, -30, 12.0]
-                },
-                "frame6": {
-                    "translation": [0.0, -3, 8.0]
-                },
-                "frame7": {
-                    "translation": [-8.0, -1, 8.0]
-                },
-                "frame8": {
-                    "translation": [0.0, 0, 8.0]
-                }
-            }
-        }
+			},
+			"magazine": {
+				"0": {
+					"translation": [0.0, 0, 0.0]
+				},
+				"1": {
+					"translation": [0.0, 0, 0.0]
+				},
+				"2": {
+					"translation": [0.0, -16, 0]
+				},
+				"3": {
+					"translation": [0.0, -24, 10]
+				},
+				"4": {
+					"translation": [0.0, -16, 0]
+				},
+				"5": {
+					"translation": [0.0, 0, 0.0]
+				}
+			}
+		}
     }
 }

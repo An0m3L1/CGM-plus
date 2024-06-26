@@ -23,8 +23,8 @@
 
     "maxAmmo": 30,
     "useMagReload": true,
-    "magReloadTime": 50,
-    "reloadRate": 50
+    "magReloadTime": 40,
+    "reloadRate": 40
   },
   "fireModes": {
     "useFireModes": true,
@@ -83,9 +83,10 @@
     "fireSwitch": "cgm:item.fire_switch",
 
     "reloadClipOut": "cgm:item.assault_rifle.reload_start",
-    "reloadClipOutThreshold": 0.25,
+    "reloadClipOutThreshold": 0.1,
     "reloadClipIn": "cgm:item.assault_rifle.reload_middle",
-    "reloadClipInThreshold": 0.75,
-    "reloadEnd": "cgm:item.assault_rifle.reload_end"
+    "reloadClipInThreshold": 0.5,
+    "reloadLate": "cgm:item.assault_rifle.reload_end",
+    "reloadLateThreshold": 0.8
   }
 }

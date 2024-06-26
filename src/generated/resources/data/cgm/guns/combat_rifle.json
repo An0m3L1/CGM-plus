@@ -17,7 +17,7 @@
     "spreadAdsReduction": 0.75,
 
     "recoilAngle": 2.0,
-    "recoilKick": 0.25,
+    "recoilKick": 0.1,
     "recoilDurationOffset": 0.0,
     "spread": 6.0,
 

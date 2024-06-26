@@ -4,15 +4,14 @@ Add more attachments (angled grip, compensator, extended barrel, flash hider, ta
     - Grips: angled, thumb, laser sight
     - Magazines: extended, quick
     - Scopes: holo, 4x night vision, 8x, 16x
-    - Stocks: skeleton
+    - Stocks: skeleton, m16a2
 Add items (night vision goggles, armor, melee weapons, more grenades)
 Add guns (CS2, rocket jumper, flamethrower)
 Add new materials for crafting
 Add move speed stat to guns (Method changeGunSpeedMod in ServerPlayHandler)
-Add reload sounds for mag weapons
+Add reload animations and sounds
 
 Overhaul gun models (add moving and removable parts)
 Overhaul light grip (change it to angled foregrip)
-Overhaul reload animations and sounds
 Overhaul blood particles (check extra gore)
 Overhaul existing sounds

@@ -42,6 +42,7 @@ public class ReloadHandler
     private int reloadTimer;
     private int prevReloadTimer;
     private int reloadingSlot;
+    private boolean reloadFinish;
 
     private ReloadHandler()
     {
@@ -129,6 +130,7 @@ public class ReloadHandler
             }
             else
             {
+            	reloadFinish = false;
                 ModSyncedDataKeys.RELOADING.setValue(player, false);
                 ModSyncedDataKeys.SWITCHTIME.setValue(player, 6);
                 PacketHandler.getPlayChannel().sendToServer(new C2SMessageReload(false));
@@ -136,10 +138,18 @@ public class ReloadHandler
             }
         }
     }
+    
+    public boolean getReloading(Player player)
+    {
+        if(ModSyncedDataKeys.RELOADING.getValue(player))
+        return true;
+        else
+        return false;
+    }
 
     private void updateReloadTimer(Player player)
     {
-        if(ModSyncedDataKeys.RELOADING.getValue(player))
+        if(getReloading(player))
         {
             if(this.startReloadTick == -1)
             {
@@ -176,5 +186,10 @@ public class ReloadHandler
     public float getReloadProgress(float partialTicks)
     {
         return (this.prevReloadTimer + (this.reloadTimer - this.prevReloadTimer) * partialTicks) / 5F;
+    }
+
+    public boolean doReloadFinishAnimation()
+    {
+        return reloadFinish;
     }
 }

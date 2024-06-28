@@ -23,8 +23,10 @@
 
     "maxAmmo": 20,
     "useMagReload": true,
-    "magReloadTime": 50,
-    "reloadRate": 50
+    "reloadStartDelay": 0,
+    "reloadEndDelay": 0,
+    "magReloadTime": 45,
+    "reloadRate": 45
   },
   "fireModes": {
     "useFireModes": true,

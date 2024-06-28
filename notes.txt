@@ -8,10 +8,8 @@ Add more attachments (angled grip, compensator, extended barrel, flash hider, ta
 Add items (night vision goggles, armor, melee weapons, more grenades)
 Add guns (CS2, rocket jumper, flamethrower)
 Add new materials for crafting
-Add move speed stat to guns (Method changeGunSpeedMod in ServerPlayHandler)
 Add reload animations and sounds
 
 Overhaul gun models (add moving and removable parts)
-Overhaul light grip (change it to angled foregrip)
 Overhaul blood particles (check extra gore)
 Overhaul existing sounds

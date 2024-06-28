@@ -51,7 +51,7 @@ public final class GunAnimationHelper
 			if (reloadTransitionProgress<1.0)
 			{
 				float delta = GunRenderingHandler.get().getReloadDeltaTime(weapon);
-	    		if (hasAnimation("reloadStart", weapon) && ReloadHandler.get().doReloadStartAnimation() && delta <= 0.8)
+	    		if (hasAnimation("reloadStart", weapon) && ReloadHandler.get().doReloadStartAnimation() && delta < 0.3)
 	    		{
 	    			return "reloadStart";
 	    		}
@@ -138,8 +138,8 @@ public final class GunAnimationHelper
     	if (animType.equals("reload") && hasAnimation("reload", weapon))
     	{
     		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
-    	    float progress = GunRenderingHandler.get().getReloadCycleProgress(weapon);
-    	    Vec3 transforms = getAnimationRot("reload", weapon, progress, component).scale(reloadTransitionProgress);
+    		float progress = ((GunItem) (weapon.getItem())).getModifiedGun(weapon).getGeneral().usesMagReload() ? GunRenderingHandler.get().getReloadDeltaTime(weapon) : GunRenderingHandler.get().getReloadCycleProgress(weapon);
+    	    Vec3 transforms = getAnimationRot("reload", weapon, progress, component);
     	    
     	    Easings easing = GunReloadAnimationHelper.getReloadStartEasing(lookForParentAnimation("reload", getItemLocationKey(weapon)), component);
     	    float finalReloadTransition = (float) getEaseFactor(easing, reloadTransitionProgress);
@@ -162,6 +162,11 @@ public final class GunAnimationHelper
     	}
     	
     	return Vec3.ZERO;
+    }
+    public static Vec3 getSmartAnimationRotOffset(ItemStack weapon, Player player, float partialTicks, String component)
+    {
+    	String animType = getSmartAnimationType(weapon, player, partialTicks);
+    	return getRotationOffsetPoint(animType, lookForParentAnimation(animType, getItemLocationKey(weapon)), component);
     }
     
     
@@ -298,11 +303,12 @@ public final class GunAnimationHelper
     // Rotations
 	public static void rotateAroundOffset(PoseStack poseStack, Vec3 rotations, Vec3 offsets)
 	{
-    	poseStack.translate(-offsets.x * 0.0625, -offsets.y * 0.0625, offsets.z * 0.0625);
-    	poseStack.mulPose(Vector3f.XP.rotationDegrees((float) rotations.x));
-    	poseStack.mulPose(Vector3f.YP.rotationDegrees((float) rotations.y));
+    	double scaleFactor = 0.0625;
+		poseStack.translate(-offsets.x * scaleFactor, offsets.y * scaleFactor, offsets.z * scaleFactor);
     	poseStack.mulPose(Vector3f.ZP.rotationDegrees((float) rotations.z));
-    	poseStack.translate(offsets.x * 0.0625, offsets.y * 0.0625, -offsets.z * 0.0625);
+    	poseStack.mulPose(Vector3f.YP.rotationDegrees((float) rotations.y));
+    	poseStack.mulPose(Vector3f.XP.rotationDegrees((float) rotations.x));
+    	poseStack.translate(offsets.x * scaleFactor, -offsets.y * scaleFactor, -offsets.z * scaleFactor);
 	}
 	public static void rotateAroundOffset(PoseStack poseStack, Vec3 rotations, String animationType, ItemStack weapon, String component)
 	{

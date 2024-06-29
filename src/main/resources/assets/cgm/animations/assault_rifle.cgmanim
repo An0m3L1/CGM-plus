@@ -3,48 +3,44 @@
         "reload": {
 			"frames": 12,
 			"viewModel": {
+			    "rotOffset": [6, 3, 6],
 				"startEasing": "ease_in_cubic",
 				"endEasing": "ease_out_cubic",
 				"2": {
-					"translation": [-4.0, 2.9, -3.8],
-					"rotation": [30.0, 12.0, -23.0],
+				    "translation": [0.5, 0, -2],
+					"rotation": [20.0, 6.0, 0],
 					"easing": "ease_in_out_quad"
 				},
 				"3": {
-					"translation": [-3.8, 4.2, -3.9],
-					"rotation": [39, 12.0, -24],
+					"rotation": [29, 6.0, 0],
 					"easing": "ease_out_quad"
 				},
 				"5": {
-					"translation": [-3.2, 4.2, -3.9],
-					"rotation": [37, 12.0, -16],
+					"rotation": [27, 6.0, 0],
 					"easing": "ease_in_out_quad"
 				},
 				"6": {
-					"translation": [-3.9, 4.0, -4.1],
-					"rotation": [41.0, 12.0, -29.0],
+					"rotation": [31.0, 6.0, 0],
 					"easing": "ease_in_quad"
 				},
 				"7": {
-					"rotation": [42.0, 12.0, -28.0],
+					"rotation": [32.0, 6.0, 0],
 					"rotEasing": "ease_in_out_quad"
 				},
 				"8": {
-					"translation": [-3.75, 4.2, -4.1],
 					"easing": "ease_out_quad"
 				},
 				"9": {
-					"translation": [-4.0, 4.1, -4.2],
-					"rotation": [40.0, 12.0, -25.0],
+					"rotation": [30.0, 6.0, 0],
 					"easing": "ease_in_quad"
 				},
 				"10": {
-					"translation": [-3.6, 3.2, -4.2],
-					"rotation": [36.0, 8.0, -30.0],
+				    "translation": [0.5, 0, -2],
+					"rotation": [26.0, 4.0, 0],
 					"easing": "ease_out_quad"
 				},
 				"12": {
-					"translation": [0.0, 0.0, 0.0],
+				    "translation": [0, 0, 0],
 					"transEasing": "ease_in_out_quad",
 					"rotation": [0.0, 0.0, 0.0],
 					"rotEasing": "ease_in_out_quad"

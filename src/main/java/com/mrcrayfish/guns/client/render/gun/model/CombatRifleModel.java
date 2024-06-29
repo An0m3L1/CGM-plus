@@ -4,10 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.GunModel;
 import com.mrcrayfish.guns.client.SpecialModels;
-import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
-import com.mrcrayfish.guns.client.handler.ReloadHandler;
 import com.mrcrayfish.guns.client.render.gun.IOverrideModel;
-import com.mrcrayfish.guns.client.util.GunReloadAnimationHelper;
 import com.mrcrayfish.guns.client.util.GunAnimationHelper;
 import com.mrcrayfish.guns.client.util.RenderUtil;
 import com.mrcrayfish.guns.common.Gun;
@@ -41,14 +38,20 @@ public class CombatRifleModel implements IOverrideModel
         BakedModel bakedModel = SpecialModels.COMBAT_RIFLE_BASE.getModel();
         Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, buffer, light, overlay, GunModel.wrap(bakedModel));
 
-        ItemStack attachmentStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
-        if(attachmentStack.isEmpty())
+        ItemStack scopeStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
+        ItemStack stockStack = Gun.getAttachment(IAttachment.Type.STOCK, stack);
+        if(scopeStack.isEmpty())
         {
             RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
         else
         {
             RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_NO_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        }
+
+        if(stockStack.isEmpty())
+        {
+            RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_NO_STOCK.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         // Special animated segment for compat with the CGM Expanded fork.

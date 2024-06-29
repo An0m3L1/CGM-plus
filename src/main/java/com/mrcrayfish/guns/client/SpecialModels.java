@@ -5,7 +5,6 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.api.distmarker.OnlyIn;
 import net.minecraftforge.client.event.ModelEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
@@ -32,11 +31,13 @@ public enum SpecialModels
     GRENADE_LAUNCHER_CYLINDER("grenade_launcher/grenade_launcher_cylinder"),
 
     ASSAULT_RIFLE_BASE("assault_rifle/base"),
+    ASSAULT_RIFLE_NO_STOCK("assault_rifle/no_stock"),
     ASSAULT_RIFLE_MAG("assault_rifle/mag"),
     ASSAULT_RIFLE_SIGHTS("assault_rifle/sights"),
     ASSAULT_RIFLE_NO_SIGHTS("assault_rifle/no_sights"),
 
     COMBAT_RIFLE_BASE("combat_rifle/base"),
+    COMBAT_RIFLE_NO_STOCK("combat_rifle/no_stock"),
     COMBAT_RIFLE_MAG("combat_rifle/mag"),
     COMBAT_RIFLE_SIGHTS("combat_rifle/sights"),
     COMBAT_RIFLE_NO_SIGHTS("combat_rifle/no_sights"),

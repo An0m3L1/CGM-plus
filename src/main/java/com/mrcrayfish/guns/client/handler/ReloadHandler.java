@@ -86,14 +86,14 @@ public class ReloadHandler
         if(KeyBinds.KEY_RELOAD.isDown() && event.getAction() == GLFW.GLFW_PRESS)
         {
         	if (reloadTimer<=0 || reloadTimer>=1)
-            this.setReloading(!ModSyncedDataKeys.RELOADING.getValue(player));
+            this.setReloading(!ModSyncedDataKeys.RELOADING.getValue(player), true);
             KeyBinds.KEY_RELOAD.setDown(false);
             if(player.getMainHandItem().getItem() instanceof GunItem)
             GunRenderingHandler.get().updateReserveAmmo(player);
         }
         if(KeyBinds.KEY_UNLOAD.consumeClick() && event.getAction() == GLFW.GLFW_PRESS)
         {
-            this.setReloading(false);
+            this.setReloading(false, true);
             PacketHandler.getPlayChannel().sendToServer(new C2SMessageUnload());
             if(player.getMainHandItem().getItem() instanceof GunItem)
         	GunRenderingHandler.get().stageReserveAmmoUpdate(2);
@@ -102,7 +102,7 @@ public class ReloadHandler
 
     public void setReloading(boolean reloading)
     {
-    	setReloading(reloading, true);
+    	setReloading(reloading, false);
     }
     
     public void setReloading(boolean reloading, boolean fromInput)
@@ -148,27 +148,41 @@ public class ReloadHandler
             		reloadFinish = false;
             		reloadStart = false;
             	}
+            	ItemStack stack = player.getMainHandItem();
+            	GunRenderingHandler.get().getReloadDeltaTime(stack);
+            	
+            	// Debug 1
+                /*if(stack.getItem() instanceof GunItem gunItem)
+                {
+    		    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack);
+    		    	String logOutput = 
+    		    		"Cancelling after " + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*interval*10)/10)
+    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*1000)/10) + "%)"
+    		    		+ ", and at " + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*interval*10)/10)
+    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*1000)/10) + "%)"
+    		    		+ " into the current reload cycle."
+    		    		+ " Full reload cycle is " + interval + " ticks"
+    		    	;
+                	GunMod.LOGGER.info(logOutput);
+                }*/
+                    
                 ModSyncedDataKeys.RELOADING.setValue(player, false);
                 ModSyncedDataKeys.SWITCHTIME.setValue(player, storedReloadDelay+1);
                 PacketHandler.getPlayChannel().sendToServer(new C2SMessageReload(false));
                 this.reloadingSlot = -1;
-                
-                // Debug
+
+            	// Debug 2
+                if(stack.getItem() instanceof GunItem gunItem)
                 {
-                	ItemStack stack = player.getMainHandItem();
-                    if(stack.getItem() instanceof GunItem gunItem)
-                    {
-        		    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack);
-        		    	String logOutput = 
-        		    		"Reload cancelled after " + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*interval*10)/10)
-        		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*1000)/10) + "%)"
-        		    		+ ", and at " + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*interval*10)/10)
-        		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*1000)/10) + "%)"
-        		    		+ " into the current reload cycle."
-        		    		+ " Full reload cycle is " + interval + " ticks"
-        		    	;
-                    	GunMod.LOGGER.info(logOutput);
-                    }
+    		    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack);
+    		    	String logOutput = 
+    		    		"Reload cancelled after " + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*interval*10)/10)
+    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*1000)/10) + "%)"
+    		    		+ ", and at " + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*interval*10)/10)
+    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*1000)/10) + "%)"
+    		    		+ " into the current reload cycle."
+    		    	;
+                	GunMod.LOGGER.info(logOutput);
                 }
             }
         }
@@ -207,6 +221,11 @@ public class ReloadHandler
             if(this.reloadTimer < 1)
             {
                 this.reloadTimer+=1/reloadDelay;
+            }
+            else
+            {
+            	if (reloadStart)
+            	reloadStart = false;
             }
         }
         else

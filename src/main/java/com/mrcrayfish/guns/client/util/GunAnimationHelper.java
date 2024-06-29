@@ -51,12 +51,12 @@ public final class GunAnimationHelper
 			if (reloadTransitionProgress<1.0)
 			{
 				float delta = GunRenderingHandler.get().getReloadDeltaTime(weapon);
-	    		if (hasAnimation("reloadStart", weapon) && ReloadHandler.get().doReloadStartAnimation() && delta < 0.3)
+	    		if (hasAnimation("reloadStart", weapon) && ReloadHandler.get().getReloading(player) && delta < 0.5F && ReloadHandler.get().doReloadStartAnimation())
 	    		{
 	    			return "reloadStart";
 	    		}
 	    		else
-	        	if (hasAnimation("reloadEnd", weapon) && ReloadHandler.get().doReloadFinishAnimation())
+	        	if (hasAnimation("reloadEnd", weapon) && !ReloadHandler.get().getReloading(player) && ReloadHandler.get().doReloadFinishAnimation())
 	        	{
 	        		return "reloadEnd";
 	        	}
@@ -191,24 +191,34 @@ public final class GunAnimationHelper
 		
 		if (animationType.equals("reloadStart"))
 		{
-			if (nextFrame==GunAnimationHelper.getAnimationFrames(animationType, weapKey))
+			if (nextFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
 			{
 				nextFrame = 0;
 				nextAnimType = "reload";
 			}
+			if (priorFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
+			{
+				priorFrame = 0;
+				priorAnimType = "reload";
+			}
 		}
 		if (animationType.equals("reloadEnd"))
 		{
-			if (priorFrame==0)
+			if (priorFrame<=0)
 			{
 				priorFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
 				priorAnimType = "reload";
+			}
+			if (nextFrame<=0)
+			{
+				nextFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
+				nextAnimType = "reload";
 			}
 		}
 		if (animationType.equals("reload"))
 		{
 			float delta = GunRenderingHandler.get().getReloadDeltaTime(weapon);
-			if (priorFrame==0 && delta>0.9F)
+			if (priorFrame==0 && delta>0.8F)
 			priorFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
 		}
 		
@@ -237,18 +247,28 @@ public final class GunAnimationHelper
 		
 		if (animationType.equals("reloadStart"))
 		{
-			if (nextFrame==GunAnimationHelper.getAnimationFrames(animationType, weapKey))
+			if (nextFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
 			{
 				nextFrame = 0;
 				nextAnimType = "reload";
 			}
+			if (priorFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
+			{
+				priorFrame = 0;
+				priorAnimType = "reload";
+			}
 		}
 		if (animationType.equals("reloadEnd"))
 		{
-			if (priorFrame==0)
+			if (priorFrame<=0)
 			{
 				priorFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
 				priorAnimType = "reload";
+			}
+			if (nextFrame<=0)
+			{
+				nextFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
+				nextAnimType = "reload";
 			}
 		}
 		if (animationType.equals("reload"))
@@ -274,7 +294,10 @@ public final class GunAnimationHelper
 	public static float getScaledProgress(String animationType, ResourceLocation weapKey, float progress)
 	{
 		int animationFrames = getAnimationFrames(animationType, weapKey);
-		return Mth.clamp(progress*(animationFrames)-0.05F, 0,animationFrames);
+		float progress1 = Mth.clamp(progress*(animationFrames)+0.03F, 0,animationFrames);
+		float progress2 = Mth.clamp(progress*(animationFrames)*1.1F, 0,animationFrames);
+		
+		return Mth.clamp(progress1, 0, progress2);
 		//return Mth.clamp(progress*(animationFrames)+0.14F, 0,animationFrames);
 	}
 	
@@ -305,9 +328,9 @@ public final class GunAnimationHelper
 	{
     	double scaleFactor = 0.0625;
 		poseStack.translate(-offsets.x * scaleFactor, offsets.y * scaleFactor, offsets.z * scaleFactor);
-    	poseStack.mulPose(Vector3f.ZP.rotationDegrees((float) rotations.z));
     	poseStack.mulPose(Vector3f.YP.rotationDegrees((float) rotations.y));
     	poseStack.mulPose(Vector3f.XP.rotationDegrees((float) rotations.x));
+    	poseStack.mulPose(Vector3f.ZP.rotationDegrees((float) rotations.z));
     	poseStack.translate(offsets.x * scaleFactor, -offsets.y * scaleFactor, -offsets.z * scaleFactor);
 	}
 	public static void rotateAroundOffset(PoseStack poseStack, Vec3 rotations, String animationType, ItemStack weapon, String component)

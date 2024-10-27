@@ -1,5 +1,5 @@
 Add new attachment types (magazine, cosmetic)
-Add more attachments (angled grip, compensator, extended barrel, flash hider, tactical silencer, holo sight, 8x scope, 4x night vision scope)
+Add more attachments
     - Barrels: compensator, flash hider, extended barrel, tactical silencer
     - Grips: angled, thumb, laser sight
     - Magazines: extended, quick

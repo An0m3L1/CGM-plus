@@ -25,8 +25,8 @@
     "useMagReload": true,
     "reloadStartDelay": 0,
     "reloadEndDelay": 0,
-    "magReloadTime": 40,
-    "reloadRate": 40
+    "magReloadTime": 45,
+    "reloadRate": 45
   },
   "fireModes": {
     "useFireModes": true,

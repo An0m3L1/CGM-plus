@@ -10,6 +10,7 @@ import com.mrcrayfish.framework.api.serialize.DataString;
 import com.mrcrayfish.framework.api.serialize.DataType;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.cache.ObjectCache;
+import com.mrcrayfish.guns.client.AnimationLoader;
 import com.mrcrayfish.guns.client.AnimationMetaLoader;
 import com.mrcrayfish.guns.client.MetaLoader;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
@@ -36,9 +37,10 @@ import net.minecraft.world.phys.Vec3;
 public final class GunAnimationHelper
 {
 	public static final String ANIMATION_KEY = "cgm:animations";
-	static boolean doMetaLoadMessage=false;
-	static boolean doHasAnimationMessage=false;
-	static boolean doTryingMetaLoadMessage=false;
+	private static final boolean useLegacyLoader=true;
+	static boolean doMetaLoadMessage=true;
+	static boolean doHasAnimationMessage=true;
+	static boolean doTryingMetaLoadMessage=true;
 	static boolean doParentMessage1=true;
 	static boolean doParentMessage2=true;
 
@@ -62,10 +64,7 @@ public final class GunAnimationHelper
 	        	{
 	        		return "reloadEnd";
 	        	}
-	        	else
-	        	return "reload";
     		}
-			else
     	    return "reload";
 		}
 		else
@@ -172,6 +171,94 @@ public final class GunAnimationHelper
     	return getRotationOffsetPoint(animType, lookForParentAnimation(animType, getItemLocationKey(weapon)), component);
     }
     
+    public static Vec3 getSpecificAnimationTrans(String animType, ItemStack weapon, Player player, float partialTicks, String component)
+    {
+    	ResourceLocation weapKey = lookForParentAnimation(animType, getItemLocationKey(weapon));
+    	if (animType.equals("reloadStart"))
+    	{
+    		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
+    		return getAnimationTrans("reloadStart", weapon, reloadTransitionProgress, component);
+    	}
+    	if (animType.equals("reloadEnd"))
+    	{
+    		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
+    		return getAnimationTrans("reloadEnd", weapon, 1-reloadTransitionProgress, component);
+    	}
+    	if (animType.equals("reload") && hasAnimation("reload", weapon))
+    	{
+    		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
+    	    float progress = ((GunItem) (weapon.getItem())).getModifiedGun(weapon).getGeneral().usesMagReload() ? GunRenderingHandler.get().getReloadDeltaTime(weapon) : GunRenderingHandler.get().getReloadCycleProgress(weapon);
+    	    Vec3 transforms = getAnimationTrans("reload", weapon, progress, component).scale(reloadTransitionProgress);
+    	    
+    	    Easings easing = GunReloadAnimationHelper.getReloadStartEasing(weapKey, component);
+    	    float finalReloadTransition = (float) getEaseFactor(easing, reloadTransitionProgress);
+    		if (!ReloadHandler.get().getReloading(player))
+    		{
+    			easing = GunReloadAnimationHelper.getReloadEndEasing(weapKey, component);
+        	    finalReloadTransition = (float) getReversedEaseFactor(easing, reloadTransitionProgress);
+    		}
+    	    return transforms.scale(finalReloadTransition);
+    	}
+    	if (animType.equals("fire") && hasAnimation("fire", weapon))
+    	{
+    		ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();
+            float cooldown = tracker.getCooldownPercent(weapon.getItem(), Minecraft.getInstance().getFrameTime());
+            if (cooldown>0);
+            {
+            	float progress = 1-cooldown;
+            	return getAnimationTrans("fire", weapon, progress, component);
+            }
+    	}
+    	
+    	return Vec3.ZERO;
+    }
+    public static Vec3 getSpecificAnimationRot(String animType, ItemStack weapon, Player player, float partialTicks, String component)
+    {
+    	ResourceLocation weapKey = lookForParentAnimation(animType, getItemLocationKey(weapon));
+    	if (animType.equals("reloadStart"))
+    	{
+    		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
+			return getAnimationRot("reloadStart", weapon, reloadTransitionProgress, component);
+    	}
+    	if (animType.equals("reloadEnd"))
+    	{
+    		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
+    		return getAnimationRot("reloadEnd", weapon, 1-reloadTransitionProgress, component);
+    		
+    	}
+    	if (animType.equals("reload") && hasAnimation("reload", weapon))
+    	{
+    		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
+    		float progress = ((GunItem) (weapon.getItem())).getModifiedGun(weapon).getGeneral().usesMagReload() ? GunRenderingHandler.get().getReloadDeltaTime(weapon) : GunRenderingHandler.get().getReloadCycleProgress(weapon);
+    	    Vec3 transforms = getAnimationRot("reload", weapon, progress, component);
+    	    
+    	    Easings easing = GunReloadAnimationHelper.getReloadStartEasing(weapKey, component);
+    	    float finalReloadTransition = (float) getEaseFactor(easing, reloadTransitionProgress);
+    		if (!ReloadHandler.get().getReloading(player))
+    		{
+    			easing = GunReloadAnimationHelper.getReloadEndEasing(weapKey, component);
+        	    finalReloadTransition = (float) getReversedEaseFactor(easing, reloadTransitionProgress);
+    		}
+    	    return transforms.scale(finalReloadTransition);
+    	}
+    	if (animType.equals("fire") && hasAnimation("fire", weapon))
+    	{
+    		ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();
+            float cooldown = tracker.getCooldownPercent(weapon.getItem(), Minecraft.getInstance().getFrameTime());
+            if (cooldown>0);
+            {
+            	float progress = 1-cooldown;
+            	return getAnimationRot("fire", weapon, progress, component);
+            }
+    	}
+    	
+    	return Vec3.ZERO;
+    }
+    public static Vec3 getSpecificAnimationRotOffset(String animType, ItemStack weapon, String component)
+    {
+    	return getRotationOffsetPoint(animType, lookForParentAnimation(animType, getItemLocationKey(weapon)), component);
+    }
+    
     
     
     
@@ -180,49 +267,69 @@ public final class GunAnimationHelper
     
 	public static Vec3 getAnimationTrans(String animationType, ItemStack weapon, float progress, String component)
 	{
-		Vec3 blendedTransforms = Vec3.ZERO;
+		boolean magReload = ReloadHandler.get().isDoMagReload();
+		boolean emptyReload = ReloadHandler.get().isReloadFromEmpty();
 		ResourceLocation weapKey = lookForParentAnimation(animationType, getItemLocationKey(weapon));
+		
+		String animSuffix = "";
+		if (animationType.contains("reload") && (magReload || emptyReload))
+		{
+			if (magReload && emptyReload && hasAnimation(animationType + "_EmptyMag", weapKey))
+			animSuffix = "_EmptyMag";
+			else
+			if (magReload && hasAnimation(animationType + "_Mag", weapKey))
+			animSuffix = "_Mag";
+			else
+			if (emptyReload && hasAnimation(animationType + "_Empty", weapKey))
+			animSuffix = "_Empty";
+
+			animationType = animationType+animSuffix;
+		}
+		
+		Vec3 blendedTransforms = Vec3.ZERO;
 		float scaledProgress = getScaledProgress(animationType, weapKey, progress);
 		int currentFrame = getCurrentFrame(weapon, scaledProgress);
 		int priorFrame = findPriorFrame(animationType, weapKey, component, currentFrame, "translation");
 		int nextFrame = findNextFrame(animationType, weapKey, component, currentFrame+1, "translation");
-		int frameDiv = Math.max(Math.abs(nextFrame-priorFrame),1);
 		float frameProgress = Math.max(scaledProgress - ((float) priorFrame), 0);
 		
 		String priorAnimType = animationType;
 		String nextAnimType = animationType;
+		int frameDiv = Math.max(Math.abs(nextFrame-priorFrame),1);
 		
-		if (animationType.equals("reloadStart"))
+		if (animationType.contains("reloadStart"))
 		{
 			if (nextFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
 			{
 				nextFrame = 0;
-				nextAnimType = "reload";
+				nextAnimType = "reload"+animSuffix;
 			}
-			if (priorFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
+			if (currentFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
 			{
 				priorFrame = 0;
-				priorAnimType = "reload";
+				priorAnimType = "reload"+animSuffix;
 			}
 		}
-		if (animationType.equals("reloadEnd"))
+		if (animationType.contains("reloadEnd"))
 		{
 			if (priorFrame<1)
 			{
-				priorFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
-				priorAnimType = "reload";
+				int reloadFrames = GunAnimationHelper.getAnimationFrames("reload"+animSuffix, weapKey);
+				priorFrame = findPriorFrame("reload"+animSuffix, weapKey, component, reloadFrames, "translation");
+				priorAnimType = "reload"+animSuffix;
 			}
-			if (nextFrame<1)
+			if (currentFrame<0)
 			{
-				nextFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
-				nextAnimType = "reload";
+				int reloadFrames = GunAnimationHelper.getAnimationFrames("reload"+animSuffix, weapKey);
+				nextFrame = findPriorFrame("reload"+animSuffix, weapKey, component, reloadFrames, "translation");
+				nextAnimType = "reload"+animSuffix;
 			}
 		}
-		if (animationType.equals("reload"))
+		if (animationType.equals("reload") || animationType.contains("reload_"))
 		{
 			float delta = GunRenderingHandler.get().getReloadDeltaTime(weapon);
 			if (priorFrame==0 && delta>0.8F)
-			priorFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
+			priorFrame = GunAnimationHelper.getAnimationFrames(animationType, weapKey);
 		}
 		
 		Vec3 priorTransforms = getAnimTranslation(priorAnimType, weapKey, component, priorFrame, weapon);
@@ -236,49 +343,69 @@ public final class GunAnimationHelper
     
 	public static Vec3 getAnimationRot(String animationType, ItemStack weapon, float progress, String component)
 	{
-		Vec3 blendedTransforms = Vec3.ZERO;
+		boolean magReload = ReloadHandler.get().isDoMagReload();
+		boolean emptyReload = ReloadHandler.get().isReloadFromEmpty();
 		ResourceLocation weapKey = lookForParentAnimation(animationType, getItemLocationKey(weapon));
+		
+		String animSuffix = "";
+		if (animationType.contains("reload") && (magReload || emptyReload))
+		{
+			if (magReload && emptyReload && hasAnimation(animationType + "_EmptyMag", weapKey))
+			animSuffix = "_EmptyMag";
+			else
+			if (magReload && hasAnimation(animationType + "_Mag", weapKey))
+			animSuffix = "_Mag";
+			else
+			if (emptyReload && hasAnimation(animationType + "_Empty", weapKey))
+			animSuffix = "_Empty";
+			
+			animationType = animationType+animSuffix;
+		}
+		
+		Vec3 blendedTransforms = Vec3.ZERO;
 		float scaledProgress = getScaledProgress(animationType, weapKey, progress);
 		int currentFrame = getCurrentFrame(weapon, scaledProgress);
 		int priorFrame = findPriorFrame(animationType, weapKey, component, currentFrame, "rotation");
 		int nextFrame = findNextFrame(animationType, weapKey, component, currentFrame+1, "rotation");
-		int frameDiv = Math.max(Math.abs(nextFrame-priorFrame),1);
 		float frameProgress = Math.max(scaledProgress - ((float) priorFrame), 0);
 		
 		String priorAnimType = animationType;
 		String nextAnimType = animationType;
+		int frameDiv = Math.max(Math.abs(nextFrame-priorFrame),1);
 		
-		if (animationType.equals("reloadStart"))
+		if (animationType.contains("reloadStart"))
 		{
 			if (nextFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
 			{
 				nextFrame = 0;
-				nextAnimType = "reload";
+				nextAnimType = "reload"+animSuffix;
 			}
-			if (priorFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
+			if (currentFrame>=GunAnimationHelper.getAnimationFrames(animationType, weapKey))
 			{
 				priorFrame = 0;
-				priorAnimType = "reload";
+				priorAnimType = "reload"+animSuffix;
 			}
 		}
-		if (animationType.equals("reloadEnd"))
+		if (animationType.contains("reloadEnd"))
 		{
-			if (priorFrame<=0)
+			if (priorFrame<1)
 			{
-				priorFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
-				priorAnimType = "reload";
+				int reloadFrames = GunAnimationHelper.getAnimationFrames("reload"+animSuffix, weapKey);
+				priorFrame = findPriorFrame("reload"+animSuffix, weapKey, component, reloadFrames, "translation");
+				priorAnimType = "reload"+animSuffix;
 			}
-			if (nextFrame<=0)
+			if (currentFrame<0)
 			{
-				nextFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
-				nextAnimType = "reload";
+				int reloadFrames = GunAnimationHelper.getAnimationFrames("reload"+animSuffix, weapKey);
+				nextFrame = findPriorFrame("reload"+animSuffix, weapKey, component, reloadFrames, "translation");
+				nextAnimType = "reload"+animSuffix;
 			}
 		}
-		if (animationType.equals("reload"))
+		if (animationType.equals("reload") || animationType.contains("reload_"))
 		{
 			float delta = GunRenderingHandler.get().getReloadDeltaTime(weapon);
-			if (priorFrame==0 && nextFrame<GunAnimationHelper.getAnimationFrames(animationType, weapKey) && delta>0.8F)
-			priorFrame = GunAnimationHelper.getAnimationFrames("reload", weapKey);
+			if (priorFrame==0 && delta>0.8F)
+			priorFrame = GunAnimationHelper.getAnimationFrames(animationType, weapKey);
 		}
 		
 		Vec3 priorTransforms = getAnimRotation(priorAnimType, weapKey, component, priorFrame);
@@ -293,6 +420,28 @@ public final class GunAnimationHelper
 	
     
 	/* Reload animation calculators methods for more advanced control */
+	public static String addReloadAnimSuffix(String animationType, ResourceLocation weapKey)
+	{
+		boolean magReload = ReloadHandler.get().isDoMagReload();
+		boolean emptyReload = ReloadHandler.get().isReloadFromEmpty();
+		String animSuffix = "";
+		if (animationType.contains("reload") && (magReload || emptyReload))
+		{
+			if (magReload && emptyReload && hasAnimation(animationType + "_EmptyMag", weapKey))
+			animSuffix = "_EmptyMag";
+			else
+			if (magReload && hasAnimation(animationType + "_Mag", weapKey))
+			animSuffix = "_Mag";
+			else
+			if (emptyReload && hasAnimation(animationType + "_Empty", weapKey))
+			animSuffix = "_Empty";
+			
+			animationType = animationType+animSuffix;
+		}
+		
+		return animationType;
+	}
+	
     // Frames
 	public static float getScaledProgress(String animationType, ResourceLocation weapKey, float progress)
 	{
@@ -341,7 +490,7 @@ public final class GunAnimationHelper
 	public static void rotateAroundOffset(PoseStack poseStack, Vec3 rotations, String animationType, ItemStack weapon, String component)
 	{
 		ResourceLocation weapKey = lookForParentAnimation(animationType, getItemLocationKey(weapon));
-		rotateAroundOffset(poseStack, rotations, GunAnimationHelper.getRotationOffsetPoint(animationType, weapKey, component));
+		rotateAroundOffset(poseStack, rotations, GunAnimationHelper.getRotationOffsetPoint(addReloadAnimSuffix(animationType, weapKey), weapKey, component));
 	}
 	
 	
@@ -416,6 +565,9 @@ public final class GunAnimationHelper
 	
 	// Rotation Offset Points
 	public static Vec3 getRotationOffsetPoint(String animationType, ResourceLocation weapKey, String component) {
+		if (!animationType.contains("_"))
+			animationType = addReloadAnimSuffix(animationType, weapKey);
+		
 		DataObject offsetObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType, component);
 		if (offsetObject.has("rotOffset", DataType.ARRAY))
 		{
@@ -600,9 +752,11 @@ public final class GunAnimationHelper
 	
 	
 	// Additional methods to aid with interfacing with the animation system.
+	@SuppressWarnings("deprecation")
 	public static ResourceLocation getItemLocationKey(ItemStack stack)
 	{
-        return stack.getItem().builtInRegistryHolder().key().location();
+		ResourceLocation location = stack.getItem().builtInRegistryHolder().key().location();
+        return location;
 	}
 	
 	
@@ -631,9 +785,11 @@ public final class GunAnimationHelper
     {
         if (doTryingMetaLoadMessage)
         {
-        	GunMod.LOGGER.info("Animation System: Attempting to load animation data with resource key: " + location);
+        	GunMod.LOGGER.info("Animation System: Attempting to load animation data with resource key: " + location.toString());
         	doTryingMetaLoadMessage=false;
     	}
-        return AnimationMetaLoader.getInstance().getData(location);
+        if (useLegacyLoader)
+        	return AnimationMetaLoader.getInstance().getData(location);
+        return AnimationLoader.getInstance().getData(location);
     }
 }

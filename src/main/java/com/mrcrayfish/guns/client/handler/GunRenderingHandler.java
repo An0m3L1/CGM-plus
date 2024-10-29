@@ -32,6 +32,7 @@ import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.attachment.IAttachment;
 import com.mrcrayfish.guns.item.attachment.IBarrel;
 import com.mrcrayfish.guns.item.attachment.impl.Scope;
+import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 
@@ -629,6 +630,7 @@ public class GunRenderingHandler
         	{
             	float transition = (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
             	transition = (float) Math.sin((transition * Math.PI) / 2);
+            	transition = (float) (transition*(1-AimingHandler.get().getNormalisedAdsProgress()));
             	poseStack.translate(0, 0.35 * transition, -0.1 * transition);
             	poseStack.mulPose(Vector3f.XP.rotationDegrees(45F * transition));
         	}
@@ -637,6 +639,7 @@ public class GunRenderingHandler
         		float leftHanded = hand == HumanoidArm.LEFT ? -1 : 1;
             	float transition = (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
             	transition = (float) Math.sin((transition * Math.PI) / 2);
+            	transition = (float) (transition*(1-AimingHandler.get().getNormalisedAdsProgress()));
             	poseStack.translate(-0.25 * leftHanded * transition, -0.1 * transition, 0);
             	poseStack.mulPose(Vector3f.YP.rotationDegrees(45F * leftHanded * transition));
             	poseStack.mulPose(Vector3f.XP.rotationDegrees(-25F * transition));
@@ -647,8 +650,9 @@ public class GunRenderingHandler
     private void applyAnimationTransforms(PoseStack poseStack, LocalPlayer player, ItemStack item, Gun modifiedGun, float partialTicks)
     {
     	Minecraft mc = Minecraft.getInstance();
-    	Vec3 translations = GunAnimationHelper.getSmartAnimationTrans(item, player, partialTicks, "viewModel");
-        Vec3 rotations = GunAnimationHelper.getSmartAnimationRot(item, player, partialTicks, "viewModel");
+    	double zoomFactor = (1-Gun.getFovModifier(item, modifiedGun)) * AimingHandler.get().getNormalisedAdsProgress();
+    	Vec3 translations = GunAnimationHelper.getSmartAnimationTrans(item, player, partialTicks, "viewModel").scale(1-zoomFactor);
+        Vec3 rotations = GunAnimationHelper.getSmartAnimationRot(item, player, partialTicks, "viewModel").scale(1-zoomFactor);
         Vec3 offsets = GunAnimationHelper.getSmartAnimationRotOffset(item, player, partialTicks, "viewModel").add(5.25, 4.0, 4.0);
     	if(!GunAnimationHelper.hasAnimation("fire", item) && GunAnimationHelper.getSmartAnimationType(item, player, partialTicks)=="fire")
     	{
@@ -727,6 +731,8 @@ public class GunRenderingHandler
         ItemStack heldItem = player.getItemInHand(InteractionHand.MAIN_HAND);
         if(heldItem.isEmpty())
             return;
+        
+        updateReloadProgress(heldItem);
 
         if(player.isUsingItem() && player.getUsedItemHand() == InteractionHand.MAIN_HAND && heldItem.getItem() instanceof GrenadeItem)
         {
@@ -865,7 +871,7 @@ public class GunRenderingHandler
             
             // Ammo counter
             int currentAmmo = tagCompound.getInt("AmmoCount");
-            MutableComponent ammoCountValue = (Component.literal(currentAmmo + " / " + GunEnchantmentHelper.getAmmoCapacity(heldItem, gun)).withStyle(ChatFormatting.BOLD));
+            MutableComponent ammoCountValue = (Component.literal(currentAmmo + " / " + GunCompositeStatHelper.getAmmoCapacity(heldItem, gun)).withStyle(ChatFormatting.BOLD));
             if (Gun.hasInfiniteAmmo(heldItem))
             	ammoCountValue = (Component.literal("∞ / ∞").withStyle(ChatFormatting.BOLD));
             GuiComponent.drawString(poseStack, Minecraft.getInstance().font, ammoCountValue, ammoPosX, ammoPosY, (currentAmmo>0 || Gun.hasInfiniteAmmo(heldItem) ? 0xFFFFFF : 0xFF5555));
@@ -959,7 +965,7 @@ public class GunRenderingHandler
             for(String tagKey : attachments.getAllKeys())
             {
                 IAttachment.Type type = IAttachment.Type.byTagKey(tagKey);
-                if(type != null && modifiedGun.canAttachType(type))
+                if(type != null && type != IAttachment.Type.MAGAZINE && modifiedGun.canAttachType(type))
                 {
                     ItemStack attachmentStack = Gun.getAttachment(type, stack);
                     if(!attachmentStack.isEmpty())
@@ -1215,19 +1221,27 @@ public class GunRenderingHandler
     	Minecraft mc = Minecraft.getInstance();
         if(mc.player == null)
             return;
+        
+        if(!(stack.getItem() instanceof GunItem))
+            return;
     	
+        //if(ReloadHandler.get().getReloadProgress(mc.getFrameTime())>0)
         if(ReloadHandler.get().getReloading(mc.player))
         {
-	    	float reloadInterval = GunEnchantmentHelper.getRealReloadSpeed(stack);
+	    	float reloadInterval = GunCompositeStatHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
 	    	int reloadStartDelay = 5;
 	    	if (stack.getItem() instanceof GunItem gunItem)
 	    	{
 	    		Gun gun = gunItem.getModifiedGun(stack);
+	    		if (ReloadHandler.get().isReloadFromEmpty())
+		    	reloadStartDelay = Math.max(gun.getGeneral().getReloadEmptyStartDelay(),0);
+	    		else
 	    		reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
 	    	}
+	    	if (ReloadHandler.get().getStartReloadTick()>0)
 	    	this.lastStartReloadTick = ReloadHandler.get().getStartReloadTick();
-	    	float startReloadTick = (float) lastStartReloadTick;
-    		float reloadDelta = (mc.player.tickCount - (startReloadTick + reloadStartDelay) + mc.getFrameTime()) / reloadInterval;
+	    	
+    		float reloadDelta = (mc.player.tickCount - (lastStartReloadTick + reloadStartDelay) + mc.getFrameTime()) / reloadInterval;
     		this.lastReloadDeltaTime = reloadDelta;
 	    	this.lastReloadCycle = reloadDelta % 1F;
     	}
@@ -1248,7 +1262,7 @@ public class GunRenderingHandler
         }
         else
         {
-	    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack);
+	    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
 	    	int reloadStartDelay = 5;
 	    	if (stack.getItem() instanceof GunItem gunItem)
 	    	{
@@ -1276,7 +1290,7 @@ public class GunRenderingHandler
         }
         else
         {
-	    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack);
+	    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
 	    	int reloadStartDelay = 5;
 	    	if (stack.getItem() instanceof GunItem gunItem)
 	    	{

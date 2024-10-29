@@ -6,6 +6,7 @@ import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.blockentity.WorkbenchBlockEntity;
 import com.mrcrayfish.guns.common.DelayedTask;
 import com.mrcrayfish.guns.common.Gun;
+import com.mrcrayfish.guns.common.Gun.ReloadSoundsBase;
 import com.mrcrayfish.guns.common.ProjectileManager;
 import com.mrcrayfish.guns.common.ShootTracker;
 import com.mrcrayfish.guns.common.SpreadTracker;
@@ -25,6 +26,7 @@ import com.mrcrayfish.guns.network.message.C2SMessageFireSwitch;
 import com.mrcrayfish.guns.network.message.C2SMessageShoot;
 import com.mrcrayfish.guns.network.message.S2CMessageBulletTrail;
 import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
+import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.core.BlockPos;
@@ -184,6 +186,41 @@ public class ServerPlayHandler
                     PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
                 }
 
+                ResourceLocation cycleSound = getGunSound(modifiedGun, "cycle", false, false);
+                if(cycleSound != null || modifiedGun.getSounds().getCycleDelay() >= 0)
+                {
+            		final ResourceLocation finalSound = (cycleSound != null? cycleSound : getGunSound(modifiedGun, "cock", false, false));
+            		
+            		double modifiedCycleDelay = modifiedGun.getSounds().getCycleDelay();
+            		modifiedCycleDelay = modifiedCycleDelay * (double) (GunCompositeStatHelper.getCompositeRate(heldItem, modifiedGun, player) / Math.max(modifiedGun.getGeneral().getRate(),1.0));
+            		final int trueCycleDelay = (int) Math.round(modifiedCycleDelay);
+            		if (trueCycleDelay>0)
+                    {
+                    	final Player finalPlayer = player;
+                    	DelayedTask.runAfter(trueCycleDelay, () ->
+                    	{
+                    		if (finalPlayer.isAlive())
+	                    	{
+		                    	double posX = finalPlayer.getX();
+		                        double posY = finalPlayer.getY() + finalPlayer.getEyeHeight();
+		                        double posZ = finalPlayer.getZ();
+			                  	double radius = Config.SERVER.reloadMaxDistance.get();
+			                    S2CMessageGunSound messageSound = new S2CMessageGunSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
+			                    PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
+		                    }
+                    	});
+                    }
+                	else
+                	{
+                		double posX = player.getX();
+                        double posY = player.getY() + player.getEyeHeight();
+                        double posZ = player.getZ();
+	                  	double radius = Config.SERVER.reloadMaxDistance.get();
+	                    S2CMessageGunSound messageSound = new S2CMessageGunSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
+	                    PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
+                	}
+                }
+
                 if(!player.isCreative())
                 {
                     CompoundTag tag = heldItem.getOrCreateTag();
@@ -237,17 +274,17 @@ public class ServerPlayHandler
         ResourceLocation fireSound = null;
         if(GunModifierHelper.isSilencedFire(stack))
         {
-            fireSound = modifiedGun.getSounds().getSilencedFire();
+            fireSound = modifiedGun.getSounds().getSilencedFireEx();
         }
         else if(stack.isEnchanted())
         {
-            fireSound = modifiedGun.getSounds().getEnchantedFire();
+            fireSound = modifiedGun.getSounds().getEnchantedFireEx();
         }
         if(fireSound != null)
         {
             return fireSound;
         }
-        return modifiedGun.getSounds().getFire();
+        return modifiedGun.getSounds().getFireEx();
     }
     
     /**
@@ -264,16 +301,19 @@ public class ServerPlayHandler
             Gun modifiedGun = item.getModifiedGun(heldItem);
             if(modifiedGun != null)
             {
-
-            	String soundType = "cock";
-            	if (modifiedGun.getSounds().hasExtraReloadSounds())
-            	soundType = "end";
-            	final ResourceLocation finalSound = getGunSound(heldItem, modifiedGun, soundType);
+            	String soundType = "reloadStart";
+            	boolean magReload = Gun.usesMagReloads(heldItem);
+            	boolean reloadFromEmpty = !Gun.hasAmmo(heldItem);
+            	ReloadSoundsBase soundObj = Gun.findReloadSoundObj(modifiedGun, soundType, magReload, reloadFromEmpty);
+            	//if (Gun.hasExtraReloadSounds(modifiedGun, magReload, reloadFromEmpty))
+            	//soundType = "reloadStart";
             	
-            	if (modifiedGun.getSounds().getReloadEndDelay()>0)
+            	final ResourceLocation finalSound = getGunReloadSound(modifiedGun, soundObj, soundType, magReload, reloadFromEmpty);
+            	
+            	if (Gun.getReloadSoundTimings(modifiedGun, soundObj, soundType, magReload, reloadFromEmpty)>0)
                 {
             		Player finalPlayer = player;
-                	DelayedTask.runAfter(modifiedGun.getSounds().getReloadStartDelay()*(GunEnchantmentHelper.getReloadInterval(heldItem)/10), () ->
+                	DelayedTask.runAfter((int) Gun.getReloadSoundTimings(modifiedGun, soundObj, soundType, magReload, reloadFromEmpty), () ->
                     {
                         playReloadStartSound(finalPlayer, finalSound);
                     });
@@ -283,15 +323,16 @@ public class ServerPlayHandler
             }
         }
     }
-    private static ResourceLocation getGunSound(ItemStack stack, Gun modifiedGun, String soundType)
+    
+    private static ResourceLocation getGunSound(Gun modifiedGun, String soundType, boolean doMagReload, boolean reloadFromEmpty)
     {
     	ResourceLocation sound = null;
     	
-    	if(soundType == "start")
-    	sound = modifiedGun.getSounds().getReloadStart();
+    	if(soundType == "cycle")
+    		sound = modifiedGun.getSounds().getCycle();
     	else
-    	if(soundType == "reload")
-    	sound = modifiedGun.getSounds().getReload();
+    	if(soundType == "cock")
+    		sound = modifiedGun.getSounds().getCock();
     	
         if(sound != null)
         {
@@ -299,8 +340,28 @@ public class ServerPlayHandler
         }
         return null;
     }
+    
+    private static ResourceLocation getGunReloadSound(Gun modifiedGun, ReloadSoundsBase soundObj, String soundType, boolean doMagReload, boolean reloadFromEmpty)
+    {
+    	ResourceLocation sound = null;
+    	
+    	/*if(soundType == "reloadStart")
+    		sound = modifiedGun.getSounds().getReloadStart();
+        	//sound = Gun.getReloadSound(stack, modifiedGun, "getReloadStart", !Gun.hasAmmo(stack));*/
+    	sound = Gun.getReloadSound(modifiedGun, soundObj, soundType, doMagReload, reloadFromEmpty);
+    	
+        if(sound != null)
+        {
+            return sound;
+        }
+        return null;
+    }
+    
     public static void playReloadStartSound(Player player, ResourceLocation sound)
     {
+    	if (sound == null)
+    		return;
+    	
     	double posX = player.getX();
 		double posY = player.getY() + 1.0;
 		double posZ = player.getZ();
@@ -357,41 +418,51 @@ public class ServerPlayHandler
     /**
      * @param player
      */
-    public static void handleUnload(ServerPlayer player)
+    public static void handleUnload(ServerPlayer player, boolean partial)
     {
         ItemStack stack = player.getMainHandItem();
-        if(stack.getItem() instanceof GunItem)
+        if(stack.getItem() instanceof GunItem gunItem)
         {
             CompoundTag tag = stack.getTag();
-            Gun modifiedGun = ((GunItem) stack.getItem()).getModifiedGun(stack);
-            if(tag != null && tag.contains("AmmoCount", Tag.TAG_INT) && !tag.getBoolean("IgnoreAmmo") && !Gun.hasUnlimitedReloads(stack))
+            if(tag != null && tag.contains("AmmoCount", Tag.TAG_INT) && !tag.getBoolean("IgnoreAmmo"))
             {
-                int count = tag.getInt("AmmoCount");
-                tag.putInt("AmmoCount", 0);
-
-                GunItem gunItem = (GunItem) stack.getItem();
-                Gun gun = gunItem.getModifiedGun(stack);
-                ResourceLocation id = gun.getProjectile().getItem();
-
-                Item item = ForgeRegistries.ITEMS.getValue(id);
-                if(item == null)
-                {
-                    return;
-                }
-
-                int maxStackSize = item.getMaxStackSize();
-                int stacks = count / maxStackSize;
-                for(int i = 0; i < stacks; i++)
-                {
-                    spawnAmmo(player, new ItemStack(item, maxStackSize));
-                }
-
-                int remaining = count % maxStackSize;
-                if(remaining > 0)
-                {
-                    spawnAmmo(player, new ItemStack(item, remaining));
-                }
-            }
+            	int ammoStored = tag.getInt("AmmoCount");
+            	if (!Gun.hasUnlimitedReloads(stack))
+            	{
+	            	int count = Math.max(ammoStored - (partial ? GunCompositeStatHelper.getAmmoCapacity(stack) : 0),0);
+	                tag.putInt("AmmoCount", partial ? Math.min(GunCompositeStatHelper.getAmmoCapacity(stack), ammoStored) : 0);
+	                
+	                Gun modifiedGun = gunItem.getModifiedGun(stack);
+	                ResourceLocation id = modifiedGun.getProjectile().getItem();
+	
+	                Item item = ForgeRegistries.ITEMS.getValue(id);
+	                if(item == null)
+	                {
+	                    return;
+	                }
+	                
+	                if (!player.isCreative() || !partial)
+	                {
+		                int maxStackSize = item.getMaxStackSize();
+		                int stacks = count / maxStackSize;
+		                for(int i = 0; i < stacks; i++)
+		                {
+		                    spawnAmmo(player, new ItemStack(item, maxStackSize));
+		                }
+		
+		                int remaining = count % maxStackSize;
+		                if(remaining > 0)
+		                {
+		                    spawnAmmo(player, new ItemStack(item, remaining));
+		                }
+            		}
+	            }
+	            else
+	            {
+	            	if (partial)
+	            	tag.putInt("AmmoCount", Math.min(GunCompositeStatHelper.getAmmoCapacity(stack), ammoStored));
+	            }
+        	}
         }
     }
 

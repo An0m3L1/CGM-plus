@@ -8,11 +8,13 @@ import com.mrcrayfish.guns.item.AmmoItem;
 import com.mrcrayfish.guns.item.BarrelItem;
 import com.mrcrayfish.guns.item.GrenadeItem;
 import com.mrcrayfish.guns.item.GunItem;
+import com.mrcrayfish.guns.item.MagazineItem;
 import com.mrcrayfish.guns.item.ScopeItem;
 import com.mrcrayfish.guns.item.StockItem;
 import com.mrcrayfish.guns.item.StunGrenadeItem;
 import com.mrcrayfish.guns.item.UnderBarrelItem;
 import com.mrcrayfish.guns.item.attachment.impl.Barrel;
+import com.mrcrayfish.guns.item.attachment.impl.Magazine;
 import com.mrcrayfish.guns.item.attachment.impl.Stock;
 import com.mrcrayfish.guns.item.attachment.impl.UnderBarrel;
 import net.minecraft.world.item.Item;
@@ -73,4 +75,8 @@ public class ModItems
     /* Grips */
     public static final RegistryObject<Item> LIGHT_GRIP = REGISTER.register("light_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.LIGHT_GRIP), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
     public static final RegistryObject<Item> SPECIALISED_GRIP = REGISTER.register("specialised_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.SPECIALISED_GRIP), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
+
+    /* Magazines */
+    public static final RegistryObject<Item> LIGHT_MAG = REGISTER.register("light_magazine", () -> new MagazineItem(Magazine.create(GunModifiers.NONE), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
+    public static final RegistryObject<Item> EXTENDED_MAG = REGISTER.register("extended_magazine", () -> new MagazineItem(Magazine.create(GunModifiers.NONE), new Item.Properties().stacksTo(1).tab(GunMod.GROUP)));
 }

@@ -57,6 +57,7 @@ public class ShootingHandler
     }
 
     private boolean shooting;
+    private int lastShotTick;
     private boolean doEmptyClick;
 
     private int slot = -1;
@@ -200,6 +201,7 @@ public class ShootingHandler
             	ModSyncedDataKeys.BURSTCOUNT.setValue(player, 0);
                 if(player.getMainHandItem().getItem() instanceof GunItem)
             	GunRenderingHandler.get().updateReserveAmmo(player);
+                ReloadHandler.get().weaponSwitched();
             }
             
             ItemStack heldItem = player.getMainHandItem();
@@ -285,7 +287,7 @@ public class ShootingHandler
         	GunItem gunItem = (GunItem) heldItem.getItem();
         	if (!gunItem.getModifiedGun(heldItem).getGeneral().getUseMagReload())
         	{
-        		ReloadHandler.get().setReloading(false, false);
+        		ReloadHandler.get().setReloading(false, true);
         		PacketHandler.getPlayChannel().sendToServer(new C2SMessageReload(false));
         	}
         	return false;
@@ -409,7 +411,7 @@ public class ShootingHandler
             	ModSyncedDataKeys.BURSTCOUNT.setValue(player, ModSyncedDataKeys.BURSTCOUNT.getValue(player)-1);
             }
             PacketHandler.getPlayChannel().sendToServer(new C2SMessageShoot(player));
-
+            lastShotTick = player.tickCount;
             MinecraftForge.EVENT_BUS.post(new GunFireEvent.Post(player, heldItem));
         }
     }

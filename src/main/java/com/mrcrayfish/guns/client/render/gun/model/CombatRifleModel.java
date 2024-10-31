@@ -1,13 +1,14 @@
 package com.mrcrayfish.guns.client.render.gun.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.GunModel;
 import com.mrcrayfish.guns.client.SpecialModels;
 import com.mrcrayfish.guns.client.render.gun.IOverrideModel;
 import com.mrcrayfish.guns.client.util.GunAnimationHelper;
 import com.mrcrayfish.guns.client.util.RenderUtil;
-import com.mrcrayfish.guns.common.Gun;
+import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.attachment.IAttachment;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
@@ -15,11 +16,11 @@ import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
-import java.lang.reflect.Method;
 
 /**
  * Author: MrCrayfish
@@ -29,17 +30,24 @@ import java.lang.reflect.Method;
 public class CombatRifleModel implements IOverrideModel
 {
     private boolean disableAnimations = false;
-    private Method getReloadCycleProgress = null;
-    private Method getAnimationTrans = null;
 
     @Override
+    // This class renders a multi-part model that supports animations and removeable parts.
+    // We only need to render removeable parts for this model, so we can skip the animation portion.
+
+    // We start by declaring our render function that will handle rendering the core baked model (which is a non-moving part).
     public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
     {
+        // Render the item's BakedModel, which will serve as the core of our custom model.
         BakedModel bakedModel = SpecialModels.COMBAT_RIFLE_BASE.getModel();
         Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, buffer, light, overlay, GunModel.wrap(bakedModel));
 
+        // Render the iron sights element, which is only present when a scope is not attached.
+        // We have to grab the gun's scope attachment slot and check whether it is empty or not.
+        // If the isEmpty function returns true, then we render the iron sights.
         ItemStack scopeStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
         ItemStack stockStack = Gun.getAttachment(IAttachment.Type.STOCK, stack);
+
         if(scopeStack.isEmpty())
         {
             RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
@@ -55,39 +63,93 @@ public class CombatRifleModel implements IOverrideModel
         }
 
         // Special animated segment for compat with the CGM Expanded fork.
-        boolean isPlayer = (entity != null && entity.equals(Minecraft.getInstance().player));
-        boolean isFirstPerson = (transformType == ItemTransforms.TransformType.FIRST_PERSON_RIGHT_HAND || transformType == ItemTransforms.TransformType.FIRST_PERSON_LEFT_HAND);
+        // First, some variables for animation building
+        boolean isPlayer = entity != null && entity.equals(Minecraft.getInstance().player);
+        boolean isFirstPerson = (transformType.firstPerson());
+        boolean correctContext = (transformType.firstPerson() || transformType == ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND || transformType == ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND);
 
-        Vec3 translations = Vec3.ZERO;
-        Vec3 rotations = Vec3.ZERO;
-        String animType = "none";
+        Vec3 boltTranslations = Vec3.ZERO;
 
-        if(isPlayer && isFirstPerson && !disableAnimations)
+        Vec3 magTranslations = Vec3.ZERO;
+        Vec3 magRotations = Vec3.ZERO;
+        Vec3 magRotOffset = Vec3.ZERO;
+
+        if(isPlayer && correctContext && !disableAnimations)
         {
             try {
-                translations = GunAnimationHelper.getSmartAnimationTrans(stack, (Player) entity, partialTicks, "magazine");
-                rotations = GunAnimationHelper.getSmartAnimationRot(stack, (Player) entity, partialTicks, "magazine");
-                animType = GunAnimationHelper.getSmartAnimationType(stack, (Player) entity, partialTicks);
+                Player player = (Player) entity;
+                boltTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "bolt_handle");
+
+                magTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "magazine");
+                magRotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "magazine");
+                magRotOffset = GunAnimationHelper.getSmartAnimationRotOffset(stack, player, partialTicks, "magazine");
+            }
+            catch(NoClassDefFoundError ignored) {
+                disableAnimations = true;
             }
             catch(Exception e) {
-                GunMod.LOGGER.error("Guns encountered an error trying to apply animations, disabling animations");
+                GunMod.LOGGER.error("CGM Expanded encountered an error trying to apply animations (Should not happen!!)");
                 e.printStackTrace();
                 disableAnimations = true;
             }
         }
 
-        poseStack.pushPose();
-        // Now we apply our transformations.
-        // All we need to do is move the model based on the cooldown variable.
-        if(isPlayer && !disableAnimations)
+        // Fire animation is done the old way, and added onto the existing animation.
+        GunItem gunStack = (GunItem) stack.getItem();
+        Gun gun = gunStack.getModifiedGun(stack);
+        if(isPlayer && correctContext)
         {
-            if(translations!=Vec3.ZERO)
-                poseStack.translate(translations.x*0.0625, translations.y*0.0625, translations.z*0.0625);
-            if(rotations!=Vec3.ZERO)
-                GunAnimationHelper.rotateAroundOffset(poseStack, rotations, animType, stack, "magazine");
+            float cooldownDivider = 1.0F*Math.max((float) gun.getGeneral().getRate()/3F,1);
+            float cooldownOffset1 = cooldownDivider - 1.0F;
+            float intensity = 1.0F +1;
+
+            ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();
+            float cooldown = tracker.getCooldownPercent(stack.getItem(), Minecraft.getInstance().getFrameTime());
+            cooldown *= cooldownDivider;
+            float cooldown_a = cooldown-cooldownOffset1;
+
+            float cooldown_b = Math.min(Math.max(cooldown_a*intensity,0),1);
+            float cooldown_c = Math.min(Math.max((-cooldown_a*intensity)+intensity,0),1);
+            float cooldown_d = Math.min(cooldown_b,cooldown_c);
+
+            boltTranslations = boltTranslations.add(0, 0, cooldown_d * 2.3);
         }
-        // Our transformations are done - now we can render the model.
-        RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_MAG.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+
+        // Assault Rifle charging handle. This animated part kicks backward on firing, then moves back to its resting position.
+        poseStack.pushPose();
+        // Apply transformations to this part.
+        if(isPlayer)
+            poseStack.translate(0, 0, boltTranslations.z * 0.0625);
+        // Render the transformed model.
+        // Pop pose to compile everything in the render matrix.
+        poseStack.popPose();
+
+        // Magazine for Battle Rifle
+        poseStack.pushPose();
+        // Apply transformations to this part.
+        if(isPlayer && isFirstPerson && !disableAnimations)
+        {
+            if(magTranslations!=Vec3.ZERO)
+                poseStack.translate(magTranslations.x*0.0625, magTranslations.y*0.0625, magTranslations.z*0.0625);
+            if(magRotations!=Vec3.ZERO)
+                GunAnimationHelper.rotateAroundOffset(poseStack, magRotations, magRotOffset);
+        }
+        // Render the transformed model.
+        SpecialModels magModel = SpecialModels.COMBAT_RIFLE_MAG;
+        try {
+            ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), stack);
+            if(!magStack.isEmpty())
+            {
+                if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("light_magazine"))
+                    magModel = SpecialModels.COMBAT_RIFLE_LIGHT_MAG;
+                else
+                if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
+                    magModel = SpecialModels.COMBAT_RIFLE_EXT_MAG;
+            }
+        }
+        catch(Error ignored) {} catch(Exception ignored) {}
+
+        RenderUtil.renderModel(magModel.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.
         poseStack.popPose();
     }

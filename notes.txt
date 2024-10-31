@@ -1,15 +1,46 @@
-Add new attachment types (magazine, cosmetic)
 Add more attachments
     - Barrels: compensator, flash hider, extended barrel, tactical silencer
-    - Grips: angled, thumb, laser sight
-    - Magazines: extended, quick
+    - Grips: angled, thumb
     - Scopes: holo, 4x night vision, 8x, 16x
     - Stocks: skeleton, m16a2
+    - Cosmetic: ?
 Add items (night vision goggles, armor, melee weapons, more grenades)
 Add guns (CS2, rocket jumper, flamethrower)
 Add new materials for crafting
 Add reload animations and sounds
+Add extended and light magazine models and values to guns
+    - Assault Carbine
+        Extended + +
+        Light + +
+    - Combat Carbine
+        Extended + +
+        Light + +
+    - Tactical Pistol
+        Extended
+        Light
+    - Submachine Pistol
+        Extended
+        Light
+    - Light Sniper Rifle
+        Extended
+        Light
+    - Sniper Rifle
+        Extended
+        Light
 
-Overhaul gun models (add moving and removable parts)
+Overhaul gun models
+    - Assault Carbine +
+    - Combat Carbine +
+    - Tactical Pistol <---
+    - Submachine Pistol
+    - Automatic Shotgun
+    - Grenade Launcher
+    - Rocket Launcher
+    - Minigun
+    - Light Sniper Rifle
+    - Sniper Rifle
 Overhaul blood particles (check extra gore)
 Overhaul existing sounds
+Overhaul magazine data values
+
+Look into sound related code (bolt, cycle, etc.)

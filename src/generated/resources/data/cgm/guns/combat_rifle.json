@@ -13,20 +13,22 @@
     "burstCooldown": 6,
 
     "adsSpeed": 0.8,
-    "recoilAdsReduction": 0.75,
+    "recoilAdsReduction": 0.5,
     "spreadAdsReduction": 0.75,
 
     "recoilAngle": 2.0,
-    "recoilKick": 0.1,
+    "recoilKick": 0.15,
     "recoilDurationOffset": 0.0,
     "spread": 6.0,
 
-    "maxAmmo": 20,
+    "maxAmmo": 30,
+    "lightMagAmmo": 20,
+    "extendedMagAmmo": 45,
     "useMagReload": true,
     "reloadStartDelay": 0,
     "reloadEndDelay": 0,
-    "magReloadTime": 45,
-    "reloadRate": 45
+    "magReloadTime": 50,
+    "reloadRate": 50
   },
   "fireModes": {
     "useFireModes": true,
@@ -50,7 +52,8 @@
       "stock": {
         "yOffset": 3.6,
         "zOffset": 8.2
-      }
+      },
+      "magazine": {}
     },
     "zoom": {
       "fovModifier": 0.75,
@@ -64,7 +67,7 @@
     "speed": 20.0,
     "life": 10,
 
-    "headshotMultiplierOverride": 2.0,
+    "headshotMultiplierOverride": 2.2,
 
     "armorBypass": 0.5,
     "protectionBypass": 0.5,

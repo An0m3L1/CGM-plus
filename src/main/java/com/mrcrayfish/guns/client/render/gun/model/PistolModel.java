@@ -1,10 +1,11 @@
 package com.mrcrayfish.guns.client.render.gun.model;
 
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mrcrayfish.guns.client.SpecialModels;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.GunModel;
-import com.mrcrayfish.guns.client.ExpandedModelComponents;
+import com.mrcrayfish.guns.client.SpecialModels;
 import com.mrcrayfish.guns.client.render.gun.IOverrideModel;
 import com.mrcrayfish.guns.client.util.GunAnimationHelper;
 import com.mrcrayfish.guns.client.util.RenderUtil;
@@ -39,7 +40,7 @@ public class PistolModel implements IOverrideModel
     public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
     {
 		// Render the item's BakedModel, which will serve as the core of our custom model.
-        BakedModel bakedModel = ExpandedModelComponents.PISTOL_BASE.getModel();
+        BakedModel bakedModel = SpecialModels.PISTOL_BASE.getModel();
         Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, buffer, light, overlay, GunModel.wrap(bakedModel));
 
 		// Render the top rail element that appears when a scope is attached.
@@ -110,7 +111,7 @@ public class PistolModel implements IOverrideModel
         if(isPlayer)
         poseStack.translate(0, 0, slideTranslations.z * 0.0625);
 		// Render the transformed model.
-        RenderUtil.renderModel(ExpandedModelComponents.PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        RenderUtil.renderModel(SpecialModels.PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
 		// Pop pose to compile everything in the render matrix.
         poseStack.popPose();
         
@@ -125,13 +126,13 @@ public class PistolModel implements IOverrideModel
                GunAnimationHelper.rotateAroundOffset(poseStack, magRotations, magRotOffset);
     	}
 		// Render the transformed model.
-        ExpandedModelComponents magModel = ExpandedModelComponents.PISTOL_MAGAZINE;
+        SpecialModels magModel = SpecialModels.PISTOL_MAG;
         try {
         	ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), stack);
             if(!magStack.isEmpty())
             {
 	            if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
-			    	magModel = ExpandedModelComponents.PISTOL_EXTENDED_MAG;
+			    	magModel = SpecialModels.PISTOL_EXT_MAG;
             }
 		}
 		catch(Error ignored) {} catch(Exception ignored) {}

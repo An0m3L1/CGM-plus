@@ -44,7 +44,8 @@
       "underBarrel": {
         "yOffset": 2.63,
         "zOffset": -0.5
-      }
+      },
+      "magazine": {}
     },
     "zoom": {
       "fovModifier": 0.6,

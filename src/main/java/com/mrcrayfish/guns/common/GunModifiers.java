@@ -108,7 +108,7 @@ public class GunModifiers
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.8F;}
     };
 
-    /* Grips*/
+    /* Grips */
     public static final IGunModifier LIGHT_GRIP = new IGunModifier() {
         @Override
         public float recoilModifier()

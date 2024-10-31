@@ -35,16 +35,22 @@ public enum SpecialModels
     ASSAULT_RIFLE_MAG("assault_rifle/mag"),
     ASSAULT_RIFLE_SIGHTS("assault_rifle/sights"),
     ASSAULT_RIFLE_NO_SIGHTS("assault_rifle/no_sights"),
+    ASSAULT_RIFLE_LIGHT_MAG("assault_rifle/light_mag"),
+    ASSAULT_RIFLE_EXT_MAG("assault_rifle/ext_mag"),
 
     COMBAT_RIFLE_BASE("combat_rifle/base"),
     COMBAT_RIFLE_NO_STOCK("combat_rifle/no_stock"),
     COMBAT_RIFLE_MAG("combat_rifle/mag"),
     COMBAT_RIFLE_SIGHTS("combat_rifle/sights"),
     COMBAT_RIFLE_NO_SIGHTS("combat_rifle/no_sights"),
+    COMBAT_RIFLE_LIGHT_MAG("combat_rifle/light_mag"),
+    COMBAT_RIFLE_EXT_MAG("combat_rifle/ext_mag"),
 
-    PISTOL_BASE("pistol/pistol_base"),
-    PISTOL_SLIDE("pistol/pistol_slide"),
-    PISTOL_MOUNT("pistol/pistol_mount");
+    PISTOL_BASE("pistol/base"),
+    PISTOL_SLIDE("pistol/slide"),
+    PISTOL_MOUNT("pistol/mount"),
+    PISTOL_MAG("pistol/mag"),
+    PISTOL_EXT_MAG("pistol/ext_mag");
 
     /**
      * The location of an item model in the [MOD_ID]/models/special/[NAME] folder

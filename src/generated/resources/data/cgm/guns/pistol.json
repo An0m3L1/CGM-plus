@@ -35,7 +35,8 @@
         "scale": 0.75,
         "yOffset": 3.7,
         "zOffset": 6.0
-      }
+      },
+      "magazine": {}
     },
     "zoom": {
       "fovModifier": 0.7,

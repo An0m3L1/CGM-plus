@@ -30,7 +30,8 @@
       "scope": {
         "yOffset": 4.0,
         "zOffset": 5.5
-      }
+      },
+      "magazine": {}
     },
     "zoom": {
       "fovModifier": 0.8,

@@ -75,7 +75,7 @@
 			"to": [8.6, 3.7, 12.9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 7.95]},
 			"faces": {
-				"east": {"uv": [8.285, 2, 4, 3], "texture": "#1", "tintindex": 0},
+				"east": {"uv": [7.885, 2, 4.12, 3], "texture": "#1", "tintindex": 0},
 				"south": {"uv": [1, 0, 3, 1], "texture": "#1", "tintindex": 0}
 			}
 		},
@@ -84,7 +84,7 @@
 			"to": [8.6, 3.425, 16.15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 7.95]},
 			"faces": {
-				"east": {"uv": [14, 2.58, 4, 4], "texture": "#1", "tintindex": 0}
+				"east": {"uv": [14, 2.58, 4.12, 4], "texture": "#1", "tintindex": 0}
 			}
 		},
 		{
@@ -109,7 +109,7 @@
 			"to": [7.45, 3.7, 16.15],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 8, 7.95]},
 			"faces": {
-				"west": {"uv": [4, 2, 14, 4], "texture": "#1", "tintindex": 0}
+				"west": {"uv": [4.12, 2, 14, 4], "texture": "#1", "tintindex": 0}
 			}
 		},
 		{
@@ -212,19 +212,22 @@
 	],
 	"groups": [
 		{
-			"name": "Slide",
+			"name": "pistol",
 			"origin": [8, 8, 8],
 			"color": 0,
+			"nbt": "{}",
 			"children": [
 				{
 					"name": "moving",
 					"origin": [8, 7.7, 8.25],
 					"color": 0,
+					"nbt": "{}",
 					"children": [
 						{
 							"name": "rear_sight",
 							"origin": [8, 7.7, 8.25],
 							"color": 0,
+							"nbt": "{}",
 							"children": [0, 1, 2]
 						},
 						3,
@@ -232,6 +235,7 @@
 							"name": "slide",
 							"origin": [8, 8, 7.95],
 							"color": 0,
+							"nbt": "{}",
 							"children": [4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20]
 						}
 					]

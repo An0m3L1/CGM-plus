@@ -1,0 +1,4 @@
+{
+	"note": "Uses the original model as its parent for backwards compatibility.",
+	"parent": "cgm:special/gun/pistol"
+}

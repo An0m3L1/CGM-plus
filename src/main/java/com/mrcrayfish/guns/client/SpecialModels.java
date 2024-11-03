@@ -46,6 +46,8 @@ public enum SpecialModels
     COMBAT_RIFLE_LIGHT_MAG("combat_rifle/light_mag"),
     COMBAT_RIFLE_EXT_MAG("combat_rifle/ext_mag"),
 
+    HEAVY_RIFLE_BASE("heavy_rifle/base"),
+
     PISTOL_BASE("pistol/base"),
     PISTOL_SLIDE("pistol/slide"),
     PISTOL_MOUNT("pistol/mount"),

@@ -38,7 +38,7 @@ Overhaul gun models
     - Rocket Launcher
     - Minigun
     - Light Sniper Rifle
-    - Sniper Rifle
+    - Sniper Rifle <---
 Overhaul blood particles (check extra gore)
 Overhaul existing sounds
 Overhaul magazine data values

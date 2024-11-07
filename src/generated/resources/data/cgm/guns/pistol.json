@@ -20,9 +20,15 @@
     "spread": 3.0,
 
     "maxAmmo": 12,
+    "lightMagAmmo": 8,
+    "extendedMagAmmo": 16,
     "useMagReload": true,
-    "magReloadTime": 30,
-    "reloadRate": 30
+    "magReloadTime": 35,
+    "reloadRate": 35,
+    "reloadStartDelay": 0,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 1,
+    "reloadAllowedCooldown": 0.0
   },
   "modules": {
     "attachments": {
@@ -30,11 +36,6 @@
         "scale": 0.5,
         "yOffset": 3.3,
         "zOffset": 2.65
-      },
-      "scope": {
-        "scale": 0.75,
-        "yOffset": 3.7,
-        "zOffset": 6.0
       },
       "magazine": {}
     },
@@ -63,9 +64,18 @@
     "item": "cgm:basic_bullet"
   },
   "sounds": {
-    "cock": "cgm:item.pistol.cock",
     "fire": "cgm:item.pistol.fire",
     "reload": "cgm:item.pistol.reload",
+    "reloadFrames": 29,
+    "reloadClipOut": "cgm:item.pistol.mag_out",
+    "reloadClipOutThreshold": 3.5,
+    "reloadClipIn": "cgm:item.pistol.mag_in",
+    "reloadClipInThreshold": 13.1,
+    "reloadMid": "cgm:item.pistol.slide_back",
+    "reloadMidThreshold": 20.9,
+    "reloadLate": "cgm:item.pistol.slide_forward",
+    "reloadLateThreshold": 23.5,
+    "cock": "cgm:item.pistol.cock",
     "silencedFire": "cgm:item.pistol.silenced_fire"
   }
 }

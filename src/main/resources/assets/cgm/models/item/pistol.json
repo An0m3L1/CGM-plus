@@ -7,16 +7,16 @@
 			"scale": [1.2, 1.2, 1.2]
 		},
 		"firstperson_righthand": {
-			"translation": [-5.0, 8.5, -2.0],
+			"translation": [-6.5, 8.5, -2.0],
 			"scale": [0.8, 0.8, 0.8]
 		},
 		"ground": {
-			"translation": [0, 5, -5.75]
+			"translation": [0, 4.75, -5.75]
 		},
 		"gui": {
-			"rotation": [30, 225, 0],
-			"translation": [7.5, 5, 0],
-			"scale": [1.8, 1.8, 1.8]
+			"rotation": [90, 45, -90],
+			"translation": [-0.25, 11.25, 0],
+			"scale": [1.5, 1.5, 1.5]
 		},
 		"fixed": {
 			"rotation": [0, 90, 0],

@@ -50,7 +50,6 @@ public enum SpecialModels
 
     PISTOL_BASE("pistol/base"),
     PISTOL_SLIDE("pistol/slide"),
-    PISTOL_MOUNT("pistol/mount"),
     PISTOL_MAG("pistol/mag"),
     PISTOL_EXT_MAG("pistol/ext_mag");
 

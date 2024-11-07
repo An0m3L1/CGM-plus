@@ -16,8 +16,8 @@ Add extended and light magazine models and values to guns
         Extended + +
         Light + +
     - Tactical Pistol
-        Extended
-        Light
+        Extended + +
+        Light + +
     - Submachine Pistol
         Extended
         Light
@@ -28,19 +28,16 @@ Add extended and light magazine models and values to guns
         Extended
         Light
 
-Overhaul gun models
+Overhaul guns
     - Assault Carbine +
     - Combat Carbine +
-    - Tactical Pistol <---
+    - Tactical Pistol +
     - Submachine Pistol
     - Automatic Shotgun
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
     - Light Sniper Rifle
-    - Sniper Rifle <---
+    - Sniper Rifle
 Overhaul blood particles (check extra gore)
 Overhaul existing sounds
-Overhaul magazine data values
-
-Look into sound related code (bolt, cycle, etc.)

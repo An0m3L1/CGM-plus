@@ -619,9 +619,9 @@
 		},
 		{
 			"name": "Sights",
-			"from": [8, 5.895, 19],
-			"to": [8, 5.895, 19],
-			"rotation": {"angle": 0, "axis": "y", "origin": [0, -0.275, -18.275]},
+			"from": [8, 5.895, 19.5],
+			"to": [8, 5.895, 19.5],
+			"rotation": {"angle": 0, "axis": "y", "origin": [0, -0.275, -17.775]},
 			"color": 0,
 			"faces": {
 				"north": {"uv": [0, 0, 0, 0], "texture": "#missing"},

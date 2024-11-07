@@ -5,16 +5,6 @@
    "item.rifle.silenced_fire":          { "subtitle": "subtitle.cgm.fire.silenced",  "sounds": [{ "name": "cgm:item/rifle/silenced_fire", "volume": 0.5 }]},
    "item.rifle.cock":                   { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/rifle/cock" }]},
    "item.rifle.reload":                 { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/rifle/reload" }]},
-   "item.pistol.fire":                  { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/pistol/fire", "volume": 0.5 }]},
-   "item.pistol.silenced_fire":         { "subtitle": "subtitle.cgm.fire.silenced",  "sounds": [{ "name": "cgm:item/pistol/silenced_fire", "volume": 0.5 }]},
-   "item.pistol.reload":                { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/pistol/reload" }]},
-   "item.pistol.cock":                  { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/pistol/cock" }]},
-   "item.assault_rifle.fire":           { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/assault_rifle/fire", "volume": 0.5 }]},
-   "item.assault_rifle.silenced_fire":  { "subtitle": "subtitle.cgm.fire.silenced",  "sounds": [{ "name": "cgm:item/assault_rifle/silenced_fire", "volume": 0.5 }]},
-   "item.assault_rifle.reload_start":   { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/assault_rifle/reload_start" }]},
-   "item.assault_rifle.reload_middle":  { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/assault_rifle/reload_middle" }]},
-   "item.assault_rifle.reload_end":     { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/assault_rifle/reload_end" }]},
-   "item.assault_rifle.select":         { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/assault_rifle/select" }]},
    "item.grenade_launcher.fire":        { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/grenade_launcher/fire", "volume": 0.5 }]},
    "item.grenade_launcher.reload":      { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/grenade_launcher/reload" }]},
    "item.grenade_launcher.cock":        { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/grenade_launcher/cock" }]},
@@ -34,30 +24,17 @@
    "item.empty_click":                  { "subtitle": "subtitle.cgm.empty",          "sounds": [{ "name": "cgm:item/empty_click" }]},
    "item.fire_switch":                  { "subtitle": "subtitle.cgm.switch",         "sounds": [{ "name": "cgm:item/fire_switch" }]},
    "ui.weapon.attach":                  { "subtitle": "subtitle.cgm.attach",         "sounds": [{ "name": "cgm:ui/weapon/attach" }]},
-   
-   
 
-	"item.pistol.mag_out": {
-		"sounds": [{"name":"cgm:item/pistol/mag_out"}]
-	},
-	"item.pistol.mag_in": {
-		"subtitle":"subtitle.cgm.reload",
-		"sounds": [{"name":"cgm:item/pistol/mag_in"}]
-	},
-	"item.pistol.slide_back": {
-		"subtitle":"subtitle.cgm.cock",
-		"sounds": [{"name":"cgm:item/pistol/slide_back"}]
-	},
-	"item.pistol.slide_forward": {
-		"sounds": [{"name":"cgm:item/pistol/slide_forward"}]
-	},
-	
-	
-	"item.assault_rifle.mag_out": {
-		"sounds": [{"name":"cgm:item/assault_rifle/mag_out"}]
-	},
-	"item.assault_rifle.mag_in": {
-		"subtitle":"subtitle.cgm.reload",
-		"sounds": [{"name":"cgm:item/assault_rifle/mag_in"}]
-	}
+   "item.pistol.fire":                  {"subtitle":"subtitle.cgm.fire",             "sounds": [{ "name": "cgm:item/pistol/fire", "volume": 0.5 }]},
+   "item.pistol.silenced_fire":         {"subtitle":"subtitle.cgm.fire.silenced",    "sounds": [{ "name":"cgm:item/pistol/silenced_fire", "volume": 0.5}]},
+   "item.pistol.mag_out":                                                           {"sounds": [{"name":"cgm:item/pistol/mag_out"}]},
+   "item.pistol.mag_in":                {"subtitle":"subtitle.cgm.reload",           "sounds": [{"name":"cgm:item/pistol/mag_in"}]},
+   "item.pistol.slide_back":            {"subtitle":"subtitle.cgm.cock",             "sounds": [{"name":"cgm:item/pistol/slide_back"}]},
+   "item.pistol.slide_forward":                                                     {"sounds": [{"name":"cgm:item/pistol/slide_forward"}]},
+
+   "item.assault_rifle.fire":           {"subtitle":"subtitle.cgm.fire",             "sounds": [{"name":"cgm:item/assault_rifle/fire", "volume": 0.5}]},
+   "item.assault_rifle.silenced_fire":  {"subtitle":"subtitle.cgm.fire.silenced",    "sounds": [{"name":"cgm:item/assault_rifle/silenced_fire", "volume": 0.5}]},
+   "item.assault_rifle.mag_out":                                                    {"sounds": [{"name":"cgm:item/assault_rifle/mag_out"}]},
+   "item.assault_rifle.mag_in":         {"subtitle":"subtitle.cgm.reload",           "sounds": [{"name":"cgm:item/assault_rifle/mag_in"}]},
+   "item.assault_rifle.slap":           {"subtitle":"subtitle.cgm.cock",             "sounds": [{"name":"cgm:item/assault_rifle/slap"}]}
 }

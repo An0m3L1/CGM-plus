@@ -14,7 +14,7 @@
 
     "adsSpeed": 0.8,
     "recoilAdsReduction": 0.5,
-    "spreadAdsReduction": 0.75,
+    "spreadAdsReduction": 0.65,
 
     "recoilAngle": 2.0,
     "recoilKick": 0.15,
@@ -25,8 +25,8 @@
     "lightMagAmmo": 20,
     "extendedMagAmmo": 40,
     "useMagReload": true,
-    "magReloadTime": 50,
-    "reloadRate": 50,
+    "magReloadTime": 45,
+    "reloadRate": 45,
     "reloadStartDelay": 0,
     "reloadInterruptDelay": 6,
     "reloadEndDelay": 6,
@@ -69,7 +69,7 @@
     "speed": 20.0,
     "life": 10,
 
-    "headshotMultiplierOverride": 2.2,
+    "headshotMultiplierOverride": 2.0,
 
     "armorBypass": 0.5,
     "protectionBypass": 0.5,
@@ -85,11 +85,11 @@
     "silencedFire": "cgm:item.assault_rifle.silenced_fire",
     "fireSwitch": "cgm:item.fire_switch",
 
-    "reloadClipOut": "cgm:item.assault_rifle.reload_start",
+    "reloadClipOut": "cgm:item.assault_rifle.mag_out",
     "reloadClipOutThreshold": 0.1,
-    "reloadClipIn": "cgm:item.assault_rifle.reload_middle",
+    "reloadClipIn": "cgm:item.assault_rifle.mag_in",
     "reloadClipInThreshold": 0.5,
-    "reloadLate": "cgm:item.assault_rifle.reload_end",
+    "reloadLate": "cgm:item.assault_rifle.slap",
     "reloadLateThreshold": 0.8
   }
 }

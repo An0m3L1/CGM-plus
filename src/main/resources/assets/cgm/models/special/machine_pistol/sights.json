@@ -1,0 +1,66 @@
+{
+	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"1": "cgm:items/machine_pistol",
+		"particle": "cgm:items/machine_pistol"
+	},
+	"elements": [
+		{
+			"from": [7.845, 3.925, 16.515],
+			"to": [7.855, 4.175, 16.765],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.6, 4.2, 16.275]},
+			"faces": {
+				"east": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"}
+			}
+		},
+		{
+			"from": [8.145, 3.925, 16.515],
+			"to": [8.155, 4.175, 16.765],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.9, 4.2, 16.275]},
+			"faces": {
+				"east": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"}
+			}
+		},
+		{
+			"from": [7.75, 3.935, 16.765],
+			"to": [7.95, 4.175, 16.775],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.75, 4.175, 16.775]},
+			"faces": {
+				"north": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"south": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"}
+			}
+		},
+		{
+			"from": [8.05, 3.935, 16.765],
+			"to": [8.25, 4.175, 16.775],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8.1, 4.175, 16.775]},
+			"faces": {
+				"north": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"south": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"}
+			}
+		},
+		{
+			"from": [7.75, 3.683, 14.275],
+			"to": [8.25, 3.943, 16.776],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.75, 4.175, 16.025]},
+			"faces": {
+				"north": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"east": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"south": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"up": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Sights",
+			"origin": [7.75, 4.175, 16.025],
+			"color": 0,
+			"children": [0, 1, 2, 3, 4]
+		}
+	]
+}

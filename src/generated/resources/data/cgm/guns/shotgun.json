@@ -46,8 +46,8 @@
     "damage": 16.0,
     "damageReduceOverLife": true,
     "size": 0.5,
-    "speed": 20.0,
-    "life": 5,
+    "speed": 40.0,
+    "life": 3,
 
     "headshotMultiplierOverride": 1.0,
     "headshotExtraDamage": 1.0,

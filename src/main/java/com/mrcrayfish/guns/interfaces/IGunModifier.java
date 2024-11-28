@@ -172,8 +172,7 @@ public interface IGunModifier
      * @param scale the current scale
      * @return the new scale for the muzzle flash
      */
-    default double modifyMuzzleFlashScale(double scale)
-    {
+    default double modifyMuzzleFlashScale(double scale) {
         return scale;
     }
 
@@ -195,8 +194,7 @@ public interface IGunModifier
      * @param rate the current fire rate
      * @return the new fire rate
      */
-    default int modifyFireRate(int rate)
-    {
+    default int modifyFireRate(int rate) {
         return rate;
     }
 

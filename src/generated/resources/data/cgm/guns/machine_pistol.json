@@ -9,21 +9,33 @@
   "general": {
     "gripType": "cgm:pistol_custom",
     "auto": true,
-    "rate": 3,
+    "rate": 1,
 
     "adsSpeed": 1.2,
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 0.25,
 
-    "recoilAngle": 3.0,
-    "recoilKick": 0.75,
+    "recoilAngle": 2.5,
+    "recoilKick": 0.25,
     "recoilDurationOffset": 0.25,
-    "spread": 4.5,
+    "spread": 3.5,
 
-    "maxAmmo": 18,
+    "maxAmmo": 32,
+    "lightMagAmmo": 20,
+    "extendedMagAmmo": 50,
     "useMagReload": true,
-    "magReloadTime": 40,
-    "reloadRate": 40
+    "magReloadTime": 50,
+    "reloadRate": 50,
+    "reloadStartDelay": 0,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 1,
+    "reloadAllowedCooldown": 0.0
+  },
+  "fireModes": {
+    "useFireModes": true,
+    "hasSemiMode": true,
+    "hasAutoMode": true,
+    "hasBurstMode": false
   },
   "modules": {
     "attachments": {
@@ -40,26 +52,35 @@
     }
   },
   "projectile": {
-    "damage": 5.0,
+    "damage": 4.0,
     "damageReduceOverLife": true,
     "size": 0.1,
-    "speed": 20.0,
-    "life": 5,
+    "speed": 40.0,
+    "life": 3,
 
     "headshotMultiplierOverride": 2.0,
 
-    "armorBypass": 0.5,
+    "armorBypass": 0.25,
     "protectionBypass": 0.25,
 
-    "maxPierceCount": 5,
-    "pierceDamagePenalty": 0.2,
-    "pierceDamageMaxPenalty": 0.8,
+    "maxPierceCount": 2,
+    "pierceDamagePenalty": 0.5,
+    "pierceDamageMaxPenalty": 0.5,
 
     "item": "cgm:basic_bullet"
   },
   "sounds": {
-    "cock": "cgm:item.machine_pistol.cock",
     "fire": "cgm:item.machine_pistol.fire",
-    "reload": "cgm:item.machine_pistol.reload"
+    "fireSwitch": "cgm:item.fire_switch",
+
+    "reloadFrames": 29,
+    "reloadClipOut": "cgm:item.machine_pistol.mag_out",
+    "reloadClipOutThreshold": 3.5,
+    "reloadClipIn": "cgm:item.machine_pistol.mag_in",
+    "reloadClipInThreshold": 13.1,
+    "reloadMid": "cgm:item.machine_pistol.slide_back",
+    "reloadMidThreshold": 20.9,
+    "reloadLate": "cgm:item.machine_pistol.slide_forward",
+    "reloadLateThreshold": 23.5
   }
 }

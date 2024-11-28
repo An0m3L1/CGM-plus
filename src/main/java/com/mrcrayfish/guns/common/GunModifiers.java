@@ -150,7 +150,23 @@ public class GunModifiers
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
     };
 
-    //Old modifiers kept for compatibility reasons
+    /* Magazines */
+    public static final IGunModifier LIGHT_MAG = new IGunModifier()
+    {
+        @Override
+        public double modifyAimDownSightSpeed(double speed)
+        {return speed * 1.1F;
+        }
+    };
+    public static final IGunModifier EXT_MAG = new IGunModifier()
+    {
+        @Override
+        public double modifyAimDownSightSpeed(double speed)
+        {return speed * 0.9F;
+        }
+    };
+
+    /* Old modifiers kept for compatibility reasons */
     public static final IGunModifier SILENCED = new IGunModifier() {
         @Override
         public boolean silencedFire()
@@ -325,7 +341,5 @@ public class GunModifiers
         }
     };
 
-    public static final IGunModifier NONE = new IGunModifier()
-    {
-    };
+    public static final IGunModifier NONE = new IGunModifier() {};
 }

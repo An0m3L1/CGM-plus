@@ -11,9 +11,6 @@
    "item.bazooka.fire":                 { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/bazooka/fire", "stream": true, "volume": 0.5 }]},
    "item.bazooka.reload":               { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/bazooka/reload" }]},
    "item.mini_gun.fire":                { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/mini_gun/fire", "volume": 0.5 }]},
-   "item.machine_pistol.fire":          { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/machine_pistol/fire", "volume": 0.5 }]},
-   "item.machine_pistol.reload":        { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/machine_pistol/reload" }]},
-   "item.machine_pistol.cock":          { "subtitle": "subtitle.cgm.cock",           "sounds": [{ "name": "cgm:item/machine_pistol/cock" }]},
    "item.heavy_rifle.fire":             { "subtitle": "subtitle.cgm.fire",           "sounds": [{ "name": "cgm:item/heavy_rifle/fire", "volume": 0.5 }]},
    "item.heavy_rifle.silenced_fire":    { "subtitle": "subtitle.cgm.fire.silenced",  "sounds": [{ "name": "cgm:item/heavy_rifle/silenced_fire", "volume": 0.5 }]},
    "item.heavy_rifle.reload":           { "subtitle": "subtitle.cgm.reload",         "sounds": [{ "name": "cgm:item/heavy_rifle/reload" }]},
@@ -31,6 +28,12 @@
    "item.pistol.mag_in":                {"subtitle":"subtitle.cgm.reload",           "sounds": [{"name":"cgm:item/pistol/mag_in"}]},
    "item.pistol.slide_back":            {"subtitle":"subtitle.cgm.cock",             "sounds": [{"name":"cgm:item/pistol/slide_back"}]},
    "item.pistol.slide_forward":                                                     {"sounds": [{"name":"cgm:item/pistol/slide_forward"}]},
+
+   "item.machine_pistol.fire":          {"subtitle":"subtitle.cgm.fire",             "sounds": [{ "name": "cgm:item/machine_pistol/fire", "volume": 0.5 }]},
+   "item.machine_pistol.mag_out":                                                   {"sounds": [{"name":"cgm:item/machine_pistol/mag_out"}]},
+   "item.machine_pistol.mag_in":        {"subtitle":"subtitle.cgm.reload",           "sounds": [{"name":"cgm:item/machine_pistol/mag_in"}]},
+   "item.machine_pistol.slide_back":    {"subtitle":"subtitle.cgm.cock",             "sounds": [{"name":"cgm:item/machine_pistol/slide_back"}]},
+   "item.machine_pistol.slide_forward":                                             {"sounds": [{"name":"cgm:item/machine_pistol/slide_forward"}]},
 
    "item.assault_rifle.fire":           {"subtitle":"subtitle.cgm.fire",             "sounds": [{"name":"cgm:item/assault_rifle/fire", "volume": 0.5}]},
    "item.assault_rifle.silenced_fire":  {"subtitle":"subtitle.cgm.fire.silenced",    "sounds": [{"name":"cgm:item/assault_rifle/silenced_fire", "volume": 0.5}]},

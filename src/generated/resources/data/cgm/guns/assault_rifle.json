@@ -70,10 +70,10 @@
   "projectile": {
     "damage": 5.0,
     "size": 0.1,
-    "speed": 20.0,
+    "speed": 40.0,
     "life": 10,
 
-    "headshotMultiplierOverride": 2.0,
+    "headshotMultiplierOverride": 2.2,
 
     "armorBypass": 0.5,
     "protectionBypass": 0.5,

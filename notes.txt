@@ -1,43 +1,33 @@
 Add more attachments
     - Barrels: compensator, flash hider, extended barrel, tactical silencer
     - Grips: angled, thumb
-    - Scopes: holo, 4x night vision, 8x, 16x
-    - Stocks: skeleton, m16a2
-    - Cosmetic: ?
-Add items (night vision goggles, armor, melee weapons, more grenades)
-Add guns (CS2, rocket jumper, flamethrower)
+    - Scopes: holo, 8x
+    - Stocks: skeleton, m16a2, scar, solid
+    - Cosmetic
+Add content
+    - Armor: night vision, vests, helmets, knee-pads, pants, boots, gas masks, balaclavas, caps
+        Rework vanilla armor
+    - Melee: katana, hammer, sledgehammer, baseball bat (wooden and iron), tactical knives, machete, cleaver, sword, longsword, spear, ballistic shield,
+        Rework vanilla weapons and tools
+    - Explosives: molotov, smoke (colors), gas, mine, c4
+    - Blocks: ammo crate, weapon rack, barbed wire, barricade, rubble, sandbag, barrel
+    - Items: ammo box (storage for ammo)
+Add guns
+    See new_guns.txt
 Add new materials for crafting
-Add reload animations and sounds
 Add extended and light magazine models and values to guns
-    - Assault Carbine
-        Extended + +
-        Light + +
-    - Combat Carbine
-        Extended + +
-        Light + +
-    - Tactical Pistol
-        Extended + +
-        Light + +
-    - Submachine Pistol
-        Extended
-        Light
     - Light Sniper Rifle
         Extended
         Light
     - Sniper Rifle
         Extended
         Light
-
 Overhaul guns
-    - Assault Carbine +
-    - Combat Carbine +
-    - Tactical Pistol +
-    - Submachine Pistol
+    - Assault and Combat Rifle (animations)
     - Automatic Shotgun
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-    - Light Sniper Rifle
+    - Tactical Sniper Rifle
     - Sniper Rifle
 Overhaul blood particles (check extra gore)
-Overhaul existing sounds

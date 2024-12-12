@@ -35,17 +35,22 @@ public class GunModifiers
             return true;
         }
         @Override
-        public double modifyMuzzleFlashScale(double scale) {return 0.25f;}
+        public double modifyMuzzleFlashScale(double scale) {return 0.5f;}
         @Override
         public double modifyFireSoundRadius(double radius)
         {
-            return radius * 0.25;
+            return radius * 0.5;
         }
 
         @Override
         public float recoilModifier()
         {
-            return 1.10F;
+            return 1.15F;
+        }
+        @Override
+        public float kickModifier()
+        {
+            return 1.075F;
         }
 
         @Override
@@ -128,7 +133,7 @@ public class GunModifiers
 
         @Override
         public double modifyAimDownSightSpeed(double speed) {
-            return speed * 1.1F;
+            return speed * 0.95F;
         }
     };
     public static final IGunModifier SPECIALISED_GRIP = new IGunModifier() {
@@ -154,16 +159,12 @@ public class GunModifiers
     public static final IGunModifier LIGHT_MAG = new IGunModifier()
     {
         @Override
-        public double modifyAimDownSightSpeed(double speed)
-        {return speed * 1.1F;
-        }
+        public double modifyAimDownSightSpeed(double speed) {return speed * 1.1F;}
     };
     public static final IGunModifier EXT_MAG = new IGunModifier()
     {
         @Override
-        public double modifyAimDownSightSpeed(double speed)
-        {return speed * 0.9F;
-        }
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
     };
 
     /* Old modifiers kept for compatibility reasons */

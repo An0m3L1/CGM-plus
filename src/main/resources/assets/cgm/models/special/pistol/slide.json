@@ -402,12 +402,30 @@
 			}
 		},
 		{
-			"name": "Lit",
+			"name": "Emissive",
 			"from": [7.95, 3.65, 11],
 			"to": [8.05, 3.75, 11.01],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.75, 3.85, 11]},
 			"faces": {
 				"north": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15},
+				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15}
+			}
+		},
+		{
+			"name": "Emissive",
+			"from": [7.825, 3.675, 16.001],
+			"to": [7.875, 3.725, 16.011],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.6, 3.85, 16]},
+			"faces": {
+				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15}
+			}
+		},
+		{
+			"name": "Emissive",
+			"from": [8.125, 3.675, 16.001],
+			"to": [8.175, 3.725, 16.011],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.9, 3.85, 16]},
+			"faces": {
 				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15}
 			}
 		}
@@ -450,6 +468,8 @@
 				}
 			]
 		},
-		34
+		34,
+		35,
+		36
 	]
 }

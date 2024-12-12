@@ -102,12 +102,12 @@ jar {
     manifest {
         attributes([
                 "Specification-Title": "Gun Mod",
-                "Specification-Vendor": "MrCrayfish",
+                "Specification-Vendor": "An0m3L1",
                 "Specification-Version": "1",
                 "Implementation-Title": "Gun Mod",
                 "Implementation-Version": project.version,
-                "Implementation-Vendor" : "MrCrayfish",
-                "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ"),
+                "Implementation-Vendor" : "An0m3L1",
+                "Implementation-Timestamp": new Date().format("yyyy-dd-MM'T'HH:mm:ssZ"),
                 "MixinConfigs": "cgm.mixins.json"
         ])
     }

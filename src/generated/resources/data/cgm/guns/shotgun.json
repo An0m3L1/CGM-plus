@@ -1,67 +1,64 @@
 {
-  "display": {
-    "flash": {
-      "yOffset": 3.6505,
-      "zOffset": -3.81
-    }
-  },
-  "general": {
+  "display": {"flash": {}},
+  "general":
+  {
     "gripType": "cgm:two_handed",
-    "auto": true,
-    "rate": 7,
+    "auto": false,
+    "rate": 5,
 
-    "adsSpeed": 0.8,
-    "recoilAdsReduction": 0.75,
-    "spreadAdsReduction": 0.25,
+    "adsSpeed": 1.0,
+    "recoilAdsReduction": 0.5,
+    "spreadAdsReduction": 0.0,
 
-    "recoilAngle": 5.0,
-    "recoilKick": 1.0,
-    "recoilDurationOffset": 0.25,
-    "spread": 5.5,
+    "recoilAngle": 6.0,
+    "recoilKick": 1.25,
+    "recoilDurationOffset": 0.0,
+    "spread": 3.0,
+    "useShotgunSpread": true,
     "alwaysSpread": true,
 
     "maxAmmo": 7,
     "projectileAmount": 8,
+
     "reloadAmount": 1,
-    "reloadRate": 11
+    "reloadRate": 11,
+    "reloadStartDelay": 3,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 3,
+    "reloadAllowedCooldown": 0.0
   },
-  "modules": {
-    "attachments": {
-      "scope": {
-        "yOffset": 4.4,
-        "zOffset": 4.0
-      },
-      "stock": {
-        "yOffset": 3.6506,
-        "zOffset": 8.4
-      }
+  "modules":
+  {
+    "attachments":
+    {
+      "scope": {},
+      "underBarrel": {},
+      "stock": {}
     },
-    "zoom": {
-      "fovModifier": 0.7,
-      "yOffset": 5.1,
-      "zOffset": 3.2
-    }
+    "zoom": {"fovModifier": 0.8}
   },
-  "projectile": {
-    "damage": 16.0,
+  "projectile":
+  {
+    "item": "cgm:shell",
+    "damage": 12.0,
     "damageReduceOverLife": true,
-    "size": 0.5,
-    "speed": 40.0,
+    "maxRangeDamageMultiplier": 0.5,
+    "headshotMultiplierOverride": 2.0,
+
+    "size": 1.0,
+    "speed": 30.0,
     "life": 3,
+    "trailLengthMultiplier": 5.0,
 
-    "headshotMultiplierOverride": 1.0,
-    "headshotExtraDamage": 1.0,
-
-    "armorBypass": 0.5,
+    "armorBypass": 0.25,
     "protectionBypass": 0.25,
 
-    "maxPierceCount": 4,
+    "maxPierceCount": 3,
     "pierceDamagePenalty": 0.25,
-    "pierceDamageMaxPenalty": 0.5,
-
-    "item": "cgm:shell"
+    "pierceDamageMaxPenalty": 0.75
   },
-  "sounds": {
+  "sounds":
+  {
     "fire": "cgm:item.shotgun.fire",
     "reload": "cgm:item.shotgun.reload"
   }

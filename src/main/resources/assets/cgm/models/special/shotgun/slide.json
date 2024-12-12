@@ -1,0 +1,23 @@
+{
+	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"1": "cgm:items/shotgun",
+		"particle": "cgm:items/shotgun"
+	},
+	"elements": [
+		{
+			"from": [8.5, 3, 10.5],
+			"to": [9, 3.25, 10.75],
+			"rotation": {"angle": 0, "axis": "y", "origin": [9.1, 7.5, 6.3]},
+			"faces": {
+				"north": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"east": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"south": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"west": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"up": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"},
+				"down": {"uv": [0, 0, 0.5, 0.5], "texture": "#1"}
+			}
+		}
+	]
+}

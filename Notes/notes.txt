@@ -1,0 +1,51 @@
+Add more attachments
+    - Barrels: compensator, muzzle brake, flash hider, extended barrel, tactical silencer
+    - Grips: angled, thumb
+    - Scopes: holo, 8x
+        Add non-transparent scope lens to all scopes
+    - Stocks: skeleton, scar, solid
+    - Cosmetic
+Add content
+    - Guns: guns.txt
+    - Blocks: blocks.txt (separate mod)
+    - Armor: night vision, vests, helmets, knee-pads, pants, boots, gas masks, balaclavas, caps
+        Rework vanilla armor
+    - Melee: katana, hammer, sledgehammer, baseball bat (wooden and iron), tactical knives, machete, cleaver, sword, longsword, spear, ballistic shield
+        Rework vanilla weapons and tools
+    - Grenades: molotov, smoke (colors), gas, mine, c4
+Add new materials for crafting
+Add integration with Create
+Add values to guns
+    - Ramp up for minigun
+Add bullet tracers
+Add tooltips
+    - Light Magazine
+    - Extended Magazine
+    - Frag Grenade (damage)
+Add backpack skins
+Add magazine models, capacity and reload speed values to guns
+    - Light Sniper Rifle
+    - Sniper Rifle
+Overhaul items (models, textures, stats)
+    - Assault Rifle and Combat Rifle
+        Drum mag
+        Bolt
+    - Pistol
+        Textures
+        Inner barrel
+    - Automatic Pistol
+        Bolt
+    - Semi-Auto Shotgun <--
+    - Grenade Launcher
+    - Rocket Launcher
+    - Minigun
+    - Tactical Sniper Rifle
+    - Sniper Rifle
+    - Frag Grenade
+    - Flashbang Grenade
+    - Rocket
+    - Gun Table
+Overhaul blood particles (check extra gore)
+Overhaul glow sights to have fixed color
+Find out how to restrict attachments (look into jeg)
+    - No light mag on pistol

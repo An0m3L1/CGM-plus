@@ -140,7 +140,8 @@ public class ClientHandler
         //ModelOverrides.register(ModItems.PISTOL.get(), new SimpleModel(SpecialModels.PISTOL::getModel));
         ModelOverrides.register(ModItems.PISTOL.get(), new PistolModel());
         ModelOverrides.register(ModItems.RIFLE.get(), new SimpleModel(SpecialModels.RIFLE::getModel));
-        ModelOverrides.register(ModItems.SHOTGUN.get(), new SimpleModel(SpecialModels.SHOTGUN::getModel));
+        //ModelOverrides.register(ModItems.SHOTGUN.get(), new SimpleModel(SpecialModels.SHOTGUN::getModel));
+        ModelOverrides.register(ModItems.SHOTGUN.get(), new ShotgunModel());
     }
 
     private static void registerScreenFactories()

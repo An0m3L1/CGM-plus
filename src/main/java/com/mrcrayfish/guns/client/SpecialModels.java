@@ -59,7 +59,12 @@ public enum SpecialModels
     MACHINE_PISTOL_SIGHTS("machine_pistol/sights"),
     MACHINE_PISTOL_NO_SIGHTS("machine_pistol/no_sights"),
     MACHINE_PISTOL_LIGHT_MAG("machine_pistol/light_mag"),
-    MACHINE_PISTOL_EXT_MAG("machine_pistol/ext_mag");
+    MACHINE_PISTOL_EXT_MAG("machine_pistol/ext_mag"),
+
+    SHOTGUN_BASE("shotgun/base"),
+    SHOTGUN_HANDLE("shotgun/handle"),
+    SHOTGUN_NO_HANDLE("shotgun/no_handle"),
+    SHOTGUN_SLIDE("shotgun/slide");
 
     /**
      * The location of an item model in the [MOD_ID]/models/special/[NAME] folder

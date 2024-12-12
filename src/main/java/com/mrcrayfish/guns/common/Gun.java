@@ -636,12 +636,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          */
         public int getBurstCooldown()
         {
-        	/*if (burstCooldown<0)
-        	{
-        		int defaultBurstCooldown = (isAuto() ? 3 : 1 );
-        		return defaultBurstCooldown;
-        	}*/
-        	
             return this.burstCooldown;
         }
 
@@ -654,7 +648,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The default color of the gun without dyes
+         * @return The default color of the gun without dyes.
          * A value of -1 indicates no default color override,
          * in which case the standard white color will be used.
          */
@@ -706,7 +700,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         {
             return this.infiniteAmmo;
         }
-
 
         /**
          * @return The amount of ammo to add to the weapon each reload cycle
@@ -883,7 +876,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The speed of magazine reloads in ticks. The lower the value, shorter the reload time.
+         * @return The maximum amount of energy this weapon can hold
          */
         public int getEnergyCapacity()
         {
@@ -891,7 +884,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The speed of magazine reloads in ticks. The lower the value, shorter the reload time.
+         * @return The amount of energy consumed per shot.
          */
         public int getEnergyPerShot()
         {
@@ -1004,7 +997,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return Whether the gun has the Ramp Up effect.
+         * @return How many shots are required to reach maximum firing rate.
          */
         public int getRampUpShotsNeeded()
         {

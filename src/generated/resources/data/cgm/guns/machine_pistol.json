@@ -1,12 +1,7 @@
 {
-  "display": {
-    "flash": {
-      "size": 0.35,
-      "yOffset": 3.5,
-      "zOffset": 1.79
-    }
-  },
-  "general": {
+  "display": {"flash": {}},
+  "general":
+  {
     "gripType": "cgm:pistol_custom",
     "auto": true,
     "rate": 1,
@@ -15,61 +10,64 @@
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 0.25,
 
-    "recoilAngle": 2.5,
+    "recoilAngle": 1.5,
     "recoilKick": 0.25,
-    "recoilDurationOffset": 0.25,
+    "recoilDurationOffset": 0.0,
     "spread": 3.5,
 
     "maxAmmo": 32,
     "lightMagAmmo": 20,
     "extendedMagAmmo": 50,
+
     "useMagReload": true,
-    "magReloadTime": 50,
-    "reloadRate": 50,
-    "reloadStartDelay": 0,
+    "magReloadTime": 40,
+    "lightMagReloadTimeModifier": 0.66,
+    "extendedMagReloadTimeModifier": 1.6,
+
+    "reloadStartDelay": 2,
     "reloadInterruptDelay": 6,
-    "reloadEndDelay": 1,
+    "reloadEndDelay": 2,
     "reloadAllowedCooldown": 0.0
   },
-  "fireModes": {
+  "fireModes":
+  {
     "useFireModes": true,
     "hasSemiMode": true,
     "hasAutoMode": true,
     "hasBurstMode": false
   },
-  "modules": {
-    "attachments": {
-      "scope": {
-        "yOffset": 4.0,
-        "zOffset": 5.5
-      },
+  "modules":
+  {
+    "attachments":
+    {
+      "scope": {},
       "magazine": {}
     },
-    "zoom": {
-      "fovModifier": 0.8,
-      "yOffset": 4.8,
-      "zOffset": -1.0
-    }
+    "zoom":
+    {"fovModifier": 0.8}
   },
-  "projectile": {
+  "projectile":
+  {
+    "item": "cgm:basic_bullet",
     "damage": 4.0,
     "damageReduceOverLife": true,
-    "size": 0.1,
-    "speed": 40.0,
-    "life": 3,
-
+    "maxRangeDamageMultiplier": 0.5,
     "headshotMultiplierOverride": 2.0,
+
+    "size": 1.0,
+    "speed": 30.0,
+    "life": 3,
+    "trailLengthMultiplier": 5.0,
 
     "armorBypass": 0.25,
     "protectionBypass": 0.25,
 
     "maxPierceCount": 2,
     "pierceDamagePenalty": 0.5,
-    "pierceDamageMaxPenalty": 0.5,
-
-    "item": "cgm:basic_bullet"
+    "pierceDamageMaxPenalty": 0.5
   },
-  "sounds": {
+  "sounds":
+  {
     "fire": "cgm:item.machine_pistol.fire",
     "fireSwitch": "cgm:item.fire_switch",
 

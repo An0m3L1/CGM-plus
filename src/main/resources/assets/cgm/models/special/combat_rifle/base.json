@@ -461,8 +461,18 @@
 			"to": [8.005, 2, 14.45],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.65, 8.10032, 7.64477]},
 			"faces": {
-				"east": {"uv": [10.5, 3.5, 12, 4.5], "texture": "#1"},
-				"west": {"uv": [4, 3.5, 5.5, 4.5], "texture": "#1"}
+				"east": {"uv": [16, 4, 14.5, 5], "texture": "#1"},
+				"west": {"uv": [14.5, 4, 16, 5], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Trigger",
+			"from": [7.75, 1.001, 12.95],
+			"to": [8.25, 1.011, 14.45],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.995, 1, 13]},
+			"faces": {
+				"up": {"uv": [10.5, 4, 12, 4.5], "texture": "#1"},
+				"down": {"uv": [10.5, 4, 12, 4.5], "texture": "#1"}
 			}
 		},
 		{
@@ -667,13 +677,13 @@
 					"name": "Body",
 					"origin": [8.625, 3.75, 15.975],
 					"color": 0,
-					"children": [40, 41]
+					"children": [40, 41, 42]
 				},
 				{
 					"name": "Barrel",
 					"origin": [8, 4.4, 4.7],
 					"color": 0,
-					"children": [42, 43, 44, 45, 46]
+					"children": [43, 44, 45, 46, 47]
 				}
 			]
 		},
@@ -681,7 +691,7 @@
 			"name": "Attachments",
 			"origin": [0, 0, 0],
 			"color": 0,
-			"children": [47, 48, 49, 50, 51]
+			"children": [48, 49, 50, 51, 52]
 		}
 	]
 }

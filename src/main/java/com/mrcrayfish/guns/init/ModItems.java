@@ -56,6 +56,9 @@ public class ModItems
     public static final RegistryObject<Item> ADVANCED_AMMO = REGISTER.register("advanced_bullet", () -> new AmmoItem(new Item.Properties().tab(GunMod.GROUP)));
     public static final RegistryObject<Item> SHELL = REGISTER.register("shell", () -> new AmmoItem(new Item.Properties().tab(GunMod.GROUP)));
     public static final RegistryObject<Item> MISSILE = REGISTER.register("missile", () -> new AmmoItem(new Item.Properties().tab(GunMod.GROUP)));
+    public static final RegistryObject<Item> PIPE_GRENADE = REGISTER.register("pipe_grenade", () -> new AmmoItem(new Item.Properties().tab(GunMod.GROUP)));
+
+    /* Grenades */
     public static final RegistryObject<Item> GRENADE = REGISTER.register("grenade", () -> new GrenadeItem(new Item.Properties().tab(GunMod.GROUP), 20 * 5));
     public static final RegistryObject<Item> STUN_GRENADE = REGISTER.register("stun_grenade", () -> new StunGrenadeItem(new Item.Properties().tab(GunMod.GROUP), 72000));
 

@@ -24,9 +24,11 @@
     "size": 0.2,
     "speed": 4.0,
     "life": 40,
-    "armorBypass": 0.75,
-    "protectionBypass": 0.75,
+    "armorBypass": 1.0,
+    "protectionBypass": 0.1,
+    "gravity": false,
     "visible": true,
+    "maxPierceCount": 1,
     "item": "cgm:missile"
   },
   "sounds": {

@@ -247,8 +247,7 @@
 			"to": [8.075, 9.475, 7.23],
 			"rotation": {"angle": 0, "axis": "z", "origin": [8, 9.4, 7.25]},
 			"faces": {
-				"north": {"uv": [0, 0, 14.5, 14.5], "texture": "#3", "tintindex": 0, "emissivity": 15},
-				"south": {"uv": [0, 0, 14.5, 14.5], "texture": "#3", "tintindex": 0, "emissivity": 15}
+				"south": {"uv": [0, 0, 14.5, 14.5], "texture": "#3", "emissivity": 15}
 			}
 		},
 		{

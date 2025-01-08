@@ -1,6 +1,4 @@
 Assault Rifles:
-        M16 +
-        Mk18 +
     Famas
     AUG
     AK
@@ -8,7 +6,6 @@ Assault Rifles:
     G36
     Makeshift
 Pistols:
-        USP +
     Five-Seven
     Glock
     Beretta M9
@@ -22,7 +19,6 @@ Revolvers:
     S&W M&P R8
     Makeshift
 SMG:
-        Tec-9 +
     MP5
     Uzi
     Mac-10
@@ -30,8 +26,8 @@ SMG:
     Kriss Vector
     Makeshift
 Rifles:
-        AWP +
-        SSG-08 +
+    AWP <---
+    SSG-08 <---
     SVD
     G3
     VSS
@@ -40,19 +36,19 @@ Rifles:
     Kar98K
     Makeshift
 Shotguns:
-        Benelli M4 +
     Remington 870
     Mossberg 590
     Double Barrel
-        Sawed-Off
+    Sawed-Off
     AA12
     Lever Action
     Makeshift
 Other:
-        MiniGun +
-        Milkor MGL +
-        M202A1 +
+    MiniGun <---
+    Milkor MGL <---
+    M202A1 <---
     M249
     RPK
     China Lake GL
     RPG-7
+    Crossbow

@@ -2,8 +2,6 @@ package com.mrcrayfish.guns.util;
 
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
-
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
@@ -64,7 +62,9 @@ public class GunCompositeStatHelper
         int capacity = Gun.getModifiedAmmoCapacity(weapon);
         int extraCapacity = modifiedGun.getGeneral().getOverCapacityAmmo();
         if (extraCapacity <= 0)
-        extraCapacity = modifiedGun.getGeneral().getMaxAmmo()/2;
+        {
+            extraCapacity = modifiedGun.getGeneral().getMaxAmmo() / 2;
+        }
         return capacity;
     }
     
@@ -82,7 +82,6 @@ public class GunCompositeStatHelper
         return getReloadInterval(weapon, reloadFromEmpty);
     }
 
-
     public static int getReloadInterval(ItemStack weapon, boolean reloadFromEmpty)
     {
         Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
@@ -94,21 +93,8 @@ public class GunCompositeStatHelper
     public static int getMagReloadSpeed(ItemStack weapon, boolean reloadFromEmpty)
     {
         Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
-        ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), weapon);
         int baseSpeed = modifiedGun.getGeneral().getMagReloadTime();
-        double reloadSpeedModifier = 1;
-        if(!magStack.isEmpty())
-        {
-        	if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("light_magazine"))
-        	{
-        		reloadSpeedModifier = modifiedGun.getGeneral().getLightMagReloadTimeModifier();
-        	}
-            else
-            if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
-            {
-            	reloadSpeedModifier = modifiedGun.getGeneral().getExtendedMagReloadTimeModifier();
-        	}
-        }
+        double reloadSpeedModifier = GunModifierHelper.getReloadSpeedModifier(weapon);
         
         int speed = (int) Math.round((baseSpeed) * reloadSpeedModifier);
         if (reloadFromEmpty)
@@ -116,7 +102,6 @@ public class GunCompositeStatHelper
         	baseSpeed = modifiedGun.getGeneral().getMagReloadFromEmptyTime();
         	speed = (int) Math.round((baseSpeed) * reloadSpeedModifier);
     	}
-
         return Math.max(speed, 4);
     }
 }

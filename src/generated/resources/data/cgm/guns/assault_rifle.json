@@ -21,13 +21,13 @@
     "extendedMagAmmo": 50,
 
     "useMagReload": true,
-    "magReloadTime": 50,
-    "lightMagReloadTimeModifier": 0.66,
-    "extendedMagReloadTimeModifier": 1.6,
+    "magReloadTime": 45,
+    "lightMagReloadTimeModifier": 0.85,
+    "extendedMagReloadTimeModifier": 1.15,
 
-    "reloadStartDelay": 4,
-    "reloadInterruptDelay": 8,
-    "reloadEndDelay": 4,
+    "reloadStartDelay": 1,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 6,
     "reloadAllowedCooldown": 0.0
   },
   "fireModes":
@@ -43,7 +43,7 @@
   {
     "attachments":
     {
-      "barrel": {},
+      "barrel": {"scale": 0.5},
       "scope": {},
       "stock": {},
       "underBarrel": {},

@@ -13,18 +13,18 @@
     "recoilAngle": 6.0,
     "recoilKick": 1.25,
     "recoilDurationOffset": 0.0,
-    "spread": 3.0,
-    "useShotgunSpread": true,
+    "spread": 2.0,
     "alwaysSpread": true,
+    "useShotgunSpread": true,
 
     "maxAmmo": 7,
-    "projectileAmount": 8,
+    "projectileAmount": 9,
 
     "reloadAmount": 1,
     "reloadRate": 11,
-    "reloadStartDelay": 3,
+    "reloadStartDelay": 6,
     "reloadInterruptDelay": 6,
-    "reloadEndDelay": 3,
+    "reloadEndDelay": 8,
     "reloadAllowedCooldown": 0.0
   },
   "modules":
@@ -35,14 +35,14 @@
       "underBarrel": {},
       "stock": {}
     },
-    "zoom": {"fovModifier": 0.8}
+    "zoom": {"fovModifier": 0.75}
   },
   "projectile":
   {
     "item": "cgm:shell",
-    "damage": 12.0,
+    "damage": 9.0,
     "damageReduceOverLife": true,
-    "maxRangeDamageMultiplier": 0.5,
+    "maxRangeDamageMultiplier": 0.25,
     "headshotMultiplierOverride": 2.0,
 
     "size": 1.0,

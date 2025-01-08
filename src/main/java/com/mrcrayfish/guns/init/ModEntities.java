@@ -1,11 +1,7 @@
 package com.mrcrayfish.guns.init;
 
 import com.mrcrayfish.guns.Reference;
-import com.mrcrayfish.guns.entity.GrenadeEntity;
-import com.mrcrayfish.guns.entity.MissileEntity;
-import com.mrcrayfish.guns.entity.ProjectileEntity;
-import com.mrcrayfish.guns.entity.ThrowableGrenadeEntity;
-import com.mrcrayfish.guns.entity.ThrowableStunGrenadeEntity;
+import com.mrcrayfish.guns.entity.*;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
@@ -25,6 +21,7 @@ public class ModEntities
 
     public static final RegistryObject<EntityType<ProjectileEntity>> PROJECTILE = registerProjectile("projectile", ProjectileEntity::new);
     public static final RegistryObject<EntityType<GrenadeEntity>> GRENADE = registerBasic("grenade", GrenadeEntity::new);
+    public static final RegistryObject<EntityType<PipeGrenadeEntity>> PIPE_GRENADE = registerBasic("pipe_grenade", PipeGrenadeEntity::new);
     public static final RegistryObject<EntityType<MissileEntity>> MISSILE = registerBasic("missile", MissileEntity::new);
     public static final RegistryObject<EntityType<ThrowableGrenadeEntity>> THROWABLE_GRENADE = registerBasic("throwable_grenade", ThrowableGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableStunGrenadeEntity>> THROWABLE_STUN_GRENADE = registerBasic("throwable_stun_grenade", ThrowableStunGrenadeEntity::new);

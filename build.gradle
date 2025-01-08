@@ -90,6 +90,7 @@ dependencies {
     implementation fg.deobf("curse.maven:collective-342584:5363789")
     implementation fg.deobf("curse.maven:extended-creative-inventory-411224:4397639")
     implementation fg.deobf("curse.maven:torohealth-damage-indicators-245733:3895068")
+    implementation fg.deobf("curse.maven:explosive-enhancement-reforged-1036246:5554087")
 
     compileOnly fg.deobf('curse.maven:controllable-317269:3936915')
     compileOnly fg.deobf("mezz.jei:jei-1.19.2-common-api:11.4.0.274")

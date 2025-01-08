@@ -21,15 +21,16 @@
   },
   "projectile": {
     "damage": 20.0,
-    "size": 0.25,
-    "speed": 1.0,
-    "life": 40,
-    "armorBypass": 0.75,
-    "protectionBypass": 0.75,
+    "size": 0.2,
+    "speed": 2.0,
+    "life": 100,
+    "armorBypass": 1.0,
+    "protectionBypass": 0.1,
     "gravity": true,
     "visible": true,
-    "gravityStrength": 0.75,
-    "item": "cgm:grenade"
+    "gravityStrength": 1.0,
+    "maxPierceCount": 1,
+    "item": "cgm:pipe_grenade"
   },
   "sounds": {
     "cock": "cgm:item.grenade_launcher.cock",

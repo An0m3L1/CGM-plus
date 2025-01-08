@@ -2,7 +2,6 @@ package com.mrcrayfish.guns;
 
 import com.mrcrayfish.guns.client.DotRenderMode;
 import com.mrcrayfish.guns.client.SwayType;
-import com.mrcrayfish.guns.client.render.crosshair.Crosshair;
 import com.mrcrayfish.guns.client.screen.ButtonAlignment;
 import net.minecraftforge.common.ForgeConfigSpec;
 import org.apache.commons.lang3.tuple.Pair;
@@ -338,7 +337,7 @@ public class Config
         {
             builder.comment("Properties relating to grenades").push("grenades");
             {
-                this.explosionRadius = builder.comment("The max distance which the explosion is effective to").defineInRange("explosionRadius", 3.0, 0.0, Double.MAX_VALUE);
+                this.explosionRadius = builder.comment("The max distance which the explosion is effective to").defineInRange("explosionRadius", 2.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
         }

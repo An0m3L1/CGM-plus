@@ -16,11 +16,13 @@
     "spread": 4.0,
 
     "maxAmmo": 12,
-    "extendedMagAmmo": 16,
+    "lightMagAmmo": 10,
+    "extendedMagAmmo": 17,
 
     "useMagReload": true,
-    "magReloadTime": 40,
-    "extendedMagReloadTimeModifier": 1.5,
+    "magReloadTime": 35,
+    "lightMagReloadTimeModifier": 0.85,
+    "extendedMagReloadTimeModifier": 1.15,
 
     "reloadStartDelay": 2,
     "reloadInterruptDelay": 6,

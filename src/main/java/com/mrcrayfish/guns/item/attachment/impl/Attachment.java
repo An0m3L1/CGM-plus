@@ -119,14 +119,6 @@ public abstract class Attachment
             {
                 outputRadius = modifier.modifyFireSoundRadius(outputRadius);
             }
-            /*if(outputRadius > inputRadius)
-            {
-                addPerk(negativePerks, false, "perk.cgm.sound_radius.negative");
-            }
-            else if(outputRadius < inputRadius)
-            {
-                addPerk(positivePerks, true, "perk.cgm.sound_radius.positive");
-            }*/
             thisOutput = (float) outputRadius;
             thisInput = (float) inputRadius;
             if (thisOutput != thisInput)
@@ -134,7 +126,6 @@ public abstract class Attachment
 	            perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
                 boolean isPositive = thisOutput < thisInput;
                 float modifierValue = toPercent(thisOutput);
-	            //perkDescription = (isPositive ? "perk.cgm.sound_radius.positive" : "perk.cgm.sound_radius.negative");
                 perkDescription = "perk.cgm.sound_radius";
 	            
 	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
@@ -237,6 +228,25 @@ public abstract class Attachment
                 perkDescription = "perk.cgm.projectile_spread";
 	            
 	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
+            }
+
+            /* Test for flash size */
+            double inputFlash = 10.0;
+            double outputFlash = inputFlash;
+            for(IGunModifier modifier : modifiers)
+            {
+                outputFlash = modifier.modifyMuzzleFlashScale(outputFlash);
+            }
+            thisOutput = (float) outputFlash;
+            thisInput = (float) inputFlash;
+            if (thisOutput != thisInput)
+            {
+                perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
+                boolean isPositive = thisOutput < thisInput;
+                float modifierValue = toPercent(thisOutput);
+                perkDescription = "perk.cgm.flash";
+
+                addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
             }
 
             /* Test for modified projectile life */
@@ -360,7 +370,7 @@ public abstract class Attachment
 
     private static void addPerk(List<Component> components, boolean positive, String id, Object... params)
     {
-        components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.WHITE)).withStyle(positive ? ChatFormatting.DARK_AQUA : ChatFormatting.GOLD));
+        components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.WHITE)).withStyle(positive ? ChatFormatting.GREEN : ChatFormatting.GOLD));
     }
 
     private static void addPerk(List<Component> components, boolean positive, float value, String id, Object... params)

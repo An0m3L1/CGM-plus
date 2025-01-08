@@ -286,4 +286,24 @@ public class GunModifierHelper
         chance += GunEnchantmentHelper.getPuncturingChance(weapon);
         return Mth.clamp(chance, 0F, 1F);
     }
+
+    public static double getReloadSpeedModifier(ItemStack weapon)
+    {
+        Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
+        ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), weapon);
+        double reloadSpeedModifier = 1;
+        if(!magStack.isEmpty())
+        {
+            if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("light_magazine"))
+            {
+                reloadSpeedModifier = modifiedGun.getGeneral().getLightMagReloadTimeModifier();
+            }
+            else
+            if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
+            {
+                reloadSpeedModifier = modifiedGun.getGeneral().getExtendedMagReloadTimeModifier();
+            }
+        }
+        return reloadSpeedModifier;
+    }
 }

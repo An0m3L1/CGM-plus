@@ -7,16 +7,13 @@ import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.annotation.Ignored;
 import com.mrcrayfish.guns.annotation.Optional;
 import com.mrcrayfish.guns.client.ClientHandler;
-import com.mrcrayfish.guns.client.ExpandedModelComponents;
 import com.mrcrayfish.guns.compat.BackpackHelper;
 import com.mrcrayfish.guns.debug.Debug;
 import com.mrcrayfish.guns.debug.IDebugWidget;
 import com.mrcrayfish.guns.debug.IEditorMenu;
-import com.mrcrayfish.guns.debug.client.screen.EditorScreen;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugButton;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugSlider;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugToggle;
-import com.mrcrayfish.guns.init.ModEnchantments;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.ScopeItem;
 import com.mrcrayfish.guns.item.attachment.IAttachment;
@@ -38,11 +35,7 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
-
 import javax.annotation.Nullable;
-
-import java.lang.reflect.InvocationTargetException;
-import java.lang.reflect.Method;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
@@ -192,9 +185,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Optional
         private int magReloadFromEmptyTime = 0;
         @Optional
-        private double lightMagReloadTimeModifier = 0.84;
+        private double lightMagReloadTimeModifier = 0.85;
         @Optional
-        private double extendedMagReloadTimeModifier = 1.12;
+        private double extendedMagReloadTimeModifier = 1.15;
         @Optional
         private float reloadAllowedCooldown = 1F;
         @Optional
@@ -526,7 +519,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.noMagReloadWithScope != false) object.addProperty("noMagReloadWithScope", this.noMagReloadWithScope);
             if(this.magReloadTime != 0) object.addProperty("magReloadTime", this.magReloadTime);
             if(this.magReloadFromEmptyTime != 0) object.addProperty("magReloadFromEmptyTime", this.magReloadFromEmptyTime);
-            if(this.lightMagReloadTimeModifier != 0.87) object.addProperty("lightMagReloadTimeModifier", this.lightMagReloadTimeModifier);
+            if(this.lightMagReloadTimeModifier != 0.85) object.addProperty("lightMagReloadTimeModifier", this.lightMagReloadTimeModifier);
             if(this.extendedMagReloadTimeModifier != 1.15) object.addProperty("extendedMagReloadTimeModifier", this.extendedMagReloadTimeModifier);
             if(this.reloadAllowedCooldown != 1) object.addProperty("reloadAllowedCooldown", this.reloadAllowedCooldown);
             if(this.recoilAngle != 0.0F) object.addProperty("recoilAngle", this.recoilAngle);

@@ -358,7 +358,7 @@
 		},
 		{
 			"from": [7.775, 3.5, 16],
-			"to": [7.925, 3.75, 16.01],
+			"to": [7.925, 3.775, 16.01],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.4, 3.75, 10.675]},
 			"faces": {
 				"north": {"uv": [3.5, 0, 4.5, 1], "texture": "#1"},
@@ -367,7 +367,7 @@
 		},
 		{
 			"from": [8.075, 3.5, 16],
-			"to": [8.225, 3.75, 16.01],
+			"to": [8.225, 3.775, 16.01],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.75, 3.75, 10.675]},
 			"faces": {
 				"north": {"uv": [3.5, 0, 4.5, 1], "texture": "#1"},
@@ -385,7 +385,7 @@
 		},
 		{
 			"from": [7.95, 3.5, 11],
-			"to": [8.05, 3.65, 11.01],
+			"to": [8.05, 3.76, 11.01],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.75, 3.75, 11]},
 			"faces": {
 				"north": {"uv": [3.5, 0, 4.5, 1], "texture": "#1"},
@@ -403,30 +403,32 @@
 		},
 		{
 			"name": "Emissive",
-			"from": [7.95, 3.65, 11],
-			"to": [8.05, 3.75, 11.01],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7.75, 3.85, 11]},
+			"from": [7.965, 3.675, 11.001],
+			"to": [8.035, 3.745, 11.011],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.75, 3.875, 11]},
 			"faces": {
-				"north": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15},
-				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15}
+				"north": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "emissivity": 15},
+				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "emissivity": 15}
 			}
 		},
 		{
 			"name": "Emissive",
-			"from": [7.825, 3.675, 16.001],
-			"to": [7.875, 3.725, 16.011],
-			"rotation": {"angle": 0, "axis": "y", "origin": [7.6, 3.85, 16]},
+			"from": [7.8125, 3.675, 16.001],
+			"to": [7.8825, 3.745, 16.011],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.575, 3.85, 16]},
 			"faces": {
-				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15}
+				"north": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "emissivity": 15},
+				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "emissivity": 15}
 			}
 		},
 		{
 			"name": "Emissive",
-			"from": [8.125, 3.675, 16.001],
-			"to": [8.175, 3.725, 16.011],
+			"from": [8.1125, 3.675, 16.001],
+			"to": [8.1825, 3.745, 16.011],
 			"rotation": {"angle": 0, "axis": "y", "origin": [7.9, 3.85, 16]},
 			"faces": {
-				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "tintindex": 0, "emissivity": 15}
+				"north": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "emissivity": 15},
+				"south": {"uv": [1, 0.5, 1.5, 1], "texture": "#1", "emissivity": 15}
 			}
 		}
 	],

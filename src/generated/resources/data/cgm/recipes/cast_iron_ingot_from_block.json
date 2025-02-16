@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "ingredients": [
+    {"item": "cgm:cast_iron_block"}
+  ],
+  "result":
+  {
+    "count": 9,
+    "item": "cgm:cast_iron_ingot"
+  }
+}

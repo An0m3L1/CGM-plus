@@ -1,0 +1,48 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {"item": "cgm:brass_casing"},
+  "loops": 1,
+  "results":
+  [
+    {"item": "cgm:medium_bullet"}
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:brass_casing"},
+        {"item": "cgm:gunpowder_pinch"}
+      ],
+      "results":
+      [
+        {"item": "cgm:medium_bullet"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:brass_casing"},
+        {"item": "cgm:gunpowder_pinch"}
+      ],
+      "results":
+      [
+        {"item": "cgm:medium_bullet"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:medium_bullet"},
+        {"item": "cgm:bullet"}
+      ],
+      "results":
+      [
+        {"item": "cgm:medium_bullet"}
+      ]
+    }
+  ],
+  "transitionalItem": {"item": "cgm:brass_casing"}
+}

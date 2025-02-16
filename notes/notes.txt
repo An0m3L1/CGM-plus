@@ -1,0 +1,39 @@
+Add more attachments
+    - Barrels: compensator, muzzle brake, flash hider, extended barrel, tactical silencer
+    - Grips: angled, thumb
+    - Scopes: holo, 8x
+    - Stocks: skeleton, scar, solid
+    - Cosmetic: primer spray can, candy apple skin, 
+Add content
+    - Guns: guns.txt
+    - Blocks: blocks.txt
+    - Armor: vests, helmets, pants, boots, balaclavas, caps, berets
+        Rework vanilla armor
+    - Accessories: night vision goggles, knee-pads and elbow-pads, gas masks
+    - Melee: katana, hammer, sledgehammer, baseball bat (wooden and iron), tactical knives, machete, cleaver, sword, longsword, spear, ballistic shield
+        Rework vanilla weapons and tools
+        Add special perks to melee types (bats knockback, knives bleed, hammers stun, etc)
+    - Grenades: molotov, smoke, mine, c4
+Add bullet tracers
+Add bandits, marauders, zombies
+Add automatic turrets
+Add backpack skins
+Overhaul items (models, textures, stats)
+    - Grenade Launcher
+    - Rocket Launcher
+    - Minigun
+    - Tactical Sniper Rifle
+    - Sniper Rifle
+Overhaul blood particles (check extra gore)
+Overhaul item textures with changed recipes (change colors to correspond to new materials)
+Overhaul explosions to destroy fragile blocks
+Overhaul pipe grenades to bounce
+Overhaul ARs (make mk18 more accurate hip firing, while m4 sighted)
+Add durability (check jeg)
+Add tags for all materials
+Add ADS recoil tooltip
+Add tint to guns
+    - Must equip primer spray can
+Fix self-blinding by flashbangs
+
+Sort mod directories and change names

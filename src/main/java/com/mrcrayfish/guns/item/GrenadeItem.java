@@ -1,8 +1,10 @@
 package com.mrcrayfish.guns.item;
 
+import com.mrcrayfish.guns.entity.ProjectileEntity;
 import com.mrcrayfish.guns.entity.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.init.ModSounds;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -36,14 +38,17 @@ public class GrenadeItem extends AmmoItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        float damage = 15f;
+        tooltip.add(Component.translatable("info.cgm.gun_details").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
+        float damage = ProjectileEntity.grenadeDamage;
+        float cookTime = (float) maxCookTime / 20;
         tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
     }
 
     @Override
     public UseAnim getUseAnimation(ItemStack stack)
     {
-        return UseAnim.BOW;
+        return UseAnim.SPEAR;
     }
 
     @Override
@@ -58,7 +63,7 @@ public class GrenadeItem extends AmmoItem
         if(!this.canCook()) return;
 
         int duration = this.getUseDuration(stack) - count;
-        if(duration == 10)
+        if(duration == 9)
             player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.ITEM_GRENADE_PIN.get(), SoundSource.PLAYERS, 1.0F, 1.0F, false);
     }
 
@@ -98,7 +103,7 @@ public class GrenadeItem extends AmmoItem
                 if(!(entityLiving instanceof Player) || !((Player) entityLiving).isCreative())
                     stack.shrink(1);
                 ThrowableGrenadeEntity grenade = this.create(worldIn, entityLiving, this.maxCookTime - duration);
-                grenade.shootFromRotation(entityLiving, entityLiving.getXRot(), entityLiving.getYRot(), 0.0F, Math.min(1.75F, (duration+10) / 30F), 1.0F);
+                grenade.shootFromRotation(entityLiving, entityLiving.getXRot(), entityLiving.getYRot(), 0.0F, 1.4f, 1.0F);
                 worldIn.addFreshEntity(grenade);
                 this.onThrown(worldIn, grenade);
                 if(entityLiving instanceof Player)

@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "s": {"item": "minecraft:string"},
+    "c": {"item": "farmersdelight:canvas"}
+  },
+  "pattern":
+  [
+    "cs",
+    "sc"
+  ],
+  "result": {"item": "cgm:cloth"}
+}

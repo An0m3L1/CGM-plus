@@ -7,7 +7,7 @@ plugins {
 }
 
 archivesBaseName = "cgm"
-version = "expanded-fork-1.19.2"
+version = "CGM-plus-1.0"
 group = "com.mrcrayfish"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -82,6 +82,7 @@ dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.2.3'
     implementation fg.deobf('curse.maven:framework-549225:4718247')
     implementation fg.deobf("curse.maven:create-328085:4835190")
+    implementation fg.deobf("curse.maven:farmers-delight-398521:5051241")
     implementation fg.deobf('curse.maven:configured-457570:4011355')
     implementation fg.deobf('curse.maven:catalogue-459701:4171024')
     implementation fg.deobf('curse.maven:backpacked-352835:3923045')
@@ -91,6 +92,11 @@ dependencies {
     implementation fg.deobf("curse.maven:extended-creative-inventory-411224:4397639")
     implementation fg.deobf("curse.maven:torohealth-damage-indicators-245733:3895068")
     implementation fg.deobf("curse.maven:explosive-enhancement-reforged-1036246:5554087")
+    implementation fg.deobf("curse.maven:jade-324717:4914105")
+    implementation fg.deobf("curse.maven:mouse-tweaks-60089:3871353")
+    implementation fg.deobf("curse.maven:client-tweaks-251407:4751800")
+    implementation fg.deobf("curse.maven:balm-531761:4751735")
+    implementation fg.deobf("curse.maven:better-mods-button-541584:4665753")
 
     compileOnly fg.deobf('curse.maven:controllable-317269:3936915')
     compileOnly fg.deobf("mezz.jei:jei-1.19.2-common-api:11.4.0.274")
@@ -102,10 +108,10 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title": "Gun Mod",
+                "Specification-Title": "CGM+",
                 "Specification-Vendor": "An0m3L1",
-                "Specification-Version": "1",
-                "Implementation-Title": "Gun Mod",
+                "Specification-Version": "1.0",
+                "Implementation-Title": "CGM+",
                 "Implementation-Version": project.version,
                 "Implementation-Vendor" : "An0m3L1",
                 "Implementation-Timestamp": new Date().format("yyyy-dd-MM'T'HH:mm:ssZ"),

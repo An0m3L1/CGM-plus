@@ -7,7 +7,7 @@ import com.mrcrayfish.guns.item.attachment.impl.Scope;
  */
 public class Attachments
 {
-    public static final Scope SHORT_SCOPE = Scope.builder().aimFovModifier(0.75F).modifiers(GunModifiers.SHORT_SCOPE).build();
-    public static final Scope MEDIUM_SCOPE = Scope.builder().aimFovModifier(0.5F).modifiers(GunModifiers.MEDIUM_SCOPE).build();
-    public static final Scope LONG_SCOPE = Scope.builder().aimFovModifier(0.25F).modifiers(GunModifiers.LONG_SCOPE).build();
+    public static final Scope RED_DOT_SIGHT = Scope.builder().aimFovModifier(0.75F).modifiers(GunModifiers.RED_DOT_SIGHT).build();
+    public static final Scope X2_SCOPE = Scope.builder().aimFovModifier(0.5F).modifiers(GunModifiers.X2_SCOPE).build();
+    public static final Scope X4_SCOPE = Scope.builder().aimFovModifier(0.25F).modifiers(GunModifiers.X4_SCOPE).build();
 }

@@ -51,7 +51,6 @@ public class Scope extends Attachment implements IEditorMenu
      * Marks this scope to allow it to be stabilised while using a controller. This is essentially
      * holding your breath while looking down the sight.
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public void stabilise()
     {
         this.stable = true;
@@ -65,7 +64,6 @@ public class Scope extends Attachment implements IEditorMenu
      * @param offset the view finder offset
      * @return this scope get
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public Scope viewFinderOffset(double offset)
     {
         this.viewFinderDist = offset;
@@ -84,7 +82,6 @@ public class Scope extends Attachment implements IEditorMenu
      *
      * @return the scopes additional zoom
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public float getAdditionalZoom()
     {
         return this.additionalZoom;
@@ -98,7 +95,6 @@ public class Scope extends Attachment implements IEditorMenu
      *
      * @return the scope center offset
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public double getCenterOffset()
     {
         return this.reticleOffset;
@@ -112,7 +108,6 @@ public class Scope extends Attachment implements IEditorMenu
      *
      * @return the reticle offset
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public double getReticleOffset()
     {
         return this.reticleOffset;
@@ -121,7 +116,6 @@ public class Scope extends Attachment implements IEditorMenu
     /**
      * @return If this scope can be stabilised
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public boolean isStable()
     {
         return this.stable;
@@ -131,7 +125,6 @@ public class Scope extends Attachment implements IEditorMenu
      * Deprecated: Use meta files instead
      * @return The view finder offset of this scope
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public double getViewFinderOffset()
     {
         return this.viewFinderDist;
@@ -140,7 +133,6 @@ public class Scope extends Attachment implements IEditorMenu
     /**
      * @return The distance to offset camera from the center of the scope model.
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public double getViewFinderDistance()
     {
         return this.viewFinderDist;
@@ -184,7 +176,6 @@ public class Scope extends Attachment implements IEditorMenu
      * @param modifiers      an array of gun modifiers
      * @return a scope get
      */
-    @Deprecated(since = "1.3.0", forRemoval = true)
     public static Scope create(float additionalZoom, double centerOffset, IGunModifier... modifiers)
     {
         // -1 to indicate that it should use the default fov
@@ -216,7 +207,6 @@ public class Scope extends Attachment implements IEditorMenu
         /**
          * Deprecated: Use {@link #aimFovModifier(float)} ()}
          */
-        @Deprecated(since = "1.3.0", forRemoval = true)
         public Builder additionalZoom(float additionalZoom)
         {
             this.additionalZoom = additionalZoom;
@@ -226,7 +216,6 @@ public class Scope extends Attachment implements IEditorMenu
         /**
          * Deprecated: Use meta files instead
          */
-        @Deprecated(since = "1.3.0", forRemoval = true)
         public Builder centerOffset(double centerOffset)
         {
             this.reticleOffset = centerOffset;
@@ -236,7 +225,6 @@ public class Scope extends Attachment implements IEditorMenu
         /**
          * Deprecated: Use meta files instead
          */
-        @Deprecated(since = "1.3.0", forRemoval = true)
         public Builder reticleOffset(double reticleOffset)
         {
             this.reticleOffset = reticleOffset;
@@ -252,7 +240,6 @@ public class Scope extends Attachment implements IEditorMenu
         /**
          * Deprecated: Use meta files instead
          */
-        @Deprecated(since = "1.3.0", forRemoval = true)
         public Builder viewFinderOffset(double viewFinderOffset)
         {
             this.viewFinderDist = viewFinderOffset;
@@ -262,7 +249,6 @@ public class Scope extends Attachment implements IEditorMenu
         /**
          * Deprecated: Use meta files instead
          */
-        @Deprecated(since = "1.3.0", forRemoval = true)
         public Builder viewFinderDistance(double viewFinderDist)
         {
             this.viewFinderDist = viewFinderDist;

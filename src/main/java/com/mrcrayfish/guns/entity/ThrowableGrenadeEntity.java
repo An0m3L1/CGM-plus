@@ -3,9 +3,11 @@ package com.mrcrayfish.guns.entity;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
+import com.mrcrayfish.guns.item.GrenadeItem;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -27,7 +29,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
         super(entityType, world, entity);
         this.setShouldBounce(true);
         this.setGravityVelocity(0.05F);
-        this.setItem(new ItemStack(ModItems.GRENADE.get()));
+        this.setItem(new ItemStack(ModItems.GRENADE_NO_PIN.get()));
         this.setMaxLife(20 * 3);
     }
 
@@ -36,7 +38,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
         super(ModEntities.THROWABLE_GRENADE.get(), world, entity);
         this.setShouldBounce(true);
         this.setGravityVelocity(0.05F);
-        this.setItem(new ItemStack(ModItems.GRENADE.get()));
+        this.setItem(new ItemStack(ModItems.GRENADE_NO_PIN.get()));
         this.setMaxLife(timeLeft);
     }
 

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/cube_column",
+  "textures": {
+    "end": "cgm:block/steel_block_top",
+    "particle": "cgm:block/steel_block",
+    "side": "cgm:block/steel_block"
+  }
+}

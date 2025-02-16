@@ -2,21 +2,21 @@
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
-		"1": "cgm:items/assault_rifle",
-		"particle": "cgm:items/assault_rifle"
+		"1": "cgm:item/assault_rifle",
+		"particle": "cgm:item/assault_rifle"
 	},
 	"elements": [
 		{
 			"name": "Top",
 			"from": [7.4822, 0.5, 10.7],
-			"to": [8.5177, 1.5, 12.7],
+			"to": [8.5177, 1.499, 12.7],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, -0.5, 10.7]},
 			"faces": {
 				"north": {"uv": [0, 6, 1, 7], "texture": "#1"},
 				"east": {"uv": [3.5, 6, 1, 7], "texture": "#1"},
 				"south": {"uv": [3.5, 6, 4.5, 7], "texture": "#1"},
 				"west": {"uv": [1, 6, 3.5, 7], "texture": "#1"},
-				"up": {"uv": [8, 9.5, 9, 10.5], "texture": "#1"}
+				"up": {"uv": [8, 9.5, 9, 11], "texture": "#1"}
 			}
 		},
 		{

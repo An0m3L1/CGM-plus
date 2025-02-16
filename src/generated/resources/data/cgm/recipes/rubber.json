@@ -1,0 +1,15 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"item": "cgm:hemp"},
+    {"item": "cgm:hemp"},
+    {"item": "cgm:hemp"},
+    {"item": "minecraft:slime_ball"}
+  ],
+  "results":
+  [
+    {"item": "cgm:rubber"}
+  ]
+}

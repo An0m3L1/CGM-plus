@@ -5,7 +5,6 @@ import java.lang.reflect.Field;
 /**
  * Author: MrCrayfish
  */
-@Deprecated(since = "1.3.0", forRemoval = true)
 public class OptifineHelper
 {
     private static Boolean loaded = null;

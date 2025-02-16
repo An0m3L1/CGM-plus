@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients":
+  [
+    {"item": "cgm:plastic"}
+  ],
+  "processingTime": 200,
+  "results":
+  [
+    {
+      "count": 4,
+      "item": "cgm:plastic_sheet"
+    }
+  ]
+}

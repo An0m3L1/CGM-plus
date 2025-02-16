@@ -59,7 +59,7 @@ public class CombatRifleModel implements IOverrideModel
 
         if(stockStack.isEmpty())
         {
-            RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_NO_STOCK.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.ASSAULT_RIFLE_NO_STOCK.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         // Special animated segment for compat with the CGM Expanded fork.
@@ -135,16 +135,16 @@ public class CombatRifleModel implements IOverrideModel
                 GunAnimationHelper.rotateAroundOffset(poseStack, magRotations, magRotOffset);
         }
         // Render the transformed model.
-        SpecialModels magModel = SpecialModels.COMBAT_RIFLE_MAG;
+        SpecialModels magModel = SpecialModels.ASSAULT_RIFLE_MAG;
         try {
             ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), stack);
             if(!magStack.isEmpty())
             {
                 if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("light_magazine"))
-                    magModel = SpecialModels.COMBAT_RIFLE_LIGHT_MAG;
+                    magModel = SpecialModels.ASSAULT_RIFLE_LIGHT_MAG;
                 else
                 if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
-                    magModel = SpecialModels.COMBAT_RIFLE_EXT_MAG;
+                    magModel = SpecialModels.ASSAULT_RIFLE_EXT_MAG;
             }
         }
         catch(Error ignored) {} catch(Exception ignored) {}

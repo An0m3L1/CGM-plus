@@ -1,0 +1,20 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 1,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 4,
+      "item": "cgm:plastic"
+    },
+    {
+      "count": 2,
+      "item": "cgm:rubber"
+    }
+  ],
+  "result": {
+    "item": "cgm:light_grip"
+  }
+}

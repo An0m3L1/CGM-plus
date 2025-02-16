@@ -1,21 +1,20 @@
 {
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"textures": {
-		"0": "cgm:items/medium_bullet",
-		"particle": "cgm:items/medium_bullet"
+		"1": "cgm:item/bullet"
 	},
 	"elements": [
 		{
 			"from": [7, 0, 7],
-			"to": [9, 7.25, 9],
+			"to": [9, 8, 9],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 3, 8]},
 			"faces": {
-				"north": {"uv": [0, 0, 2, 8], "texture": "#0"},
-				"east": {"uv": [2, 0, 0, 8], "texture": "#0"},
-				"south": {"uv": [0, 0, 2, 8], "texture": "#0"},
-				"west": {"uv": [2, 0, 0, 8], "texture": "#0"},
-				"up": {"uv": [2, 0, 4, 2], "texture": "#0"},
-				"down": {"uv": [2, 2, 4, 4], "texture": "#0"}
+				"north": {"uv": [2, 0, 4, 8], "texture": "#1"},
+				"east": {"uv": [4, 0, 2, 8], "texture": "#1"},
+				"south": {"uv": [2, 0, 4, 8], "texture": "#1"},
+				"west": {"uv": [4, 0, 2, 8], "texture": "#1"},
+				"up": {"uv": [6, 0, 8, 2], "texture": "#1"},
+				"down": {"uv": [6, 2, 8, 4], "texture": "#1"}
 			}
 		}
 	],

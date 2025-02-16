@@ -1,0 +1,12 @@
+{
+  "type": "create:compacting",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"item": "cgm:cast_iron_block"}
+  ],
+  "results":
+  [
+    {"item": "cgm:steel_block"}
+  ]
+}

@@ -1,0 +1,28 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 4,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 16,
+      "item": "cgm:steel_rod"
+    },
+    {
+      "count": 32,
+      "item": "cgm:steel_sheet"
+    },
+    {
+      "count": 24,
+      "item": "cgm:plastic"
+    },
+    {
+      "count": 12,
+      "item": "cgm:rubber"
+    }
+  ],
+  "result": {
+    "item": "cgm:mini_gun"
+  }
+}

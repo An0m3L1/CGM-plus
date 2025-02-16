@@ -1,0 +1,28 @@
+{
+  "type": "create:milling",
+  "ingredients":
+  [
+    {"item": "cgm:hemp"}
+  ],
+  "processingTime": 50,
+  "results":
+  [
+    {
+      "count": 3,
+      "item": "minecraft:string"
+    },
+    {
+      "chance": 0.75,
+      "count": 1,
+      "item": "minecraft:string"
+    },
+    {
+      "chance": 0.5,
+      "item": "farmersdelight:straw"
+    },
+    {
+      "chance": 0.25,
+      "item": "minecraft:green_dye"
+    }
+  ]
+}

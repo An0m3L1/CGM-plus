@@ -1,0 +1,32 @@
+make custom cities with new buildings and loot
+find a city decor mod
+find a vehicle/car mod
+find magnum torch alternative
+find bigger stacks alternative
+add new zombie types with incontrol and fxcontrol (otherwise find a good mod)
+add processed modern food (soda cans, canned food, candy bars, etc.)
+add diesel and other fuels to the aircraft fuel list
+add player revive
+add wastify
+remake the health system (rough tweaks)
+remake the hunger system (diet)
+remake stamina
+remake spawning rules for zombies to account for cities (more in cities, less elsewhere)
+remake plane, magnum torch models
+tweak structures (bunkers, dungeons)
+tweak zombie awareness (add new zombies to the list)
+Remove
+    artifacts (make new accessories)
+    shield expansion (make new shields)
+    create power loader (replace)
+    marbled's (make new armor/weapons)
+    magnum torch (combine with chunk loaders)
+    createdeco (replace)
+Add
+    display delight
+    create netherless (?)
+    quality food
+    brutal nightmare
+    nightmare epic siege
+    underground bunkers
+    create weaponry

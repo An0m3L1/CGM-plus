@@ -1,0 +1,20 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 1,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 6,
+      "item": "cgm:steel_sheet"
+    },
+    {
+      "count": 6,
+      "item": "cgm:plastic_sheet"
+    }
+  ],
+  "result": {
+    "item": "cgm:extended_magazine"
+  }
+}

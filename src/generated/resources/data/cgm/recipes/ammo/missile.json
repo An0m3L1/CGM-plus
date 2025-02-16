@@ -1,0 +1,13 @@
+{
+  "type": "cgm:workbench",
+  "materials":
+  [
+    {"item": "cgm:steel_sheet"},
+    {"item": "cgm:buckshot"},
+    {
+      "count": 3,
+      "item": "minecraft:gunpowder"
+    }
+  ],
+  "result": {"item": "cgm:missile"}
+}

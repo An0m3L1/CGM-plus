@@ -19,7 +19,6 @@ import com.mrcrayfish.guns.datagen.ItemTagGen;
 import com.mrcrayfish.guns.datagen.LanguageGen;
 import com.mrcrayfish.guns.datagen.LootTableGen;
 import com.mrcrayfish.guns.datagen.RecipeGen;
-import com.mrcrayfish.guns.enchantment.EnchantmentTypes;
 import com.mrcrayfish.guns.entity.GrenadeEntity;
 import com.mrcrayfish.guns.entity.MissileEntity;
 import com.mrcrayfish.guns.init.*;
@@ -45,6 +44,7 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
 
 @Mod(Reference.MOD_ID)
 public class GunMod
@@ -55,23 +55,36 @@ public class GunMod
     public static boolean playerReviveLoaded = false;
     public static boolean shoulderSurfingLoaded = false;
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
-    public static final CreativeModeTab GROUP = new CreativeModeTab(Reference.MOD_ID)
-    {
+    public static final CreativeModeTab GUNS = new CreativeModeTab(Reference.MOD_ID) {
         @Override
-        public ItemStack makeIcon()
+        public @NotNull ItemStack makeIcon()
         {
-            ItemStack stack = new ItemStack(ModItems.PISTOL.get());
-            stack.getOrCreateTag().putInt("AmmoCount", ModItems.PISTOL.get().getGun().getGeneral().getMaxAmmo());
-            return stack;
+            ItemStack icon = new ItemStack(ModItems.MACHINE_PISTOL.get());
+            icon.getOrCreateTag().putInt("AmmoCount", ModItems.MACHINE_PISTOL.get().getGun().getGeneral().getMaxAmmo());
+            return icon;
         }
 
         @Override
-        public void fillItemList(NonNullList<ItemStack> items)
+        public void fillItemList(@NotNull NonNullList<ItemStack> items)
         {
             super.fillItemList(items);
             CustomGunManager.fill(items);
         }
-    }.setEnchantmentCategories(EnchantmentTypes.GUN, EnchantmentTypes.SEMI_AUTO_GUN, EnchantmentTypes.AUTO_GUN, EnchantmentTypes.GUN_SUPPORTS_RAMPUP);
+    };
+    public static final CreativeModeTab MATERIALS = new CreativeModeTab(Reference.MATERIALS) {
+        @Override
+        public @NotNull ItemStack makeIcon()
+        {
+            return new ItemStack(ModItems.STURDY_MECHANISM.get());
+        }
+
+        @Override
+        public void fillItemList(@NotNull NonNullList<ItemStack> items)
+        {
+            super.fillItemList(items);
+            CustomGunManager.fill(items);
+        }
+    };
 
     public GunMod()
     {

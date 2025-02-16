@@ -79,6 +79,7 @@ public class ClientHandler
     private static void setupRenderLayers()
     {
         ItemBlockRenderTypes.setRenderLayer(ModBlocks.WORKBENCH.get(), RenderType.cutout());
+        ItemBlockRenderTypes.setRenderLayer(ModBlocks.HEMP_CROP_BLOCK.get(), RenderType.cutout());
     }
 
     private static void registerColors()

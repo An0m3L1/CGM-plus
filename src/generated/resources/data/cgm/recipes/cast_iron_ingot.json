@@ -1,0 +1,12 @@
+{
+  "type": "create:compacting",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"item": "create:crushed_raw_iron"}
+  ],
+  "results":
+  [
+    {"item": "cgm:cast_iron_ingot"}
+  ]
+}

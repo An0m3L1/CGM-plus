@@ -5,7 +5,7 @@
 		"1": "cgm:effect/long_scope_reticle_emissive",
 		"2": "cgm:effect/long_scope_reticle",
 		"3": "cgm:effect/scope_vignette",
-		"4": "cgm:items/long_scope",
+		"4": "cgm:item/scope",
 		"particle": "cgm:effect/long_scope_reticle_emissive"
 	},
 	"elements": [
@@ -526,7 +526,7 @@
 			}
 		},
 		{
-			"name": "Emisive Arrow",
+			"name": "Emissive Arrow",
 			"from": [7.99, 9.376, 7.225],
 			"to": [8.01, 9.396, 7.23],
 			"rotation": {"angle": 45, "axis": "z", "origin": [8, 9.386, 7.2275]},

@@ -1,0 +1,23 @@
+{
+  "type": "create:compacting",
+  "ingredients":
+  [
+    {"item": "minecraft:red_dye"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "cgm:plastic_sheet"},
+    {"item": "create:brass_sheet"}
+  ],
+  "results":
+  [
+    {
+      "count": 8,
+      "item": "cgm:shell_casing"
+    }
+  ]
+}

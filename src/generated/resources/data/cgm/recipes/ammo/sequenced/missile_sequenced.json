@@ -1,0 +1,60 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {"item": "cgm:steel_sheet"},
+  "loops": 1,
+  "results":
+  [
+    {"item": "cgm:missile"}
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:steel_sheet"},
+        {"item": "minecraft:gunpowder"}
+      ],
+      "results":
+      [
+        {"item": "cgm:missile"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:steel_sheet"},
+        {"item": "minecraft:gunpowder"}
+      ],
+      "results":
+      [
+        {"item": "cgm:missile"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:steel_sheet"},
+        {"item": "minecraft:gunpowder"}
+      ],
+      "results":
+      [
+        {"item": "cgm:missile"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:missile"},
+        {"item": "cgm:buckshot"}
+      ],
+      "results":
+      [
+        {"item": "cgm:missile"}
+      ]
+    }
+  ],
+  "transitionalItem": {"item": "cgm:steel_sheet"}
+}

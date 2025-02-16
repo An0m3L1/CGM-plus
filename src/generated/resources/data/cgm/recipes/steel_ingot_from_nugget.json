@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "n": {"item": "cgm:steel_nugget"}
+  },
+  "pattern":
+  [
+    "nnn",
+    "nnn",
+    "nnn"
+  ],
+  "result": {"item": "cgm:steel_ingot"}
+}

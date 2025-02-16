@@ -46,13 +46,13 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
     public ThrowableStunGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
     {
         super(entityType, world, player);
-        this.setItem(new ItemStack(ModItems.STUN_GRENADE.get()));
+        this.setItem(new ItemStack(ModItems.STUN_GRENADE_NO_PIN.get()));
     }
 
     public ThrowableStunGrenadeEntity(Level world, LivingEntity player, int maxCookTime)
     {
         super(ModEntities.THROWABLE_STUN_GRENADE.get(), world, player);
-        this.setItem(new ItemStack(ModItems.STUN_GRENADE.get()));
+        this.setItem(new ItemStack(ModItems.STUN_GRENADE_NO_PIN.get()));
         this.setMaxLife(maxCookTime);
     }
 
@@ -69,7 +69,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        this.level.playSound(null, this.getX(), y, this.getZ(), ModSounds.ENTITY_STUN_GRENADE_EXPLOSION.get(), SoundSource.BLOCKS, 3, 1);
+        this.level.playSound(null, this.getX(), y, this.getZ(), ModSounds.ENTITY_STUN_GRENADE_EXPLOSION.get(), SoundSource.BLOCKS, 2, 1);
         if(this.level.isClientSide)
         {
             return;
@@ -119,15 +119,15 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
         if(distance <= criteria.radius.get() && angleMax > 0 && angle <= angleMax)
         {
             // Verify that light can pass through all blocks obstructing the entity's line of sight to the grenade
-            if(effect != ModEffects.BLINDED.get() || !Config.COMMON.stunGrenades.blind.criteria.raytraceOpaqueBlocks.get() || rayTraceOpaqueBlocks(this.level, eyes, grenade, false, false, false) == null)
+            if(effect != ModEffects.BLINDED.get() || rayTraceOpaqueBlocks(this.level, eyes, grenade, false, false, false) == null)
             {
                 // Duration attenuated by distance
-                int durationBlinded = (int) Math.round(criteria.durationMax.get() - (criteria.durationMax.get() - criteria.durationMin.get()) * (distance / criteria.radius.get()));
+                int duration = (int) Math.round(criteria.durationMax.get() - (criteria.durationMax.get() - criteria.durationMin.get()) * (distance / criteria.radius.get()));
 
                 // Duration further attenuated by angle
-                durationBlinded *= 1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax;
+                duration *= 1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax;
 
-                entity.addEffect(new MobEffectInstance(effect, durationBlinded, 0, false, false));
+                entity.addEffect(new MobEffectInstance(effect, duration, 0, false, false));
 
                 return !(entity instanceof Player);
             }

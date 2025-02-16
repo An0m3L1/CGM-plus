@@ -1,0 +1,101 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {"item": "create:iron_sheet"},
+  "loops": 5,
+  "results": [
+    {
+      "chance": 120.0,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "chance": 8.0,
+      "item": "create:iron_sheet"
+    },
+    {
+      "chance": 8.0,
+      "item": "cgm:steel_ingot"
+    },
+    {
+      "chance": 5.0,
+      "item": "create:cogwheel"
+    },
+    {
+      "chance": 3.0,
+      "item": "cgm:steel_nugget"
+    },
+    {
+      "chance": 2.0,
+      "item": "create:shaft"
+    },
+    {
+      "chance": 2.0,
+      "item": "minecraft:iron_ingot"
+    },
+    {
+      "chance": 2.0,
+      "item": "create:precision_mechanism"
+    }
+  ],
+  "sequence": [
+    {
+      "type": "create:cutting",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"}
+      ],
+      "processingTime": 50,
+      "results":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"},
+        {"item": "create:cogwheel"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"},
+        {"item": "create:large_cogwheel"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"},
+        {"item": "cgm:steel_nugget"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"}
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_sturdy_mechanism"}
+      ]
+    }
+  ],
+  "transitionalItem": {"item": "cgm:incomplete_sturdy_mechanism"}
+}

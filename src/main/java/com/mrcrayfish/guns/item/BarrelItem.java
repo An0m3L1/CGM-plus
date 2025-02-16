@@ -46,6 +46,6 @@ public class BarrelItem extends AttachmentItem implements IBarrel, IColored
     @Override
     public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment)
     {
-        return enchantment == Enchantments.BINDING_CURSE || super.canApplyAtEnchantingTable(stack, enchantment);
+        return false;
     }
 }

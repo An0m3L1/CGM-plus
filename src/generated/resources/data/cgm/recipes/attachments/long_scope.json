@@ -1,0 +1,24 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 2,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 4,
+      "item": "cgm:steel_sheet"
+    },
+    {
+      "count": 8,
+      "item": "cgm:plastic_sheet"
+    },
+    {
+      "count": 2,
+      "item": "minecraft:tinted_glass"
+    }
+  ],
+  "result": {
+    "item": "cgm:long_scope"
+  }
+}

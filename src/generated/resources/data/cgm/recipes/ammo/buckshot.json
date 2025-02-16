@@ -1,0 +1,15 @@
+{
+  "type": "create:cutting",
+  "ingredients":
+  [
+    {"item": "cgm:steel_rod"}
+  ],
+  "processingTime": 200,
+  "results":
+  [
+    {
+      "count": 8,
+      "item": "cgm:buckshot"
+    }
+  ]
+}

@@ -130,20 +130,20 @@ public class GunItem extends Item implements IColored, IMeta
             }
 
             // Reload Speed
-            int reload;
+            float reload;
             if(modifiedGun.getGeneral().usesMagReload())
             {
-                reload = GunCompositeStatHelper.getMagReloadSpeed(stack, false);
+                reload = (float) GunCompositeStatHelper.getMagReloadSpeed(stack, false) / 20;
             }
             else
             {
-                reload = GunCompositeStatHelper.getReloadInterval(stack, false);
+                reload = (float) GunCompositeStatHelper.getReloadInterval(stack, false) / 20;
             }
             tooltip.add(Component.translatable("info.cgm.reload_rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(reload)).withStyle(ChatFormatting.GRAY));
 
             // Fire Rate
-            int rate;
-            rate = GunCompositeStatHelper.getCompositeBaseRate(stack, modifiedGun);
+            float rate;
+            rate = Math.round(20 / ((float)GunCompositeStatHelper.getCompositeBaseRate(stack, modifiedGun)) * 60);
             tooltip.add(Component.translatable("info.cgm.rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(rate)).withStyle(ChatFormatting.GRAY));
 
         	// Recoil
@@ -263,29 +263,6 @@ public class GunItem extends Item implements IColored, IMeta
             return Debug.getGun(this);
         }
         return this.gun;
-    }
-
-    @Override
-    public boolean canApplyAtEnchantingTable(ItemStack stack, Enchantment enchantment)
-    {
-        if(enchantment.category == EnchantmentTypes.SEMI_AUTO_GUN)
-        {
-            Gun modifiedGun = this.getModifiedGun(stack);
-            return !modifiedGun.getGeneral().isAuto() || modifiedGun.getFireModes().hasSemiMode();
-        }
-        return super.canApplyAtEnchantingTable(stack, enchantment);
-    }
-
-    @Override
-    public boolean isEnchantable(@NotNull ItemStack stack)
-    {
-        return this.getMaxStackSize(stack) == 1;
-    }
-
-    @Override
-    public int getEnchantmentValue()
-    {
-        return 5;
     }
 
     @Override

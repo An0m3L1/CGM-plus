@@ -1,0 +1,22 @@
+{
+  "type": "create:compacting",
+  "ingredients":
+  [
+    {"item": "cgm:steel_nugget"},
+    {"item": "cgm:steel_nugget"},
+    {"item": "cgm:steel_nugget"},
+    {"item": "cgm:steel_nugget"},
+    {"item": "cgm:steel_nugget"},
+    {"item": "cgm:steel_nugget"},
+    {"item": "cgm:steel_nugget"},
+    {"item": "cgm:steel_nugget"},
+    {"item": "create:copper_sheet"}
+  ],
+  "results":
+  [
+    {
+      "count": 8,
+      "item": "cgm:bullet"
+    }
+  ]
+}

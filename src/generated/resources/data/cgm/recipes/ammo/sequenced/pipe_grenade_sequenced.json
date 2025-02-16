@@ -1,0 +1,48 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {"item": "cgm:steel_sheet"},
+  "loops": 1,
+  "results":
+  [
+    {"item": "cgm:pipe_grenade"}
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:steel_sheet"},
+        {"item": "minecraft:gunpowder"}
+      ],
+      "results":
+      [
+        {"item": "cgm:pipe_grenade"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:steel_sheet"},
+        {"item": "minecraft:gunpowder"}
+      ],
+      "results":
+      [
+        {"item": "cgm:pipe_grenade"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:pipe_grenade"},
+        {"item": "cgm:buckshot"}
+      ],
+      "results":
+      [
+        {"item": "cgm:pipe_grenade"}
+      ]
+    }
+  ],
+  "transitionalItem": {"item": "cgm:steel_sheet"}
+}

@@ -1,0 +1,21 @@
+{
+  "type": "create:mixing",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"item": "minecraft:charcoal"},
+    {"item": "minecraft:charcoal"},
+    {"item": "minecraft:charcoal"},
+    {"item": "minecraft:charcoal"},
+    {"item": "minecraft:slime_ball"},
+    {"item": "minecraft:slime_ball"},
+    {"item": "create:powdered_obsidian"}
+  ],
+  "results":
+  [
+    {
+      "count": 4,
+      "item": "cgm:plastic"
+    }
+  ]
+}

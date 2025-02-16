@@ -1,0 +1,32 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 4,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 8,
+      "item": "cgm:steel_rod"
+    },
+    {
+      "count": 16,
+      "item": "cgm:steel_sheet"
+    },
+    {
+      "count": 12,
+      "item": "cgm:plastic"
+    },
+    {
+      "count": 8,
+      "item": "cgm:rubber"
+    },
+    {
+      "count": 1,
+      "item": "minecraft:lime_dye"
+    }
+  ],
+  "result": {
+    "item": "cgm:assault_rifle"
+  }
+}

@@ -1,0 +1,10 @@
+{
+  "type": "cgm:workbench",
+  "materials":
+  [
+    {"item": "cgm:steel_sheet"},
+    {"item": "cgm:buckshot"},
+    {"item": "minecraft:gunpowder"}
+  ],
+  "result": {"item": "cgm:grenade"}
+}

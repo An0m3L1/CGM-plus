@@ -374,7 +374,7 @@ public class Config
         {
             builder.comment("Blinding properties of stun grenades").push("blind");
             {
-                this.criteria = new EffectCriteria(builder, 16, 220, 10, 120, 0.75, true);
+                this.criteria = new EffectCriteria(builder, 32, 120, 20, 135, 0.75);
                 this.blindMobs = builder.comment("If true, hostile mobs will be unable to target entities while they are blinded by a stun grenade.").define("blindMobs", true);
             }
             builder.pop();
@@ -393,7 +393,7 @@ public class Config
         {
             builder.comment("Deafening properties of stun grenades").push("deafen");
             {
-                this.criteria = new EffectCriteria(builder, 16, 220, 120, 360, 0.75, false);
+                this.criteria = new EffectCriteria(builder, 32, 120, 20, 360, 0.75);
                 this.panicMobs = builder.comment("If true, peaceful mobs will panic upon being deafened by a stun grenade.").define("panicMobs", true);
             }
             builder.pop();
@@ -410,9 +410,8 @@ public class Config
         public final ForgeConfigSpec.IntValue durationMin;
         public final ForgeConfigSpec.DoubleValue angleEffect;
         public final ForgeConfigSpec.DoubleValue angleAttenuationMax;
-        public final ForgeConfigSpec.BooleanValue raytraceOpaqueBlocks;
 
-        public EffectCriteria(ForgeConfigSpec.Builder builder, double radius, int durationMax, int durationMin, double angleEffect, double angleAttenuationMax, boolean raytraceOpaqueBlocks)
+        public EffectCriteria(ForgeConfigSpec.Builder builder, double radius, int durationMax, int durationMin, double angleEffect, double angleAttenuationMax)
         {
             builder.push("effect_criteria");
             {
@@ -421,7 +420,6 @@ public class Config
                 this.durationMin = builder.comment("Effect will have this duration (in ticks) if the grenade is the maximum distance from the player's eyes while looking directly at it.").defineInRange("durationMin", durationMin, 0, Integer.MAX_VALUE);
                 this.angleEffect = builder.comment("Angle between the eye/looking direction and the eye/grenade direction must be no more than half this many degrees to have an effect.").defineInRange("angleEffect", angleEffect, 0, 360);
                 this.angleAttenuationMax = builder.comment("After duration is attenuated by distance, it will be further attenuated depending on the angle (in degrees) between the eye/looking direction and the eye/grenade direction. This is done by multiplying it by 1 (no attenuation) if the angle is 0; and by this value if the angle is the maximum within the angle of effect.").defineInRange("angleAttenuationMax", angleAttenuationMax, 0.0, 1.0);
-                this.raytraceOpaqueBlocks = builder.comment("If true, the effect is only applied if the line between the eyes and the grenade does not intersect any non-liquid blocks with an opacity greater than 0.").define("raytraceOpaqueBlocks", raytraceOpaqueBlocks);
             }
             builder.pop();
         }

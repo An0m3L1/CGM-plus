@@ -47,7 +47,8 @@
       "scope": {},
       "stock": {},
       "underBarrel": {},
-      "magazine": {}
+      "magazine": {},
+      "tactical": {}
     },
     "zoom": {"fovModifier": 0.75}
   },

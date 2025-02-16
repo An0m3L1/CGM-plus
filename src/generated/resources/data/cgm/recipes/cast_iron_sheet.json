@@ -1,0 +1,11 @@
+{
+  "type": "create:pressing",
+  "ingredients":
+  [
+    {"item": "cgm:cast_iron_ingot"}
+  ],
+  "results":
+  [
+    {"item": "cgm:cast_iron_sheet"}
+  ]
+}

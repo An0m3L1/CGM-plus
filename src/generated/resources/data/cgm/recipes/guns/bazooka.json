@@ -1,0 +1,28 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 4,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 12,
+      "item": "cgm:steel_rod"
+    },
+    {
+      "count": 24,
+      "item": "cgm:steel_sheet"
+    },
+    {
+      "count": 16,
+      "item": "cgm:plastic"
+    },
+    {
+      "count": 8,
+      "item": "cgm:rubber"
+    }
+  ],
+  "result": {
+    "item": "cgm:bazooka"
+  }
+}

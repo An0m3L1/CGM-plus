@@ -22,13 +22,13 @@
   "projectile": {
     "damage": 20.0,
     "size": 0.2,
-    "speed": 2.0,
-    "life": 100,
+    "speed": 2.00,
+    "life": 60,
     "armorBypass": 1.0,
     "protectionBypass": 0.1,
     "gravity": true,
     "visible": true,
-    "gravityStrength": 1.0,
+    "gravityStrength": 1.25,
     "maxPierceCount": 1,
     "item": "cgm:pipe_grenade"
   },

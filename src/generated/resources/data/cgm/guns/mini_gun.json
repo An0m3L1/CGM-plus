@@ -13,8 +13,9 @@
     "recoilAngle": 0.1,
     "recoilKick": 0.1,
     "recoilDurationOffset": 0.0,
-    "spread": 4.0,
-    "restingSpread": 2.0,
+    "spread": 6.0,
+    "spreadAdsReduction": 0.0,
+    "restingSpread": 1.0,
 
     "maxAmmo": 200,
     "useMagReload": true,

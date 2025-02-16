@@ -1,0 +1,14 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "n": {"item": "cgm:cast_iron_nugget"}
+  },
+  "pattern":
+  [
+    "nnn",
+    "nnn",
+    "nnn"
+  ],
+  "result": {"item": "cgm:cast_iron_ingot"}
+}

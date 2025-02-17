@@ -45,9 +45,9 @@ public class GripType
     public static final GripType MINI_GUN = new GripType(new ResourceLocation(Reference.MOD_ID, "mini_gun"), new MiniGunPose());
 
     /**
-     * A custom grip type designed for the bazooka.
+     * A custom grip type designed for the rocket_launcher.
      */
-    public static final GripType BAZOOKA = new GripType(new ResourceLocation(Reference.MOD_ID, "bazooka"), new BazookaPose());
+    public static final GripType BAZOOKA = new GripType(new ResourceLocation(Reference.MOD_ID, "rocket_launcher"), new BazookaPose());
 
     /**
      * A common method to set up a transformation of the weapon onto the players' back.

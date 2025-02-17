@@ -21,7 +21,7 @@ import javax.annotation.Nullable;
 @Deprecated(since = "1.3.0", forRemoval = true)
 public class LongScopeModel implements IOverrideModel
 {
-    private static final ResourceLocation RETICLE = new ResourceLocation(Reference.MOD_ID, "textures/effect/long_scope_reticle.png");
+    private static final ResourceLocation RETICLE = new ResourceLocation(Reference.MOD_ID, "textures/effect/x4_scope_reticle.png");
     private static final ResourceLocation VIGNETTE = new ResourceLocation(Reference.MOD_ID, "textures/effect/scope_vignette.png");
 
     @Override

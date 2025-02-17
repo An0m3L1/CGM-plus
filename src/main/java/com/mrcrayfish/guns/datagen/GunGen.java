@@ -30,7 +30,7 @@ public class GunGen extends GunProvider
                 .setRecoilKick(0.25F)
                 .setRecoilAngle(3.0F)
                 .setSpread(4.0F)
-                .setAmmo(ModItems.BASIC_BULLET.get())
+                .setAmmo(ModItems.LIGHT_BULLET.get())
                 .setDamage(6.5F)
                 .setProjectileSize(0.2F)
                 .setProjectileSpeed(10F)
@@ -50,13 +50,13 @@ public class GunGen extends GunProvider
                 .setUnderBarrel(1.0F, 0.0, 2.799, -1.0)
                 .build());
 
-        this.addGun(new ResourceLocation(Reference.MOD_ID, "bazooka"), Gun.Builder.create()
+        this.addGun(new ResourceLocation(Reference.MOD_ID, "rocket_launcher"), Gun.Builder.create()
                 .setFireRate(80)
                 .setGripType(GripType.BAZOOKA)
                 .setMaxAmmo(1)
                 .setRecoilAngle(10.0F)
                 .setRecoilDurationOffset(0.25F)
-                .setAmmo(ModItems.MISSILE.get())
+                .setAmmo(ModItems.ROCKET.get())
                 .setDamage(25.0F)
                 .setProjectileVisible(true)
                 .setProjectileSize(0.2F)
@@ -94,7 +94,7 @@ public class GunGen extends GunProvider
                 .setStock(1.0F, 0.0, 3.6, 8.2)
                 .build());
 
-        this.addGun(new ResourceLocation(Reference.MOD_ID, "heavy_rifle"), Gun.Builder.create()
+        this.addGun(new ResourceLocation(Reference.MOD_ID, "heavy_sniper_rifle"), Gun.Builder.create()
                 .setFireRate(40)
                 .setGripType(GripType.TWO_HANDED)
                 .setMaxAmmo(4)
@@ -105,7 +105,7 @@ public class GunGen extends GunProvider
                 .setRecoilAdsReduction(0.4F)
                 .setAlwaysSpread(true)
                 .setSpread(1.0F)
-                .setAmmo(ModItems.ADVANCED_AMMO.get())
+                .setAmmo(ModItems.HEAVY_BULLET.get())
                 .setDamage(18.0F)
                 .setProjectileAffectedByGravity(true)
                 .setProjectileSize(0.0625F)
@@ -125,7 +125,7 @@ public class GunGen extends GunProvider
                 .setUnderBarrel(1.0F, 0.0, 3.0, -0.5)
                 .build());
 
-        this.addGun(new ResourceLocation(Reference.MOD_ID, "machine_pistol"), Gun.Builder.create()
+        this.addGun(new ResourceLocation(Reference.MOD_ID, "automatic_pistol"), Gun.Builder.create()
                 .setAuto(true)
                 .setFireRate(2)
                 .setGripType(GripType.ONE_HANDED)
@@ -136,7 +136,7 @@ public class GunGen extends GunProvider
                 .setRecoilAdsReduction(0.5F)
                 .setAlwaysSpread(true)
                 .setSpread(6.0F)
-                .setAmmo(ModItems.BASIC_BULLET.get())
+                .setAmmo(ModItems.LIGHT_BULLET.get())
                 .setDamage(3.0F)
                 .setProjectileSize(0.2F)
                 .setProjectileSpeed(10.0)
@@ -164,7 +164,7 @@ public class GunGen extends GunProvider
                 .setRecoilAngle(1.0F)
                 .setAlwaysSpread(true)
                 .setSpread(7.0F)
-                .setAmmo(ModItems.BASIC_BULLET.get())
+                .setAmmo(ModItems.LIGHT_BULLET.get())
                 .setDamage(5.0F)
                 .setProjectileSize(0.2F)
                 .setProjectileSpeed(8.0F)
@@ -175,7 +175,7 @@ public class GunGen extends GunProvider
                 .setMuzzleFlash(0.5, 0.0, 2.7, -11.51)
                 .build());
 
-        this.addGun(new ResourceLocation(Reference.MOD_ID, "pistol"), Gun.Builder.create()
+        this.addGun(new ResourceLocation(Reference.MOD_ID, "tactical_pistol"), Gun.Builder.create()
                 .setFireRate(4)
                 .setGripType(GripType.ONE_HANDED)
                 .setMaxAmmo(16)
@@ -184,7 +184,7 @@ public class GunGen extends GunProvider
                 .setRecoilAdsReduction(0.5F)
                 .setAlwaysSpread(true)
                 .setSpread(1.0F)
-                .setAmmo(ModItems.BASIC_BULLET.get())
+                .setAmmo(ModItems.LIGHT_BULLET.get())
                 .setDamage(9.0F)
                 .setProjectileSize(0.2F)
                 .setProjectileSpeed(10.0)
@@ -203,7 +203,7 @@ public class GunGen extends GunProvider
                 .setStock(1.0F, 0.0, 3.3, 7.95)
                 .build());
 
-        this.addGun(new ResourceLocation(Reference.MOD_ID, "rifle"), Gun.Builder.create()
+        this.addGun(new ResourceLocation(Reference.MOD_ID, "sniper_rifle"), Gun.Builder.create()
                 .setFireRate(8)
                 .setGripType(GripType.TWO_HANDED)
                 .setMaxAmmo(10)
@@ -213,7 +213,7 @@ public class GunGen extends GunProvider
                 .setRecoilAdsReduction(0.5F)
                 .setAlwaysSpread(true)
                 .setSpread(1.0F)
-                .setAmmo(ModItems.ADVANCED_AMMO.get())
+                .setAmmo(ModItems.HEAVY_BULLET.get())
                 .setDamage(15.0F)
                 .setProjectileAffectedByGravity(true)
                 .setProjectileSize(0.0625F)
@@ -234,7 +234,7 @@ public class GunGen extends GunProvider
                 .setUnderBarrel(1.0F, 0.0, 2.63, -0.5)
                 .build());
 
-        this.addGun(new ResourceLocation(Reference.MOD_ID, "shotgun"), Gun.Builder.create()
+        this.addGun(new ResourceLocation(Reference.MOD_ID, "semi_auto_shotgun"), Gun.Builder.create()
                 .setFireRate(8)
                 .setGripType(GripType.TWO_HANDED)
                 .setMaxAmmo(8)
@@ -245,7 +245,7 @@ public class GunGen extends GunProvider
                 .setProjectileAmount(5)
                 .setAlwaysSpread(true)
                 .setSpread(20.0F)
-                .setAmmo(ModItems.SHELL.get())
+                .setAmmo(ModItems.BUCKSHOT_SHELL.get())
                 .setDamage(18.0F)
                 .setProjectileSize(1.0F)
                 .setProjectileSpeed(10.0)

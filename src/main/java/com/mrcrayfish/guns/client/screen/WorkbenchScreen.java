@@ -37,7 +37,6 @@ import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.lwjgl.opengl.GL11;
 
@@ -53,7 +52,7 @@ import java.util.stream.Stream;
  */
 public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 {
-    private static final ResourceLocation GUI_BASE = new ResourceLocation("cgm:textures/gui/workbench.png");
+    private static final ResourceLocation GUI_BASE = new ResourceLocation("cgm:textures/gui/gun_workbench.png");
     private static boolean showRemaining = false;
 
     private Tab currentTab;
@@ -111,14 +110,14 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 
         if(!weapons.isEmpty())
         {
-            ItemStack icon = new ItemStack(ModItems.MACHINE_PISTOL.get());
-            icon.getOrCreateTag().putInt("AmmoCount", ModItems.MACHINE_PISTOL.get().getGun().getGeneral().getMaxAmmo());
+            ItemStack icon = new ItemStack(ModItems.AUTOMATIC_PISTOL.get());
+            icon.getOrCreateTag().putInt("AmmoCount", ModItems.AUTOMATIC_PISTOL.get().getGun().getGeneral().getMaxAmmo());
             this.tabs.add(new Tab(icon, "weapons", weapons));
         }
 
         if(!attachments.isEmpty())
         {
-            this.tabs.add(new Tab(new ItemStack(ModItems.LONG_SCOPE.get()), "attachments", attachments));
+            this.tabs.add(new Tab(new ItemStack(ModItems.X4_SCOPE.get()), "attachments", attachments));
         }
 
         if(!ammo.isEmpty())

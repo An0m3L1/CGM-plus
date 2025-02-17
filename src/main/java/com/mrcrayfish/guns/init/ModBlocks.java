@@ -22,7 +22,7 @@ public class ModBlocks
 {
     public static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
 
-    public static final RegistryObject<Block> WORKBENCH = registerBlock("workbench",
+    public static final RegistryObject<Block> GUN_WORKBENCH = registerBlock("gun_workbench",
             () -> new WorkbenchBlock(Block.Properties.of(Material.WOOD)
             .requiresCorrectToolForDrops()
             .strength(1.0F)), GunMod.MATERIALS);

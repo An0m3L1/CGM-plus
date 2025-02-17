@@ -1,0 +1,12 @@
+{
+  "type": "create:compacting",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"tag": "forge:storage_blocks/cast_iron"}
+  ],
+  "results":
+  [
+    {"item": "cgm:steel_block"}
+  ]
+}

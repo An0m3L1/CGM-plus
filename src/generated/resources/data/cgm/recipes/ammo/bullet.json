@@ -2,15 +2,15 @@
   "type": "create:compacting",
   "ingredients":
   [
-    {"item": "cgm:steel_nugget"},
-    {"item": "cgm:steel_nugget"},
-    {"item": "cgm:steel_nugget"},
-    {"item": "cgm:steel_nugget"},
-    {"item": "cgm:steel_nugget"},
-    {"item": "cgm:steel_nugget"},
-    {"item": "cgm:steel_nugget"},
-    {"item": "cgm:steel_nugget"},
-    {"item": "create:copper_sheet"}
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:nuggets/steel"},
+    {"tag": "forge:plates/copper"}
   ],
   "results":
   [

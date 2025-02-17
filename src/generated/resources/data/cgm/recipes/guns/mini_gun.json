@@ -7,11 +7,11 @@
     },
     {
       "count": 16,
-      "item": "cgm:steel_rod"
+      "tag": "forge:rods/steel"
     },
     {
       "count": 32,
-      "item": "cgm:steel_sheet"
+      "tag": "forge:plates/steel"
     },
     {
       "count": 24,

@@ -2,16 +2,16 @@
   "type": "create:compacting",
   "ingredients":
   [
-    {"item": "minecraft:red_dye"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "cgm:plastic_sheet"},
-    {"item": "create:brass_sheet"}
+    {"tag": "forge:dyes/red"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/plastic"},
+    {"tag": "forge:plates/brass"}
   ],
   "results":
   [

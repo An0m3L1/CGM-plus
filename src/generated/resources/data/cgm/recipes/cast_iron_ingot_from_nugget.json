@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key":
   {
-    "n": {"item": "cgm:cast_iron_nugget"}
+    "n": {"tag": "forge:nuggets/cast_iron"}
   },
   "pattern":
   [

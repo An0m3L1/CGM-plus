@@ -2,7 +2,7 @@
   "type": "create:cutting",
   "ingredients":
   [
-    {"item": "cgm:brass_rod"}
+    {"tag": "forge:rods/brass"}
   ],
   "processingTime": 200,
   "results":

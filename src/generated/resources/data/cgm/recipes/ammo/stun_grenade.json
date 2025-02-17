@@ -2,9 +2,9 @@
   "type": "cgm:workbench",
   "materials":
   [
-    {"item": "cgm:steel_sheet"},
-    {"item": "minecraft:glowstone_dust"},
-    {"item": "minecraft:gunpowder"}
+    {"tag": "forge:plates/steel"},
+    {"tag": "forge:dusts/glowstone"},
+    {"tag": "forge:gunpowder"}
   ],
   "result": {"item": "cgm:stun_grenade"}
 }

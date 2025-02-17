@@ -2,9 +2,9 @@
   "type": "cgm:workbench",
   "materials":
   [
-    {"item": "cgm:steel_sheet"},
+    {"tag": "forge:plates/steel"},
     {"item": "cgm:buckshot"},
-    {"item": "minecraft:gunpowder"}
+    {"tag": "forge:gunpowder"}
   ],
   "result": {"item": "cgm:grenade"}
 }

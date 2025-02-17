@@ -44,7 +44,7 @@ import java.util.stream.Stream;
 public class WorkbenchCategory implements IRecipeCategory<WorkbenchRecipe>
 {
     public static final ResourceLocation ID = new ResourceLocation(Reference.MOD_ID, "workbench");
-    public static final ResourceLocation BACKGROUND = new ResourceLocation(Reference.MOD_ID, "textures/gui/workbench.png");
+    public static final ResourceLocation BACKGROUND = new ResourceLocation(Reference.MOD_ID, "textures/gui/gun_workbench.png");
     public static final String TITLE_KEY = Reference.MOD_ID + ".category.workbench.title";
     public static final String MATERIALS_KEY = Reference.MOD_ID + ".category.workbench.materials";
 
@@ -62,7 +62,7 @@ public class WorkbenchCategory implements IRecipeCategory<WorkbenchRecipe>
         this.window = helper.createDrawable(BACKGROUND, 7, 15, 162, 72);
         this.inventory = helper.createDrawable(BACKGROUND, 7, 101, 162, 36);
         this.dyeSlot = helper.createDrawable(BACKGROUND, 7, 101, 18, 18);
-        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.WORKBENCH.get()));
+        this.icon = helper.createDrawableIngredient(VanillaTypes.ITEM_STACK, new ItemStack(ModBlocks.GUN_WORKBENCH.get()));
         this.title = Component.translatable(TITLE_KEY);
         this.dyes = ForgeRegistries.ITEMS.getValues().stream().filter(item -> item instanceof DyeItem).toArray(Item[]::new);
     }

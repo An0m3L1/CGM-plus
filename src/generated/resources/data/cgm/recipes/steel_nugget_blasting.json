@@ -1,7 +1,0 @@
-{
-  "type": "minecraft:blasting",
-  "cookingtime": 100,
-  "experience": 0.1,
-  "ingredient": {"item": "cgm:cast_iron_nugget"},
-  "result": "cgm:steel_nugget"
-}

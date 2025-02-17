@@ -3,12 +3,12 @@
   "heatRequirement": "heated",
   "ingredients":
   [
-    {"item": "minecraft:charcoal"},
-    {"item": "minecraft:charcoal"},
-    {"item": "minecraft:charcoal"},
-    {"item": "minecraft:charcoal"},
-    {"item": "minecraft:slime_ball"},
-    {"item": "minecraft:slime_ball"},
+    {"tag": "minecraft:coals"},
+    {"tag": "minecraft:coals"},
+    {"tag": "minecraft:coals"},
+    {"tag": "minecraft:coals"},
+    {"tag": "forge:slimeballs"},
+    {"tag": "forge:slimeballs"},
     {"item": "create:powdered_obsidian"}
   ],
   "results":

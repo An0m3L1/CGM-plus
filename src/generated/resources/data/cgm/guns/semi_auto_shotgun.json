@@ -1,0 +1,65 @@
+{
+  "display": {"flash": {}},
+  "general":
+  {
+    "gripType": "cgm:two_handed",
+    "auto": false,
+    "rate": 5,
+
+    "adsSpeed": 1.0,
+    "recoilAdsReduction": 0.5,
+    "spreadAdsReduction": 0.0,
+
+    "recoilAngle": 6.0,
+    "recoilKick": 1.25,
+    "recoilDurationOffset": 0.0,
+    "spread": 2.0,
+    "alwaysSpread": true,
+    "useShotgunSpread": true,
+
+    "maxAmmo": 7,
+    "projectileAmount": 9,
+
+    "reloadAmount": 1,
+    "reloadRate": 11,
+    "reloadStartDelay": 6,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 8,
+    "reloadAllowedCooldown": 0.0
+  },
+  "modules":
+  {
+    "attachments":
+    {
+      "scope": {},
+      "underBarrel": {},
+      "stock": {}
+    },
+    "zoom": {"fovModifier": 0.75}
+  },
+  "projectile":
+  {
+    "item": "cgm:buckshot_shell",
+    "damage": 9.0,
+    "damageReduceOverLife": true,
+    "maxRangeDamageMultiplier": 0.25,
+    "headshotMultiplierOverride": 2.0,
+
+    "size": 1.0,
+    "speed": 30.0,
+    "life": 3,
+    "trailLengthMultiplier": 5.0,
+
+    "armorBypass": 0.25,
+    "protectionBypass": 0.25,
+
+    "maxPierceCount": 3,
+    "pierceDamagePenalty": 0.25,
+    "pierceDamageMaxPenalty": 0.75
+  },
+  "sounds":
+  {
+    "fire": "cgm:item.semi_auto_shotgun.fire",
+    "reload": "cgm:item.semi_auto_shotgun.reload"
+  }
+}

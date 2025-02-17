@@ -2,7 +2,7 @@
   "type": "create:cutting",
   "ingredients":
   [
-    {"item": "cgm:steel_rod"}
+    {"tag": "forge:rods/steel"}
   ],
   "processingTime": 200,
   "results":

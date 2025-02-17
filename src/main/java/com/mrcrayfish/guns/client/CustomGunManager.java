@@ -4,7 +4,6 @@ import com.mrcrayfish.framework.api.data.login.ILoginData;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.common.CustomGun;
 import com.mrcrayfish.guns.common.CustomGunLoader;
-import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.network.message.S2CMessageUpdateGuns;
 import net.minecraft.core.NonNullList;
@@ -47,7 +46,7 @@ public class CustomGunManager
         {
             customGunMap.forEach((id, gun) ->
             {
-                ItemStack stack = new ItemStack(ModItems.PISTOL.get());
+                ItemStack stack = new ItemStack(ModItems.TACTICAL_PISTOL.get());
                 stack.setHoverName(Component.translatable("item." + id.getNamespace() + "." + id.getPath() + ".name"));
                 CompoundTag tag = stack.getOrCreateTag();
                 tag.put("Model", gun.getModel().save(new CompoundTag()));

@@ -1,0 +1,38 @@
+{
+  "display": {
+    "flash": {
+      "size": 2.0,
+      "yOffset": 4.3,
+      "zOffset": -8.01
+    }
+  },
+  "general": {
+    "gripType": "cgm:rocket_launcher",
+    "auto": true,
+    "rate": 16,
+
+    "recoilAngle": 8.0,
+    "recoilKick": 2.0,
+    "recoilDurationOffset": 0.1,
+    "spread": 0.0,
+
+    "maxAmmo": 4,
+    "reloadRate": 18
+  },
+  "projectile": {
+    "damage": 25.0,
+    "size": 0.2,
+    "speed": 4.0,
+    "life": 40,
+    "armorBypass": 1.0,
+    "protectionBypass": 0.1,
+    "gravity": false,
+    "visible": true,
+    "maxPierceCount": 1,
+    "item": "cgm:rocket"
+  },
+  "sounds": {
+    "fire": "cgm:item.rocket_launcher.fire",
+    "reload": "cgm:item.rocket_launcher.reload"
+  }
+}

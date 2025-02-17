@@ -1,6 +1,6 @@
 {
   "type": "create:sequenced_assembly",
-  "ingredient": {"item": "create:iron_sheet"},
+  "ingredient": {"tag": "forge:plates/iron"},
   "loops": 5,
   "results": [
     {
@@ -78,7 +78,7 @@
       "ingredients":
       [
         {"item": "cgm:incomplete_sturdy_mechanism"},
-        {"item": "cgm:steel_nugget"}
+        {"tag": "forge:nuggets/steel"}
       ],
       "results":
       [

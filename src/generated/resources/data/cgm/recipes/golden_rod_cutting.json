@@ -2,7 +2,7 @@
   "type": "create:cutting",
   "ingredients":
   [
-    {"item": "minecraft:gold_ingot"}
+    {"tag": "forge:ingots/gold"}
   ],
   "processingTime": 200,
   "results":

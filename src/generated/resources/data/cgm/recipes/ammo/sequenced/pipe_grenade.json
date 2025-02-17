@@ -1,0 +1,48 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {"tag": "forge:plates/steel"},
+  "loops": 1,
+  "results":
+  [
+    {"item": "cgm:pipe_grenade"}
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"tag": "forge:plates/steel"},
+        {"tag": "forge:gunpowder"}
+      ],
+      "results":
+      [
+        {"item": "cgm:pipe_grenade"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"tag": "forge:plates/steel"},
+        {"tag": "forge:gunpowder"}
+      ],
+      "results":
+      [
+        {"item": "cgm:pipe_grenade"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"tag": "forge:plates/steel"},
+        {"item": "cgm:buckshot"}
+      ],
+      "results":
+      [
+        {"item": "cgm:pipe_grenade"}
+      ]
+    }
+  ],
+  "transitionalItem": {"item": "cgm:steel_sheet"}
+}

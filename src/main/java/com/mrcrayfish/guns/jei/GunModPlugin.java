@@ -49,6 +49,6 @@ public class GunModPlugin implements IModPlugin
     @Override
     public void registerRecipeCatalysts(IRecipeCatalystRegistration registration)
     {
-        registration.addRecipeCatalyst(new ItemStack(ModBlocks.WORKBENCH.get()), WORKBENCH);
+        registration.addRecipeCatalyst(new ItemStack(ModBlocks.GUN_WORKBENCH.get()), WORKBENCH);
     }
 }

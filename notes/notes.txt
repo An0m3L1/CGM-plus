@@ -30,10 +30,7 @@ Overhaul explosions to destroy fragile blocks
 Overhaul pipe grenades to bounce
 Overhaul ARs (make mk18 more accurate hip firing, while m4 sighted)
 Add durability (check jeg)
-Add tags for all materials
 Add ADS recoil tooltip
 Add tint to guns
     - Must equip primer spray can
 Fix self-blinding by flashbangs
-
-Sort mod directories and change names

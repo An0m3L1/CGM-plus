@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "c": {"tag": "forge:ingots/cast_iron"}
+  },
+  "pattern":
+  [
+    "c",
+    "c"
+  ],
+  "result":
+  {
+    "count": 2,
+    "item": "cgm:cast_iron_rod"
+  }
+}

@@ -2,7 +2,7 @@
   "type": "create:cutting",
   "ingredients":
   [
-    {"item": "cgm:cast_iron_ingot"}
+    {"tag": "forge:ingots/cast_iron"}
   ],
   "processingTime": 200,
   "results":

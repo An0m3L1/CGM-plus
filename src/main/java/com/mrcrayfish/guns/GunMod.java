@@ -59,8 +59,8 @@ public class GunMod
         @Override
         public @NotNull ItemStack makeIcon()
         {
-            ItemStack icon = new ItemStack(ModItems.MACHINE_PISTOL.get());
-            icon.getOrCreateTag().putInt("AmmoCount", ModItems.MACHINE_PISTOL.get().getGun().getGeneral().getMaxAmmo());
+            ItemStack icon = new ItemStack(ModItems.AUTOMATIC_PISTOL.get());
+            icon.getOrCreateTag().putInt("AmmoCount", ModItems.AUTOMATIC_PISTOL.get().getGun().getGeneral().getMaxAmmo());
             return icon;
         }
 
@@ -137,7 +137,7 @@ public class GunMod
             CraftingHelper.register(new ResourceLocation(Reference.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);
             ProjectileManager.getInstance().registerFactory(ModItems.GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new GrenadeEntity(ModEntities.GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
             ProjectileManager.getInstance().registerFactory(ModItems.PIPE_GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new GrenadeEntity(ModEntities.PIPE_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
-            ProjectileManager.getInstance().registerFactory(ModItems.MISSILE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new MissileEntity(ModEntities.MISSILE.get(), worldIn, entity, weapon, item, modifiedGun));
+            ProjectileManager.getInstance().registerFactory(ModItems.ROCKET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new MissileEntity(ModEntities.MISSILE.get(), worldIn, entity, weapon, item, modifiedGun));
             if(Config.COMMON.gameplay.improvedHitboxes.get())
             {
                 MinecraftForge.EVENT_BUS.register(new BoundingBoxManager());

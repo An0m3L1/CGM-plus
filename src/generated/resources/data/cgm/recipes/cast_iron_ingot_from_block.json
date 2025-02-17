@@ -1,7 +1,7 @@
 {
   "type": "minecraft:crafting_shapeless",
   "ingredients": [
-    {"item": "cgm:cast_iron_block"}
+    {"tag": "forge:storage_blocks/cast_iron"}
   ],
   "result":
   {

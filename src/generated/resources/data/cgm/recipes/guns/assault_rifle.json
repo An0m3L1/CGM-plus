@@ -7,11 +7,11 @@
     },
     {
       "count": 8,
-      "item": "cgm:steel_rod"
+      "tag": "forge:rods/steel"
     },
     {
       "count": 16,
-      "item": "cgm:steel_sheet"
+      "tag": "forge:plates/steel"
     },
     {
       "count": 12,
@@ -23,7 +23,7 @@
     },
     {
       "count": 1,
-      "item": "minecraft:lime_dye"
+      "tag": "forge:dyes/lime"
     }
   ],
   "result": {

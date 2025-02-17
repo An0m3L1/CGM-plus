@@ -2,7 +2,7 @@
   "type": "create:cutting",
   "ingredients":
   [
-    {"item": "create:brass_ingot"}
+    {"tag": "forge:ingots/brass"}
   ],
   "processingTime": 200,
   "results":

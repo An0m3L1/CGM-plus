@@ -1,0 +1,84 @@
+{
+  "display": {"flash": {}},
+  "general":
+  {
+    "gripType": "cgm:pistol_custom",
+    "auto": true,
+    "rate": 1,
+
+    "adsSpeed": 1.2,
+    "recoilAdsReduction": 0.25,
+    "spreadAdsReduction": 0.25,
+
+    "recoilAngle": 1.5,
+    "recoilKick": 0.25,
+    "recoilDurationOffset": 0.0,
+    "spread": 3.5,
+
+    "maxAmmo": 32,
+    "lightMagAmmo": 20,
+    "extendedMagAmmo": 50,
+
+    "useMagReload": true,
+    "magReloadTime": 35,
+    "lightMagReloadTimeModifier": 0.85,
+    "extendedMagReloadTimeModifier": 1.15,
+
+    "reloadStartDelay": 2,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 2,
+    "reloadAllowedCooldown": 0.0
+  },
+  "fireModes":
+  {
+    "useFireModes": true,
+    "hasSemiMode": true,
+    "hasAutoMode": true,
+    "hasBurstMode": false
+  },
+  "modules":
+  {
+    "attachments":
+    {
+      "scope": {},
+      "magazine": {}
+    },
+    "zoom":
+    {"fovModifier": 0.8}
+  },
+  "projectile":
+  {
+    "item": "cgm:light_bullet",
+    "damage": 4.0,
+    "damageReduceOverLife": true,
+    "maxRangeDamageMultiplier": 0.5,
+    "headshotMultiplierOverride": 2.0,
+
+    "size": 1.0,
+    "speed": 30.0,
+    "life": 3,
+    "trailLengthMultiplier": 5.0,
+
+    "armorBypass": 0.25,
+    "protectionBypass": 0.25,
+
+    "maxPierceCount": 2,
+    "pierceDamagePenalty": 0.5,
+    "pierceDamageMaxPenalty": 0.5
+  },
+  "sounds":
+  {
+    "fire": "cgm:item.automatic_pistol.fire",
+    "fireSwitch": "cgm:item.fire_switch",
+
+    "reloadFrames": 29,
+    "reloadClipOut": "cgm:item.automatic_pistol.mag_out",
+    "reloadClipOutThreshold": 3.5,
+    "reloadClipIn": "cgm:item.automatic_pistol.mag_in",
+    "reloadClipInThreshold": 13.1,
+    "reloadMid": "cgm:item.automatic_pistol.slide_back",
+    "reloadMidThreshold": 20.9,
+    "reloadLate": "cgm:item.automatic_pistol.slide_forward",
+    "reloadLateThreshold": 23.5
+  }
+}

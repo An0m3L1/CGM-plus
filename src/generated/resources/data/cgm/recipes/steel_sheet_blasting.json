@@ -2,6 +2,6 @@
   "type": "minecraft:blasting",
   "cookingtime": 100,
   "experience": 0.7,
-  "ingredient": {"item": "cgm:cast_iron_sheet"},
+  "ingredient": {"tag": "forge:plates/cast_iron"},
   "result": "cgm:steel_sheet"
 }

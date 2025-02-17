@@ -1,0 +1,17 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "key":
+  {
+    "i": {"tag": "forge:ingots/gold"}
+  },
+  "pattern":
+  [
+    "i",
+    "i"
+  ],
+  "result":
+  {
+    "count": 2,
+    "item": "cgm:golden_rod"
+  }
+}

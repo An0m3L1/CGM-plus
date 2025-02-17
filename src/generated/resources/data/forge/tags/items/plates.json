@@ -1,0 +1,9 @@
+{
+  "values":
+  [
+    "cgm:cast_iron_sheet",
+    "cgm:steel_sheet",
+    "cgm:rubber_sheet",
+    "cgm:plastic_sheet"
+  ]
+}

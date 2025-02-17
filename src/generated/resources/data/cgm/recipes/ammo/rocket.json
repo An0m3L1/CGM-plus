@@ -1,0 +1,13 @@
+{
+  "type": "cgm:workbench",
+  "materials":
+  [
+    {"tag": "forge:plates/steel"},
+    {"item": "cgm:buckshot"},
+    {
+      "count": 3,
+      "tag": "forge:gunpowder"
+    }
+  ],
+  "result": {"item": "cgm:rocket"}
+}

@@ -7,11 +7,11 @@
     },
     {
       "count": 6,
-      "item": "cgm:steel_sheet"
+      "tag": "forge:plates/steel"
     },
     {
       "count": 6,
-      "item": "cgm:plastic_sheet"
+      "tag": "forge:plates/plastic"
     }
   ],
   "result": {

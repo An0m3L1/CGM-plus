@@ -16,12 +16,12 @@ import net.minecraftforge.fml.common.Mod;
 public enum SpecialModels
 {
     ASSAULT_RIFLE("z_gun/assault_rifle"),
-    BAZOOKA("z_gun/bazooka"),
-    HEAVY_RIFLE("z_gun/heavy_rifle"),
-    MACHINE_PISTOL("z_gun/machine_pistol"),
-    PISTOL("z_gun/pistol"),
-    RIFLE("z_gun/rifle"),
-    SHOTGUN("z_gun/shotgun"),
+    BAZOOKA("z_gun/rocket_launcher"),
+    HEAVY_RIFLE("z_gun/heavy_sniper_rifle"),
+    MACHINE_PISTOL("z_gun/automatic_pistol"),
+    PISTOL("z_gun/tactical_pistol"),
+    RIFLE("z_gun/sniper_rifle"),
+    SHOTGUN("z_gun/semi_auto_shotgun"),
     FLAME("flame"),
 
     MINI_GUN_BASE("mini_gun/mini_gun_base"),
@@ -42,25 +42,25 @@ public enum SpecialModels
     COMBAT_RIFLE_SIGHTS("combat_rifle/sights"),
     COMBAT_RIFLE_NO_SIGHTS("combat_rifle/no_sights"),
 
-    HEAVY_RIFLE_BASE("heavy_rifle/base"),
+    HEAVY_RIFLE_BASE("heavy_sniper_rifle/base"),
 
-    PISTOL_BASE("pistol/base"),
-    PISTOL_SLIDE("pistol/slide"),
-    PISTOL_MAG("pistol/mag"),
-    PISTOL_EXT_MAG("pistol/ext_mag"),
+    PISTOL_BASE("tactical_pistol/base"),
+    PISTOL_SLIDE("tactical_pistol/slide"),
+    PISTOL_MAG("tactical_pistol/mag"),
+    PISTOL_EXT_MAG("tactical_pistol/ext_mag"),
 
-    MACHINE_PISTOL_BASE("machine_pistol/base"),
-    MACHINE_PISTOL_SLIDE("machine_pistol/slide"),
-    MACHINE_PISTOL_MAG("machine_pistol/mag"),
-    MACHINE_PISTOL_SIGHTS("machine_pistol/sights"),
-    MACHINE_PISTOL_NO_SIGHTS("machine_pistol/no_sights"),
-    MACHINE_PISTOL_LIGHT_MAG("machine_pistol/light_mag"),
-    MACHINE_PISTOL_EXT_MAG("machine_pistol/ext_mag"),
+    MACHINE_PISTOL_BASE("automatic_pistol/base"),
+    MACHINE_PISTOL_SLIDE("automatic_pistol/slide"),
+    MACHINE_PISTOL_MAG("automatic_pistol/mag"),
+    MACHINE_PISTOL_SIGHTS("automatic_pistol/sights"),
+    MACHINE_PISTOL_NO_SIGHTS("automatic_pistol/no_sights"),
+    MACHINE_PISTOL_LIGHT_MAG("automatic_pistol/light_mag"),
+    MACHINE_PISTOL_EXT_MAG("automatic_pistol/ext_mag"),
 
-    SHOTGUN_BASE("shotgun/base"),
-    SHOTGUN_HANDLE("shotgun/handle"),
-    SHOTGUN_NO_HANDLE("shotgun/no_handle"),
-    SHOTGUN_SLIDE("shotgun/slide");
+    SHOTGUN_BASE("semi_auto_shotgun/base"),
+    SHOTGUN_HANDLE("semi_auto_shotgun/handle"),
+    SHOTGUN_NO_HANDLE("semi_auto_shotgun/no_handle"),
+    SHOTGUN_SLIDE("semi_auto_shotgun/slide");
 
     /**
      * The location of an item model in the [MOD_ID]/models/special/[NAME] folder

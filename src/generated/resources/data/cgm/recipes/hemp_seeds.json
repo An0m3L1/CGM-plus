@@ -1,0 +1,14 @@
+{
+  "type": "create:splashing",
+  "ingredients":
+  [
+    {"tag": "minecraft:flowers"}
+  ],
+  "results":
+  [
+    {
+      "chance": 0.01,
+      "item": "cgm:hemp_seeds"
+    }
+  ]
+}

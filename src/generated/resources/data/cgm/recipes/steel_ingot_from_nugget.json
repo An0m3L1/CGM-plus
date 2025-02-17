@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key":
   {
-    "n": {"item": "cgm:steel_nugget"}
+    "n": {"tag": "forge:nuggets/steel"}
   },
   "pattern":
   [

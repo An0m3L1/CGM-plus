@@ -2,7 +2,7 @@
   "type": "minecraft:crafting_shaped",
   "key":
   {
-    "s": {"item": "minecraft:string"},
+    "s": {"tag": "forge:string"},
     "c": {"item": "farmersdelight:canvas"}
   },
   "pattern":

@@ -37,7 +37,7 @@ public class MissileEntity extends ProjectileEntity
         {
             for (int i = 5; i > 0; i--)
             {
-                this.level.addParticle(ParticleTypes.CLOUD, true, this.getX() - (this.getDeltaMovement().x() / i), this.getY() - (this.getDeltaMovement().y() / i), this.getZ() - (this.getDeltaMovement().z() / i), 0, 0, 0);
+                this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, this.getX() - (this.getDeltaMovement().x() / i), this.getY() - (this.getDeltaMovement().y() / i), this.getZ() - (this.getDeltaMovement().z() / i), 0, 0, 0);
             }
             if (this.level.random.nextInt(2) == 0)
             {

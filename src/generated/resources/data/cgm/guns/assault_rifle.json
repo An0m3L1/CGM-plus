@@ -14,7 +14,7 @@
     "recoilAngle": 2.5,
     "recoilKick": 0.25,
     "recoilDurationOffset": 0.0,
-    "spread": 8.0,
+    "spread": 6.5,
 
     "maxAmmo": 30,
     "lightMagAmmo": 20,

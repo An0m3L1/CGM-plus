@@ -19,6 +19,9 @@ import net.minecraft.world.phys.Vec3;
  */
 public class PipeGrenadeEntity extends ProjectileEntity
 {
+    public float rotation;
+    public float prevRotation;
+
     public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
     {
         super(entityType, world);
@@ -35,6 +38,17 @@ public class PipeGrenadeEntity extends ProjectileEntity
         if (this.level.isClientSide)
         {
             this.level.addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+        }
+    }
+
+    public void tick()
+    {
+        super.tick();
+        this.prevRotation = this.rotation;
+        double speed = this.getDeltaMovement().length();
+        if (speed > 0.1)
+        {
+            this.rotation += speed * 50;
         }
     }
 

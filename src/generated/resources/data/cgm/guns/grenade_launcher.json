@@ -23,7 +23,7 @@
     "damage": 20.0,
     "size": 0.2,
     "speed": 2.00,
-    "life": 60,
+    "life": 40,
     "armorBypass": 1.0,
     "protectionBypass": 0.1,
     "gravity": true,

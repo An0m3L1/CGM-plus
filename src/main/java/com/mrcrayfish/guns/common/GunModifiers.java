@@ -156,15 +156,17 @@ public class GunModifiers
     };
 
     /* Magazines */
-    public static final IGunModifier LIGHT_MAG = new IGunModifier()
-    {
+    public static final IGunModifier LIGHT_MAG = new IGunModifier() {
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 1.15F;}
+        @Override
+        public boolean lightMag() {return true;}
     };
-    public static final IGunModifier EXTENDED_MAG = new IGunModifier()
-    {
+    public static final IGunModifier EXTENDED_MAG = new IGunModifier() {
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+        @Override
+        public boolean extMag() {return true;}
     };
 
     public static final IGunModifier NONE = new IGunModifier() {};

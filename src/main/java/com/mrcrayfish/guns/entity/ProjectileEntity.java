@@ -30,6 +30,7 @@ import com.mrcrayfish.guns.world.ProjectileExplosion;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -469,7 +470,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             BlockState state = this.level.getBlockState(pos);
             Block block = state.getBlock();
 
-            if(Config.COMMON.gameplay.griefing.enableGlassBreaking.get() && state.is(ModTags.Blocks.FRAGILE))
+            if(Config.COMMON.gameplay.griefing.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE))
             {
                 float destroySpeed = state.getDestroySpeed(this.level, pos);
                 if(destroySpeed >= 0)

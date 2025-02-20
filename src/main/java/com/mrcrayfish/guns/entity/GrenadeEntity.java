@@ -5,6 +5,7 @@ import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -27,6 +28,15 @@ public class GrenadeEntity extends ProjectileEntity
     public GrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
     {
         super(entityType, world, shooter, weapon, item, modifiedGun);
+    }
+
+    @Override
+    protected void onProjectileTick()
+    {
+        if (this.level.isClientSide)
+        {
+            this.level.addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+        }
     }
 
     @Override

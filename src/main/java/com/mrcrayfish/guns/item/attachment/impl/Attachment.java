@@ -4,6 +4,7 @@ import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.interfaces.IGunModifier;
 import com.mrcrayfish.guns.item.attachment.IAttachment;
 import net.minecraft.ChatFormatting;
+import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
@@ -61,8 +62,15 @@ public abstract class Attachment
             List<Component> perks = attachment.getProperties().getPerks();
             if(perks != null && perks.size() > 0)
             {
-                event.getToolTip().add(Component.translatable("perk.cgm.title").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
-                event.getToolTip().addAll(perks);
+                if(Screen.hasControlDown())
+                {
+                    event.getToolTip().add(Component.translatable("perk.cgm.title").withStyle(ChatFormatting.GOLD));
+                    event.getToolTip().addAll(perks);
+                }
+                else
+                {
+                    event.getToolTip().add(Component.translatable("perk.cgm.title_help").withStyle(ChatFormatting.GOLD));
+                }
                 return;
             }
 
@@ -81,14 +89,6 @@ public abstract class Attachment
             {
                 outputSound = modifier.modifyFireSoundVolume(outputSound);
             }
-            /*if(outputSound > inputSound)
-            {
-                addPerk(negativePerks, false, "perk.cgm.fire_volume.negative");
-            }
-            else if(outputSound < inputSound)
-            {
-                addPerk(positivePerks, true, "perk.cgm.fire_volume.positive");
-            }*/
             thisOutput = (float) outputSound;
             thisInput = (float) inputSound;
             if (thisOutput != inputSound)
@@ -108,6 +108,28 @@ public abstract class Attachment
                 if(modifier.silencedFire())
                 {
                     addPerk(positivePerks, true, "perk.cgm.silenced.positive");
+                    break;
+                }
+            }
+
+            /* Test for Light Magazine */
+            for(IGunModifier modifier : modifiers)
+            {
+                if(modifier.lightMag())
+                {
+                    addPerk(positivePerks, false, "perk.cgm.mag");
+                    addPerk(positivePerks, true, "perk.cgm.reload");
+                    break;
+                }
+            }
+
+            /* Test for Extended Magazine */
+            for(IGunModifier modifier : modifiers)
+            {
+                if(modifier.extMag())
+                {
+                    addPerk(positivePerks, true, "perk.cgm.mag");
+                    addPerk(positivePerks, false, "perk.cgm.reload");
                     break;
                 }
             }
@@ -153,14 +175,6 @@ public abstract class Attachment
             {
                 outputDamage = modifier.modifyProjectileDamage(outputDamage);
             }
-            /*if(outputDamage > inputDamage)
-            {
-                addPerk(positivePerks, true, "perk.cgm.modified_damage.positive");
-            }
-            else if(outputDamage < inputDamage)
-            {
-                addPerk(negativePerks, false, "perk.cgm.modified_damage.negative");
-            }*/
             thisOutput = (float) outputDamage;
             thisInput = (float) inputDamage;
             if (thisOutput != thisInput)
@@ -181,14 +195,6 @@ public abstract class Attachment
             {
                 outputSpeed = modifier.modifyProjectileSpeed(outputSpeed);
             }
-            /*if(outputSpeed > inputSpeed)
-            {
-                addPerk(positivePerks, true, "perk.cgm.projectile_speed.positive");
-            }
-            else if(outputSpeed < inputSpeed)
-            {
-                addPerk(negativePerks, false, "perk.cgm.projectile_speed.negative");
-            }*/
             thisOutput = (float) outputSpeed;
             thisInput = (float) inputSpeed;
             if (thisOutput != thisInput)
@@ -209,14 +215,6 @@ public abstract class Attachment
             {
                 outputSpread = modifier.modifyProjectileSpread(outputSpread);
             }
-            /*if(outputSpread > inputSpread)
-            {
-                addPerk(negativePerks, false, "perk.cgm.projectile_spread.negative");
-            }
-            else if(outputSpread < inputSpread)
-            {
-                addPerk(positivePerks, true, "perk.cgm.projectile_spread.positive");
-            }*/
             thisOutput = (float) outputSpread;
             thisInput = (float) inputSpread;
             if (thisOutput != thisInput)
@@ -256,14 +254,6 @@ public abstract class Attachment
             {
                 outputLife = modifier.modifyProjectileLife(outputLife);
             }
-            /*if(outputLife > inputLife)
-            {
-                addPerk(positivePerks, true, "perk.cgm.projectile_life.positive");
-            }
-            else if(outputLife < inputLife)
-            {
-                addPerk(negativePerks, false, "perk.cgm.projectile_life.negative");
-            }*/
             thisOutput = (float) outputLife;
             thisInput = (float) inputLife;
             if (thisOutput != thisInput)
@@ -284,14 +274,6 @@ public abstract class Attachment
             {
                 outputRecoil *= modifier.recoilModifier();
             }
-            /*if(outputRecoil > inputRecoil)
-            {
-                addPerk(negativePerks, false, "perk.cgm.recoil.negative");
-            }
-            else if(outputRecoil < inputRecoil)
-            {
-                addPerk(positivePerks, true, "perk.cgm.recoil.positive");
-            }*/
             thisOutput = (float) outputRecoil;
             thisInput = (float) inputRecoil;
             if (thisOutput != thisInput)
@@ -312,14 +294,6 @@ public abstract class Attachment
             {
                 outputAdsSpeed = modifier.modifyAimDownSightSpeed(outputAdsSpeed);
             }
-            /*if(outputAdsSpeed > inputAdsSpeed)
-            {
-                addPerk(positivePerks, true, "perk.cgm.ads_speed.positive");
-            }
-            else if(outputAdsSpeed < inputAdsSpeed)
-            {
-                addPerk(negativePerks, false, "perk.cgm.ads_speed.negative");
-            }*/
             thisOutput = (float) outputAdsSpeed;
             thisInput = (float) inputAdsSpeed;
             if (thisOutput != thisInput)
@@ -370,17 +344,17 @@ public abstract class Attachment
 
     private static void addPerk(List<Component> components, boolean positive, String id, Object... params)
     {
-        components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.WHITE)).withStyle(positive ? ChatFormatting.GREEN : ChatFormatting.GOLD));
+        components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.GRAY)).withStyle(positive ? ChatFormatting.GREEN : ChatFormatting.RED));
     }
 
     private static void addPerk(List<Component> components, boolean positive, float value, String id, Object... params)
     {
-        components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.WHITE).append(Component.literal(" ("+Math.abs(value)+"%)").withStyle(ChatFormatting.GRAY))).withStyle(positive ? ChatFormatting.DARK_AQUA : ChatFormatting.GOLD));
+        components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.GRAY).append(Component.literal(" ("+Math.abs(value)+"%)").withStyle(ChatFormatting.GRAY))).withStyle(positive ? ChatFormatting.DARK_AQUA : ChatFormatting.GOLD));
     }
 
     private static void addPerk(List<Component> components, boolean positive, boolean invert, float value, String id, Object... params)
     {
     	boolean truePositive = (invert ? !positive : positive);
-    	components.add(Component.literal((truePositive ? "+" : "-")+Math.abs(value)+"% ").withStyle(positive ? ChatFormatting.GREEN : ChatFormatting.RED).append(Component.translatable(id, params).withStyle(ChatFormatting.WHITE)));
+    	components.add(Component.literal((truePositive ? "+" : "-")+Math.abs(value)+"% ").withStyle(positive ? ChatFormatting.GREEN : ChatFormatting.RED).append(Component.translatable(id, params).withStyle(ChatFormatting.GRAY)));
     }
 }

@@ -105,9 +105,9 @@ public class GunItem extends Item implements IColored, IMeta
         damage = GunModifierHelper.getModifiedProjectileDamage(stack, damage);
         tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
         
-        if (Screen.hasShiftDown())
+        if (Screen.hasControlDown())
         {
-        	tooltip.add(Component.translatable("info.cgm.gun_details").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
+        	tooltip.add(Component.translatable("info.cgm.gun_details").withStyle(ChatFormatting.GOLD));
 
             // Ammo Capacity
             if(tagCompound != null)
@@ -152,7 +152,14 @@ public class GunItem extends Item implements IColored, IMeta
             recoil *= 1.0F - GunModifierHelper.getRecoilModifier(stack);
             //tooltip.add(Component.translatable("info.cgm.recoil", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoil)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoil) + "°").withStyle(ChatFormatting.WHITE)));
-            
+
+            // ADS Recoil
+            float adsRecoil = recoil * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
+            if (adsRecoil!=recoil)
+            {
+                tooltip.add(Component.translatable("info.cgm.ads_recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsRecoil) + "°").withStyle(ChatFormatting.WHITE)));
+            }
+
             // Spread
             float spread;
             float minSpread;
@@ -189,7 +196,7 @@ public class GunItem extends Item implements IColored, IMeta
         {
         	// Helper tooltips
         	//tooltip.add(Component.translatable("info.cgm.attachment_help", KeyBinds.KEY_ATTACHMENTS.getTranslatedKeyMessage().getString().toUpperCase(Locale.ENGLISH)).withStyle(ChatFormatting.YELLOW));
-        	tooltip.add(Component.translatable("info.cgm.gun_details_help").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
+        	tooltip.add(Component.translatable("info.cgm.gun_details_help").withStyle(ChatFormatting.GOLD));
         }
     }
 

@@ -1,2 +1,2 @@
-# CGM+ - Heavily modified, overhauled and expanded Fork of zaeonNineZeros expanded CGM Fork
+# CGM+ - Heavily modified and expanded fork of zaeonNineZeros CGM fork
 More guns and attachments, armor sets, Create integration, new functional blocks, removed enchantments. If you ever wanted a balance between realism and gameplay in a gun mod, this one is for you!

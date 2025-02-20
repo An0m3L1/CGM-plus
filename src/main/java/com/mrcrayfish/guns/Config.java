@@ -250,7 +250,7 @@ public class Config
     public static class Griefing
     {
         public final ForgeConfigSpec.BooleanValue enableBlockRemovalOnExplosions;
-        public final ForgeConfigSpec.BooleanValue enableGlassBreaking;
+        public final ForgeConfigSpec.BooleanValue enableFragileBreaking;
         public final ForgeConfigSpec.BooleanValue fragileBlockDrops;
         public final ForgeConfigSpec.DoubleValue fragileBaseBreakChance;
         public final ForgeConfigSpec.BooleanValue setFireToBlocks;
@@ -260,7 +260,7 @@ public class Config
             builder.comment("Properties related to gun griefing").push("griefing");
             {
                 this.enableBlockRemovalOnExplosions = builder.comment("If enabled, allows block removal on explosions").define("enableBlockRemovalOnExplosions", false);
-                this.enableGlassBreaking = builder.comment("If enabled, allows guns to shoot out glass and other fragile objects").define("enableGlassBreaking", true);
+                this.enableFragileBreaking = builder.comment("If enabled, allows guns to shoot out glass and other fragile objects").define("enableGlassBreaking", true);
                 this.fragileBlockDrops = builder.comment("If enabled, fragile blocks will drop their loot when broken").define("fragileBlockDrops", false);
                 this.fragileBaseBreakChance = builder.comment("The base chance that a fragile block is broken when impacted by a bullet. The hardness of a block will scale this value; the harder the block, the lower the final calculated chance will be.").defineInRange("fragileBlockBreakChance", 1.0, 0.0, 1.0);
                 this.setFireToBlocks = builder.comment("If true, allows guns enchanted with Fire Starter to light and spread fires on blocks").define("setFireToBlocks", false);
@@ -374,7 +374,7 @@ public class Config
         {
             builder.comment("Blinding properties of stun grenades").push("blind");
             {
-                this.criteria = new EffectCriteria(builder, 32, 120, 20, 135, 0.75);
+                this.criteria = new EffectCriteria(builder, 32, 120, 20, 180, 0.75);
                 this.blindMobs = builder.comment("If true, hostile mobs will be unable to target entities while they are blinded by a stun grenade.").define("blindMobs", true);
             }
             builder.pop();

@@ -36,6 +36,26 @@ public interface IGunModifier
     }
 
     /**
+     * Determines if this attachment is Light Magazine or not.
+     *
+     * @return is this Light Magazine or not.
+     */
+    default boolean lightMag()
+    {
+        return false;
+    }
+
+    /**
+     * Determines if this attachment is Extended Magazine or not.
+     *
+     * @return is this Extended Magazine or not.
+     */
+    default boolean extMag()
+    {
+        return false;
+    }
+
+    /**
      * Modifies the sound radius of the fired sound. It should be noted that if multiple attachments
      * modify the sound radius, the radius given in the arguments may not be exactly the same as the
      * weapon. This is because another attachment has already modified the radius.

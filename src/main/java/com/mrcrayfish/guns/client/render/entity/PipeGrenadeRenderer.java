@@ -37,9 +37,15 @@ public class PipeGrenadeRenderer extends EntityRenderer<PipeGrenadeEntity>
 
         poseStack.pushPose();
         poseStack.scale(1.25f,1.25f,1.25f);
+
+        /* Makes the grenade face in the direction of travel */
         poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
         poseStack.mulPose(Vector3f.YP.rotationDegrees(entityYaw));
+
+        /* Offsets to the center of the grenade before applying rotation */
+        float rotation = entity.prevRotation + (entity.rotation - entity.prevRotation) * partialTicks;
         poseStack.mulPose(Vector3f.XP.rotationDegrees(entity.getXRot() - 90));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(-rotation));
         Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItem(), ItemTransforms.TransformType.NONE, 15728880, OverlayTexture.NO_OVERLAY, poseStack, renderTypeBuffer, 0);
         poseStack.translate(0, -1, 0);
         poseStack.popPose();

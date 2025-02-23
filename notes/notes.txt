@@ -13,11 +13,14 @@ Add content
     - Melee: katana, hammer, sledgehammer, baseball bat (wooden and iron), tactical knives, machete, cleaver, sword, longsword, spear, ballistic shield
         Rework vanilla weapons and tools
         Add special perks to melee types (bats knockback, knives bleed, hammers stun, etc)
-    - Grenades: molotov, smoke, mine, c4 (look into security craft)
-Add bullet tracers
+    - Grenades and explosives: molotov, flare, mine, c4
+Add bullet trails
 Add bandits, marauders, zombies
 Add automatic turrets
 Add backpack skins
+Add tint to guns
+    - Must equip primer spray can
+
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
@@ -27,5 +30,5 @@ Overhaul items (models, textures, stats)
 Overhaul blood particles (check extra gore)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul explosions to destroy fragile blocks
-Add tint to guns
-    - Must equip primer spray can
+
+Fix all sounds to mono

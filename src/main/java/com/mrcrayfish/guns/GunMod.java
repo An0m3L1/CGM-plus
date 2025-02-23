@@ -20,7 +20,7 @@ import com.mrcrayfish.guns.datagen.LanguageGen;
 import com.mrcrayfish.guns.datagen.LootTableGen;
 import com.mrcrayfish.guns.datagen.RecipeGen;
 import com.mrcrayfish.guns.entity.GrenadeEntity;
-import com.mrcrayfish.guns.entity.MissileEntity;
+import com.mrcrayfish.guns.entity.RocketEntity;
 import com.mrcrayfish.guns.entity.PipeGrenadeEntity;
 import com.mrcrayfish.guns.init.*;
 import com.mrcrayfish.guns.network.PacketHandler;
@@ -138,7 +138,7 @@ public class GunMod
             CraftingHelper.register(new ResourceLocation(Reference.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);
             ProjectileManager.getInstance().registerFactory(ModItems.GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new GrenadeEntity(ModEntities.GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
             ProjectileManager.getInstance().registerFactory(ModItems.PIPE_GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PipeGrenadeEntity(ModEntities.PIPE_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
-            ProjectileManager.getInstance().registerFactory(ModItems.ROCKET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new MissileEntity(ModEntities.MISSILE.get(), worldIn, entity, weapon, item, modifiedGun));
+            ProjectileManager.getInstance().registerFactory(ModItems.ROCKET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new RocketEntity(ModEntities.MISSILE.get(), worldIn, entity, weapon, item, modifiedGun));
             if(Config.COMMON.gameplay.improvedHitboxes.get())
             {
                 MinecraftForge.EVENT_BUS.register(new BoundingBoxManager());

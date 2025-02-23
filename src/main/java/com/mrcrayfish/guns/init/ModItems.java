@@ -120,8 +120,15 @@ public class ModItems
                     .stacksTo(16)
                     , 20 * 2
             ));
+    public static final RegistryObject<Item> SMOKE_GRENADE = REGISTER.register("smoke_grenade",
+            () -> new SmokeGrenadeItem(new Item.Properties()
+                    .tab(GunMod.GUNS)
+                    .stacksTo(16)
+                    , 20 * 5
+            ));
     public static final RegistryObject<Item> GRENADE_NO_PIN = REGISTER.register("grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> STUN_GRENADE_NO_PIN = REGISTER.register("stun_grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> SMOKE_GRENADE_NO_PIN = REGISTER.register("smoke_grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));
 
     /* Scopes */
     public static final RegistryObject<Item> RED_DOT_SIGHT = REGISTER.register("red_dot_sight",

@@ -8,35 +8,28 @@ import com.mrcrayfish.guns.client.handler.BulletTrailRenderingHandler;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.common.NetworkGunManager;
 import com.mrcrayfish.guns.init.ModParticleTypes;
-import com.mrcrayfish.guns.network.message.S2CMessageBlood;
-import com.mrcrayfish.guns.network.message.S2CMessageBulletTrail;
-import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
-import com.mrcrayfish.guns.network.message.S2CMessageProjectileHitBlock;
-import com.mrcrayfish.guns.network.message.S2CMessageProjectileHitEntity;
-import com.mrcrayfish.guns.network.message.S2CMessageRemoveProjectile;
-import com.mrcrayfish.guns.network.message.S2CMessageStunGrenade;
-import com.mrcrayfish.guns.network.message.S2CMessageUpdateGuns;
+import com.mrcrayfish.guns.network.message.*;
 import com.mrcrayfish.guns.particles.BulletHoleData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleEngine;
+import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
-import net.minecraft.core.particles.ParticleType;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -148,7 +141,48 @@ public class ClientPlayHandler
         }
     }
 
-    private static Particle spawnParticle(ParticleEngine manager, ParticleOptions data, double x, double y, double z, RandomSource rand, double velocityMultiplier)
+    public static void handleExplosionSmokeGrenade(S2CMessageSmokeGrenade message)
+    {
+        Minecraft mc = Minecraft.getInstance();
+        Level level = Objects.requireNonNull(mc.level);
+        double x = message.getX();
+        double y = message.getY();
+        double z = message.getZ();
+        double diameter = Config.COMMON.explosives.smokeGrenadeCloudRadius.get() * 2;
+        double vel = 0.005;
+        int amount = (int) (Config.COMMON.explosives.smokeGrenadeCloudRadius.get() * 40);
+        boolean instant = Config.COMMON.explosives.smokeGrenadeModeInstant.get();
+
+        /* Spawn smoke cloud */
+        for(int i = 0; i < amount; i++)
+        {
+            if(instant)
+            {
+                level.addAlwaysVisibleParticle(ModParticleTypes.SMOKE_CLOUD.get(),
+                        true,
+                        x+((Math.random()-0.5) * diameter),
+                        y+(Math.random() * diameter),
+                        z+((Math.random()-0.5) * diameter),
+                        (Math.random()-0.5) * vel,
+                        Math.random() * (vel * 0.5f),
+                        (Math.random()-0.5) * vel);
+            }
+            else
+            {
+                vel = Config.COMMON.explosives.smokeGrenadeCloudRadius.get() * 0.015;
+                level.addAlwaysVisibleParticle(ModParticleTypes.SMOKE_CLOUD.get(),
+                        true,
+                        x,
+                        y,
+                        z,
+                        (Math.random()-0.5) * vel,
+                        Math.random() * (vel * 0.5f),
+                        (Math.random()-0.5) * vel);
+            }
+        }
+    }
+
+    public static Particle spawnParticle(ParticleEngine manager, ParticleOptions data, double x, double y, double z, RandomSource rand, double velocityMultiplier)
     {
         return manager.createParticle(data, x, y, z, (rand.nextDouble() - 0.5) * velocityMultiplier, (rand.nextDouble() - 0.5) * velocityMultiplier, (rand.nextDouble() - 0.5) * velocityMultiplier);
     }

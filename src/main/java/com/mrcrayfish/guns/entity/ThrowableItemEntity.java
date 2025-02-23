@@ -47,6 +47,17 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
         super(entityType, x, y, z, world);
     }
 
+    public boolean shouldRenderAtSqrDistance(double distance)
+    {
+        double d0 = this.getBoundingBox().getSize();
+        if (Double.isNaN(d0))
+        {
+            d0 = 1.0D;
+        }
+        d0 *= 512.0D;
+        return distance < d0 * d0;
+    }
+
     public void setItem(ItemStack item)
     {
         this.item = item;

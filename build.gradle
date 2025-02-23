@@ -7,7 +7,7 @@ plugins {
 }
 
 archivesBaseName = "cgm"
-version = "CGM-plus-1.0"
+version = "plus-1.0"
 group = "com.mrcrayfish"
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
@@ -97,6 +97,7 @@ dependencies {
     implementation fg.deobf("curse.maven:client-tweaks-251407:4751800")
     implementation fg.deobf("curse.maven:balm-531761:4751735")
     implementation fg.deobf("curse.maven:better-mods-button-541584:4665753")
+    implementation fg.deobf("curse.maven:create-diesel-generators-869316:5089750")
 
     compileOnly fg.deobf('curse.maven:controllable-317269:3936915')
     compileOnly fg.deobf("mezz.jei:jei-1.19.2-common-api:11.4.0.274")

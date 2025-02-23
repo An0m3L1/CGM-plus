@@ -35,8 +35,8 @@ public class Config
                 this.experimental = new Experimental(builder);
             }
             builder.pop();
-            this.hideConfigButton = builder.comment("If enabled, hides the config button from the backpack screen").define("hideConfigButton", true);
-            this.buttonAlignment = builder.comment("The alignment of the button in the attachment screen").defineEnum("buttonAlignment", ButtonAlignment.RIGHT);
+            this.hideConfigButton = builder.comment("If enabled, hides the config button from the attachment screen.").define("hideConfigButton", true);
+            this.buttonAlignment = builder.comment("The alignment of the button in the attachment screen.").defineEnum("buttonAlignment", ButtonAlignment.RIGHT);
         }
     }
 
@@ -56,16 +56,16 @@ public class Config
 
         public Sounds(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Control sounds triggered by guns").push("sounds");
+            builder.comment("Control sounds triggered by guns.").push("sounds");
             {
-            	this.playHitSound = builder.comment("If true, a sound will play when you successfully hit an entity with a gun.").define("playHitSound", true);
-            	this.hitSoundOnlyAgainstPlayers = builder.comment("If true, the normal hit sound will only play when hitting players. Does not apply to headshots and criticals").define("hitSoundOnlyAgainstPlayers", true);
-                this.hitSound = builder.comment("The sound to play when a hit is landed").define("hitSound", "minecraft:item.trident.hit");
-                this.playSoundWhenHeadshot = builder.comment("If true, a sound will play when you successfully hit a headshot on a entity with a gun").define("playSoundWhenHeadshot", false);
-                this.headshotSound = builder.comment("The sound to play when a headshot occurs").define("headshotSound", "minecraft:entity.player.attack.crit");
-                this.playSoundWhenCritical = builder.comment("If true, a sound will play when you successfully hit a critical on a entity with a gun").define("playSoundWhenCritical", false);
-                this.criticalSound = builder.comment("The sound to play when a critical occurs").define("criticalSound", "minecraft:entity.player.attack.crit");
-                this.impactSoundDistance = builder.comment("The maximum distance impact sounds from bullet can be heard").defineInRange("impactSoundDistance", 16.0, 0.0, 32.0);
+            	this.playHitSound = builder.comment("If true, a sound will play when you hit an entity with a gun.").define("playHitSound", true);
+            	this.hitSoundOnlyAgainstPlayers = builder.comment("If true, the normal hit sound will only play when hitting players. Does not apply to headshots and crits.").define("hitSoundOnlyAgainstPlayers", true);
+                this.hitSound = builder.comment("The sound to play when a hit occurs.").define("hitSound", "minecraft:item.trident.hit");
+                this.playSoundWhenHeadshot = builder.comment("If true, a sound will play when you hit a headshot.").define("playSoundWhenHeadshot", false);
+                this.headshotSound = builder.comment("The sound to play when a headshot occurs.").define("headshotSound", "minecraft:entity.player.attack.crit");
+                this.playSoundWhenCritical = builder.comment("If true, a sound will play when you hit a crit.").define("playSoundWhenCritical", false);
+                this.criticalSound = builder.comment("The sound to play when a crit occurs.").define("criticalSound", "minecraft:entity.player.attack.crit");
+                this.impactSoundDistance = builder.comment("The maximum distance impact sounds from bullets can be heard.").defineInRange("impactSoundDistance", 16.0, 0.0, 32.0);
             }
             builder.pop();
         }
@@ -100,10 +100,10 @@ public class Config
 
         public Display(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Configuration for display related options").push("display");
+            builder.comment("Configuration for display related options.").push("display");
             {
-                this.oldAnimations = builder.comment("If true, uses the old animation poses for weapons. This is only for nostalgic reasons and not recommended to switch back.").define("oldAnimations", false);
-                this.crosshair = builder.comment("The custom crosshair to use for weapons. Go to (Options > Controls > Mouse Settings > Crosshair) in game to change this!").define("crosshair", "cgm:dynamic");
+                this.oldAnimations = builder.comment("If true, uses the old animation poses for weapons.").define("oldAnimations", false);
+                this.crosshair = builder.comment("The custom crosshair to use for weapons.").define("crosshair", "cgm:dynamic");
                 this.blendCrosshair = builder.comment("If enabled, blends all custom crosshairs to match the behavior of the default crosshair.").define("blendCrosshair", true);
                 this.dynamicCrosshairBaseSpread = builder.comment("The resting size of the Dynamic Crosshair when spread is zero.").defineInRange("dynamicCrosshairBaseSpread", 1.0, 0, 5);
                 this.dynamicCrosshairSpreadMultiplier = builder.comment("The bloom factor of the Dynamic Crosshair when spread increases.").defineInRange("dynamicCrosshairSpreadMultiplier", 1.0, 1.0, 1.5);
@@ -113,16 +113,16 @@ public class Config
                 this.dynamicCrosshairDotThreshold = builder.comment("The threshold of spread (including modifiers) below which the Dynamic Crosshair's center dot is rendered. Affects the At Min Spread and Threshold modes only.").defineInRange("dynamicCrosshairDotThreshold", 0.8, 0, 90);
                 this.displayAmmoCount = builder.comment("If enabled, renders a HUD element displaying the gun's ammo count and ammo capacity.").define("displayAmmoCount", true);
                 this.cooldownIndicator = builder.comment("If enabled, renders a cooldown indicator to make it easier to learn when you fire again.").define("cooldownIndicator", false);
-                this.weaponSway = builder.comment("If enabled, the weapon will sway when the player moves their look direction. This does not affect aiming and is only visual.").define("weaponSway", true);
-                this.swaySensitivity = builder.comment("The sensistivity of the visual weapon sway when the player moves their look direciton. The higher the value the more sway.").defineInRange("swaySensitivity", 0.2, 0.0, 1.0);
-                this.swayType = builder.comment("The animation to use for sway. Directional follows the camera better while Drag is more immersive").defineEnum("swayType", SwayType.DIRECTIONAL);
-                this.cameraRollEffect = builder.comment("If enabled, the camera will roll when strafing while holding a gun. This creates a more immersive feeling.").define("cameraRollEffect", false);
+                this.weaponSway = builder.comment("If enabled, the weapon will sway when the player looks around. This does not affect aiming and is only visual.").define("weaponSway", true);
+                this.swaySensitivity = builder.comment("The sensistivity of the visual weapon sway.").defineInRange("swaySensitivity", 0.2, 0.0, 1.0);
+                this.swayType = builder.comment("The animation to use for sway. Directional follows the camera, while Drag lags behind").defineEnum("swayType", SwayType.DIRECTIONAL);
+                this.cameraRollEffect = builder.comment("If enabled, the camera will roll when strafing while holding a gun.").define("cameraRollEffect", false);
                 this.cameraRollAngle = builder.comment("When Camera Roll Effect is enabled, this is the absolute maximum angle the roll on the camera can approach.").defineInRange("cameraRollAngle", 1.5F, 0F, 45F);
                 this.restrictCameraRollToWeapons = builder.comment("When enabled, the Camera Roll Effect is only applied when holding a weapon.").define("restrictCameraRollToWeapons", true);
                 this.forceFirstPersonOnZoomedAim = builder.comment("When enabled, temporarily switches the camera to first person while aiming. Aim zoom must be above firstPersonAimZoomThreshold, and only applies to third person rear camera modes.").define("forceFirstPersonOnZoomedAim", true);
                 this.firstPersonAimZoomThreshold = builder.comment("The zoom threshold at which the camera switches to first person while aiming. Requires forceFirstPersonOnZoomedAim to be set to true.").defineInRange("firstPersonAimZoomThreshold", 0.25, 0.0, 1.0);
-                this.sprintAnimation = builder.comment("Enables the sprinting animation on weapons for better immersion. This only applies to weapons that support a sprinting animation.").define("sprintingAnimation", true);
-                this.bobbingIntensity = builder.comment("The intensity of the custom bobbing animation while holding a gun").defineInRange("bobbingIntensity", 1.0, 0.0, 2.0);
+                this.sprintAnimation = builder.comment("Enables the sprinting animation for guns. This only applies to weapons that support a sprinting animation.").define("sprintingAnimation", true);
+                this.bobbingIntensity = builder.comment("The intensity of the custom bobbing animation while holding a gun.").defineInRange("bobbingIntensity", 1.0, 0.0, 2.0);
             }
             builder.pop();
         }
@@ -144,12 +144,12 @@ public class Config
         {
             builder.comment("Properties relating to particles").push("particle");
             {
-                this.bulletHoleLifeMin = builder.comment("The minimum duration in ticks before bullet holes will disappear").defineInRange("bulletHoleLifeMin", 200, 0, Integer.MAX_VALUE);
-                this.bulletHoleLifeMax = builder.comment("The maximum duration in ticks before bullet holes will disappear").defineInRange("bulletHoleLifeMax", 300, 0, Integer.MAX_VALUE);
-                this.bulletHoleFadeThreshold = builder.comment("The percentage of the maximum life that must pass before particles begin fading away. 0 makes the particles always fade and 1 removes fading completely").defineInRange("bulletHoleFadeThreshold", 0.98, 0, 1.0);
-                this.enableHitParticle = builder.comment("If true, particles will spawn from entities that are hit from a projectile. This particle is smoke by default").define("enableHitParticle", true);
-                this.enableBlood = builder.comment("If enabled, replaces the smoke hit particle with a blood particle").define("enableBlood", true);
-                this.impactParticleDistance = builder.comment("The maximum distance impact particles can be seen from the player").defineInRange("impactParticleDistance", 64.0, 0.0, 64.0);
+                this.bulletHoleLifeMin = builder.comment("The minimum duration in ticks before bullet holes will disappear.").defineInRange("bulletHoleLifeMin", 200, 0, Integer.MAX_VALUE);
+                this.bulletHoleLifeMax = builder.comment("The maximum duration in ticks before bullet holes will disappear.").defineInRange("bulletHoleLifeMax", 300, 0, Integer.MAX_VALUE);
+                this.bulletHoleFadeThreshold = builder.comment("The percentage of the maximum life that must pass before particles begin fading away. 0 makes the particles always fade and 1 removes fading completely.").defineInRange("bulletHoleFadeThreshold", 0.98, 0, 1.0);
+                this.enableHitParticle = builder.comment("If true, particles will spawn from entities that are hit from a projectile.").define("enableHitParticle", true);
+                this.enableBlood = builder.comment("If enabled, replaces hit particles with blood.").define("enableBlood", true);
+                this.impactParticleDistance = builder.comment("The maximum distance impact particles can be seen from.").defineInRange("impactParticleDistance", 64.0, 0.0, 256.0);
             }
             builder.pop();
         }
@@ -162,9 +162,9 @@ public class Config
 
         public Controls(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties relating to controls").push("controls");
+            builder.comment("Properties relating to controls.").push("controls");
             {
-                this.aimDownSightSensitivity = builder.comment("A value to multiple the mouse sensitivity by when aiming down weapon sights. Go to (Options > Controls > Mouse Settings > ADS Sensitivity) in game to change this!").defineInRange("aimDownSightSensitivity", 0.75, 0.0, 1.0);
+                this.aimDownSightSensitivity = builder.comment("A value to multiply mouse sensitivity by when ADS.").defineInRange("aimDownSightSensitivity", 0.75, 0.0, 1.0);
                 this.flipControls = builder.comment("When enabled, switches the shoot and aim controls of weapons. Due to technical reasons, you won't be able to use offhand items if you enable this setting.").define("flipControls", false);
             }
             builder.pop();
@@ -190,8 +190,7 @@ public class Config
         public final Gameplay gameplay;
         public final Network network;
         public final AggroMobs aggroMobs;
-        public final Missiles missiles;
-        public final Grenades grenades;
+        public final Explosives explosives;
         public final StunGrenades stunGrenades;
         public final ProjectileSpread projectileSpread;
 
@@ -202,8 +201,7 @@ public class Config
                 this.gameplay = new Gameplay(builder);
                 this.network = new Network(builder);
                 this.aggroMobs = new AggroMobs(builder);
-                this.missiles = new Missiles(builder);
-                this.grenades = new Grenades(builder);
+                this.explosives = new Explosives(builder);
                 this.stunGrenades = new StunGrenades(builder);
                 this.projectileSpread = new ProjectileSpread(builder);
             }
@@ -228,16 +226,16 @@ public class Config
 
         public Gameplay(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties relating to gameplay").push("gameplay");
+            builder.comment("Properties relating to gameplay.").push("gameplay");
             {
                 this.griefing = new Griefing(builder);
-                this.growBoundingBoxAmount = builder.comment("The extra amount to expand an entity's bounding box when checking for projectile collision. Setting this value higher will make it easier to hit entities").defineInRange("growBoundingBoxAmount", 0.1, 0.0, 1.0);
-                this.enableHeadShots = builder.comment("Enables the check for head shots for players. Projectiles that hit the head of a player will have increased damage.").define("enableHeadShots", true);
-                this.headShotDamageMultiplier = builder.comment("The value to multiply the damage by if projectile hit the players head").defineInRange("headShotDamageMultiplier", 2.0, 1.0, Double.MAX_VALUE);
-                this.criticalDamageMultiplier = builder.comment("The value to multiply the damage by if projectile is a critical hit").defineInRange("criticalDamageMultiplier", 1.5, 1.0, Double.MAX_VALUE);
-                this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision").define("ignoreLeaves", true);
-                this.enableKnockback = builder.comment("If true, projectiles will cause knockback when an entity is hit. By default this is set to true to match the behaviour of Minecraft.").define("enableKnockback", true);
-                this.knockbackStrength = builder.comment("Sets the strengthof knockback when shot by a bullet projectile. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value").defineInRange("knockbackStrength", 0.1, 0.0, 1.0);
+                this.growBoundingBoxAmount = builder.comment("The extra amount to expand an entity's bounding box when checking for projectile collision.").defineInRange("growBoundingBoxAmount", 0.1, 0.0, 1.0);
+                this.enableHeadShots = builder.comment("Enables the check for headshots.").define("enableHeadShots", true);
+                this.headShotDamageMultiplier = builder.comment("The value to multiply the damage by if a headshot occurs.").defineInRange("headShotDamageMultiplier", 2.0, 1.0, Double.MAX_VALUE);
+                this.criticalDamageMultiplier = builder.comment("The value to multiply the damage by if a crit occurs.").defineInRange("criticalDamageMultiplier", 1.5, 1.0, Double.MAX_VALUE);
+                this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision.").define("ignoreLeaves", true);
+                this.enableKnockback = builder.comment("If true, projectiles will cause knockback when an entity is hit.").define("enableKnockback", true);
+                this.knockbackStrength = builder.comment("Sets the strength of knockback when hit. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value.").defineInRange("knockbackStrength", 0.1, 0.0, 1.0);
                 this.improvedHitboxes = builder.comment("If true, improves the accuracy of weapons by considering the ping of the player. This has no affect on singleplayer. This will add a little overhead if enabled.").define("improvedHitboxes", true);
             }
             builder.pop();
@@ -257,13 +255,13 @@ public class Config
 
         public Griefing(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties related to gun griefing").push("griefing");
+            builder.comment("Properties related to gun griefing.").push("griefing");
             {
-                this.enableBlockRemovalOnExplosions = builder.comment("If enabled, allows block removal on explosions").define("enableBlockRemovalOnExplosions", false);
-                this.enableFragileBreaking = builder.comment("If enabled, allows guns to shoot out glass and other fragile objects").define("enableGlassBreaking", true);
-                this.fragileBlockDrops = builder.comment("If enabled, fragile blocks will drop their loot when broken").define("fragileBlockDrops", false);
-                this.fragileBaseBreakChance = builder.comment("The base chance that a fragile block is broken when impacted by a bullet. The hardness of a block will scale this value; the harder the block, the lower the final calculated chance will be.").defineInRange("fragileBlockBreakChance", 1.0, 0.0, 1.0);
-                this.setFireToBlocks = builder.comment("If true, allows guns enchanted with Fire Starter to light and spread fires on blocks").define("setFireToBlocks", false);
+                this.enableBlockRemovalOnExplosions = builder.comment("If enabled, explosions will destroy blocks.").define("enableBlockRemovalOnExplosions", false);
+                this.setFireToBlocks = builder.comment("If true, projectiles will set blocks on fire.").define("setFireToBlocks", false);
+                this.enableFragileBreaking = builder.comment("If enabled, projectiles will destroy fragile blocks.").define("enableFragileBreaking", true);
+                this.fragileBlockDrops = builder.comment("If enabled, fragile blocks will drop when broken.").define("fragileBlockDrops", false);
+                this.fragileBaseBreakChance = builder.comment("The base chance that a fragile block is broken when hit by a bullet. The hardness of a block will scale this value; the harder the block, the lower the final calculated chance will be.").defineInRange("fragileBlockBreakChance", 1.0, 0.0, 1.0);
             }
             builder.pop();
         }
@@ -278,9 +276,9 @@ public class Config
 
         public Network(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties relating to network").push("network");
+            builder.comment("Properties relating to network.").push("network");
             {
-                this.projectileTrackingRange = builder.comment("The distance players need to be within to be able to track new projectiles trails. Higher values means you can see projectiles from that start from further away.").defineInRange("projectileTrackingRange", 192.0, 1, Double.MAX_VALUE);
+                this.projectileTrackingRange = builder.comment("The distance players need to be within to be able to track new projectiles trails. Higher values means you can see projectiles from that start from further away.").defineInRange("projectileTrackingRange", 256.0, 1, Double.MAX_VALUE);
             }
             builder.pop();
         }
@@ -298,46 +296,41 @@ public class Config
 
         public AggroMobs(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties relating to mob aggression").push("aggro_mobs");
+            builder.comment("Properties relating to mob aggression.").push("aggro_mobs");
             {
-                this.enabled = builder.comment("If true, nearby mobs are angered and/or scared by the firing of guns.").define("enabled", true);
+                this.enabled = builder.comment("If true, nearby mobs are angered and/or scared by gun fire.").define("enabled", true);
                 this.angerHostileMobs = builder.comment("If true, in addition to causing peaceful mobs to panic, firing a gun will also cause nearby hostile mobs to target the shooter.").define("angerHostileMobs", true);
-                this.unsilencedRange = builder.comment("Any mobs within a sphere of this radius will aggro on the shooter of an unsilenced gun.").defineInRange("unsilencedRange", 64.0, 0.0, Double.MAX_VALUE);
-                this.exemptEntities = builder.comment("Any mobs of defined will not aggro on shooters").defineList("exemptMobs", Collections.emptyList(), o -> true);
+                this.unsilencedRange = builder.comment("Any mobs within a sphere of this radius will aggro on the shooter of an unsilenced gun.").defineInRange("unsilencedRange", 128.0, 0.0, Double.MAX_VALUE);
+                this.exemptEntities = builder.comment("Any mobs from this list will not aggro.").defineList("exemptMobs", Collections.emptyList(), o -> true);
             }
             builder.pop();
         }
     }
 
     /**
-     * Missile related config options
+     * Explosive related config options
      */
-    public static class Missiles
+    public static class Explosives
     {
-        public final ForgeConfigSpec.DoubleValue explosionRadius;
+        public final ForgeConfigSpec.DoubleValue rocketExplosionRadius;
+        public final ForgeConfigSpec.DoubleValue handGrenadeExplosionRadius;
+        public final ForgeConfigSpec.DoubleValue handGrenadeExplosionDamage;
+        public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionRadius;
+        public final ForgeConfigSpec.BooleanValue smokeGrenadeModeInstant;
+        public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudRadius;
+        public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
 
-        public Missiles(ForgeConfigSpec.Builder builder)
+        public Explosives(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties relating to missiles").push("missiles");
+            builder.comment("Properties relating to explosives.").push("explosives");
             {
-                this.explosionRadius = builder.comment("The max distance which the explosion is effective to").defineInRange("explosionRadius", 3.0, 0.0, Double.MAX_VALUE);
-            }
-            builder.pop();
-        }
-    }
-
-    /**
-     * Grenade related config options
-     */
-    public static class Grenades
-    {
-        public final ForgeConfigSpec.DoubleValue explosionRadius;
-
-        public Grenades(ForgeConfigSpec.Builder builder)
-        {
-            builder.comment("Properties relating to grenades").push("grenades");
-            {
-                this.explosionRadius = builder.comment("The max distance which the explosion is effective to").defineInRange("explosionRadius", 2.0, 0.0, Double.MAX_VALUE);
+                this.rocketExplosionRadius = builder.comment("Radius of a Rocket explosion.").defineInRange("rocketExplosionRadius", 3.0, 0.0, Double.MAX_VALUE);
+                this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
+                this.handGrenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
+                this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
+                this.smokeGrenadeModeInstant = builder.comment("If true, a Smoke Grenade will instantly spawn a sizeable cloud. If false, it will slowly spread smoke instead.").define("smokeGrenadeModeInstant", true);
+                this.smokeGrenadeCloudRadius = builder.comment("Radius of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudRadius", 2.0, 0.0, Double.MAX_VALUE);
+                this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
         }
@@ -353,7 +346,7 @@ public class Config
 
         public StunGrenades(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties relating to stun grenades").push("stun_grenades");
+            builder.comment("Properties relating to Stun Grenades.").push("stun_grenades");
             {
                 this.blind = new Blind(builder);
                 this.deafen = new Deafen(builder);
@@ -372,9 +365,9 @@ public class Config
 
         public Blind(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Blinding properties of stun grenades").push("blind");
+            builder.comment("Blinding properties of Stun Grenades.").push("blind");
             {
-                this.criteria = new EffectCriteria(builder, 32, 120, 20, 180, 0.75);
+                this.criteria = new EffectCriteria(builder, 32, 6, 1, 180, 0.75);
                 this.blindMobs = builder.comment("If true, hostile mobs will be unable to target entities while they are blinded by a stun grenade.").define("blindMobs", true);
             }
             builder.pop();
@@ -391,9 +384,9 @@ public class Config
 
         public Deafen(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Deafening properties of stun grenades").push("deafen");
+            builder.comment("Deafening properties of Stun Grenades").push("deafen");
             {
-                this.criteria = new EffectCriteria(builder, 32, 120, 20, 360, 0.75);
+                this.criteria = new EffectCriteria(builder, 32, 6, 1, 360, 0.75);
                 this.panicMobs = builder.comment("If true, peaceful mobs will panic upon being deafened by a stun grenade.").define("panicMobs", true);
             }
             builder.pop();
@@ -415,11 +408,11 @@ public class Config
         {
             builder.push("effect_criteria");
             {
-                this.radius = builder.comment("Grenade must be no more than this many meters away to have an effect.").defineInRange("radius", radius, 0.0, Double.MAX_VALUE);
-                this.durationMax = builder.comment("Effect will have this duration (in ticks) if the grenade is directly at the player's eyes while looking directly at it.").defineInRange("durationMax", durationMax, 0, Integer.MAX_VALUE);
-                this.durationMin = builder.comment("Effect will have this duration (in ticks) if the grenade is the maximum distance from the player's eyes while looking directly at it.").defineInRange("durationMin", durationMin, 0, Integer.MAX_VALUE);
-                this.angleEffect = builder.comment("Angle between the eye/looking direction and the eye/grenade direction must be no more than half this many degrees to have an effect.").defineInRange("angleEffect", angleEffect, 0, 360);
-                this.angleAttenuationMax = builder.comment("After duration is attenuated by distance, it will be further attenuated depending on the angle (in degrees) between the eye/looking direction and the eye/grenade direction. This is done by multiplying it by 1 (no attenuation) if the angle is 0; and by this value if the angle is the maximum within the angle of effect.").defineInRange("angleAttenuationMax", angleAttenuationMax, 0.0, 1.0);
+                this.radius = builder.comment("Radius of a Stun Grenade explosion.").defineInRange("radius", radius, 0.0, Double.MAX_VALUE);
+                this.durationMax = builder.comment("Maximum duration of the effect in seconds.").defineInRange("durationMax", durationMax, 0, Integer.MAX_VALUE);
+                this.durationMin = builder.comment("Minumum duration of the effect in seconds.").defineInRange("durationMin", durationMin, 0, Integer.MAX_VALUE);
+                this.angleEffect = builder.comment("Angle between the looking direction and a Stun Grenade must be no more than half this many degrees to have an effect.").defineInRange("angleEffect", angleEffect, 0, 360);
+                this.angleAttenuationMax = builder.comment("After duration is attenuated by distance, it will be further attenuated depending on the angle (in degrees) between the looking direction and the Stun Grenade. This is done by multiplying it by 1 (no attenuation) if the angle is 0; and by this value if the angle is the maximum within the angle of effect.").defineInRange("angleAttenuationMax", angleAttenuationMax, 0.0, 1.0);
             }
             builder.pop();
         }
@@ -436,9 +429,9 @@ public class Config
 
         public ProjectileSpread(ForgeConfigSpec.Builder builder)
         {
-            builder.comment("Properties relating to projectile spread").push("projectile_spread");
+            builder.comment("Properties relating to projectile spread.").push("projectile_spread");
             {
-                this.spreadThreshold = builder.comment("The amount of time in milliseconds (1/50th of a tick) before projectile spread resets to its resting value. The value indicates a reasonable amount of time before a weapon is considered stable again.").defineInRange("spreadThreshold", 300, 0, 1000);
+                this.spreadThreshold = builder.comment("The amount of time in milliseconds (1/50th of a tick) before projectile spread resets to its resting value. The value indicates a reasonable amount of time before a weapon is considered stable again.").defineInRange("spreadThreshold", 350, 0, 1000);
                 this.maxCount = builder.comment("The amount of times a player has to shoot within the spread threshold before the maximum amount of spread is applied. Setting the value higher means it will take longer for the spread to be applied.").defineInRange("maxCount", 10, 1, Integer.MAX_VALUE);
                 this.doSpreadHipFirePenalty = builder.comment("When enabled, spread increases faster when not aiming.").define("doSpreadHipFirePenalty", true);
             }
@@ -457,6 +450,7 @@ public class Config
         public final ForgeConfigSpec.IntValue soundFadeThreshold;
         public final ForgeConfigSpec.DoubleValue ringVolume;
         public final ForgeConfigSpec.DoubleValue gunShotMaxDistance;
+        public final ForgeConfigSpec.IntValue grenadeExplosionMaxDistance;
         public final ForgeConfigSpec.DoubleValue reloadMaxDistance;
         public final ForgeConfigSpec.BooleanValue enableCameraRecoil;
         public final ForgeConfigSpec.IntValue cooldownThreshold;
@@ -466,7 +460,7 @@ public class Config
         {
             builder.push("server");
             {
-                builder.comment("Stun Grenade related properties").push("grenade");
+                builder.comment("Stun Grenade related properties.").push("grenade");
                 {
                     this.alphaOverlay = builder.comment("After the duration drops to this many ticks, the transparency of the overlay when blinded will gradually fade to 0 alpha.").defineInRange("alphaOverlay", 255, 0, 255);
                     this.alphaFadeThreshold = builder.comment("Transparency of the overlay when blinded will be this alpha value, before eventually fading to 0 alpha.").defineInRange("alphaFadeThreshold", 60, 0, Integer.MAX_VALUE);
@@ -479,12 +473,13 @@ public class Config
                 builder.comment("Audio properties").push("audio");
                 {
                     this.gunShotMaxDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 128, 0, Double.MAX_VALUE);
-                    this.reloadMaxDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 32, 0, Double.MAX_VALUE);
+                    this.grenadeExplosionMaxDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("grenadeExplosionMaxDistance", 48, 0, Integer.MAX_VALUE);
+                    this.reloadMaxDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 16, 0, Double.MAX_VALUE);
                 }
                 builder.pop();
 
-                this.enableCameraRecoil = builder.comment("If true, enables camera recoil when firing a weapon").define("enableCameraRecoil", true);
-                this.cooldownThreshold = builder.comment("The maximum amount of cooldown time remaining before the server will accept another shoot packet from a client. This allows for a litle slack since the server may be lagging").defineInRange("cooldownThreshold", 100, 75, 1000);
+                this.enableCameraRecoil = builder.comment("If true, enables camera recoil when firing a weapon.").define("enableCameraRecoil", true);
+                this.cooldownThreshold = builder.comment("The maximum amount of cooldown time remaining before the server will accept another shoot packet from a client. This allows for a litle slack since the server may be lagging.").defineInRange("cooldownThreshold", 100, 75, 1000);
 
                 this.experimental = new Experimental(builder);
             }
@@ -498,7 +493,7 @@ public class Config
             public Experimental(ForgeConfigSpec.Builder builder)
             {
                 builder.push("experimental");
-                this.forceDyeableAttachments = builder.comment("Forces all attachments to be dyeable regardless if they have an affect on the model. This is useful if your server uses custom models for attachments and the models have dyeable elements").define("forceDyeableAttachments", false);
+                this.forceDyeableAttachments = builder.comment("Forces all attachments to be dyeable regardless if this has an effect on the model. This is useful if your server uses custom models for attachments and the models have dyeable elements.").define("forceDyeableAttachments", false);
                 builder.pop();
             }
         }

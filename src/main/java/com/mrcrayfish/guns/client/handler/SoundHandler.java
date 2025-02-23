@@ -25,6 +25,7 @@ import java.lang.reflect.Field;
 import java.util.ConcurrentModificationException;
 import java.util.Map;
 import java.util.Map.Entry;
+import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SoundHandler
@@ -163,6 +164,11 @@ public class SoundHandler
     private boolean isStunGrenade(ResourceLocation loc)
     {
         return loc.toString().equals(Reference.MOD_ID + ":grenade_stun_explosion");
+    }
+
+    private boolean isSmokeGrenade(ResourceLocation loc)
+    {
+        return loc.toString().equals(Reference.MOD_ID + ":grenade_smoke_explosion");
     }
 
     private float getMutedVolume(float duration, float volumeBase)

@@ -3,12 +3,14 @@ package com.mrcrayfish.guns.entity;
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Config.EffectCriteria;
+import com.mrcrayfish.guns.client.audio.ExplosionSound;
 import com.mrcrayfish.guns.init.ModEffects;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageStunGrenade;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.sounds.SoundSource;
@@ -69,14 +71,15 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        this.level.playSound(null, this.getX(), y, this.getZ(), ModSounds.ENTITY_STUN_GRENADE_EXPLOSION.get(), SoundSource.BLOCKS, 2, 1);
+        Minecraft.getInstance().getSoundManager().play(new ExplosionSound(ModSounds.ENTITY_STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;
         }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), y, this.getZ(), 64), new S2CMessageStunGrenade(this.getX(), y, this.getZ()));
+        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
+                LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageStunGrenade(this.getX(), y, this.getZ()));
 
-        // Calculate bounds of area where potentially effected players my be
+        // Calculate bounds of area where potentially effected players may be
         double diameter = Math.max(Config.COMMON.stunGrenades.deafen.criteria.radius.get(), Config.COMMON.stunGrenades.blind.criteria.radius.get()) * 2 + 1;
         int minX = Mth.floor(this.getX() - diameter);
         int maxX = Mth.floor(this.getX() + diameter);
@@ -122,7 +125,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
             if(effect != ModEffects.BLINDED.get() || rayTraceOpaqueBlocks(this.level, eyes, grenade, false, false, false) == null)
             {
                 // Duration attenuated by distance
-                int duration = (int) Math.round(criteria.durationMax.get() - (criteria.durationMax.get() - criteria.durationMin.get()) * (distance / criteria.radius.get()));
+                int duration = (int) Math.round(criteria.durationMax.get()*20 - (criteria.durationMax.get()*20 - criteria.durationMin.get()*20) * (distance / criteria.radius.get()));
 
                 // Duration further attenuated by angle
                 duration *= 1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax;

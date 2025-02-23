@@ -1,5 +1,6 @@
 package com.mrcrayfish.guns.item;
 
+import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.entity.ProjectileEntity;
 import com.mrcrayfish.guns.entity.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.init.ModSounds;
@@ -27,7 +28,7 @@ import java.util.List;
  */
 public class GrenadeItem extends AmmoItem
 {
-    protected int maxCookTime;
+    public int maxCookTime;
 
     public GrenadeItem(Item.Properties properties, int maxCookTime)
     {
@@ -38,8 +39,8 @@ public class GrenadeItem extends AmmoItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        tooltip.add(Component.translatable("info.cgm.gun_details").withStyle(ChatFormatting.GOLD, ChatFormatting.BOLD));
-        float damage = ProjectileEntity.grenadeDamage;
+        tooltip.add(Component.translatable("info.cgm.gun_details").withStyle(ChatFormatting.GOLD));
+        Double damage = Config.COMMON.explosives.handGrenadeExplosionDamage.get();
         float cookTime = (float) maxCookTime / 20;
         tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
         tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));

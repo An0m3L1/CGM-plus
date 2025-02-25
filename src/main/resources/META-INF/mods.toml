@@ -35,11 +35,17 @@ description="Heavily modified, overhauled and expanded version of zaeonNineZeros
     ordering="NONE"
     side="BOTH"
 [[dependencies.cgm]]
-modId="farmersdelight"
-mandatory=true
-versionRange="[1.2,)"
-ordering="NONE"
-side="BOTH"
+    modId="farmersdelight"
+    mandatory=true
+    versionRange="[1.2,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.cgm]]
+    modId="sulfurpotassiummod"
+    mandatory=true
+    versionRange="[2.3.4,)"
+    ordering="NONE"
+    side="BOTH"
 [[dependencies.cgm]]
     modId="controllable"
     mandatory=false

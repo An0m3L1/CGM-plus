@@ -317,7 +317,7 @@ public class Config
         public final ForgeConfigSpec.DoubleValue handGrenadeExplosionDamage;
         public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionRadius;
         public final ForgeConfigSpec.BooleanValue smokeGrenadeModeInstant;
-        public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudRadius;
+        public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDiameter;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
 
         public Explosives(ForgeConfigSpec.Builder builder)
@@ -328,8 +328,8 @@ public class Config
                 this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
                 this.handGrenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
                 this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
-                this.smokeGrenadeModeInstant = builder.comment("If true, a Smoke Grenade will instantly spawn a sizeable cloud. If false, it will slowly spread smoke instead.").define("smokeGrenadeModeInstant", true);
-                this.smokeGrenadeCloudRadius = builder.comment("Radius of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudRadius", 2.0, 0.0, Double.MAX_VALUE);
+                this.smokeGrenadeModeInstant = builder.comment("If true, a Smoke Grenade will instantly spawn a sizeable cloud. If false, it will slowly spread smoke instead.").define("smokeGrenadeModeInstant", false);
+                this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudRadius", 4.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
@@ -460,7 +460,7 @@ public class Config
         {
             builder.push("server");
             {
-                builder.comment("Stun Grenade related properties.").push("grenade");
+                builder.comment("Stun Grenade related properties.").push("stun_grenade");
                 {
                     this.alphaOverlay = builder.comment("After the duration drops to this many ticks, the transparency of the overlay when blinded will gradually fade to 0 alpha.").defineInRange("alphaOverlay", 255, 0, 255);
                     this.alphaFadeThreshold = builder.comment("Transparency of the overlay when blinded will be this alpha value, before eventually fading to 0 alpha.").defineInRange("alphaFadeThreshold", 60, 0, Integer.MAX_VALUE);

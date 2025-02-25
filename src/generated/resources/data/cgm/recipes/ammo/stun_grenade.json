@@ -3,6 +3,7 @@
   "materials":
   [
     {"tag": "forge:plates/steel"},
+    {"item": "sulfurpotassiummod:potassium"},
     {"tag": "forge:dusts/glowstone"},
     {"tag": "forge:gunpowder"}
   ],

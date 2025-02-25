@@ -13,7 +13,6 @@ import com.mrcrayfish.guns.particles.BulletHoleData;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleEngine;
-import net.minecraft.client.particle.ParticleRenderType;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.core.Vec3i;
@@ -29,7 +28,6 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
-import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -148,9 +146,9 @@ public class ClientPlayHandler
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
-        double diameter = Config.COMMON.explosives.smokeGrenadeCloudRadius.get() * 2;
+        double diameter = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get();
         double vel = 0.005;
-        int amount = (int) (Config.COMMON.explosives.smokeGrenadeCloudRadius.get() * 40);
+        int amount = (int) (diameter * 20);
         boolean instant = Config.COMMON.explosives.smokeGrenadeModeInstant.get();
 
         /* Spawn smoke cloud */
@@ -169,7 +167,7 @@ public class ClientPlayHandler
             }
             else
             {
-                vel = Config.COMMON.explosives.smokeGrenadeCloudRadius.get() * 0.015;
+                vel = diameter * 0.005;
                 level.addAlwaysVisibleParticle(ModParticleTypes.SMOKE_CLOUD.get(),
                         true,
                         x,

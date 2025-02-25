@@ -4,6 +4,7 @@ Add more attachments
     - Scopes: monocle, holo, 8x
     - Stocks: skeleton, scar, solid
     - Cosmetic: primer spray can
+
 Add content
     - Guns: guns.txt
     - Blocks: blocks.txt
@@ -12,8 +13,9 @@ Add content
     - Accessories: night vision goggles, knee-pads and elbow-pads, gas masks
     - Melee: katana, hammer, sledgehammer, baseball bat (wooden and iron), tactical knives, machete, cleaver, sword, longsword, spear, ballistic shield
         Rework vanilla weapons and tools
-        Add special perks to melee types (bats knockback, knives bleed, hammers stun, etc)
     - Grenades and explosives: molotov, flare, mine, c4
+    - Other: alcohol (made from ethanol and sugar in a basin)
+
 Add bullet trails
 Add bandits, marauders, zombies
 Add automatic turrets

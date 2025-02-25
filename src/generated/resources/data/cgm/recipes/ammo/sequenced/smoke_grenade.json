@@ -4,7 +4,7 @@
   "loops": 1,
   "results":
   [
-    {"item": "cgm:stun_grenade"}
+    {"item": "cgm:smoke_grenade"}
   ],
   "sequence": [
     {
@@ -16,7 +16,7 @@
       ],
       "results":
       [
-        {"item": "cgm:stun_grenade"}
+        {"item": "cgm:smoke_grenade"}
       ]
     },
     {
@@ -24,11 +24,11 @@
       "ingredients":
       [
         {"tag": "forge:plates/steel"},
-        {"item": "sulfurpotassiummod:potassium"}
+        {"item": "sulfurpotassiummod:sulfur"}
       ],
       "results":
       [
-        {"item": "cgm:stun_grenade"}
+        {"item": "cgm:smoke_grenade"}
       ]
     },
     {
@@ -36,11 +36,11 @@
       "ingredients":
       [
         {"tag": "forge:plates/steel"},
-        {"tag": "forge:dusts/glowstone"}
+        {"tag": "forge:dyes/gray"}
       ],
       "results":
       [
-        {"item": "cgm:stun_grenade"}
+        {"item": "cgm:smoke_grenade"}
       ]
     }
   ],

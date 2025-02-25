@@ -19,6 +19,8 @@ import net.minecraft.world.phys.Vec3;
  */
 public class RocketEntity extends ProjectileEntity
 {
+    protected float radius = Config.COMMON.explosives.rocketExplosionRadius.get().floatValue();
+
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {
         super(entityType, worldIn);
@@ -49,18 +51,18 @@ public class RocketEntity extends ProjectileEntity
     @Override
     protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
-        createExplosion(this, Config.COMMON.explosives.rocketExplosionRadius.get().floatValue(), false);
+        createExplosion(this, radius, false);
     }
 
     @Override
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
     {
-        createExplosion(this, Config.COMMON.explosives.rocketExplosionRadius.get().floatValue(), false);
+        createExplosion(this, radius, false);
     }
 
     @Override
     public void onExpired()
     {
-        createExplosion(this, Config.COMMON.explosives.rocketExplosionRadius.get().floatValue(), false);
+        createExplosion(this, radius, false);
     }
 }

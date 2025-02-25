@@ -5,16 +5,10 @@ import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.client.audio.ExplosionSound;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
-import com.mrcrayfish.guns.init.ModParticleTypes;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageSmokeGrenade;
-import com.mrcrayfish.guns.network.message.S2CMessageStunGrenade;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleEngine;
-import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.effect.MobEffectInstance;
@@ -24,8 +18,6 @@ import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-
-import static com.mrcrayfish.guns.client.network.ClientPlayHandler.spawnParticle;
 
 /**
  * Author: MrCrayfish
@@ -70,7 +62,7 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        double radius = Config.COMMON.explosives.smokeGrenadeCloudRadius.get();
+        double radius = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get() / 2;
         double duration = ((Config.COMMON.explosives.smokeGrenadeCloudDuration.get() - 3) * 20);
         Minecraft.getInstance().getSoundManager().play(new ExplosionSound(ModSounds.ENTITY_SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
         if(!this.level.isClientSide)

@@ -32,5 +32,6 @@ Overhaul items (models, textures, stats)
 Overhaul blood particles (check extra gore)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul explosions to destroy fragile blocks
+Overhaul tooltips of grenades
 
 Fix all sounds to mono

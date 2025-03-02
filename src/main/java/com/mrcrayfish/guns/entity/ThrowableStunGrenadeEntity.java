@@ -128,7 +128,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
                 int duration = (int) Math.round(criteria.durationMax.get()*20 - (criteria.durationMax.get()*20 - criteria.durationMin.get()*20) * (distance / criteria.radius.get()));
 
                 // Duration further attenuated by angle
-                duration *= 1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax;
+                duration *= (int) (1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax);
 
                 entity.addEffect(new MobEffectInstance(effect, duration, 0, false, false));
 

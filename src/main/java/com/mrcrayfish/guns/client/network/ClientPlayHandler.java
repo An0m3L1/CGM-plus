@@ -28,6 +28,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
@@ -147,7 +148,7 @@ public class ClientPlayHandler
         double y = message.getY();
         double z = message.getZ();
         double diameter = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get();
-        double vel = 0.005;
+        double vel = 0.004;
         int amount = (int) (diameter * 20);
         boolean instant = Config.COMMON.explosives.smokeGrenadeModeInstant.get();
 
@@ -167,7 +168,7 @@ public class ClientPlayHandler
             }
             else
             {
-                vel = diameter * 0.005;
+                vel = diameter * 0.004;
                 level.addAlwaysVisibleParticle(ModParticleTypes.SMOKE_CLOUD.get(),
                         true,
                         x,

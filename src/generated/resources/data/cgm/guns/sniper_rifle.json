@@ -1,12 +1,7 @@
 {
-  "display": {
-    "flash": {
-      "size": 1.0,
-      "yOffset": 3.8365,
-      "zOffset": -10.21
-    }
-  },
-  "general": {
+  "display": {"flash": {}},
+  "general":
+  {
     "gripType": "cgm:two_handed",
     "auto": false,
     "rate": 25,

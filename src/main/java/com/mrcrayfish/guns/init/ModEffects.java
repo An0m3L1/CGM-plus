@@ -2,6 +2,7 @@ package com.mrcrayfish.guns.init;
 
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.effect.IncurableEffect;
+import com.mrcrayfish.guns.effect.SmokedEffect;
 import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectCategory;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,4 +18,5 @@ public class ModEffects
 
     public static final RegistryObject<IncurableEffect> BLINDED = REGISTER.register("blinded", () -> new IncurableEffect(MobEffectCategory.HARMFUL, 0));
     public static final RegistryObject<IncurableEffect> DEAFENED = REGISTER.register("deafened", () -> new IncurableEffect(MobEffectCategory.HARMFUL, 0));
+    public static final RegistryObject<SmokedEffect> SMOKED = REGISTER.register("smoked", () -> new SmokedEffect(MobEffectCategory.HARMFUL, 0));
 }

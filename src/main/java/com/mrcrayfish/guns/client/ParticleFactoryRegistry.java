@@ -24,6 +24,7 @@ public class ParticleFactoryRegistry
         particleManager.register(ModParticleTypes.BLOOD.get(), BloodParticle.Factory::new);
         particleManager.register(ModParticleTypes.HEADSHOT.get(), HeadshotParticle.Factory::new);
         particleManager.register(ModParticleTypes.SMOKE_CLOUD.get(), SmokeCloudParticle.Factory::new);
+        particleManager.register(ModParticleTypes.SMOKE_EFFECT.get(), SmokeEffectParticle.Factory::new);
         particleManager.register(ModParticleTypes.TRAIL.get(), TrailParticle.Factory::new);
     }
 }

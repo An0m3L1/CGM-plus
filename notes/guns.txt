@@ -4,7 +4,6 @@ Assault Rifles:
     AK
     Scar
     G36
-    Makeshift
 Pistols:
     Five-Seven
     Glock
@@ -17,14 +16,12 @@ Revolvers:
     Colt Trooper
     Taurus Raging Bull
     S&W M&P R8
-    Makeshift
 SMG:
     MP5
     Uzi
     Mac-10
     Tommy Gun
     Kriss Vector
-    Makeshift
 Rifles:
     AWP <---
     SSG-08 <---
@@ -34,7 +31,6 @@ Rifles:
     Lever Action
     Brügger & Thomet APR
     Kar98K
-    Makeshift
 Shotguns:
     Remington 870
     Mossberg 590
@@ -42,7 +38,6 @@ Shotguns:
     Sawed-Off
     AA12
     Lever Action
-    Makeshift
 Other:
     MiniGun <---
     Milkor MGL <---

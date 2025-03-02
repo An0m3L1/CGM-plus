@@ -14,11 +14,12 @@ import javax.annotation.Nullable;
  */
 @OnlyIn(Dist.CLIENT)
 public class TrailParticle extends BaseAshSmokeParticle
+
 {
-    protected TrailParticle(ClientLevel world, double x, double y, double z, float scale, float red, float green, float blue, SpriteSet spriteWithAge)
+    protected TrailParticle(ClientLevel world, double x, double y, double z, float scale, float red, float green, float blue, SpriteSet spriteSet)
     {
-        super(world, x, y, z, 0.0F, 0.0F, 0.0F, 0.0, 0.0, 0.0, scale, spriteWithAge, 0.2F, 0, 0, false);
-        this.lifetime = Config.CLIENT.particle.trailLife.get();
+        super(world, x, y, z, 0.0F, 0.0F, 0.0F, 0.0, 0.0, 0.0, scale, spriteSet, 0.2F, 0, 0, false);
+        this.lifetime = Config.CLIENT.particle.trailLife.get()-1;
         this.rCol = red;
         this.gCol = green;
         this.bCol = blue;
@@ -50,9 +51,9 @@ public class TrailParticle extends BaseAshSmokeParticle
         @Override
         public Particle createParticle(TrailData data, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
         {
-            float red = data.isEnchanted() ? 0.611F : 0.5F;
-            float green = data.isEnchanted() ? 0.443F : 0.5F;
-            float blue = data.isEnchanted() ? 1.0F : 0.5F;
+            float red = 0.99609F;
+            float green = 0.91796F;
+            float blue = 0.57812F;
             return new TrailParticle(worldIn, x, y, z, 1.0F, red, green, blue, this.spriteSet);
         }
     }

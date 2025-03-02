@@ -56,9 +56,7 @@ Overhaul items (models, textures, stats)
     - Minigun
     - Tactical Sniper Rifle
     - Sniper Rifle
-Overhaul blood particles (check extra gore)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul explosions to destroy fragile blocks
 
-Change all sounds to mono and add fade out effects
 Fix block destruction not working

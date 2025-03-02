@@ -152,7 +152,7 @@ public class GunItem extends Item implements IColored, IMeta
             tooltip.add(Component.translatable("info.cgm.recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoil) + "°").withStyle(ChatFormatting.WHITE)));
 
             // ADS Recoil
-            float adsRecoil = recoil * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
+            float adsRecoil = recoil * (1-(modifiedGun.getGeneral().getRecoilAdsReduction()));
             if (adsRecoil!=recoil)
             {
                 tooltip.add(Component.translatable("info.cgm.ads_recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsRecoil) + "°").withStyle(ChatFormatting.WHITE)));

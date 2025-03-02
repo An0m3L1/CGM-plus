@@ -65,7 +65,7 @@ public class SmokeCloudParticle extends TextureSheetParticle
 
     public float getQuadSize(float scaleFactor)
     {
-        return this.quadSize * Mth.clamp(((float)this.age + scaleFactor) / (float)this.lifetime * 32.0f, 0.0F, 1.0F);
+        return this.quadSize * Mth.clamp(((float)this.age + scaleFactor) / (float)this.lifetime * 48.0f, 0.0F, 1.0F);
     }
 
     @OnlyIn(Dist.CLIENT)

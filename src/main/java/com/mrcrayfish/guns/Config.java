@@ -145,7 +145,7 @@ public class Config
         {
             builder.comment("Properties relating to particles").push("particle");
             {
-                this.trailLife = builder.comment("Duration in ticks before trail will disappear. Set to 0 to remove trails.").defineInRange("trailLife", 6, 0, Integer.MAX_VALUE);
+                this.trailLife = builder.comment("Duration in ticks before trail will disappear. Set to 0 to disable trails.").defineInRange("trailLife", 1, 0, Integer.MAX_VALUE);
                 this.bulletHoleLifeMin = builder.comment("The minimum duration in ticks before bullet holes will disappear.").defineInRange("bulletHoleLifeMin", 200, 0, Integer.MAX_VALUE);
                 this.bulletHoleLifeMax = builder.comment("The maximum duration in ticks before bullet holes will disappear.").defineInRange("bulletHoleLifeMax", 300, 0, Integer.MAX_VALUE);
                 this.bulletHoleFadeThreshold = builder.comment("The percentage of the maximum life that must pass before particles begin fading away. 0 makes the particles always fade and 1 removes fading completely.").defineInRange("bulletHoleFadeThreshold", 0.98, 0, 1.0);
@@ -320,6 +320,7 @@ public class Config
         public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionRadius;
         public final ForgeConfigSpec.BooleanValue smokeGrenadeModeInstant;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDiameter;
+        public final ForgeConfigSpec.DoubleValue smokeGrenadeDamage;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
 
         public Explosives(ForgeConfigSpec.Builder builder)
@@ -331,7 +332,8 @@ public class Config
                 this.handGrenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
                 this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeModeInstant = builder.comment("If true, a Smoke Grenade will instantly spawn a sizeable cloud. If false, it will slowly spread smoke instead.").define("smokeGrenadeModeInstant", false);
-                this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudRadius", 4.0, 0.0, Double.MAX_VALUE);
+                this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudDiameter", 5.0, 0.0, Double.MAX_VALUE);
+                this.smokeGrenadeDamage = builder.comment("Damage per tick inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();

@@ -81,8 +81,10 @@
 
     "item.minecraft.potion.effect.blinding": "Зелье ослепления",
     "item.minecraft.potion.effect.deafening": "Зелье оглушения",
+    "item.minecraft.potion.effect.smoking": "Зелье задымления",
     "item.minecraft.lingering_potion.effect.blinding": "Туманное зелье ослепления",
     "item.minecraft.lingering_potion.effect.deafening": "Туманное зелье оглушения",
+    "item.minecraft.lingering_potion.effect.smoking": "Туманное зелье задымления",
     "itemGroup.cgm": "CGM+ Оружие",
     "itemGroup.materials": "CGM+ Материалы",
     "death.attack.cgm.bullet.killed": "%1$s был ликвидирован %2$s",
@@ -116,6 +118,7 @@
     "key.cgm.attachments": "Открыть меню аксессуаров",
     "effect.cgm.blinded": "Ослеплен",
     "effect.cgm.deafened": "Оглушен",
+    "effect.cgm.smoked": "Задымлен",
     "subtitle.cgm.stun.explosion": "Взрыв светошумовой шранаты",
     "subtitle.cgm.smoke.explosion": "Взрыв дымовой гранаты",
     "subtitle.cgm.stun.ring": "Звон",

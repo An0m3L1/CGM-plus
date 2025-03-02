@@ -81,8 +81,10 @@
 
     "item.minecraft.potion.effect.blinding": "Potion of Blinding",
     "item.minecraft.potion.effect.deafening": "Potion of Deafening",
+    "item.minecraft.potion.effect.smoking": "Potion of Smoking",
     "item.minecraft.lingering_potion.effect.blinding": "Lingering Potion of Blinding",
     "item.minecraft.lingering_potion.effect.deafening": "Lingering Potion of Deafening",
+    "item.minecraft.lingering_potion.effect.smoking": "Lingering Potion of Smoking",
     "itemGroup.cgm": "CGM+ Weapons",
     "itemGroup.materials": "CGM+ Materials",
     "death.attack.cgm.bullet.killed": "%1$s was taken down by %2$s",
@@ -116,6 +118,7 @@
     "key.cgm.attachments": "Open Attachments screen",
     "effect.cgm.blinded": "Blinded",
     "effect.cgm.deafened": "Deafened",
+    "effect.cgm.smoked": "Smoked",
     "subtitle.cgm.stun.explosion": "Stun Grenade explosion",
     "subtitle.cgm.smoke.explosion": "Smoke Grenade explosion",
     "subtitle.cgm.stun.ring": "Ringing",

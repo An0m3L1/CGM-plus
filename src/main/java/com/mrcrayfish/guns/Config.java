@@ -133,6 +133,7 @@ public class Config
      */
     public static class Particle
     {
+        public final ForgeConfigSpec.IntValue trailLife;
         public final ForgeConfigSpec.IntValue bulletHoleLifeMin;
         public final ForgeConfigSpec.IntValue bulletHoleLifeMax;
         public final ForgeConfigSpec.DoubleValue bulletHoleFadeThreshold;
@@ -144,12 +145,13 @@ public class Config
         {
             builder.comment("Properties relating to particles").push("particle");
             {
+                this.trailLife = builder.comment("Duration in ticks before trail will disappear. Set to 0 to remove trails.").defineInRange("trailLife", 6, 0, Integer.MAX_VALUE);
                 this.bulletHoleLifeMin = builder.comment("The minimum duration in ticks before bullet holes will disappear.").defineInRange("bulletHoleLifeMin", 200, 0, Integer.MAX_VALUE);
                 this.bulletHoleLifeMax = builder.comment("The maximum duration in ticks before bullet holes will disappear.").defineInRange("bulletHoleLifeMax", 300, 0, Integer.MAX_VALUE);
                 this.bulletHoleFadeThreshold = builder.comment("The percentage of the maximum life that must pass before particles begin fading away. 0 makes the particles always fade and 1 removes fading completely.").defineInRange("bulletHoleFadeThreshold", 0.98, 0, 1.0);
-                this.enableHitParticle = builder.comment("If true, particles will spawn from entities that are hit from a projectile.").define("enableHitParticle", true);
+                this.enableHitParticle = builder.comment("If true, particles will spawn from entities that are hit by a projectile.").define("enableHitParticle", true);
                 this.enableBlood = builder.comment("If enabled, replaces hit particles with blood.").define("enableBlood", true);
-                this.impactParticleDistance = builder.comment("The maximum distance impact particles can be seen from.").defineInRange("impactParticleDistance", 64.0, 0.0, 256.0);
+                this.impactParticleDistance = builder.comment("The maximum distance impact particles can be seen from.").defineInRange("impactParticleDistance", 64.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
         }

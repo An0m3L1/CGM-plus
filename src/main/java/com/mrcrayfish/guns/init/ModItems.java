@@ -18,8 +18,7 @@ public class ModItems
     public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 
     /* Assault Rifles */
-    public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle",
-            () -> new GunItem(new Item.Properties()
+    public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle", () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
                     .tab(GunMod.GUNS)
             ));
@@ -200,16 +199,17 @@ public class ModItems
     /* Materials */
     public static final RegistryObject<Item> STURDY_MECHANISM = REGISTER.register("sturdy_mechanism",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> INCOMPLETE_STURDY_MECHANISM = REGISTER.register("incomplete_sturdy_mechanism",() -> new SequencedAssemblyItem(new Item.Properties()));
-    
-    public static final RegistryObject<Item> IRON_ROD = REGISTER.register("iron_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
-    public static final RegistryObject<Item> GOLDEN_ROD = REGISTER.register("golden_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
-    public static final RegistryObject<Item> COPPER_ROD = REGISTER.register("copper_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
-    public static final RegistryObject<Item> BRASS_ROD = REGISTER.register("brass_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
+
+    public static final RegistryObject<Item> LIGHT_BULLET_MODEL = REGISTER.register("light_bullet_model", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> MEDIUM_BULLET_MODEL = REGISTER.register("medium_bullet_model", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> HEAVY_BULLET_MODEL = REGISTER.register("heavy_bullet_model", () -> new Item(new Item.Properties().stacksTo(1)));
+    public static final RegistryObject<Item> BUCKSHOT_MODEL = REGISTER.register("buckshot_model", () -> new Item(new Item.Properties().stacksTo(1)));
 
     public static final RegistryObject<Item> BRASS_CASING = REGISTER.register("brass_casing",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> SHELL_CASING = REGISTER.register("shell_casing",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> BULLET = REGISTER.register("bullet",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> BUCKSHOT = REGISTER.register("buckshot",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
+    public static final RegistryObject<Item> GUNPOWDER_PINCH = REGISTER.register("gunpowder_pinch",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
 
     public static final RegistryObject<Item> CAST_IRON_INGOT = REGISTER.register("cast_iron_ingot",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> CAST_IRON_NUGGET = REGISTER.register("cast_iron_nugget",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
@@ -221,6 +221,11 @@ public class ModItems
     public static final RegistryObject<Item> STEEL_SHEET = REGISTER.register("steel_sheet",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> STEEL_ROD = REGISTER.register("steel_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
 
+    public static final RegistryObject<Item> IRON_ROD = REGISTER.register("iron_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
+    public static final RegistryObject<Item> GOLDEN_ROD = REGISTER.register("golden_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
+    public static final RegistryObject<Item> COPPER_ROD = REGISTER.register("copper_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
+    public static final RegistryObject<Item> BRASS_ROD = REGISTER.register("brass_rod",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
+
     public static final RegistryObject<Item> HEMP_SEEDS = REGISTER.register("hemp_seeds",() -> new ItemNameBlockItem(ModBlocks.HEMP_CROP_BLOCK.get(), new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> HEMP = REGISTER.register("hemp",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> CLOTH = REGISTER.register("cloth",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
@@ -228,6 +233,4 @@ public class ModItems
     public static final RegistryObject<Item> RUBBER_SHEET = REGISTER.register("rubber_sheet",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> PLASTIC = REGISTER.register("plastic",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> PLASTIC_SHEET = REGISTER.register("plastic_sheet",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
-    public static final RegistryObject<Item> GUNPOWDER_PINCH = REGISTER.register("gunpowder_pinch",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
-
 }

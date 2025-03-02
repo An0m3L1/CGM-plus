@@ -19,7 +19,11 @@ public class ModEntities
 {
     public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Reference.MOD_ID);
 
-    public static final RegistryObject<EntityType<ProjectileEntity>> PROJECTILE = registerProjectile("projectile", ProjectileEntity::new);
+    public static final RegistryObject<EntityType<ProjectileEntity>> PROJECTILE = registerBasic("projectile", ProjectileEntity::new);
+    public static final RegistryObject<EntityType<LightBulletEntity>> LIGHT_BULLET = registerBasic("light_bullet", LightBulletEntity::new);
+    public static final RegistryObject<EntityType<MediumBulletEntity>> MEDIUM_BULLET = registerBasic("medium_bullet", MediumBulletEntity::new);
+    public static final RegistryObject<EntityType<HeavyBulletEntity>> HEAVY_BULLET = registerBasic("heavy_bullet", HeavyBulletEntity::new);
+    public static final RegistryObject<EntityType<BuckshotEntity>> BUCKSHOT_SHELL = registerBasic("buckshot_shell", BuckshotEntity::new);
     public static final RegistryObject<EntityType<GrenadeEntity>> GRENADE = registerBasic("grenade", GrenadeEntity::new);
     public static final RegistryObject<EntityType<PipeGrenadeEntity>> PIPE_GRENADE = registerBasic("pipe_grenade", PipeGrenadeEntity::new);
     public static final RegistryObject<EntityType<RocketEntity>> MISSILE = registerBasic("missile", RocketEntity::new);
@@ -31,7 +35,7 @@ public class ModEntities
     {
         return REGISTER.register(id, () -> EntityType.Builder.of(function::apply, MobCategory.MISC)
                 .sized(0.25F, 0.25F)
-                .setTrackingRange(100)
+                .setTrackingRange(256)
                 .setUpdateInterval(1)
                 .noSummon()
                 .fireImmune()

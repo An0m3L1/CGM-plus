@@ -64,12 +64,12 @@ public abstract class Attachment
             {
                 if(Screen.hasControlDown())
                 {
-                    event.getToolTip().add(Component.translatable("perk.cgm.title").withStyle(ChatFormatting.GOLD));
+                    event.getToolTip().add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
                     event.getToolTip().addAll(perks);
                 }
                 else
                 {
-                    event.getToolTip().add(Component.translatable("perk.cgm.title_help").withStyle(ChatFormatting.GOLD));
+                    event.getToolTip().add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
                 }
                 return;
             }
@@ -331,7 +331,7 @@ public abstract class Attachment
             attachment.getProperties().setPerks(positivePerks);
             if(positivePerks.size() > 0)
             {
-                event.getToolTip().add(Component.translatable("perk.cgm.title").withStyle(ChatFormatting.GRAY, ChatFormatting.BOLD));
+                event.getToolTip().add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GRAY, ChatFormatting.BOLD));
                 event.getToolTip().addAll(positivePerks);
             }
         }

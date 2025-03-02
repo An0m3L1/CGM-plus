@@ -6,17 +6,44 @@ Add more attachments
     - Cosmetic: primer spray can
 
 Add content
-    - Guns: guns.txt
-    - Blocks: blocks.txt
-    - Armor: vests, helmets, pants, boots, balaclavas, caps, berets
-        Rework vanilla armor
-    - Accessories: night vision goggles, knee-pads and elbow-pads, gas masks
-    - Melee: katana, hammer, sledgehammer, baseball bat (wooden and iron), tactical knives, machete, cleaver, sword, longsword, spear, ballistic shield
-        Rework vanilla weapons and tools
-    - Grenades and explosives: molotov, flare, mine, c4
-    - Other: alcohol (made from ethanol and sugar in a basin)
+    Guns: guns.txt
+    Blocks: blocks.txt
+    Armor
+        - Vest
+        - Helmet
+        - Pants
+        - Boots
+        - Beret
+    Accessories
+        - NV goggles
+        - Knee and elbow pads
+        - Gas mask
+        - Balaclava
+        - Face mask
+        - Gloves
+    Melee
+        - Katana
+        - Hammer
+        - Sledgehammer
+        - Wooden baseball bat
+        - Barbed baseball bat
+        - Steel baseball bat
+        - Knife
+        - Machete
+        - Cleaver
+        - Sword
+        - Longsword
+        - Spear
+        - Ballistic shield
+        - Crowbar
+        - Fire axe
+        - Steel axe
+    Grenades and explosives
+        - Molotov
+        - Flare
+        - Mine
+        - C4
 
-Add bullet trails
 Add bandits, marauders, zombies
 Add automatic turrets
 Add backpack skins
@@ -32,6 +59,6 @@ Overhaul items (models, textures, stats)
 Overhaul blood particles (check extra gore)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul explosions to destroy fragile blocks
-Overhaul tooltips of grenades
 
-Fix all sounds to mono
+Change all sounds to mono and add fade out effects
+Fix block destruction not working

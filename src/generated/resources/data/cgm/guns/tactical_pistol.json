@@ -46,10 +46,9 @@
     "maxRangeDamageMultiplier": 0.5,
     "headshotMultiplierOverride": 2.0,
 
-    "size": 1.0,
-    "speed": 30.0,
-    "life": 3,
-    "trailLengthMultiplier": 5.0,
+    "size": 0.1,
+    "speed": 20.0,
+    "life": 7,
 
     "armorBypass": 0.5,
     "protectionBypass": 0.25,

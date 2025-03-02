@@ -1,11 +1,9 @@
 package com.mrcrayfish.guns.client.particle;
 
+import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.particles.TrailData;
 import net.minecraft.client.multiplayer.ClientLevel;
-import net.minecraft.client.particle.BaseAshSmokeParticle;
-import net.minecraft.client.particle.Particle;
-import net.minecraft.client.particle.ParticleProvider;
-import net.minecraft.client.particle.SpriteSet;
+import net.minecraft.client.particle.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
@@ -20,11 +18,22 @@ public class TrailParticle extends BaseAshSmokeParticle
     protected TrailParticle(ClientLevel world, double x, double y, double z, float scale, float red, float green, float blue, SpriteSet spriteWithAge)
     {
         super(world, x, y, z, 0.0F, 0.0F, 0.0F, 0.0, 0.0, 0.0, scale, spriteWithAge, 0.2F, 0, 0, false);
-        this.lifetime = 4;
+        this.lifetime = Config.CLIENT.particle.trailLife.get();
         this.rCol = red;
         this.gCol = green;
         this.bCol = blue;
         this.alpha = 0.25F;
+    }
+
+    @Override
+    public ParticleRenderType getRenderType()
+    {
+        return ParticleRenderType.PARTICLE_SHEET_LIT;
+    }
+
+    public int getLightColor(float pPartialTick)
+    {
+        return 255;
     }
 
     @OnlyIn(Dist.CLIENT)

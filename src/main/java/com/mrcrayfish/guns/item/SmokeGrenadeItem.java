@@ -33,14 +33,14 @@ public class SmokeGrenadeItem extends GrenadeItem
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {
-            tooltip.add(Component.translatable("info.cgm.gun_details").withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable("info.cgm.smoke_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(smokeDuration)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.smoke_diameter", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(smokeDiameter)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
         }
         else
         {
-            tooltip.add(Component.translatable("info.cgm.gun_details_help").withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
         }
     }
 

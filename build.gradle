@@ -79,7 +79,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.2.3'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.4.20'
     implementation fg.deobf('curse.maven:framework-549225:4718247')
     implementation fg.deobf("curse.maven:create-328085:4835190")
     implementation fg.deobf("curse.maven:farmers-delight-398521:5051241")

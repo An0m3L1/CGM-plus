@@ -35,7 +35,7 @@ public class GunModifiers
             return true;
         }
         @Override
-        public double modifyMuzzleFlashScale(double scale) {return 0.5f;}
+        public double modifyMuzzleFlashScale(double scale) {return scale * 0.5;}
         @Override
         public double modifyFireSoundRadius(double radius)
         {

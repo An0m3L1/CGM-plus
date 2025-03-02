@@ -35,6 +35,12 @@ description="Heavily modified, overhauled and expanded version of zaeonNineZeros
     ordering="NONE"
     side="BOTH"
 [[dependencies.cgm]]
+    modId="createdieselgenerators"
+    mandatory=true
+    versionRange="[1.19.2-1.2,)"
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.cgm]]
     modId="farmersdelight"
     mandatory=true
     versionRange="[1.2,)"

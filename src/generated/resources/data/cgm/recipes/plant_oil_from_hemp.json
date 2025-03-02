@@ -1,0 +1,11 @@
+{
+  "type": "create:compacting",
+  "ingredients": [{"item": "cgm:hemp"}],
+  "results":
+  [
+    {
+      "fluid": "createdieselgenerators:plant_oil",
+      "amount": 400
+    }
+  ]
+}

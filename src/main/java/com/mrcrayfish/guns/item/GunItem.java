@@ -5,7 +5,6 @@ import com.mrcrayfish.guns.client.GunItemStackRenderer;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.NetworkGunManager;
 import com.mrcrayfish.guns.debug.Debug;
-import com.mrcrayfish.guns.enchantment.EnchantmentTypes;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.ChatFormatting;
@@ -21,7 +20,6 @@ import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
-import net.minecraft.world.item.enchantment.Enchantment;
 import net.minecraft.world.level.Level;
 import net.minecraftforge.client.extensions.common.IClientItemExtensions;
 import net.minecraftforge.common.capabilities.Capability;
@@ -107,7 +105,7 @@ public class GunItem extends Item implements IColored, IMeta
         
         if (Screen.hasControlDown())
         {
-        	tooltip.add(Component.translatable("info.cgm.gun_details").withStyle(ChatFormatting.GOLD));
+        	tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
 
             // Ammo Capacity
             if(tagCompound != null)
@@ -196,7 +194,7 @@ public class GunItem extends Item implements IColored, IMeta
         {
         	// Helper tooltips
         	//tooltip.add(Component.translatable("info.cgm.attachment_help", KeyBinds.KEY_ATTACHMENTS.getTranslatedKeyMessage().getString().toUpperCase(Locale.ENGLISH)).withStyle(ChatFormatting.YELLOW));
-        	tooltip.add(Component.translatable("info.cgm.gun_details_help").withStyle(ChatFormatting.GOLD));
+        	tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
         }
     }
 

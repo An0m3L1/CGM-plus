@@ -131,14 +131,14 @@ public class ClientHandler
         /* Weapons */
         ModelOverrides.register(ModItems.ASSAULT_RIFLE.get(), new AssaultRifleModel());
         ModelOverrides.register(ModItems.COMBAT_RIFLE.get(), new CombatRifleModel());
-        ModelOverrides.register(ModItems.ROCKET_LAUNCHER.get(), new SimpleModel(SpecialModels.BAZOOKA::getModel));
+        ModelOverrides.register(ModItems.ROCKET_LAUNCHER.get(), new SimpleModel(SpecialModels.ROCKET_LAUNCHER::getModel));
         ModelOverrides.register(ModItems.GRENADE_LAUNCHER.get(), new GrenadeLauncherModel());
-        ModelOverrides.register(ModItems.HEAVY_SNIPER_RIFLE.get(), new SimpleModel(SpecialModels.HEAVY_RIFLE::getModel));
-        ModelOverrides.register(ModItems.AUTOMATIC_PISTOL.get(), new MachinePistolModel());
+        ModelOverrides.register(ModItems.HEAVY_SNIPER_RIFLE.get(), new HeavySniperRifleModel());
+        ModelOverrides.register(ModItems.AUTOMATIC_PISTOL.get(), new AutomaticPistolModel());
         ModelOverrides.register(ModItems.MINI_GUN.get(), new MiniGunModel());
-        ModelOverrides.register(ModItems.TACTICAL_PISTOL.get(), new PistolModel());
-        ModelOverrides.register(ModItems.SNIPER_RIFLE.get(), new SimpleModel(SpecialModels.RIFLE::getModel));
-        ModelOverrides.register(ModItems.SEMI_AUTO_SHOTGUN.get(), new ShotgunModel());
+        ModelOverrides.register(ModItems.TACTICAL_PISTOL.get(), new TacticalPistolModel());
+        ModelOverrides.register(ModItems.SNIPER_RIFLE.get(), new SimpleModel(SpecialModels.SNIPER_RIFLE::getModel));
+        ModelOverrides.register(ModItems.SEMI_AUTO_SHOTGUN.get(), new SemiAutoShotgunModel());
     }
 
     private static void registerScreenFactories()

@@ -23,13 +23,13 @@ import javax.annotation.Nullable;
 import java.util.function.Supplier;
 
 @Deprecated(since = "1.3.0", forRemoval = true)
-public class BazookaModel extends SimpleModel
+public class RocketLauncherModel extends SimpleModel
 {
     private static final ResourceLocation RED_DOT_RETICLE = new ResourceLocation(Reference.MOD_ID, "textures/effect/red_dot_reticle.png");
     private static final ResourceLocation RED_DOT_RETICLE_GLOW = new ResourceLocation(Reference.MOD_ID, "textures/effect/red_dot_reticle_glow.png");
     private static final ResourceLocation VIGNETTE = new ResourceLocation(Reference.MOD_ID, "textures/effect/scope_vignette.png");
 
-    public BazookaModel(Supplier<BakedModel> modelSupplier)
+    public RocketLauncherModel(Supplier<BakedModel> modelSupplier)
     {
         super(modelSupplier);
     }

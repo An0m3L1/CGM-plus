@@ -28,12 +28,14 @@ public class SmokeGrenadeItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
+        double damage = Config.COMMON.explosives.smokeGrenadeDamage.get();
         double smokeDuration = Config.COMMON.explosives.smokeGrenadeCloudDuration.get();
         double smokeDiameter = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get();
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {
             tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable("info.cgm.damage_tick", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.smoke_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(smokeDuration)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.smoke_diameter", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(smokeDiameter)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));

@@ -1,12 +1,7 @@
 {
-  "display": {
-    "flash": {
-      "size": 1.0,
-      "yOffset": 3.6,
-      "zOffset": -9.41
-    }
-  },
-  "general": {
+  "display": {"flash": {}},
+  "general":
+  {
     "gripType": "cgm:two_handed",
     "auto": false,
     "rate": 29,
@@ -23,32 +18,25 @@
 
     "maxAmmo": 5,
     "useMagReload": true,
-    "magReloadTime": 70,
-    "reloadRate": 70
+    "magReloadTime": 60,
+    "reloadRate": 60
   },
-  "modules": {
-    "attachments": {
-      "scope": {
-        "yOffset": 4.4,
-        "zOffset": 4.0
-      },
-      "underBarrel": {
-        "yOffset": 3.0,
-        "zOffset": -0.5
-      },
-      "magazine": {}
-    },
-    "zoom": {
+  "modules":
+  {
+    "attachments": {"scope": {}},
+    "zoom":
+    {
       "fovModifier": 0.6,
       "yOffset": 5.1,
       "zOffset": 2.0
     }
   },
-  "projectile": {
+  "projectile":
+  {
     "damage": 20.0,
     "size": 0.1,
-    "speed": 20.0,
-    "life": 20,
+    "speed": 15.0,
+    "life": 30,
 
     "headshotMultiplierOverride": 1.0,
     "headshotExtraDamage": 18.0,
@@ -62,10 +50,18 @@
 
     "item": "cgm:heavy_bullet"
   },
-  "sounds": {
-    "cock": "cgm:item.heavy_sniper_rifle.cock",
+  "sounds":
+  {
     "fire": "cgm:item.heavy_sniper_rifle.fire",
-    "reload": "cgm:item.heavy_sniper_rifle.reload",
-    "silencedFire": "cgm:item.heavy_sniper_rifle.silenced_fire"
+
+    "reloadFrames": 62,
+    "reloadClipOut": "cgm:item.heavy_sniper_rifle.mag_out",
+    "reloadClipOutThreshold": 11,
+    "reloadClipIn": "cgm:item.heavy_sniper_rifle.mag_in",
+    "reloadClipInThreshold": 30,
+    "reloadLate": "cgm:item.heavy_sniper_rifle.cock",
+    "reloadLateThreshold": 42,
+    "cock": "cgm:item.heavy_sniper_rifle.cock",
+    "cycleDelay": 11
   }
 }

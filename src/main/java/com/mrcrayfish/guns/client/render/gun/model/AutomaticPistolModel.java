@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Modified by zaeonNineZero
  * Attachment detection logic based off of code from Mo' Guns by Bomb787 and AlanorMiga (MigaMi)
  */
-public class MachinePistolModel implements IOverrideModel
+public class AutomaticPistolModel implements IOverrideModel
 {
     private boolean disableAnimations = false;
 
@@ -39,7 +39,7 @@ public class MachinePistolModel implements IOverrideModel
     public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
     {
         // Render the item's BakedModel, which will serve as the core of our custom model.
-        BakedModel bakedModel = SpecialModels.MACHINE_PISTOL_BASE.getModel();
+        BakedModel bakedModel = SpecialModels.AUTOMATIC_PISTOL_BASE.getModel();
         Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, buffer, light, overlay, GunModel.wrap(bakedModel));
 
         // Render the top rail element that appears when a scope is attached.
@@ -49,11 +49,11 @@ public class MachinePistolModel implements IOverrideModel
 
         if(scopeStack.isEmpty())
         {
-            RenderUtil.renderModel(SpecialModels.MACHINE_PISTOL_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
         else
         {
-            RenderUtil.renderModel(SpecialModels.MACHINE_PISTOL_NO_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_NO_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         // Special animated segment for compat with the CGM Expanded fork.
@@ -115,7 +115,7 @@ public class MachinePistolModel implements IOverrideModel
         if(isPlayer)
             poseStack.translate(0, 0, slideTranslations.z * 0.0625);
         // Render the transformed model.
-        RenderUtil.renderModel(SpecialModels.MACHINE_PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.
         poseStack.popPose();
 
@@ -130,16 +130,16 @@ public class MachinePistolModel implements IOverrideModel
                 GunAnimationHelper.rotateAroundOffset(poseStack, magRotations, magRotOffset);
         }
         // Render the transformed model.
-        SpecialModels magModel = SpecialModels.MACHINE_PISTOL_MAG;
+        SpecialModels magModel = SpecialModels.AUTOMATIC_PISTOL_MAG;
         try {
             ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), stack);
             if(!magStack.isEmpty())
             {
                 if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("light_magazine"))
-                    magModel = SpecialModels.MACHINE_PISTOL_LIGHT_MAG;
+                    magModel = SpecialModels.AUTOMATIC_PISTOL_LIGHT_MAG;
                 else
                 if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
-                    magModel = SpecialModels.MACHINE_PISTOL_EXT_MAG;
+                    magModel = SpecialModels.AUTOMATIC_PISTOL_EXT_MAG;
             }
         }
         catch(Error ignored) {} catch(Exception ignored) {}

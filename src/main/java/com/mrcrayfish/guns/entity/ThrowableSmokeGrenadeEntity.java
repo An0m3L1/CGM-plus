@@ -75,7 +75,7 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
         if(!this.level.isClientSide)
         {
             //Low level cloud
-            AreaEffectCloud cloudLow = new AreaEffectCloud(this.level, this.getX(), this.getY()+0.5, this.getZ());
+            AreaEffectCloud cloudLow = new AreaEffectCloud(this.level, this.getX(), this.getY()-0.5, this.getZ());
             cloudLow.setParticle(particle);
             cloudLow.setRadius((float) radius);
             cloudLow.setDuration((int) duration);
@@ -84,13 +84,22 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
             this.level.addFreshEntity(cloudLow);
 
             //Mid level cloud
-            AreaEffectCloud cloudMid = new AreaEffectCloud(this.level, this.getX(), this.getY()+1.5, this.getZ());
+            AreaEffectCloud cloudMid = new AreaEffectCloud(this.level, this.getX(), this.getY()+0.5, this.getZ());
             cloudMid.setParticle(particle);
             cloudMid.setRadius((float) radius);
             cloudMid.setDuration((int) duration);
             cloudMid.addEffect(new MobEffectInstance(ModEffects.SMOKED.get(), 60, 0, false, false, true));
             cloudMid.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0, false, false, true));
             this.level.addFreshEntity(cloudMid);
+
+            //High level cloud
+            AreaEffectCloud cloudHigh = new AreaEffectCloud(this.level, this.getX(), this.getY()+1.5, this.getZ());
+            cloudHigh.setParticle(particle);
+            cloudHigh.setRadius((float) radius);
+            cloudHigh.setDuration((int) duration);
+            cloudHigh.addEffect(new MobEffectInstance(ModEffects.SMOKED.get(), 60, 0, false, false, true));
+            cloudHigh.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0, false, false, true));
+            this.level.addFreshEntity(cloudHigh);
         }
         else
         {

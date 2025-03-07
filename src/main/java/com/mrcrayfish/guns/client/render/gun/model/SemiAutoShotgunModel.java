@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Modified by zaeonNineZero
  * Attachment detection logic based off of code from Mo' Guns by Bomb787 and AlanorMiga (MigaMi)
  */
-public class ShotgunModel implements IOverrideModel
+public class SemiAutoShotgunModel implements IOverrideModel
 {
     private boolean disableAnimations = false;
 
@@ -39,7 +39,7 @@ public class ShotgunModel implements IOverrideModel
     public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
     {
         // Render the item's BakedModel, which will serve as the core of our custom model.
-        BakedModel bakedModel = SpecialModels.SHOTGUN_BASE.getModel();
+        BakedModel bakedModel = SpecialModels.SEMI_AUTO_SHOTGUN_BASE.getModel();
         Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, buffer, light, overlay, GunModel.wrap(bakedModel));
 
         // Render the iron sights element, which is only present when a scope is not attached.
@@ -48,10 +48,10 @@ public class ShotgunModel implements IOverrideModel
         ItemStack handleStack = Gun.getAttachment(IAttachment.Type.UNDER_BARREL, stack);
 
         if (handleStack.isEmpty()) {
-            RenderUtil.renderModel(SpecialModels.SHOTGUN_NO_HANDLE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_NO_HANDLE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
         else{
-            RenderUtil.renderModel(SpecialModels.SHOTGUN_HANDLE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_HANDLE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         // Render the top rail element that appears when a scope is attached.
@@ -109,7 +109,7 @@ public class ShotgunModel implements IOverrideModel
         if(isPlayer)
             poseStack.translate(0, 0, slideTranslations.z * 0.0625);
         // Render the transformed model.
-        RenderUtil.renderModel(SpecialModels.SHOTGUN_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.
         poseStack.popPose();
     }

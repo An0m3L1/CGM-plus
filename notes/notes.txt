@@ -45,10 +45,12 @@ Add content
         - C4
 
 Add bandits, marauders, zombies
+Add deployable barriers (entity that doesn't let projectiles go through)
 Add automatic turrets
 Add backpack skins
 Add tint to guns
     - Must equip primer spray can
+Add proper compatibility with other mods (farmersdelight, dieselgenerators)
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
@@ -58,5 +60,8 @@ Overhaul items (models, textures, stats)
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul explosions to destroy fragile blocks
+Overhaul explosion visuals
+Overhaul block piercing to include wood blocks and more (like leaves right now)
+Overhaul hit markers to not appear if hitting endermen
 
-Fix block destruction not working
+Fork Backpacked

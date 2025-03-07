@@ -18,6 +18,8 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
 {
     public float rotation;
     public float prevRotation;
+    protected float radius = Config.COMMON.explosives.handGrenadeExplosionRadius.get().floatValue();
+    protected boolean griefing = !Config.COMMON.explosives.handGrenadeExplosionGriefing.get();
 
     public ThrowableGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
     {
@@ -66,6 +68,6 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     @Override
     public void onDeath()
     {
-        GrenadeEntity.createExplosion(this, Config.COMMON.explosives.handGrenadeExplosionRadius.get().floatValue(), false);
+        GrenadeEntity.createExplosion(this, radius, griefing);
     }
 }

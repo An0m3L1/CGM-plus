@@ -95,6 +95,7 @@
     "info.cgm.stats": "Характеристики:",
     "info.cgm.stats_help": "Зажми Ctrl для характеристик",
     "info.cgm.damage": "Урон: %s",
+    "info.cgm.damage_tick": "Урон в секунду: %s",
     "info.cgm.blind": "Макс. ослепления: %s сек.",
     "info.cgm.deaf": "Макс. оглушения: %s сек.",
     "info.cgm.fuse": "Запал: %s сек.",

@@ -11,11 +11,11 @@
     },
     {
       "count": 6,
-      "item": "cgm:plastic"
+      "tag": "forge:plates/plastic"
     },
     {
       "count": 3,
-      "item": "cgm:rubber"
+      "tag": "forge:plates/rubber"
     }
   ],
   "result": {

@@ -138,6 +138,7 @@ public class Config
         public final ForgeConfigSpec.IntValue bulletHoleLifeMax;
         public final ForgeConfigSpec.DoubleValue bulletHoleFadeThreshold;
         public final ForgeConfigSpec.BooleanValue enableHitParticle;
+        public final ForgeConfigSpec.BooleanValue enableHeadshotParticle;
         public final ForgeConfigSpec.BooleanValue enableBlood;
         public final ForgeConfigSpec.DoubleValue impactParticleDistance;
 
@@ -150,8 +151,9 @@ public class Config
                 this.bulletHoleLifeMax = builder.comment("The maximum duration in ticks before bullet holes will disappear.").defineInRange("bulletHoleLifeMax", 300, 0, Integer.MAX_VALUE);
                 this.bulletHoleFadeThreshold = builder.comment("The percentage of the maximum life that must pass before particles begin fading away. 0 makes the particles always fade and 1 removes fading completely.").defineInRange("bulletHoleFadeThreshold", 0.98, 0, 1.0);
                 this.enableHitParticle = builder.comment("If true, particles will spawn from entities that are hit by a projectile.").define("enableHitParticle", true);
+                this.enableHeadshotParticle = builder.comment("If true, particles will spawn from entities that are hit in the head.").define("enableHeadshotParticle", true);
                 this.enableBlood = builder.comment("If enabled, replaces hit particles with blood.").define("enableBlood", true);
-                this.impactParticleDistance = builder.comment("The maximum distance impact particles can be seen from.").defineInRange("impactParticleDistance", 64.0, 0.0, Double.MAX_VALUE);
+                this.impactParticleDistance = builder.comment("The maximum distance impact particles can be seen from.").defineInRange("impactParticleDistance", 256.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
         }
@@ -249,7 +251,6 @@ public class Config
      */
     public static class Griefing
     {
-        public final ForgeConfigSpec.BooleanValue enableBlockRemovalOnExplosions;
         public final ForgeConfigSpec.BooleanValue enableFragileBreaking;
         public final ForgeConfigSpec.BooleanValue fragileBlockDrops;
         public final ForgeConfigSpec.DoubleValue fragileBaseBreakChance;
@@ -259,7 +260,6 @@ public class Config
         {
             builder.comment("Properties related to gun griefing.").push("griefing");
             {
-                this.enableBlockRemovalOnExplosions = builder.comment("If enabled, explosions will destroy blocks.").define("enableBlockRemovalOnExplosions", false);
                 this.setFireToBlocks = builder.comment("If true, projectiles will set blocks on fire.").define("setFireToBlocks", false);
                 this.enableFragileBreaking = builder.comment("If enabled, projectiles will destroy fragile blocks.").define("enableFragileBreaking", true);
                 this.fragileBlockDrops = builder.comment("If enabled, fragile blocks will drop when broken.").define("fragileBlockDrops", false);
@@ -314,10 +314,14 @@ public class Config
      */
     public static class Explosives
     {
+        public final ForgeConfigSpec.BooleanValue explosionGriefing;
         public final ForgeConfigSpec.DoubleValue rocketExplosionRadius;
+        public final ForgeConfigSpec.BooleanValue rocketExplosionGriefing;
         public final ForgeConfigSpec.DoubleValue handGrenadeExplosionRadius;
         public final ForgeConfigSpec.DoubleValue handGrenadeExplosionDamage;
+        public final ForgeConfigSpec.BooleanValue handGrenadeExplosionGriefing;
         public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionRadius;
+        public final ForgeConfigSpec.BooleanValue pipeGrenadeExplosionGriefing;
         public final ForgeConfigSpec.BooleanValue smokeGrenadeModeInstant;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDiameter;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeDamage;
@@ -327,10 +331,14 @@ public class Config
         {
             builder.comment("Properties relating to explosives.").push("explosives");
             {
+                this.explosionGriefing = builder.comment("If enabled, explosions will destroy blocks.").define("explosionGriefing", false);
                 this.rocketExplosionRadius = builder.comment("Radius of a Rocket explosion.").defineInRange("rocketExplosionRadius", 3.0, 0.0, Double.MAX_VALUE);
+                this.rocketExplosionGriefing = builder.comment("If enabled, Rockets will destroy blocks. Requires explosion griefing to be true.").define("rocketExplosionGriefing", true);
                 this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
                 this.handGrenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
+                this.handGrenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks. Requires explosion griefing to be true.").define("handGrenadeExplosionGriefing", false);
                 this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
+                this.pipeGrenadeExplosionGriefing = builder.comment("If enabled, Pipe Grenades will destroy blocks. Requires explosion griefing to be true.").define("pipeGrenadeExplosionGriefing", true);
                 this.smokeGrenadeModeInstant = builder.comment("If true, a Smoke Grenade will instantly spawn a sizeable cloud. If false, it will slowly spread smoke instead.").define("smokeGrenadeModeInstant", false);
                 this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudDiameter", 5.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeDamage = builder.comment("Damage per tick inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);

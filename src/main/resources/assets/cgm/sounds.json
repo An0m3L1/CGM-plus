@@ -11,10 +11,6 @@
    "item.rocket_launcher.fire":            { "subtitle": "subtitle.cgm.fire",           "sounds": [{"name": "cgm:item/rocket_launcher/fire", "volume": 0.5 }]},
    "item.rocket_launcher.reload":          { "subtitle": "subtitle.cgm.reload",         "sounds": [{"name": "cgm:item/rocket_launcher/reload" }]},
    "item.mini_gun.fire":                   { "subtitle": "subtitle.cgm.fire",           "sounds": [{"name": "cgm:item/mini_gun/fire", "volume": 0.5 }]},
-   "item.heavy_sniper_rifle.fire":         { "subtitle": "subtitle.cgm.fire",           "sounds": [{"name": "cgm:item/heavy_sniper_rifle/fire", "volume": 0.5 }]},
-   "item.heavy_sniper_rifle.silenced_fire":{ "subtitle": "subtitle.cgm.fire.silenced",  "sounds": [{"name": "cgm:item/heavy_sniper_rifle/silenced_fire", "volume": 0.5 }]},
-   "item.heavy_sniper_rifle.reload":       { "subtitle": "subtitle.cgm.reload",         "sounds": [{"name": "cgm:item/heavy_sniper_rifle/reload" }]},
-   "item.heavy_sniper_rifle.cock":         { "subtitle": "subtitle.cgm.cock",           "sounds": [{"name": "cgm:item/heavy_sniper_rifle/cock" }]},
    "item.grenade.pin":                     { "subtitle": "subtitle.cgm.grenade.pin",    "sounds": [{"name": "cgm:item/grenade/pin" }]},
    "entity.stun_grenade.explosion":        { "subtitle": "subtitle.cgm.stun.explosion", "sounds": [{"name": "cgm:entity/stun_grenade/explosion", "volume": 0.5  }]},
    "entity.smoke_grenade.explosion":       { "subtitle": "subtitle.cgm.smoke.explosion","sounds": [{"name": "cgm:entity/smoke_grenade/explosion", "volume": 0.5  }]},
@@ -40,5 +36,10 @@
    "item.assault_rifle.silenced_fire":     {"subtitle":"subtitle.cgm.fire.silenced",    "sounds": [{"name":"cgm:item/assault_rifle/silenced_fire", "volume": 0.5}]},
    "item.assault_rifle.mag_out":                                                       {"sounds": [{"name":"cgm:item/assault_rifle/mag_out"}]},
    "item.assault_rifle.mag_in":            {"subtitle":"subtitle.cgm.reload",           "sounds": [{"name":"cgm:item/assault_rifle/mag_in"}]},
-   "item.assault_rifle.slap":              {"subtitle":"subtitle.cgm.cock",             "sounds": [{"name":"cgm:item/assault_rifle/slap"}]}
+   "item.assault_rifle.slap":              {"subtitle":"subtitle.cgm.cock",             "sounds": [{"name":"cgm:item/assault_rifle/slap"}]},
+
+   "item.heavy_sniper_rifle.fire":         {"subtitle":"subtitle.cgm.fire",             "sounds": [{"name":"cgm:item/heavy_sniper_rifle/fire", "volume": 0.5}]},
+   "item.heavy_sniper_rifle.mag_out":                                                  {"sounds": [{"name":"cgm:item/heavy_sniper_rifle/mag_out"}]},
+   "item.heavy_sniper_rifle.mag_in":       {"subtitle":"subtitle.cgm.reload",           "sounds": [{"name":"cgm:item/heavy_sniper_rifle/mag_in"}]},
+   "item.heavy_sniper_rifle.cock":         {"subtitle":"subtitle.cgm.cock",             "sounds": [{"name":"cgm:item/heavy_sniper_rifle/cock"}]}
 }

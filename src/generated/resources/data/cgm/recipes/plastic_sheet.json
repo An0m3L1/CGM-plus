@@ -1,15 +1,11 @@
 {
-  "type": "create:cutting",
+  "type": "create:pressing",
   "ingredients":
   [
     {"item": "cgm:plastic"}
   ],
-  "processingTime": 200,
   "results":
   [
-    {
-      "count": 4,
-      "item": "cgm:plastic_sheet"
-    }
+    {"item": "cgm:plastic_sheet"}
   ]
 }

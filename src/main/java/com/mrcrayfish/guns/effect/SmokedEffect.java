@@ -51,7 +51,7 @@ public class SmokedEffect extends IncurableEffect
     public boolean isDurationEffectTick(int duration, int amplifier)
     {
         int i;
-        i = 25 >> amplifier;
+        i = 20 >> amplifier;
         if (i > 0)
         {
             return duration % i == 0;

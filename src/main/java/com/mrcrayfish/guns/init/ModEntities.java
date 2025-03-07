@@ -19,7 +19,7 @@ public class ModEntities
 {
     public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Reference.MOD_ID);
 
-    public static final RegistryObject<EntityType<ProjectileEntity>> PROJECTILE = registerBasic("projectile", ProjectileEntity::new);
+    public static final RegistryObject<EntityType<ProjectileEntity>> PROJECTILE = registerProjectile("projectile", ProjectileEntity::new);
     public static final RegistryObject<EntityType<LightBulletEntity>> LIGHT_BULLET = registerBasic("light_bullet", LightBulletEntity::new);
     public static final RegistryObject<EntityType<MediumBulletEntity>> MEDIUM_BULLET = registerBasic("medium_bullet", MediumBulletEntity::new);
     public static final RegistryObject<EntityType<HeavyBulletEntity>> HEAVY_BULLET = registerBasic("heavy_bullet", HeavyBulletEntity::new);

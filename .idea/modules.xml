@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.test.iml" />
     </modules>
   </component>
 </project>

@@ -22,6 +22,7 @@ public class PipeGrenadeEntity extends ProjectileEntity
     public float rotation;
     public float prevRotation;
     protected float radius = Config.COMMON.explosives.pipeGrenadeExplosionRadius.get().floatValue();
+    protected boolean griefing = !Config.COMMON.explosives.pipeGrenadeExplosionGriefing.get();
 
     public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
     {
@@ -56,18 +57,18 @@ public class PipeGrenadeEntity extends ProjectileEntity
     @Override
     protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
-        createExplosion(this, radius, false);
+        createExplosion(this, radius, griefing);
     }
 
     @Override
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
     {
-        createExplosion(this, radius, false);
+        createExplosion(this, radius, griefing);
     }
 
     @Override
     public void onExpired()
     {
-        createExplosion(this, radius, false);
+        createExplosion(this, radius, griefing);
     }
 }

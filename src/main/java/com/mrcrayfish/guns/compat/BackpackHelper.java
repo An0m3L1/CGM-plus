@@ -22,8 +22,8 @@ public class BackpackHelper
         if(backpack.isEmpty())
             return AmmoContext.NONE;
 
-        if(EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.MARKSMAN.get(), backpack) <= 0)
-            return AmmoContext.NONE;
+        //if(EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.MARKSMAN.get(), backpack) <= 0)
+        //    return AmmoContext.NONE;
 
         BackpackInventory inventory = ((BackpackedInventoryAccess) player).getBackpackedInventory();
         if(inventory == null)

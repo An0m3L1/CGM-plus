@@ -23,6 +23,8 @@ public class SmokeEffectParticle extends TextureSheetParticle
     {
         super(world, x, y, z, 0, 0, 0);
         this.setColor(1.0F, 1.0F, 1.0F);
+        this.setSize(0.0F,0.0F);
+        this.setLifetime(0);
     }
 
     @Override

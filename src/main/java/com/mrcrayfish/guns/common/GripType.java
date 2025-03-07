@@ -47,7 +47,7 @@ public class GripType
     /**
      * A custom grip type designed for the rocket_launcher.
      */
-    public static final GripType BAZOOKA = new GripType(new ResourceLocation(Reference.MOD_ID, "rocket_launcher"), new BazookaPose());
+    public static final GripType BAZOOKA = new GripType(new ResourceLocation(Reference.MOD_ID, "rocket_launcher"), new RocketLauncherPose());
 
     /**
      * A common method to set up a transformation of the weapon onto the players' back.

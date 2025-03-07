@@ -24,6 +24,8 @@ import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
@@ -62,11 +64,21 @@ public class ClientPlayHandler
 
     public static void handleMessageBlood(S2CMessageBlood message)
     {
+        Level world = Minecraft.getInstance().level;
+        if(Config.CLIENT.particle.enableHeadshotParticle.get())
+        {
+            if (message.isHeadshot())
+            {
+                for(int i = 0; i < 3; i++)
+                {
+                    world.addParticle(ModParticleTypes.HEADSHOT.get(), true, message.getX(), message.getY(), message.getZ(), 0, 0.25, 0);
+                }
+            }
+        }
         if(!Config.CLIENT.particle.enableHitParticle.get())
         {
             return;
         }
-        Level world = Minecraft.getInstance().level;
         if(world != null)
         {
             if (Config.CLIENT.particle.enableBlood.get() && message.getAllowBlood())
@@ -81,13 +93,6 @@ public class ClientPlayHandler
                 for(int i = 0; i < 3; i++)
                 {
                     world.addParticle(ParticleTypes.SMOKE, true, message.getX(), message.getY(), message.getZ(), (Math.random()-0.5)*0.15, (Math.random()*0.02)-0.04, (Math.random()-0.5)*0.15);
-                }
-            }
-            if (message.isHeadshot())
-            {
-                for(int i = 0; i < 3; i++)
-                {
-                    world.addParticle(ModParticleTypes.HEADSHOT.get(), true, message.getX(), message.getY(), message.getZ(), 0, 0.25, 0);
                 }
             }
         }
@@ -197,7 +202,7 @@ public class ClientPlayHandler
             double holeY = message.getY() + 0.005 * message.getFace().getStepY();
             double holeZ = message.getZ() + 0.005 * message.getFace().getStepZ();
             double distance = Math.sqrt(mc.player.distanceToSqr(message.getX(), message.getY(), message.getZ()));
-            world.addParticle(new BulletHoleData(message.getFace(), message.getPos()), false, holeX, holeY, holeZ, 0, 0, 0);
+            world.addParticle(new BulletHoleData(message.getFace(), message.getPos()), true, holeX, holeY, holeZ, 0, 0, 0);
             if(distance < Config.CLIENT.particle.impactParticleDistance.get())
             {
                 for(int i = 0; i < 4; i++)
@@ -205,12 +210,12 @@ public class ClientPlayHandler
                     Vec3i normal = message.getFace().getNormal();
                     Vec3 motion = new Vec3(normal.getX(), normal.getY(), normal.getZ());
                     motion.add(getRandomDir(world.random), getRandomDir(world.random), getRandomDir(world.random));
-                    world.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, state), false, message.getX(), message.getY(), message.getZ(), motion.x, motion.y, motion.z);
+                    world.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, state), true, message.getX(), message.getY(), message.getZ(), motion.x, motion.y, motion.z);
                 }
             }
             if(distance <= Config.CLIENT.sounds.impactSoundDistance.get())
             {
-                world.playLocalSound(message.getX(), message.getY(), message.getZ(), state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 2.0F, 2.0F, false);
+                world.playLocalSound(message.getX(), message.getY(), message.getZ(), state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, 2.0F, false);
             }
         }
     }
@@ -226,7 +231,8 @@ public class ClientPlayHandler
         Level world = mc.level;
         if(world == null)
             return;
-        
+
+        //TODO: Don't show a hitmarker when hitting endermen
         GunRenderingHandler.get().playHitMarker(message.isCritical() || message.isHeadshot());
 
         SoundEvent event = getHitSound(message.isCritical(), message.isHeadshot(), message.isPlayer());

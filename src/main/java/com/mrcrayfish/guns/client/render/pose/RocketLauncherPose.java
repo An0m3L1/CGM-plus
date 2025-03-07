@@ -18,7 +18,7 @@ import net.minecraftforge.api.distmarker.OnlyIn;
 /**
  * Author: MrCrayfish
  */
-public class BazookaPose extends WeaponPose
+public class RocketLauncherPose extends WeaponPose
 {
     @Override
     protected AimPose getUpPose()

@@ -30,7 +30,6 @@ import com.mrcrayfish.guns.world.ProjectileExplosion;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -54,10 +53,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.BellBlock;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LeavesBlock;
-import net.minecraft.world.level.block.TargetBlock;
+import net.minecraft.world.level.block.*;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
@@ -257,10 +253,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
             List<EntityResult> hitEntities = null;
             int maxPierceCount = (projectile.getMaxPierceCount()-1);
-            /*
-            int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), this.weapon);
-    		int maxPierceCount = (collateralLevel == 0 ? projectile.getMaxPierceCount() : projectile.getCollateralMaxPierce());
-    		*/
             if(maxPierceCount == 0)
             {
                 EntityResult entityResult = this.findEntityOnPath(startVec, endVec);
@@ -508,22 +500,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 bell.attemptToRing(this.level, pos, blockHitResult.getDirection());
             }
-
-            //To implement Fire Starter again, uncomment the code block
-
-            /*
-            int fireStarterLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FIRE_STARTER.get(), this.weapon);
-            if(fireStarterLevel > 0 && Config.COMMON.gameplay.griefing.setFireToBlocks.get())
-            {
-                BlockPos offsetPos = pos.relative(blockHitResult.getDirection());
-                if(BaseFireBlock.canBePlacedAt(this.level, offsetPos, blockHitResult.getDirection()))
-                {
-                    BlockState fireState = BaseFireBlock.getState(this.level, offsetPos);
-                    this.level.setBlock(offsetPos, fireState, 11);
-                    ((ServerLevel) this.level).sendParticles(ParticleTypes.LAVA, hitVec.x - 1.0 + this.random.nextDouble() * 2.0, hitVec.y, hitVec.z - 1.0 + this.random.nextDouble() * 2.0, 4, 0, 0, 0, 0);
-                }
-            }
-            */
             return;
         }
 
@@ -919,12 +895,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         if(world.isClientSide())
             return;
 
-        boolean isGrenade = entity instanceof ThrowableGrenadeEntity projectile ? true : false;
-        boolean isProjectile = entity instanceof ProjectileEntity projectile ? true : false;
+        boolean isProjectile = entity instanceof ProjectileEntity projectile;
+        boolean isGrenade = entity instanceof ThrowableGrenadeEntity grenade;
         DamageSource source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
         boolean hasGunProjectile = isProjectile ? (((ProjectileEntity) entity).getProjectile()!=null) : false;
         float projectileDamage = (float) (hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 20F) );
-        Explosion.BlockInteraction mode = Config.COMMON.gameplay.griefing.enableBlockRemovalOnExplosions.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
+        Explosion.BlockInteraction mode = Config.COMMON.explosives.explosionGriefing.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
         Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode, projectileDamage);
 
         if(net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))

@@ -27,7 +27,7 @@ import javax.annotation.Nullable;
  * Modified by zaeonNineZero
  * Attachment detection logic based off of code from Mo' Guns by Bomb787 and AlanorMiga (MigaMi)
  */
-public class PistolModel implements IOverrideModel
+public class TacticalPistolModel implements IOverrideModel
 {
     private boolean disableAnimations = false;
 
@@ -39,7 +39,7 @@ public class PistolModel implements IOverrideModel
     public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
     {
         // Render the item's BakedModel, which will serve as the core of our custom model.
-        BakedModel bakedModel = SpecialModels.PISTOL_BASE.getModel();
+        BakedModel bakedModel = SpecialModels.TACTICAL_PISTOL_BASE.getModel();
         Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, buffer, light, overlay, GunModel.wrap(bakedModel));
 
         // Render the top rail element that appears when a scope is attached.
@@ -105,7 +105,7 @@ public class PistolModel implements IOverrideModel
         if(isPlayer)
             poseStack.translate(0, 0, slideTranslations.z * 0.0625);
         // Render the transformed model.
-        RenderUtil.renderModel(SpecialModels.PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        RenderUtil.renderModel(SpecialModels.TACTICAL_PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.
         poseStack.popPose();
 
@@ -120,13 +120,13 @@ public class PistolModel implements IOverrideModel
                 GunAnimationHelper.rotateAroundOffset(poseStack, magRotations, magRotOffset);
         }
         // Render the transformed model.
-        SpecialModels magModel = SpecialModels.PISTOL_MAG;
+        SpecialModels magModel = SpecialModels.TACTICAL_PISTOL_MAG;
         try {
             ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), stack);
             if(!magStack.isEmpty())
             {
                 if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
-                    magModel = SpecialModels.PISTOL_EXT_MAG;
+                    magModel = SpecialModels.TACTICAL_PISTOL_EXT_MAG;
             }
         }
         catch(Error ignored) {} catch(Exception ignored) {}

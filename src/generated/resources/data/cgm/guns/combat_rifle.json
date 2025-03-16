@@ -7,7 +7,7 @@
     "rate": 2,
     "burstCooldown": 6,
 
-    "adsSpeed": 0.8,
+    "adsSpeed": 0.75,
     "recoilAdsReduction": 0.7,
     "spreadAdsReduction": 0.7,
 

@@ -6,7 +6,7 @@
     "auto": false,
     "rate": 5,
 
-    "adsSpeed": 1.0,
+    "adsSpeed": 0.75,
     "recoilAdsReduction": 0.5,
     "spreadAdsReduction": 0.0,
 

@@ -24,12 +24,7 @@
   "modules":
   {
     "attachments": {"scope": {}},
-    "zoom":
-    {
-      "fovModifier": 0.6,
-      "yOffset": 5.1,
-      "zOffset": 2.0
-    }
+    "zoom": {"fovModifier": 0.75}
   },
   "projectile":
   {
@@ -38,15 +33,14 @@
     "speed": 15.0,
     "life": 30,
 
-    "headshotMultiplierOverride": 1.0,
-    "headshotExtraDamage": 18.0,
+    "headshotMultiplierOverride": 1.8,
 
     "armorBypass": 1.0,
     "protectionBypass": 0.25,
 
-    "maxPierceCount": 5,
-    "pierceDamagePenalty": 0.2,
-    "pierceDamageMaxPenalty": 0.4,
+    "maxPierceCount": 10,
+    "pierceDamagePenalty": 0.1,
+    "pierceDamageMaxPenalty": 0.5,
 
     "item": "cgm:heavy_bullet"
   },

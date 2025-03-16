@@ -6,7 +6,7 @@
     "auto": false,
     "rate": 25,
 
-    "adsSpeed": 0.8,
+    "adsSpeed": 0.75,
     "recoilAdsReduction": 0.5,
     "spreadAdsReduction": 1.0,
 
@@ -57,11 +57,11 @@
     "headshotMultiplierOverride": 1.0,
     "headshotExtraDamage": 14.0,
 
-    "armorBypass": 0.8,
+    "armorBypass": 1.0,
     "protectionBypass": 0.25,
 
-    "maxPierceCount": 5,
-    "pierceDamagePenalty": 0.25,
+    "maxPierceCount": 6,
+    "pierceDamagePenalty": 0.125,
     "pierceDamageMaxPenalty": 0.5,
 
     "item": "cgm:heavy_bullet"

@@ -12,19 +12,11 @@
 				"boltAnimRotation": [2.5, 0.3, 1.0]
 			}
 		},
-		"attachments": {
-            "barrel": {
-                "translation": [8.0, 3.8365, -2.2],
-                "scale": [0.47, 0.47, 0.47]
-            },
-            "scope": {
-                "translation": [8.0, 4.32, 11.3]
-            },
-            "underBarrel": {
-                "translation": [8.0, 2.8, 6.7],
-                "scale": [0.95, 0.95, 0.95]
-            }
-        },
+      "attachments": {
+        "scope": {
+          "translation": [8.0, 4.3801, 11.3]
+        }
+      },
 		"hands": {
 			"animScalar": 0.8,
             "forward": {
@@ -39,12 +31,11 @@
             }
         },
         "ironSight": {
-            "camera": [8.0, 5.0, 19.5],
-            "viewportFov": 59.0
+            "camera": [8.0, 5.14, 19.5],
+            "viewportFov": 60.0
         },
         "muzzleFlash": {
-            "translation": [8.0, 3.8365, -2.7],
-            "scale": [0.65, 0.65, 0.65]
+            "translation": [8.0, 3.795, -5.25]
         }
     }
 }

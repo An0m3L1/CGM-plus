@@ -23,7 +23,6 @@ SMG:
     Tommy Gun
     Kriss Vector
 Rifles:
-    AWP <---
     SSG-08 <---
     SVD
     G3

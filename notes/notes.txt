@@ -56,7 +56,6 @@ Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-    - Tactical Sniper Rifle
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul explosions to destroy fragile blocks

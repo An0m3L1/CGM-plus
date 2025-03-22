@@ -24,9 +24,9 @@
     "lightMagReloadTimeModifier": 0.85,
     "extendedMagReloadTimeModifier": 1.15,
 
-    "reloadStartDelay": 2,
+    "reloadStartDelay": 1,
     "reloadInterruptDelay": 6,
-    "reloadEndDelay": 2,
+    "reloadEndDelay": 3,
     "reloadAllowedCooldown": 0.0
   },
   "modules":

@@ -26,6 +26,13 @@ public class GunModifiers
         {return speed * 0.85F;
         }
     };
+    public static final IGunModifier X6_SCOPE = new IGunModifier()
+    {
+        @Override
+        public double modifyAimDownSightSpeed(double speed)
+        {return speed * 0.8F;
+        }
+    };
 
     /* Barrels */
     public static final IGunModifier SILENCER = new IGunModifier() {

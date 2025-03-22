@@ -1,7 +1,7 @@
 Add more attachments
     - Barrels: compensator, muzzle brake, flash hider, extended barrel, tactical silencer
     - Grips: angled, thumb
-    - Scopes: monocle, holo, 8x
+    - Scopes: monocle, holo
     - Stocks: skeleton, scar, solid
     - Cosmetic: primer spray can
 

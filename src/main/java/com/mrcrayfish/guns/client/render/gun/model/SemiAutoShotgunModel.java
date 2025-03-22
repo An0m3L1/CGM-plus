@@ -45,7 +45,13 @@ public class SemiAutoShotgunModel implements IOverrideModel
         // Render the iron sights element, which is only present when a scope is not attached.
         // We have to grab the gun's scope attachment slot and check whether it is empty or not.
         // If the isEmpty function returns true, then we render the iron sights.
+        ItemStack scopeStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
         ItemStack handleStack = Gun.getAttachment(IAttachment.Type.UNDER_BARREL, stack);
+
+        if(scopeStack.isEmpty())
+        {
+            RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        }
 
         if (handleStack.isEmpty()) {
             RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_NO_HANDLE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);

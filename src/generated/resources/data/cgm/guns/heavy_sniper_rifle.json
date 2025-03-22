@@ -6,8 +6,8 @@
     "auto": false,
     "rate": 29,
 
-    "adsSpeed": 0.5,
-    "recoilAdsReduction": 0.5,
+    "adsSpeed": 0.625,
+    "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 1.0,
 
     "recoilAngle": 6.0,
@@ -19,7 +19,12 @@
     "maxAmmo": 5,
     "useMagReload": true,
     "magReloadTime": 60,
-    "reloadRate": 60
+    "reloadRate": 60,
+
+    "reloadStartDelay": 1,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 6,
+    "reloadAllowedCooldown": 0.0
   },
   "modules":
   {
@@ -38,9 +43,9 @@
     "armorBypass": 1.0,
     "protectionBypass": 0.25,
 
-    "maxPierceCount": 10,
-    "pierceDamagePenalty": 0.1,
-    "pierceDamageMaxPenalty": 0.5,
+    "maxPierceCount": 20,
+    "pierceDamagePenalty": 0.05,
+    "pierceDamageMaxPenalty": 0.75,
 
     "item": "cgm:heavy_bullet"
   },

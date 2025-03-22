@@ -57,6 +57,7 @@ public enum SpecialModels
     AUTOMATIC_PISTOL_EXT_MAG("automatic_pistol/ext_mag"),
 
     SEMI_AUTO_SHOTGUN_BASE("semi_auto_shotgun/base"),
+    SEMI_AUTO_SHOTGUN_SIGHTS("semi_auto_shotgun/sights"),
     SEMI_AUTO_SHOTGUN_HANDLE("semi_auto_shotgun/handle"),
     SEMI_AUTO_SHOTGUN_NO_HANDLE("semi_auto_shotgun/no_handle"),
     SEMI_AUTO_SHOTGUN_SLIDE("semi_auto_shotgun/slide");

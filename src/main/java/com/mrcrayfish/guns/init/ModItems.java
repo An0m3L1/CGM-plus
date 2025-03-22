@@ -145,6 +145,11 @@ public class ModItems
                     .stacksTo(1)
                     .tab(GunMod.GUNS)
             ));
+    public static final RegistryObject<Item> X6_SCOPE = REGISTER.register("x6_scope",
+            () -> new ScopeItem(Attachments.X6_SCOPE, new Item.Properties()
+                    .stacksTo(1)
+                    .tab(GunMod.GUNS)
+            ));
 
     /* Barrels */
     public static final RegistryObject<Item> SILENCER = REGISTER.register("silencer",

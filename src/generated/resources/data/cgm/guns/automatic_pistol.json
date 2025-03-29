@@ -13,7 +13,8 @@
     "recoilAngle": 1.5,
     "recoilKick": 0.25,
     "recoilDurationOffset": 0.0,
-    "spread": 3.5,
+    "spread": 4.0,
+    "restingSpread": 1.0,
 
     "maxAmmo": 32,
     "lightMagAmmo": 20,
@@ -44,7 +45,7 @@
       "magazine": {}
     },
     "zoom":
-    {"fovModifier": 0.8}
+    {"fovModifier": 0.75}
   },
   "projectile":
   {

@@ -120,9 +120,9 @@
 		},
 		{
 			"name": "Emissive",
-			"from": [7.965, 5.105, 9.04],
-			"to": [8.035, 5.175, 9.07],
-			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.14, 9.055]},
+			"from": [7.99, 5.095, 9.055],
+			"to": [8.01, 5.14, 9.056],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.115, 9.055]},
 			"faces": {
 				"north": {"uv": [0, 9.5, 0.5, 10], "texture": "#2", "emissivity": 15},
 				"south": {"uv": [0, 9.5, 0.5, 10], "texture": "#2", "emissivity": 15}

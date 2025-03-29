@@ -121,6 +121,7 @@ public class AssaultRifleModel implements IOverrideModel
         if(isPlayer)
             poseStack.translate(0, 0, boltTranslations.z * 0.0625);
         // Render the transformed model.
+        RenderUtil.renderModel(SpecialModels.ASSAULT_RIFLE_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.
         poseStack.popPose();
 

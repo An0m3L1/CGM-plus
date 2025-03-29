@@ -14,7 +14,7 @@
 		},
       "attachments": {
         "scope": {
-          "translation": [8.0, 4.3801, 11.3]
+          "translation": [8.0, 4.3801, 11.8]
         }
       },
 		"hands": {
@@ -31,7 +31,7 @@
             }
         },
         "ironSight": {
-            "camera": [8.0, 5.14, 19.5],
+            "camera": [8.0, 5.11, 19.5],
             "viewportFov": 60.0
         },
         "muzzleFlash": {

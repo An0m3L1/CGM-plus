@@ -1,10 +1,5 @@
 {
-  "display": {
-    "flash": {
-      "yOffset": 2.7,
-      "zOffset": -11.51
-    }
-  },
+  "display": {"flash": {}},
   "general": {
     "gripType": "cgm:mini_gun",
     "auto": true,

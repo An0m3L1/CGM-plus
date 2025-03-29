@@ -153,23 +153,6 @@
 					"rotation": [0.0, 0, 0],
 					"easing": "ease_in_quad"
 				}
-			},
-			"bolt_handle": {
-				"26": {
-					"translation": [0.0, 0.0, 0.0]
-				},
-				"27": {
-					"translation": [0.0, 0.0, 2.6],
-					"easing": "linear"
-				},
-				"29": {
-					"translation": [0.0, 0.0, 3.0],
-					"easing": "ease_out_cubic"
-				},
-				"30": {
-					"translation": [0.0, 0.0, 0.0],
-					"easing": "linear"
-				}
 			}
 		},
 		"reloadEnd": {

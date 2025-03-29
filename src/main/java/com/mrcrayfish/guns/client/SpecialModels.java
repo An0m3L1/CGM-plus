@@ -26,6 +26,7 @@ public enum SpecialModels
     GRENADE_LAUNCHER_CYLINDER("grenade_launcher/grenade_launcher_cylinder"),
 
     ASSAULT_RIFLE_BASE("assault_rifle/base"),
+    ASSAULT_RIFLE_SLIDE("assault_rifle/slide"),
     ASSAULT_RIFLE_NO_STOCK("assault_rifle/no_stock"),
     ASSAULT_RIFLE_MAG("assault_rifle/mag"),
     ASSAULT_RIFLE_SIGHTS("assault_rifle/sights"),

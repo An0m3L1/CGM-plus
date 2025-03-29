@@ -5,9 +5,9 @@
     "gripType": "cgm:two_handed",
     "auto": true,
     "rate": 2,
-    "burstCooldown": 6,
+    "burstCooldown": 4,
 
-    "adsSpeed": 0.75,
+    "adsSpeed": 0.8,
     "recoilAdsReduction": 0.5,
     "spreadAdsReduction": 0.5,
 

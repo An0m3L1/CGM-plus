@@ -6,14 +6,14 @@
     "auto": false,
     "rate": 5,
 
-    "adsSpeed": 0.75,
+    "adsSpeed": 0.8,
     "recoilAdsReduction": 0.5,
     "spreadAdsReduction": 0.0,
 
     "recoilAngle": 6.0,
     "recoilKick": 1.25,
     "recoilDurationOffset": 0.0,
-    "spread": 2.0,
+    "spread": 2.5,
     "alwaysSpread": true,
     "useShotgunSpread": true,
 

@@ -25,8 +25,8 @@
 			"to": [8, 3.724, 14.525],
 			"rotation": {"angle": 45, "axis": "z", "origin": [8, 3.2, 11.525]},
 			"faces": {
-				"north": {"uv": [10.5, 11, 12, 10.5], "rotation": 180, "texture": "#1"},
-				"up": {"uv": [10.5, 11, 12, 10.5], "rotation": 180, "texture": "#1"}
+				"north": {"uv": [12, 16, 12.5, 15.5], "rotation": 180, "texture": "#1"},
+				"up": {"uv": [12, 16, 12.5, 15.5], "texture": "#1"}
 			}
 		}
 	]

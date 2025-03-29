@@ -6,7 +6,7 @@
     "auto": false,
     "rate": 29,
 
-    "adsSpeed": 0.625,
+    "adsSpeed": 0.6,
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 1.0,
 
@@ -33,21 +33,20 @@
   },
   "projectile":
   {
+    "item": "cgm:heavy_bullet",
     "damage": 20.0,
+    "headshotMultiplierOverride": 1.8,
+
     "size": 0.1,
     "speed": 15.0,
     "life": 30,
 
-    "headshotMultiplierOverride": 1.8,
-
     "armorBypass": 1.0,
-    "protectionBypass": 0.25,
+    "protectionBypass": 0.5,
 
     "maxPierceCount": 20,
     "pierceDamagePenalty": 0.05,
-    "pierceDamageMaxPenalty": 0.75,
-
-    "item": "cgm:heavy_bullet"
+    "pierceDamageMaxPenalty": 0.75
   },
   "sounds":
   {

@@ -9,7 +9,7 @@ public class GunModifiers
     {
         @Override
         public double modifyAimDownSightSpeed(double speed)
-        {return speed * 0.95F;
+        {return speed * 0.9F;
         }
     };
     public static final IGunModifier X2_SCOPE = new IGunModifier()
@@ -23,7 +23,7 @@ public class GunModifiers
     {
         @Override
         public double modifyAimDownSightSpeed(double speed)
-        {return speed * 0.85F;
+        {return speed * 0.8F;
         }
     };
     public static final IGunModifier X6_SCOPE = new IGunModifier()
@@ -123,6 +123,17 @@ public class GunModifiers
     /* Grips */
     public static final IGunModifier HORIZONTAL_GRIP = new IGunModifier() {
         @Override
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.9F;
+        }
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.9F;
+        }
+    };
+    public static final IGunModifier VERTICAL_GRIP = new IGunModifier() {
+        @Override
         public float recoilModifier()
         {
             return 0.9F;
@@ -134,44 +145,19 @@ public class GunModifiers
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {
-            return spread * 0.9F;
-        }
-
-        @Override
-        public double modifyAimDownSightSpeed(double speed) {
-            return speed * 0.95F;
-        }
-    };
-    public static final IGunModifier VERTICAL_GRIP = new IGunModifier() {
-        @Override
-        public float recoilModifier()
-        {
-            return 0.8F;
-        }
-        @Override
-        public float kickModifier()
-        {
-            return 0.4F;
-        }
-
-        @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.8F;}
-
-        @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
     };
 
     /* Magazines */
     public static final IGunModifier LIGHT_MAG = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 1.15F;}
+        public double modifyAimDownSightSpeed(double speed) {return speed * 1.1F;}
         @Override
         public boolean lightMag() {return true;}
     };
     public static final IGunModifier EXTENDED_MAG = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
         @Override
         public boolean extMag() {return true;}
     };

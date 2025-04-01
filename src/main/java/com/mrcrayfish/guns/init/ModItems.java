@@ -22,6 +22,10 @@ public class ModItems
                     .stacksTo(1)
                     .tab(GunMod.GUNS)
             ));
+    public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
+            .tab(GunMod.GUNS)
+    ));
     public static final RegistryObject<GunItem> COMBAT_RIFLE = REGISTER.register("combat_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)

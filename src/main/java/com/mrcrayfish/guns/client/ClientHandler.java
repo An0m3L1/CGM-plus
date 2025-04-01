@@ -130,6 +130,7 @@ public class ClientHandler
     {
         /* Weapons */
         ModelOverrides.register(ModItems.ASSAULT_RIFLE.get(), new AssaultRifleModel());
+        ModelOverrides.register(ModItems.TACTICAL_RIFLE.get(), new TacticalRifleModel());
         ModelOverrides.register(ModItems.COMBAT_RIFLE.get(), new CombatRifleModel());
         ModelOverrides.register(ModItems.ROCKET_LAUNCHER.get(), new SimpleModel(SpecialModels.ROCKET_LAUNCHER::getModel));
         ModelOverrides.register(ModItems.GRENADE_LAUNCHER.get(), new GrenadeLauncherModel());

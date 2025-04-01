@@ -23,7 +23,7 @@
 
     "reloadStartDelay": 1,
     "reloadInterruptDelay": 6,
-    "reloadEndDelay": 6,
+    "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },
   "modules":
@@ -35,7 +35,7 @@
   {
     "item": "cgm:heavy_bullet",
     "damage": 20.0,
-    "headshotMultiplierOverride": 1.8,
+    "headshotMultiplierOverride": 3.0,
 
     "size": 0.1,
     "speed": 15.0,
@@ -46,7 +46,7 @@
 
     "maxPierceCount": 20,
     "pierceDamagePenalty": 0.05,
-    "pierceDamageMaxPenalty": 0.75
+    "pierceDamageMaxPenalty": 0.95
   },
   "sounds":
   {

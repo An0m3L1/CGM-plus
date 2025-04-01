@@ -34,6 +34,9 @@ public enum SpecialModels
     ASSAULT_RIFLE_LIGHT_MAG("assault_rifle/light_mag"),
     ASSAULT_RIFLE_EXT_MAG("assault_rifle/ext_mag"),
 
+    TACTICAL_RIFLE_BASE("tactical_rifle/base"),
+    TACTICAL_RIFLE_SIGHTS("tactical_rifle/sights"),
+
     COMBAT_RIFLE_BASE("combat_rifle/base"),
     COMBAT_RIFLE_SIGHTS("combat_rifle/sights"),
     COMBAT_RIFLE_NO_SIGHTS("combat_rifle/no_sights"),

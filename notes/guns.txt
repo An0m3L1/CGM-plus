@@ -1,22 +1,21 @@
 Assault Rifles:
     Famas
     AUG
-    AK
-    Scar
-    G36
+    AK-12
+    AK-74
+    Scar-H
 Pistols:
     Five-Seven
     Glock
     Beretta M9
     Desert Eagle
-    TTI JW4 Pit Viper
-    Makeshift
 Revolvers:
     Colt Python
     Colt Trooper
     Taurus Raging Bull
     S&W M&P R8
 SMG:
+    P90
     MP5
     Uzi
     Mac-10
@@ -46,3 +45,7 @@ Other:
     China Lake GL
     RPG-7
     Flare Gun
+    Railgun (very long reload for huge damage)
+    Pulse rifle (bursts of lasers)
+    Energy shotgun (shoots one explosive energy ball)
+    Crossbow

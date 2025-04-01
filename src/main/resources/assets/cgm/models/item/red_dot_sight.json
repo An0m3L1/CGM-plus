@@ -194,7 +194,7 @@
 			"to": [8.025, 9.4, 7.2775],
 			"rotation": {"angle": 0, "axis": "z", "origin": [8, 9.375, 7.275]},
 			"faces": {
-				"south": {"uv": [5, 5, 10, 10], "texture": "#3"}
+				"south": {"uv": [5, 5, 10, 10], "texture": "#3", "emissivity": 15}
 			}
 		},
 		{

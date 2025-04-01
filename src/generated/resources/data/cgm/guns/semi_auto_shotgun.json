@@ -40,10 +40,10 @@
   "projectile":
   {
     "item": "cgm:buckshot_shell",
-    "damage": 9.0,
+    "damage": 14.0,
     "damageReduceOverLife": true,
     "maxRangeDamageMultiplier": 0.25,
-    "headshotMultiplierOverride": 2.0,
+    "headshotMultiplierOverride": 1.5,
 
     "size": 0.1,
     "speed": 20.0,

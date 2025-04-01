@@ -7,21 +7,21 @@
     "rate": 2,
     "burstCooldown": 4,
 
-    "adsSpeed": 0.8,
-    "recoilAdsReduction": 0.5,
-    "spreadAdsReduction": 0.5,
+    "adsSpeed": 0.9,
+    "recoilAdsReduction": 0.6,
+    "spreadAdsReduction": 0.6,
 
     "recoilAngle": 2.5,
     "recoilKick": 0.25,
     "recoilDurationOffset": 0.0,
-    "spread": 6.5,
+    "spread": 6.0,
 
     "maxAmmo": 30,
     "lightMagAmmo": 20,
     "extendedMagAmmo": 50,
 
     "useMagReload": true,
-    "magReloadTime": 45,
+    "magReloadTime": 40,
     "lightMagReloadTimeModifier": 0.85,
     "extendedMagReloadTimeModifier": 1.15,
 
@@ -47,8 +47,7 @@
       "scope": {},
       "stock": {},
       "underBarrel": {},
-      "magazine": {},
-      "tactical": {}
+      "magazine": {}
     },
     "zoom": {"fovModifier": 0.75}
   },

@@ -7,23 +7,23 @@
     "rate": 2,
     "burstCooldown": 4,
 
-    "adsSpeed": 0.8,
-    "recoilAdsReduction": 0.7,
-    "spreadAdsReduction": 0.7,
+    "adsSpeed": 1.0,
+    "recoilAdsReduction": 0.5,
+    "spreadAdsReduction": 0.5,
 
-    "recoilAngle": 3.0,
-    "recoilKick": 0.3,
+    "recoilAngle": 2.5,
+    "recoilKick": 0.25,
     "recoilDurationOffset": 0.0,
-    "spread": 6.5,
+    "spread": 6.0,
 
     "maxAmmo": 30,
     "lightMagAmmo": 20,
     "extendedMagAmmo": 50,
 
     "useMagReload": true,
-    "magReloadTime": 45,
-    "lightMagReloadTimeModifier": 0.8,
-    "extendedMagReloadTimeModifier": 1.2,
+    "magReloadTime": 35,
+    "lightMagReloadTimeModifier": 0.9,
+    "extendedMagReloadTimeModifier": 1.1,
 
     "reloadStartDelay": 1,
     "reloadInterruptDelay": 6,
@@ -44,8 +44,11 @@
     "attachments":
     {
       "barrel": {"scale": 0.5},
+      "scope": {},
       "stock": {},
-      "magazine": {}
+      "underBarrel": {},
+      "magazine": {},
+      "tactical": {}
     },
     "zoom": {"fovModifier": 0.75}
   },

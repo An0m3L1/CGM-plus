@@ -27,7 +27,7 @@
 
     "reloadStartDelay": 1,
     "reloadInterruptDelay": 6,
-    "reloadEndDelay": 3,
+    "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },
   "modules":

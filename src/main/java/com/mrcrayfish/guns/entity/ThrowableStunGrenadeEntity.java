@@ -3,7 +3,7 @@ package com.mrcrayfish.guns.entity;
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Config.EffectCriteria;
-import com.mrcrayfish.guns.client.audio.ExplosionSound;
+import com.mrcrayfish.guns.client.audio.StunGrenadeExplosionSound;
 import com.mrcrayfish.guns.init.ModEffects;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
@@ -33,7 +33,6 @@ import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
 
 import javax.annotation.Nullable;
 
@@ -71,7 +70,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        Minecraft.getInstance().getSoundManager().play(new ExplosionSound(ModSounds.ENTITY_STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new StunGrenadeExplosionSound(ModSounds.ENTITY_STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;
@@ -105,7 +104,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
             double angle = Math.toDegrees(Math.acos(entity.getViewVector(1.0F).dot(directionGrenade.normalize())));
 
             // Apply effects as determined by their criteria
-            if(this.calculateAndApplyEffect(ModEffects.DEAFENED.get(), Config.COMMON.stunGrenades.deafen.criteria, entity, grenade, eyes, distance, angle) && Config.COMMON.stunGrenades.deafen.panicMobs.get())
+            if(this.calculateAndApplyEffect(ModEffects.STUNNED.get(), Config.COMMON.stunGrenades.deafen.criteria, entity, grenade, eyes, distance, angle) && Config.COMMON.stunGrenades.deafen.panicMobs.get())
             {
                 entity.setLastHurtByMob(entity);
             }
@@ -128,7 +127,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
                 int duration = (int) Math.round(criteria.durationMax.get()*20 - (criteria.durationMax.get()*20 - criteria.durationMin.get()*20) * (distance / criteria.radius.get()));
 
                 // Duration further attenuated by angle
-                duration *= (int) (1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax);
+                duration *= 1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax;
 
                 entity.addEffect(new MobEffectInstance(effect, duration, 0, false, false));
 

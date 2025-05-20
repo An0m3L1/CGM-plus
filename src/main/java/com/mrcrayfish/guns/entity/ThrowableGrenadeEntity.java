@@ -1,13 +1,18 @@
 package com.mrcrayfish.guns.entity;
 
+import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.client.audio.GrenadeExplosionSound;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
-import com.mrcrayfish.guns.item.GrenadeItem;
+import com.mrcrayfish.guns.init.ModSounds;
+import com.mrcrayfish.guns.network.PacketHandler;
+import com.mrcrayfish.guns.network.message.S2CMessageGrenade;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 
@@ -68,6 +73,14 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     @Override
     public void onDeath()
     {
-        GrenadeEntity.createExplosion(this, radius, griefing);
+        double y = this.getY() + this.getType().getDimensions().height * 0.5;
+        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.ENTITY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
+        if(this.level.isClientSide)
+        {
+            return;
+        }
+        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
+                LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageGrenade(this.getX(), y, this.getZ()));
+        GrenadeEntity.createGrenadeExplosion(this, radius, griefing);
     }
 }

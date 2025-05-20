@@ -1,7 +1,12 @@
 {
-  "type": "minecraft:blasting",
-  "cookingtime": 100,
-  "experience": 0.1,
-  "ingredient": {"tag": "forge:nuggets/cast_iron"},
-  "result": "cgm:steel_nugget"
+  "type": "create:compacting",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"tag": "forge:nuggets/cast_iron"}
+  ],
+  "results":
+  [
+    {"item": "cgm:steel_nugget"}
+  ]
 }

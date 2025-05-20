@@ -25,7 +25,6 @@ import java.lang.reflect.Field;
 import java.util.ConcurrentModificationException;
 import java.util.Map;
 import java.util.Map.Entry;
-import java.util.Objects;
 import java.util.concurrent.ConcurrentHashMap;
 
 public class SoundHandler
@@ -67,7 +66,7 @@ public class SoundHandler
         }
 
         /* If deafened, play ringing sound if not already playing, otherwise return */
-        MobEffectInstance effect = Minecraft.getInstance().player.getEffect(ModEffects.DEAFENED.get());
+        MobEffectInstance effect = Minecraft.getInstance().player.getEffect(ModEffects.STUNNED.get());
         if(effect == null)
         {
             if(!this.isDeafened)
@@ -150,7 +149,7 @@ public class SoundHandler
 
         // Exempt initial explosion from muting
         ResourceLocation loc = event.getSound().getLocation();
-        MobEffectInstance effect = Minecraft.getInstance().player.getEffect(ModEffects.DEAFENED.get());
+        MobEffectInstance effect = Minecraft.getInstance().player.getEffect(ModEffects.STUNNED.get());
         int duration = effect != null ? effect.getDuration() : 0;
         boolean isStunGrenade = isStunGrenade(loc);
         if(duration == 0 && isStunGrenade) return;
@@ -169,6 +168,11 @@ public class SoundHandler
     private boolean isSmokeGrenade(ResourceLocation loc)
     {
         return loc.toString().equals(Reference.MOD_ID + ":grenade_smoke_explosion");
+    }
+
+    private boolean isIncendiaryGrenade(ResourceLocation loc)
+    {
+        return loc.toString().equals(Reference.MOD_ID + ":grenade_incendiary_explosion");
     }
 
     private float getMutedVolume(float duration, float volumeBase)

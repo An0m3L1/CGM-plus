@@ -14,6 +14,8 @@
    "item.grenade.pin":                     { "subtitle": "subtitle.cgm.grenade.pin",    "sounds": [{"name": "cgm:item/grenade/pin" }]},
    "entity.stun_grenade.explosion":        { "subtitle": "subtitle.cgm.stun.explosion", "sounds": [{"name": "cgm:entity/stun_grenade/explosion", "volume": 0.5  }]},
    "entity.smoke_grenade.explosion":       { "subtitle": "subtitle.cgm.smoke.explosion","sounds": [{"name": "cgm:entity/smoke_grenade/explosion", "volume": 0.5  }]},
+   "entity.grenade.explosion":             { "subtitle": "subtitle.cgm.grenade.explosion","sounds": [{"name": "cgm:entity/grenade/explosion", "volume": 0.5  }]},
+   "entity.incendiary_grenade.explosion":  { "subtitle": "subtitle.cgm.incendiary.explosion","sounds": [{"name": "cgm:entity/incendiary_grenade/explosion", "volume": 0.5  }]},
    "entity.stun_grenade.ring":             { "subtitle": "subtitle.cgm.stun.ring",      "sounds": [{"name": "cgm:entity/stun_grenade/ring", "stream": true }]},
    "item.empty_click":                     { "subtitle": "subtitle.cgm.empty",          "sounds": [{"name": "cgm:item/empty_click" }]},
    "item.fire_switch":                     { "subtitle": "subtitle.cgm.switch",         "sounds": [{"name": "cgm:item/fire_switch" }]},

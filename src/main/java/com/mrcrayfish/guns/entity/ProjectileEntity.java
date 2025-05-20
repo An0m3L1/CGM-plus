@@ -934,6 +934,62 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
+    public static void createGrenadeExplosion(Entity entity, float radius, boolean forceNone)
+    {
+        Level world = entity.level;
+        if(world.isClientSide())
+            return;
+
+        boolean isProjectile = entity instanceof ProjectileEntity projectile;
+        boolean isGrenade = entity instanceof ThrowableGrenadeEntity grenade;
+        DamageSource source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
+        float projectileDamage = (float) ((isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 15F));
+        Explosion.BlockInteraction mode = Config.COMMON.explosives.explosionGriefing.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
+        Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode, projectileDamage);
+
+        if(net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))
+            return;
+
+        // Do explosion logic
+        explosion.explode();
+        explosion.finalizeExplosion(true);
+
+        // Send event to blocks that are exploded (none if mode is none)
+        explosion.getToBlow().forEach(pos ->
+        {
+            if(world.getBlockState(pos).getBlock() instanceof IExplosionDamageable)
+            {
+                ((IExplosionDamageable) world.getBlockState(pos).getBlock()).onProjectileExploded(world, world.getBlockState(pos), pos, entity);
+            }
+        });
+
+        // Clears the affected blocks if mode is none
+        if(mode == Explosion.BlockInteraction.NONE)
+        {
+            explosion.clearToBlow();
+        }
+    }
+
+    public static void createFireExplosion(Entity entity, float radius, boolean forceNone)
+    {
+        Level world = entity.level;
+        if(world.isClientSide())
+            return;
+
+        DamageSource source = entity instanceof ProjectileEntity projectile ? DamageSource.explosion(projectile.getShooter()) : null;
+        boolean isIncGrenade = entity instanceof ThrowableIncendiaryGrenadeEntity incGrenade;
+        float projectileDamage = (float) ((isIncGrenade ? Config.COMMON.explosives.incendiaryGrenadeExplosionDamage.get() : 5F));
+        Explosion.BlockInteraction mode = Explosion.BlockInteraction.NONE;
+        Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, true, mode, projectileDamage);
+
+        if(net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))
+            return;
+
+        // Do explosion logic
+        explosion.explode();
+        explosion.finalizeExplosion(true);
+    }
+
     /**
      * Author: MrCrayfish
      */

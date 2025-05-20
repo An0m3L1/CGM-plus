@@ -39,7 +39,6 @@ Add content
         - Fire axe
         - Steel axe
     Grenades and explosives
-        - Molotov
         - Flare
         - Mine
         - C4
@@ -50,6 +49,8 @@ Add automatic turrets
 Add backpack skins
 Add gun skins
 Add proper compatibility with other mods (farmersdelight, dieselgenerators)
+Add custom explosion sounds for guns
+Add more sounds variants (guns, explosives)
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
@@ -60,3 +61,4 @@ Overhaul item textures with changed recipes (change colors to correspond to new 
 Overhaul explosion visuals
 Overhaul block piercing to include wood blocks and more (like leaves right now)
 Overhaul hit markers to not appear if hitting endermen
+Overhaul molotovs to instantly set entities on fire (regardless if they are in a fire block or not)

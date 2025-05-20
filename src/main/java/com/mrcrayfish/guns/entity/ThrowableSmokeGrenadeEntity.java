@@ -2,12 +2,11 @@ package com.mrcrayfish.guns.entity;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.client.audio.ExplosionSound;
+import com.mrcrayfish.guns.client.audio.SmokeGrenadeExplosionSound;
 import com.mrcrayfish.guns.init.*;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageSmokeGrenade;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.particle.Particle;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundSource;
@@ -16,14 +15,9 @@ import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
-import net.minecraftforge.event.entity.living.LivingSetAttackTargetEvent;
-import net.minecraftforge.eventbus.api.SubscribeEvent;
 import org.jetbrains.annotations.NotNull;
-
-import java.util.Optional;
 
 /**
  * Author: MrCrayfish
@@ -71,7 +65,7 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
         double radius = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get() / 2;
         double duration = ((Config.COMMON.explosives.smokeGrenadeCloudDuration.get() - 4) * 20);
         @NotNull SimpleParticleType particle = ModParticleTypes.SMOKE_EFFECT.get();
-        Minecraft.getInstance().getSoundManager().play(new ExplosionSound(ModSounds.ENTITY_SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new SmokeGrenadeExplosionSound(ModSounds.ENTITY_SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
         if(!this.level.isClientSide)
         {
             //Low level cloud

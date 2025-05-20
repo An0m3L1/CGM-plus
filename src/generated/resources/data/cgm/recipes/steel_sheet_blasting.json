@@ -1,7 +1,12 @@
 {
-  "type": "minecraft:blasting",
-  "cookingtime": 100,
-  "experience": 0.7,
-  "ingredient": {"tag": "forge:plates/cast_iron"},
-  "result": "cgm:steel_sheet"
+  "type": "create:compacting",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"tag": "forge:plates/cast_iron"}
+  ],
+  "results":
+  [
+    {"item": "cgm:steel_sheet"}
+  ]
 }

@@ -16,7 +16,6 @@ import com.mrcrayfish.guns.crafting.WorkbenchRecipe;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipes;
 import com.mrcrayfish.guns.entity.ProjectileEntity;
 import com.mrcrayfish.guns.event.GunFireEvent;
-import com.mrcrayfish.guns.init.ModEnchantments;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.interfaces.IProjectileFactory;
 import com.mrcrayfish.guns.item.GunItem;
@@ -36,7 +35,6 @@ import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.level.ServerPlayer;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
@@ -52,12 +50,10 @@ import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.network.NetworkHooks;
-import net.minecraftforge.network.PacketDistributor;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import java.util.function.Predicate;
@@ -180,7 +176,7 @@ public class ServerPlayHandler
                     double posZ = player.getZ();
                     float volume = GunModifierHelper.getFireSoundVolume(heldItem);
                     float pitch = 0.9F + world.random.nextFloat() * 0.2F;
-                    double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, Config.SERVER.gunShotMaxDistance.get());
+                    double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, Config.SERVER.gunShotSoundDistance.get());
                     boolean muzzle = modifiedGun.getDisplay().getFlash() != null;
                     S2CMessageGunSound messageSound = new S2CMessageGunSound(fireSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, volume, pitch, player.getId(), muzzle, false);
                     PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
@@ -204,7 +200,7 @@ public class ServerPlayHandler
 		                    	double posX = finalPlayer.getX();
 		                        double posY = finalPlayer.getY() + finalPlayer.getEyeHeight();
 		                        double posZ = finalPlayer.getZ();
-			                  	double radius = Config.SERVER.reloadMaxDistance.get();
+			                  	double radius = Config.SERVER.reloadSoundDistance.get();
 			                    S2CMessageGunSound messageSound = new S2CMessageGunSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 			                    PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
 		                    }
@@ -215,7 +211,7 @@ public class ServerPlayHandler
                 		double posX = player.getX();
                         double posY = player.getY() + player.getEyeHeight();
                         double posZ = player.getZ();
-	                  	double radius = Config.SERVER.reloadMaxDistance.get();
+	                  	double radius = Config.SERVER.reloadSoundDistance.get();
 	                    S2CMessageGunSound messageSound = new S2CMessageGunSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 	                    PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
                 	}
@@ -365,7 +361,7 @@ public class ServerPlayHandler
     	double posX = player.getX();
 		double posY = player.getY() + 1.0;
 		double posZ = player.getZ();
-		double radius = Config.SERVER.reloadMaxDistance.get();
+		double radius = Config.SERVER.reloadSoundDistance.get();
 		S2CMessageGunSound messageSound = new S2CMessageGunSound(sound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 		PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
     }

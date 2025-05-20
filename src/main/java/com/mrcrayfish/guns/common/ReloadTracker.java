@@ -2,7 +2,6 @@ package com.mrcrayfish.guns.common;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.common.Gun.ReloadSoundsBase;
@@ -11,12 +10,9 @@ import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
-import net.minecraft.core.BlockPos;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.packs.repository.Pack;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
@@ -25,7 +21,6 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -191,7 +186,7 @@ public class ReloadTracker
     	
         if(reloadSound != null && (!gun.getGeneral().usesMagReload() && !Gun.hasExtraReloadSounds(gun)))
         {
-            double radius = Config.SERVER.reloadMaxDistance.get();
+            double radius = Config.SERVER.reloadSoundDistance.get();
             double soundX = player.getX();
             double soundY = player.getY() + 1.0;
             double soundZ = player.getZ();
@@ -371,7 +366,7 @@ public class ReloadTracker
             double soundX = player.getX();
             double soundY = player.getY() + player.getEyeHeight();
             double soundZ = player.getZ();
-            double radius = Config.SERVER.reloadMaxDistance.get();
+            double radius = Config.SERVER.reloadSoundDistance.get();
             S2CMessageGunSound messageSound = new S2CMessageGunSound(sound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
             PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, soundX, soundY, soundZ, radius), messageSound);
         }

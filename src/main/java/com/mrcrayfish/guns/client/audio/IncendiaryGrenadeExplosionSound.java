@@ -11,9 +11,9 @@ import net.minecraft.util.RandomSource;
 /**
  * Author: MrCrayfish
  */
-public class ExplosionSound extends AbstractSoundInstance
+public class IncendiaryGrenadeExplosionSound extends AbstractSoundInstance
 {
-    public ExplosionSound(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
+    public IncendiaryGrenadeExplosionSound(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
     {
         super(soundIn, categoryIn, source);
         this.x = x;
@@ -25,8 +25,8 @@ public class ExplosionSound extends AbstractSoundInstance
         LocalPlayer player = Minecraft.getInstance().player;
         if(player != null)
         {
-            float distance = Config.SERVER.grenadeExplosionMaxDistance.get();
-            this.volume = volume * (1.0F - Math.min(1.0F, (float) Math.sqrt(player.distanceToSqr(x, y, z)) / distance));
+            double distance = Config.SERVER.incendiaryGrenadeExplosionSoundDistance.get();
+            this.volume = volume * (1.0F - Math.min(1.0F, (float) Math.sqrt(player.distanceToSqr(x, y, z)) / (float) distance));
             this.volume *= this.volume; //Ease the volume instead of linear
         }
     }

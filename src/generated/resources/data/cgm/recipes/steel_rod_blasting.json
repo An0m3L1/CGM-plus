@@ -1,7 +1,12 @@
 {
-  "type": "minecraft:blasting",
-  "cookingtime": 100,
-  "experience": 0.7,
-  "ingredient": {"tag": "forge:rods/cast_iron"},
-  "result": "cgm:steel_rod"
+  "type": "create:compacting",
+  "heatRequirement": "heated",
+  "ingredients":
+  [
+    {"tag": "forge:rods/cast_iron"}
+  ],
+  "results":
+  [
+    {"item": "cgm:steel_rod"}
+  ]
 }

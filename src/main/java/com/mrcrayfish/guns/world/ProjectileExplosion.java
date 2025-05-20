@@ -161,13 +161,6 @@ public class ProjectileExplosion extends Explosion
             double damage = Math.min( ((rawDamage * rawDamage + rawDamage) / 2.0D)*(projectileDamage*10) + 1.0D, projectileDamage);
             entity.hurt(this.getDamageSource(), (float) damage);
 
-            double blastDamage = rawDamage;
-            if(entity instanceof LivingEntity)
-            {
-                blastDamage = ProtectionEnchantment.getExplosionKnockbackAfterDampener((LivingEntity) entity, rawDamage);
-            }
-            entity.setDeltaMovement(entity.getDeltaMovement().add(deltaX * blastDamage, deltaY * blastDamage, deltaZ * blastDamage));
-
             if(entity instanceof Player player)
             {
                 if(!player.isSpectator() && (!player.isCreative() || !player.getAbilities().flying))

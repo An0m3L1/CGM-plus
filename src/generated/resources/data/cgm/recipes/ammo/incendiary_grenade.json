@@ -1,0 +1,13 @@
+{
+  "type": "cgm:workbench",
+  "materials":
+  [
+    {"tag": "forge:plates/steel"},
+    {
+      "count": 3,
+      "item": "sulfurpotassiummod:sulfur"
+    },
+    {"tag": "forge:gunpowder"}
+  ],
+  "result": {"item": "cgm:incendiary_grenade"}
+}

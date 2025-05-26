@@ -327,7 +327,7 @@ public class Config
         public final ForgeConfigSpec.DoubleValue smokeGrenadeDamage;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
         public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionRadius;
-        public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionDamage;
+        //public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionDamage;
 
         public Explosives(ForgeConfigSpec.Builder builder)
         {
@@ -346,7 +346,7 @@ public class Config
                 this.smokeGrenadeDamage = builder.comment("Damage per second inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
                 this.incendiaryGrenadeExplosionRadius = builder.comment("Radius of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionRadius", 3.0, 0.0, Double.MAX_VALUE);
-                this.incendiaryGrenadeExplosionDamage = builder.comment("Damage of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionDamage", 5.0, 0.0, Double.MAX_VALUE);
+                //this.incendiaryGrenadeExplosionDamage = builder.comment("Damage of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionDamage", 5.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
         }
@@ -466,6 +466,8 @@ public class Config
         public final ForgeConfigSpec.IntValue soundFadeThreshold;
         public final ForgeConfigSpec.DoubleValue ringVolume;
         public final ForgeConfigSpec.DoubleValue gunShotSoundDistance;
+        public final ForgeConfigSpec.DoubleValue rocketExplosionSoundDistance;
+        public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue handGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue stunGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeExplosionSoundDistance;
@@ -491,11 +493,13 @@ public class Config
 
                 builder.comment("Audio properties").push("audio");
                 {
-                    this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 192, 0, Double.MAX_VALUE);
+                    this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 128, 0, Double.MAX_VALUE);
+                    this.rocketExplosionSoundDistance = builder.comment("The maximum distance rocket explosions can be heard by players.").defineInRange("rocketExplosionMaxDistance", 128, 0, Double.MAX_VALUE);
+                    this.pipeGrenadeExplosionSoundDistance = builder.comment("The maximum distance pipe grenade explosions can be heard by players.").defineInRange("pipeGrenadeExplosionMaxDistance", 128, 0, Double.MAX_VALUE);
                     this.handGrenadeExplosionSoundDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("handGrenadeExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
                     this.stunGrenadeExplosionSoundDistance = builder.comment("The maximum distance stun grenade explosions can be heard by players.").defineInRange("stunGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
                     this.smokeGrenadeExplosionSoundDistance = builder.comment("The maximum distance smoke grenade explosions can be heard by players.").defineInRange("smokeGrenadeExplosionMaxDistance", 48, 0, Double.MAX_VALUE);
-                    this.incendiaryGrenadeExplosionSoundDistance = builder.comment("The maximum distance incendiary grenade explosions can be heard by players.").defineInRange("incendiaryGrenadeExplosionMaxDistance", 80, 0, Double.MAX_VALUE);
+                    this.incendiaryGrenadeExplosionSoundDistance = builder.comment("The maximum distance incendiary grenade explosions can be heard by players.").defineInRange("incendiaryGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
                     this.reloadSoundDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 16, 0, Double.MAX_VALUE);
                 }
                 builder.pop();

@@ -3,6 +3,7 @@
   "materials":
   [
     {"tag": "forge:plates/steel"},
+    {"item": "cgm:plastic"},
     {
       "count": 3,
       "item": "sulfurpotassiummod:sulfur"

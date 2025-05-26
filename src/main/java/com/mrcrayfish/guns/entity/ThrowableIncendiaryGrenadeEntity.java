@@ -19,7 +19,7 @@ import net.minecraft.world.level.Level;
  */
 public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
 {
-    protected float radius = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue();
+    protected float radius = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue() - 1F;
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {

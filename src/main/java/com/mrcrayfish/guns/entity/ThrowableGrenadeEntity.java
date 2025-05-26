@@ -73,6 +73,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     @Override
     public void onDeath()
     {
+        GrenadeEntity.createCustomExplosion(this, radius, griefing);
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
         Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.ENTITY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
         if(this.level.isClientSide)
@@ -81,6 +82,5 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
         }
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageGrenade(this.getX(), y, this.getZ()));
-        GrenadeEntity.createGrenadeExplosion(this, radius, griefing);
     }
 }

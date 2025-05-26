@@ -1,9 +1,7 @@
 package com.mrcrayfish.guns.item;
 
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.entity.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.entity.ThrowableIncendiaryGrenadeEntity;
-import com.mrcrayfish.guns.entity.ThrowableSmokeGrenadeEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
@@ -29,12 +27,14 @@ public class IncendiaryGrenadeItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double damage = Config.COMMON.explosives.incendiaryGrenadeExplosionDamage.get();
+        //double damage = Config.COMMON.explosives.incendiaryGrenadeExplosionDamage.get();
+        double fireDiameter = (Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get() * 2F + 1F);
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {
             tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
+            //tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("info.cgm.fire_diameter", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDiameter)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
         }
         else

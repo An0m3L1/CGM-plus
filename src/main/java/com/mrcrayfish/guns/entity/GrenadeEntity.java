@@ -12,7 +12,6 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 /**
@@ -45,18 +44,18 @@ public class GrenadeEntity extends ProjectileEntity
     @Override
     protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
-        createExplosion(this, radius, griefing);
+        createGenericExplosion(this, radius, griefing);
     }
 
     @Override
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
     {
-        createExplosion(this, radius, griefing);
+        createGenericExplosion(this, radius, griefing);
     }
 
     @Override
     public void onExpired()
     {
-        createExplosion(this, radius, griefing);
+        createGenericExplosion(this, radius, griefing);
     }
 }

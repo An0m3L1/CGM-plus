@@ -49,8 +49,9 @@ Add automatic turrets
 Add backpack skins
 Add gun skins
 Add proper compatibility with other mods (farmersdelight, dieselgenerators)
-Add custom explosion sounds for guns
-Add more sounds variants (guns, explosives)
+Add more sound variants (guns, explosives)
+Add more attachment slots to existing guns
+Add prone animations
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher

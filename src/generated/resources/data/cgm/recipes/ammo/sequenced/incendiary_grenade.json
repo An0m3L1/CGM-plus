@@ -12,6 +12,18 @@
       "ingredients":
       [
         {"tag": "forge:plates/steel"},
+        {"item": "cgm:plastic"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incendiary_grenade"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"tag": "forge:plates/steel"},
         {"tag": "forge:gunpowder"}
       ],
       "results":

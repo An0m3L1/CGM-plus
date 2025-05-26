@@ -40,6 +40,8 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> ITEM_HEAVY_RIFLE_ENCHANTED_FIRE = register("item.heavy_sniper_rifle.enchanted_fire");
 	public static final RegistryObject<SoundEvent> ITEM_HEAVY_RIFLE_COCK = register("item.heavy_sniper_rifle.cock");
 	public static final RegistryObject<SoundEvent> ITEM_GRENADE_PIN = register("item.grenade.pin");
+	public static final RegistryObject<SoundEvent> ENTITY_ROCKET_EXPLOSION = register("entity.rocket.explosion");
+	public static final RegistryObject<SoundEvent> ENTITY_PIPE_GRENADE_EXPLOSION = register("entity.pipe_grenade.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_GRENADE_EXPLOSION = register("entity.grenade.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_INCENDIARY_GRENADE_EXPLOSION = register("entity.incendiary_grenade.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_STUN_GRENADE_EXPLOSION = register("entity.stun_grenade.explosion");

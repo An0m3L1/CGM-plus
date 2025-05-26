@@ -889,7 +889,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
      * @param radius The size of the explosion caused by this entity
      * @param forceNone If true, forces the explosion mode to be NONE instead of config value
      */
-    public static void createExplosion(Entity entity, float radius, boolean forceNone)
+    public static void createGenericExplosion(Entity entity, float radius, boolean forceNone)
     {
         Level world = entity.level;
         if(world.isClientSide())
@@ -934,7 +934,14 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
-    public static void createGrenadeExplosion(Entity entity, float radius, boolean forceNone)
+        /**
+     * Creates a custom explosion without sound and particles.
+     *
+     * @param entity The entity to explode
+     * @param radius The size of the explosion caused by this entity
+     * @param forceNone If true, forces the explosion mode to be NONE instead of config value
+     */
+    public static void createCustomExplosion(Entity entity, float radius, boolean forceNone)
     {
         Level world = entity.level;
         if(world.isClientSide())
@@ -943,7 +950,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         boolean isProjectile = entity instanceof ProjectileEntity projectile;
         boolean isGrenade = entity instanceof ThrowableGrenadeEntity grenade;
         DamageSource source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
-        float projectileDamage = (float) ((isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 15F));
+        boolean hasGunProjectile = isProjectile ? (((ProjectileEntity) entity).getProjectile()!=null) : false;
+        float projectileDamage = (float) (hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 20F) );
         Explosion.BlockInteraction mode = Config.COMMON.explosives.explosionGriefing.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
         Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode, projectileDamage);
 
@@ -970,6 +978,13 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
+    /**
+     * Creates a fire explosion dealing no direct damage and without sound and particles.
+     *
+     * @param entity The entity to explode
+     * @param radius The size of the explosion caused by this entity
+     * @param forceNone If true, forces the explosion mode to be NONE instead of config value
+     */
     public static void createFireExplosion(Entity entity, float radius, boolean forceNone)
     {
         Level world = entity.level;
@@ -977,8 +992,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             return;
 
         DamageSource source = entity instanceof ProjectileEntity projectile ? DamageSource.explosion(projectile.getShooter()) : null;
-        boolean isIncGrenade = entity instanceof ThrowableIncendiaryGrenadeEntity incGrenade;
-        float projectileDamage = (float) ((isIncGrenade ? Config.COMMON.explosives.incendiaryGrenadeExplosionDamage.get() : 5F));
+        float projectileDamage = 0F;
         Explosion.BlockInteraction mode = Explosion.BlockInteraction.NONE;
         Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, true, mode, projectileDamage);
 

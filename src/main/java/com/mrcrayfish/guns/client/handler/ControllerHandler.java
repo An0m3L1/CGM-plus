@@ -18,7 +18,6 @@ import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageAttachments;
 import com.mrcrayfish.guns.network.message.C2SMessageUnload;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;

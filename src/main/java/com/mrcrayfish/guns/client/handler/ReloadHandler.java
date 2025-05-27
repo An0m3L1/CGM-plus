@@ -10,7 +10,6 @@ import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageReload;
 import com.mrcrayfish.guns.network.message.C2SMessageUnload;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;

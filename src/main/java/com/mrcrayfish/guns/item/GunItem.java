@@ -139,6 +139,14 @@ public class GunItem extends Item implements IColored, IMeta
             }
             tooltip.add(Component.translatable("info.cgm.reload_rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(reload)).withStyle(ChatFormatting.GRAY));
 
+            // ADS Speed (0.35 s by default)
+            double adsSpeed = 0.35;
+            adsSpeed = adsSpeed - (GunCompositeStatHelper.getCompositeAimDownSightSpeed(stack) * 0.35 - adsSpeed);
+            if(modifiedGun.getModules().getZoom() != null)
+            {
+                tooltip.add(Component.translatable("info.cgm.ads_speed", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpeed)).withStyle(ChatFormatting.GRAY));
+            }
+
             // Fire Rate
             float rate;
             rate = Math.round(20 / ((float)GunCompositeStatHelper.getCompositeBaseRate(stack, modifiedGun)) * 60);
@@ -146,14 +154,12 @@ public class GunItem extends Item implements IColored, IMeta
 
         	// Recoil
             float recoil = modifiedGun.getGeneral().getRecoilAngle();
-            //recoil = GunCompositeStatHelper.getCompositeRecoil(stack, modifiedGun);
             recoil *= 1.0F - GunModifierHelper.getRecoilModifier(stack);
-            //tooltip.add(Component.translatable("info.cgm.recoil", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoil)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoil) + "°").withStyle(ChatFormatting.WHITE)));
 
             // ADS Recoil
             float adsRecoil = recoil * (1-(modifiedGun.getGeneral().getRecoilAdsReduction()));
-            if (adsRecoil!=recoil)
+            if (adsRecoil!=recoil && modifiedGun.getModules().getZoom() != null)
             {
                 tooltip.add(Component.translatable("info.cgm.ads_recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsRecoil) + "°").withStyle(ChatFormatting.WHITE)));
             }
@@ -177,7 +183,7 @@ public class GunItem extends Item implements IColored, IMeta
         	// ADS Spread
             float adsSpread = spread * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
             float adsMinSpread = minSpread * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
-            if (adsSpread!=spread)
+            if (adsSpread!=spread && modifiedGun.getModules().getZoom() != null)
             {
             	//tooltip.add(Component.translatable("info.cgm.ads_spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpread) + "°").withStyle(ChatFormatting.WHITE)));
             	if ((adsMinSpread!=adsSpread) && ((adsMinSpread>0) || (!isAlwaysSpread)))

@@ -1,16 +1,12 @@
 package com.mrcrayfish.guns.client.handler;
 
-import org.lwjgl.glfw.GLFW;
-
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.client.KeyBinds;
 import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.compat.PlayerReviveHelper;
 import com.mrcrayfish.guns.event.GunFireEvent;
-import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
@@ -19,14 +15,10 @@ import com.mrcrayfish.guns.network.message.C2SMessageReload;
 import com.mrcrayfish.guns.network.message.C2SMessageShoot;
 import com.mrcrayfish.guns.network.message.C2SMessageShooting;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
-import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
 import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
-import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
@@ -38,7 +30,6 @@ import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
-import net.minecraftforge.registries.ForgeRegistries;
 
 /**
  * Author: MrCrayfish

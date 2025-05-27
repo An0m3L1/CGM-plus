@@ -44,7 +44,8 @@ Add content
         - C4
 
 Add bandits, marauders, zombies
-Add ADS time stat
+--> Add ADS time stat
+    0.35 second with 1.0 modifier (check again, feels wrong)
 Add automatic turrets
 Add backpack skins
 Add gun skins
@@ -59,7 +60,5 @@ Overhaul items (models, textures, stats)
     - Minigun
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul explosion visuals
 Overhaul block piercing to include wood blocks and more (like leaves right now)
 Overhaul hit markers to not appear if hitting endermen
-Overhaul molotovs to instantly set entities on fire (regardless if they are in a fire block or not)

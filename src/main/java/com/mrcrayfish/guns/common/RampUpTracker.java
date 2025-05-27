@@ -1,29 +1,17 @@
 package com.mrcrayfish.guns.common;
 
-import com.mrcrayfish.framework.api.network.LevelLocation;
-import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.network.PacketHandler;
-import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 
-import net.minecraft.core.BlockPos;
-import net.minecraft.nbt.CompoundTag;
-import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
-import net.minecraft.server.packs.repository.Pack;
-import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.event.entity.player.PlayerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
-import net.minecraftforge.network.PacketDistributor;
 
 import java.util.Map;
 import java.util.WeakHashMap;
@@ -66,7 +54,7 @@ public class RampUpTracker
     private boolean shouldDoRampdown(Player player)
     {
         int deltaTicks = player.tickCount - this.rampdownTick;
-        int minTickDelay = GunEnchantmentHelper.getRampUpMaxRate(stack,gun)+1;
+        int minTickDelay = GunModifierHelper.getRampUpMaxRate(stack,gun)+1;
         return deltaTicks > 0 && deltaTicks % Math.max(minTickDelay,1) == 0 && !ModSyncedDataKeys.SHOOTING.getValue(player);
     }
 
@@ -95,8 +83,8 @@ public class RampUpTracker
             	if (tracker.isSameWeapon(player))
             	{
             		int rampUpShot = ModSyncedDataKeys.RAMPUPSHOT.getValue(player);
-                	if (rampUpShot > GunEnchantmentHelper.getRampUpMaxShots(tracker.gun))
-                		rampUpShot = GunEnchantmentHelper.getRampUpMaxShots(tracker.gun);
+                	if (rampUpShot > GunModifierHelper.getRampUpMaxShots(tracker.gun))
+                		rampUpShot = GunModifierHelper.getRampUpMaxShots(tracker.gun);
                 	if (tracker.shouldDoRampdown(player) && rampUpShot>0)
                     {
                 		rampUpShot-=1;

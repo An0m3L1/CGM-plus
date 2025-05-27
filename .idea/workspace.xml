@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Made incendiary grenades set entities on fire for 10 seconds after an explosion. Cleaned up enchantment code. Added ADS speed tooltip. Fixed ADS recoil and ADS spread tooltips to not show on guns without aiming capabilities.">
+      <change afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/modules/Documents.GitHub.CGM-plus.test.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ControllerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ControllerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ReloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ReloadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/BurstTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/BurstTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/RampUpTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/RampUpTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ServerAimTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ServerAimTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/AcceleratorEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/CollateralEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/EnchantmentTypes.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/FireStarterEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/GunEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/LightweightEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/OverCapacityEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/PuncturingEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/QuickHandsEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/RampUpEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/ReclaimedEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/enchantment/TriggerFingerEnchantment.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableIncendiaryGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableIncendiaryGrenadeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModEnchantments.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunCompositeStatHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunCompositeStatHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunEnchantmentHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunModifierHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunModifierHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2xfUWcuvER24MtUmPxai3K4kWF4" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Gradle.CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient --warning-mode'none'].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;indev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;
+  }
+}</component>
+  <component name="RunManager" selected="Gradle.CGM-plus [runClient]">
+    <configuration name="CGM-plus [build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="build" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="CGM-plus [runClient]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="--warning-mode='none'" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value="runClient" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>false</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <list>
+      <item itemvalue="Gradle.CGM-plus [build]" />
+      <item itemvalue="Gradle.CGM-plus [runClient]" />
+    </list>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="" />
+      <created>1748328657724</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1748328657724</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Made incendiary grenades set entities on fire for 10 seconds after an explosion. Cleaned up enchantment code. Added ADS speed tooltip. Fixed ADS recoil and ADS spread tooltips to not show on guns without aiming capabilities." />
+    <option name="LAST_COMMIT_MESSAGE" value="Made incendiary grenades set entities on fire for 10 seconds after an explosion. Cleaned up enchantment code. Added ADS speed tooltip. Fixed ADS recoil and ADS spread tooltips to not show on guns without aiming capabilities." />
+  </component>
+</project>

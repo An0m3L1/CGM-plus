@@ -8,11 +8,16 @@ import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageIncendiaryGrenade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.Vec3;
 
 /**
  * Author: MrCrayfish
@@ -67,5 +72,24 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageIncendiaryGrenade(this.getX(), y, this.getZ()));
         GrenadeEntity.createFireExplosion(this, radius, true);
+
+        // Calculate bounds of area where potentially effected entities may be
+        double diameter = radius * 2;
+        int minX = Mth.floor(this.getX() - diameter);
+        int maxX = Mth.floor(this.getX() + diameter);
+        int minY = Mth.floor(y - diameter);
+        int maxY = Mth.floor(y + diameter);
+        int minZ = Mth.floor(this.getZ() - diameter);
+        int maxZ = Mth.floor(this.getZ() + diameter);
+
+        // Affect all non-spectating players and entities in range of the blast
+        for(LivingEntity entity : this.level.getEntitiesOfClass(LivingEntity.class, new AABB(minX, minY, minZ, maxX, maxY, maxZ)))
+        {
+            if(entity.ignoreExplosion())
+                continue;
+
+            entity.setSecondsOnFire(10);
+            entity.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
+        }
     }
 }

@@ -71,7 +71,7 @@
     "item.cgm.rocket": "Ракета",
     "entity.cgm.rocket": "Ракета",
 
-    "item.cgm.red_dot_sight": "Прицел с красной точкой",
+    "item.cgm.red_dot_sight": "Прицел сек. красной точкой",
     "item.cgm.x2_scope": "x2 Прицел",
     "item.cgm.x4_scope": "x4 Прицел",
     "item.cgm.x6_scope": "x6 Прицел",
@@ -110,6 +110,7 @@
     "info.cgm.reload_rate": "Перезарядка: %s сек.",
     "info.cgm.energy": "Запас энергии: %s",
     "info.cgm.rate": "Скорость стрельбы: %s выс./мин.",
+    "info.cgm.ads_speed": "Скорость прицеливания: %s сек.",
     "info.cgm.recoil": "Отдача: %s",
     "info.cgm.ads_recoil": "Отдача при прицеливании: %s",
     "info.cgm.spread": "Разброс: %s",

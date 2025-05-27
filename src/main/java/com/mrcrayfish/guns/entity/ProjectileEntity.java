@@ -21,7 +21,6 @@ import com.mrcrayfish.guns.network.message.S2CMessageProjectileHitEntity;
 import com.mrcrayfish.guns.network.message.S2CMessageRemoveProjectile;
 import com.mrcrayfish.guns.util.BufferUtil;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import com.mrcrayfish.guns.util.ProjectileStatHelper;
 import com.mrcrayfish.guns.util.ReflectionUtil;
@@ -114,8 +113,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         /* Get speed and set motion */
         Vec3 dir = this.getDirection(shooter, weapon, item, modifiedGun);
-        double speedModifier = GunEnchantmentHelper.getProjectileSpeedModifier(weapon);
-        double speed = GunModifierHelper.getModifiedProjectileSpeed(weapon, this.projectile.getSpeed() * speedModifier);
+        double speed = GunModifierHelper.getModifiedProjectileSpeed(weapon, this.projectile.getSpeed());
         this.setDeltaMovement(dir.x * speed, dir.y * speed, dir.z * speed);
         this.updateHeading();
 
@@ -736,7 +734,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
         float damage = initialDamage / this.general.getProjectileAmount();
         damage = GunModifierHelper.getModifiedDamage(this.weapon, this.modifiedGun, damage);
-        damage = GunEnchantmentHelper.getAcceleratorDamage(this.weapon, damage);
         return Math.max(0F, damage);
     }
 

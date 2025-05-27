@@ -14,7 +14,6 @@ import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageAim;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
@@ -331,7 +330,7 @@ public class AimingHandler
             {
                 if(this.currentAim < MAX_AIM_PROGRESS)
                 {
-                    double speed = GunEnchantmentHelper.getAimDownSightSpeed(heldItem);
+                    double speed = GunModifierHelper.getAimDownSightSpeed(heldItem);
                     speed = GunModifierHelper.getModifiedAimDownSightSpeed(heldItem, speed);
                     this.currentAim += speed;
                     if(this.currentAim > MAX_AIM_PROGRESS)
@@ -344,7 +343,7 @@ public class AimingHandler
             {
                 if(this.currentAim > 0)
                 {
-                    double speed = GunEnchantmentHelper.getAimDownSightSpeed(heldItem);
+                    double speed = GunModifierHelper.getAimDownSightSpeed(heldItem);
                     speed = GunModifierHelper.getModifiedAimDownSightSpeed(heldItem, speed);
                     this.currentAim -= speed;
                     if(this.currentAim < 0)

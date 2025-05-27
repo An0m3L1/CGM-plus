@@ -1,16 +1,13 @@
 package com.mrcrayfish.guns.common;
 
 import com.google.common.collect.Maps;
-import com.mrcrayfish.guns.init.ModEnchantments;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.Util;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 import org.apache.commons.lang3.tuple.Pair;
 
@@ -56,9 +53,9 @@ public class ShootTracker
      */
     public void putCooldown(Player player, ItemStack weapon, GunItem item, Gun modifiedGun)
     {
-        int rate = GunEnchantmentHelper.getRate(weapon, modifiedGun);
+        int rate = modifiedGun.general.getRate();
         rate = GunModifierHelper.getModifiedRate(weapon, rate);
-        rate = GunEnchantmentHelper.getRampUpRate(player, weapon, rate);
+        rate = GunModifierHelper.getRampUpRate(player, weapon, rate);
 
         //To implement Ramp Up (enchantment) again, uncomment the code block and remove code below this comment
         if (modifiedGun.getGeneral().hasDoRampUp())

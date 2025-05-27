@@ -1,10 +1,12 @@
 package com.mrcrayfish.guns.util;
 
 import com.mrcrayfish.guns.common.Gun;
+import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.interfaces.IGunModifier;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.attachment.IAttachment;
 import net.minecraft.util.Mth;
+import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 /**
@@ -246,6 +248,16 @@ public class GunModifierHelper
         return finalDamage;
     }
 
+    public static double getAimDownSightSpeed(ItemStack weapon)
+    {
+        if(!(weapon.getItem() instanceof GunItem))
+            return 1;
+
+        Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
+        double speed = modifiedGun.getGeneral().getADSSpeed();
+        return Math.max(speed,0.01);
+    }
+
     public static double getModifiedAimDownSightSpeed(ItemStack weapon, double speed)
     {
         for(int i = 0; i < IAttachment.Type.values().length; i++)
@@ -283,7 +295,6 @@ public class GunModifierHelper
                 chance += modifier.criticalChance();
             }
         }
-        chance += GunEnchantmentHelper.getPuncturingChance(weapon);
         return Mth.clamp(chance, 0F, 1F);
     }
 
@@ -305,5 +316,42 @@ public class GunModifierHelper
             }
         }
         return reloadSpeedModifier;
+    }
+
+    public static int getRampUpRate(Player player, ItemStack weapon, int baseRate)
+    {
+        Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
+        int maxRate = getRampUpMaxRate(weapon, baseRate);
+        int minRate = getRampUpMinRate(maxRate);
+        int newRate = baseRate;
+
+        if(modifiedGun.getGeneral().hasDoRampUp())
+        {
+            int rampUpShot = ModSyncedDataKeys.RAMPUPSHOT.getValue(player);
+            float rampFactor = (float) (Math.log((float) rampUpShot+1)/Math.log((float) getRampUpMaxShots(modifiedGun)));
+            float rampedRate = (float) Math.ceil((float) Mth.lerp(rampFactor,minRate,maxRate));
+            newRate = (int) Math.max(rampedRate, maxRate);
+        }
+        return newRate;
+    }
+
+    public static int getRampUpMaxShots(Gun gun)
+    {
+        return gun.getGeneral().getRampUpShotsNeeded();
+    }
+
+    public static int getRampUpMinRate(int rate)
+    {
+        return rate+3;
+    }
+
+    public static int getRampUpMaxRate(ItemStack weapon, int rate)
+    {
+        return rate;
+    }
+
+    public static int getRampUpMaxRate(ItemStack weapon, Gun modifiedGun)
+    {
+        return modifiedGun.getGeneral().getRate();
     }
 }

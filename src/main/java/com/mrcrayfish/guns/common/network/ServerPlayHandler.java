@@ -25,8 +25,8 @@ import com.mrcrayfish.guns.network.message.C2SMessageFireSwitch;
 import com.mrcrayfish.guns.network.message.C2SMessageShoot;
 import com.mrcrayfish.guns.network.message.S2CMessageBulletTrail;
 import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
+import com.mrcrayfish.guns.particles.TrailData;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-import com.mrcrayfish.guns.util.GunEnchantmentHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleOptions;
@@ -140,7 +140,7 @@ public class ServerPlayHandler
                     double spawnY = player.getY() + 1.0;
                     double spawnZ = player.getZ();
                     double radius = Config.COMMON.network.projectileTrackingRange.get();
-                    ParticleOptions data = GunEnchantmentHelper.getParticle(heldItem);
+                    ParticleOptions data = new TrailData(heldItem.isEnchanted());
                     S2CMessageBulletTrail messageBulletTrail = new S2CMessageBulletTrail(spawnedProjectiles, projectileProps, player.getId(), data);
                     PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, spawnX, spawnY, spawnZ, radius), messageBulletTrail);
                 }

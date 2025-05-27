@@ -141,7 +141,7 @@ public class GunItem extends Item implements IColored, IMeta
 
             // ADS Speed (0.35 s by default)
             double adsSpeed = 0.35;
-            adsSpeed = adsSpeed - (GunCompositeStatHelper.getCompositeAimDownSightSpeed(stack) * 0.35 - adsSpeed);
+            adsSpeed = adsSpeed - (GunCompositeStatHelper.getCompositeAimDownSightSpeed(stack) * adsSpeed - adsSpeed);
             if(modifiedGun.getModules().getZoom() != null)
             {
                 tooltip.add(Component.translatable("info.cgm.ads_speed", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpeed)).withStyle(ChatFormatting.GRAY));

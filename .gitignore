@@ -8,6 +8,7 @@ run/*
 .settings/
 .classpath
 .project
+.idea
 
 # Launching
 runClient.launch
@@ -21,3 +22,4 @@ framework-0.4.2-1.19.2.jar
 ShoulderSurfing-Forge-1.19.2-3.2.0-c83950e.jar
 nzge.jar
 SourceTree.lnk
+

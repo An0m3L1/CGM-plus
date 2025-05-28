@@ -168,6 +168,11 @@ public class ModItems
                     .stacksTo(1)
                     .tab(GunMod.GUNS)
             ));
+    public static final RegistryObject<Item> HEAVY_SILENCER = REGISTER.register("heavy_silencer",
+            () -> new BarrelItem(Barrel.create(12f, GunModifiers.HEAVY_SILENCER), new Item.Properties()
+                    .stacksTo(1)
+                    .tab(GunMod.GUNS)
+            ));
 
     /* Stocks */
     public static final RegistryObject<Item> LIGHT_STOCK = REGISTER.register("light_stock",

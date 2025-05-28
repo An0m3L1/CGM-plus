@@ -7,14 +7,14 @@
     "rate": 2,
     "burstCooldown": 4,
 
-    "adsSpeed": 1.0,
-    "recoilAdsReduction": 0.5,
-    "spreadAdsReduction": 0.5,
+    "adsSpeed": 0.9,
+    "recoilAdsReduction": 0.4,
+    "spreadAdsReduction": 0.4,
 
-    "recoilAngle": 2.5,
-    "recoilKick": 0.25,
+    "recoilAngle": 3.0,
+    "recoilKick": 0.3,
     "recoilDurationOffset": 0.0,
-    "spread": 6.0,
+    "spread": 5.5,
 
     "maxAmmo": 30,
     "lightMagAmmo": 20,

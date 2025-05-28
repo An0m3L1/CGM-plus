@@ -62,22 +62,23 @@ public class ClientPlayHandler
     public static void handleMessageBlood(S2CMessageBlood message)
     {
         Level world = Minecraft.getInstance().level;
-        if(Config.CLIENT.particle.enableHeadshotParticle.get())
-        {
-            if (message.isHeadshot())
-            {
-                for(int i = 0; i < 3; i++)
-                {
-                    world.addParticle(ModParticleTypes.HEADSHOT.get(), true, message.getX(), message.getY(), message.getZ(), 0, 0.25, 0);
-                }
-            }
-        }
         if(!Config.CLIENT.particle.enableHitParticle.get())
         {
             return;
         }
         if(world != null)
         {
+            if(Config.CLIENT.particle.enableHeadshotParticle.get())
+            {
+                if (message.isHeadshot())
+                {
+                    for(int i = 0; i < 3; i++)
+                    {
+                        world.addParticle(ModParticleTypes.HEADSHOT.get(), true, message.getX(), message.getY(), message.getZ(), 0, 0.25, 0);
+                    }
+                }
+            }
+
             if (Config.CLIENT.particle.enableBlood.get() && message.getAllowBlood())
             {
                 for(int i = 0; i < 10; i++)
@@ -123,13 +124,14 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
+        float size = Config.COMMON.explosives.handGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ParticleTypes.EXPLOSION, x, y, z, world.random, 0.0);
-        explosion.scale(2.25f);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        explosion.scale(size);
 
         //Spawn lingering smoke particles
         for(int i = 0; i < 60; i++)
@@ -151,13 +153,14 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
+        float size = Config.COMMON.explosives.rocketExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ParticleTypes.EXPLOSION, x, y, z, world.random, 0.0);
-        explosion.scale(3.0f);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        explosion.scale(size);
 
         //Spawn lingering smoke particles
         for(int i = 0; i < 90; i++)
@@ -179,13 +182,14 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
+        float size = Config.COMMON.explosives.pipeGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ParticleTypes.EXPLOSION, x, y, z, world.random, 0.0);
-        explosion.scale(3.0f);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        explosion.scale(size);
 
         //Spawn lingering smoke particles
         for(int i = 0; i < 90; i++)
@@ -207,13 +211,14 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
+        float size = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ParticleTypes.EXPLOSION, x, y, z, world.random, 0.0);
-        explosion.scale(2.5f);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        explosion.scale(size);
 
         //Spawn fast moving flame particles
         for(int i = 0; i < 90; i++)
@@ -298,7 +303,7 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         Level world = mc.level;
-        if(world != null)
+        if(world != null && mc.player != null)
         {
             BlockState state = world.getBlockState(message.getPos());
             double holeX = message.getX() + 0.005 * message.getFace().getStepX();

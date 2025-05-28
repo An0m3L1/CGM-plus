@@ -327,26 +327,24 @@ public class Config
         public final ForgeConfigSpec.DoubleValue smokeGrenadeDamage;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
         public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionRadius;
-        //public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionDamage;
 
         public Explosives(ForgeConfigSpec.Builder builder)
         {
             builder.comment("Properties relating to explosives.").push("explosives");
             {
                 this.explosionGriefing = builder.comment("If enabled, explosions will destroy blocks.").define("explosionGriefing", false);
-                this.rocketExplosionRadius = builder.comment("Radius of a Rocket explosion.").defineInRange("rocketExplosionRadius", 3.0, 0.0, Double.MAX_VALUE);
+                this.rocketExplosionRadius = builder.comment("Radius of a Rocket explosion.").defineInRange("rocketExplosionRadius", 2.25, 0.0, Double.MAX_VALUE);
                 this.rocketExplosionGriefing = builder.comment("If enabled, Rockets will destroy blocks. Requires explosion griefing to be true.").define("rocketExplosionGriefing", true);
-                this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
+                this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 1.75, 0.0, Double.MAX_VALUE);
                 this.handGrenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
                 this.handGrenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks. Requires explosion griefing to be true.").define("handGrenadeExplosionGriefing", false);
-                this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
+                this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
                 this.pipeGrenadeExplosionGriefing = builder.comment("If enabled, Pipe Grenades will destroy blocks. Requires explosion griefing to be true.").define("pipeGrenadeExplosionGriefing", true);
                 this.smokeGrenadeModeInstant = builder.comment("If true, a Smoke Grenade will instantly spawn a sizeable cloud. If false, it will slowly spread smoke instead.").define("smokeGrenadeModeInstant", false);
                 this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudDiameter", 5.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeDamage = builder.comment("Damage per second inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
                 this.incendiaryGrenadeExplosionRadius = builder.comment("Radius of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionRadius", 3.0, 0.0, Double.MAX_VALUE);
-                //this.incendiaryGrenadeExplosionDamage = builder.comment("Damage of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionDamage", 5.0, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
         }

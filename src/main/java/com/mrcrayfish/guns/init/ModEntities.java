@@ -26,7 +26,7 @@ public class ModEntities
     public static final RegistryObject<EntityType<BuckshotEntity>> BUCKSHOT_SHELL = registerBasic("buckshot_shell", BuckshotEntity::new);
     public static final RegistryObject<EntityType<GrenadeEntity>> GRENADE = registerBasic("grenade", GrenadeEntity::new);
     public static final RegistryObject<EntityType<PipeGrenadeEntity>> PIPE_GRENADE = registerBasic("pipe_grenade", PipeGrenadeEntity::new);
-    public static final RegistryObject<EntityType<RocketEntity>> MISSILE = registerBasic("missile", RocketEntity::new);
+    public static final RegistryObject<EntityType<RocketEntity>> ROCKET = registerBasic("rocket", RocketEntity::new);
     public static final RegistryObject<EntityType<ThrowableGrenadeEntity>> THROWABLE_GRENADE = registerBasic("throwable_grenade", ThrowableGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableStunGrenadeEntity>> THROWABLE_STUN_GRENADE = registerBasic("throwable_stun_grenade", ThrowableStunGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableSmokeGrenadeEntity>> THROWABLE_SMOKE_GRENADE = registerBasic("throwable_smoke_grenade", ThrowableSmokeGrenadeEntity::new);

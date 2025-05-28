@@ -6,14 +6,14 @@
     "auto": false,
     "rate": 3 ,
 
-    "adsSpeed": 1.1,
-    "recoilAdsReduction": 0.5,
+    "adsSpeed": 1.0,
+    "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 0.25,
 
-    "recoilAngle": 2.0,
+    "recoilAngle": 2.5,
     "recoilKick": 0.25,
     "recoilDurationOffset": 0.0,
-    "spread": 3.0,
+    "spread": 4.5,
     "restingSpread": 0.5,
 
     "maxAmmo": 12,
@@ -21,7 +21,7 @@
     "extendedMagAmmo": 17,
 
     "useMagReload": true,
-    "magReloadTime": 35,
+    "magReloadTime": 40,
     "lightMagReloadTimeModifier": 0.85,
     "extendedMagReloadTimeModifier": 1.15,
 
@@ -58,7 +58,8 @@
     "pierceDamagePenalty": 0.25,
     "pierceDamageMaxPenalty": 0.75
   },
-  "sounds": {
+  "sounds":
+  {
     "fire": "cgm:item.tactical_pistol.fire",
     "silencedFire": "cgm:item.tactical_pistol.silenced_fire",
 

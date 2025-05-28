@@ -23,6 +23,7 @@ public class ParticleFactoryRegistry
         particleManager.register(ModParticleTypes.BULLET_HOLE.get(), (typeIn, worldIn, x, y, z, xSpeed, ySpeed, zSpeed) -> new BulletHoleParticle(worldIn, x, y, z, typeIn.getDirection(), typeIn.getPos()));
         particleManager.register(ModParticleTypes.BLOOD.get(), BloodParticle.Factory::new);
         particleManager.register(ModParticleTypes.HEADSHOT.get(), HeadshotParticle.Factory::new);
+        particleManager.register(ModParticleTypes.EXPLOSION.get(), ExplosionParticle.Factory::new);
         particleManager.register(ModParticleTypes.SMOKE_CLOUD.get(), SmokeCloudParticle.Factory::new);
         particleManager.register(ModParticleTypes.SMOKE_EFFECT.get(), SmokeEffectParticle.Factory::new);
         particleManager.register(ModParticleTypes.TRAIL.get(), TrailParticle.Factory::new);

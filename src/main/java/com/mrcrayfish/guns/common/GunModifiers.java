@@ -52,16 +52,44 @@ public class GunModifiers
         @Override
         public float recoilModifier()
         {
-            return 1.15F;
+            return 1.1F;
         }
         @Override
         public float kickModifier()
         {
-            return 1.075F;
+            return 1.05F;
         }
 
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
+    };
+    public static final IGunModifier HEAVY_SILENCER = new IGunModifier() {
+        @Override
+        public boolean silencedFire()
+        {
+            return true;
+        }
+        @Override
+        public double modifyMuzzleFlashScale(double scale) {return scale * 0.25;}
+        @Override
+        public double modifyFireSoundRadius(double radius)
+        {
+            return radius * 0.25;
+        }
+
+        @Override
+        public float recoilModifier()
+        {
+            return 1.2F;
+        }
+        @Override
+        public float kickModifier()
+        {
+            return 1.1F;
+        }
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
     };
 
     /* Stocks */

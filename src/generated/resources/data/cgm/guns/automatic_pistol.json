@@ -6,22 +6,22 @@
     "auto": true,
     "rate": 1,
 
-    "adsSpeed": 1.1,
+    "adsSpeed": 1.0,
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 0.25,
 
-    "recoilAngle": 1.5,
-    "recoilKick": 0.25,
+    "recoilAngle": 2.0,
+    "recoilKick": 0.2,
     "recoilDurationOffset": 0.0,
-    "spread": 4.0,
-    "restingSpread": 1.0,
+    "spread": 6.0,
+    "restingSpread": 1.5,
 
     "maxAmmo": 32,
     "lightMagAmmo": 20,
     "extendedMagAmmo": 50,
 
     "useMagReload": true,
-    "magReloadTime": 35,
+    "magReloadTime": 40,
     "lightMagReloadTimeModifier": 0.85,
     "extendedMagReloadTimeModifier": 1.15,
 

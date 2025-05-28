@@ -1,5 +1,5 @@
 Add more attachments
-    - Barrels: compensator, flash hider, tactical silencer
+    - Barrels: compensator, flash hider, muzzle break
     - Grips: angled, thumb
     - Scopes: monocle, holo, holo + zoom
     - Stocks: scar, solid, skeleton
@@ -42,17 +42,20 @@ Add content
         - Flare
         - Mine
         - C4
+        - Molotov
+            Like incendiary, but has no fuse time and shatters on impact
 
 Add bandits, marauders, zombies
---> Add ADS time stat
-    0.35 second with 1.0 modifier (check again, feels wrong)
 Add automatic turrets
 Add backpack skins
 Add gun skins
-Add proper compatibility with other mods (farmersdelight, dieselgenerators)
+Add proper compatibility with other mods (farmersdelight, diesel generators)
 Add more sound variants (guns, explosives)
 Add more attachment slots to existing guns
 Add prone animations
+Add player speed changes depending on actions
+    Big weapons restrict sprinting
+    Aiming slows you down
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher

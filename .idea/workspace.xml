@@ -4,10 +4,43 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer. Fixed some null warnings.">
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/attachments/heavy_silencer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/ExplosionParticle.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/heavy_silencer.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/particles/explosion.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_0.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_1.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_2.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_3.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_4.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_5.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_6.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/particle/explosion/explosion_7.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunEntityRenderers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunEntityRenderers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ParticleFactoryRegistry.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ParticleFactoryRegistry.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GunModifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GunModifiers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModEntities.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModParticleTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModParticleTypes.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/silencer.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/silencer.png" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -17,11 +50,17 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="ProblemsViewState">
+    <option name="selectedTabId" value="CurrentFile" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 3
 }</component>
   <component name="ProjectId" id="2xfUWcuvER24MtUmPxai3K4kWF4" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -37,9 +76,25 @@
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "git-widget-placeholder": "indev",
-    "ignore.virus.scanning.warn.message": "true"
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/generated/resources/data/cgm/recipes/attachments"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\attachments" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\particle" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\particles" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\particle\explosion" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.mrcrayfish.guns.client.particle" />
+    </key>
+  </component>
   <component name="RunManager" selected="Gradle.CGM-plus [runClient]">
     <configuration name="CGM-plus [build]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
       <ExternalSystemSettings>
@@ -90,6 +145,7 @@
       <item itemvalue="Gradle.CGM-plus [runClient]" />
     </list>
   </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="" />
@@ -106,11 +162,23 @@
       <option name="project" value="LOCAL" />
       <updated>1748351073421</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="test">
+      <option name="closed" value="true" />
+      <created>1748381276271</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1748381276271</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="Made incendiary grenades set entities on fire for 10 seconds after an explosion. Cleaned up enchantment code. Added ADS speed tooltip. Fixed ADS recoil and ADS spread tooltips to not show on guns without aiming capabilities." />
-    <option name="LAST_COMMIT_MESSAGE" value="Made incendiary grenades set entities on fire for 10 seconds after an explosion. Cleaned up enchantment code. Added ADS speed tooltip. Fixed ADS recoil and ADS spread tooltips to not show on guns without aiming capabilities." />
+    <MESSAGE value="test" />
+    <MESSAGE value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer." />
+    <MESSAGE value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer. Fixed NullPointerException for headshot particle." />
+    <MESSAGE value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer. Fixed some null warnings." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer. Fixed some null warnings." />
   </component>
 </project>

@@ -8,11 +8,11 @@
     "burstCooldown": 4,
 
     "adsSpeed": 0.8,
-    "recoilAdsReduction": 0.7,
-    "spreadAdsReduction": 0.7,
+    "recoilAdsReduction": 0.6,
+    "spreadAdsReduction": 0.6,
 
-    "recoilAngle": 3.0,
-    "recoilKick": 0.3,
+    "recoilAngle": 3.5,
+    "recoilKick": 0.35,
     "recoilDurationOffset": 0.0,
     "spread": 6.5,
 
@@ -21,9 +21,9 @@
     "extendedMagAmmo": 50,
 
     "useMagReload": true,
-    "magReloadTime": 45,
-    "lightMagReloadTimeModifier": 0.8,
-    "extendedMagReloadTimeModifier": 1.2,
+    "magReloadTime": 40,
+    "lightMagReloadTimeModifier": 0.9,
+    "extendedMagReloadTimeModifier": 1.1,
 
     "reloadStartDelay": 1,
     "reloadInterruptDelay": 6,
@@ -35,7 +35,7 @@
     "useFireModes": true,
     "hasSemiMode": true,
     "hasAutoMode": true,
-    "hasBurstMode": true,
+    "hasBurstMode": false,
     "useAutoBurst": true,
     "burstCount": 3
   },

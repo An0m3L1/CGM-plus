@@ -5,10 +5,8 @@ import net.minecraft.core.BlockPos;
 import net.minecraft.util.Mth;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
@@ -76,9 +74,9 @@ public class ProjectileExplosion extends Explosion
                 {
                     if(x == 0 || x == 15 || y == 0 || y == 15 || z == 0 || z == 15)
                     {
-                        double d0 = (double) ((float) x / 15.0F * 2.0F - 1.0F);
-                        double d1 = (double) ((float) y / 15.0F * 2.0F - 1.0F);
-                        double d2 = (double) ((float) z / 15.0F * 2.0F - 1.0F);
+                        double d0 = (float) x / 15.0F * 2.0F - 1.0F;
+                        double d1 = (float) y / 15.0F * 2.0F - 1.0F;
+                        double d2 = (float) z / 15.0F * 2.0F - 1.0F;
                         double d3 = Math.sqrt(d0 * d0 + d1 * d1 + d2 * d2);
                         d0 = d0 / d3;
                         d1 = d1 / d3;
@@ -123,7 +121,7 @@ public class ProjectileExplosion extends Explosion
         int minZ = Mth.floor(this.z - (double) radius - 1.0D);
         int maxZ = Mth.floor(this.z + (double) radius + 1.0D);
 
-        List<Entity> entities = this.world.getEntities(this.exploder, new AABB((double) minX, (double) minY, (double) minZ, (double) maxX, (double) maxY, (double) maxZ));
+        List<Entity> entities = this.world.getEntities(this.exploder, new AABB(minX, minY, minZ, maxX, maxY, maxZ));
 
         net.minecraftforge.event.ForgeEventFactory.onExplosionDetonate(this.world, this, entities, radius);
 
@@ -156,10 +154,20 @@ public class ProjectileExplosion extends Explosion
                 deltaZ = 0.0;
             }
 
-            double blockDensity = (double) getSeenPercent(explosionPos, entity);
+            double blockDensity = getSeenPercent(explosionPos, entity);
             double rawDamage = (1.0D - strength) * blockDensity;
             double damage = Math.min( ((rawDamage * rawDamage + rawDamage) / 2.0D)*(projectileDamage*10) + 1.0D, projectileDamage);
             entity.hurt(this.getDamageSource(), (float) damage);
+
+            //Explosion knockback code
+            /*
+            double blastDamage = rawDamage;
+            if(entity instanceof LivingEntity)
+            {
+                blastDamage = ProtectionEnchantment.getExplosionKnockbackAfterDampener((LivingEntity) entity, rawDamage);
+            }
+            entity.setDeltaMovement(entity.getDeltaMovement().add(deltaX * blastDamage, deltaY * blastDamage, deltaZ * blastDamage));
+            */
 
             if(entity instanceof Player player)
             {

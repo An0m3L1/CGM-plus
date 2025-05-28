@@ -10,11 +10,11 @@
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 1.0,
 
-    "recoilAngle": 6.0,
+    "recoilAngle": 8.0,
     "recoilKick": 2.0,
     "recoilDurationOffset": 0.5,
     "spread": 24.0,
-    "restingSpread": 8.0,
+    "restingSpread": 12.0,
 
     "maxAmmo": 5,
     "useMagReload": true,
@@ -35,14 +35,14 @@
   {
     "item": "cgm:heavy_bullet",
     "damage": 20.0,
-    "headshotMultiplierOverride": 3.0,
+    "headshotMultiplierOverride": 2.5,
 
     "size": 0.1,
     "speed": 15.0,
     "life": 30,
 
     "armorBypass": 1.0,
-    "protectionBypass": 0.5,
+    "protectionBypass": 0.75,
 
     "maxPierceCount": 20,
     "pierceDamagePenalty": 0.05,

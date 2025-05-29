@@ -31,6 +31,7 @@ public class ModEntities
     public static final RegistryObject<EntityType<ThrowableStunGrenadeEntity>> THROWABLE_STUN_GRENADE = registerBasic("throwable_stun_grenade", ThrowableStunGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableSmokeGrenadeEntity>> THROWABLE_SMOKE_GRENADE = registerBasic("throwable_smoke_grenade", ThrowableSmokeGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableIncendiaryGrenadeEntity>> THROWABLE_INCENDIARY_GRENADE = registerBasic("throwable_incendiary_grenade", ThrowableIncendiaryGrenadeEntity::new);
+    public static final RegistryObject<EntityType<ThrowableMolotovEntity>> THROWABLE_MOLOTOV = registerBasic("throwable_molotov", ThrowableMolotovEntity::new);
 
     private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, Level, T> function)
     {

@@ -135,6 +135,12 @@ public class ModItems
                     .stacksTo(16),
                     20 * 3
             ));
+    public static final RegistryObject<Item> MOLOTOV = REGISTER.register("molotov",
+            () -> new MolotovItem(new Item.Properties()
+                    .tab(GunMod.GUNS)
+                    .stacksTo(16),
+                    20 * 5
+            ));
     public static final RegistryObject<Item> GRENADE_NO_PIN = REGISTER.register("grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> STUN_GRENADE_NO_PIN = REGISTER.register("stun_grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> SMOKE_GRENADE_NO_PIN = REGISTER.register("smoke_grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));

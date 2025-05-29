@@ -229,6 +229,29 @@ public class ClientPlayHandler
         }
     }
 
+    public static void handleExplosionMolotov(S2CMessageMolotov message)
+    {
+        Minecraft mc = Minecraft.getInstance();
+        ParticleEngine particleManager = mc.particleEngine;
+        Level world = Objects.requireNonNull(mc.level);
+        float size = Config.COMMON.explosives.molotovExplosionRadius.get().floatValue() * 2.0F;
+        double x = message.getX();
+        double y = message.getY();
+        double z = message.getZ();
+
+        //Spawn explosion particle
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        explosion.scale(size);
+
+        //Spawn fast moving flame particles
+        for(int i = 0; i < 90; i++)
+        {
+            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, world.random, 1.5);
+            flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
+            flame.scale(3f);
+        }
+    }
+
     public static void handleExplosionStunGrenade(S2CMessageStunGrenade message)
     {
         Minecraft mc = Minecraft.getInstance();

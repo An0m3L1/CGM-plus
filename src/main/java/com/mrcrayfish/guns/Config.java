@@ -327,6 +327,7 @@ public class Config
         public final ForgeConfigSpec.DoubleValue smokeGrenadeDamage;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
         public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionRadius;
+        public final ForgeConfigSpec.DoubleValue molotovExplosionRadius;
 
         public Explosives(ForgeConfigSpec.Builder builder)
         {
@@ -344,7 +345,8 @@ public class Config
                 this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudDiameter", 5.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeDamage = builder.comment("Damage per second inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
-                this.incendiaryGrenadeExplosionRadius = builder.comment("Radius of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionRadius", 3.0, 0.0, Double.MAX_VALUE);
+                this.incendiaryGrenadeExplosionRadius = builder.comment("Radius of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionRadius", 3.5, 0.0, Double.MAX_VALUE);
+                this.molotovExplosionRadius = builder.comment("Radius of a Molotov explosion.").defineInRange("molotovExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
             }
             builder.pop();
         }
@@ -470,6 +472,7 @@ public class Config
         public final ForgeConfigSpec.DoubleValue stunGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionSoundDistance;
+        public final ForgeConfigSpec.DoubleValue molotovExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue reloadSoundDistance;
         public final ForgeConfigSpec.BooleanValue enableCameraRecoil;
         public final ForgeConfigSpec.IntValue cooldownThreshold;
@@ -498,6 +501,7 @@ public class Config
                     this.stunGrenadeExplosionSoundDistance = builder.comment("The maximum distance stun grenade explosions can be heard by players.").defineInRange("stunGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
                     this.smokeGrenadeExplosionSoundDistance = builder.comment("The maximum distance smoke grenade explosions can be heard by players.").defineInRange("smokeGrenadeExplosionMaxDistance", 48, 0, Double.MAX_VALUE);
                     this.incendiaryGrenadeExplosionSoundDistance = builder.comment("The maximum distance incendiary grenade explosions can be heard by players.").defineInRange("incendiaryGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
+                    this.molotovExplosionSoundDistance = builder.comment("The maximum distance molotov explosions can be heard by players.").defineInRange("molotovExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
                     this.reloadSoundDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 16, 0, Double.MAX_VALUE);
                 }
                 builder.pop();

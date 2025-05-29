@@ -56,12 +56,17 @@ Add prone animations
 Add player speed changes depending on actions
     Big weapons restrict sprinting
     Aiming slows you down
+Add ejecting casings when shooting
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
     - Sniper Rifle
+    - Molotov
+        Add model, sound, recipe
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul block piercing to include wood blocks and more (like leaves right now)
 Overhaul hit markers to not appear if hitting endermen
+
+Fix ticking entity error for molotov (maybe try to use Incendiary Grenade code instead?)

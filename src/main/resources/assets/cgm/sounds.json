@@ -18,6 +18,7 @@
    "entity.rocket.explosion":              { "subtitle": "subtitle.cgm.rocket.explosion","sounds": [{"name": "cgm:entity/rocket/explosion", "volume": 0.5  }]},
    "entity.pipe_grenade.explosion":        { "subtitle": "subtitle.cgm.pipe_grenade.explosion","sounds": [{"name": "cgm:entity/pipe_grenade/explosion", "volume": 0.5  }]},
    "entity.incendiary_grenade.explosion":  { "subtitle": "subtitle.cgm.incendiary.explosion","sounds": [{"name": "cgm:entity/incendiary_grenade/explosion", "volume": 0.5  }]},
+   "entity.molotov.explosion":             { "subtitle": "subtitle.cgm.molotov.explosion","sounds": [{"name": "cgm:entity/molotov/explosion", "volume": 0.5  }]},
    "entity.stun_grenade.ring":             { "subtitle": "subtitle.cgm.stun.ring",      "sounds": [{"name": "cgm:entity/stun_grenade/ring", "stream": true }]},
    "item.empty_click":                     { "subtitle": "subtitle.cgm.empty",          "sounds": [{"name": "cgm:item/empty_click" }]},
    "item.fire_switch":                     { "subtitle": "subtitle.cgm.switch",         "sounds": [{"name": "cgm:item/fire_switch" }]},

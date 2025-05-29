@@ -22,6 +22,7 @@ public class PacketHandler
                 .registerPlayMessage(S2CMessageRocket.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(S2CMessagePipeGrenade.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(S2CMessageIncendiaryGrenade.class, MessageDirection.PLAY_CLIENT_BOUND)
+                .registerPlayMessage(S2CMessageMolotov.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(S2CMessageStunGrenade.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(S2CMessageSmokeGrenade.class, MessageDirection.PLAY_CLIENT_BOUND)
                 .registerPlayMessage(C2SMessageCraft.class, MessageDirection.PLAY_SERVER_BOUND)

@@ -44,6 +44,7 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> ENTITY_PIPE_GRENADE_EXPLOSION = register("entity.pipe_grenade.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_GRENADE_EXPLOSION = register("entity.grenade.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_INCENDIARY_GRENADE_EXPLOSION = register("entity.incendiary_grenade.explosion");
+	public static final RegistryObject<SoundEvent> ENTITY_MOLOTOV_EXPLOSION = register("entity.molotov.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_STUN_GRENADE_EXPLOSION = register("entity.stun_grenade.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_SMOKE_GRENADE_EXPLOSION = register("entity.smoke_grenade.explosion");
 	public static final RegistryObject<SoundEvent> ENTITY_STUN_GRENADE_RING = register("entity.stun_grenade.ring");

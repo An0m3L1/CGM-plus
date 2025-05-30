@@ -25,6 +25,7 @@ Decorations:
         Drinks machine
         Computer
         Vending machine
+        Slot machine
     Market/warehouse shelves
     Pallet
     Rubble

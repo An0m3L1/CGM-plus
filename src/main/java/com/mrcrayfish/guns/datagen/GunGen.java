@@ -52,7 +52,7 @@ public class GunGen extends GunProvider
 
         this.addGun(new ResourceLocation(Reference.MOD_ID, "rocket_launcher"), Gun.Builder.create()
                 .setFireRate(80)
-                .setGripType(GripType.BAZOOKA)
+                .setGripType(GripType.ROCKET_LAUNCHER)
                 .setMaxAmmo(1)
                 .setRecoilAngle(10.0F)
                 .setRecoilDurationOffset(0.25F)

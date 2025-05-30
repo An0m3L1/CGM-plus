@@ -25,6 +25,7 @@ import net.minecraft.world.phys.AABB;
 public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
 {
     protected float radius = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue() - 1F;
+    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
@@ -64,7 +65,7 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        Minecraft.getInstance().getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.ENTITY_INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.ENTITY_INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

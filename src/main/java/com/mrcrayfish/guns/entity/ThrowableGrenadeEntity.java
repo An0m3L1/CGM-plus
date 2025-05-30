@@ -25,6 +25,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     public float prevRotation;
     protected float radius = Config.COMMON.explosives.handGrenadeExplosionRadius.get().floatValue();
     protected boolean griefing = !Config.COMMON.explosives.handGrenadeExplosionGriefing.get();
+    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public ThrowableGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
     {
@@ -75,7 +76,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     {
         GrenadeEntity.createCustomExplosion(this, radius, griefing);
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.ENTITY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.ENTITY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

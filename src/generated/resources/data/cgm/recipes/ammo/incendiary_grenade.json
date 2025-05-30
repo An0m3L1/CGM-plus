@@ -5,10 +5,13 @@
     {"tag": "forge:plates/steel"},
     {"item": "cgm:plastic"},
     {
-      "count": 3,
+      "count": 4,
       "item": "sulfurpotassiummod:sulfur"
     },
-    {"tag": "forge:gunpowder"}
+    {
+      "count": 2,
+      "tag": "forge:gunpowder"
+    }
   ],
   "result": {"item": "cgm:incendiary_grenade"}
 }

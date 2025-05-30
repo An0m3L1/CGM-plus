@@ -28,6 +28,7 @@ public class RocketEntity extends ProjectileEntity
 {
     protected float radius = Config.COMMON.explosives.rocketExplosionRadius.get().floatValue();
     protected boolean griefing = !Config.COMMON.explosives.rocketExplosionGriefing.get();
+    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {
@@ -60,7 +61,7 @@ public class RocketEntity extends ProjectileEntity
     protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
         createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ENTITY_ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ENTITY_ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;
@@ -73,7 +74,7 @@ public class RocketEntity extends ProjectileEntity
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
     {
         createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ENTITY_ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ENTITY_ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;
@@ -87,7 +88,7 @@ public class RocketEntity extends ProjectileEntity
     public void onExpired()
     {
         createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ENTITY_ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ENTITY_ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

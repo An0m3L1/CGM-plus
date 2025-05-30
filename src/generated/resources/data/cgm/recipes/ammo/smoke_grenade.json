@@ -3,9 +3,15 @@
   "materials":
   [
     {"tag": "forge:plates/steel"},
-    {"item": "sulfurpotassiummod:sulfur"},
+    {
+      "count": 2,
+      "item": "sulfurpotassiummod:sulfur"
+    },
     {"tag": "forge:dyes/gray"},
-    {"tag": "forge:gunpowder"}
+    {
+      "count": 2,
+      "tag": "forge:gunpowder"
+    }
   ],
   "result": {"item": "cgm:smoke_grenade"}
 }

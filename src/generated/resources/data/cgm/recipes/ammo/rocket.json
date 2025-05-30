@@ -5,7 +5,7 @@
     {"tag": "forge:plates/steel"},
     {"item": "cgm:buckshot"},
     {
-      "count": 3,
+      "count": 6,
       "tag": "forge:gunpowder"
     }
   ],

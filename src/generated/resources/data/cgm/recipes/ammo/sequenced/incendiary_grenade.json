@@ -54,18 +54,6 @@
       [
         {"item": "cgm:incendiary_grenade"}
       ]
-    },
-    {
-      "type": "create:deploying",
-      "ingredients":
-      [
-        {"tag": "forge:plates/steel"},
-        {"item": "sulfurpotassiummod:sulfur"}
-      ],
-      "results":
-      [
-        {"item": "cgm:incendiary_grenade"}
-      ]
     }
   ],
   "transitionalItem": {"item": "cgm:steel_sheet"}

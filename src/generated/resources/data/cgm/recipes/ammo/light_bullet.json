@@ -5,7 +5,7 @@
     {"item": "cgm:brass_casing"},
     {"item": "cgm:bullet"},
     {
-      "count": 1,
+      "count": 2,
       "item": "cgm:gunpowder_pinch"
     }
   ],

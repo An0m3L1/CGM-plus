@@ -25,6 +25,7 @@ import net.minecraft.world.phys.AABB;
 public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
 {
     protected float radius = Config.COMMON.explosives.molotovExplosionRadius.get().floatValue() - 1F;
+    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
@@ -66,7 +67,7 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        Minecraft.getInstance().getSoundManager().play(new MolotovExplosionSound(ModSounds.ENTITY_MOLOTOV_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new MolotovExplosionSound(ModSounds.ENTITY_MOLOTOV_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

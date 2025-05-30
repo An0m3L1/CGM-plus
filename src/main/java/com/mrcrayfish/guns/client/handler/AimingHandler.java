@@ -134,7 +134,9 @@ public class AimingHandler
         if(this.isAiming())
         {
         	if (!mc.options.keySprint.isDown())
-        	player.setSprinting(false);
+            {
+                player.setSprinting(false);
+            }
             if(!this.aiming)
             {
                 ModSyncedDataKeys.AIMING.setValue(player, true);
@@ -155,15 +157,19 @@ public class AimingHandler
 	                		}
                     }
                     else
-                    if (this.doTempFirstPerson == true)
-                    resetPOV = true;
+                    if (this.doTempFirstPerson)
+                    {
+                        resetPOV = true;
+                    }
                 }
             }
         }
         else
         {
         	if (this.doTempFirstPerson && getNormalisedAdsProgress()<=0.3)
-        	resetPOV = true;
+            {
+                resetPOV = true;
+            }
         	if(this.aiming)
 	        {
 	            ModSyncedDataKeys.AIMING.setValue(player, false);
@@ -175,17 +181,23 @@ public class AimingHandler
         if (this.doTempFirstPerson)
         {
         	if (mc.options.getCameraType()!=CameraType.FIRST_PERSON)
-        	this.skipThirdPersonSwitch = true;
+            {
+                this.skipThirdPersonSwitch = true;
+            }
         	if(modifiedGun==null || modifiedGun.getModules().getZoom() == null
             || Gun.getFovModifier(heldItem, modifiedGun) > Config.CLIENT.display.firstPersonAimZoomThreshold.get())
-            resetPOV = true;
+            {
+                resetPOV = true;
+            }
         }
 
         if (resetPOV && Config.CLIENT.display.forceFirstPersonOnZoomedAim.get())
         {
         	this.doTempFirstPerson = false;
         	if (mc.options.getCameraType()==CameraType.FIRST_PERSON && !skipThirdPersonSwitch)
-        	ShoulderSurfingHelper.changePerspective("SHOULDER_SURFING");
+            {
+                ShoulderSurfingHelper.changePerspective("SHOULDER_SURFING");
+            }
         }
 
         this.localTracker.handleAiming(player, player.getItemInHand(InteractionHand.MAIN_HAND));

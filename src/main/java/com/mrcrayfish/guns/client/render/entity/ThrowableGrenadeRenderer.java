@@ -45,7 +45,6 @@ public class ThrowableGrenadeRenderer extends EntityRenderer<ThrowableGrenadeEnt
         float rotation = entity.prevRotation + (entity.rotation - entity.prevRotation) * partialTicks;
         poseStack.translate(0, 0.1, 0);
         poseStack.mulPose(Vector3f.XP.rotationDegrees(-rotation));
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(-rotation));
         poseStack.translate(0, -0.1, 0);
         if(entity instanceof ThrowableStunGrenadeEntity)
         {
@@ -53,7 +52,6 @@ public class ThrowableGrenadeRenderer extends EntityRenderer<ThrowableGrenadeEnt
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(-90F));
             poseStack.translate(0, -entity.getDimensions(Pose.STANDING).height / 2, 0);
         }
-        /* */
         poseStack.translate(0.0, 0.5, 0.0);
 
         Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItem(), ItemTransforms.TransformType.NONE, light, OverlayTexture.NO_OVERLAY, poseStack, renderTypeBuffer, 0);

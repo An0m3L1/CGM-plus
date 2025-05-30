@@ -1,0 +1,10 @@
+{
+  "type": "cgm:workbench",
+  "materials":
+  [
+    {"item": "minecraft:glass_bottle"},
+    {"item": "cgm:cloth"},
+    {"item": "createdieselgenerators:ethanol_bucket"}
+  ],
+  "result": {"item": "cgm:molotov"}
+}

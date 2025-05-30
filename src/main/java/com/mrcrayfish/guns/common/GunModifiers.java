@@ -152,7 +152,7 @@ public class GunModifiers
     public static final IGunModifier HORIZONTAL_GRIP = new IGunModifier() {
         @Override
         public float modifyProjectileSpread(float spread) {
-            return spread * 0.9F;
+            return spread * 0.85F;
         }
 
         @Override
@@ -164,12 +164,12 @@ public class GunModifiers
         @Override
         public float recoilModifier()
         {
-            return 0.9F;
+            return 0.85F;
         }
         @Override
         public float kickModifier()
         {
-            return 0.45F;
+            return 0.425F;
         }
 
         @Override

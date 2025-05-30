@@ -42,8 +42,6 @@ Add content
         - Flare
         - Mine
         - C4
-        - Molotov
-            Like incendiary, but has no fuse time and shatters on impact
 
 Add bandits, marauders, zombies
 Add automatic turrets
@@ -51,22 +49,23 @@ Add backpack skins
 Add gun skins
 Add proper compatibility with other mods (farmersdelight, diesel generators)
 Add more sound variants (guns, explosives)
+    - Randomize pitch
 Add more attachment slots to existing guns
 Add prone animations
 Add player speed changes depending on actions
-    Big weapons restrict sprinting
-    Aiming slows you down
+    - Big weapons restrict sprinting
+    - Aiming slows you down
 Add ejecting casings when shooting
+Add bonus results to sequenced recipes (or make them take less resources)
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
     - Sniper Rifle
-    - Molotov
-        Add model, sound, recipe
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul block piercing to include wood blocks and more (like leaves right now)
-Overhaul hit markers to not appear if hitting endermen
 
-Fix ticking entity error for molotov (maybe try to use Incendiary Grenade code instead?)
+Fix hit markers appearing when hitting endermen
+Fix fire grenades setting entities on fire through blocks
+Fix molotov flame particles

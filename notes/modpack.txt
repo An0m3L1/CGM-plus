@@ -21,6 +21,7 @@ Remove
     marbled's (make new armor/weapons)
     magnum torch (combine with chunk loaders)
     createdeco (replace)
+    brewin and chewin (find a replacement)
 Add
     display delight
     create netherless (?)

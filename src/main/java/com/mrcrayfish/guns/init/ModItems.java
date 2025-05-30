@@ -5,7 +5,10 @@ import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.common.Attachments;
 import com.mrcrayfish.guns.common.GunModifiers;
 import com.mrcrayfish.guns.item.*;
-import com.mrcrayfish.guns.item.attachment.impl.*;
+import com.mrcrayfish.guns.item.attachment.impl.Barrel;
+import com.mrcrayfish.guns.item.attachment.impl.Magazine;
+import com.mrcrayfish.guns.item.attachment.impl.Stock;
+import com.mrcrayfish.guns.item.attachment.impl.UnderBarrel;
 import com.simibubi.create.content.processing.sequenced.SequencedAssemblyItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemNameBlockItem;
@@ -18,11 +21,13 @@ public class ModItems
     public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 
     /* Assault Rifles */
-    public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle", () -> new GunItem(new Item.Properties()
+    public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle",
+            () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
                     .tab(GunMod.GUNS)
             ));
-    public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle", () -> new GunItem(new Item.Properties()
+    public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle",
+            () -> new GunItem(new Item.Properties()
             .stacksTo(1)
             .tab(GunMod.GUNS)
     ));
@@ -139,7 +144,7 @@ public class ModItems
             () -> new MolotovItem(new Item.Properties()
                     .tab(GunMod.GUNS)
                     .stacksTo(16),
-                    20 * 5
+                    20 * 60
             ));
     public static final RegistryObject<Item> GRENADE_NO_PIN = REGISTER.register("grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> STUN_GRENADE_NO_PIN = REGISTER.register("stun_grenade_no_pin", () -> new Item(new Item.Properties().stacksTo(1)));

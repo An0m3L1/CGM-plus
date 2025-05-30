@@ -4,12 +4,8 @@ import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.blockentity.WorkbenchBlockEntity;
-import com.mrcrayfish.guns.common.DelayedTask;
-import com.mrcrayfish.guns.common.Gun;
+import com.mrcrayfish.guns.common.*;
 import com.mrcrayfish.guns.common.Gun.ReloadSoundsBase;
-import com.mrcrayfish.guns.common.ProjectileManager;
-import com.mrcrayfish.guns.common.ShootTracker;
-import com.mrcrayfish.guns.common.SpreadTracker;
 import com.mrcrayfish.guns.common.container.AttachmentContainer;
 import com.mrcrayfish.guns.common.container.WorkbenchContainer;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipe;
@@ -69,7 +65,7 @@ public class ServerPlayHandler
      * Fires the weapon the player is currently holding.
      * This is only intended for use on the logical server.
      *
-     * @param player the player for who's weapon to fire
+     * @param player the player for whose weapon to fire
      */
     public static void handleShoot(C2SMessageShoot message, ServerPlayer player)
     {
@@ -101,7 +97,7 @@ public class ServerPlayHandler
                 ShootTracker tracker = ShootTracker.getShootTracker(player);
                 if(tracker.hasCooldown(item) && tracker.getRemaining(item) > Config.SERVER.cooldownThreshold.get())
                 {
-                    GunMod.LOGGER.warn(player.getName().getContents() + "(" + player.getUUID() + ") tried to fire before cooldown finished! Is the server lagging? Remaining milliseconds: " + tracker.getRemaining(item));
+                    GunMod.LOGGER.warn("{}({}) tried to fire before cooldown finished! Is the server lagging? Remaining milliseconds: {}", player.getName().getContents(), player.getUUID(), tracker.getRemaining(item));
                     return;
                 }
                 tracker.putCooldown(player, heldItem, item, modifiedGun);
@@ -125,7 +121,9 @@ public class ServerPlayHandler
                     IProjectileFactory factory = ProjectileManager.getInstance().getFactory(projectileItem);
                     IProjectileFactory override = (projectileProps.getProjectileOverride() != null ? ProjectileManager.getInstance().getOverride(projectileProps.getProjectileOverride()) : null);
                     if (override != null)
-                    factory = override;
+                    {
+                        factory = override;
+                    }
                     
                     ProjectileEntity projectileEntity = factory.create(world, player, heldItem, item, modifiedGun);
                     projectileEntity.setWeapon(heldItem);
@@ -188,7 +186,7 @@ public class ServerPlayHandler
             		final ResourceLocation finalSound = (cycleSound != null? cycleSound : getGunSound(modifiedGun, "cock", false, false));
             		
             		double modifiedCycleDelay = modifiedGun.getSounds().getCycleDelay();
-            		modifiedCycleDelay = modifiedCycleDelay * (double) (GunCompositeStatHelper.getCompositeRate(heldItem, modifiedGun, player) / Math.max(modifiedGun.getGeneral().getRate(),1.0));
+            		modifiedCycleDelay = modifiedCycleDelay * (GunCompositeStatHelper.getCompositeRate(heldItem, modifiedGun, player) / Math.max(modifiedGun.getGeneral().getRate(),1.0));
             		final int trueCycleDelay = (int) Math.round(modifiedCycleDelay);
             		if (trueCycleDelay>0)
                     {
@@ -222,16 +220,7 @@ public class ServerPlayHandler
                     CompoundTag tag = heldItem.getOrCreateTag();
                     if(!Gun.hasInfiniteAmmo(heldItem))
                     {
-                        //To implement Over Capacity again, uncomment the code block and remove line below the comment
-
                         tag.putInt("AmmoCount", Math.max(0, tag.getInt("AmmoCount") - 1));
-                        /*
-                        int level = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.RECLAIMED.get(), heldItem);
-                        if(level == 0 || player.level.random.nextInt(4 - Mth.clamp(level, 1, 3)) != 0)
-                        {
-                            tag.putInt("AmmoCount", Math.max(0, tag.getInt("AmmoCount") - 1));
-                        }
-                        */
                     }
                     if (Gun.usesEnergy(heldItem))
                     {
@@ -240,13 +229,7 @@ public class ServerPlayHandler
                 }
 
                 player.awardStat(Stats.ITEM_USED.get(item));
-                
-                //player.setSprinting(false); //*NEW* Stop sprinting when shooting.
             }
-        }
-        else
-        {
-            //world.playSound(null, player.getX(), player.getY(), player.getZ(), SoundEvents.LEVER_CLICK, SoundSource.BLOCKS, 0.3F, 0.8F);
         }
     }
     
@@ -301,21 +284,18 @@ public class ServerPlayHandler
             	boolean magReload = Gun.usesMagReloads(heldItem);
             	boolean reloadFromEmpty = !Gun.hasAmmo(heldItem);
             	ReloadSoundsBase soundObj = Gun.findReloadSoundObj(modifiedGun, soundType, magReload, reloadFromEmpty);
-            	//if (Gun.hasExtraReloadSounds(modifiedGun, magReload, reloadFromEmpty))
-            	//soundType = "reloadStart";
             	
             	final ResourceLocation finalSound = getGunReloadSound(modifiedGun, soundObj, soundType, magReload, reloadFromEmpty);
             	
             	if (Gun.getReloadSoundTimings(modifiedGun, soundObj, soundType, magReload, reloadFromEmpty)>0)
                 {
-            		Player finalPlayer = player;
-                	DelayedTask.runAfter((int) Gun.getReloadSoundTimings(modifiedGun, soundObj, soundType, magReload, reloadFromEmpty), () ->
-                    {
-                        playReloadStartSound(finalPlayer, finalSound);
-                    });
+                    DelayedTask.runAfter((int) Gun.getReloadSoundTimings(modifiedGun, soundObj, soundType, magReload, reloadFromEmpty), () ->
+                            playReloadStartSound(player, finalSound));
                 }
             	else
-            	playReloadStartSound(player, finalSound);
+                {
+                    playReloadStartSound(player, finalSound);
+                }
             }
         }
     }
@@ -324,33 +304,21 @@ public class ServerPlayHandler
     {
     	ResourceLocation sound = null;
     	
-    	if(soundType == "cycle")
+    	if(soundType.equals("cycle"))
     		sound = modifiedGun.getSounds().getCycle();
     	else
-    	if(soundType == "cock")
+    	if(soundType.equals("cock"))
     		sound = modifiedGun.getSounds().getCock();
-    	
-        if(sound != null)
-        {
-            return sound;
-        }
-        return null;
+
+        return sound;
     }
     
     private static ResourceLocation getGunReloadSound(Gun modifiedGun, ReloadSoundsBase soundObj, String soundType, boolean doMagReload, boolean reloadFromEmpty)
     {
-    	ResourceLocation sound = null;
-    	
-    	/*if(soundType == "reloadStart")
-    		sound = modifiedGun.getSounds().getReloadStart();
-        	//sound = Gun.getReloadSound(stack, modifiedGun, "getReloadStart", !Gun.hasAmmo(stack));*/
+    	ResourceLocation sound;
     	sound = Gun.getReloadSound(modifiedGun, soundObj, soundType, doMagReload, reloadFromEmpty);
-    	
-        if(sound != null)
-        {
-            return sound;
-        }
-        return null;
+
+        return sound;
     }
     
     public static void playReloadStartSound(Player player, ResourceLocation sound)
@@ -393,9 +361,8 @@ public class ServerPlayHandler
                 /* Gets the color based on the dye */
                 ItemStack stack = recipe.getItem();
                 ItemStack dyeStack = workbenchBlockEntity.getInventory().get(0);
-                if(dyeStack.getItem() instanceof DyeItem)
+                if(dyeStack.getItem() instanceof DyeItem dyeItem)
                 {
-                    DyeItem dyeItem = (DyeItem) dyeStack.getItem();
                     int color = dyeItem.getDyeColor().getTextColor();
 
                     if(IColored.isDyeable(stack))
@@ -411,9 +378,6 @@ public class ServerPlayHandler
         }
     }
 
-    /**
-     * @param player
-     */
     public static void handleUnload(ServerPlayer player, boolean partial)
     {
         ItemStack stack = player.getMainHandItem();
@@ -456,16 +420,14 @@ public class ServerPlayHandler
 	            else
 	            {
 	            	if (partial)
-	            	tag.putInt("AmmoCount", Math.min(GunCompositeStatHelper.getAmmoCapacity(stack), ammoStored));
+                    {
+                        tag.putInt("AmmoCount", Math.min(GunCompositeStatHelper.getAmmoCapacity(stack), ammoStored));
+                    }
 	            }
         	}
         }
     }
 
-    /**
-     * @param player
-     * @param stack
-     */
     private static void spawnAmmo(ServerPlayer player, ItemStack stack)
     {
         player.getInventory().add(stack);
@@ -475,9 +437,6 @@ public class ServerPlayHandler
         }
     }
 
-    /**
-     * @param player
-     */
     public static void handleAttachments(ServerPlayer player)
     {
         ItemStack heldItem = player.getMainHandItem();

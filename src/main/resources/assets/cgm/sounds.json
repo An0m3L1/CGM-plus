@@ -12,6 +12,7 @@
    "item.rocket_launcher.reload":          { "subtitle": "subtitle.cgm.reload",         "sounds": [{"name": "cgm:item/rocket_launcher/reload" }]},
    "item.mini_gun.fire":                   { "subtitle": "subtitle.cgm.fire",           "sounds": [{"name": "cgm:item/mini_gun/fire", "volume": 0.5 }]},
    "item.grenade.pin":                     { "subtitle": "subtitle.cgm.grenade.pin",    "sounds": [{"name": "cgm:item/grenade/pin" }]},
+   "item.grenade.throw":                   { "subtitle": "subtitle.cgm.grenade.throw",  "sounds": [{"name": "cgm:item/grenade/throw"}]},
    "entity.stun_grenade.explosion":        { "subtitle": "subtitle.cgm.stun.explosion", "sounds": [{"name": "cgm:entity/stun_grenade/explosion", "volume": 0.5  }]},
    "entity.smoke_grenade.explosion":       { "subtitle": "subtitle.cgm.smoke.explosion","sounds": [{"name": "cgm:entity/smoke_grenade/explosion", "volume": 0.5  }]},
    "entity.grenade.explosion":             { "subtitle": "subtitle.cgm.grenade.explosion","sounds": [{"name": "cgm:entity/grenade/explosion", "volume": 0.5  }]},

@@ -3,7 +3,9 @@ package com.mrcrayfish.guns.entity;
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.client.audio.IncendiaryGrenadeExplosionSound;
-import com.mrcrayfish.guns.init.*;
+import com.mrcrayfish.guns.init.ModEntities;
+import com.mrcrayfish.guns.init.ModItems;
+import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageIncendiaryGrenade;
 import net.minecraft.client.Minecraft;
@@ -13,11 +15,9 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.Vec3;
 
 /**
  * Author: MrCrayfish

@@ -133,5 +133,6 @@ public class GrenadeItem extends AmmoItem
 
     protected void onThrown(Level world, ThrowableGrenadeEntity entity)
     {
+        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.GRENADE_THROW.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
     }
 }

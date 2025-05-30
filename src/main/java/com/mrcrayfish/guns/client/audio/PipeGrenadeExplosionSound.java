@@ -25,8 +25,8 @@ public class PipeGrenadeExplosionSound extends AbstractSoundInstance
         LocalPlayer player = Minecraft.getInstance().player;
         if(player != null)
         {
-            double distance = Config.SERVER.pipeGrenadeExplosionSoundDistance.get();
-            this.volume = volume * (1.0F - Math.min(1.0F, (float) Math.sqrt(player.distanceToSqr(x, y, z)) / (float) distance));
+            float distance = Config.SERVER.pipeGrenadeExplosionSoundDistance.get().floatValue();
+            this.volume = volume * (1.0F - Math.min(1.0F, (float) Math.sqrt(player.distanceToSqr(x, y, z)) / distance));
             this.volume *= this.volume; //Ease the volume instead of linear
         }
     }

@@ -54,11 +54,11 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         double speed = this.getDeltaMovement().length();
         if (speed > 0.1)
         {
-            this.rotation += (float) (speed * 50);
+            this.rotation += (speed * 50);
         }
         if (this.level.isClientSide)
         {
-            this.level.addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY() + 0.25, this.getZ(), (Math.random()-0.5) * 0.1, 0.1, (Math.random()-0.5) * 0.1);
+            this.level.addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY() + 0.5, this.getZ(), (Math.random()-0.5) * 0.1, 0.1, (Math.random()-0.5) * 0.1);
         }
     }
 

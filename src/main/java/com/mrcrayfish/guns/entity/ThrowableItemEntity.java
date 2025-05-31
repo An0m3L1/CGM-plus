@@ -19,6 +19,7 @@ import net.minecraft.world.phys.EntityHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -28,6 +29,7 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
     private ItemStack item = ItemStack.EMPTY;
     private boolean shouldBounce;
     private float gravityVelocity = 0.03F;
+    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     /* The max life of the entity. If -1, will stay alive forever and will need to be explicitly removed. */
     private int maxLife = 20 * 10;
@@ -194,7 +196,7 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
     }
 
     @Override
-    public Packet<?> getAddEntityPacket()
+    public @NotNull Packet<?> getAddEntityPacket()
     {
         return NetworkHooks.getEntitySpawningPacket(this);
     }

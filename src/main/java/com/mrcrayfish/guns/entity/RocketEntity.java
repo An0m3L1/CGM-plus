@@ -28,7 +28,6 @@ public class RocketEntity extends ProjectileEntity
 {
     protected float radius = Config.COMMON.explosives.rocketExplosionRadius.get().floatValue();
     protected boolean griefing = !Config.COMMON.explosives.rocketExplosionGriefing.get();
-    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {

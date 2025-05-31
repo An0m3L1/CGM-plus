@@ -4,31 +4,26 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Sound float fix. Balancing. Finished molotov cocktail.">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Fixed ticking entity issue. Tweaked fire grenade sounds. Changed rocket and pipe grenade sounds.">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes/blocks.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes/blocks.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/buckshot_shell.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/buckshot_shell.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/heavy_bullet.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/heavy_bullet.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/incendiary_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/incendiary_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/light_bullet.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/light_bullet.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/medium_bullet.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/medium_bullet.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/pipe_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/pipe_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/rocket.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/rocket.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/sequenced/incendiary_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/sequenced/incendiary_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/smoke_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/smoke_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/stun_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/ammo/stun_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/GunGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/GunGen.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/PipeGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/PipeGrenadeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/RocketEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/RocketEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableGrenadeEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableIncendiaryGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableIncendiaryGrenadeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableItemEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableMolotovEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableMolotovEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/incendiary_grenade/explosion.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/incendiary_grenade/explosion.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/molotov/explosion.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/molotov/explosion.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/pipe_grenade/explosion.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/pipe_grenade/explosion.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/rocket/explosion.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/rocket/explosion.ogg" afterDir="false" />
     </list>
-    <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
+    <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local">
+      <change beforePath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/Documents.GitHub.CGM-plus.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/Documents.GitHub.CGM-plus.test.iml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -72,19 +67,20 @@
     &quot;git-widget-placeholder&quot;: &quot;indev&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/generated/resources/data/cgm/recipes/ammo&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.CommitDialog&quot;
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/main/resources/assets/cgm/sounds/entity/pipe_grenade&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;diff.base&quot;
   }
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\entity\pipe_grenade" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\ammo" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\item" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\entity\pipe_grenade" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\ammo\sequenced" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\item\grenade" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\particle\explosion" />
@@ -148,6 +144,9 @@
     </list>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration>C:\Users\An0m3L1\AppData\Roaming\Subversion</configuration>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="" />
@@ -184,7 +183,8 @@
     <MESSAGE value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer. Fixed some null warnings." />
     <MESSAGE value="Added molotov cocktail (WIP)." />
     <MESSAGE value="Local" />
-    <option name="LAST_COMMIT_MESSAGE" value="Local" />
+    <MESSAGE value="Fixed ticking entity issue. Tweaked fire grenade sounds. Changed rocket and pipe grenade sounds." />
+    <option name="LAST_COMMIT_MESSAGE" value="Fixed ticking entity issue. Tweaked fire grenade sounds. Changed rocket and pipe grenade sounds." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

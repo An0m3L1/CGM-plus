@@ -15,22 +15,13 @@ Add content
         - Gloves
         - Combat shirt
         - Combat pants
-        - Combat backpack (marksman enchant)
-    Melee
-        - Katana
-        - Hammer
-        - Sledgehammer
-        - Steel baseball bat
-        - M9 Bayonet
-        - Machete
-        - Cleaver
-        - Sword
-        - Longsword
-        - Spear
+        - Marksman backpack
         - Ballistic shield
-        - Crowbar
-        - Fire axe
-        - Tomahawk
+    Melee
+        - Blunt: hammer, sledgehammer, baseball bat, crowbar
+        - Sharp: katana, tanto, machete, m9 bayonet
+        - Throwable: cleaver, tomahawk, shuriken
+        - Basic: sword, longsword, fire axe
     Explosives
         - Flare
         - Mine
@@ -42,6 +33,10 @@ Add content
         - Stocks: scar, solid, skeleton
         - Tactical: laser, flashlight, wraps/tape
 
+Add melee class system
+    - Blunt: applies slow and stunned effect, extra knockback
+    - Sharp: applies bleed effect (can be removed with healing items)
+    - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
 Add automatic turrets
 Add backpack skins
@@ -67,18 +62,17 @@ Add weapon class system
     - Light: no restrictions
     - Medium: slowed down while aiming, can't move while crouched and aiming
     - Heavy: can't move while aiming, can't sprint
-Add melee class system
-    - Blunt: applies slow, stunned and blindness effect, extra knockback
-    - Sharp: applies bleed effect (can be removed with healing items)
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
     - Sniper Rifle
+    - Molotov (make smaller)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul block piercing to include wood blocks and more (like leaves right now)
 Overhaul grenade throwing to allow left click light throw
+Overhaul grenade throw to be client side only
 
 Fix hit markers appearing when hitting endermen
 Fix fire grenades setting entities on fire through blocks

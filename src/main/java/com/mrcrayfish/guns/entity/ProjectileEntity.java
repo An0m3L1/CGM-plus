@@ -2,12 +2,8 @@ package com.mrcrayfish.guns.entity;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.common.BoundingBoxManager;
-import com.mrcrayfish.guns.common.Gun;
+import com.mrcrayfish.guns.common.*;
 import com.mrcrayfish.guns.common.Gun.Projectile;
-import com.mrcrayfish.guns.common.ModTags;
-import com.mrcrayfish.guns.common.ServerAimTracker;
-import com.mrcrayfish.guns.common.SpreadTracker;
 import com.mrcrayfish.guns.event.GunProjectileHitEvent;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.interfaces.IDamageable;
@@ -19,11 +15,7 @@ import com.mrcrayfish.guns.network.message.S2CMessageBlood;
 import com.mrcrayfish.guns.network.message.S2CMessageProjectileHitBlock;
 import com.mrcrayfish.guns.network.message.S2CMessageProjectileHitEntity;
 import com.mrcrayfish.guns.network.message.S2CMessageRemoveProjectile;
-import com.mrcrayfish.guns.util.BufferUtil;
-import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-import com.mrcrayfish.guns.util.GunModifierHelper;
-import com.mrcrayfish.guns.util.ProjectileStatHelper;
-import com.mrcrayfish.guns.util.ReflectionUtil;
+import com.mrcrayfish.guns.util.*;
 import com.mrcrayfish.guns.util.math.ExtendedEntityRayTraceResult;
 import com.mrcrayfish.guns.world.ProjectileExplosion;
 import net.minecraft.advancements.CriteriaTriggers;
@@ -40,11 +32,7 @@ import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.EntityDimensions;
-import net.minecraft.world.entity.EntityType;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -52,24 +40,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.BellBlock;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.LeavesBlock;
+import net.minecraft.world.level.block.TargetBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
-import net.minecraft.world.phys.AABB;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
-import net.minecraft.world.phys.HitResult;
-import net.minecraft.world.phys.Vec3;
+import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
+
 import javax.annotation.Nullable;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
@@ -93,6 +79,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     protected double modifiedGravity;
     protected int life;
     protected boolean deadProjectile = false;
+    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public ProjectileEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {
@@ -151,7 +138,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     protected void defineSynchedData() {}
 
     @Override
-    public EntityDimensions getDimensions(Pose pose)
+    public @NotNull EntityDimensions getDimensions(@NotNull Pose pose)
     {
         return this.entitySize;
     }
@@ -192,7 +179,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         Vec3 vecsideways = vecforwards.cross(vecupwards);
         
         float theta = random.nextFloat() * 2F * (float) Math.PI;
-        float r = Mth.sqrt(random.nextFloat()) * (float) Math.tan((double) gunSpread);
+        float r = Mth.sqrt(random.nextFloat()) * (float) Math.tan(gunSpread);
         
         float a1 = Mth.cos(theta) * r;
         float a2 = Mth.sin(theta) * r;
@@ -263,14 +250,13 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 hitEntities = this.findEntitiesOnPath(startVec, endVec);
             }
-            if(hitEntities != null && hitEntities.size() > 0)
+            if(hitEntities != null && !hitEntities.isEmpty())
             {
                 for(EntityResult entityResult : hitEntities)
                 {
                     result = new ExtendedEntityRayTraceResult(entityResult);
-                    if(((EntityHitResult) result).getEntity() instanceof Player)
+                    if(((EntityHitResult) result).getEntity() instanceof Player player)
                     {
-                        Player player = (Player) ((EntityHitResult) result).getEntity();
 
                         if(this.shooter instanceof Player && !((Player) this.shooter).canHarmPlayer(player))
                         {
@@ -335,7 +321,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         double closestDistance = Double.MAX_VALUE;
         for(Entity entity : entities)
         {
-        	boolean isDead = (entity instanceof LivingEntity ? ((LivingEntity) entity).isDeadOrDying() : false);
+        	boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
         	if(!entity.equals(this.shooter))
             {
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
@@ -362,7 +348,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         List<Entity> entities = this.level.getEntities(this, this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(1.0+this.projectile.getSize()), PROJECTILE_TARGETS);
         for(Entity entity : entities)
         {
-        	boolean isDead = (entity instanceof LivingEntity ? ((LivingEntity) entity).isDeadOrDying() : false);
+        	boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
         	if(!entity.equals(this.shooter))
             {
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
@@ -377,7 +363,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         		}*/
             }
         }
-		Collections.sort(hitEntities, new HitComparator());
+		hitEntities.sort(new HitComparator());
         return hitEntities;
     }
 
@@ -418,7 +404,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 {
                     box = box.move(boundingBox.getCenter().x, boundingBox.minY, boundingBox.getCenter().z);
                     Optional<Vec3> headshotHitPos = box.clip(startVec, endVec);
-                    if(!headshotHitPos.isPresent())
+                    if(headshotHitPos.isEmpty())
                     {
                         box = box.inflate(Config.COMMON.gameplay.growBoundingBoxAmount.get(), 0, Config.COMMON.gameplay.growBoundingBoxAmount.get());
                         headshotHitPos = box.clip(startVec, endVec);
@@ -532,7 +518,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
             */
 
-            boolean isDead = (entity instanceof LivingEntity ? ((LivingEntity) entity).isDeadOrDying() : false);
+            boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
             this.onHitEntity(entity, result.getLocation(), startVec, endVec, entityHitResult.isHeadshot());
 
         	if (!isDead)
@@ -599,20 +585,21 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         	bypassDamage = ProjectileStatHelper.getProtectionBypassDamage(this, (LivingEntity) entity, damage, source);
         }
 
-        boolean isDead = (entity instanceof LivingEntity ? ((LivingEntity) entity).isDeadOrDying() : false);
+        boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
         DamageSource bypassSource = source.bypassArmor();
         entity.hurt(bypassSource, damage+bypassDamage);
         
         // Since we're bypassing armor, we have to add logic to damage the armor's durability
         // And since we're doing that, let's make headshots damage only the helmet, and by a larger amount.
-        if (entity instanceof Player)
+        if (entity instanceof Player player)
         {
-        	Player player = (Player) entity;
-        	if (headshot)
+            if (headshot)
         	// The damage input gets divided by 4, hence why we're multiplying the durability damage value.
             player.getInventory().hurtArmor(source, 4*4, Inventory.HELMET_SLOT_ONLY);
         	else
-        	player.getInventory().hurtArmor(source, 1, Inventory.ALL_ARMOR_SLOTS);
+            {
+                player.getInventory().hurtArmor(source, 1, Inventory.ALL_ARMOR_SLOTS);
+            }
         }
         // Send a message to the shooter's client for Hit Marker processing.
         if(this.shooter instanceof Player && (!isDead))
@@ -623,7 +610,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         /* Send hit/blood particles to tracking clients. */
         if (!isDead)
-        PacketHandler.getPlayChannel().sendToTracking(() -> entity, new S2CMessageBlood(hitVec.x, hitVec.y, hitVec.z, entity instanceof LivingEntity, headshot));
+        {
+            PacketHandler.getPlayChannel().sendToTracking(() -> entity, new S2CMessageBlood(hitVec.x, hitVec.y, hitVec.z, entity instanceof LivingEntity, headshot));
+        }
     }
 
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
@@ -666,9 +655,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     public void readSpawnData(FriendlyByteBuf buffer)
     {
         this.projectile = new Gun.Projectile();
-        this.projectile.deserializeNBT(buffer.readNbt());
+        this.projectile.deserializeNBT(Objects.requireNonNull(buffer.readNbt()));
         this.general = new Gun.General();
-        this.general.deserializeNBT(buffer.readNbt());
+        this.general.deserializeNBT(Objects.requireNonNull(buffer.readNbt()));
         this.shooterId = buffer.readInt();
         this.item = BufferUtil.readItemStackFromBufIgnoreTag(buffer);
         this.modifiedGravity = buffer.readDouble();
@@ -696,7 +685,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         float f1 = Mth.sin(-yaw * 0.017453292F - (float) Math.PI);
         float f2 = -Mth.cos(-pitch * 0.017453292F);
         float f3 = Mth.sin(-pitch * 0.017453292F);
-        return new Vec3((double) (f1 * f2), (double) f3, (double) (f * f2));
+        return new Vec3(f1 * f2, f3, f * f2);
     }
 
     /**
@@ -768,7 +757,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     }
 
     @Override
-    public Packet<?> getAddEntityPacket()
+    public @NotNull Packet<?> getAddEntityPacket()
     {
         return NetworkHooks.getEntitySpawningPacket(this);
     }
@@ -833,6 +822,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             double deltaY = startY - endY;
             double deltaZ = startZ - endZ;
             int signX = Mth.sign(deltaX);
+            //noinspection SuspiciousNameCombination
             int signY = Mth.sign(deltaY);
             int signZ = Mth.sign(deltaZ);
             double d9 = signX == 0 ? Double.MAX_VALUE : (double) signX / deltaX;
@@ -895,7 +885,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         boolean isProjectile = entity instanceof ProjectileEntity projectile;
         boolean isGrenade = entity instanceof ThrowableGrenadeEntity grenade;
         DamageSource source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
-        boolean hasGunProjectile = isProjectile ? (((ProjectileEntity) entity).getProjectile()!=null) : false;
+        boolean hasGunProjectile = isProjectile && (((ProjectileEntity) entity).getProjectile() != null);
         float projectileDamage = (float) (hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 20F) );
         Explosion.BlockInteraction mode = Config.COMMON.explosives.explosionGriefing.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
         Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode, projectileDamage);
@@ -947,7 +937,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         boolean isProjectile = entity instanceof ProjectileEntity projectile;
         boolean isGrenade = entity instanceof ThrowableGrenadeEntity grenade;
         DamageSource source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
-        boolean hasGunProjectile = isProjectile ? (((ProjectileEntity) entity).getProjectile()!=null) : false;
+        boolean hasGunProjectile = isProjectile && (((ProjectileEntity) entity).getProjectile() != null);
         float projectileDamage = (float) (hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 20F) );
         Explosion.BlockInteraction mode = Config.COMMON.explosives.explosionGriefing.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
         Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode, projectileDamage);
@@ -1006,10 +996,10 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
      */
     public static class EntityResult
     {
-        private Entity entity;
-        private Vec3 startVec;
-        private Vec3 hitVec;
-        private boolean headshot;
+        private final Entity entity;
+        private final Vec3 startVec;
+        private final Vec3 hitVec;
+        private final boolean headshot;
 
         public EntityResult(Entity entity, Vec3 startVec, Vec3 hitVec, boolean headshot)
         {
@@ -1062,7 +1052,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     /**
      * Author: MrCrayfish
      */
-    class HitComparator implements java.util.Comparator<EntityResult> {
+    static class HitComparator implements java.util.Comparator<EntityResult>
+    {
         @Override
         public int compare(EntityResult a, EntityResult b) {
             return (int) (a.getDistanceToHit()*100 - b.getDistanceToHit()*100);

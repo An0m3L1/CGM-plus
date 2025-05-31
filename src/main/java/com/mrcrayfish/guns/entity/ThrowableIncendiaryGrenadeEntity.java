@@ -25,7 +25,6 @@ import net.minecraft.world.phys.AABB;
 public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
 {
     protected float radius = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue() - 1F;
-    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {

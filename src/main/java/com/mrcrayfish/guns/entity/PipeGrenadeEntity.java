@@ -30,7 +30,6 @@ public class PipeGrenadeEntity extends ProjectileEntity
     public float prevRotation;
     protected float radius = Config.COMMON.explosives.pipeGrenadeExplosionRadius.get().floatValue();
     protected boolean griefing = !Config.COMMON.explosives.pipeGrenadeExplosionGriefing.get();
-    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
     {

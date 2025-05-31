@@ -25,7 +25,6 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     public float prevRotation;
     protected float radius = Config.COMMON.explosives.handGrenadeExplosionRadius.get().floatValue();
     protected boolean griefing = !Config.COMMON.explosives.handGrenadeExplosionGriefing.get();
-    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
 
     public ThrowableGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
     {

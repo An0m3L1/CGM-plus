@@ -96,8 +96,8 @@ public class GunEventBus
         {
             Gun gun = gunItem.getModifiedGun(heldItem);
             Vec3 lookVec = player.getLookAngle();
-            BlockPos lightPos = player.blockPosition().offset(0, 1,0);
-            //BlockPos lightPos = player.blockPosition().offset((int)(lookVec.x * 2), 2, (int)(lookVec.z * 2));
+            //BlockPos lightPos = player.blockPosition().offset(0, 0.5, 0);
+            BlockPos lightPos = player.blockPosition().offset((int)(lookVec.x), 0.75, (int)(lookVec.z));
             GunFireLightEvent.addTemporaryLight(level, lightPos);
          }
     }

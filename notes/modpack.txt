@@ -30,3 +30,4 @@ Add
     nightmare epic siege
     underground bunkers
     create weaponry
+    caelesti (resource pack, only glass)

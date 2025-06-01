@@ -33,13 +33,11 @@ public class MolotovItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double fireDiameter = (Config.COMMON.explosives.molotovExplosionRadius.get() * 2F + 1F);
-        //float cookTime = (float) maxCookTime / 20;
+        double fireDiameter = (Config.COMMON.explosives.molotovExplosionRadius.get() * 2F);
         if(Screen.hasControlDown())
         {
             tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable("info.cgm.fire_diameter", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDiameter)).withStyle(ChatFormatting.GRAY));
-            //tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
         }
         else
         {

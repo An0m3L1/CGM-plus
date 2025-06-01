@@ -38,7 +38,7 @@ Add melee class system
     - Sharp: applies bleed effect (can be removed with healing items)
     - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
-Add automatic turrets
+Add automatic turrets (check scorched guns)
 Add backpack skins
 Add gun skins
 Add proper compatibility with other mods (farmersdelight, diesel generators)
@@ -47,32 +47,32 @@ Add more attachment slots to existing guns
 Add and overhaul animations
     - Prone shooting
     - Crouched shooting (lower the weapon to align with eyes)
-    - Third person reload animations (using weapon types)
+    - Third person reload animations
+    - Smooth third person sprint animation for one-handed weapons
+    - Weapon pullout animation
 Add ejecting casings when shooting (items or particles?)
 Add durability system
-Add weapon type system (for animations, Gun)
-    - AR
-    - AK
-    - Shotgun
-    - Barrel load
-    - Bolt
-    - Pistol
-    - Revolver
 Add weapon class system
     - Light: no restrictions
     - Medium: slowed down while aiming, can't move while crouched and aiming
     - Heavy: can't move while aiming, can't sprint
+Add new cgm expander features
+Add grenade bouncing sound
+Add lighter click sound when using a molotov
+Add fire extinguish mechanic to smokes
+Add recoil and spread reduction while crouched
+Add ammo pouches (check scorched guns)
+Add bullet flyby sound (check scorched guns)
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
     - Sniper Rifle
-    - Molotov (make smaller)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul block piercing to include wood blocks and more (like leaves right now)
 Overhaul grenade throwing to allow left click light throw
-Overhaul grenade throw to be client side only
+Overhaul grenade throw sound to be client side only and non-directional
 
 Fix hit markers appearing when hitting endermen
 Fix fire grenades setting entities on fire through blocks

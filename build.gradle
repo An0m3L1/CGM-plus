@@ -97,6 +97,8 @@ dependencies {
     implementation fg.deobf("curse.maven:client-tweaks-251407:4751800")
     implementation fg.deobf("curse.maven:balm-531761:4751735")
     implementation fg.deobf("curse.maven:better-mods-button-541584:4665753")
+    implementation fg.deobf("curse.maven:xaeros-world-map-317780:6538331")
+    implementation fg.deobf("curse.maven:xaeros-minimap-263420:6515017")
 
     implementation fg.deobf("curse.maven:shoulder-surfing-reloaded-243190:5441683")
     compileOnly fg.deobf('curse.maven:controllable-317269:3936915')

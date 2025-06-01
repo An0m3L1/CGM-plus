@@ -35,11 +35,13 @@ import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
+
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
 import java.util.function.Supplier;
 
+@SuppressWarnings("ALL")
 public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 {
     protected General general = new General();
@@ -117,14 +119,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             ItemStack scope = Gun.getScopeStack(heldItem);
             if(scope.getItem() instanceof ScopeItem scopeItem)
             {
-                widgets.add(Pair.of(scope.getItem().getName(scope), () -> new DebugButton(Component.literal("Edit"), btn -> {
-                    Minecraft.getInstance().setScreen(ClientHandler.createEditorScreen(Debug.getScope(scopeItem)));
-                })));
+                widgets.add(Pair.of(scope.getItem().getName(scope), () -> new DebugButton(Component.literal("Edit"), btn -> Minecraft.getInstance().setScreen(ClientHandler.createEditorScreen(Debug.getScope(scopeItem))))));
             }
 
-            widgets.add(Pair.of(this.modules.getEditorLabel(), () -> new DebugButton(Component.literal(">"), btn -> {
-                Minecraft.getInstance().setScreen(ClientHandler.createEditorScreen(this.modules));
-            })));
+            widgets.add(Pair.of(this.modules.getEditorLabel(), () -> new DebugButton(Component.literal(">"), btn -> Minecraft.getInstance().setScreen(ClientHandler.createEditorScreen(this.modules)))));
         });
     }
 
@@ -503,7 +501,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.lightMagAmmo != -1) object.addProperty("lightMagAmmo", this.lightMagAmmo);
             if(this.extendedMagAmmo != -1) object.addProperty("extendedMagAmmo", this.extendedMagAmmo);
             object.addProperty("overCapacityAmmo", this.overCapacityAmmo);
-            if(this.infiniteAmmo != false) object.addProperty("infiniteAmmo", this.infiniteAmmo);
+            if(this.infiniteAmmo) object.addProperty("infiniteAmmo", this.infiniteAmmo);
             if(this.reloadAmount != 1) object.addProperty("reloadAmount", this.reloadAmount);
             if(this.ammoPerShot != 1) object.addProperty("itemsPerAmmo", this.ammoPerShot);
             if(this.ammoPerItem != 1) object.addProperty("ammoPerItem", this.ammoPerItem);
@@ -514,9 +512,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.reloadEmptyStartDelay != -1) object.addProperty("reloadEmptyStartDelay", this.reloadEmptyStartDelay);
             if(this.reloadEmptyInterruptDelay != -1) object.addProperty("reloadEmptyInterruptDelay", this.reloadEmptyInterruptDelay);
             if(this.reloadEmptyEndDelay != -1) object.addProperty("reloadEmptyEndDelay", this.reloadEmptyEndDelay);
-            if(this.useMagReload != false) object.addProperty("useMagReload", this.useMagReload);
-            if(this.magReloadWhenEmpty != false) object.addProperty("magReloadWhenEmpty", this.magReloadWhenEmpty);
-            if(this.noMagReloadWithScope != false) object.addProperty("noMagReloadWithScope", this.noMagReloadWithScope);
+            if(this.useMagReload) object.addProperty("useMagReload", this.useMagReload);
+            if(this.magReloadWhenEmpty) object.addProperty("magReloadWhenEmpty", this.magReloadWhenEmpty);
+            if(this.noMagReloadWithScope) object.addProperty("noMagReloadWithScope", this.noMagReloadWithScope);
             if(this.magReloadTime != 0) object.addProperty("magReloadTime", this.magReloadTime);
             if(this.magReloadFromEmptyTime != 0) object.addProperty("magReloadFromEmptyTime", this.magReloadFromEmptyTime);
             if(this.lightMagReloadTimeModifier != 0.85) object.addProperty("lightMagReloadTimeModifier", this.lightMagReloadTimeModifier);
@@ -555,7 +553,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             general.extendedMagAmmo = this.extendedMagAmmo;
             general.overCapacityAmmo = this.overCapacityAmmo;
             general.infiniteAmmo = this.infiniteAmmo;
-            general.reloadAmount = this.reloadAmount;
             general.ammoPerShot = this.ammoPerShot;
             general.ammoPerItem = this.ammoPerItem;
             general.reloadAmount = this.reloadAmount;
@@ -674,7 +671,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public int getExtendedMagAmmo()
         {
         	if (this.extendedMagAmmo==-1)
-    		return (int) Math.floor(getMaxAmmo()*1.5);
+            {
+                return (int) Math.floor(getMaxAmmo()*1.5);
+            }
             return this.extendedMagAmmo;
         }
 
@@ -861,7 +860,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The modifier to reload speed when a extended magazine is attached.
+         * @return The modifier to reload speed when an extended magazine is attached.
          */
         public double getExtendedMagReloadTimeModifier()
         {
@@ -933,7 +932,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return If this weapon should always spread it's projectiles according to {@link #getSpread()}
+         * @return If this weapon should always spread its projectiles according to {@link #getSpread()}
          */
         public boolean isAlwaysSpread()
         {
@@ -1066,7 +1065,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         {
             JsonObject object = new JsonObject();
             Preconditions.checkArgument(this.burstCount > 1 || this.burstCount == 0, "Burst count must be greater than one, or equal to zero; set to zero to use general.burstCount.");
-            Preconditions.checkArgument(this.defaultFireMode >= -1 || this.defaultFireMode <= 2, "Default Fire Mode must be a valid fire mode equivalent integer, or set to negative one to calculate it automatically.");
+            Preconditions.checkArgument(true, "Default Fire Mode must be a valid fire mode equivalent integer, or set to negative one to calculate it automatically.");
             object.addProperty("useFireModes", this.useFireModes);
             if(this.defaultFireMode != -1) object.addProperty("defaultFireMode", this.defaultFireMode);
             if(this.hasSemiMode) object.addProperty("hasSemiMode", this.hasSemiMode);
@@ -1104,7 +1103,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * If this value is set to -1, the default fire mode will be automatically
          * calculated based the available fire modes.
          */
-        @Nullable
         public int getDefaultFireMode()
         {
             return this.defaultFireMode;
@@ -1158,7 +1156,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * The weapon must have access to the burst fire mode for this to have any effect.
          * A value of zero indicates the gun should use the general.burstCount parameter.
          */
-        @Nullable
         public int getBurstCount()
         {
             return this.burstCount;
@@ -1223,9 +1220,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if (projectileItem != null)  // Null check to prevent issues
             tag.putString("ProjectileItem", this.projectileItem.toString());
             else tag.putString("ProjectileItem", this.item.toString());
-            if (projectileOverride != null)  // Null check to prevent issues
-            tag.putString("ProjectileOverride", this.projectileOverride.toString());
-            else tag.putString("ProjectileOverride", "null");
+            tag.putString("ProjectileOverride", Objects.requireNonNullElse(projectileOverride, "null"));
             tag.putBoolean("Visible", this.visible);
             tag.putFloat("Damage", this.damage);
             tag.putFloat("MaxRangeDamageMultiplier", this.maxRangeDamageMultiplier);
@@ -1373,8 +1368,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             JsonObject object = new JsonObject();
             object.addProperty("item", this.item.toString());
             if(projectileItem!=null) object.addProperty("projectileItem", this.projectileItem.toString());
-            if(projectileOverride!=null) object.addProperty("projectileOverride", this.projectileOverride.toString());
-            else object.addProperty("projectileOverride", "null");
+            object.addProperty("projectileOverride", Objects.requireNonNullElse(projectileOverride, "null"));
             if(this.visible) object.addProperty("visible", true);
             object.addProperty("damage", this.damage);
             if(this.maxRangeDamageMultiplier != 0.0F) object.addProperty("maxRangeDamageMultiplier", this.maxRangeDamageMultiplier);
@@ -1451,7 +1445,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * This bypasses the normal projectile factory registry, allowing any projectile
          * factory to be called regardless of the ammo item used.
          */
-        public String getProjectileOverride()
+        public @Nullable String getProjectileOverride()
         {
             return this.projectileOverride;
         }
@@ -1483,20 +1477,22 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The maxmimum number of entities the projectile can pierce in its base state.
+         * @return The maximum number of entities the projectile can pierce in its base state.
          * A value of 0 disables piercing, while -1 enables infinite piercing.
          * For values of 0 or higher, the actual entity hit count will be maxPierceCount+1.
          */
         public int getMaxPierceCount()
         {
         	if (this.maxPierceCount == -1)
-        	return -1;
-            
+            {
+                return -1;
+            }
+
             return Math.max(this.maxPierceCount,0);
         }
 
         /**
-         * @return The maxmimum number of entities the projectile can pierce in its base state.
+         * @return The maximum number of entities the projectile can pierce in its base state.
          * A value of 0 disables piercing, while -1 enables infinite piercing.
          * For values of 0 or higher, the actual entity hit count will be maxPierceCount+1.
          */
@@ -1506,7 +1502,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The maxmimum number of entities the projectile can pierce with the collateral enchantment.
+         * @return The maximum number of entities the projectile can pierce with the collateral enchantment.
          * If this is less than maxPierceCount, then maxPierceCount is returned instead.
          * If either is -1, then -1 is returned to indicate infinite piercing.
          */
@@ -1516,7 +1512,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             int pierceMax = Math.max(this.maxPierceCount, this.collateralMaxPierce);
 
             if (this.maxPierceCount == -1 || this.collateralMaxPierce == -1)
-        	return pierceMin;
+            {
+                return pierceMin;
+            }
 
         	return Math.max(pierceMax,0);
         }
@@ -1533,7 +1531,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The extra damage (after multpliers) caused by landing a headshot.
+         * @return The extra damage (after multipliers) caused by landing a headshot.
          */
         public float getHeadshotExtraDamage()
         {
@@ -2163,7 +2161,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The delay after a reload starts before the reloadStart sound plays.
          * Setting this to zero (the default) will play the sound immediately.
          */
-        @Nullable
         public int getReloadStartDelay()
         {
             return this.reloadStartDelay;
@@ -2183,7 +2180,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadEarly sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadEarlyThreshold()
         {
             return this.reloadEarlyThreshold/reloadFrames;
@@ -2203,7 +2199,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadMid sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadMidThreshold()
         {
             return this.reloadMidThreshold/reloadFrames;
@@ -2212,7 +2207,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         /**
          * @return The registry id of a custom sound event when reloading a weapon.
          * This plays when reloadLateThreshold is reached. For best results, set the
-         * sound to play after the early and mid reload sounds.
+         * sound to play after the early and mid-reload sounds.
          */
         @Nullable
         public ResourceLocation getReloadLate()
@@ -2223,7 +2218,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadLate sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadLateThreshold()
         {
             return this.reloadLateThreshold/reloadFrames;
@@ -2242,7 +2236,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The delay after a reload ends before the reloadEnd sound plays.
          * Setting this to zero (the default) will play the sound immediately.
          */
-        @Nullable
         public int getReloadEndDelay()
         {
             return this.reloadEndDelay;
@@ -2263,7 +2256,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadClipOut sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadClipOutThreshold()
         {
             return this.reloadClipOutThreshold/reloadFrames;
@@ -2284,7 +2276,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadClipIn sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadClipInThreshold()
         {
             return this.reloadClipInThreshold/reloadFrames;
@@ -2317,7 +2308,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * Setting this to zero will play the sound immediately.
          * Setting this to less than zero disables it.
          */
-        @Nullable
         public int getCycleDelay()
         {
             return this.cycleDelay;
@@ -2665,7 +2655,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The delay after a reload starts before the reloadStart sound plays.
          * Setting this to zero (the default) will play the sound immediately.
          */
-        @Nullable
         public int getReloadStartDelay()
         {
             return this.reloadStartDelay;
@@ -2685,7 +2674,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadEarly sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadEarlyThreshold()
         {
             return this.reloadEarlyThreshold/reloadFrames;
@@ -2705,7 +2693,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadMid sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadMidThreshold()
         {
             return this.reloadMidThreshold/reloadFrames;
@@ -2714,7 +2701,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         /**
          * @return The registry id of a custom sound event when reloading a weapon.
          * This plays when reloadLateThreshold is reached. For best results, set the
-         * sound to play after the early and mid reload sounds.
+         * sound to play after the early and mid-reload sounds.
          */
         @Nullable
         public ResourceLocation getReloadLate()
@@ -2725,7 +2712,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadLate sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadLateThreshold()
         {
             return this.reloadLateThreshold/reloadFrames;
@@ -2744,7 +2730,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The delay after a reload ends before the reloadEnd sound plays.
          * Setting this to zero (the default) will play the sound immediately.
          */
-        @Nullable
         public int getReloadEndDelay()
         {
             return this.reloadEndDelay;
@@ -2765,7 +2750,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadClipOut sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadClipOutThreshold()
         {
             return this.reloadClipOutThreshold/reloadFrames;
@@ -2786,7 +2770,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
          * @return The threshold of the reload cycle at which the reloadClipIn sound plays.
          * This can range from 0 to 1.
          */
-        @Nullable
         public float getReloadClipInThreshold()
         {
             return this.reloadClipInThreshold/reloadFrames;
@@ -3211,11 +3194,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             @Override
             public void getEditorWidgets(List<Pair<Component, Supplier<IDebugWidget>>> widgets)
             {
-                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
-                    widgets.add(Pair.of(Component.literal("FOV Modifier"), () -> new DebugSlider(0.0, 1.0, this.fovModifier, 0.01, 3, val -> {
-                        this.fovModifier = val.floatValue();
-                    })));
-                });
+                DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> widgets.add(Pair.of(Component.literal("FOV Modifier"), () -> new DebugSlider(0.0, 1.0, this.fovModifier, 0.01, 3, val -> this.fovModifier = val.floatValue()))));
             }
 
             public float getFovModifier()
@@ -3785,21 +3764,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     {
         if(this.modules.attachments != null && type != null)
         {
-            switch(type)
-            {
-                case SCOPE:
-                    return this.modules.attachments.scope != null;
-                case BARREL:
-                    return this.modules.attachments.barrel != null;
-                case STOCK:
-                    return this.modules.attachments.stock != null;
-                case UNDER_BARREL:
-                    return this.modules.attachments.underBarrel != null;
-                case TACTICAL:
-                    return this.modules.attachments.tactical != null;
-                case MAGAZINE:
-                    return this.modules.attachments.magazine != null;
-            }
+            return switch (type) {
+                case SCOPE -> this.modules.attachments.scope != null;
+                case BARREL -> this.modules.attachments.barrel != null;
+                case STOCK -> this.modules.attachments.stock != null;
+                case UNDER_BARREL -> this.modules.attachments.underBarrel != null;
+                case TACTICAL -> this.modules.attachments.tactical != null;
+                case MAGAZINE -> this.modules.attachments.magazine != null;
+            };
         }
         return false;
     }
@@ -3962,7 +3934,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
         if(GunMod.backpackedLoaded)
         {
-            AmmoContext context = BackpackHelper.findAmmo(player, id);;
+            AmmoContext context = BackpackHelper.findAmmo(player, id);
         	ammoCount += context.stack().getCount();
         }
         return ammoCount;
@@ -3998,11 +3970,11 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         return tag.getBoolean("IgnoreAmmo") || modifiedGun.getGeneral().getInfiniteAmmo();
     }
 
-    public static boolean canShoot(ItemStack gunStack)
+    public static boolean cantShoot(ItemStack gunStack)
     {
         CompoundTag tag = gunStack.getOrCreateTag();
         Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
-        return (!usesEnergy(gunStack)) || (tag.getInt("Energy")>=modifiedGun.getGeneral().getEnergyPerShot());
+        return (usesEnergy(gunStack)) && (tag.getInt("Energy") < modifiedGun.getGeneral().getEnergyPerShot());
     }
 
     public static boolean usesEnergy(ItemStack gunStack)
@@ -4093,10 +4065,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         	finalBurstCount = modifiedGun.getFireModes().getBurstCount();
         	else
             if (modifiedGun.getGeneral().getBurstCount()>1)
-        	finalBurstCount = modifiedGun.getGeneral().getBurstCount();
+            {
+                finalBurstCount = modifiedGun.getGeneral().getBurstCount();
+            }
         }
         else
-        finalBurstCount = modifiedGun.getGeneral().getBurstCount();
+        {
+            finalBurstCount = modifiedGun.getGeneral().getBurstCount();
+        }
         
         return finalBurstCount;
     }
@@ -4107,7 +4083,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         int finalBurstCooldown = (hasAutoBurst(gunStack) ? 3 : 1 );
         
         if (modifiedGun.getGeneral().getBurstCooldown()>=0)
-        finalBurstCooldown = modifiedGun.getGeneral().getBurstCooldown();
+        {
+            finalBurstCooldown = modifiedGun.getGeneral().getBurstCooldown();
+        }
         
         return finalBurstCooldown;
     }
@@ -4120,14 +4098,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         	if (modifiedGun.getFireModes().hasBurstMode() && modifiedGun.getFireModes().usesAutoBurst())
             	return true;
         	else
-            if (!modifiedGun.getFireModes().hasAnyFireMode() && modifiedGun.getGeneral().hasBurstFire() && modifiedGun.getGeneral().isAuto())
-            	return true;
+                return !modifiedGun.getFireModes().hasAnyFireMode() && modifiedGun.getGeneral().hasBurstFire() && modifiedGun.getGeneral().isAuto();
         }
         else
-        if (modifiedGun.getGeneral().hasBurstFire() && modifiedGun.getGeneral().isAuto())
-        	return true;
-        
-        return false;
+            return modifiedGun.getGeneral().hasBurstFire() && modifiedGun.getGeneral().isAuto();
         //return (modifiedGun.getFireModes().usesFireModes() && modifiedGun.getFireModes().usesAutoBurst()) || (!modifiedGun.getFireModes().hasAnyFireMode() && modifiedGun.getGeneral().isAuto());
     }
 
@@ -4187,13 +4161,17 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         		if (tryMagReload && emptyReload)
     			{ tryMagReload = false; tryEmptyReload = true; }
         		else
-        		break;
+                {
+                    break;
+                }
 			}
 	    	soundObject = getReloadSoundGroup(gun, tryMagReload, tryEmptyReload);
 	    	soundEvent = getReloadSoundEventDynamic(soundObject, soundType);
 	    	
 	    	if (soundEvent!= null)
-	    	break;
+            {
+                break;
+            }
 		}
     	//GunMod.LOGGER.info("Sound object for sound type " + soundType + " is " + (soundObject != null ? soundObject.toString() : "null"));
     	if (soundEvent == null)
@@ -4204,14 +4182,16 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 
     public static ResourceLocation getReloadSound(Gun gun, ReloadSoundsBase soundObject, String soundType, boolean magReload, boolean emptyReload)
     {
-    	ResourceLocation soundEvent = null;
+    	ResourceLocation soundEvent;
     	
     	if (soundObject == null)
     	{
 	    	soundEvent = getReloadSoundEventDynamic(gun, soundType);
     	}
     	else
-    	soundEvent = getReloadSoundEventDynamic(soundObject, soundType);
+        {
+            soundEvent = getReloadSoundEventDynamic(soundObject, soundType);
+        }
 
     	//GunMod.LOGGER.info("Sound event for sound type " + soundType + " is " + (soundEvent != null ? soundEvent.toString() : "null"));
     	return soundEvent;
@@ -4219,14 +4199,16 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 
     public static double getReloadSoundTimings(Gun gun, ReloadSoundsBase soundObject, String soundType, boolean magReload, boolean emptyReload)
     {
-    	double soundTiming = -1;
+    	double soundTiming;
     	
     	if (soundObject == null)
     	{
     		soundTiming = getReloadSoundTimingDynamic(gun, soundType);
     	}
     	else
-    	soundTiming = getReloadSoundTimingDynamic(soundObject, soundType);
+        {
+            soundTiming = getReloadSoundTimingDynamic(soundObject, soundType);
+        }
 
     	//GunMod.LOGGER.info("Sound timing for sound type " + soundType + " is " + soundTiming);
     	return soundTiming;
@@ -4234,7 +4216,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 
     public static boolean hasExtraReloadSounds(Gun gun)
     {
-    	ReloadSoundsBase soundObject = gun.getReloadSounds();
+    	ReloadSoundsBase soundObject;
     	boolean extraSounds = false;
     	boolean tryMagReload=true;
     	boolean tryEmptyReload=true;
@@ -4245,21 +4227,27 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     			if (tryEmptyReload)
     			{ tryEmptyReload = false; }
     			else
-        		if (tryMagReload && !tryEmptyReload)
+        		if (tryMagReload)
     			{ tryMagReload = false; tryEmptyReload = true; }
         		else
-        		break;
+                {
+                    break;
+                }
 			}
 			
 	    	soundObject = getReloadSoundGroup(gun, tryMagReload, tryEmptyReload);
 	    	if (soundObject != null)
-	    	extraSounds = soundObject.hasExtraReloadSounds();
+            {
+                extraSounds = soundObject.hasExtraReloadSounds();
+            }
 	    	
-	    	if (extraSounds==true)
-	    	break;
+	    	if (extraSounds)
+            {
+                break;
+            }
 		}
     	
-    	if (extraSounds == false)
+    	if (!extraSounds)
     	{
     		extraSounds = gun.getSounds().hasExtraReloadSounds();
     	}
@@ -4279,7 +4267,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         soundObject = gun.getMagReloadSounds();
         else
     	if (emptyReload)
-    	soundObject = gun.getEmptyReloadSounds();
+        {
+            soundObject = gun.getEmptyReloadSounds();
+        }
         
         if (soundObject == null)
         {
@@ -4297,28 +4287,28 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     	if (soundObject==null)
     		return output;
     	
-    	if(soundType == "reloadStart")
+    	if(Objects.equals(soundType, "reloadStart"))
     		output = soundObject.getReloadStart();
         else
-        if(soundType == "reloadEarly")
+        if(Objects.equals(soundType, "reloadEarly"))
         	output = soundObject.getReloadEarly();
         else
-        if(soundType == "reloadMid")
+        if(Objects.equals(soundType, "reloadMid"))
         	output = soundObject.getReloadMid();
         else
-        if(soundType == "reloadLate")
+        if(Objects.equals(soundType, "reloadLate"))
         	output = soundObject.getReloadLate();
         else
-        if(soundType == "reloadEnd")
+        if(Objects.equals(soundType, "reloadEnd"))
         	output = soundObject.getReloadEnd();
         else
-        if(soundType == "reloadClipOut")
+        if(Objects.equals(soundType, "reloadClipOut"))
         	output = soundObject.getReloadClipOut();
         else
-        if(soundType == "reloadClipIn")
+        if(Objects.equals(soundType, "reloadClipIn"))
         	output = soundObject.getReloadClipIn();
         else
-        if(soundType == "reload")
+        if(Objects.equals(soundType, "reload"))
         	output = soundObject.getReload();
     	
     	return output;
@@ -4331,26 +4321,26 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     	if (soundObject==null)
     		return output;
     	
-    	if(soundType == "reloadStart")
-    		output = (double) soundObject.getReloadStartDelay();
+    	if(Objects.equals(soundType, "reloadStart"))
+    		output = soundObject.getReloadStartDelay();
         else
-        if(soundType == "reloadEarly")
-        	output = (double) soundObject.getReloadEarlyThreshold();
+        if(Objects.equals(soundType, "reloadEarly"))
+        	output = soundObject.getReloadEarlyThreshold();
         else
-        if(soundType == "reloadMid")
-        	output = (double) soundObject.getReloadMidThreshold();
+        if(Objects.equals(soundType, "reloadMid"))
+        	output = soundObject.getReloadMidThreshold();
         else
-        if(soundType == "reloadLate")
-        	output = (double) soundObject.getReloadLateThreshold();
+        if(Objects.equals(soundType, "reloadLate"))
+        	output = soundObject.getReloadLateThreshold();
         else
-        if(soundType == "reloadEnd")
-        	output = (double) soundObject.getReloadEndDelay();
+        if(Objects.equals(soundType, "reloadEnd"))
+        	output = soundObject.getReloadEndDelay();
         else
-        if(soundType == "reloadClipOut")
-        	output = (double) soundObject.getReloadClipOutThreshold();
+        if(Objects.equals(soundType, "reloadClipOut"))
+        	output = soundObject.getReloadClipOutThreshold();
         else
-        if(soundType == "reloadClipIn")
-        	output = (double) soundObject.getReloadClipInThreshold();
+        if(Objects.equals(soundType, "reloadClipIn"))
+        	output = soundObject.getReloadClipInThreshold();
     	
     	return output;
     }
@@ -4363,28 +4353,28 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     	if (soundObject==null)
     		return output;
     	
-    	if(soundType == "reloadStart")
+    	if(Objects.equals(soundType, "reloadStart"))
     		output = soundObject.getReloadStart();
         else
-        if(soundType == "reloadEarly")
+        if(Objects.equals(soundType, "reloadEarly"))
         	output = soundObject.getReloadEarly();
         else
-        if(soundType == "reloadMid")
+        if(Objects.equals(soundType, "reloadMid"))
         	output = soundObject.getReloadMid();
         else
-        if(soundType == "reloadLate")
+        if(Objects.equals(soundType, "reloadLate"))
         	output = soundObject.getReloadLate();
         else
-        if(soundType == "reloadEnd")
+        if(Objects.equals(soundType, "reloadEnd"))
         	output = soundObject.getReloadEnd();
         else
-        if(soundType == "reloadClipOut")
+        if(Objects.equals(soundType, "reloadClipOut"))
         	output = soundObject.getReloadClipOut();
         else
-        if(soundType == "reloadClipIn")
+        if(Objects.equals(soundType, "reloadClipIn"))
         	output = soundObject.getReloadClipIn();
         else
-        if(soundType == "reload")
+        if(Objects.equals(soundType, "reload"))
         	output = soundObject.getReload();
     	
     	return output;
@@ -4398,26 +4388,26 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     	if (soundObject==null)
     		return output;
     	
-    	if(soundType == "reloadStart")
-    		output = (double) soundObject.getReloadStartDelay();
+    	if(Objects.equals(soundType, "reloadStart"))
+    		output = soundObject.getReloadStartDelay();
         else
-        if(soundType == "reloadEarly")
-        	output = (double) soundObject.getReloadEarlyThreshold();
+        if(Objects.equals(soundType, "reloadEarly"))
+        	output = soundObject.getReloadEarlyThreshold();
         else
-        if(soundType == "reloadMid")
-        	output = (double) soundObject.getReloadMidThreshold();
+        if(Objects.equals(soundType, "reloadMid"))
+        	output = soundObject.getReloadMidThreshold();
         else
-        if(soundType == "reloadLate")
-        	output = (double) soundObject.getReloadLateThreshold();
+        if(Objects.equals(soundType, "reloadLate"))
+        	output = soundObject.getReloadLateThreshold();
         else
-        if(soundType == "reloadEnd")
-        	output = (double) soundObject.getReloadEndDelay();
+        if(Objects.equals(soundType, "reloadEnd"))
+        	output = soundObject.getReloadEndDelay();
         else
-        if(soundType == "reloadClipOut")
-        	output = (double) soundObject.getReloadClipOutThreshold();
+        if(Objects.equals(soundType, "reloadClipOut"))
+        	output = soundObject.getReloadClipOutThreshold();
         else
-        if(soundType == "reloadClipIn")
-        	output = (double) soundObject.getReloadClipInThreshold();
+        if(Objects.equals(soundType, "reloadClipIn"))
+        	output = soundObject.getReloadClipInThreshold();
     	
     	return output;
     }

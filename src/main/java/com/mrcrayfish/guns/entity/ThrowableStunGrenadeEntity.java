@@ -79,7 +79,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageStunGrenade(this.getX(), y, this.getZ()));
 
         // Calculate bounds of area where potentially effected players may be
-        double diameter = Math.max(Config.COMMON.stunGrenades.deafen.criteria.radius.get(), Config.COMMON.stunGrenades.blind.criteria.radius.get()) * 2 + 1;
+        double diameter = Math.max(Config.COMMON.stunGrenades.stun.criteria.radius.get(), Config.COMMON.stunGrenades.blind.criteria.radius.get()) * 2 + 1;
         int minX = Mth.floor(this.getX() - diameter);
         int maxX = Mth.floor(this.getX() + diameter);
         int minY = Mth.floor(y - diameter);
@@ -104,7 +104,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
             double angle = Math.toDegrees(Math.acos(entity.getViewVector(1.0F).dot(directionGrenade.normalize())));
 
             // Apply effects as determined by their criteria
-            if(this.calculateAndApplyEffect(ModEffects.STUNNED.get(), Config.COMMON.stunGrenades.deafen.criteria, entity, grenade, eyes, distance, angle) && Config.COMMON.stunGrenades.deafen.panicMobs.get())
+            if(this.calculateAndApplyEffect(ModEffects.STUNNED.get(), Config.COMMON.stunGrenades.stun.criteria, entity, grenade, eyes, distance, angle) && Config.COMMON.stunGrenades.stun.panicMobs.get())
             {
                 entity.setLastHurtByMob(entity);
             }
@@ -156,11 +156,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
                 // Added light opacity check
                 if(stateInside.getLightBlock(world, pos) != 0 && (!ignoreBlockWithoutBoundingBox || stateInside.getCollisionShape(world, pos) != Shapes.empty()))
                 {
-                    HitResult raytraceresult = world.clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
-                    if(raytraceresult != null)
-                    {
-                        return raytraceresult;
-                    }
+                    return world.clip(new ClipContext(start, end, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this));
                 }
 
                 HitResult raytraceresult2 = null;

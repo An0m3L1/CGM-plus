@@ -30,7 +30,7 @@ public class StunGrenadeItem extends GrenadeItem
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
         float maxBlind = (float) (Config.COMMON.stunGrenades.blind.criteria.durationMax.get());
-        float maxDeafen = (float) (Config.COMMON.stunGrenades.deafen.criteria.durationMax.get());
+        float maxDeafen = (float) (Config.COMMON.stunGrenades.stun.criteria.durationMax.get());
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {

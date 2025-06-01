@@ -97,6 +97,7 @@ public class Config
         public final ForgeConfigSpec.DoubleValue firstPersonAimZoomThreshold;
         public final ForgeConfigSpec.BooleanValue sprintAnimation;
         public final ForgeConfigSpec.DoubleValue bobbingIntensity;
+        public final ForgeConfigSpec.BooleanValue fireLights;
 
         public Display(ForgeConfigSpec.Builder builder)
         {
@@ -123,6 +124,7 @@ public class Config
                 this.firstPersonAimZoomThreshold = builder.comment("The zoom threshold at which the camera switches to first person while aiming. Requires forceFirstPersonOnZoomedAim to be set to true.").defineInRange("firstPersonAimZoomThreshold", 0.25, 0.0, 1.0);
                 this.sprintAnimation = builder.comment("Enables the sprinting animation for guns. This only applies to weapons that support a sprinting animation.").define("sprintingAnimation", true);
                 this.bobbingIntensity = builder.comment("The intensity of the custom bobbing animation while holding a gun.").defineInRange("bobbingIntensity", 1.0, 0.0, 2.0);
+                this.fireLights = builder.comment("If enabled, enables light sources when firing guns").define("fireLights", true);
             }
             builder.pop();
         }
@@ -333,7 +335,7 @@ public class Config
         {
             builder.comment("Properties relating to explosives.").push("explosives");
             {
-                this.explosionGriefing = builder.comment("If enabled, explosions will destroy blocks.").define("explosionGriefing", false);
+                this.explosionGriefing = builder.comment("If enabled, explosions will destroy blocks. Doesn't affect Incendiary and Molotov Grenades.").define("explosionGriefing", false);
                 this.rocketExplosionRadius = builder.comment("Radius of a Rocket explosion.").defineInRange("rocketExplosionRadius", 2.25, 0.0, Double.MAX_VALUE);
                 this.rocketExplosionGriefing = builder.comment("If enabled, Rockets will destroy blocks. Requires explosion griefing to be true.").define("rocketExplosionGriefing", true);
                 this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 1.75, 0.0, Double.MAX_VALUE);
@@ -358,14 +360,14 @@ public class Config
     public static class StunGrenades
     {
         public final Blind blind;
-        public final Deafen deafen;
+        public final Stun stun;
 
         public StunGrenades(ForgeConfigSpec.Builder builder)
         {
             builder.comment("Properties relating to Stun Grenades.").push("stun_grenades");
             {
                 this.blind = new Blind(builder);
-                this.deafen = new Deafen(builder);
+                this.stun = new Stun(builder);
             }
             builder.pop();
         }
@@ -384,7 +386,7 @@ public class Config
             builder.comment("Blinding properties of Stun Grenades.").push("blind");
             {
                 this.criteria = new EffectCriteria(builder, 32, 6, 1, 180, 0.75);
-                this.blindMobs = builder.comment("If true, hostile mobs will be unable to target entities while they are blinded by a stun grenade.").define("blindMobs", true);
+                this.blindMobs = builder.comment("If true, hostile mobs will be unable to target entities while they are blinded by a Stun Grenade.").define("blindMobs", true);
             }
             builder.pop();
         }
@@ -393,17 +395,17 @@ public class Config
     /**
      * Stun grenade deafening related config options
      */
-    public static class Deafen
+    public static class Stun
     {
         public final EffectCriteria criteria;
         public final ForgeConfigSpec.BooleanValue panicMobs;
 
-        public Deafen(ForgeConfigSpec.Builder builder)
+        public Stun(ForgeConfigSpec.Builder builder)
         {
             builder.comment("Deafening properties of Stun Grenades").push("deafen");
             {
                 this.criteria = new EffectCriteria(builder, 32, 6, 1, 360, 0.75);
-                this.panicMobs = builder.comment("If true, peaceful mobs will panic upon being deafened by a stun grenade.").define("panicMobs", true);
+                this.panicMobs = builder.comment("If true, peaceful mobs will panic upon being stunned by a Stun Grenade.").define("panicMobs", true);
             }
             builder.pop();
         }
@@ -494,14 +496,14 @@ public class Config
 
                 builder.comment("Audio properties").push("audio");
                 {
-                    this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 128, 0, Double.MAX_VALUE);
-                    this.rocketExplosionSoundDistance = builder.comment("The maximum distance rocket explosions can be heard by players.").defineInRange("rocketExplosionMaxDistance", 128, 0, Double.MAX_VALUE);
-                    this.pipeGrenadeExplosionSoundDistance = builder.comment("The maximum distance pipe grenade explosions can be heard by players.").defineInRange("pipeGrenadeExplosionMaxDistance", 128, 0, Double.MAX_VALUE);
-                    this.handGrenadeExplosionSoundDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("handGrenadeExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
+                    this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 96, 0, Double.MAX_VALUE);
+                    this.rocketExplosionSoundDistance = builder.comment("The maximum distance rocket explosions can be heard by players.").defineInRange("rocketExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
+                    this.pipeGrenadeExplosionSoundDistance = builder.comment("The maximum distance pipe grenade explosions can be heard by players.").defineInRange("pipeGrenadeExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
+                    this.handGrenadeExplosionSoundDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("handGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
                     this.stunGrenadeExplosionSoundDistance = builder.comment("The maximum distance stun grenade explosions can be heard by players.").defineInRange("stunGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
                     this.smokeGrenadeExplosionSoundDistance = builder.comment("The maximum distance smoke grenade explosions can be heard by players.").defineInRange("smokeGrenadeExplosionMaxDistance", 48, 0, Double.MAX_VALUE);
-                    this.incendiaryGrenadeExplosionSoundDistance = builder.comment("The maximum distance incendiary grenade explosions can be heard by players.").defineInRange("incendiaryGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
-                    this.molotovExplosionSoundDistance = builder.comment("The maximum distance molotov explosions can be heard by players.").defineInRange("molotovExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
+                    this.incendiaryGrenadeExplosionSoundDistance = builder.comment("The maximum distance incendiary grenade explosions can be heard by players.").defineInRange("incendiaryGrenadeExplosionMaxDistance", 48, 0, Double.MAX_VALUE);
+                    this.molotovExplosionSoundDistance = builder.comment("The maximum distance molotov explosions can be heard by players.").defineInRange("molotovExplosionMaxDistance", 48, 0, Double.MAX_VALUE);
                     this.reloadSoundDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 16, 0, Double.MAX_VALUE);
                 }
                 builder.pop();

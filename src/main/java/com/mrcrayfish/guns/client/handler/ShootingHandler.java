@@ -31,6 +31,8 @@ import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.EventPriority;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
+import java.util.Objects;
+
 /**
  * Author: MrCrayfish
  */
@@ -48,23 +50,22 @@ public class ShootingHandler
     }
 
     private boolean shooting;
-    private int lastShotTick;
     private boolean doEmptyClick;
 
     private int slot = -1;
 
     private ShootingHandler() {}
 
-    private boolean isInGame()
+    private boolean isNotInGame()
     {
         Minecraft mc = Minecraft.getInstance();
         if(mc.getOverlay() != null)
-            return false;
+            return true;
         if(mc.screen != null)
-            return false;
+            return true;
         if(!mc.mouseHandler.isMouseGrabbed())
-            return false;
-        return mc.isWindowActive();
+            return true;
+        return !mc.isWindowActive();
     }
 
     @SubscribeEvent(priority = EventPriority.LOWEST)
@@ -128,7 +129,7 @@ public class ShootingHandler
         if(event.phase != TickEvent.Phase.START)
             return;
 
-        if(!this.isInGame())
+        if(this.isNotInGame())
             return;
 
         Minecraft mc = Minecraft.getInstance();
@@ -176,7 +177,7 @@ public class ShootingHandler
         if(event.phase != TickEvent.Phase.END)
             return;
 
-        if(!isInGame())
+        if(isNotInGame())
             return;
 
         Minecraft mc = Minecraft.getInstance();
@@ -191,7 +192,9 @@ public class ShootingHandler
             	ModSyncedDataKeys.SWITCHTIME.setValue(player, 1);
             	ModSyncedDataKeys.BURSTCOUNT.setValue(player, 0);
                 if(player.getMainHandItem().getItem() instanceof GunItem)
-            	GunRenderingHandler.get().updateReserveAmmo(player);
+                {
+                    GunRenderingHandler.get().updateReserveAmmo(player);
+                }
                 ReloadHandler.get().weaponSwitched();
             }
             
@@ -209,7 +212,9 @@ public class ShootingHandler
                     }
                 }
             	else
-                doEmptyClick = true;
+                {
+                    doEmptyClick = true;
+                }
             }
 
             // Handling fire mode switch logic here for convenience.
@@ -222,7 +227,7 @@ public class ShootingHandler
                 	{
                     	CompoundTag tag = heldItem.getOrCreateTag();
                         //Gun.FireModes fireModes = modifiedGun.getFireModes();
-                        Boolean changedFireMode = false;
+                        boolean changedFireMode = false;
                         int newFireMode = 0;
                         
                         if (Gun.canDoAutoFire(heldItem) &&
@@ -246,14 +251,13 @@ public class ShootingHandler
                        	!Gun.canDoBurstFire(heldItem) && Gun.getFireMode(heldItem)==1))
                         {
                         	changedFireMode = true;
-                        	newFireMode = 0;
-                		}
+                        }
                         
                         if (changedFireMode)
                         {
                         	PacketHandler.getPlayChannel().sendToServer(new C2SMessageFireSwitch(newFireMode));
                         	//tag.putInt("FireMode", newFireMode);
-                        	Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(gunItem.getModifiedGun(heldItem).getSounds().getFireSwitch(), SoundSource.PLAYERS, 0.8F, 1.0F, Minecraft.getInstance().level.getRandom(), false, 0, SoundInstance.Attenuation.NONE, 0, 0, 0, true));
+                        	Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(Objects.requireNonNull(gunItem.getModifiedGun(heldItem).getSounds().getFireSwitch()), SoundSource.PLAYERS, 0.8F, 1.0F, Objects.requireNonNull(Minecraft.getInstance().level).getRandom(), false, 0, SoundInstance.Attenuation.NONE, 0, 0, 0, true));
                         }
                 	}
                 }
@@ -293,14 +297,13 @@ public class ShootingHandler
         {
         	//GunItem gunItem = (GunItem) heldItem.getItem();
         	if (Gun.hasBurstFire(heldItem) && ModSyncedDataKeys.BURSTCOUNT.getValue(player)<=0)
-        	return false;
+            {
+                return false;
+            }
         }
 
-        if(player.getUseItem().getItem() == Items.SHIELD)
-            return false;
-        
-        return true;
-	}
+        return player.getUseItem().getItem() != Items.SHIELD;
+    }
 
     private boolean isEmpty(Player player, ItemStack heldItem)
     {
@@ -310,10 +313,8 @@ public class ShootingHandler
         if(player.isSpectator())
             return false;
 
-        if((!Gun.hasAmmo(heldItem) || !Gun.canShoot(heldItem)) && !player.isCreative())
-            return true;
-        return false;
-	}
+        return (!Gun.hasAmmo(heldItem) || Gun.cantShoot(heldItem)) && !player.isCreative();
+    }
     
     private boolean canUseTrigger(Player player, ItemStack heldItem)
     {
@@ -337,14 +338,13 @@ public class ShootingHandler
         {
         	//GunItem gunItem = (GunItem) heldItem.getItem();
         	if (Gun.hasBurstFire(heldItem) && ModSyncedDataKeys.BURSTCOUNT.getValue(player)<=0)
-        	return false;
+            {
+                return false;
+            }
         }
 
-        if(player.getUseItem().getItem() == Items.SHIELD)
-            return false;
-        
-        return true;
-	}
+        return player.getUseItem().getItem() != Items.SHIELD;
+    }
 
     public void fire(Player player, ItemStack heldItem)
     {
@@ -359,12 +359,14 @@ public class ShootingHandler
             {
             	if (doEmptyClick && heldItem.getItem() instanceof GunItem gunItem && canUseTrigger(player, heldItem))
 	        	{
-		            Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(gunItem.getModifiedGun(heldItem).getSounds().getEmptyClick(), SoundSource.PLAYERS, 0.8F, 1.0F, Minecraft.getInstance().level.getRandom(), false, 0, SoundInstance.Attenuation.NONE, 0, 0, 0, true));
+		            Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(Objects.requireNonNull(gunItem.getModifiedGun(heldItem).getSounds().getEmptyClick()), SoundSource.PLAYERS, 0.8F, 1.0F, Objects.requireNonNull(Minecraft.getInstance().level).getRandom(), false, 0, SoundInstance.Attenuation.NONE, 0, 0, 0, true));
 		        	doEmptyClick = false;
 	        	}
         	}
         	if (ModSyncedDataKeys.BURSTCOUNT.getValue(player)>0)
-        	ModSyncedDataKeys.BURSTCOUNT.setValue(player, 0);
+            {
+                ModSyncedDataKeys.BURSTCOUNT.setValue(player, 0);
+            }
         	return;
         }
         
@@ -399,10 +401,12 @@ public class ShootingHandler
             	else
             	// When there are shots remaining in burst:
             	if (ModSyncedDataKeys.BURSTCOUNT.getValue(player)>0)
-            	ModSyncedDataKeys.BURSTCOUNT.setValue(player, ModSyncedDataKeys.BURSTCOUNT.getValue(player)-1);
+                {
+                    ModSyncedDataKeys.BURSTCOUNT.setValue(player, ModSyncedDataKeys.BURSTCOUNT.getValue(player)-1);
+                }
             }
             PacketHandler.getPlayChannel().sendToServer(new C2SMessageShoot(player));
-            lastShotTick = player.tickCount;
+            int lastShotTick = player.tickCount;
             MinecraftForge.EVENT_BUS.post(new GunFireEvent.Post(player, heldItem));
         }
     }

@@ -2,14 +2,12 @@ package com.mrcrayfish.guns.client.render.pose;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.client.render.IHeldAnimation;
 import com.mrcrayfish.guns.client.util.RenderUtil;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.Gun.Display.RearHandPos;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -25,6 +23,8 @@ import net.minecraft.world.item.Items;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
 
+import java.util.Objects;
+
 /**
  * Author: MrCrayfish
  */
@@ -38,11 +38,10 @@ public class OneHandedPose implements IHeldAnimation
         ModelPart arm = right ? rightArm : leftArm;
         IHeldAnimation.copyModelAngles(head, arm);
         arm.xRot += (float) Math.toRadians(-70F - (aimProgress*25));
-        //arm.yRot += (float) Math.toRadians((-aimProgress*15));
 
         if(player.getUseItem().getItem() == Items.SHIELD)
         {
-            arm.xRot = (float) Math.toRadians(-30F);
+            arm.xRot = (float) Math.toRadians(-105F);
         }
         if(player.isSprinting() || ModSyncedDataKeys.RELOADING.getValue(player))
         {
@@ -56,11 +55,9 @@ public class OneHandedPose implements IHeldAnimation
     {
         if(hand == InteractionHand.MAIN_HAND)
         {
-        	boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
+        	boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT;
         	poseStack.translate(0, 0, 0.05);
-           	//poseStack.mulPose(Vector3f.YP.rotationDegrees((-aimProgress*15) * (right ? 1F : -1F)));
            	poseStack.mulPose(Vector3f.XP.rotationDegrees((-aimProgress*27) * (right ? 1F : -1F)));
-           	//poseStack.mulPose(Vector3f.ZP.rotationDegrees((aimProgress*1.5F) * (right ? 1F : -1F)));
         }
     }
 
@@ -75,12 +72,11 @@ public class OneHandedPose implements IHeldAnimation
         int side = hand.getOpposite() == HumanoidArm.RIGHT ? 1 : -1;
         poseStack.translate(translateX * side, 0, -translateZ);
 
-        boolean slim = Minecraft.getInstance().player.getModelName().equals("slim");
+        boolean slim = Objects.requireNonNull(Minecraft.getInstance().player).getModelName().equals("slim");
         float armWidth = slim ? 3.0F : 4.0F;
         
-        if (!(stack.getItem() instanceof GunItem))
+        if (!(stack.getItem() instanceof GunItem gunStack))
         	return;
-        GunItem gunStack = (GunItem) stack.getItem();
         Gun gun = gunStack.getModifiedGun(stack);
         RearHandPos posHand = gun.getDisplay().getRearHand();
         double xOffset = (posHand != null ? posHand.getXOffset() : 0);
@@ -89,7 +85,6 @@ public class OneHandedPose implements IHeldAnimation
 
         poseStack.scale(0.5F, 0.5F, 0.5F);
         poseStack.translate((-4.0 + xOffset) * 0.0625 * side, (0 + yOffset) * 0.0625, (0 + zOffset) * 0.0625);
-        //poseStack.translate(-4.0 * 0.0625 * side, 0, 0);
         poseStack.translate(-(armWidth / 2.0) * 0.0625 * side, 0, 0);
 
         poseStack.translate(0, 0.15, -1.3125);
@@ -122,12 +117,6 @@ public class OneHandedPose implements IHeldAnimation
         poseStack.mulPose(Vector3f.ZP.rotationDegrees((float) (Math.toDegrees(model.rightLeg.xRot) / 10F)));
         poseStack.scale(0.5F, 0.5F, 0.5F);
 
-        return true;
-    }
-
-    @Override
-    public boolean canApplySprintingAnimation()
-    {
         return true;
     }
 

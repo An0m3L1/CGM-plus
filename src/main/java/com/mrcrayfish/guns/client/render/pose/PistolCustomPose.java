@@ -2,28 +2,20 @@ package com.mrcrayfish.guns.client.render.pose;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.client.handler.ReloadHandler;
 import com.mrcrayfish.guns.client.render.IHeldAnimation;
-import com.mrcrayfish.guns.client.util.Easings;
 import com.mrcrayfish.guns.client.util.GunAnimationHelper;
 import com.mrcrayfish.guns.client.util.GunLegacyAnimationHelper;
-import com.mrcrayfish.guns.client.util.GunReloadAnimationHelper;
 import com.mrcrayfish.guns.client.util.PropertyHelper;
 import com.mrcrayfish.guns.client.util.RenderUtil;
-import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
-import com.mrcrayfish.guns.common.Gun.Display.*;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
 import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.client.renderer.MultiBufferSource;
-import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.EquipmentSlot;
@@ -35,6 +27,8 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+
+import java.util.Objects;
 
 /**
  * Author: MrCrayfish
@@ -78,11 +72,10 @@ public class PistolCustomPose extends WeaponPose
             ModelPart arm = right ? rightArm : leftArm;
             IHeldAnimation.copyModelAngles(head, arm);
             arm.xRot += (float) Math.toRadians(-70F - (aimProgress*25));
-            //arm.yRot += (float) Math.toRadians((-aimProgress*15));
 
             if(player.getUseItem().getItem() == Items.SHIELD)
             {
-                arm.xRot = (float) Math.toRadians(-30F);
+                arm.xRot = (float) Math.toRadians(-105F);
             }
             if(player.isSprinting() || ModSyncedDataKeys.RELOADING.getValue(player))
             {
@@ -114,7 +107,7 @@ public class PistolCustomPose extends WeaponPose
         {
     		if(hand == InteractionHand.MAIN_HAND)
             {
-            	boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
+            	boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT;
             	poseStack.translate(0, 0, 0.05);
                	//poseStack.mulPose(Vector3f.YP.rotationDegrees((-aimProgress*15) * (right ? 1F : -1F)));
                	poseStack.mulPose(Vector3f.XP.rotationDegrees((-aimProgress*27) * (right ? 1F : -1F)));
@@ -137,12 +130,11 @@ public class PistolCustomPose extends WeaponPose
         float handScale = 1/(handDiv==0 ? 1 : handDiv);
         poseStack.translate(translateX * side, 0, 0);
 
-        boolean slim = Minecraft.getInstance().player.getModelName().equals("slim");
+        boolean slim = Objects.requireNonNull(Minecraft.getInstance().player).getModelName().equals("slim");
         float armWidth = slim ? 3.0F : 4.0F;
         
-        if (!(stack.getItem() instanceof GunItem))
+        if (!(stack.getItem() instanceof GunItem gunStack))
         	return;
-        GunItem gunStack = (GunItem) stack.getItem();
         Gun gun = gunStack.getModifiedGun(stack);
         
         ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();
@@ -156,7 +148,7 @@ public class PistolCustomPose extends WeaponPose
         	
         	Vec3 translations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "forwardHand");
             Vec3 rotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "forwardHand");
-        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks)=="fire")
+        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks).equals("fire"))
         	{
         		translations = GunLegacyAnimationHelper.getHandTranslation(stack, false, cooldown);
         	}
@@ -180,7 +172,9 @@ public class PistolCustomPose extends WeaponPose
             poseStack.mulPose(Vector3f.ZP.rotationDegrees(25F * -side));
 
         	if(GunAnimationHelper.hasAnimation("reload", stack) || ReloadHandler.get().getReloadProgress(partialTicks) < 1)
-            RenderUtil.renderFirstPersonArm((LocalPlayer) player, hand.getOpposite(), poseStack, buffer, light);
+            {
+                RenderUtil.renderFirstPersonArm((LocalPlayer) player, hand.getOpposite(), poseStack, buffer, light);
+            }
         }
         poseStack.popPose();
 
@@ -191,7 +185,7 @@ public class PistolCustomPose extends WeaponPose
         	
         	Vec3 translations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "rearHand");
             Vec3 rotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "rearHand");
-        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks)=="fire")
+        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks).equals("fire"))
         	{
         		translations = GunLegacyAnimationHelper.getHandTranslation(stack, true, cooldown);
         	}

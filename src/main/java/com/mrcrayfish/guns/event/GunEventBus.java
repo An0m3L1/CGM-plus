@@ -24,7 +24,7 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 import java.util.Iterator;
 import java.util.Map;
 
-import static com.mrcrayfish.guns.event.GunFireLight.temporaryLights;
+import static com.mrcrayfish.guns.event.GunFireLightEvent.temporaryLights;
 
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GunEventBus
@@ -39,7 +39,7 @@ public class GunEventBus
             {
                 for (ServerLevel world : server.getAllLevels())
                 {
-                    GunFireLight.tickLights(world);
+                    GunFireLightEvent.tickLights(world);
                 }
             }
         }
@@ -50,7 +50,7 @@ public class GunEventBus
         MinecraftServer server = event.getServer();
         for (ServerLevel world : server.getAllLevels())
         {
-            GunFireLight.cleanup(world);
+            GunFireLightEvent.cleanup(world);
         }
     }
     @SubscribeEvent
@@ -59,14 +59,14 @@ public class GunEventBus
         if (!event.getLevel().isClientSide())
         {
             ChunkPos chunkPos = event.getChunk().getPos();
-            Iterator<Map.Entry<Long, GunFireLight.LightData>> iterator = temporaryLights.entrySet().iterator();
+            Iterator<Map.Entry<Long, GunFireLightEvent.LightData>> iterator = temporaryLights.entrySet().iterator();
             while (iterator.hasNext())
             {
-                Map.Entry<Long, GunFireLight.LightData> entry = iterator.next();
+                Map.Entry<Long, GunFireLightEvent.LightData> entry = iterator.next();
                 BlockPos pos = BlockPos.of(entry.getKey());
                 if (chunkPos.equals(new ChunkPos(pos)))
                 {
-                    GunFireLight.LightData data = entry.getValue();
+                    GunFireLightEvent.LightData data = entry.getValue();
                     Level level = (Level) event.getLevel();
                     if (data.dimension == level.dimension())
                     {
@@ -96,9 +96,9 @@ public class GunEventBus
         {
             Gun gun = gunItem.getModifiedGun(heldItem);
             Vec3 lookVec = player.getLookAngle();
-            BlockPos lightPos = player.blockPosition()
-                    .offset((int)(lookVec.x * 2), 2, (int)(lookVec.z * 2));
-            GunFireLight.addTemporaryLight(level, lightPos);
+            BlockPos lightPos = player.blockPosition().offset(0, 1,0);
+            //BlockPos lightPos = player.blockPosition().offset((int)(lookVec.x * 2), 2, (int)(lookVec.z * 2));
+            GunFireLightEvent.addTemporaryLight(level, lightPos);
          }
     }
 }

@@ -147,6 +147,7 @@
     "subtitle.cgm.cock": "Cocking Gun",
     "subtitle.cgm.empty": "Empty Click",
     "subtitle.cgm.switch": "Fire Mode Change",
+    "subtitle.cgm.flyby": "Projectile Flying By",
     "cgm.option_list.no_items": "No Items",
     "cgm.options.adsSensitivity": "ADS Sensitivity",
     "cgm.options.adsSensitivity.format": "ADS Sensitivity: %s",

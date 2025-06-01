@@ -12,7 +12,6 @@ import java.util.Map;
 
 /**
  * A class to manage custom projectile factories
- *
  * Author: MrCrayfish
  */
 public class ProjectileManager
@@ -48,7 +47,7 @@ public class ProjectileManager
      * Registers a projectile factory that is decoupled from an item. This allows a specific entity
      * to be spawned when a weapon is fired, regardless of the ammo item loaded.
      *
-     * @param ammo    the ammo item
+     * @param factoryID    the ammo item
      * @param factory a custom projectile implementation
      */
     public void registerOverride(String factoryID, IProjectileFactory factory)
@@ -70,7 +69,7 @@ public class ProjectileManager
     /**
      * Gets the projectile factory override for the given factory ID string.
      *
-     * @param id the string ID of the factory override.
+     * @param factoryID the string ID of the factory override.
      * @return the custom projectile factory override for the id
      */
     public IProjectileFactory getOverride(String factoryID)

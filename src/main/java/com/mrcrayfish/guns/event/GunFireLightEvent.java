@@ -17,7 +17,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.concurrent.ConcurrentHashMap;
 
-public class GunFireLight
+public class GunFireLightEvent
 {
     static final Map<Long, LightData> temporaryLights = new ConcurrentHashMap<>();
     private static final int DEFAULT_LIGHT_DURATION = 1;
@@ -43,32 +43,17 @@ public class GunFireLight
 
     public static void addTemporaryLight(Level level, BlockPos pos)
     {
-        if (level.isClientSide)
-        {
-            return;
-        }
+        if (level.isClientSide) {return;}
 
         try
         {
-            if (Config.CLIENT == null || Config.CLIENT.display == null)
-            {
-                return;
-            }
+            if (Config.CLIENT == null || Config.CLIENT.display == null) {return;}
 
             boolean fireLightsEnabled;
-            try
-            {
-                fireLightsEnabled = Config.CLIENT.display.fireLights.get();
-            }
-            catch (IllegalStateException e)
-            {
-                return;
-            }
+            try {fireLightsEnabled = Config.CLIENT.display.fireLights.get();}
+            catch (IllegalStateException e) {return;}
 
-            if (!fireLightsEnabled)
-            {
-                return;
-            }
+            if (!fireLightsEnabled) {return;}
 
             long posKey = pos.asLong();
             BlockState currentState = level.getBlockState(pos);
@@ -77,10 +62,7 @@ public class GunFireLight
                 level.setBlock(pos, Blocks.AIR.defaultBlockState(), 3);
                 currentState = Blocks.AIR.defaultBlockState();
             }
-            if (!currentState.isAir())
-            {
-                return;
-            }
+            if (!currentState.isAir()) {return;}
             int duration = DEFAULT_LIGHT_DURATION;
             if (temporaryLights.containsKey(posKey))
             {
@@ -92,10 +74,7 @@ public class GunFireLight
                         removeLight(level, pos);
                         temporaryLights.remove(posKey);
                     }
-                    else
-                    {
-                        data.remainingTicks = duration;
-                    }
+                    else {data.remainingTicks = duration;}
                 }
                 return;
             }
@@ -106,7 +85,7 @@ public class GunFireLight
         }
         catch (Exception e)
         {
-            GunMod.LOGGER.error("Error in addTemporaryLight: " + e.getMessage(), e);
+            GunMod.LOGGER.error("Error in addTemporaryLight: {}", e.getMessage(), e);
             removeLight(level, pos);
         }
     }
@@ -224,9 +203,10 @@ public class GunFireLight
                 level.setBlock(pos, airState, 3);
                 level.sendBlockUpdated(pos, currentState, airState, 3);
             }
-        } catch (Exception e)
+        }
+        catch (Exception e)
         {
-            GunMod.LOGGER.error("Error removing light: " + e.getMessage(), e);
+            GunMod.LOGGER.error("Error removing light: {}", e.getMessage(), e);
         }
     }
     @SubscribeEvent

@@ -6,6 +6,7 @@ import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Random;
@@ -18,7 +19,7 @@ public class DamageSourceProjectile extends IndirectEntityDamageSource
     private static final String[] DEATH_TYPES = { "killed", "eliminated", "executed", "annihilated", "decimated" };
     private static final Random RAND = new Random();
 
-    private ItemStack weapon;
+    private final ItemStack weapon;
 
     public DamageSourceProjectile(String damageTypeIn, Entity source, @Nullable Entity indirectEntityIn, ItemStack weapon)
     {
@@ -32,7 +33,7 @@ public class DamageSourceProjectile extends IndirectEntityDamageSource
     }
 
     @Override
-    public Component getLocalizedDeathMessage(LivingEntity entityLivingBaseIn)
+    public @NotNull Component getLocalizedDeathMessage(LivingEntity entityLivingBaseIn)
     {
         Component textComponent = this.getEntity() == null ? this.entity.getDisplayName() : this.getEntity().getDisplayName();
         String deathKey = String.format("death.attack.%s.%s.%s", Reference.MOD_ID, this.msgId, DEATH_TYPES[RAND.nextInt(DEATH_TYPES.length)]);

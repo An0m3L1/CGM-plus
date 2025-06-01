@@ -147,6 +147,7 @@
     "subtitle.cgm.cock": "Взвод оружия",
     "subtitle.cgm.empty": "Пустой щелчок",
     "subtitle.cgm.switch": "Смена режима стрельбы",
+    "subtitle.cgm.flyby": "Летящий мимо снаряд",
     "cgm.option_list.no_items": "Нет предметов",
     "cgm.options.adsSensitivity": "Чувствительность при прицеливании",
     "cgm.options.adsSensitivity.format": "Чувствительность при прицеливании: %s",

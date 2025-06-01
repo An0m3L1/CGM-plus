@@ -62,7 +62,6 @@ Add lighter click sound when using a molotov
 Add fire extinguish mechanic to smokes
 Add recoil and spread reduction while crouched
 Add ammo pouches (check scorched guns)
-Add bullet flyby sound (check scorched guns)
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
@@ -73,7 +72,9 @@ Overhaul item textures with changed recipes (change colors to correspond to new 
 Overhaul block piercing to include wood blocks and more (like leaves right now)
 Overhaul grenade throwing to allow left click light throw
 Overhaul grenade throw sound to be client side only and non-directional
+Overhaul projectile hitting a block sound to reduce the volume if it's a shotgun
 
 Fix hit markers appearing when hitting endermen
 Fix fire grenades setting entities on fire through blocks
 Fix molotov flame particles
+Fix gun fire lights lagging the game if travelling at high speeds

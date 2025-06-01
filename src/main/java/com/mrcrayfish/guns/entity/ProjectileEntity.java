@@ -5,6 +5,7 @@ import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.common.*;
 import com.mrcrayfish.guns.common.Gun.Projectile;
 import com.mrcrayfish.guns.event.GunProjectileHitEvent;
+import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.interfaces.IDamageable;
 import com.mrcrayfish.guns.interfaces.IExplosionDamageable;
@@ -28,6 +29,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.game.ClientboundExplodePacket;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
@@ -78,8 +80,11 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     protected EntityDimensions entitySize;
     protected double modifiedGravity;
     protected int life;
+    protected int soundTime = 0;
     protected boolean deadProjectile = false;
     protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
+    public float rotation;
+    public float prevRotation;
 
     public ProjectileEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {
@@ -156,14 +161,14 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         if(shooter instanceof Player)
         {
             float initialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread(item),minSpread,gunSpread);
-            if(!modifiedGun.getGeneral().isAlwaysSpread() || minSpread > 0)
+            if(!this.general.isAlwaysSpread() || minSpread > 0)
             {
                 gunSpread = initialGunSpread;
             }
 
             if(ModSyncedDataKeys.AIMING.getValue((Player) shooter))
             {
-                float aimingGunSpread = gunSpread * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
+                float aimingGunSpread = gunSpread * (1-(this.general.getSpreadAdsReduction()));
                 float aimPosition = (float) Mth.clamp(ServerAimTracker.getAimingTicks((Player) shooter)/(5/GunCompositeStatHelper.getCompositeAimDownSightSpeed(weapon)),0,1);
                 gunSpread = Mth.lerp(aimPosition,initialGunSpread,aimingGunSpread);
             }
@@ -227,11 +232,36 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.updateHeading();
         this.onProjectileTick();
 
+        this.prevRotation = this.rotation;
+        double speed = this.getDeltaMovement().length();
+        if (speed > 0.1)
+        {
+            this.rotation += speed * 50;
+        }
+
         if(!this.level.isClientSide())
         {
             Vec3 startVec = this.position();
             Vec3 endVec = startVec.add(this.getDeltaMovement());
             HitResult result = rayTraceBlocks(this.level, new ClipContext(startVec, endVec, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_LEAVES);
+
+            //Projectile flyby sound
+
+            AABB range = new AABB(startVec.x-5, startVec.y-5, startVec.z-5, startVec.x+5, startVec.y+5, startVec.z+5);
+            List<Player> players = this.level.getEntitiesOfClass(Player.class, range);
+            float volume = 0.5F + this.level.getRandom().nextFloat() * 0.4F;
+            boolean isShotgun = general.getProjectileAmount() > 1;
+            if (!players.isEmpty() && this.tickCount > 3 && soundTime < this.tickCount - 3)
+            {
+                if(isShotgun) //Divide volume by projectile amount to avoid deafening players irl.
+                {
+                    volume = volume / general.getProjectileAmount();
+                }
+                this.level.playSound(null, startVec.x,startVec.y,startVec.z, ModSounds.ENTITY_FLYBY.get(), SoundSource.NEUTRAL, volume, 0.8F + this.level.getRandom().nextFloat() * 0.4F);
+                this.soundTime = this.tickCount;
+            }
+
+
             if(result.getType() != HitResult.Type.MISS)
             {
                 endVec = result.getLocation();
@@ -355,12 +385,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 if(result == null || isDead)
                     continue;
     			hitEntities.add(result);
-                /*int maxPierceCount = projectile.getMaxPierceCount(); //(projectile.getMaxPierceCount()>0 ? projectile.getMaxPierceCount()+(collateralLevel*4) : 0);
-        		if (this.pierceCount<=maxPierceCount || maxPierceCount<=0)
-        		{
-        			hitEntities.add(result);
-        			this.pierceCount++;
-        		}*/
             }
         }
 		hitEntities.sort(new HitComparator());
@@ -508,26 +532,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 }
             }
 
-            //To implement Fire Starter again, uncomment the code block
-
-            /*
-            int fireStarterLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.FIRE_STARTER.get(), this.weapon);
-            if(fireStarterLevel > 0)
-            {
-                entity.setSecondsOnFire(2);
-            }
-            */
-
             boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
             this.onHitEntity(entity, result.getLocation(), startVec, endVec, entityHitResult.isHeadshot());
 
         	if (!isDead)
         	{
                 int maxPierceCount = (projectile.getMaxPierceCount()-1);
-                /*
-        		int collateralLevel = EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.COLLATERAL.get(), weapon);
-        		int maxPierceCount = (collateralLevel == 0 ? projectile.getMaxPierceCount() : projectile.getCollateralMaxPierce());
-        		*/
         		if(maxPierceCount == 0)
             	{
                 	this.remove(RemovalReason.KILLED);

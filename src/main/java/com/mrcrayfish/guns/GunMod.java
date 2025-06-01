@@ -10,7 +10,7 @@ import com.mrcrayfish.guns.common.ProjectileManager;
 import com.mrcrayfish.guns.crafting.WorkbenchIngredient;
 import com.mrcrayfish.guns.datagen.*;
 import com.mrcrayfish.guns.entity.*;
-import com.mrcrayfish.guns.event.GunFireLight;
+import com.mrcrayfish.guns.event.GunFireLightEvent;
 import com.mrcrayfish.guns.init.*;
 import com.mrcrayfish.guns.network.PacketHandler;
 import net.minecraft.core.NonNullList;
@@ -121,7 +121,7 @@ public class GunMod
             FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.RELOADING);
             FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SHOOTING);
             FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SWITCHTIME);
-            MinecraftForge.EVENT_BUS.register(GunFireLight.class);
+            MinecraftForge.EVENT_BUS.register(GunFireLightEvent.class);
             FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "network_gun_manager"), NetworkGunManager.LoginData::new);
             FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "custom_gun_manager"), CustomGunManager.LoginData::new);
             CraftingHelper.register(new ResourceLocation(Reference.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);

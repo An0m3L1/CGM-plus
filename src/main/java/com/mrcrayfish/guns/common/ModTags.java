@@ -11,6 +11,7 @@ public class ModTags
     public static class Blocks
     {
         public static final TagKey<Block> FRAGILE = tag("fragile");
+        public static final TagKey<Block> WALLBANG = tag("wallbang");
 
         private static TagKey<Block> tag(String name)
         {

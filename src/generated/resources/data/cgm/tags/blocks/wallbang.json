@@ -1,0 +1,15 @@
+{
+  "values":
+  [
+    "#minecraft:logs",
+    "#minecraft:planks",
+    "#minecraft:wooden_doors",
+    "#minecraft:wooden_trapdoors",
+    "#minecraft:wooden_slabs",
+    "#minecraft:wooden_stairs",
+    "#forge:chests/wooden",
+    "#forge:barrels/wooden",
+    "#forge:fence_gates/wooden",
+    "#forge:fences/wooden"
+  ]
+}

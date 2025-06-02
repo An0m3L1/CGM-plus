@@ -62,6 +62,12 @@ Add lighter click sound when using a molotov
 Add fire extinguish mechanic to smokes
 Add recoil and spread reduction while crouched
 Add ammo pouches (check scorched guns)
+Add flyby sounds
+    Done, test with 2 players
+Add wallbang mechanic
+    Projectiles can pierce blocks with a tag 'wallbang', with each penetration the damage is reduced (same logic and values as entity piercing)
+    Certain guns can be excluded from this behaviour with a canWallbang boolean
+    The mechanic altogether can be disabled with a config
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher

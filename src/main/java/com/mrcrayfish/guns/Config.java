@@ -226,6 +226,7 @@ public class Config
         public final ForgeConfigSpec.DoubleValue headShotDamageMultiplier;
         public final ForgeConfigSpec.DoubleValue criticalDamageMultiplier;
         public final ForgeConfigSpec.BooleanValue ignoreLeaves;
+        public final ForgeConfigSpec.BooleanValue enableWallbang;
         public final ForgeConfigSpec.BooleanValue enableKnockback;
         public final ForgeConfigSpec.DoubleValue knockbackStrength;
         public final ForgeConfigSpec.BooleanValue improvedHitboxes;
@@ -240,6 +241,7 @@ public class Config
                 this.headShotDamageMultiplier = builder.comment("The value to multiply the damage by if a headshot occurs.").defineInRange("headShotDamageMultiplier", 2.0, 1.0, Double.MAX_VALUE);
                 this.criticalDamageMultiplier = builder.comment("The value to multiply the damage by if a crit occurs.").defineInRange("criticalDamageMultiplier", 1.5, 1.0, Double.MAX_VALUE);
                 this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision.").define("ignoreLeaves", true);
+                this.enableWallbang = builder.comment("If true, projectiles will pierce blocks with tag 'wallbang' when checking for collision.").define("enableWallbang", true);
                 this.enableKnockback = builder.comment("If true, projectiles will cause knockback when an entity is hit.").define("enableKnockback", true);
                 this.knockbackStrength = builder.comment("Sets the strength of knockback when hit. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value.").defineInRange("knockbackStrength", 0.1, 0.0, 1.0);
                 this.improvedHitboxes = builder.comment("If true, improves the accuracy of weapons by considering the ping of the player. This has no affect on singleplayer. This will add a little overhead if enabled.").define("improvedHitboxes", true);

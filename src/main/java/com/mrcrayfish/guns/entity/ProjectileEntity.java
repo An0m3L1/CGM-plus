@@ -468,6 +468,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             BlockPos pos = blockHitResult.getBlockPos();
             BlockState state = this.level.getBlockState(pos);
             Block block = state.getBlock();
+            boolean wasFragileDestroyed = false;
 
             if(Config.COMMON.gameplay.griefing.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE))
             {
@@ -478,11 +479,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     if(this.random.nextFloat() < chance)
                     {
                         this.level.destroyBlock(pos, Config.COMMON.gameplay.griefing.fragileBlockDrops.get());
+                        wasFragileDestroyed = true;
                     }
                 }
             }
 
-            if(!state.getMaterial().isReplaceable())
+            if(!state.getMaterial().isReplaceable() && !state.is(ModTags.Blocks.FRAGILE) || (state.is(ModTags.Blocks.FRAGILE) && !wasFragileDestroyed))
             {
                 this.remove(RemovalReason.KILLED);
             }

@@ -75,10 +75,13 @@ Overhaul items (models, textures, stats)
     - Minigun
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul block piercing to include wood blocks and more (like leaves right now)
+Overhaul fragile block breaking to not kill the projectile after breaking a block
+    Fix high speeds of projectiles breaking logic
 Overhaul grenade throwing to allow left click light throw
 Overhaul grenade throw sound to be client side only and non-directional
 Overhaul projectile hitting a block sound to reduce the volume if it's a shotgun
+Overhaul datagen to include new guns and values
+Overhaul explosions to destroy fragile blocks regardless of griefing configs
 
 Fix hit markers appearing when hitting endermen
 Fix fire grenades setting entities on fire through blocks

@@ -44,6 +44,7 @@
     "armorBypass": 1.0,
     "protectionBypass": 0.75,
 
+    "breakFragile": true,
     "maxPierceCount": 20,
     "pierceDamagePenalty": 0.05,
     "pierceDamageMaxPenalty": 0.95

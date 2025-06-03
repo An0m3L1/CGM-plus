@@ -223,10 +223,12 @@ public class Config
         public final Griefing griefing;
         public final ForgeConfigSpec.DoubleValue growBoundingBoxAmount;
         public final ForgeConfigSpec.BooleanValue enableHeadShots;
+        public final ForgeConfigSpec.BooleanValue enableImmuneEntities;
         public final ForgeConfigSpec.DoubleValue headShotDamageMultiplier;
         public final ForgeConfigSpec.DoubleValue criticalDamageMultiplier;
+        public final ForgeConfigSpec.BooleanValue enableResistantEntities;
+        public final ForgeConfigSpec.DoubleValue resistantDamageMultiplier;
         public final ForgeConfigSpec.BooleanValue ignoreLeaves;
-        public final ForgeConfigSpec.BooleanValue enableWallbang;
         public final ForgeConfigSpec.BooleanValue enableKnockback;
         public final ForgeConfigSpec.DoubleValue knockbackStrength;
         public final ForgeConfigSpec.BooleanValue improvedHitboxes;
@@ -237,11 +239,13 @@ public class Config
             {
                 this.griefing = new Griefing(builder);
                 this.growBoundingBoxAmount = builder.comment("The extra amount to expand an entity's bounding box when checking for projectile collision.").defineInRange("growBoundingBoxAmount", 0.1, 0.0, 1.0);
-                this.enableHeadShots = builder.comment("Enables the check for headshots.").define("enableHeadShots", true);
+                this.enableImmuneEntities = builder.comment("If true, entities with tag 'hit_immune' can't be hit with projectiles.").define("enableImmuneEntities", true);
+                this.enableHeadShots = builder.comment("If true, headshots deal extra damage.").define("enableHeadShots", true);
                 this.headShotDamageMultiplier = builder.comment("The value to multiply the damage by if a headshot occurs.").defineInRange("headShotDamageMultiplier", 2.0, 1.0, Double.MAX_VALUE);
                 this.criticalDamageMultiplier = builder.comment("The value to multiply the damage by if a crit occurs.").defineInRange("criticalDamageMultiplier", 1.5, 1.0, Double.MAX_VALUE);
+                this.enableResistantEntities = builder.comment("If true, entities with tag 'hit_resistant' take less damage and disallow projectile piercing.").define("enableResistantEntities", true);
+                this.resistantDamageMultiplier = builder.comment("The value to multiply the damage by if projectile hits a resistant entity.").defineInRange("resistantDamageMultiplier", 0.5, 0.0, 1.0);
                 this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision.").define("ignoreLeaves", true);
-                this.enableWallbang = builder.comment("If true, projectiles will pierce blocks with tag 'wallbang' when checking for collision.").define("enableWallbang", true);
                 this.enableKnockback = builder.comment("If true, projectiles will cause knockback when an entity is hit.").define("enableKnockback", true);
                 this.knockbackStrength = builder.comment("Sets the strength of knockback when hit. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value.").defineInRange("knockbackStrength", 0.1, 0.0, 1.0);
                 this.improvedHitboxes = builder.comment("If true, improves the accuracy of weapons by considering the ping of the player. This has no affect on singleplayer. This will add a little overhead if enabled.").define("improvedHitboxes", true);

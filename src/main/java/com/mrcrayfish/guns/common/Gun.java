@@ -1174,7 +1174,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Optional
         private boolean visible;
         @Optional
-        private boolean wallbang;
+        private boolean breakFragile;
         private float damage;
         @Optional
         private float maxRangeDamageMultiplier = 0;
@@ -1224,7 +1224,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             else tag.putString("ProjectileItem", this.item.toString());
             tag.putString("ProjectileOverride", Objects.requireNonNullElse(projectileOverride, "null"));
             tag.putBoolean("Visible", this.visible);
-            tag.putBoolean("Wallbang", this.wallbang);
+            tag.putBoolean("BreakFragile", this.breakFragile);
             tag.putFloat("Damage", this.damage);
             tag.putFloat("MaxRangeDamageMultiplier", this.maxRangeDamageMultiplier);
             tag.putInt("MaxPierceCount", this.maxPierceCount);
@@ -1268,9 +1268,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 this.visible = tag.getBoolean("Visible");
             }
-            if(tag.contains("Wallbang", Tag.TAG_ANY_NUMERIC))
+            if(tag.contains("BreakFragile", Tag.TAG_ANY_NUMERIC))
             {
-                this.wallbang = tag.getBoolean("Wallbang");
+                this.breakFragile = tag.getBoolean("BreakFragile");
             }
             if(tag.contains("Damage", Tag.TAG_ANY_NUMERIC))
             {
@@ -1377,7 +1377,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(projectileItem!=null) object.addProperty("projectileItem", this.projectileItem.toString());
             object.addProperty("projectileOverride", Objects.requireNonNullElse(projectileOverride, "null"));
             if(this.visible) object.addProperty("visible", true);
-            if(this.wallbang) object.addProperty("wallbang", true);
+            if(this.breakFragile) object.addProperty("breakFragile", true);
             object.addProperty("damage", this.damage);
             if(this.maxRangeDamageMultiplier != 0.0F) object.addProperty("maxRangeDamageMultiplier", this.maxRangeDamageMultiplier);
             if(this.maxPierceCount != 0) object.addProperty("maxPierceCount", this.maxPierceCount);
@@ -1406,7 +1406,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             projectile.projectileItem = this.projectileItem;
             projectile.projectileOverride = this.projectileOverride;
             projectile.visible = this.visible;
-            projectile.wallbang = this.wallbang;
+            projectile.breakFragile = this.breakFragile;
             projectile.damage = this.damage;
             projectile.maxRangeDamageMultiplier = this.maxRangeDamageMultiplier;
             projectile.maxPierceCount = this.maxPierceCount;
@@ -1470,9 +1470,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         /**
          * @return If this projectile should pierce blocks
          */
-        public boolean isWallbang()
+        public boolean isBreakFragile()
         {
-            return this.wallbang;
+            return this.breakFragile;
         }
 
         /**
@@ -4628,9 +4628,9 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             return this;
         }
 
-        public Builder setProjectileWallbang(boolean wallbang)
+        public Builder setProjectileBreakFragile(boolean breakFragile)
         {
-            this.gun.projectile.visible = wallbang;
+            this.gun.projectile.visible = breakFragile;
             return this;
         }
 

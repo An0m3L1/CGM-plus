@@ -62,12 +62,6 @@ Add lighter click sound when using a molotov
 Add fire extinguish mechanic to smokes
 Add recoil and spread reduction while crouched
 Add ammo pouches (check scorched guns)
-Add flyby sounds
-    Done, test with 2 players
-Add wallbang mechanic
-    Projectiles can pierce blocks with a tag 'wallbang', with each penetration the damage is reduced (same logic and values as entity piercing)
-    Certain guns can be excluded from this behaviour with a canWallbang boolean
-    The mechanic altogether can be disabled with a config
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
@@ -75,12 +69,16 @@ Overhaul items (models, textures, stats)
     - Minigun
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul block piercing to include wood blocks and more (like leaves right now)
+Overhaul fragile block breaking
+    Projectile damage is reduced by half when breaking a block
+    Projectile continues flying after breaking a block
 Overhaul grenade throwing to allow left click light throw
 Overhaul grenade throw sound to be client side only and non-directional
 Overhaul projectile hitting a block sound to reduce the volume if it's a shotgun
+Overhaul datagen to include new guns, tags, recipes etc.
+Overhaul explosions to destroy fragile blocks regardless of griefing configs
 
-Fix hit markers appearing when hitting endermen
 Fix fire grenades setting entities on fire through blocks
 Fix molotov flame particles
-Fix gun fire lights lagging the game if travelling at high speeds
+Fix gun fire lights lagging the game if travelling at high speeds (or being high above blocks?)
+Fix explosion particle not being lit

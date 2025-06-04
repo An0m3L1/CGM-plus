@@ -3806,6 +3806,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
                     return this.modules.attachments.stock;
                 case UNDER_BARREL:
                     return this.modules.attachments.underBarrel;
+                case TACTICAL:
+                    return this.modules.attachments.tactical;
             }
         }
         return null;

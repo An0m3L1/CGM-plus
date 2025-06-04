@@ -335,7 +335,9 @@ public class Config
         public final ForgeConfigSpec.DoubleValue smokeGrenadeDamage;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
         public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionRadius;
+        public final ForgeConfigSpec.IntValue incendiaryGrenadeFireDuration;
         public final ForgeConfigSpec.DoubleValue molotovExplosionRadius;
+        public final ForgeConfigSpec.IntValue molotovFireDuration;
 
         public Explosives(ForgeConfigSpec.Builder builder)
         {
@@ -354,7 +356,9 @@ public class Config
                 this.smokeGrenadeDamage = builder.comment("Damage per second inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
                 this.incendiaryGrenadeExplosionRadius = builder.comment("Radius of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionRadius", 3.5, 0.0, Double.MAX_VALUE);
-                this.molotovExplosionRadius = builder.comment("Radius of a Molotov explosion.").defineInRange("molotovExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
+                this.incendiaryGrenadeFireDuration = builder.comment("Duration of fire forcefully set on entities by the Incendiary Grenade.").defineInRange("incendiaryGrenadeFireDuration", 15, 0, Integer.MAX_VALUE);
+                this.molotovExplosionRadius = builder.comment("Radius of a Molotov Cocktail explosion.").defineInRange("molotovExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
+                this.molotovFireDuration = builder.comment("Duration of fire forcefully set on entities by the Molotov Cocktail.").defineInRange("molotovFireDuration", 10, 0, Integer.MAX_VALUE);
             }
             builder.pop();
         }

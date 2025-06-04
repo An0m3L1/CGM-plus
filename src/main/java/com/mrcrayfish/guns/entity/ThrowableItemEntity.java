@@ -29,7 +29,7 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
     private ItemStack item = ItemStack.EMPTY;
     private boolean shouldBounce;
     private float gravityVelocity = 0.03F;
-    protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
+    protected float pitch = 0.9F + level.random.nextFloat() * 0.1F;
 
     /* The max life of the entity. If -1, will stay alive forever and will need to be explicitly removed. */
     private int maxLife = 20 * 10;

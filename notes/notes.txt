@@ -1,6 +1,5 @@
 Add content
     Guns: guns.txt
-    Blocks: blocks.txt
     Armor
         - Helmet
         - Vest and elbow pads
@@ -47,21 +46,20 @@ Add more attachment slots to existing guns
 Add and overhaul animations
     - Prone shooting
     - Crouched shooting (lower the weapon to align with eyes)
-    - Third person reload animations
+    - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
     - Weapon pullout animation
 Add ejecting casings when shooting (items or particles?)
-Add durability system
-Add weapon class system
-    - Light: no restrictions
-    - Medium: slowed down while aiming, can't move while crouched and aiming
-    - Heavy: can't move while aiming, can't sprint
+Add durability system (GunEventBus in JEG)
+Add "heavy" property to Gun.General, which disallows sprinting while held
 Add new cgm expander features
 Add grenade bouncing sound
-Add lighter click sound when using a molotov
 Add fire extinguish mechanic to smokes
-Add recoil and spread reduction while crouched
+Add recoil and spread penalty while in-air
+Add recoil and spread reduction while crouched or prone
+Add movement speed reduction while aiming
 Add ammo pouches (check scorched guns)
+Add molotov flame particles while using item
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
@@ -72,13 +70,11 @@ Overhaul item textures with changed recipes (change colors to correspond to new 
 Overhaul fragile block breaking
     Projectile damage is reduced by half when breaking a block
     Projectile continues flying after breaking a block
-Overhaul grenade throwing to allow left click light throw
 Overhaul grenade throw sound to be client side only and non-directional
 Overhaul projectile hitting a block sound to reduce the volume if it's a shotgun
 Overhaul datagen to include new guns, tags, recipes etc.
 Overhaul explosions to destroy fragile blocks regardless of griefing configs
+Overhaul gun lights to be dynamic instead of placing blocks
 
-Fix fire grenades setting entities on fire through blocks
-Fix molotov flame particles
+Fix molotov flame particles not being tied to the tip of the bottle
 Fix gun fire lights lagging the game if travelling at high speeds (or being high above blocks?)
-Fix explosion particle not being lit

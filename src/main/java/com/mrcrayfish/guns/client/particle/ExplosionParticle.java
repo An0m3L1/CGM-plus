@@ -5,6 +5,7 @@ import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -26,9 +27,14 @@ public class ExplosionParticle extends TextureSheetParticle
     }
 
     @Override
-    public ParticleRenderType getRenderType()
+    public @NotNull ParticleRenderType getRenderType()
     {
         return ParticleRenderType.PARTICLE_SHEET_LIT;
+    }
+
+    public int getLightColor(float pPartialTick)
+    {
+        return 255;
     }
 
     public void tick()
@@ -47,7 +53,7 @@ public class ExplosionParticle extends TextureSheetParticle
             this.sprites = sprites;
         }
 
-        public Particle createParticle(SimpleParticleType typeIn, ClientLevel levelIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
+        public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel levelIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
         {
             return new ExplosionParticle(levelIn, x, y, z, xSpeed, ySpeed, zSpeed, this.sprites);
         }

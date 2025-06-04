@@ -5,16 +5,17 @@
   [
     {"tag": "minecraft:coals"},
     {"tag": "minecraft:coals"},
-    {"tag": "minecraft:coals"},
-    {"tag": "minecraft:coals"},
     {"tag": "forge:slimeballs"},
-    {"tag": "forge:slimeballs"},
-    {"item": "create:powdered_obsidian"}
+    {
+      "amount": 250,
+      "fluid": "createdieselgenerators:crude_oil",
+      "nbt": {}
+    }
   ],
   "results":
   [
     {
-      "count": 4,
+      "count": 1,
       "item": "cgm:plastic"
     }
   ]

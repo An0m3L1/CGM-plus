@@ -1,4 +1,4 @@
-{
+  {
   "type": "create:mixing",
   "heatRequirement": "heated",
   "ingredients":
@@ -6,7 +6,11 @@
     {"item": "cgm:hemp"},
     {"item": "cgm:hemp"},
     {"item": "sulfurpotassiummod:sulfur"},
-    {"tag": "forge:slimeballs"}
+    {
+      "amount": 250,
+      "fluid": "createdieselgenerators:crude_oil",
+      "nbt": {}
+    }
   ],
   "results":
   [

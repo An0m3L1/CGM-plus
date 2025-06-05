@@ -16,8 +16,11 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.HitResult;
+import net.minecraft.world.phys.Vec3;
 
 /**
  * Author: MrCrayfish
@@ -25,6 +28,7 @@ import net.minecraft.world.phys.AABB;
 public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
 {
     protected float radius = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue() - 1F;
+    protected int fireDuration = Config.COMMON.explosives.incendiaryGrenadeFireDuration.get();
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
@@ -82,14 +86,27 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
         int minZ = Mth.floor(this.getZ() - diameter);
         int maxZ = Mth.floor(this.getZ() + diameter);
 
+        Vec3 explosionPos = new Vec3(this.getX(), y, this.getZ());
+        double radiusSq = this.radius * this.radius;
+
         // Affect all non-spectating players and entities in range of the blast
         for(LivingEntity entity : this.level.getEntitiesOfClass(LivingEntity.class, new AABB(minX, minY, minZ, maxX, maxY, maxZ)))
         {
             if(entity.ignoreExplosion())
                 continue;
 
-            entity.setSecondsOnFire(10);
-            entity.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
+            Vec3 entityPos = entity.getBoundingBox().getCenter();
+            double distanceSq = explosionPos.distanceToSqr(entityPos);
+
+            if(distanceSq > radiusSq) continue;
+
+            ClipContext context = new ClipContext(explosionPos, entityPos, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, null);
+
+            if(level.clip(context).getType() == HitResult.Type.MISS)
+            {
+                entity.setSecondsOnFire(fireDuration);
+                entity.playSound(SoundEvents.GENERIC_BURN, 0.4F, 2.0F + this.random.nextFloat() * 0.4F);
+            }
         }
     }
 }

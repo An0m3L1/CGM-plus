@@ -3,7 +3,8 @@
   "heatRequirement": "heated",
   "ingredients":
   [
-    {"item": "create:crushed_raw_iron"}
+    {"item": "create:crushed_raw_iron"},
+    {"tag": "minecraft:coals"}
   ],
   "results":
   [

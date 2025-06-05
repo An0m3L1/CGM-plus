@@ -35,6 +35,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
@@ -61,6 +62,9 @@ import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
+
+import static com.mrcrayfish.guns.common.ModTags.Entities.HIT_IMMUNE;
+import static com.mrcrayfish.guns.common.ModTags.Entities.HIT_RESISTANT;
 
 public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnData
 {
@@ -351,8 +355,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         double closestDistance = Double.MAX_VALUE;
         for(Entity entity : entities)
         {
-        	boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
-        	if(!entity.equals(this.shooter))
+            boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
+            boolean isImmune = Config.COMMON.gameplay.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
+            if(!entity.equals(this.shooter) && !isImmune)
             {
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
                 if(result == null || isDead)
@@ -379,7 +384,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         for(Entity entity : entities)
         {
         	boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
-        	if(!entity.equals(this.shooter))
+            boolean isImmune = Config.COMMON.gameplay.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
+            if(!entity.equals(this.shooter) && !isImmune)
             {
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
                 if(result == null || isDead)
@@ -521,7 +527,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
             
             Entity entity = entityHitResult.getEntity();
-            if(entity.getId() == this.shooterId)
+            boolean isImmune = Config.COMMON.gameplay.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
+            if(entity.getId() == this.shooterId || isImmune)
             {
                 return;
             }
@@ -571,6 +578,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         float newDamage = this.getCriticalDamage(this.weapon, this.random, damage);
         boolean critical = damage != newDamage;
         damage = newDamage;
+        boolean isImmune = Config.COMMON.gameplay.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
+        boolean isResistant = Config.COMMON.gameplay.enableResistantEntities.get() && entity.getType().is(HIT_RESISTANT);
+
+        if(isResistant)
+        {
+            damage *= Config.COMMON.gameplay.resistantDamageMultiplier.get();
+            this.remove(RemovalReason.KILLED);
+            this.deadProjectile = true;
+        }
 
         if(headshot)
         {
@@ -613,15 +629,14 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 player.getInventory().hurtArmor(source, 1, Inventory.ALL_ARMOR_SLOTS);
             }
         }
-        // Send a message to the shooter's client for Hit Marker processing.
-        if(this.shooter instanceof Player && (!isDead))
+
+        boolean isEnderman = (entity instanceof EnderMan || entity.getType() == EntityType.ENDERMAN);
+        if (!isImmune && this.shooter instanceof Player && !isDead && !isEnderman)
         {
             int hitType = critical ? S2CMessageProjectileHitEntity.HitType.CRITICAL : headshot ? S2CMessageProjectileHitEntity.HitType.HEADSHOT : S2CMessageProjectileHitEntity.HitType.NORMAL;
             PacketHandler.getPlayChannel().sendToPlayer(() -> (ServerPlayer) this.shooter, new S2CMessageProjectileHitEntity(hitVec.x, hitVec.y, hitVec.z, hitType, entity instanceof Player));
         }
-
-        /* Send hit/blood particles to tracking clients. */
-        if (!isDead)
+        if (!isImmune && !isDead && !isEnderman)
         {
             PacketHandler.getPlayChannel().sendToTracking(() -> entity, new S2CMessageBlood(hitVec.x, hitVec.y, hitVec.z, entity instanceof LivingEntity, headshot));
         }
@@ -882,125 +897,84 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     }
 
     /**
-     * Creates a projectile explosion for the specified entity.
+     * Creates an explosion with customizable parameters. DON'T USE.
      *
      * @param entity The entity to explode
-     * @param radius The size of the explosion caused by this entity
-     * @param forceNone If true, forces the explosion mode to be NONE instead of config value
+     * @param radius The size of the explosion
+     * @param forceNone If true, forces explosion mode to be NONE
+     * @param fire If true, creates a fire explosion
+     * @param noFX If true, doesn't use vanilla SFX and VFX
      */
+    private static void createExplosionInternal(Entity entity, float radius, boolean forceNone, boolean fire, boolean noFX)
+    {
+        Level world = entity.level;
+        if (world.isClientSide()) return;
+
+        // Common parameters
+        DamageSource source = null;
+        float damage = 0F;
+        Explosion.BlockInteraction mode = Explosion.BlockInteraction.NONE;
+
+        if (!fire)
+        {
+            boolean isProjectile = entity instanceof ProjectileEntity;
+            boolean isGrenade = entity instanceof ThrowableGrenadeEntity;
+
+            source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
+            boolean hasGunProjectile = isProjectile && ((ProjectileEntity) entity).getProjectile() != null;
+
+            damage = hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.getDefault().floatValue() : 20F);
+
+            mode = !forceNone && Config.COMMON.explosives.explosionGriefing.get()
+                    ? Explosion.BlockInteraction.BREAK
+                    : Explosion.BlockInteraction.NONE;
+        }
+
+        Explosion explosion = new ProjectileExplosion(world, entity, source, null,
+                entity.getX(), entity.getY(), entity.getZ(), radius, fire, mode, damage);
+
+        if (net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion)) return;
+
+        explosion.explode();
+        explosion.finalizeExplosion(true);
+
+        if (!fire && !noFX) {
+            // Handle block explosion effects
+            explosion.getToBlow().forEach(pos -> {
+                if (world.getBlockState(pos).getBlock() instanceof IExplosionDamageable) {
+                    ((IExplosionDamageable) world.getBlockState(pos).getBlock())
+                            .onProjectileExploded(world, world.getBlockState(pos), pos, entity);
+                }
+            });
+
+            if (mode == Explosion.BlockInteraction.NONE) {
+                explosion.clearToBlow();
+            }
+
+            // Send explosion packet to nearby players
+            for (ServerPlayer player : ((ServerLevel) world).players()) {
+                if (player.distanceToSqr(entity.getX(), entity.getY(), entity.getZ()) < 4096) {
+                    player.connection.send(new ClientboundExplodePacket(
+                            entity.getX(), entity.getY(), entity.getZ(), radius,
+                            explosion.getToBlow(), explosion.getHitPlayers().get(player)));
+                }
+            }
+        }
+    }
+
     public static void createGenericExplosion(Entity entity, float radius, boolean forceNone)
     {
-        Level world = entity.level;
-        if(world.isClientSide())
-            return;
-
-        boolean isProjectile = entity instanceof ProjectileEntity projectile;
-        boolean isGrenade = entity instanceof ThrowableGrenadeEntity grenade;
-        DamageSource source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
-        boolean hasGunProjectile = isProjectile && (((ProjectileEntity) entity).getProjectile() != null);
-        float projectileDamage = (float) (hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 20F) );
-        Explosion.BlockInteraction mode = Config.COMMON.explosives.explosionGriefing.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
-        Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode, projectileDamage);
-
-        if(net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))
-            return;
-
-        // Do explosion logic
-        explosion.explode();
-        explosion.finalizeExplosion(true);
-
-        // Send event to blocks that are exploded (none if mode is none)
-        explosion.getToBlow().forEach(pos ->
-        {
-            if(world.getBlockState(pos).getBlock() instanceof IExplosionDamageable)
-            {
-                ((IExplosionDamageable) world.getBlockState(pos).getBlock()).onProjectileExploded(world, world.getBlockState(pos), pos, entity);
-            }
-        });
-
-        // Clears the affected blocks if mode is none
-        if(mode == Explosion.BlockInteraction.NONE)
-        {
-            explosion.clearToBlow();
-        }
-
-        for(ServerPlayer player : ((ServerLevel) world).players())
-        {
-            if(player.distanceToSqr(entity.getX(), entity.getY(), entity.getZ()) < 4096)
-            {
-                player.connection.send(new ClientboundExplodePacket(entity.getX(), entity.getY(), entity.getZ(), radius, explosion.getToBlow(), explosion.getHitPlayers().get(player)));
-            }
-        }
+        createExplosionInternal(entity, radius, forceNone, false, false);
     }
 
-        /**
-     * Creates a custom explosion without sound and particles.
-     *
-     * @param entity The entity to explode
-     * @param radius The size of the explosion caused by this entity
-     * @param forceNone If true, forces the explosion mode to be NONE instead of config value
-     */
     public static void createCustomExplosion(Entity entity, float radius, boolean forceNone)
     {
-        Level world = entity.level;
-        if(world.isClientSide())
-            return;
-
-        boolean isProjectile = entity instanceof ProjectileEntity projectile;
-        boolean isGrenade = entity instanceof ThrowableGrenadeEntity grenade;
-        DamageSource source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
-        boolean hasGunProjectile = isProjectile && (((ProjectileEntity) entity).getProjectile() != null);
-        float projectileDamage = (float) (hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.explosives.handGrenadeExplosionDamage.get() : 20F) );
-        Explosion.BlockInteraction mode = Config.COMMON.explosives.explosionGriefing.get() && !forceNone ? Explosion.BlockInteraction.BREAK : Explosion.BlockInteraction.NONE;
-        Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, false, mode, projectileDamage);
-
-        if(net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))
-            return;
-
-        // Do explosion logic
-        explosion.explode();
-        explosion.finalizeExplosion(true);
-
-        // Send event to blocks that are exploded (none if mode is none)
-        explosion.getToBlow().forEach(pos ->
-        {
-            if(world.getBlockState(pos).getBlock() instanceof IExplosionDamageable)
-            {
-                ((IExplosionDamageable) world.getBlockState(pos).getBlock()).onProjectileExploded(world, world.getBlockState(pos), pos, entity);
-            }
-        });
-
-        // Clears the affected blocks if mode is none
-        if(mode == Explosion.BlockInteraction.NONE)
-        {
-            explosion.clearToBlow();
-        }
+        createExplosionInternal(entity, radius, forceNone, false, true);
     }
 
-    /**
-     * Creates a fire explosion dealing no direct damage and without sound and particles.
-     *
-     * @param entity The entity to explode
-     * @param radius The size of the explosion caused by this entity
-     * @param forceNone If true, forces the explosion mode to be NONE instead of config value
-     */
     public static void createFireExplosion(Entity entity, float radius, boolean forceNone)
     {
-        Level world = entity.level;
-        if(world.isClientSide())
-            return;
-
-        DamageSource source = entity instanceof ProjectileEntity projectile ? DamageSource.explosion(projectile.getShooter()) : null;
-        float projectileDamage = 0F;
-        Explosion.BlockInteraction mode = Explosion.BlockInteraction.NONE;
-        Explosion explosion = new ProjectileExplosion(world, entity, source, null, entity.getX(), entity.getY(), entity.getZ(), radius, true, mode, projectileDamage);
-
-        if(net.minecraftforge.event.ForgeEventFactory.onExplosionStart(world, explosion))
-            return;
-
-        // Do explosion logic
-        explosion.explode();
-        explosion.finalizeExplosion(true);
+        createExplosionInternal(entity, radius, true, true, true);
     }
 
     /**

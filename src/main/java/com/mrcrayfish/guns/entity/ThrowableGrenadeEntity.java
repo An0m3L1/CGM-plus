@@ -75,7 +75,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     {
         GrenadeEntity.createCustomExplosion(this, radius, griefing);
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.ENTITY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, pitch, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

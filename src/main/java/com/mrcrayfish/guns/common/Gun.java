@@ -4522,6 +4522,30 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             return this;
         }
 
+        public Builder setReloadStartDelay(int reloadStartDelay)
+        {
+            this.gun.general.reloadStartDelay = reloadStartDelay;
+            return this;
+        }
+
+        public Builder setReloadInterruptDelay(int reloadInterruptDelay)
+        {
+            this.gun.general.reloadInterruptDelay = reloadInterruptDelay;
+            return this;
+        }
+
+        public Builder setReloadEndDelay(int reloadEndDelay)
+        {
+            this.gun.general.reloadEndDelay = reloadEndDelay;
+            return this;
+        }
+
+        public Builder setReloadAllowedCooldown(float reloadAllowedCooldown)
+        {
+            this.gun.general.reloadAllowedCooldown = reloadAllowedCooldown;
+            return this;
+        }
+
         public Builder setEnergyCapacity(int energyCapacity)
         {
             this.gun.general.energyCapacity = energyCapacity;
@@ -4570,6 +4594,12 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             return this;
         }
 
+        public Builder setUseShotgunSpread(boolean useShotgunSpread)
+        {
+            this.gun.general.useShotgunSpread = useShotgunSpread;
+            return this;
+        }
+
         public Builder setSpread(float spread)
         {
             this.gun.general.spread = spread;
@@ -4594,6 +4624,30 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             return this;
         }
 
+        public Builder setLightMagAmmo(int lightMagAmmo)
+        {
+            this.gun.general.lightMagAmmo = lightMagAmmo;
+            return this;
+        }
+
+        public Builder setLightMagReloadTimeModifier(double lightMagReloadTimeModifier)
+        {
+            this.gun.general.lightMagReloadTimeModifier = lightMagReloadTimeModifier;
+            return this;
+        }
+
+        public Builder setExtendedMagAmmo(int extendedMagAmmo)
+        {
+            this.gun.general.extendedMagAmmo = extendedMagAmmo;
+            return this;
+        }
+
+        public Builder setExtendedMagReloadTimeModifier(double extendedMagReloadTimeModifier)
+        {
+            this.gun.general.extendedMagReloadTimeModifier = extendedMagReloadTimeModifier;
+            return this;
+        }
+
         public Builder setDoRampUp(boolean doRampUp)
         {
             this.gun.general.doRampUp = doRampUp;
@@ -4603,6 +4657,36 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public Builder setRampUpShotsNeeded(int rampUpShotsNeeded)
         {
             this.gun.general.rampUpShotsNeeded = rampUpShotsNeeded;
+            return this;
+        }
+
+        public Builder setUseFireModes(boolean useFireModes)
+        {
+            this.gun.fireModes.useFireModes = useFireModes;
+            return this;
+        }
+
+        public Builder setHasSemiMode(boolean hasSemiMode)
+        {
+            this.gun.fireModes.hasSemiMode = hasSemiMode;
+            return this;
+        }
+
+        public Builder setHasAutoMode(boolean hasAutoMode)
+        {
+            this.gun.fireModes.hasAutoMode = hasAutoMode;
+            return this;
+        }
+
+        public Builder setHasBurstMode(boolean hasBurstMode)
+        {
+            this.gun.fireModes.hasBurstMode = hasBurstMode;
+            return this;
+        }
+
+        public Builder setUseAutoBurst(boolean useAutoBurst)
+        {
+            this.gun.fireModes.useAutoBurst = useAutoBurst;
             return this;
         }
 
@@ -4630,9 +4714,27 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             return this;
         }
 
-        public Builder setProjectileBreakFragile(boolean breakFragile)
+        public Builder setBreakFragile(boolean breakFragile)
         {
             this.gun.projectile.visible = breakFragile;
+            return this;
+        }
+
+        public Builder setArmorBypass(float armorBypass)
+        {
+            this.gun.projectile.armorBypass = armorBypass;
+            return this;
+        }
+
+        public Builder setProtectionBypass(float protectionBypass)
+        {
+            this.gun.projectile.protectionBypass = protectionBypass;
+            return this;
+        }
+
+        public Builder setDamageReduceOverLife(boolean damageReduceOverLife)
+        {
+            this.gun.projectile.damageReduceOverLife = damageReduceOverLife;
             return this;
         }
 
@@ -4696,6 +4798,18 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             return this;
         }
 
+        public Builder setPierceDamagePenalty(float pierceDamagePenalty)
+        {
+            this.gun.projectile.pierceDamagePenalty = pierceDamagePenalty;
+            return this;
+        }
+
+        public Builder setPierceDamageMaxPenalty(float pierceDamageMaxPenalty)
+        {
+            this.gun.projectile.pierceDamageMaxPenalty = pierceDamageMaxPenalty;
+            return this;
+        }
+
         public Builder setHeadshotExtraDamage(float headshotExtraDamage)
         {
             this.gun.projectile.headshotExtraDamage = headshotExtraDamage;
@@ -4735,6 +4849,72 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public Builder setReloadSound(SoundEvent sound)
         {
             this.gun.sounds.reload = ForgeRegistries.SOUND_EVENTS.getKey(sound);
+            return this;
+        }
+
+        public Builder setReloadFrames(int reloadFrames)
+        {
+            this.gun.sounds.reloadFrames = reloadFrames;
+            return this;
+        }
+
+        public Builder setFireSwitchSound(SoundEvent sound)
+        {
+            this.gun.sounds.fireSwitch = ForgeRegistries.SOUND_EVENTS.getKey(sound);
+            return this;
+        }
+
+        public Builder setReloadClipOut(SoundEvent sound)
+        {
+            this.gun.sounds.reloadClipOut = ForgeRegistries.SOUND_EVENTS.getKey(sound);
+            return this;
+        }
+
+        public Builder setReloadClipOutThreshold(float reloadClipOutThreshold)
+        {
+            this.gun.sounds.reloadClipOutThreshold = reloadClipOutThreshold;
+            return this;
+        }
+
+        public Builder setReloadClipIn(SoundEvent sound)
+        {
+            this.gun.sounds.reloadClipIn = ForgeRegistries.SOUND_EVENTS.getKey(sound);
+            return this;
+        }
+
+        public Builder setReloadClipInThreshold(float reloadClipInThreshold)
+        {
+            this.gun.sounds.reloadClipInThreshold = reloadClipInThreshold;
+            return this;
+        }
+
+        public Builder setReloadMid(SoundEvent sound)
+        {
+            this.gun.sounds.reloadMid = ForgeRegistries.SOUND_EVENTS.getKey(sound);
+            return this;
+        }
+
+        public Builder setReloadMidThreshold(float reloadMidThreshold)
+        {
+            this.gun.sounds.reloadMidThreshold = reloadMidThreshold;
+            return this;
+        }
+
+        public Builder setReloadLate(SoundEvent sound)
+        {
+            this.gun.sounds.reloadLate = ForgeRegistries.SOUND_EVENTS.getKey(sound);
+            return this;
+        }
+
+        public Builder setReloadLateThreshold(float reloadLateThreshold)
+        {
+            this.gun.sounds.reloadLateThreshold = reloadLateThreshold;
+            return this;
+        }
+
+        public Builder setCycleDelay(int cycleDelay)
+        {
+            this.gun.sounds.cycleDelay = cycleDelay;
             return this;
         }
 
@@ -4831,6 +5011,28 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             positioned.yOffset = yOffset;
             positioned.zOffset = zOffset;
             this.gun.modules.attachments.underBarrel = positioned;
+            return this;
+        }
+
+        public Builder setMagazine(float scale, double xOffset, double yOffset, double zOffset)
+        {
+            ScaledPositioned positioned = new ScaledPositioned();
+            positioned.scale = scale;
+            positioned.xOffset = xOffset;
+            positioned.yOffset = yOffset;
+            positioned.zOffset = zOffset;
+            this.gun.modules.attachments.magazine = positioned;
+            return this;
+        }
+
+        public Builder setTactical(float scale, double xOffset, double yOffset, double zOffset)
+        {
+            ScaledPositioned positioned = new ScaledPositioned();
+            positioned.scale = scale;
+            positioned.xOffset = xOffset;
+            positioned.yOffset = yOffset;
+            positioned.zOffset = zOffset;
+            this.gun.modules.attachments.tactical = positioned;
             return this;
         }
     }

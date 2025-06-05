@@ -1,7 +1,6 @@
 {
   "display": {"flash": {}},
-  "general":
-  {
+  "general": {
     "gripType": "cgm:two_handed",
     "auto": false,
     "rate": 5,
@@ -11,14 +10,14 @@
     "spreadAdsReduction": 0.0,
 
     "recoilAngle": 8.0,
-    "recoilKick": 1.25,
-    "recoilDurationOffset": 0.0,
+    "recoilKick": 1.5,
+    "recoilDurationOffset": 0.5,
     "spread": 3.0,
     "alwaysSpread": true,
     "useShotgunSpread": true,
 
     "maxAmmo": 7,
-    "projectileAmount": 9,
+    "projectileAmount": 7,
 
     "reloadAmount": 1,
     "reloadRate": 11,
@@ -27,18 +26,15 @@
     "reloadEndDelay": 8,
     "reloadAllowedCooldown": 0.0
   },
-  "modules":
-  {
-    "attachments":
-    {
+  "modules": {
+    "attachments": {
       "scope": {},
       "underBarrel": {},
       "stock": {}
     },
     "zoom": {"fovModifier": 0.75}
   },
-  "projectile":
-  {
+  "projectile": {
     "item": "cgm:buckshot_shell",
     "damage": 14.0,
     "damageReduceOverLife": true,
@@ -57,8 +53,7 @@
     "pierceDamagePenalty": 0.25,
     "pierceDamageMaxPenalty": 0.75
   },
-  "sounds":
-  {
+  "sounds": {
     "fire": "cgm:item.semi_auto_shotgun.fire",
     "reload": "cgm:item.semi_auto_shotgun.reload"
   }

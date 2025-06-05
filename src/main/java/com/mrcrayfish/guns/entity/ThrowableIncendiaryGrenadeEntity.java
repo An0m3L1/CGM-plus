@@ -68,7 +68,7 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        Minecraft.getInstance().getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.ENTITY_INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, pitch, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

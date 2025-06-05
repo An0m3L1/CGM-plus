@@ -1,11 +1,5 @@
 {
-  "display": {
-    "flash": {
-      "size": 0.75,
-      "yOffset": 3.5,
-      "zOffset": -3.8
-    }
-  },
+  "display": {"flash": {}},
   "general": {
     "gripType": "cgm:two_handed",
     "auto": true,

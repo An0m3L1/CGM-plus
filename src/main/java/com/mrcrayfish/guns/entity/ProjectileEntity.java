@@ -250,21 +250,23 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             HitResult result = rayTraceBlocks(this.level, new ClipContext(startVec, endVec, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_LEAVES);
 
             //Projectile flyby sound
-
-            AABB range = new AABB(startVec.x-5, startVec.y-5, startVec.z-5, startVec.x+5, startVec.y+5, startVec.z+5);
-            List<Player> players = this.level.getEntitiesOfClass(Player.class, range);
-            float volume = 0.5F + this.level.getRandom().nextFloat() * 0.4F;
-            boolean isShotgun = general.getProjectileAmount() > 1;
-            if (!players.isEmpty() && this.tickCount > 3 && soundTime < this.tickCount - 3)
+            boolean isBullet = !(this instanceof RocketEntity || this instanceof PipeGrenadeEntity);
+            if(isBullet)
             {
-                if(isShotgun) //Divide volume by projectile amount to avoid deafening players irl.
+                AABB range = new AABB(startVec.x-5, startVec.y-5, startVec.z-5, startVec.x+5, startVec.y+5, startVec.z+5);
+                List<Player> players = this.level.getEntitiesOfClass(Player.class, range);
+                float volume = 0.5F + this.level.getRandom().nextFloat() * 0.4F;
+                boolean isShotgun = general.getProjectileAmount() > 1;
+                if (!players.isEmpty() && this.tickCount > 3 && soundTime < this.tickCount - 3)
                 {
-                    volume = volume / general.getProjectileAmount();
+                    if(isShotgun) //Divide volume by projectile amount to avoid deafening players irl.
+                    {
+                        volume = volume / general.getProjectileAmount();
+                    }
+                    this.level.playSound(null, startVec.x,startVec.y,startVec.z, ModSounds.FLYBY.get(), SoundSource.NEUTRAL, volume, 0.8F + this.level.getRandom().nextFloat() * 0.4F);
+                    this.soundTime = this.tickCount;
                 }
-                this.level.playSound(null, startVec.x,startVec.y,startVec.z, ModSounds.ENTITY_FLYBY.get(), SoundSource.NEUTRAL, volume, 0.8F + this.level.getRandom().nextFloat() * 0.4F);
-                this.soundTime = this.tickCount;
             }
-
 
             if(result.getType() != HitResult.Type.MISS)
             {

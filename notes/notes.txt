@@ -61,18 +61,20 @@ Add movement speed reduction while aiming
 Add ammo pouches (check scorched guns)
 Add molotov flame particles while using item
 
-Overhaul items (models, textures, stats)
+Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-    - Sniper Rifle
+    - Sniper Rifle <--
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul fragile block breaking
     Projectile damage is reduced by half when breaking a block
     Projectile continues flying after breaking a block
 Overhaul grenade throw sound to be client side only and non-directional
 Overhaul projectile hitting a block sound to reduce the volume if it's a shotgun
-Overhaul datagen to include new guns, tags, recipes etc.
+Overhaul datagen
+    - Loot tables
+    - Recipes
 Overhaul explosions to destroy fragile blocks regardless of griefing configs
 Overhaul gun lights to be dynamic instead of placing blocks
 

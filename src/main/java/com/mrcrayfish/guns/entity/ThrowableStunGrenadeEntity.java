@@ -70,7 +70,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        Minecraft.getInstance().getSoundManager().play(new StunGrenadeExplosionSound(ModSounds.ENTITY_STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 2, 1, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new StunGrenadeExplosionSound(ModSounds.STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, 1, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

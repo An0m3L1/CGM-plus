@@ -53,13 +53,13 @@ public class GrenadeItem extends AmmoItem
     }
 
     @Override
-    public UseAnim getUseAnimation(ItemStack stack)
+    public @NotNull UseAnim getUseAnimation(@NotNull ItemStack stack)
     {
         return UseAnim.SPEAR;
     }
 
     @Override
-    public int getUseDuration(ItemStack stack)
+    public int getUseDuration(@NotNull ItemStack stack)
     {
         return this.maxCookTime;
     }
@@ -71,11 +71,11 @@ public class GrenadeItem extends AmmoItem
 
         int duration = this.getUseDuration(stack) - count;
         if(duration == 9)
-            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.ITEM_GRENADE_PIN.get(), SoundSource.PLAYERS, 1.0F, 1.0F, false);
+            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.GRENADE_PIN.get(), SoundSource.PLAYERS, 1.0F, 1.0F, false);
     }
 
     @Override
-    public InteractionResultHolder<ItemStack> use(Level worldIn, Player playerIn, InteractionHand handIn)
+    public @NotNull InteractionResultHolder<ItemStack> use(@NotNull Level worldIn, Player playerIn, @NotNull InteractionHand handIn)
     {
         ItemStack stack = playerIn.getItemInHand(handIn);
         playerIn.startUsingItem(handIn);
@@ -83,7 +83,7 @@ public class GrenadeItem extends AmmoItem
     }
 
     @Override
-    public ItemStack finishUsingItem(ItemStack stack, Level worldIn, LivingEntity entityLiving)
+    public @NotNull ItemStack finishUsingItem(@NotNull ItemStack stack, @NotNull Level worldIn, @NotNull LivingEntity entityLiving)
     {
         if(this.canCook() && !worldIn.isClientSide())
         {
@@ -100,7 +100,7 @@ public class GrenadeItem extends AmmoItem
     }
 
     @Override
-    public void releaseUsing(ItemStack stack, Level worldIn, LivingEntity entityLiving, int timeLeft)
+    public void releaseUsing(@NotNull ItemStack stack, Level worldIn, @NotNull LivingEntity entityLiving, int timeLeft)
     {
         if(!worldIn.isClientSide())
         {

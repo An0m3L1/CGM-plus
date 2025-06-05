@@ -1,7 +1,6 @@
 {
   "display": {"flash": {}},
-  "general":
-  {
+  "general": {
     "gripType": "cgm:two_handed",
     "auto": false,
     "rate": 29,
@@ -19,20 +18,19 @@
     "maxAmmo": 5,
     "useMagReload": true,
     "magReloadTime": 60,
-    "reloadRate": 60,
 
     "reloadStartDelay": 1,
     "reloadInterruptDelay": 6,
     "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },
-  "modules":
-  {
-    "attachments": {"scope": {}},
+  "modules": {
+    "attachments": {
+      "scope": {}
+    },
     "zoom": {"fovModifier": 0.75}
   },
-  "projectile":
-  {
+  "projectile": {
     "item": "cgm:heavy_bullet",
     "damage": 20.0,
     "headshotMultiplierOverride": 2.5,
@@ -49,8 +47,7 @@
     "pierceDamagePenalty": 0.05,
     "pierceDamageMaxPenalty": 0.95
   },
-  "sounds":
-  {
+  "sounds": {
     "fire": "cgm:item.heavy_sniper_rifle.fire",
 
     "reloadFrames": 62,

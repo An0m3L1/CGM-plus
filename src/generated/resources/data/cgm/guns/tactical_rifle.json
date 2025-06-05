@@ -1,7 +1,6 @@
 {
   "display": {"flash": {}},
-  "general":
-  {
+  "general": {
     "gripType": "cgm:two_handed",
     "auto": true,
     "rate": 2,
@@ -30,8 +29,7 @@
     "reloadEndDelay": 6,
     "reloadAllowedCooldown": 0.0
   },
-  "fireModes":
-  {
+  "fireModes": {
     "useFireModes": true,
     "hasSemiMode": true,
     "hasAutoMode": true,
@@ -39,10 +37,8 @@
     "useAutoBurst": true,
     "burstCount": 3
   },
-  "modules":
-  {
-    "attachments":
-    {
+  "modules": {
+    "attachments": {
       "barrel": {"scale": 0.5},
       "scope": {},
       "stock": {},
@@ -52,8 +48,7 @@
     },
     "zoom": {"fovModifier": 0.75}
   },
-  "projectile":
-  {
+  "projectile": {
     "item": "cgm:medium_bullet",
     "damage": 6.0,
     "headshotMultiplierOverride": 2.0,
@@ -70,8 +65,7 @@
     "pierceDamagePenalty": 0.25,
     "pierceDamageMaxPenalty": 0.75
   },
-  "sounds":
-  {
+  "sounds": {
     "fire": "cgm:item.assault_rifle.fire",
     "silencedFire": "cgm:item.assault_rifle.silenced_fire",
     "fireSwitch": "cgm:item.fire_switch",

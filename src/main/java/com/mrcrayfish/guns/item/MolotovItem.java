@@ -54,7 +54,7 @@ public class MolotovItem extends GrenadeItem
     {
         int duration = this.getUseDuration(stack) - count;
         if(duration == 9)
-            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.ITEM_GRENADE_LIGHT.get(), SoundSource.PLAYERS, 2.5F, 1.0F, false);
+            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.GRENADE_LIGHT.get(), SoundSource.PLAYERS, 2.5F, 1.0F, false);
     }
 
     @Override

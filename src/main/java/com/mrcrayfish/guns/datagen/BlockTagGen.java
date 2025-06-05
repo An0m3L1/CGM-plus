@@ -20,8 +20,20 @@ public class BlockTagGen extends BlockTagsProvider
     protected void addTags()
     {
         this.tag(ModTags.Blocks.FRAGILE)
+                //Wooden stuff
+                .addTag(BlockTags.PLANKS)
+                .addTag(BlockTags.WOODEN_DOORS)
+                .addTag(BlockTags.WOODEN_TRAPDOORS)
+                .addTag(BlockTags.WOODEN_SLABS)
+                .addTag(BlockTags.WOODEN_STAIRS)
+                .addTag(BlockTags.WOODEN_BUTTONS)
+                .addTag(BlockTags.WOODEN_PRESSURE_PLATES)
+                .addTag(Tags.Blocks.FENCES_WOODEN)
+                .addTag(Tags.Blocks.FENCE_GATES_WOODEN)
+                //Glass stuff
                 .addTag(Tags.Blocks.GLASS_PANES)
                 .addTag(Tags.Blocks.GLASS)
+                //Other
                 .addTag(BlockTags.CANDLES)
                 .add(Blocks.LILY_PAD)
                 .add(Blocks.COCOA)

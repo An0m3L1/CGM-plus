@@ -153,6 +153,7 @@ public class GunMod
         generator.addProvider(event.includeServer(), new LootTableGen(generator));
         generator.addProvider(event.includeServer(), blockTagGen);
         generator.addProvider(event.includeServer(), new ItemTagGen(generator, blockTagGen, existingFileHelper));
+        generator.addProvider(event.includeServer(), new EntityTagGen(generator, existingFileHelper));
         generator.addProvider(event.includeServer(), new LanguageGen(generator));
         generator.addProvider(event.includeServer(), new GunGen(generator));
     }

@@ -1,7 +1,6 @@
 {
   "display": {"flash": {}},
-  "general":
-  {
+  "general": {
     "gripType": "cgm:pistol_custom",
     "auto": false,
     "rate": 3 ,
@@ -30,17 +29,14 @@
     "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },
-  "modules":
-  {
-    "attachments":
-    {
+  "modules": {
+    "attachments": {
       "barrel": {},
       "magazine": {}
     },
     "zoom": {"fovModifier": 0.75}
   },
-  "projectile":
-  {
+  "projectile": {
     "item": "cgm:light_bullet",
     "damage": 5.0,
     "damageReduceOverLife": true,
@@ -59,8 +55,7 @@
     "pierceDamagePenalty": 0.25,
     "pierceDamageMaxPenalty": 0.75
   },
-  "sounds":
-  {
+  "sounds": {
     "fire": "cgm:item.tactical_pistol.fire",
     "silencedFire": "cgm:item.tactical_pistol.silenced_fire",
 

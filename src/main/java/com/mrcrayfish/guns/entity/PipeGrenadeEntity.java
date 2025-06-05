@@ -52,7 +52,7 @@ public class PipeGrenadeEntity extends ProjectileEntity
     protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
         createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.ENTITY_PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, pitch, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;
@@ -64,7 +64,7 @@ public class PipeGrenadeEntity extends ProjectileEntity
     protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
     {
         createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.ENTITY_PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, pitch, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;
@@ -76,7 +76,7 @@ public class PipeGrenadeEntity extends ProjectileEntity
     public void onExpired()
     {
         createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.ENTITY_PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 2, pitch, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;

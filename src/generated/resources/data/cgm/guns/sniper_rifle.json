@@ -1,7 +1,6 @@
 {
   "display": {"flash": {}},
-  "general":
-  {
+  "general": {
     "gripType": "cgm:two_handed",
     "auto": false,
     "rate": 25,
@@ -23,30 +22,13 @@
   },
   "modules": {
     "attachments": {
-      "barrel": {
-        "scale": 0.44999998807907104,
-        "yOffset": 3.8365,
-        "zOffset": -10.2
-      },
-      "scope": {
-        "yOffset": 4.3,
-        "zOffset": 3.3
-      },
-      "stock": {
-        "yOffset": 3.1294,
-        "zOffset": 8.3
-      },
-      "underBarrel": {
-        "yOffset": 2.63,
-        "zOffset": -0.5
-      },
+      "barrel": {"scale": 0.5},
+      "scope": {},
+      "stock": {},
+      "underBarrel": {},
       "magazine": {}
     },
-    "zoom": {
-      "fovModifier": 0.6,
-      "yOffset": 4.6223,
-      "zOffset": 6.0
-    }
+    "zoom": {"fovModifier": 0.6}
   },
   "projectile": {
     "damage": 16.0,
@@ -68,9 +50,17 @@
     "item": "cgm:heavy_bullet"
   },
   "sounds": {
-    "cock": "cgm:item.sniper_rifle.cock",
     "fire": "cgm:item.sniper_rifle.fire",
-    "reload": "cgm:item.sniper_rifle.reload",
-    "silencedFire": "cgm:item.sniper_rifle.silenced_fire"
+    "silencedFire": "cgm:item.sniper_rifle.silenced_fire",
+
+    "reloadFrames": 62,
+    "reloadClipOut": "cgm:item.sniper_rifle.mag_out",
+    "reloadClipOutThreshold": 11,
+    "reloadClipIn": "cgm:item.sniper_rifle.mag_in",
+    "reloadClipInThreshold": 30,
+    "reloadLate": "cgm:item.sniper_rifle.cock",
+    "reloadLateThreshold": 42,
+    "cock": "cgm:item.sniper_rifle.cock",
+    "cycleDelay": 11
   }
 }

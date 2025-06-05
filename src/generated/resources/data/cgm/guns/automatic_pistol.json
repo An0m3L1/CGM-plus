@@ -1,7 +1,6 @@
 {
   "display": {"flash": {}},
-  "general":
-  {
+  "general": {
     "gripType": "cgm:pistol_custom",
     "auto": true,
     "rate": 1,
@@ -30,25 +29,20 @@
     "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },
-  "fireModes":
-  {
+  "fireModes": {
     "useFireModes": true,
     "hasSemiMode": true,
     "hasAutoMode": true,
     "hasBurstMode": false
   },
-  "modules":
-  {
-    "attachments":
-    {
+  "modules": {
+    "attachments": {
       "scope": {},
       "magazine": {}
     },
-    "zoom":
-    {"fovModifier": 0.75}
+    "zoom": {"fovModifier": 0.75}
   },
-  "projectile":
-  {
+  "projectile": {
     "item": "cgm:light_bullet",
     "damage": 4.0,
     "damageReduceOverLife": true,
@@ -67,8 +61,7 @@
     "pierceDamagePenalty": 0.5,
     "pierceDamageMaxPenalty": 0.5
   },
-  "sounds":
-  {
+  "sounds": {
     "fire": "cgm:item.automatic_pistol.fire",
     "fireSwitch": "cgm:item.fire_switch",
 

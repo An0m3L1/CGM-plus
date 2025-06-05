@@ -1,11 +1,5 @@
 {
-  "display": {
-    "flash": {
-      "size": 2.0,
-      "yOffset": 4.3,
-      "zOffset": -8.01
-    }
-  },
+  "display": {"flash": {"size": 2.0}},
   "general": {
     "gripType": "cgm:rocket_launcher",
     "auto": true,

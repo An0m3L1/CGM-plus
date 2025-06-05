@@ -14,7 +14,7 @@ public class StunRingingSound extends AbstractTickableSoundInstance
 {
     public StunRingingSound()
     {
-        super(ModSounds.ENTITY_STUN_GRENADE_RING.get(), SoundSource.MASTER, SoundInstance.createUnseededRandom());
+        super(ModSounds.STUN_GRENADE_RING.get(), SoundSource.MASTER, SoundInstance.createUnseededRandom());
         this.looping = true;
         this.attenuation = Attenuation.NONE;
         this.tick();

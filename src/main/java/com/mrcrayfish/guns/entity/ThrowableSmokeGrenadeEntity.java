@@ -3,16 +3,16 @@ package com.mrcrayfish.guns.entity;
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.client.audio.SmokeGrenadeExplosionSound;
-import com.mrcrayfish.guns.init.*;
+import com.mrcrayfish.guns.init.ModEntities;
+import com.mrcrayfish.guns.init.ModItems;
+import com.mrcrayfish.guns.init.ModParticleTypes;
+import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageSmokeGrenade;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundSource;
-import net.minecraft.world.effect.MobEffectInstance;
-import net.minecraft.world.effect.MobEffects;
-import net.minecraft.world.entity.AreaEffectCloud;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -68,36 +68,20 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
         Minecraft.getInstance().getSoundManager().play(new SmokeGrenadeExplosionSound(ModSounds.SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(!this.level.isClientSide)
         {
-            //Low level cloud
-            AreaEffectCloud cloudLow = new AreaEffectCloud(this.level, this.getX(), this.getY()-0.5, this.getZ());
-            cloudLow.setParticle(particle);
-            cloudLow.setRadius((float) radius);
-            cloudLow.setDuration((int) duration);
-            cloudLow.addEffect(new MobEffectInstance(ModEffects.SMOKED.get(), 60, 0, false, false, true));
-            cloudLow.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0, false, false, true));
+            SmokeCloud cloudLow = new SmokeCloud(this.level, this.getX(), this.getY()-0.5, this.getZ(), particle, (float) radius, (int) duration);
             this.level.addFreshEntity(cloudLow);
 
-            //Mid level cloud
-            AreaEffectCloud cloudMid = new AreaEffectCloud(this.level, this.getX(), this.getY()+0.5, this.getZ());
-            cloudMid.setParticle(particle);
-            cloudMid.setRadius((float) radius);
-            cloudMid.setDuration((int) duration);
-            cloudMid.addEffect(new MobEffectInstance(ModEffects.SMOKED.get(), 60, 0, false, false, true));
-            cloudMid.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0, false, false, true));
-            this.level.addFreshEntity(cloudMid);
+            SmokeCloud cloudGround = new SmokeCloud(this.level, this.getX(), this.getY(), this.getZ(), particle, (float) radius, (int) duration);
+            this.level.addFreshEntity(cloudGround);
 
-            //High level cloud
-            AreaEffectCloud cloudHigh = new AreaEffectCloud(this.level, this.getX(), this.getY()+1.5, this.getZ());
-            cloudHigh.setParticle(particle);
-            cloudHigh.setRadius((float) radius);
-            cloudHigh.setDuration((int) duration);
-            cloudHigh.addEffect(new MobEffectInstance(ModEffects.SMOKED.get(), 60, 0, false, false, true));
-            cloudHigh.addEffect(new MobEffectInstance(MobEffects.BLINDNESS, 60, 0, false, false, true));
+            SmokeCloud cloudHigh = new SmokeCloud(this.level, this.getX(), this.getY()+0.5, this.getZ(), particle, (float) radius, (int) duration);
             this.level.addFreshEntity(cloudHigh);
-        }
-        else
-        {
-            return;
+
+            SmokeCloud cloudHigher = new SmokeCloud(this.level, this.getX(), this.getY()+1.0, this.getZ(), particle, (float) radius, (int) duration);
+            this.level.addFreshEntity(cloudHigher);
+
+            SmokeCloud cloudHighest = new SmokeCloud(this.level, this.getX(), this.getY()+1.5, this.getZ(), particle, (float) radius, (int) duration);
+            this.level.addFreshEntity(cloudHighest);
         }
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageSmokeGrenade(this.getX(), y, this.getZ()));
     }

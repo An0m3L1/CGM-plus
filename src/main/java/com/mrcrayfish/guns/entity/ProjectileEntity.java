@@ -899,7 +899,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     }
 
     /**
-     * Creates an explosion with customizable parameters. DON'T USE.
+     * Creates an explosion with customizable parameters. Don't use outside this class.
      *
      * @param entity The entity to explode
      * @param radius The size of the explosion
@@ -939,6 +939,22 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         explosion.explode();
         explosion.finalizeExplosion(true);
+
+        List<BlockPos> fragileBlocks = new ArrayList<>();
+        if (!fire) {
+            for (BlockPos pos : explosion.getToBlow()) {
+                BlockState state = world.getBlockState(pos);
+                if (state.is(ModTags.Blocks.FRAGILE)) {
+                    fragileBlocks.add(pos);
+                }
+            }
+        }
+
+        if (mode == Explosion.BlockInteraction.NONE && !fire) {
+            for (BlockPos pos : fragileBlocks) {
+                world.destroyBlock(pos, Config.COMMON.gameplay.griefing.fragileBlockDrops.get());
+            }
+        }
 
         if (!fire && !noFX) {
             // Handle block explosion effects

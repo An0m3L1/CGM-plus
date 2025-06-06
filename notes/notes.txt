@@ -49,15 +49,11 @@ Add and overhaul animations
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
     - Weapon pullout animation
-Add ejecting casings when shooting (items or particles?)
+Add ejecting casings when shooting
 Add durability system (GunEventBus in JEG)
 Add "heavy" property to Gun.General, which disallows sprinting while held
 Add new cgm expander features
 Add grenade bouncing sound
-Add fire extinguish mechanic to smokes
-Add recoil and spread penalty while in-air
-Add recoil and spread reduction while crouched or prone
-Add movement speed reduction while aiming
 Add ammo pouches (check scorched guns)
 Add molotov flame particles while using item
 
@@ -75,8 +71,10 @@ Overhaul projectile hitting a block sound to reduce the volume if it's a shotgun
 Overhaul datagen
     - Loot tables
     - Recipes
-Overhaul explosions to destroy fragile blocks regardless of griefing configs
 Overhaul gun lights to be dynamic instead of placing blocks
+Overhaul smoked effect to include blindness effects
+Overhaul smoke grenade to detonate when in radius of fire blocks
 
 Fix molotov flame particles not being tied to the tip of the bottle
 Fix gun fire lights lagging the game if travelling at high speeds (or being high above blocks?)
+Fix crosshair not updating to new player movement logic

@@ -26,15 +26,14 @@ public class SpreadTracker
     private static final Map<Player, SpreadTracker> TRACKER_MAP = new WeakHashMap<>();
 
     private final Map<GunItem, Pair<MutableLong, MutableInt>> SPREAD_TRACKER_MAP = new HashMap<>();
-    
-    private int sprintBaseSpread;
 
     public void update(Player player, GunItem item)
     {
         Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.computeIfAbsent(item, gun -> Pair.of(new MutableLong(-1), new MutableInt()));
         MutableLong lastFire = entry.getLeft();
         MutableInt spreadCount = entry.getRight();
-        sprintBaseSpread = (int) Math.floor((float) Config.COMMON.projectileSpread.maxCount.get()/2F);
+        int spreadNegativeModifier = (int) Math.floor((float) Config.COMMON.projectileSpread.maxCount.get() * 0.5F);
+        int spreadPositiveModifier = (int) Math.floor((float) Config.COMMON.projectileSpread.maxCount.get() * 0.75F);
         if(lastFire.getValue() != -1)
         {
             long deltaTime = System.currentTimeMillis() - lastFire.getValue();
@@ -55,12 +54,18 @@ public class SpreadTracker
             {
             	spreadCount.setValue(0);
             }
-    		/* Spread is always at least ~50% when sprinting */
-        	if(player.isSprinting())
-        	{
-                if (spreadCount.getValue() < sprintBaseSpread)
-                spreadCount.setValue(sprintBaseSpread);
-        	}
+    		/* Spread is always at least ~50% when sprinting or being suspended in air */
+        	if(player.isSprinting() || !player.isOnGround()) {
+                if (spreadCount.getValue() < spreadNegativeModifier) {
+                    spreadCount.setValue(spreadNegativeModifier);
+                }
+            }
+            /* Spread is always no more than ~75% when crouching or crawling */
+            if(player.isCrouching() || player.isVisuallyCrawling()) {
+                if (spreadCount.getValue() > spreadPositiveModifier) {
+                    spreadCount.setValue(spreadPositiveModifier);
+                }
+            }
         }
         lastFire.setValue(System.currentTimeMillis());
     }

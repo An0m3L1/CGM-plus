@@ -64,6 +64,7 @@ public class AimingHandler
     private boolean aiming = false;
     private boolean doTempFirstPerson = false;
     private boolean skipThirdPersonSwitch = false;
+    private boolean speedReductionApplied = false;
 
     private AimingHandler() {}
 
@@ -122,7 +123,7 @@ public class AimingHandler
             return;
         
         ItemStack heldItem = mc.player.getMainHandItem();
-    	GunItem gunItem = null;
+    	GunItem gunItem;
     	Gun modifiedGun = null;
     	if (mc.player.getMainHandItem().getItem() instanceof GunItem)
     	{
@@ -163,6 +164,11 @@ public class AimingHandler
                     }
                 }
             }
+            if(!this.speedReductionApplied)
+            {
+                player.setSprinting(false);
+                this.speedReductionApplied = true;
+            }
         }
         else
         {
@@ -176,6 +182,10 @@ public class AimingHandler
 	            PacketHandler.getPlayChannel().sendToServer(new C2SMessageAim(false));
 	            this.aiming = false;
 	        }
+            if(this.speedReductionApplied)
+            {
+                this.speedReductionApplied = false;
+            }
         }
         
         if (this.doTempFirstPerson)

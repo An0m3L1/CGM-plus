@@ -333,7 +333,6 @@ public class Config
         public final ForgeConfigSpec.BooleanValue handGrenadeExplosionGriefing;
         public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionRadius;
         public final ForgeConfigSpec.BooleanValue pipeGrenadeExplosionGriefing;
-        public final ForgeConfigSpec.BooleanValue smokeGrenadeModeInstant;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDiameter;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeDamage;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDuration;
@@ -354,7 +353,6 @@ public class Config
                 this.handGrenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks. Requires explosion griefing to be true.").define("handGrenadeExplosionGriefing", false);
                 this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
                 this.pipeGrenadeExplosionGriefing = builder.comment("If enabled, Pipe Grenades will destroy blocks. Requires explosion griefing to be true.").define("pipeGrenadeExplosionGriefing", true);
-                this.smokeGrenadeModeInstant = builder.comment("If true, a Smoke Grenade will instantly spawn a sizeable cloud. If false, it will slowly spread smoke instead.").define("smokeGrenadeModeInstant", false);
                 this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudDiameter", 5.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeDamage = builder.comment("Damage per second inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);

@@ -109,6 +109,7 @@
     "info.cgm.fuse": "Fuse: %s sec.",
     "info.cgm.smoke_duration": "Smoke Cloud Duration: %s sec.",
     "info.cgm.smoke_diameter": "Smoke Cloud Diameter: %s blocks",
+    "info.cgm.extinguish": "Extinguishes Fire",
     "info.cgm.fire_duration": "Fire Duration: %s sec.",
     "info.cgm.fire_diameter": "Fire Spread Diameter: %s blocks",
     "info.cgm.reload_rate": "Reload: %s sec.",

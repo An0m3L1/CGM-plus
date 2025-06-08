@@ -11,7 +11,7 @@
 
     "recoilAngle": 8.0,
     "recoilKick": 1.5,
-    "recoilDurationOffset": 0.5,
+    "recoilDurationOffset": 0.0,
     "spread": 3.0,
     "alwaysSpread": true,
     "useShotgunSpread": true,

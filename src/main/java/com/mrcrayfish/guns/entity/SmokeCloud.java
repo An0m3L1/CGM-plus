@@ -23,7 +23,7 @@ public class SmokeCloud extends AreaEffectCloud
         this.setParticle(particle);
         this.setRadius(radius);
         this.setDuration(duration);
-        this.addEffect(new MobEffectInstance(ModEffects.SMOKED.get(), 60, 0, false, false, true));
+        this.addEffect(new MobEffectInstance(ModEffects.SMOKED.get(), 85, 0, false, false, true));
     }
 
     @Override
@@ -47,7 +47,7 @@ public class SmokeCloud extends AreaEffectCloud
     private boolean extinguishNearbyFire()
     {
         boolean extinguishedAny = false;
-        float radius = this.getRadius() * 1.5F;
+        float radius = this.getRadius() * 2F;
         int radiusCeil = Mth.ceil(radius);
         int centerX = Mth.floor(this.getX());
         int centerY = Mth.floor(this.getY());

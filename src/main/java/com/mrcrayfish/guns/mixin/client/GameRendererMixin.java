@@ -27,14 +27,22 @@ public class GameRendererMixin
             return;
         }
 
-        MobEffectInstance effect = player.getEffect(ModEffects.BLINDED.get());
-        if (effect != null)
+        MobEffectInstance blindEffect = player.getEffect(ModEffects.BLINDED.get());
+        MobEffectInstance smokeEffect = player.getEffect(ModEffects.SMOKED.get());
+
+        if (blindEffect != null)
         {
             // Render white screen-filling overlay at full alpha effect when duration is above threshold
             // When below threshold, fade to full transparency as duration approaches 0
-            float percent = Math.min((effect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
+            float percent = Math.min((blindEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
             Window window = Minecraft.getInstance().getWindow();
             GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * Config.SERVER.alphaOverlay.get() + 0.5) << 24) | 16777215);
+        }
+        if (smokeEffect != null)
+        {
+            Window window = Minecraft.getInstance().getWindow();
+            float percent = Math.min((smokeEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
+            GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * 248 + 0.5) << 24) | 8156784);
         }
     }
 }

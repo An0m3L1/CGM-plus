@@ -10,13 +10,16 @@ import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageSmokeGrenade;
 import net.minecraft.client.Minecraft;
+import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.phys.HitResult;
 import org.jetbrains.annotations.NotNull;
 
 /**
@@ -59,10 +62,55 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
     }
 
     @Override
+    protected void onHit(HitResult result)
+    {
+        if (result.getType() == HitResult.Type.BLOCK && !this.level.isClientSide)
+        {
+            double radius = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get() * 0.75;
+            if (radius > 0)
+            {
+                BlockPos grenadePos = new BlockPos(this.getX(), this.getY(), this.getZ());
+                int radiusInt = (int) Math.ceil(radius);
+                boolean foundFire = false;
+
+                for (int x = -radiusInt; x <= radiusInt; x++)
+                {
+                    for (int z = -radiusInt; z <= radiusInt; z++)
+                    {
+                        double distanceSq = x * x + z * z;
+                        if (distanceSq <= radius * radius)
+                        {
+                            for (int y = -2; y <= 2; y++)
+                            {
+                                BlockPos checkPos = grenadePos.offset(x, y, z);
+                                if (this.level.getBlockState(checkPos).is(BlockTags.FIRE))
+                                {
+                                    foundFire = true;
+                                    break;
+                                }
+                            }
+                            if (foundFire) break;
+                        }
+                    }
+                    if (foundFire) break;
+                }
+
+                if (foundFire)
+                {
+                    this.remove(RemovalReason.KILLED);
+                    this.onDeath();
+                    return;
+                }
+            }
+        }
+        super.onHit(result);
+    }
+
+    @Override
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        double radius = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get() / 2;
+        double radius = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get() * 0.5;
         double duration = ((Config.COMMON.explosives.smokeGrenadeCloudDuration.get() - 4) * 20);
         @NotNull SimpleParticleType particle = ModParticleTypes.SMOKE_EFFECT.get();
         Minecraft.getInstance().getSoundManager().play(new SmokeGrenadeExplosionSound(ModSounds.SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, pitch, this.level.getRandom()));
@@ -71,17 +119,11 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
             SmokeCloud cloudLow = new SmokeCloud(this.level, this.getX(), this.getY()-0.5, this.getZ(), particle, (float) radius, (int) duration);
             this.level.addFreshEntity(cloudLow);
 
-            SmokeCloud cloudGround = new SmokeCloud(this.level, this.getX(), this.getY(), this.getZ(), particle, (float) radius, (int) duration);
-            this.level.addFreshEntity(cloudGround);
+            SmokeCloud cloudMid = new SmokeCloud(this.level, this.getX(), this.getY()+0.5, this.getZ(), particle, (float) radius, (int) duration);
+            this.level.addFreshEntity(cloudMid);
 
-            SmokeCloud cloudHigh = new SmokeCloud(this.level, this.getX(), this.getY()+0.5, this.getZ(), particle, (float) radius, (int) duration);
+            SmokeCloud cloudHigh = new SmokeCloud(this.level, this.getX(), this.getY()+1.5, this.getZ(), particle, (float) radius, (int) duration);
             this.level.addFreshEntity(cloudHigh);
-
-            SmokeCloud cloudHigher = new SmokeCloud(this.level, this.getX(), this.getY()+1.0, this.getZ(), particle, (float) radius, (int) duration);
-            this.level.addFreshEntity(cloudHigher);
-
-            SmokeCloud cloudHighest = new SmokeCloud(this.level, this.getX(), this.getY()+1.5, this.getZ(), particle, (float) radius, (int) duration);
-            this.level.addFreshEntity(cloudHighest);
         }
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageSmokeGrenade(this.getX(), y, this.getZ()));
     }

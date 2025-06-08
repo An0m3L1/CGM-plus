@@ -109,6 +109,7 @@
     "info.cgm.fuse": "Запал: %s сек.",
     "info.cgm.smoke_duration": "Длительность дымовой завесы: %s сек.",
     "info.cgm.smoke_diameter": "Диаметр дымовой завесы: %s блок.",
+    "info.cgm.extinguish": "Тушит огонь",
     "info.cgm.fire_duration": "Длительность огня: %s сек.",
     "info.cgm.fire_diameter": "Диаметр покрытия огнём: %s блок.",
     "info.cgm.reload_rate": "Перезарядка: %s сек.",

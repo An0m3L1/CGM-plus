@@ -25,6 +25,7 @@ Add content
         - Flare
         - Mine
         - C4
+        - Impact grenade
     Attachments
         - Barrels: compensator, flash hider, muzzle break
         - Grips: angled, thumb
@@ -53,7 +54,6 @@ Add ejecting casings when shooting
 Add durability system (GunEventBus in JEG)
 Add "heavy" property to Gun.General, which disallows sprinting while held
 Add new cgm expander features
-Add grenade bouncing sound
 Add ammo pouches (check scorched guns)
 Add molotov flame particles while using item
 
@@ -72,8 +72,6 @@ Overhaul datagen
     - Loot tables
     - Recipes
 Overhaul gun lights to be dynamic instead of placing blocks
-Overhaul smoked effect to include blindness effects
-Overhaul smoke grenade to detonate when in radius of fire blocks
 
 Fix molotov flame particles not being tied to the tip of the bottle
 Fix gun fire lights lagging the game if travelling at high speeds (or being high above blocks?)

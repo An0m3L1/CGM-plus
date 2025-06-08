@@ -286,34 +286,18 @@ public class ClientPlayHandler
         double diameter = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get();
         double vel = 0.004;
         int amount = (int) (diameter * 20);
-        boolean instant = Config.COMMON.explosives.smokeGrenadeModeInstant.get();
 
         /* Spawn smoke cloud */
         for(int i = 0; i < amount; i++)
         {
-            if(instant)
-            {
-                level.addAlwaysVisibleParticle(ModParticleTypes.SMOKE_CLOUD.get(),
-                        true,
-                        x+((Math.random()-0.5) * diameter),
-                        y+(Math.random() * diameter),
-                        z+((Math.random()-0.5) * diameter),
-                        (Math.random()-0.5) * vel,
-                        Math.random() * (vel * 0.5f),
-                        (Math.random()-0.5) * vel);
-            }
-            else
-            {
-                vel = diameter * 0.004;
-                level.addAlwaysVisibleParticle(ModParticleTypes.SMOKE_CLOUD.get(),
-                        true,
-                        x,
-                        y,
-                        z,
-                        (Math.random()-0.5) * vel,
-                        Math.random() * (vel * 0.5f),
-                        (Math.random()-0.5) * vel);
-            }
+            level.addAlwaysVisibleParticle(ModParticleTypes.SMOKE_CLOUD.get(),
+                    true,
+                    x+((Math.random()-0.5) * diameter),
+                    y+(Math.random() * (diameter * 0.5)),
+                    z+((Math.random()-0.5) * diameter),
+                    (Math.random()-0.5) * vel,
+                    Math.random() * (vel * 0.5f),
+                    (Math.random()-0.5) * vel);
         }
     }
 

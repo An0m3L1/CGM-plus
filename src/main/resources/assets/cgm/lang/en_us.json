@@ -94,7 +94,7 @@
     "item.minecraft.lingering_potion.effect.stunning": "Lingering Potion of Stunning",
     "item.minecraft.lingering_potion.effect.smoking": "Lingering Potion of Smoking",
     "itemGroup.cgm": "CGM+ Weapons",
-    "itemGroup.materials": "CGM+ Materials",
+    "itemGroup.cgm_materials": "CGM+ Materials",
     "death.attack.cgm.bullet.killed": "%1$s was taken down by %2$s",
     "death.attack.cgm.bullet.eliminated": "%1$s was eliminated by %2$s",
     "death.attack.cgm.bullet.executed": "%1$s was executed by %2$s",

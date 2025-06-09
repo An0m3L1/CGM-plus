@@ -94,7 +94,7 @@
     "item.minecraft.lingering_potion.effect.stunning": "Туманное зелье оглушения",
     "item.minecraft.lingering_potion.effect.smoking": "Туманное зелье задымления",
     "itemGroup.cgm": "CGM+ Оружие",
-    "itemGroup.materials": "CGM+ Материалы",
+    "itemGroup.cgm_materials": "CGM+ Материалы",
     "death.attack.cgm.bullet.killed": "%1$s был ликвидирован %2$s",
     "death.attack.cgm.bullet.eliminated": "%1$s был устранен %2$s",
     "death.attack.cgm.bullet.executed": "%1$s был казнен %2$s",

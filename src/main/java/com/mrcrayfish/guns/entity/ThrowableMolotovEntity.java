@@ -50,7 +50,6 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         this.setShouldBounce(false);
     }
 
-    @Override
     public void tick()
     {
         super.tick();
@@ -58,11 +57,27 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         double speed = this.getDeltaMovement().length();
         if (speed > 0.1)
         {
-            this.rotation += (speed * 50);
+            this.rotation += (speed * 5);
         }
         if (this.level.isClientSide)
         {
-            this.level.addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY() + 0.5, this.getZ(), (Math.random()-0.5) * 0.1, 0.1, (Math.random()-0.5) * 0.1);
+            float rotation = this.rotation;
+            float yaw = this.getYRot();
+
+            double offsetX = 0.9 * Math.sin(Math.toRadians(rotation)) * Math.sin(Math.toRadians(yaw));
+            double offsetY = 0.9 * Math.cos(Math.toRadians(rotation)) + 0.1;
+            double offsetZ = 0.9 * Math.sin(Math.toRadians(rotation)) * Math.cos(Math.toRadians(yaw));
+
+            double particleX = this.getX() + offsetX;
+            double particleY = this.getY() + offsetY;
+            double particleZ = this.getZ() + offsetZ;
+
+            this.level.addParticle(ParticleTypes.FLAME, true,
+                    particleX, particleY, particleZ,
+                    (Math.random() - 0.5) * 0.1,
+                    0.1,
+                    (Math.random() - 0.5) * 0.1
+            );
         }
     }
 

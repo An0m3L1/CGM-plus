@@ -52,7 +52,7 @@ Add and overhaul animations
     - Weapon pullout animation
 Add ejecting casings when shooting
 Add durability system (GunEventBus in JEG)
-Add "heavy" property to Gun.General, which disallows sprinting while held
+Add heavy item tag, which disallows sprinting
 Add new cgm expander features
 Add ammo pouches (check scorched guns)
 Add molotov flame particles while using item
@@ -66,13 +66,12 @@ Overhaul item textures with changed recipes (change colors to correspond to new 
 Overhaul fragile block breaking
     Projectile damage is reduced by half when breaking a block
     Projectile continues flying after breaking a block
-Overhaul grenade throw sound to be client side only and non-directional
-Overhaul projectile hitting a block sound to reduce the volume if it's a shotgun
 Overhaul datagen
     - Loot tables
     - Recipes
 Overhaul gun lights to be dynamic instead of placing blocks
 
-Fix molotov flame particles not being tied to the tip of the bottle
+Fix molotov flame particles not being tied to the tip of the bottle <--
+Fix molotob spinning REALLY fast
 Fix gun fire lights lagging the game if travelling at high speeds (or being high above blocks?)
-Fix crosshair not updating to new player movement logic
+Fix crosshair not updating to new player movement logic (or implement it in a clean way)

@@ -32,8 +32,6 @@ public class GameRendererMixin
 
         if (blindEffect != null)
         {
-            // Render white screen-filling overlay at full alpha effect when duration is above threshold
-            // When below threshold, fade to full transparency as duration approaches 0
             float percent = Math.min((blindEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
             Window window = Minecraft.getInstance().getWindow();
             GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * Config.SERVER.alphaOverlay.get() + 0.5) << 24) | 16777215);

@@ -45,6 +45,7 @@ public class GunMod
     public static boolean playerReviveLoaded = false;
     public static boolean shoulderSurfingLoaded = false;
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
+
     public static final CreativeModeTab GUNS = new CreativeModeTab(Reference.MOD_ID) {
         @Override
         public @NotNull ItemStack makeIcon()

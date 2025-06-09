@@ -12,7 +12,7 @@ public class ModTags
 {
     public static class Items
     {
-
+        public static final TagKey<Item> HEAVY = modItemTag("heavy");
     }
 
     public static class Blocks

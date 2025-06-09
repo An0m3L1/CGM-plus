@@ -2,14 +2,8 @@ package com.mrcrayfish.guns.client.render.crosshair;
 
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.BufferUploader;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
-import com.mojang.math.Vector3f;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.client.DotRenderMode;
@@ -17,15 +11,12 @@ import com.mrcrayfish.guns.client.handler.AimingHandler;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.SpreadTracker;
-import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 
 /**
@@ -234,101 +225,8 @@ public class DynamicCrosshair extends Crosshair
         stack.popPose();
         }
 
-        if (blend)
-        RenderSystem.defaultBlendFunc();
-        
-        /*
-        // Left
-        stack.pushPose();
-        {
-            Matrix4f matrix = stack.last().pose();
-            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-            RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR);
-            float sizeX = size1;
-            float sizeY = size2;
-            
-            stack.translate(Math.round((windowWidth-1) / 2F), Math.round((windowHeight-1) / 2F), 0);
-            stack.translate(-sizeX + 1F, -sizeY / 2F, 0);
-            stack.translate(-scale*2, 0, 0);
-            
-            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            buffer.vertex(matrix, 0, sizeY, 0).uv(0, 2F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, sizeY, 0).uv(10F/16F, 2F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, 0, 0).uv(10F/16F, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, 0, 0, 0).uv(0, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            BufferUploader.drawWithShader(buffer.end());
+        if (blend) {
+            RenderSystem.defaultBlendFunc();
         }
-        stack.popPose();
-        
-        // Right
-        stack.pushPose();
-        {
-            Matrix4f matrix = stack.last().pose();
-            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-            RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR);
-            float sizeX = size1;
-            float sizeY = size2;
-            
-            stack.translate(Math.round((windowWidth) / 2F), Math.round((windowHeight-1) / 2F), 0);
-            stack.translate(-1F, -sizeY / 2F, 0);
-            stack.translate(scale*2, 0, 0);
-            
-            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            buffer.vertex(matrix, 0, sizeY, 0).uv(0, 5F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, sizeY, 0).uv(10F/16F, 5F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, 0, 0).uv(10F/16F, 3F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, 0, 0, 0).uv(0, 3F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            BufferUploader.drawWithShader(buffer.end());
-        }
-        stack.popPose();
-        
-        // Top
-        stack.pushPose();
-        {
-            Matrix4f matrix = stack.last().pose();
-            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-            RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR);
-            float sizeX = size2;
-            float sizeY = size1;
-            
-            stack.translate(Math.round(windowWidth / 2F), Math.round((windowHeight-1) / 2F), 0);
-            stack.translate(-sizeX, -sizeY + 1F, 0);
-            stack.translate(0, -scale*2, 0);
-            
-            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            buffer.vertex(matrix, 0, sizeY, 0).uv(13F/16F, 10F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, sizeY, 0).uv(11F/16F, 10F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, 0, 0).uv(13F/16F, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, 0, 0, 0).uv(11F/16F, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            BufferUploader.drawWithShader(buffer.end());
-        }
-        stack.popPose();
-        
-        // Bottom
-        stack.pushPose();
-        {
-            Matrix4f matrix = stack.last().pose();
-            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-            RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR);
-            float sizeX = size2;
-            float sizeY = size1;
-            
-            stack.translate(Math.round(windowWidth / 2F), Math.round((windowHeight-1) / 2F), 0);
-            stack.translate(-sizeX, -1F, 0);
-            stack.translate(0, scale*2, 0);
-            
-            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            buffer.vertex(matrix, 0, sizeY, 0).uv(14F/16F, 10F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, sizeY, 0).uv(1, 10F/16F).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, sizeX, 0, 0).uv(1, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, 0, 0, 0).uv(14F/16F, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            BufferUploader.drawWithShader(buffer.end());
-        }
-        stack.popPose();
-        */
     }
 }

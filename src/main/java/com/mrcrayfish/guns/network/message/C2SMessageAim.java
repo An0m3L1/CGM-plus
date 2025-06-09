@@ -57,7 +57,7 @@ public class C2SMessageAim extends PlayMessage<C2SMessageAim>
 
 					if(message.aiming)
 					{
-						float reduction = Config.COMMON.gameplay.aimingMovementSpeedMultiplier.get().floatValue();
+						float reduction = 1.0F - Config.COMMON.gameplay.aimingMovementSpeedMultiplier.get().floatValue();
 						speedAttribute.addTransientModifier(new AttributeModifier(
 								AIMING_SPEED_UUID,
 								"Aiming speed reduction",

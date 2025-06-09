@@ -31,13 +31,16 @@ import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
-import java.util.Objects;
+import java.util.*;
 
 /**
  * Author: MrCrayfish
  */
 public class ClientPlayHandler
 {
+    private static final Map<Long, List<Vec3>> projectileHitsPerTick = new HashMap<>();
+    private static long lastProcessedTick = -1;
+
     public static void handleMessageGunSound(S2CMessageGunSound message)
     {
         Minecraft mc = Minecraft.getInstance();
@@ -312,6 +315,15 @@ public class ClientPlayHandler
         Level world = mc.level;
         if(world != null && mc.player != null)
         {
+            long currentTick = world.getGameTime();
+
+            if (currentTick != lastProcessedTick) {
+                projectileHitsPerTick.remove(lastProcessedTick);
+                lastProcessedTick = currentTick;
+            }
+
+            List<Vec3> currentTickHits = projectileHitsPerTick.computeIfAbsent(currentTick, k -> new ArrayList<>());
+
             BlockState state = world.getBlockState(message.getPos());
             double holeX = message.getX() + 0.005 * message.getFace().getStepX();
             double holeY = message.getY() + 0.005 * message.getFace().getStepY();
@@ -328,10 +340,20 @@ public class ClientPlayHandler
                     world.addParticle(new BlockParticleOption(ParticleTypes.BLOCK, state), true, message.getX(), message.getY(), message.getZ(), motion.x, motion.y, motion.z);
                 }
             }
-            if(distance <= Config.CLIENT.sounds.impactSoundDistance.get())
-            {
+
+            boolean hasNearbyHit = false;
+            Vec3 currentHit = new Vec3(message.getX(), message.getY(), message.getZ());
+            for (Vec3 hit : currentTickHits) {
+                if (hit.distanceToSqr(currentHit) <= 4.0) {
+                    hasNearbyHit = true;
+                    break;
+                }
+            }
+
+            if (!hasNearbyHit && distance <= Config.CLIENT.sounds.impactSoundDistance.get()) {
                 world.playLocalSound(message.getX(), message.getY(), message.getZ(), state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, 2.0F, false);
             }
+            currentTickHits.add(currentHit);
         }
     }
 
@@ -347,7 +369,6 @@ public class ClientPlayHandler
         if(world == null)
             return;
 
-        //TODO: Don't show a hitmarker when hitting endermen
         GunRenderingHandler.get().playHitMarker(message.isCritical() || message.isHeadshot());
 
         SoundEvent event = getHitSound(message.isCritical(), message.isHeadshot(), message.isPlayer());

@@ -274,9 +274,6 @@ public class AimingHandler
         if(mc.player.isSpectator())
             return false;
         
-        //if(mc.player.isSprinting())
-            //return false;
-        
         if(mc.options.keySprint.isDown() && mc.player.isSprinting())
             return false;
 

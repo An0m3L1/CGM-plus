@@ -251,7 +251,7 @@ public class Config
                 this.enableKnockback = builder.comment("If true, projectiles will cause knockback when an entity is hit.").define("enableKnockback", true);
                 this.knockbackStrength = builder.comment("Sets the strength of knockback when hit. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value.").defineInRange("knockbackStrength", 0.1, 0.0, 1.0);
                 this.improvedHitboxes = builder.comment("If true, improves the accuracy of weapons by considering the ping of the player. This has no affect on singleplayer. This will add a little overhead if enabled.").define("improvedHitboxes", true);
-                this.aimingMovementSpeedMultiplier = builder.comment("Sets the multiplier to movement speed when aiming. Set to 1.0 to disable slowing down when aiming.").defineInRange("aimingMovementSpeedMultiplier", 0.35,0.0,1.0);
+                this.aimingMovementSpeedMultiplier = builder.comment("Sets the multiplier to movement speed when aiming. Set to 1.0 to disable slowing down when aiming.").defineInRange("aimingMovementSpeedMultiplier", 0.65,0.0,1.0);
             }
             builder.pop();
         }

@@ -45,7 +45,7 @@ Add more sound variants (guns, explosives)
 Add more attachment slots to existing guns
 Add and overhaul animations
     - Prone shooting
-    - Crouched shooting (lower the weapon to align with eyes)
+    - Crouched shooting (lower the weapon to align with eyes while aiming)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
 Add ejecting casings when shooting <--

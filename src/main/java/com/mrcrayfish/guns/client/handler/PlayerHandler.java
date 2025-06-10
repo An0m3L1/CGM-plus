@@ -41,6 +41,7 @@ public class PlayerHandler
         /* Sprinting restrictions*/
         if(heldItem.is(ModTags.Items.HEAVY) || player.isVisuallyCrawling())
         {
+            mc.options.keySprint.setDown(false);
             player.setSprinting(false);
         }
     }

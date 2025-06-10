@@ -1,4 +1,4 @@
-package com.mrcrayfish.guns.common;
+package com.mrcrayfish.guns.init;
 
 import com.mrcrayfish.guns.Reference;
 import net.minecraft.core.Registry;

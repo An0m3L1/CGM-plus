@@ -4,25 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Grenade tweaks.&#10;&#10;Grenade rotation have been modified to look smoother. Removed code related to molotov flame particles. Added new recoil visuals. Muzzle flash now starts out big and shrinks with time. Tweaked grenade models.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Player behavior update.&#10;&#10;Moved ModTags to init. Added PlayerHandler and finished working on heavy item tag. Player no longer can sprint while crawling. Added spawnCasings property to guns (WIP).">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ClientHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/RecoilHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/RecoilHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/ThrowableGrenadeRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/ThrowableGrenadeRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableMolotovEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableMolotovEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableSmokeGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableSmokeGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/grenade_no_pin.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/grenade_no_pin.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/incendiary_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/incendiary_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/incendiary_grenade_no_pin.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/incendiary_grenade_no_pin.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/smoke_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/smoke_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/smoke_grenade_no_pin.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/smoke_grenade_no_pin.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/stun_grenade.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/stun_grenade.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/stun_grenade_no_pin.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/stun_grenade_no_pin.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTags.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/BlockTagGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/BlockTagGen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/EntityTagGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/EntityTagGen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -93,6 +84,9 @@
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\guns" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\entity\grenade" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\entity\pipe_grenade" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="com.mrcrayfish.guns.init" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.mrcrayfish.guns.datagen" />

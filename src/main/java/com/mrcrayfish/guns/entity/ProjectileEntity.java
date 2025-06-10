@@ -2,11 +2,15 @@ package com.mrcrayfish.guns.entity;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.common.*;
+import com.mrcrayfish.guns.common.BoundingBoxManager;
+import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.Gun.Projectile;
+import com.mrcrayfish.guns.common.ServerAimTracker;
+import com.mrcrayfish.guns.common.SpreadTracker;
 import com.mrcrayfish.guns.event.GunProjectileHitEvent;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
+import com.mrcrayfish.guns.init.ModTags;
 import com.mrcrayfish.guns.interfaces.IDamageable;
 import com.mrcrayfish.guns.interfaces.IExplosionDamageable;
 import com.mrcrayfish.guns.interfaces.IHeadshotBox;
@@ -63,8 +67,8 @@ import java.util.function.BiFunction;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
-import static com.mrcrayfish.guns.common.ModTags.Entities.HIT_IMMUNE;
-import static com.mrcrayfish.guns.common.ModTags.Entities.HIT_RESISTANT;
+import static com.mrcrayfish.guns.init.ModTags.Entities.HIT_IMMUNE;
+import static com.mrcrayfish.guns.init.ModTags.Entities.HIT_RESISTANT;
 
 public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnData
 {

@@ -20,6 +20,7 @@ import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.properties.SightAnimation;
 import com.mrcrayfish.guns.event.GunFireEvent;
+import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GrenadeItem;
 import com.mrcrayfish.guns.item.GunItem;
@@ -42,6 +43,8 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.particles.ItemParticleOption;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -299,7 +302,7 @@ public class GunRenderingHandler
             return;
 
         this.sprintTransition = 0;
-        this.sprintCooldown = 10; //TODO make a config option
+        this.sprintCooldown = 10;
 
         ItemStack heldItem = event.getStack();
         GunItem gunItem = (GunItem) heldItem.getItem();
@@ -307,6 +310,60 @@ public class GunRenderingHandler
         if(modifiedGun.getDisplay().getFlash() != null)
         {
             this.showMuzzleFlashForPlayer(Minecraft.getInstance().player.getId());
+        }
+
+        if(modifiedGun.getGeneral().shouldSpawnCasings())
+        {
+            Player player = event.getEntity();
+            Level level = player.level;
+
+            Item casing = ModItems.BRASS_CASING.get();
+            if(modifiedGun.getProjectile().getProjectileItem().equals(ModItems.BUCKSHOT_SHELL.getId()))
+            {
+                casing = ModItems.SHELL_CASING.get();
+            }
+
+            ItemStack casingStack = new ItemStack(casing);
+            Vec3 look = player.getLookAngle();
+
+            Vec3 horizontalLook = new Vec3(look.x, 0, look.z);
+            if (horizontalLook.lengthSqr() < 1.0E-7)
+            {
+                float yaw = player.getYRot();
+                double radians = Math.toRadians(yaw);
+                horizontalLook = new Vec3(-Math.sin(radians), 0, Math.cos(radians));
+            }
+            horizontalLook = horizontalLook.normalize();
+
+            Vec3 right = new Vec3(horizontalLook.z, 0, -horizontalLook.x).scale(-1).normalize();
+
+            double forwardOffset = 0.65;
+            double rightOffset = 0.5;
+            double upOffset = -0.4;
+            double x = player.getX() + horizontalLook.x * forwardOffset + right.x * rightOffset;
+            double y = player.getEyeY() + upOffset;
+            double z = player.getZ() + horizontalLook.z * forwardOffset + right.z * rightOffset;
+
+            double speedRight = 0.1 + this.random.nextDouble() * 0.2;
+            double speedUp = 0.1 + this.random.nextDouble() * 0.2;
+            double speedForward = 0.05 * this.random.nextDouble();
+            Vec3 velocity = right.scale(speedRight)
+                    .add(0, speedUp, 0)
+                    .add(horizontalLook.scale(speedForward));
+
+            Vec3 playerVelocity = player.getDeltaMovement();
+            velocity = velocity.add(playerVelocity.scale(2.0));
+
+            velocity = velocity.add(
+                    this.random.nextGaussian() * 0.01,
+                    this.random.nextGaussian() * 0.01,
+                    this.random.nextGaussian() * 0.01
+            );
+
+            level.addParticle(new ItemParticleOption(ParticleTypes.ITEM, casingStack),
+                    x, y, z,
+                    velocity.x, velocity.y, velocity.z
+            );
         }
     }
 

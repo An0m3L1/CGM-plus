@@ -7,7 +7,7 @@ import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
 import com.mrcrayfish.guns.client.render.gun.model.*;
 import com.mrcrayfish.guns.client.screen.AttachmentScreen;
 import com.mrcrayfish.guns.client.screen.WorkbenchScreen;
-import com.mrcrayfish.guns.client.util.*;
+import com.mrcrayfish.guns.client.util.PropertyHelper;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.debug.IEditorMenu;
 import com.mrcrayfish.guns.debug.client.screen.EditorScreen;
@@ -61,6 +61,7 @@ public class ClientHandler
         MinecraftForge.EVENT_BUS.register(ReloadHandler.get());
         MinecraftForge.EVENT_BUS.register(ShootingHandler.get());
         MinecraftForge.EVENT_BUS.register(SoundHandler.get());
+        MinecraftForge.EVENT_BUS.register(PlayerHandler.get());
         MinecraftForge.EVENT_BUS.register(new PlayerModelHandler());
 
         /* Only register controller events if Controllable is loaded otherwise it will crash */

@@ -48,10 +48,10 @@ Add and overhaul animations
     - Crouched shooting (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-Add ejecting casings when shooting
+Add ejecting casings when shooting <--
+    Add proper particles
+    Tie coords to grip type
 Add durability system (GunEventBus in JEG)
-Add heavy item tag, which disallows sprinting <--
-    Add functionality (maybe create playerhandler?)
 Add ammo pouches (check scorched guns)
 
 Overhaul items (models, textures, stats, datagen)

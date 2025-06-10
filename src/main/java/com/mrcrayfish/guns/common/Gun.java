@@ -218,6 +218,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         private boolean doRampUp = false;
         @Optional
         private int rampUpShotsNeeded = 8;
+        @Optional
+        private boolean spawnCasings = true;
 
         @Override
         public CompoundTag serializeNBT()
@@ -267,6 +269,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             tag.putDouble("ADSSpeed", this.adsSpeed);
             tag.putBoolean("DoRampUp", this.doRampUp);
             tag.putInt("RampUpShotsNeeded", this.rampUpShotsNeeded);
+            tag.putBoolean("SpawnCasings", this.spawnCasings);
             return tag;
         }
 
@@ -456,6 +459,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 this.rampUpShotsNeeded = tag.getInt("RampUpShotsNeeded");
             }
+            if(tag.contains("SpawnCasings", Tag.TAG_ANY_NUMERIC))
+            {
+                this.spawnCasings = tag.getBoolean("SpawnCasings");
+            }
         }
 
         public JsonObject toJsonObject()
@@ -533,6 +540,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.adsSpeed != 1) object.addProperty("adsSpeed", this.adsSpeed);
             if(this.doRampUp) object.addProperty("doRampUp", false);
             if(this.rampUpShotsNeeded != 8) object.addProperty("rampUpShotsNeeded", this.rampUpShotsNeeded);
+            if(this.spawnCasings) object.addProperty("spawnCasings", this.spawnCasings);
             return object;
         }
 
@@ -586,6 +594,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             general.adsSpeed = this.adsSpeed;
             general.doRampUp = this.doRampUp;
             general.rampUpShotsNeeded = this.rampUpShotsNeeded;
+            general.spawnCasings = this.spawnCasings;
             return general;
         }
 
@@ -994,6 +1003,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public int getRampUpShotsNeeded()
         {
             return this.rampUpShotsNeeded;
+        }
+
+        /**
+         * @return Whether this gun spawns spent casings when shooting
+         */
+        public boolean shouldSpawnCasings()
+        {
+            return this.spawnCasings;
         }
     }
 
@@ -4657,6 +4674,12 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public Builder setRampUpShotsNeeded(int rampUpShotsNeeded)
         {
             this.gun.general.rampUpShotsNeeded = rampUpShotsNeeded;
+            return this;
+        }
+
+        public Builder setSpawnCasings(boolean spawnCasings)
+        {
+            this.gun.general.spawnCasings = spawnCasings;
             return this;
         }
 

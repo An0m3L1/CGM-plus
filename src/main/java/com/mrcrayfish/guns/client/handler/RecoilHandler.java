@@ -1,6 +1,7 @@
 package com.mrcrayfish.guns.client.handler;
 
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.client.util.Easings;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.event.GunFireEvent;
 import com.mrcrayfish.guns.item.GunItem;
@@ -38,6 +39,11 @@ public class RecoilHandler
     private float gunRecoilRandom;
     private float cameraRecoil;
     private float progressCameraRecoil;
+    private float actualRecoil;
+    private int lastFireTick = -1;
+    private int shotsFired = 0;
+    private float recoilUpwardTime = 2;
+    private float recoilDownwardTime = 8;
 
     private RecoilHandler() {}
 
@@ -45,6 +51,10 @@ public class RecoilHandler
     public void onGunFire(GunFireEvent.Post event)
     {
         if(!event.isClient())
+            return;
+
+        Minecraft mc = Minecraft.getInstance();
+        if(mc.player == null)
             return;
 
         if(!Config.SERVER.enableCameraRecoil.get())
@@ -58,6 +68,13 @@ public class RecoilHandler
         this.cameraRecoil = modifiedGun.getGeneral().getRecoilAngle() * recoilModifier;
         this.progressCameraRecoil = 0F;
         this.gunRecoilRandom = random.nextFloat();
+        if (mc.player.tickCount - 5 <= this.lastFireTick || this.shotsFired == 0)
+            this.shotsFired++;
+        else
+            this.shotsFired = 1;
+
+        this.lastFireTick = mc.player.tickCount;
+        this.actualRecoil = 0F;
     }
 
     @SubscribeEvent
@@ -69,31 +86,73 @@ public class RecoilHandler
         Minecraft mc = Minecraft.getInstance();
         if(mc.player == null)
             return;
+        if(mc.isPaused())
+            return;
 
         if(!Config.SERVER.enableCameraRecoil.get())
             return;
 
-        float recoilAmount = this.cameraRecoil * mc.getDeltaFrameTime() * 0.15F;
-        float startProgress = this.progressCameraRecoil / this.cameraRecoil;
-        float endProgress = (this.progressCameraRecoil + recoilAmount) / this.cameraRecoil;
+        float cameraAngleChange = 0;
 
-        float pitch = mc.player.getXRot();
-        if(startProgress < 0.2F)
+        //New camera recoil
+        if(!Config.CLIENT.display.useOldCameraRecoil.get())
         {
-            mc.player.setXRot(pitch - ((endProgress - startProgress) / 0.2F) * this.cameraRecoil);
+            int currentRecoilTick = mc.player.tickCount - this.lastFireTick;
+            float recoilTime = ((float) currentRecoilTick) + mc.getFrameTime();
+            float targetRecoil = 0;
+
+            if (recoilTime <= recoilUpwardTime)
+                targetRecoil = (Easings.EASE_OUT_QUAD.apply(recoilTime/recoilUpwardTime) * -this.cameraRecoil);
+            else
+                targetRecoil = (Easings.EASE_IN_OUT_QUAD.apply((-recoilTime+(recoilUpwardTime+recoilDownwardTime))/recoilDownwardTime) * -this.cameraRecoil);
+
+            if (lastFireTick != -1)
+                cameraAngleChange = (targetRecoil-actualRecoil) * (recoilTime <= recoilUpwardTime ? 1 : Math.min(this.shotsFired * 0.5F + 0.5F,2F));
+            actualRecoil = targetRecoil;
+
+            if (recoilTime >= recoilUpwardTime+recoilDownwardTime)
+            {
+                this.cameraRecoil = 0;
+                this.shotsFired = 0;
+            }
         }
         else
+        //Old camera recoil
         {
-            mc.player.setXRot(pitch + ((endProgress - startProgress) / 0.8F) * this.cameraRecoil);
+            float recoilAmount = this.cameraRecoil * mc.getDeltaFrameTime() * 0.15F;
+            float startProgress = this.progressCameraRecoil / this.cameraRecoil;
+            float endProgress = (this.progressCameraRecoil + recoilAmount) / this.cameraRecoil;
+
+
+            if(startProgress < 0.2F)
+            {
+                cameraAngleChange = ((endProgress - startProgress) / 0.2F) * -this.cameraRecoil;
+            }
+            else
+            {
+                cameraAngleChange = ((endProgress - startProgress) / 0.8F) * this.cameraRecoil;
+            }
+	        /*float pitch = mc.player.getXRot();
+	        if(startProgress < 0.2F)
+	        {
+	            mc.player.setXRot(pitch - ((endProgress - startProgress) / 0.2F) * this.cameraRecoil);
+	        }
+	        else
+	        {
+	            mc.player.setXRot(pitch + ((endProgress - startProgress) / 0.8F) * this.cameraRecoil);
+	        }*/
+
+            this.progressCameraRecoil += recoilAmount;
+
+            if(this.progressCameraRecoil >= this.cameraRecoil)
+            {
+                this.cameraRecoil = 0;
+                this.progressCameraRecoil = 0;
+            }
         }
 
-        this.progressCameraRecoil += recoilAmount;
-
-        if(this.progressCameraRecoil >= this.cameraRecoil)
-        {
-            this.cameraRecoil = 0;
-            this.progressCameraRecoil = 0;
-        }
+        float pitch = mc.player.getXRot();
+        mc.player.setXRot(pitch + cameraAngleChange);
     }
 
     @SubscribeEvent(priority = EventPriority.HIGHEST)

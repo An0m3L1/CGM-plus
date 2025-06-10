@@ -93,6 +93,7 @@ public class Config
         public final ForgeConfigSpec.BooleanValue cameraRollEffect;
         public final ForgeConfigSpec.DoubleValue cameraRollAngle;
         public final ForgeConfigSpec.BooleanValue restrictCameraRollToWeapons;
+        public final ForgeConfigSpec.BooleanValue useOldCameraRecoil;
         public final ForgeConfigSpec.BooleanValue forceFirstPersonOnZoomedAim;
         public final ForgeConfigSpec.DoubleValue firstPersonAimZoomThreshold;
         public final ForgeConfigSpec.BooleanValue sprintAnimation;
@@ -120,6 +121,7 @@ public class Config
                 this.cameraRollEffect = builder.comment("If enabled, the camera will roll when strafing while holding a gun.").define("cameraRollEffect", false);
                 this.cameraRollAngle = builder.comment("When Camera Roll Effect is enabled, this is the absolute maximum angle the roll on the camera can approach.").defineInRange("cameraRollAngle", 1.5F, 0F, 45F);
                 this.restrictCameraRollToWeapons = builder.comment("When enabled, the Camera Roll Effect is only applied when holding a weapon.").define("restrictCameraRollToWeapons", true);
+                this.useOldCameraRecoil = builder.comment("Toggles using the default camera recoil  logic from base CGM. Recommended as the new camera recoil is unfinished.").define("useOldCameraRecoil", false);
                 this.forceFirstPersonOnZoomedAim = builder.comment("When enabled, temporarily switches the camera to first person while aiming. Aim zoom must be above firstPersonAimZoomThreshold, and only applies to third person rear camera modes.").define("forceFirstPersonOnZoomedAim", true);
                 this.firstPersonAimZoomThreshold = builder.comment("The zoom threshold at which the camera switches to first person while aiming. Requires forceFirstPersonOnZoomedAim to be set to true.").defineInRange("firstPersonAimZoomThreshold", 0.25, 0.0, 1.0);
                 this.sprintAnimation = builder.comment("Enables the sprinting animation for guns. This only applies to weapons that support a sprinting animation.").define("sprintingAnimation", true);

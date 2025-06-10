@@ -28,7 +28,6 @@ import com.mrcrayfish.guns.item.attachment.IBarrel;
 import com.mrcrayfish.guns.item.attachment.impl.Scope;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
-
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiComponent;
@@ -69,12 +68,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
-import java.util.HashMap;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Objects;
-import java.util.Random;
-import java.util.Set;
+import java.util.*;
 
 public class GunRenderingHandler
 {
@@ -273,10 +267,10 @@ public class GunRenderingHandler
 
     private void updateMuzzleFlash()
     {
-        this.entityIdForMuzzleFlash.removeAll(this.entityIdForDrawnMuzzleFlash);
-        this.entityIdToRandomValue.keySet().removeAll(this.entityIdForDrawnMuzzleFlash);
         this.entityIdForDrawnMuzzleFlash.clear();
         this.entityIdForDrawnMuzzleFlash.addAll(this.entityIdForMuzzleFlash);
+        this.entityIdToRandomValue.keySet().removeAll(this.entityIdForDrawnMuzzleFlash);
+        this.entityIdForMuzzleFlash.removeAll(this.entityIdForDrawnMuzzleFlash);
     }
 
     private void updateOffhandTranslate()
@@ -1088,8 +1082,9 @@ public class GunRenderingHandler
         poseStack.mulPose(Vector3f.XP.rotationDegrees(flip ? 180F : 0F));
 
         Vec3 flashScale = PropertyHelper.getMuzzleFlashScale(weapon, modifiedGun);
-        float scaleX = ((float) flashScale.x / 2F) - ((float) flashScale.x / 2F) * (1.0F - partialTicks);
-        float scaleY = ((float) flashScale.y / 2F) - ((float) flashScale.y / 2F) * (1.0F - partialTicks);
+        float adjustedPartialTicks = Math.max(partialTicks-0.5F,0);
+        float scaleX = ((float) flashScale.x / 2F) - ((float) flashScale.x / 2F) * (adjustedPartialTicks);
+        float scaleY = ((float) flashScale.y / 2F) - ((float) flashScale.y / 2F) * (adjustedPartialTicks);
         poseStack.scale(scaleX, scaleY, 1.0F);
 
         float scaleModifier = (float) GunModifierHelper.getMuzzleFlashScale(weapon, 1.0);

@@ -39,8 +39,7 @@ Add melee class system
     - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
-Add backpack skins
-Add gun skins
+Add gun skins/variants
 Add proper compatibility with other mods (farmersdelight, diesel generators)
 Add more sound variants (guns, explosives)
 Add more attachment slots to existing guns
@@ -49,13 +48,11 @@ Add and overhaul animations
     - Crouched shooting (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-    - Weapon pullout animation
 Add ejecting casings when shooting
 Add durability system (GunEventBus in JEG)
-Add heavy item tag, which disallows sprinting
-Add new cgm expander features
+Add heavy item tag, which disallows sprinting <--
+    Add functionality (maybe create playerhandler?)
 Add ammo pouches (check scorched guns)
-Add molotov flame particles while using item
 
 Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher
@@ -64,14 +61,12 @@ Overhaul items (models, textures, stats, datagen)
     - Sniper Rifle <--
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul fragile block breaking
-    Projectile damage is reduced by half when breaking a block
+    Projectile damage is reduced (same logic as piercing)
     Projectile continues flying after breaking a block
 Overhaul datagen
     - Loot tables
     - Recipes
 Overhaul gun lights to be dynamic instead of placing blocks
 
-Fix molotov flame particles not being tied to the tip of the bottle <--
-Fix molotob spinning REALLY fast
 Fix gun fire lights lagging the game if travelling at high speeds (or being high above blocks?)
 Fix crosshair not updating to new player movement logic (or implement it in a clean way)

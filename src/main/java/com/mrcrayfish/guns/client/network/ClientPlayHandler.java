@@ -288,7 +288,7 @@ public class ClientPlayHandler
         double z = message.getZ();
         double diameter = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get();
         double vel = 0.004;
-        int amount = (int) (diameter * 20);
+        int amount = (int) (diameter * 15);
 
         /* Spawn smoke cloud */
         for(int i = 0; i < amount; i++)

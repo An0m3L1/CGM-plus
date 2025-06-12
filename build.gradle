@@ -88,6 +88,7 @@ dependencies {
     implementation fg.deobf('curse.maven:configured-457570:4011355')
     implementation fg.deobf('curse.maven:catalogue-459701:4171024')
     implementation fg.deobf('curse.maven:backpacked-352835:3923045')
+    implementation fg.deobf("curse.maven:dynamiclights-reforged-551736:4285414")
 
     implementation fg.deobf("curse.maven:collective-342584:5363789")
     implementation fg.deobf("curse.maven:extended-creative-inventory-411224:4397639")

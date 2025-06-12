@@ -126,7 +126,7 @@ public class Config
                 this.firstPersonAimZoomThreshold = builder.comment("The zoom threshold at which the camera switches to first person while aiming. Requires forceFirstPersonOnZoomedAim to be set to true.").defineInRange("firstPersonAimZoomThreshold", 0.25, 0.0, 1.0);
                 this.sprintAnimation = builder.comment("Enables the sprinting animation for guns. This only applies to weapons that support a sprinting animation.").define("sprintingAnimation", true);
                 this.bobbingIntensity = builder.comment("The intensity of the custom bobbing animation while holding a gun.").defineInRange("bobbingIntensity", 1.0, 0.0, 2.0);
-                this.fireLights = builder.comment("If enabled, enables light sources when firing guns").define("fireLights", true);
+                this.fireLights = builder.comment("Enables dynamic light sources when firing guns.").define("fireLights", true);
             }
             builder.pop();
         }

@@ -48,8 +48,7 @@ Add and overhaul animations
     - Crouched shooting (lower the weapon to align with eyes while aiming)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-Add ejecting casings when shooting <--
-    Add proper particles
+Add ejecting casings when shooting (GunEventBus in JEG) <--
     Tie coords to grip type
 Add durability system (GunEventBus in JEG)
 Add ammo pouches (check scorched guns)
@@ -66,7 +65,6 @@ Overhaul fragile block breaking
 Overhaul datagen
     - Loot tables
     - Recipes
-Overhaul gun lights to be dynamic instead of placing blocks
+Overhaul gun lights to be dynamic instead of placing blocks <--
 
-Fix gun fire lights lagging the game if travelling at high speeds (or being high above blocks?)
 Fix crosshair not updating to new player movement logic (or implement it in a clean way)

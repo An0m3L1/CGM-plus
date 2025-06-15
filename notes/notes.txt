@@ -59,9 +59,6 @@ Overhaul items (models, textures, stats, datagen)
     - Minigun
     - Sniper Rifle <--
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul fragile block breaking
-    Projectile damage is reduced (same logic as piercing)
-    Projectile continues flying after breaking a block
 Overhaul datagen
     - Loot tables
     - Recipes

@@ -5,6 +5,7 @@
     "auto": true,
     "rate": 2,
     "burstCooldown": 4,
+    "spawnCasings": true,
 
     "adsSpeed": 0.9,
     "recoilAdsReduction": 0.4,

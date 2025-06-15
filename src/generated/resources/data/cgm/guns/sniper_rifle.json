@@ -4,6 +4,7 @@
     "gripType": "cgm:two_handed",
     "auto": false,
     "rate": 25,
+    "spawnCasings": false,
 
     "adsSpeed": 0.75,
     "recoilAdsReduction": 0.5,

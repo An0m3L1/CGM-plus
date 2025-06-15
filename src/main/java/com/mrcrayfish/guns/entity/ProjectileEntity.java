@@ -117,7 +117,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.setDeltaMovement(dir.x * speed, dir.y * speed, dir.z * speed);
         this.updateHeading();
 
-        /* Spawn the projectile half way between the previous and current position */
+        /* Spawn the projectile halfway between the previous and current position */
         double posX = shooter.xOld + (shooter.getX() - shooter.xOld) / 2.0;
         double posY = shooter.yOld + (shooter.getY() - shooter.yOld) / 2.0 + shooter.getEyeHeight();
         double posZ = shooter.zOld + (shooter.getZ() - shooter.zOld) / 2.0;
@@ -187,9 +187,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         // Big thanks to both of them for this fix!
         gunSpread = Math.min(gunSpread, 170F) * 0.5F * Mth.DEG_TO_RAD;
         
-        Vec3 vecforwards = this.getVectorFromRotation(shooter.getXRot(), shooter.getYRot());
-        Vec3 vecupwards = this.getVectorFromRotation(shooter.getXRot() + 90F, shooter.getYRot());
-        Vec3 vecsideways = vecforwards.cross(vecupwards);
+        Vec3 vecForwards = this.getVectorFromRotation(shooter.getXRot(), shooter.getYRot());
+        Vec3 vecUpwards = this.getVectorFromRotation(shooter.getXRot() + 90F, shooter.getYRot());
+        Vec3 vecSideways = vecForwards.cross(vecUpwards);
         
         float theta = random.nextFloat() * 2F * (float) Math.PI;
         float r = Mth.sqrt(random.nextFloat()) * (float) Math.tan(gunSpread);
@@ -197,10 +197,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         float a1 = Mth.cos(theta) * r;
         float a2 = Mth.sin(theta) * r;
         
-        return vecforwards.add(vecsideways.scale(a1)).add(vecupwards.scale(a2)).normalize();
-        
-        
-        //return this.getVectorFromRotation(shooter.getXRot() - (gunSpread / 2.0F) + random.nextFloat() * gunSpread, shooter.getYHeadRot() - (gunSpread / 2.0F) + random.nextFloat() * gunSpread);
+        return vecForwards.add(vecSideways.scale(a1)).add(vecUpwards.scale(a2)).normalize();
     }
 
     public void setWeapon(ItemStack weapon)
@@ -344,7 +341,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     }
 
     /**
-     * Called when the projectile has run out of it's life. In other words, the projectile managed
+     * Called when the projectile has run out of its life. In other words, the projectile managed
      * to not hit any blocks and instead aged. The grenade uses this to explode in the air.
      */
     protected void onExpired()

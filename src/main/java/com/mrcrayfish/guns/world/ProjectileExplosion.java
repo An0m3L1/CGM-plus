@@ -7,12 +7,15 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ExplosionDamageCalculator;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.phys.AABB;
+import net.minecraft.world.phys.BlockHitResult;
+import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
@@ -133,6 +136,19 @@ public class ProjectileExplosion extends Explosion
 
             double strength = Math.sqrt(entity.distanceToSqr(explosionPos)) / radius;
             if(strength > 1.0D)
+                continue;
+
+            Vec3 entityPos = entity.position();
+            ClipContext context = new ClipContext(
+                    explosionPos,
+                    entityPos,
+                    ClipContext.Block.COLLIDER,
+                    ClipContext.Fluid.NONE,
+                    entity
+            );
+
+            BlockHitResult result = this.world.clip(context);
+            if(result.getType() != HitResult.Type.MISS)
                 continue;
 
             double deltaX = entity.getX() - this.x;

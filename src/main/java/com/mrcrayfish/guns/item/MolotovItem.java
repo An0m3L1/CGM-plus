@@ -42,6 +42,7 @@ public class MolotovItem extends GrenadeItem
             tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable("info.cgm.fire_diameter", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDiameter)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.fire_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDuration)).withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("info.cgm.explodes_on_impact").withStyle(ChatFormatting.GRAY));
         }
         else
         {
@@ -53,7 +54,7 @@ public class MolotovItem extends GrenadeItem
     public void onUsingTick(ItemStack stack, LivingEntity player, int count)
     {
         int duration = this.getUseDuration(stack) - count;
-        if(duration == 9)
+        if(duration == 10)
             player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.GRENADE_LIGHT.get(), SoundSource.PLAYERS, 2.5F, 1.0F, false);
     }
 

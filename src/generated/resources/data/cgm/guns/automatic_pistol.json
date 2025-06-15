@@ -4,6 +4,7 @@
     "gripType": "cgm:pistol_custom",
     "auto": true,
     "rate": 1,
+    "spawnCasings": true,
 
     "adsSpeed": 1.0,
     "recoilAdsReduction": 0.25,

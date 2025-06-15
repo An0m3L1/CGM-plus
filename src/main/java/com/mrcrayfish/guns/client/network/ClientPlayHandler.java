@@ -299,7 +299,7 @@ public class ClientPlayHandler
                     y+(Math.random() * (diameter * 0.5)),
                     z+((Math.random()-0.5) * diameter),
                     (Math.random()-0.5) * vel,
-                    Math.random() * (vel * 0.5f),
+                    Math.random() * (vel * 0.5),
                     (Math.random()-0.5) * vel);
         }
     }

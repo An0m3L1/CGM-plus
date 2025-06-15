@@ -95,7 +95,7 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
     public void tick()
     {
         super.tick();
-        if(this.shouldBounce && this.tickCount >= this.maxLife)
+        if(this.tickCount >= this.maxLife)
         {
             this.remove(RemovalReason.KILLED);
             this.onDeath();
@@ -153,7 +153,7 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
         }
     }
 
-    private void bounce(Direction direction)
+    public void bounce(Direction direction)
     {
         switch(direction.getAxis())
         {

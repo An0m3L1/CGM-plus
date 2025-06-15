@@ -4,6 +4,7 @@
     "gripType": "cgm:two_handed",
     "auto": true,
     "rate": 12,
+    "spawnCasings": false,
 
     "recoilAngle": 3.0,
     "recoilKick": 0.5,

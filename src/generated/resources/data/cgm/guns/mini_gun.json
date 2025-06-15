@@ -4,6 +4,7 @@
     "gripType": "cgm:mini_gun",
     "auto": true,
     "rate": 1,
+    "spawnCasings": true,
 
     "recoilAngle": 0.1,
     "recoilKick": 0.1,

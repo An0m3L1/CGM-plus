@@ -1,9 +1,34 @@
 {
   "values":
   [
+    "#minecraft:planks",
+    "#minecraft:wooden_doors",
+    "#minecraft:wooden_trapdoors",
+    "#minecraft:wooden_slabs",
+    "#minecraft:wooden_stairs",
+    "#minecraft:wooden_buttons",
+    "#minecraft:wooden_pressure_plates",
+    "#forge:fence_gates/wooden",
+    "#forge:fences/wooden",
+    "#minecraft:beds",
+    "#minecraft:signs",
+    "minecraft:bookshelf",
+    "minecraft:lectern",
+    "minecraft:crafting_table",
+    "minecraft:note_block",
+    "minecraft:fletching_table",
+
     "#forge:glass_panes",
     "#forge:glass",
+    "create:framed_glass_trapdoor",
+
+    "#minecraft:wool",
+    "#minecraft:wool_carpets",
+
     "#minecraft:candles",
+    "#minecraft:ice",
+    "#minecraft:flower_pots",
+    "#minecraft:banners",
     "minecraft:lily_pad",
     "minecraft:cocoa",
     "minecraft:end_rod",
@@ -12,10 +37,6 @@
     "minecraft:turtle_egg",
     "minecraft:glowstone",
     "minecraft:sea_lantern",
-    "minecraft:ice",
-    "minecraft:blue_ice",
-    "minecraft:frosted_ice",
-    "minecraft:packed_ice",
     "minecraft:bamboo",
     "minecraft:small_amethyst_bud",
     "minecraft:medium_amethyst_bud",
@@ -23,14 +44,6 @@
     "minecraft:amethyst_cluster",
     "minecraft:lantern",
     "minecraft:soul_lantern",
-    "minecraft:pointed_dripstone",
-
-    "#minecraft:planks",
-    "#minecraft:wooden_doors",
-    "#minecraft:wooden_trapdoors",
-    "#minecraft:wooden_slabs",
-    "#minecraft:wooden_stairs",
-    "#forge:fence_gates/wooden",
-    "#forge:fences/wooden"
+    "minecraft:pointed_dripstone"
   ]
 }

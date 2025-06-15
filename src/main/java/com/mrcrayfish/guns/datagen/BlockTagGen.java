@@ -20,7 +20,7 @@ public class BlockTagGen extends BlockTagsProvider
     protected void addTags()
     {
         this.tag(ModTags.Blocks.FRAGILE)
-                //Wooden stuff
+                /* Wooden */
                 .addTag(BlockTags.PLANKS)
                 .addTag(BlockTags.WOODEN_DOORS)
                 .addTag(BlockTags.WOODEN_TRAPDOORS)
@@ -30,11 +30,28 @@ public class BlockTagGen extends BlockTagsProvider
                 .addTag(BlockTags.WOODEN_PRESSURE_PLATES)
                 .addTag(Tags.Blocks.FENCES_WOODEN)
                 .addTag(Tags.Blocks.FENCE_GATES_WOODEN)
-                //Glass stuff
+                .addTag(BlockTags.BEDS)
+                .addTag(BlockTags.SIGNS)
+                .add(Blocks.BOOKSHELF)
+                .add(Blocks.LECTERN)
+                .add(Blocks.CRAFTING_TABLE)
+                .add(Blocks.NOTE_BLOCK)
+                .add(Blocks.FLETCHING_TABLE)
+                .add(Blocks.COMPOSTER)
+                .add(Blocks.LOOM)
+                .add(Blocks.JUKEBOX)
+                .add(Blocks.CARTOGRAPHY_TABLE)
+                /* Glass */
                 .addTag(Tags.Blocks.GLASS_PANES)
                 .addTag(Tags.Blocks.GLASS)
-                //Other
+                /* Wool */
+                .addTag(BlockTags.WOOL)
+                .addTag(BlockTags.WOOL_CARPETS)
+                /* Other */
                 .addTag(BlockTags.CANDLES)
+                .addTag(BlockTags.ICE)
+                .addTag(BlockTags.FLOWER_POTS)
+                .addTag(BlockTags.BANNERS)
                 .add(Blocks.LILY_PAD)
                 .add(Blocks.COCOA)
                 .add(Blocks.END_ROD)
@@ -43,10 +60,6 @@ public class BlockTagGen extends BlockTagsProvider
                 .add(Blocks.TURTLE_EGG)
                 .add(Blocks.GLOWSTONE)
                 .add(Blocks.SEA_LANTERN)
-                .add(Blocks.ICE)
-                .add(Blocks.BLUE_ICE)
-                .add(Blocks.FROSTED_ICE)
-                .add(Blocks.PACKED_ICE)
                 .add(Blocks.BAMBOO)
                 .add(Blocks.SMALL_AMETHYST_BUD)
                 .add(Blocks.MEDIUM_AMETHYST_BUD)

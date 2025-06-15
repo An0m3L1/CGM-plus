@@ -318,7 +318,7 @@ public class GunRenderingHandler
             Level level = player.level;
 
             Item casing = ModItems.BRASS_CASING.get();
-            if(modifiedGun.getProjectile().getProjectileItem().equals(ModItems.BUCKSHOT_SHELL.getId()))
+            if(modifiedGun.getProjectile().getItem().equals(ModItems.BUCKSHOT_SHELL.getId()))
             {
                 casing = ModItems.SHELL_CASING.get();
             }
@@ -775,9 +775,6 @@ public class GunRenderingHandler
         if(player == null)
             return;
 
-        //if(Minecraft.getInstance().options.getCameraType() != CameraType.FIRST_PERSON)
-        //    return;
-
         ItemStack heldItem = player.getItemInHand(InteractionHand.MAIN_HAND);
         if(heldItem.isEmpty())
             return;
@@ -1185,8 +1182,6 @@ public class GunRenderingHandler
         	return;
 
         Item item = ForgeRegistries.ITEMS.getValue(modifiedGun.getProjectile().getItem());
-        //if(item == null)
-        //    return;
 
         poseStack.pushPose();
 
@@ -1276,7 +1271,6 @@ public class GunRenderingHandler
         if(!(stack.getItem() instanceof GunItem))
             return;
     	
-        //if(ReloadHandler.get().getReloadProgress(mc.getFrameTime())>0)
         if(ReloadHandler.get().getReloading(mc.player) || ReloadHandler.get().getReloadProgress(mc.getFrameTime()) >= 0.5F)
         {
 	    	float reloadInterval = GunCompositeStatHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
@@ -1287,10 +1281,10 @@ public class GunRenderingHandler
 	    		if (ReloadHandler.get().isReloadFromEmpty())
 		    	reloadStartDelay = Math.max(gun.getGeneral().getReloadEmptyStartDelay(),0);
 	    		else
-	    		reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
+    	    		reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
 	    	}
 	    	if (ReloadHandler.get().getStartReloadTick()>0)
-	    	this.lastStartReloadTick = ReloadHandler.get().getStartReloadTick();
+	    	    this.lastStartReloadTick = ReloadHandler.get().getStartReloadTick();
 	    	
     		float reloadDelta = (mc.player.tickCount - (lastStartReloadTick + reloadStartDelay) + mc.getFrameTime()) / reloadInterval;
     		this.lastReloadDeltaTime = reloadDelta;
@@ -1306,24 +1300,6 @@ public class GunRenderingHandler
     	
         updateReloadProgress(stack);
         return this.lastReloadCycle;
-        
-        /*if(!ModSyncedDataKeys.RELOADING.getValue(mc.player))
-        {
-        	return this.lastReloadCycle;
-        }
-        else
-        {
-	    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
-	    	int reloadStartDelay = 5;
-	    	if (stack.getItem() instanceof GunItem gunItem)
-	    	{
-	    		Gun gun = gunItem.getModifiedGun(stack);
-	    		reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
-	    	}
-	        float reload = ((mc.player.tickCount - (ReloadHandler.get().getStartReloadTick() + reloadStartDelay) + mc.getFrameTime()) % interval) / interval;
-	        this.lastReloadCycle = reload;
-	        return reload;
-    	}*/
     }
     
     public float getReloadDeltaTime(ItemStack stack)
@@ -1334,29 +1310,10 @@ public class GunRenderingHandler
 
         updateReloadProgress(stack);
         return this.lastReloadDeltaTime;
-        
-        /*if(!ModSyncedDataKeys.RELOADING.getValue(mc.player))
-        {
-        	return this.lastReloadDeltaTime;
-        }
-        else
-        {
-	    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
-	    	int reloadStartDelay = 5;
-	    	if (stack.getItem() instanceof GunItem gunItem)
-	    	{
-	    		Gun gun = gunItem.getModifiedGun(stack);
-	    		reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
-	    	}
-	        float reloadDelta = (mc.player.tickCount - (ReloadHandler.get().getStartReloadTick() + reloadStartDelay) + mc.getFrameTime()) / interval;
-	        this.lastReloadDeltaTime = reloadDelta;
-	        return reloadDelta;
-    	}*/
     }
 
     /**
      * A temporary hack to get the equip progress until Forge fixes the issue.
-     * @return
      */
     private float getEquipProgress(float partialTicks)
     {

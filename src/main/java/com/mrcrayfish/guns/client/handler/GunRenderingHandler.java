@@ -20,7 +20,6 @@ import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.properties.SightAnimation;
 import com.mrcrayfish.guns.event.GunFireEvent;
-import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GrenadeItem;
 import com.mrcrayfish.guns.item.GunItem;
@@ -43,8 +42,6 @@ import net.minecraft.client.renderer.entity.ItemRenderer;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.particles.ItemParticleOption;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
@@ -311,7 +308,7 @@ public class GunRenderingHandler
         {
             this.showMuzzleFlashForPlayer(Minecraft.getInstance().player.getId());
         }
-
+        /*
         if(modifiedGun.getGeneral().shouldSpawnCasings())
         {
             Player player = event.getEntity();
@@ -347,9 +344,7 @@ public class GunRenderingHandler
             double speedRight = 0.1 + this.random.nextDouble() * 0.2;
             double speedUp = 0.1 + this.random.nextDouble() * 0.2;
             double speedForward = 0.05 * this.random.nextDouble();
-            Vec3 velocity = right.scale(speedRight)
-                    .add(0, speedUp, 0)
-                    .add(horizontalLook.scale(speedForward));
+            Vec3 velocity = right.scale(speedRight).add(0, speedUp, 0).add(horizontalLook.scale(speedForward));
 
             Vec3 playerVelocity = player.getDeltaMovement();
             velocity = velocity.add(playerVelocity.scale(2.0));
@@ -365,6 +360,8 @@ public class GunRenderingHandler
                     velocity.x, velocity.y, velocity.z
             );
         }
+
+         */
     }
 
     public void showMuzzleFlashForPlayer(int entityId)

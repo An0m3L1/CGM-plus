@@ -27,5 +27,8 @@ public class ParticleFactoryRegistry
         particleManager.register(ModParticleTypes.SMOKE_CLOUD.get(), SmokeCloudParticle.Factory::new);
         particleManager.register(ModParticleTypes.SMOKE_EFFECT.get(), SmokeEffectParticle.Factory::new);
         particleManager.register(ModParticleTypes.TRAIL.get(), TrailParticle.Factory::new);
+        particleManager.register(ModParticleTypes.CASING.get(), CasingParticle.Factory::new);
+        particleManager.register(ModParticleTypes.BRASS_CASING.get(), CasingParticle.Factory::new);
+        particleManager.register(ModParticleTypes.SHELL_CASING.get(), CasingParticle.Factory::new);
     }
 }

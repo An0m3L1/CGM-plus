@@ -30,6 +30,9 @@ public class ModParticleTypes
     public static final RegistryObject<SimpleParticleType> EXPLOSION = REGISTER.register("explosion", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> SMOKE_CLOUD = REGISTER.register("smoke_cloud", () -> new SimpleParticleType(true));
     public static final RegistryObject<SimpleParticleType> SMOKE_EFFECT = REGISTER.register("smoke_effect", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> CASING = REGISTER.register("casing", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> BRASS_CASING = REGISTER.register("brass_casing", () -> new SimpleParticleType(true));
+    public static final RegistryObject<SimpleParticleType> SHELL_CASING = REGISTER.register("shell_casing", () -> new SimpleParticleType(true));
     public static final RegistryObject<ParticleType<TrailData>> TRAIL = REGISTER.register("trail", () -> new ParticleType<>(false, TrailData.DESERIALIZER)
     {
         @Override

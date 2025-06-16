@@ -29,6 +29,7 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 
 import java.util.Iterator;
 import java.util.Map;
+import java.util.Random;
 
 import static com.mrcrayfish.guns.event.GunFireLightEvent.temporaryLights;
 
@@ -103,8 +104,13 @@ public class GunEventBus
             //Fire light
             Gun gun = gunItem.getModifiedGun(heldItem);
             Vec3 lookVec = player.getLookAngle();
-            BlockPos lightPos = player.blockPosition().offset((int)(lookVec.x), 0.75, (int)(lookVec.z));
-            GunFireLightEvent.addTemporaryLight(level, lightPos);
+            BlockPos low = player.blockPosition().offset((int)(lookVec.x), 0.0, (int)(lookVec.z));
+            BlockPos medium = player.blockPosition().offset((int)(lookVec.x), 1.0, (int)(lookVec.z));
+            BlockPos high = player.blockPosition().offset((int)(lookVec.x), 2.0, (int)(lookVec.z));
+
+            GunFireLightEvent.addTemporaryLight(level, low);
+            GunFireLightEvent.addTemporaryLight(level, medium);
+            GunFireLightEvent.addTemporaryLight(level, high);
 
             //Casing eject
             if (gun.getGeneral().shouldSpawnCasings())
@@ -124,27 +130,31 @@ public class GunEventBus
         GripType gripType = gun.getGeneral().getGripType();
 
         Vec3 lookVec = playerEntity.getLookAngle();
-        double yawRad = Math.toRadians(playerEntity.getYRot());
-        Vec3 rightVec = new Vec3(-Math.cos(yawRad), 0, -Math.sin(yawRad));
 
-        double rightOffset;
-        double verticalOffset;
-
-        if(gripType.equals(GripType.TWO_HANDED)) {
-            rightOffset = 0.25;
-            verticalOffset = 0.4;
+        Vec3 horizontalLook = new Vec3(lookVec.x, 0, lookVec.z);
+        if (horizontalLook.lengthSqr() < 1.0E-7) {
+            float yaw = playerEntity.getYRot();
+            double radians = Math.toRadians(yaw);
+            horizontalLook = new Vec3(-Math.sin(radians), 0, Math.cos(radians));
         }
-        else if(gripType.equals(GripType.ONE_HANDED) || gripType.equals(GripType.PISTOL_CUSTOM)) {
+        horizontalLook = horizontalLook.normalize();
+
+        Vec3 rightVec = new Vec3(horizontalLook.z, 0, -horizontalLook.x).scale(-1).normalize();
+
+        double rightOffset = 0.0;
+        double verticalOffset = 0.0;
+
+        if(gripType.equals(GripType.TWO_HANDED) || gripType.equals(GripType.TWO_HANDED_SHORT)) {
             rightOffset = 0.275;
             verticalOffset = 0.3;
+        }
+        else if(gripType.equals(GripType.ONE_HANDED) || gripType.equals(GripType.PISTOL_CUSTOM)) {
+            rightOffset = 0.3;
+            verticalOffset = 0.2;
         }
         else if(gripType.equals(GripType.MINI_GUN)) {
             rightOffset = 0.5;
             verticalOffset = 0.8;
-        }
-        else {
-            rightOffset = 0.0;
-            verticalOffset = 0.0;
         }
 
         double offsetX = rightVec.x * rightOffset + lookVec.x * 0.5;
@@ -152,7 +162,7 @@ public class GunEventBus
         double offsetZ = rightVec.z * rightOffset + lookVec.z * 0.5;
 
         Vec3 particlePos = playerEntity.getPosition(1).add(offsetX, offsetY, offsetZ);
-
+    
         ResourceLocation light = ModItems.LIGHT_BULLET.getId();
         ResourceLocation medium = ModItems.MEDIUM_BULLET.getId();
         ResourceLocation heavy = ModItems.HEAVY_BULLET.getId();
@@ -170,12 +180,19 @@ public class GunEventBus
 
         if (level instanceof ServerLevel serverLevel)
         {
-            double upSpeed = 0.05;
-            double rightSpeed = 0.1;
+            double upSpeed = 0.035;
+            double rightSpeed = 0.07;
+
+            Vec3 velocity = rightVec.scale(rightSpeed).add(0, upSpeed, 0);
 
             double velocityX = rightVec.x * rightSpeed;
             double velocityY = upSpeed;
             double velocityZ = rightVec.z * rightSpeed;
+
+            Random random = new Random();
+            velocityX += (random.nextDouble() - 0.5) * 0.02;
+            velocityY += (random.nextDouble() - 0.5) * 0.02;
+            velocityZ += (random.nextDouble() - 0.5) * 0.02;
 
             serverLevel.sendParticles(casingType,
                     particlePos.x, particlePos.y, particlePos.z,

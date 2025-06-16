@@ -334,12 +334,11 @@ public class GunRenderingHandler
 
             Vec3 right = new Vec3(horizontalLook.z, 0, -horizontalLook.x).scale(-1).normalize();
 
-            double forwardOffset = 0.65;
             double rightOffset = 0.5;
             double upOffset = -0.4;
-            double x = player.getX() + horizontalLook.x * forwardOffset + right.x * rightOffset;
+            double x = player.getX() + horizontalLook.x * right.x * rightOffset;
             double y = player.getEyeY() + upOffset;
-            double z = player.getZ() + horizontalLook.z * forwardOffset + right.z * rightOffset;
+            double z = player.getZ() + horizontalLook.z * right.z * rightOffset;
 
             double speedRight = 0.1 + this.random.nextDouble() * 0.2;
             double speedUp = 0.1 + this.random.nextDouble() * 0.2;

@@ -13,11 +13,13 @@ public class CasingParticle extends TextureSheetParticle {
         this.gravity = 0.75F;
         this.friction = 0.999F;
         this.hasPhysics = true;
+        /*
         this.xd *= 0.8F;
         this.yd *= 0.8F;
         this.zd *= 0.8F;
+        */
         this.quadSize = 0.35F;
-        this.lifetime = (int) (16.0D / (Math.random() * 0.8D + 0.2D));
+        this.lifetime = (int) (24.0D / (Math.random() * 0.8D + 0.2D));
     }
 
     public ParticleRenderType getRenderType() {
@@ -26,7 +28,8 @@ public class CasingParticle extends TextureSheetParticle {
 
     public float getQuadSize(float pScaleFactor) {
         float f = ((float) this.age + pScaleFactor) / (float) this.lifetime;
-        return this.quadSize * (1.0F - f * f);
+        float growthFactor = Math.min((float) this.age / 5.0F, 1.0F);
+        return this.quadSize * growthFactor * (1.0F - f * f);
     }
 
     public void tick()

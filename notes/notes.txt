@@ -1,38 +1,3 @@
-Add content
-    Guns: guns.txt
-    Armor
-        - Helmet
-        - Vest and elbow pads
-        - Belt and knee pads
-        - Boots
-    Accessories
-        - NV goggles
-        - Gas mask
-        - Ballistic goggles
-        - Balaclava
-        - Face mask
-        - Gloves
-        - Combat shirt
-        - Combat pants
-        - Marksman backpack
-        - Ballistic shield
-    Melee
-        - Blunt: hammer, sledgehammer, baseball bat, crowbar
-        - Sharp: katana, tanto, machete, m9 bayonet
-        - Throwable: cleaver, tomahawk, shuriken
-        - Basic: sword, longsword, fire axe
-    Explosives
-        - Flare
-        - Mine
-        - C4
-        - Impact grenade
-    Attachments
-        - Barrels: compensator, flash hider, muzzle break
-        - Grips: angled, thumb
-        - Scopes: monocle, holo
-        - Stocks: scar, solid, skeleton
-        - Tactical: laser, flashlight, wraps/tape
-
 Add melee class system
     - Blunt: applies slow and stunned effect, extra knockback
     - Sharp: applies bleed effect (can be removed with healing items)
@@ -48,8 +13,6 @@ Add and overhaul animations
     - Crouched shooting (lower the weapon to align with eyes while aiming)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-Add ejecting casings when shooting (GunEventBus in JEG) <--
-    Tie coords to grip type
 Add durability system (GunEventBus in JEG)
 Add ammo pouches (check scorched guns)
 

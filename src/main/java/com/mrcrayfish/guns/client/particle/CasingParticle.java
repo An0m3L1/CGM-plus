@@ -5,6 +5,7 @@ import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 @OnlyIn(Dist.CLIENT)
 public class CasingParticle extends TextureSheetParticle {
@@ -12,17 +13,11 @@ public class CasingParticle extends TextureSheetParticle {
         super(pLevel, pX, pY, pZ, 0.0D, 0.0D, 0.0D);
         this.gravity = 0.75F;
         this.friction = 0.999F;
-        this.hasPhysics = true;
-        /*
-        this.xd *= 0.8F;
-        this.yd *= 0.8F;
-        this.zd *= 0.8F;
-        */
         this.quadSize = 0.35F;
-        this.lifetime = (int) (24.0D / (Math.random() * 0.8D + 0.2D));
+        this.lifetime = (int) (12.0D / (Math.random() * 0.8D + 0.2D));
     }
 
-    public ParticleRenderType getRenderType() {
+    public @NotNull ParticleRenderType getRenderType() {
         return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
     }
 

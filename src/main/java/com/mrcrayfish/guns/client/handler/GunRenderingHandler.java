@@ -314,13 +314,20 @@ public class GunRenderingHandler
             Player player = event.getEntity();
             Level level = player.level;
 
-            Item casing = ModItems.BRASS_CASING.get();
-            if(modifiedGun.getProjectile().getItem().equals(ModItems.BUCKSHOT_SHELL.getId()))
-            {
-                casing = ModItems.SHELL_CASING.get();
+            ResourceLocation light = ModItems.LIGHT_BULLET.getId();
+            ResourceLocation medium = ModItems.MEDIUM_BULLET.getId();
+            ResourceLocation heavy = ModItems.HEAVY_BULLET.getId();
+            ResourceLocation shell = ModItems.BUCKSHOT_SHELL.getId();
+            ResourceLocation projectile = modifiedGun.getProjectile().getItem();
+            SimpleParticleType casingType = ModParticleTypes.CASING.get();
+
+            if (projectile != null) {
+                if (projectile.equals(light) || projectile.equals(medium) || projectile.equals(heavy))
+                    casingType = ModParticleTypes.BRASS_CASING.get();
+                else if (projectile.equals(shell))
+                    casingType = ModParticleTypes.SHELL_CASING.get();
             }
 
-            ItemStack casingStack = new ItemStack(casing);
             Vec3 look = player.getLookAngle();
 
             Vec3 horizontalLook = new Vec3(look.x, 0, look.z);
@@ -354,13 +361,12 @@ public class GunRenderingHandler
                     this.random.nextGaussian() * 0.01
             );
 
-            level.addParticle(new ItemParticleOption(ParticleTypes.ITEM, casingStack),
+            level.addParticle(casingType,
                     x, y, z,
                     velocity.x, velocity.y, velocity.z
             );
         }
-
-         */
+        */
     }
 
     public void showMuzzleFlashForPlayer(int entityId)

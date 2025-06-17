@@ -5,6 +5,7 @@ import com.mrcrayfish.guns.client.GunItemStackRenderer;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.NetworkGunManager;
 import com.mrcrayfish.guns.debug.Debug;
+import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.ChatFormatting;
@@ -15,6 +16,7 @@ import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.chat.Component;
+import net.minecraft.util.Mth;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
@@ -32,7 +34,6 @@ import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nonnull;
 import javax.annotation.Nullable;
-
 import java.util.List;
 import java.util.Objects;
 import java.util.WeakHashMap;
@@ -229,25 +230,14 @@ public class GunItem extends Item implements IColored, IMeta
     }
 
     @Override
-    public boolean isBarVisible(ItemStack stack)
-    {
-        CompoundTag tagCompound = stack.getOrCreateTag();
-        Gun modifiedGun = this.getModifiedGun(stack);
-        return !tagCompound.getBoolean("IgnoreAmmo") && tagCompound.getInt("AmmoCount") < GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun);
-    }
-
-    @Override
-    public int getBarWidth(ItemStack stack)
-    {
-        CompoundTag tagCompound = stack.getOrCreateTag();
-        Gun modifiedGun = this.getModifiedGun(stack);
-        return (int) (13.0 * (tagCompound.getInt("AmmoCount") / (double) GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)));
-    }
-
-    @Override
     public int getBarColor(@NotNull ItemStack stack)
     {
-        return Objects.requireNonNull(ChatFormatting.YELLOW.getColor());
+        if (stack.getDamageValue() >= (stack.getMaxDamage() * 0.8)) {
+            return Objects.requireNonNull(ChatFormatting.RED.getColor());
+        }
+        float stackMaxDamage = this.getMaxDamage(stack);
+        float f = Math.max(0.0F, (stackMaxDamage - (float)stack.getDamageValue()) / stackMaxDamage);
+        return Mth.hsvToRgb(f / 3.0F, 1.0F, 1.0F);
     }
 
     public Gun getModifiedGun(ItemStack stack)
@@ -287,6 +277,11 @@ public class GunItem extends Item implements IColored, IMeta
                 return new GunItemStackRenderer();
             }
         });
+    }
+
+    public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair)
+    {
+        return repair.is(ModItems.STURDY_MECHANISM.get());
     }
     
     // Everything below is related to energy storage and transfer mechanics via Forge's EnergyStorage capability.

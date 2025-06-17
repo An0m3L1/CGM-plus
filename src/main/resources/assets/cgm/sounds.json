@@ -198,6 +198,9 @@
       "subtitle": "subtitle.cgm.switch",
       "sounds": ["cgm:item/fire_switch"]
    },
+   "item.low_durability": {
+      "sounds": ["cgm:item/low_durability"]
+   },
    "entity.flyby": {
       "subtitle": "subtitle.cgm.flyby",
       "sounds":

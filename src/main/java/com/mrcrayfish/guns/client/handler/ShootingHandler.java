@@ -351,7 +351,7 @@ public class ShootingHandler
         if(!(heldItem.getItem() instanceof GunItem))
             return;
 
-        if(isEmpty(player, heldItem))
+        if(isEmpty(player, heldItem) || heldItem.getDamageValue() == (heldItem.getMaxDamage() - 1))
         {	
 
             ItemCooldowns tracker = player.getCooldowns();
@@ -369,10 +369,7 @@ public class ShootingHandler
             }
         	return;
         }
-        
-        if(player.isSprinting()) //*NEW* Stop sprinting when attempting to shoot a gun.
-            player.setSprinting(false);
-        
+
         if(!canFire(player, heldItem))
             return;
         
@@ -385,9 +382,6 @@ public class ShootingHandler
             if(MinecraftForge.EVENT_BUS.post(new GunFireEvent.Pre(player, heldItem)))
                 return;
 
-            /*int rate = GunEnchantmentHelper.getRate(heldItem, modifiedGun);
-            rate = GunModifierHelper.getModifiedRate(heldItem, rate);
-            rate = GunEnchantmentHelper.getRampUpRate(player, heldItem, rate);*/
             int rate = GunCompositeStatHelper.getCompositeRate(heldItem,modifiedGun,player);
             tracker.addCooldown(heldItem.getItem(), rate);
             ModSyncedDataKeys.RAMPUPSHOT.setValue(player, ModSyncedDataKeys.RAMPUPSHOT.getValue(player)+1);

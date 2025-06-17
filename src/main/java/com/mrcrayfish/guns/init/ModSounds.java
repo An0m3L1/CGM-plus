@@ -80,6 +80,7 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> ATTACHMENT = register("ui.attach");
 	public static final RegistryObject<SoundEvent> EMPTY_CLICK = register("item.empty_click");
 	public static final RegistryObject<SoundEvent> FIRE_SWITCH = register("item.fire_switch");
+	public static final RegistryObject<SoundEvent> LOW_DURABILITY = register("item.low_durability");
 	public static final RegistryObject<SoundEvent> FLYBY = register("entity.flyby");
 
 	private static RegistryObject<SoundEvent> register(String key)

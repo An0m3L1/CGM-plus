@@ -308,65 +308,6 @@ public class GunRenderingHandler
         {
             this.showMuzzleFlashForPlayer(Minecraft.getInstance().player.getId());
         }
-        /*
-        if(modifiedGun.getGeneral().shouldSpawnCasings())
-        {
-            Player player = event.getEntity();
-            Level level = player.level;
-
-            ResourceLocation light = ModItems.LIGHT_BULLET.getId();
-            ResourceLocation medium = ModItems.MEDIUM_BULLET.getId();
-            ResourceLocation heavy = ModItems.HEAVY_BULLET.getId();
-            ResourceLocation shell = ModItems.BUCKSHOT_SHELL.getId();
-            ResourceLocation projectile = modifiedGun.getProjectile().getItem();
-            SimpleParticleType casingType = ModParticleTypes.CASING.get();
-
-            if (projectile != null) {
-                if (projectile.equals(light) || projectile.equals(medium) || projectile.equals(heavy))
-                    casingType = ModParticleTypes.BRASS_CASING.get();
-                else if (projectile.equals(shell))
-                    casingType = ModParticleTypes.SHELL_CASING.get();
-            }
-
-            Vec3 look = player.getLookAngle();
-
-            Vec3 horizontalLook = new Vec3(look.x, 0, look.z);
-            if (horizontalLook.lengthSqr() < 1.0E-7)
-            {
-                float yaw = player.getYRot();
-                double radians = Math.toRadians(yaw);
-                horizontalLook = new Vec3(-Math.sin(radians), 0, Math.cos(radians));
-            }
-            horizontalLook = horizontalLook.normalize();
-
-            Vec3 right = new Vec3(horizontalLook.z, 0, -horizontalLook.x).scale(-1).normalize();
-
-            double rightOffset = 0.5;
-            double upOffset = -0.4;
-            double x = player.getX() + horizontalLook.x * right.x * rightOffset;
-            double y = player.getEyeY() + upOffset;
-            double z = player.getZ() + horizontalLook.z * right.z * rightOffset;
-
-            double speedRight = 0.1 + this.random.nextDouble() * 0.2;
-            double speedUp = 0.1 + this.random.nextDouble() * 0.2;
-            double speedForward = 0.05 * this.random.nextDouble();
-            Vec3 velocity = right.scale(speedRight).add(0, speedUp, 0).add(horizontalLook.scale(speedForward));
-
-            Vec3 playerVelocity = player.getDeltaMovement();
-            velocity = velocity.add(playerVelocity.scale(2.0));
-
-            velocity = velocity.add(
-                    this.random.nextGaussian() * 0.01,
-                    this.random.nextGaussian() * 0.01,
-                    this.random.nextGaussian() * 0.01
-            );
-
-            level.addParticle(casingType,
-                    x, y, z,
-                    velocity.x, velocity.y, velocity.z
-            );
-        }
-        */
     }
 
     public void showMuzzleFlashForPlayer(int entityId)

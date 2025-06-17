@@ -13,18 +13,20 @@ Add and overhaul animations
     - Crouched shooting (lower the weapon to align with eyes while aiming)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-Add durability system (GunEventBus in JEG)
 Add ammo pouches (check scorched guns)
+Add proper repair item for guns <--
 
 Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-    - Sniper Rifle <--
+    - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul datagen
     - Loot tables
     - Recipes
-Overhaul gun lights to be dynamic instead of placing blocks <--
+Overhaul gun lights to be dynamic instead of placing blocks
+Overhaul sniper rifles cock sound to be split into 2 files
+Overhaul guns durability values <--
 
 Fix crosshair not updating to new player movement logic (or implement it in a clean way)

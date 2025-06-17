@@ -24,16 +24,19 @@ public class ModItems
     public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(151)
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle",
             () -> new GunItem(new Item.Properties()
-            .stacksTo(1)
-            .tab(GunMod.GUNS)
+                    .stacksTo(1)
+                    .durability(1561)
+                    .tab(GunMod.GUNS)
     ));
     public static final RegistryObject<GunItem> COMBAT_RIFLE = REGISTER.register("combat_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
 
@@ -41,11 +44,13 @@ public class ModItems
     public static final RegistryObject<GunItem> SNIPER_RIFLE = REGISTER.register("sniper_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> HEAVY_SNIPER_RIFLE = REGISTER.register("heavy_sniper_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
 
@@ -53,6 +58,7 @@ public class ModItems
     public static final RegistryObject<GunItem> SEMI_AUTO_SHOTGUN = REGISTER.register("semi_auto_shotgun",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
 
@@ -60,6 +66,7 @@ public class ModItems
     public static final RegistryObject<GunItem> MINI_GUN = REGISTER.register("mini_gun",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
 
@@ -69,11 +76,13 @@ public class ModItems
     public static final RegistryObject<GunItem> TACTICAL_PISTOL = REGISTER.register("tactical_pistol",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> AUTOMATIC_PISTOL = REGISTER.register("automatic_pistol",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
 
@@ -81,11 +90,13 @@ public class ModItems
     public static final RegistryObject<GunItem> GRENADE_LAUNCHER = REGISTER.register("grenade_launcher",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> ROCKET_LAUNCHER = REGISTER.register("rocket_launcher",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
+                    .durability(1561)
                     .tab(GunMod.GUNS)
             ));
 

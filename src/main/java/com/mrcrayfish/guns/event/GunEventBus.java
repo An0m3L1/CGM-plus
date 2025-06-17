@@ -1,10 +1,12 @@
 package com.mrcrayfish.guns.event;
 
+import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModParticleTypes;
+import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -12,6 +14,8 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
+import net.minecraft.sounds.SoundEvents;
+import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -29,7 +33,6 @@ import net.minecraftforge.server.ServerLifecycleHooks;
 
 import java.util.Iterator;
 import java.util.Map;
-import java.util.Random;
 
 import static com.mrcrayfish.guns.common.GripType.*;
 import static com.mrcrayfish.guns.event.GunFireLightEvent.temporaryLights;
@@ -37,8 +40,6 @@ import static com.mrcrayfish.guns.event.GunFireLightEvent.temporaryLights;
 @Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GunEventBus
 {
-    private static final Random random = new Random();
-
     @SubscribeEvent
     public static void onServerTick(TickEvent.ServerTickEvent event)
     {
@@ -94,6 +95,44 @@ public class GunEventBus
             }
         }
     }
+
+    @SubscribeEvent
+    public static void preShoot(GunFireEvent.Pre event)
+    {
+
+        Player player = event.getEntity();
+        Level level = event.getEntity().level;
+        ItemStack heldItem = player.getMainHandItem();
+        CompoundTag tag = heldItem.getTag();
+
+        if(heldItem.getItem() instanceof GunItem gunItem)
+        {
+            Gun gun = gunItem.getModifiedGun(heldItem);
+
+            if (heldItem.isDamageableItem() && tag != null) {
+                if (heldItem.getDamageValue() == (heldItem.getMaxDamage() - 1)) {
+                    event.setCanceled(true);
+                }
+
+                // Jamming
+                if (heldItem.getDamageValue() >= (heldItem.getMaxDamage() * 0.8) && Config.COMMON.gameplay.enableJamming.get()) {
+                    if (Math.random() >= 0.975) {
+                        // Play sound if jammed
+                        event.getEntity().playSound(SoundEvents.ITEM_BREAK, 3.0F, 1.0F);
+                        int coolDown = gun.getGeneral().getRate() * 10;
+                        if (coolDown > 100) {
+                            coolDown = 100;
+                        }
+                        event.getEntity().getCooldowns().addCooldown(event.getStack().getItem(), (coolDown));
+                        event.setCanceled(true);
+                    }
+                } else if (tag.getInt("AmmoCount") >= 1) {
+                    broken(heldItem, level, player);
+                }
+            }
+        }
+    }
+
     @SubscribeEvent
     public static void postShoot(GunFireEvent.Post event)
     {
@@ -101,21 +140,62 @@ public class GunEventBus
         Level level = event.getEntity().level;
         ItemStack heldItem = player.getMainHandItem();
         CompoundTag tag = heldItem.getOrCreateTag();
-        
+
         if (heldItem.getItem() instanceof GunItem gunItem)
         {
-            //Fire light
-            Gun gun = gunItem.getModifiedGun(heldItem);
+            Gun modifiedGun = gunItem.getModifiedGun(heldItem);
+
+            // Decreasing durability
+            if (heldItem.isDamageableItem() && Config.COMMON.gameplay.enableDurability.get()) {
+                if (tag.getInt("AmmoCount") >= 1 ){
+                    damageGun(heldItem, level, player);
+                }
+                // Play sound when low durability shooting
+                if (heldItem.getDamageValue() >= (heldItem.getMaxDamage() * 0.8)) {
+                    level.playSound(player, player.blockPosition(), ModSounds.LOW_DURABILITY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+                }
+            }
+
+            // Fire light (WIP, buggy)
+            /*
             Vec3 lookVec = player.getLookAngle();
             BlockPos low = player.blockPosition().offset((int)(lookVec.x), 0.0, (int)(lookVec.z));
             BlockPos high = player.blockPosition().offset((int)(lookVec.x), 1.0, (int)(lookVec.z));
 
-            GunFireLightEvent.addTemporaryLight(level, low);
-            GunFireLightEvent.addTemporaryLight(level, high);
+            FireLightEvent.addTemporaryLight(level, low);
+            FireLightEvent.addTemporaryLight(level, high);
+            */
 
-            //Casing eject
+            // Casing eject (WIP, not clean)
+            /*
             if (gun.getGeneral().shouldSpawnCasings() && (tag.getInt("AmmoCount") >= 1 || player.getAbilities().instabuild)) {
                 ejectCasing(level, player);
+            }
+            */
+        }
+    }
+
+    public static void broken(ItemStack stack, Level level, Player player) {
+        int maxDamage = stack.getMaxDamage();
+        int currentDamage = stack.getDamageValue();
+        if (currentDamage >= (maxDamage - 2)) {
+            level.playSound(player, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 3.0F, 1.0F);
+        }
+    }
+
+    public static void damageGun(ItemStack stack, Level level, Player player) {
+        if (!player.getAbilities().instabuild) {
+            if (stack.isDamageableItem()) {
+                int maxDamage = stack.getMaxDamage();
+                int currentDamage = stack.getDamageValue();
+                if (currentDamage >= (maxDamage - 1)) {
+                    if (currentDamage >= (maxDamage - 2)) {
+                        level.playSound(player, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 3.0F, 1.0F);
+                    }
+                }
+                else {
+                    stack.hurtAndBreak(1, player, null);
+                }
             }
         }
     }
@@ -137,18 +217,18 @@ public class GunEventBus
         double forwardOffset = 0.0;
 
         if(gripType.equals(TWO_HANDED) || gripType.equals(TWO_HANDED_SHORT)) {
-            horizontalOffset = 0.25;
+            horizontalOffset = 0.225;
             verticalOffset = -0.3;
             forwardOffset = 0.4;
         }
         else if(gripType.equals(ONE_HANDED) || gripType.equals(PISTOL_CUSTOM)) {
-            horizontalOffset = 0.3;
+            horizontalOffset = 0.275;
             verticalOffset = -0.2;
-            forwardOffset = 0.3;
+            forwardOffset = 0.5;
         }
         else if(gripType.equals(MINI_GUN)) {
             horizontalOffset = 0.5;
-            verticalOffset = -0.7;
+            verticalOffset = -0.8;
             forwardOffset = 0.4;
         }
 

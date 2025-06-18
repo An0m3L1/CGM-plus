@@ -73,6 +73,12 @@ public class GunItem extends Item implements IColored, IMeta
         String additionalDamageText = "";
         CompoundTag tagCompound = stack.getTag();
 
+        // Broken
+        if(stack.getDamageValue() == (stack.getMaxDamage() - 1))
+        {
+            tooltip.add(Component.translatable("info.cgm.broken").withStyle(ChatFormatting.DARK_RED));
+        }
+
         // Ammo Type
         Item ammo = ForgeRegistries.ITEMS.getValue(modifiedGun.getProjectile().getItem());
         if(ammo != null && (!Gun.hasInfiniteAmmo(stack) && !Gun.usesEnergy(stack)))

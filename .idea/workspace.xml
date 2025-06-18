@@ -4,27 +4,17 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Casings work.&#10;&#10;Split notes into 2 files to reduce clutter.">
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/gun_recycling.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/gun_repair_kit.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/items/gun.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/gun_repair_kit.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/incomplete_gun_repair_kit.json" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Polishing.&#10;&#10;Added unobtainable item type.&#10;Improved jamming code and removed some sounds.&#10;Balance tweaks.">
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/UnobtainableItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTags.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/cock_back.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/cock_forward.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/cock_back.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/cock_forward.ogg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/unused/box_empty.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/incomplete_gun_repair_kit.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/unused/box_gun.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/gun_repair_kit.png" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -62,28 +52,28 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [build].executor": "Run",
-    "Gradle.CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [runClient --warning-mode'none'].executor": "Run",
-    "Gradle.CGM-plus [runClient].executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "JavaClassFindUsagesOptions.isSearchForTextOccurrences": "false",
-    "Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed": "Sources download failed",
-    "Notification.DoNotAsk-gradle.notifications.sources.download.failed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "indev",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/main/resources/assets/cgm/models/item",
-    "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient --warning-mode'none'].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;JavaClassFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;false&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;Sources download failed&quot;,
+    &quot;Notification.DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;indev&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/main/resources/assets/cgm/models/item&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;project.propVCSSupport.Confirmation&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />

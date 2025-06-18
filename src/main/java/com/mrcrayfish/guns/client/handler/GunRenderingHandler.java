@@ -811,7 +811,14 @@ public class GunRenderingHandler
 
             int ammoPosX = (int) (window.getGuiScaledWidth()*0.87);
             int ammoPosY = (int) (window.getGuiScaledHeight()*0.8);
-            
+
+            // PoseStack for text components
+            PoseStack poseStack = new PoseStack();
+
+            // Special hud when gun is broken
+            if(heldItem.getDamageValue() == (heldItem.getMaxDamage() - 1))
+                GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.translatable("info.cgm.broken"), ammoPosX, ammoPosY-10, 0xAA0000);
+
             // Ammo Item Icon
             Item ammoItem = ForgeRegistries.ITEMS.getValue(gun.getProjectile().getItem());
             if(ammoItem != null && (!Gun.hasInfiniteAmmo(heldItem) || gun.getProjectile().getProjectileOverride()==null))
@@ -820,9 +827,6 @@ public class GunRenderingHandler
                 ItemRenderer itemRenderer = Minecraft.getInstance().getItemRenderer();
 				itemRenderer.renderGuiItem(ammoStack, ammoPosX-17, ammoPosY);
             }
-            
-            // PoseStack for text components
-            PoseStack poseStack = new PoseStack();
             
             // Fire mode display
             if (gun.getFireModes().usesFireModes())
@@ -864,10 +868,12 @@ public class GunRenderingHandler
             MutableComponent ammoCountValue = (Component.literal(currentAmmo + " / " + GunCompositeStatHelper.getAmmoCapacity(heldItem, gun)).withStyle(ChatFormatting.BOLD));
             if (Gun.hasInfiniteAmmo(heldItem))
             	ammoCountValue = (Component.literal("∞ / ∞").withStyle(ChatFormatting.BOLD));
-            GuiComponent.drawString(poseStack, Minecraft.getInstance().font, ammoCountValue, ammoPosX, ammoPosY, (currentAmmo>0 || Gun.hasInfiniteAmmo(heldItem) ? 0xFFFFFF : 0xFF5555));
-            if (ModSyncedDataKeys.RELOADING.getValue(player))
-            	GuiComponent.drawString(poseStack, Minecraft.getInstance().font, "Reloading...", ammoPosX, ammoPosY-10, 0xFFFF55);
-            
+
+            if(ModSyncedDataKeys.RELOADING.getValue(player))
+                GuiComponent.drawString(poseStack, Minecraft.getInstance().font, Component.translatable("info.cgm.reloading"), ammoPosX, ammoPosY, 0xFFFF55);
+            else
+                GuiComponent.drawString(poseStack, Minecraft.getInstance().font, ammoCountValue, ammoPosX, ammoPosY, (currentAmmo>0 || Gun.hasInfiniteAmmo(heldItem) ? 0xFFFFFF : 0xFF5555));
+
             // Reserve ammo counter
             if (!Gun.hasInfiniteAmmo(heldItem))
             {

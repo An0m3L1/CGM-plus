@@ -4,13 +4,11 @@ Add melee class system
     - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
-Add gun skins/variants
-Add proper compatibility with other mods (farmersdelight, diesel generators)
-Add more sound variants (guns, explosives)
+Add gun skins
 Add more attachment slots to existing guns
 Add and overhaul animations
     - Prone shooting
-    - Crouched shooting (lower the weapon to align with eyes while aiming)
+    - Crouched aiming (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouches (check scorched guns)

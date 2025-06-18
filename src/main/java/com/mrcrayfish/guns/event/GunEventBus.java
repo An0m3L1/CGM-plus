@@ -14,7 +14,6 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.server.level.ServerLevel;
-import net.minecraft.sounds.SoundEvents;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
@@ -97,65 +96,29 @@ public class GunEventBus
     }
 
     @SubscribeEvent
-    public static void preShoot(GunFireEvent.Pre event)
-    {
-
-        Player player = event.getEntity();
-        Level level = event.getEntity().level;
-        ItemStack heldItem = player.getMainHandItem();
-        CompoundTag tag = heldItem.getTag();
-
-        if(heldItem.getItem() instanceof GunItem gunItem)
-        {
-            Gun gun = gunItem.getModifiedGun(heldItem);
-
-            if (heldItem.isDamageableItem() && tag != null) {
-                if (heldItem.getDamageValue() == (heldItem.getMaxDamage() - 1)) {
-                    event.setCanceled(true);
-                }
-
-                // Jamming
-                if (heldItem.getDamageValue() >= (heldItem.getMaxDamage() * 0.8) && Config.COMMON.gameplay.enableJamming.get()) {
-                    if (Math.random() >= 0.975) {
-                        // Play sound if jammed
-                        event.getEntity().playSound(SoundEvents.ITEM_BREAK, 3.0F, 1.0F);
-                        int coolDown = gun.getGeneral().getRate() * 10;
-                        if (coolDown > 100) {
-                            coolDown = 100;
-                        }
-                        event.getEntity().getCooldowns().addCooldown(event.getStack().getItem(), (coolDown));
-                        event.setCanceled(true);
-                    }
-                } else if (tag.getInt("AmmoCount") >= 1) {
-                    broken(heldItem, level, player);
-                }
-            }
-        }
-    }
-
-    @SubscribeEvent
     public static void postShoot(GunFireEvent.Post event)
     {
         Player player = event.getEntity();
         Level level = event.getEntity().level;
         ItemStack heldItem = player.getMainHandItem();
         CompoundTag tag = heldItem.getOrCreateTag();
+        int maxDamage = heldItem.getMaxDamage();
+        int currentDamage = heldItem.getDamageValue();
 
         if (heldItem.getItem() instanceof GunItem gunItem)
         {
             Gun modifiedGun = gunItem.getModifiedGun(heldItem);
 
             // Decreasing durability
-            if (heldItem.isDamageableItem() && Config.COMMON.gameplay.enableDurability.get()) {
-                if (tag.getInt("AmmoCount") >= 1 ){
+            if (heldItem.isDamageableItem() && Config.COMMON.gameplay.enableDurability.get())
+            {
+                if (tag.getInt("AmmoCount") >= 1 )
                     damageGun(heldItem, level, player);
-                }
-                // Play sound when low durability shooting
-                if (heldItem.getDamageValue() >= (heldItem.getMaxDamage() * 0.8)) {
-                    level.playSound(player, player.blockPosition(), ModSounds.LOW_DURABILITY.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
-                }
-            }
 
+                // Play sound when shooting a low durability gun
+                if (currentDamage >= (maxDamage * 0.8))
+                    level.playSound(player, player.blockPosition(), ModSounds.LOW_DURABILITY.get(), SoundSource.PLAYERS, 0.75F, 1.0F);
+            }
             // Fire light (WIP, buggy)
             /*
             Vec3 lookVec = player.getLookAngle();
@@ -165,7 +128,6 @@ public class GunEventBus
             FireLightEvent.addTemporaryLight(level, low);
             FireLightEvent.addTemporaryLight(level, high);
             */
-
             // Casing eject (WIP, not clean)
             /*
             if (gun.getGeneral().shouldSpawnCasings() && (tag.getInt("AmmoCount") >= 1 || player.getAbilities().instabuild)) {
@@ -175,29 +137,10 @@ public class GunEventBus
         }
     }
 
-    public static void broken(ItemStack stack, Level level, Player player) {
-        int maxDamage = stack.getMaxDamage();
-        int currentDamage = stack.getDamageValue();
-        if (currentDamage >= (maxDamage - 2)) {
-            level.playSound(player, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 3.0F, 1.0F);
-        }
-    }
-
-    public static void damageGun(ItemStack stack, Level level, Player player) {
-        if (!player.getAbilities().instabuild) {
-            if (stack.isDamageableItem()) {
-                int maxDamage = stack.getMaxDamage();
-                int currentDamage = stack.getDamageValue();
-                if (currentDamage >= (maxDamage - 1)) {
-                    if (currentDamage >= (maxDamage - 2)) {
-                        level.playSound(player, player.blockPosition(), SoundEvents.ITEM_BREAK, SoundSource.PLAYERS, 3.0F, 1.0F);
-                    }
-                }
-                else {
-                    stack.hurtAndBreak(1, player, null);
-                }
-            }
-        }
+    public static void damageGun(ItemStack stack, Level level, Player player)
+    {
+        if (!player.getAbilities().instabuild && stack.isDamageableItem() && (stack.getDamageValue() <= (stack.getMaxDamage() - 1)))
+            stack.hurtAndBreak(1, player, null);
     }
 
     public static void ejectCasing(Level level, LivingEntity livingEntity)

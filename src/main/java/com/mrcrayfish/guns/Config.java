@@ -232,7 +232,6 @@ public class Config
         public final ForgeConfigSpec.DoubleValue resistantDamageMultiplier;
         public final ForgeConfigSpec.BooleanValue ignoreLeaves;
         public final ForgeConfigSpec.BooleanValue enableDurability;
-        public final ForgeConfigSpec.BooleanValue enableJamming;
         public final ForgeConfigSpec.BooleanValue enableKnockback;
         public final ForgeConfigSpec.DoubleValue knockbackStrength;
         public final ForgeConfigSpec.BooleanValue improvedHitboxes;
@@ -253,7 +252,6 @@ public class Config
                 this.resistantDamageMultiplier = builder.comment("The value to multiply the damage by if projectile hits a resistant entity.").defineInRange("resistantDamageMultiplier", 0.5, 0.0, 1.0);
                 this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision.").define("ignoreLeaves", true);
                 this.enableDurability = builder.comment("If true, guns will decrease in durability and break.").define("enableDurability", true);
-                this.enableJamming = builder.comment("If true, guns will jam when their durability is lower than 20%.").define("enableJamming", true);
                 this.enableKnockback = builder.comment("If true, projectiles will cause knockback when an entity is hit.").define("enableKnockback", true);
                 this.knockbackStrength = builder.comment("Sets the strength of knockback when hit. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value.").defineInRange("knockbackStrength", 0.1, 0.0, 1.0);
                 this.improvedHitboxes = builder.comment("If true, improves the accuracy of weapons by considering the ping of the player. This has no affect on singleplayer. This will add a little overhead if enabled.").define("improvedHitboxes", true);

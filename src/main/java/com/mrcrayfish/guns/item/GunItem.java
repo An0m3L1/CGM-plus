@@ -281,7 +281,7 @@ public class GunItem extends Item implements IColored, IMeta
 
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair)
     {
-        return repair.is(ModItems.STURDY_MECHANISM.get());
+        return repair.is(ModItems.GUN_REPAIR_KIT.get());
     }
     
     // Everything below is related to energy storage and transfer mechanics via Forge's EnergyStorage capability.

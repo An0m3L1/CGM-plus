@@ -5,22 +5,26 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Casings work.&#10;&#10;Split notes into 2 files to reduce clutter.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/cock_back.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/cock_forward.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/low_durability.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/cock_back.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/cock_forward.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/gun_recycling.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/gun_repair_kit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/items/gun.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/gun_repair_kit.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/incomplete_gun_repair_kit.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunFireLightEvent.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/FireLightEvent.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTags.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/cock_back.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/cock_forward.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/cock_back.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/cock_forward.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/unused/box_empty.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/incomplete_gun_repair_kit.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/unused/box_gun.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/gun_repair_kit.png" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,24 +80,24 @@
     "git-widget-placeholder": "indev",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/generated/resources/data/minecraft/tags/blocks",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/main/resources/assets/cgm/models/item",
     "settings.editor.selected.configurable": "project.propVCSSupport.Confirmation"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\minecraft\tags\blocks" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\forge\tags\blocks" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\minecraft\tags" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\tags\items" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\item" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\ui" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\entity\explosion" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\guns" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\entity\grenade" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\entity\pipe_grenade" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.mrcrayfish.guns.client.handler" />

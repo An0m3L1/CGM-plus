@@ -1,0 +1,35 @@
+{
+  "type": "create:crushing",
+  "ingredients": [
+    {
+      "tag": "cgm:gun"
+    }
+  ],
+  "processingTime": 1000,
+  "results": [
+    {
+      "chance": 0.5,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "chance": 0.5,
+      "count": 2,
+      "item": "cgm:steel_rod"
+    },
+    {
+      "chance": 0.5,
+      "count": 4,
+      "item": "cgm:steel_sheet"
+    },
+    {
+      "chance": 0.5,
+      "count": 3,
+      "item": "cgm:plastic"
+    },
+    {
+      "chance": 0.5,
+      "count": 2,
+      "item": "cgm:rubber"
+    }
+  ]
+}

@@ -19,24 +19,28 @@ import net.minecraftforge.registries.RegistryObject;
 public class ModItems
 {
     public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
+    /* When specifying durability, calculate it like this:
+    * (count * mag) + 1
+    * count = amount of magazines the gun can fire
+    * mag = magazine capacity */
 
     /* Assault Rifles */
     public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(151)
+                    .durability((32 * 30) + 1) // 32 mags, 960 shots
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((32 * 30) + 1) // 32 mags, 960 shots
                     .tab(GunMod.GUNS)
     ));
     public static final RegistryObject<GunItem> COMBAT_RIFLE = REGISTER.register("combat_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((32 * 30) + 1) // 32 mags, 960 shots
                     .tab(GunMod.GUNS)
             ));
 
@@ -44,13 +48,13 @@ public class ModItems
     public static final RegistryObject<GunItem> SNIPER_RIFLE = REGISTER.register("sniper_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((48 * 10) + 1) // 48 mags, 480 shots
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> HEAVY_SNIPER_RIFLE = REGISTER.register("heavy_sniper_rifle",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((48 * 5) + 1) // 48 mags, 240 shots
                     .tab(GunMod.GUNS)
             ));
 
@@ -58,7 +62,7 @@ public class ModItems
     public static final RegistryObject<GunItem> SEMI_AUTO_SHOTGUN = REGISTER.register("semi_auto_shotgun",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((48 * 7) + 1) // 48 mags, 336 shots
                     .tab(GunMod.GUNS)
             ));
 
@@ -66,7 +70,7 @@ public class ModItems
     public static final RegistryObject<GunItem> MINI_GUN = REGISTER.register("mini_gun",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((8 * 200) + 1) // 8 mags, 1600 shots
                     .tab(GunMod.GUNS)
             ));
 
@@ -76,13 +80,13 @@ public class ModItems
     public static final RegistryObject<GunItem> TACTICAL_PISTOL = REGISTER.register("tactical_pistol",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((64 * 12) + 1) // 64 mags, 768 shots
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> AUTOMATIC_PISTOL = REGISTER.register("automatic_pistol",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((32 * 32) + 1) // 32 mags, 1024 shots
                     .tab(GunMod.GUNS)
             ));
 
@@ -90,13 +94,13 @@ public class ModItems
     public static final RegistryObject<GunItem> GRENADE_LAUNCHER = REGISTER.register("grenade_launcher",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((24 * 6) + 1) // 24 mags, 144 shots
                     .tab(GunMod.GUNS)
             ));
     public static final RegistryObject<GunItem> ROCKET_LAUNCHER = REGISTER.register("rocket_launcher",
             () -> new GunItem(new Item.Properties()
                     .stacksTo(1)
-                    .durability(1561)
+                    .durability((96 * 1) + 1) // 96 shots
                     .tab(GunMod.GUNS)
             ));
 
@@ -242,6 +246,8 @@ public class ModItems
     /* Materials */
     public static final RegistryObject<Item> STURDY_MECHANISM = REGISTER.register("sturdy_mechanism",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> INCOMPLETE_STURDY_MECHANISM = REGISTER.register("incomplete_sturdy_mechanism",() -> new SequencedAssemblyItem(new Item.Properties()));
+    public static final RegistryObject<Item> GUN_REPAIR_KIT = REGISTER.register("gun_repair_kit",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
+    public static final RegistryObject<Item> INCOMPLETE_GUN_REPAIR_KIT = REGISTER.register("incomplete_gun_repair_kit",() -> new SequencedAssemblyItem(new Item.Properties()));
 
     public static final RegistryObject<Item> LIGHT_BULLET_MODEL = REGISTER.register("light_bullet_model", () -> new Item(new Item.Properties().stacksTo(1)));
     public static final RegistryObject<Item> MEDIUM_BULLET_MODEL = REGISTER.register("medium_bullet_model", () -> new Item(new Item.Properties().stacksTo(1)));

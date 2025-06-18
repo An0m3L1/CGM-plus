@@ -1,0 +1,81 @@
+{
+  "type": "create:sequenced_assembly",
+  "ingredient": {"tag": "forge:plates/steel"},
+  "loops": 1,
+  "results": [{"item": "cgm:gun_repair_kit"}
+  ],
+  "sequence": [
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"},
+        {"tag": "forge:rods/steel"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"},
+        {"tag": "forge:nuggets/steel"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"},
+        {"item": "cgm:rubber"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"},
+        {"item": "cgm:plastic"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ]
+    },
+    {
+      "type": "create:deploying",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"},
+        {"item": "cgm:cloth"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ]
+    },
+    {
+      "type": "create:pressing",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ],
+      "results":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ]
+    }
+  ],
+  "transitionalItem": {"item": "cgm:incomplete_gun_repair_kit"}
+}

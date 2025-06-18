@@ -1,0 +1,16 @@
+{
+  "values":
+  [
+    "cgm:assault_rifle",
+    "cgm:tactical_rifle",
+    "cgm:combat_rifle",
+    "cgm:sniper_rifle",
+    "cgm:heavy_sniper_rifle",
+    "cgm:semi_auto_shotgun",
+    "cgm:mini_gun",
+    "cgm:tactical_pistol",
+    "cgm:automatic_pistol",
+    "cgm:grenade_launcher",
+    "cgm:rocket_launcher"
+  ]
+}

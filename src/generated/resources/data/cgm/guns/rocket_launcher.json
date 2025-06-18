@@ -11,7 +11,7 @@
     "recoilDurationOffset": 0.1,
     "spread": 0.0,
 
-    "maxAmmo": 4,
+    "maxAmmo": 1,
     "reloadRate": 18
   },
   "projectile": {

@@ -2,6 +2,8 @@
     "block.cgm.gun_workbench": "Gun Workbench",
     "item.cgm.sturdy_mechanism": "Sturdy Mechanism",
     "item.cgm.incomplete_sturdy_mechanism": "Incomplete Sturdy Mechanism",
+    "item.cgm.gun_repair_kit": "Gun Repair Kit",
+    "item.cgm.incomplete_gun_repair_kit": "Incomplete Gun Repair Kit",
     "item.cgm.brass_casing": "Brass Casing",
     "item.cgm.shell_casing": "Shell Casing",
     "item.cgm.bullet": "Bullet",

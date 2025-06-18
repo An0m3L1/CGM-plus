@@ -38,7 +38,7 @@ public class PlayerHandler
 
         ItemStack heldItem = mc.player.getMainHandItem();
 
-        /* Sprinting restrictions*/
+        /* Sprinting restrictions */
         if(heldItem.is(ModTags.Items.HEAVY) || player.isVisuallyCrawling())
         {
             mc.options.keySprint.setDown(false);

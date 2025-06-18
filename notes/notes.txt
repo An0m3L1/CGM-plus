@@ -14,7 +14,6 @@ Add and overhaul animations
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouches (check scorched guns)
-Add proper repair item for guns <--
 
 Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher
@@ -26,7 +25,3 @@ Overhaul datagen
     - Loot tables
     - Recipes
 Overhaul gun lights to be dynamic instead of placing blocks
-Overhaul sniper rifles cock sound to be split into 2 files
-Overhaul guns durability values <--
-
-Fix crosshair not updating to new player movement logic (or implement it in a clean way)

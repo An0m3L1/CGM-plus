@@ -70,6 +70,12 @@ description="Heavily modified, overhauled and expanded version of zaeonNineZeros
     versionRange="[1.19.2-4.1.4,)"
     ordering="AFTER"
     side="CLIENT"
+[[dependencies.cgm]]
+    modId="dynamiclightsreforged"
+    mandatory=false
+    versionRange="[1.19.2_v1.4.0,)"
+    ordering="AFTER"
+    side="CLIENT"
 
 [modproperties.cgm]
     catalogueImageIcon="cgm_icon.png"

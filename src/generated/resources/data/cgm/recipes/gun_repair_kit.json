@@ -6,6 +6,18 @@
   ],
   "sequence": [
     {
+      "type": "create:cutting",
+      "ingredients":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ],
+      "processingTime": 50,
+      "results":
+      [
+        {"item": "cgm:incomplete_gun_repair_kit"}
+      ]
+    },
+    {
       "type": "create:deploying",
       "ingredients":
       [

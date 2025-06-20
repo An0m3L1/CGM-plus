@@ -8,9 +8,11 @@ import com.mrcrayfish.guns.common.BoundingBoxManager;
 import com.mrcrayfish.guns.common.NetworkGunManager;
 import com.mrcrayfish.guns.common.ProjectileManager;
 import com.mrcrayfish.guns.crafting.WorkbenchIngredient;
-import com.mrcrayfish.guns.datagen.*;
+import com.mrcrayfish.guns.datagen.BlockTagGen;
+import com.mrcrayfish.guns.datagen.EntityTagGen;
+import com.mrcrayfish.guns.datagen.GunGen;
+import com.mrcrayfish.guns.datagen.ItemTagGen;
 import com.mrcrayfish.guns.entity.*;
-import com.mrcrayfish.guns.event.GunFireLightEvent;
 import com.mrcrayfish.guns.init.*;
 import com.mrcrayfish.guns.network.PacketHandler;
 import net.minecraft.core.NonNullList;
@@ -44,6 +46,7 @@ public class GunMod
     public static boolean backpackedLoaded = false;
     public static boolean playerReviveLoaded = false;
     public static boolean shoulderSurfingLoaded = false;
+    public static boolean dynamicLightsLoaded = false;
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
 
     public static final CreativeModeTab GUNS = new CreativeModeTab(Reference.MOD_ID) {
@@ -108,6 +111,7 @@ public class GunMod
         backpackedLoaded = ModList.get().isLoaded("backpacked");
         playerReviveLoaded = ModList.get().isLoaded("playerrevive");
         shoulderSurfingLoaded = ModList.get().isLoaded("shouldersurfing");
+        dynamicLightsLoaded = ModList.get().isLoaded("dynamiclightsreforged");
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event)
@@ -122,7 +126,6 @@ public class GunMod
             FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.RELOADING);
             FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SHOOTING);
             FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SWITCHTIME);
-            MinecraftForge.EVENT_BUS.register(GunFireLightEvent.class);
             FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "network_gun_manager"), NetworkGunManager.LoginData::new);
             FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "custom_gun_manager"), CustomGunManager.LoginData::new);
             CraftingHelper.register(new ResourceLocation(Reference.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);
@@ -150,12 +153,9 @@ public class GunMod
         DataGenerator generator = event.getGenerator();
         ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
         BlockTagGen blockTagGen = new BlockTagGen(generator, existingFileHelper);
-        generator.addProvider(event.includeServer(), new RecipeGen(generator));
-        generator.addProvider(event.includeServer(), new LootTableGen(generator));
         generator.addProvider(event.includeServer(), blockTagGen);
         generator.addProvider(event.includeServer(), new ItemTagGen(generator, blockTagGen, existingFileHelper));
         generator.addProvider(event.includeServer(), new EntityTagGen(generator, existingFileHelper));
-        generator.addProvider(event.includeServer(), new LanguageGen(generator));
         generator.addProvider(event.includeServer(), new GunGen(generator));
     }
 

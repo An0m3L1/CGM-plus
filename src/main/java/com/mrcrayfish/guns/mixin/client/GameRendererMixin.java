@@ -30,17 +30,17 @@ public class GameRendererMixin
         MobEffectInstance blindEffect = player.getEffect(ModEffects.BLINDED.get());
         MobEffectInstance smokeEffect = player.getEffect(ModEffects.SMOKED.get());
 
-        if (blindEffect != null)
-        {
-            float percent = Math.min((blindEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
-            Window window = Minecraft.getInstance().getWindow();
-            GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * Config.SERVER.alphaOverlay.get() + 0.5) << 24) | 16777215);
-        }
         if (smokeEffect != null)
         {
             Window window = Minecraft.getInstance().getWindow();
             float percent = Math.min((smokeEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
             GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * 248 + 0.5) << 24) | 8156784);
+        }
+        if (blindEffect != null)
+        {
+            float percent = Math.min((blindEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
+            Window window = Minecraft.getInstance().getWindow();
+            GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * Config.SERVER.alphaOverlay.get() + 0.5) << 24) | 16777215);
         }
     }
 }

@@ -2,12 +2,14 @@ package com.mrcrayfish.guns.entity;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.audio.RocketExplosionSound;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageRocket;
+import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -32,6 +34,8 @@ public class RocketEntity extends ProjectileEntity
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {
         super(entityType, worldIn);
+        if(GunMod.dynamicLightsLoaded && Config.COMMON.gameplay.enableDynamicLights.get())
+            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.gameplay.dynamicLightValue.get());
     }
 
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
@@ -57,34 +61,15 @@ public class RocketEntity extends ProjectileEntity
     }
 
     @Override
-    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
-    {
-        createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
-        if(this.level.isClientSide)
-        {
-            return;
-        }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ()));
-    }
+    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {explode();}
 
     @Override
-    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
-    {
-        createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
-        if(this.level.isClientSide)
-        {
-            return;
-        }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ()));
-
-    }
+    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {explode();}
 
     @Override
-    public void onExpired()
+    public void onExpired() {explode();}
+
+    private void explode()
     {
         createCustomExplosion(this, radius, griefing);
         Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
@@ -92,8 +77,8 @@ public class RocketEntity extends ProjectileEntity
         {
             return;
         }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ()));
-
+        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), 12);
+        level.addFreshEntity(light);
+        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ()));
     }
 }

@@ -32,6 +32,7 @@ public class ModEntities
     public static final RegistryObject<EntityType<ThrowableSmokeGrenadeEntity>> THROWABLE_SMOKE_GRENADE = registerBasic("throwable_smoke_grenade", ThrowableSmokeGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableIncendiaryGrenadeEntity>> THROWABLE_INCENDIARY_GRENADE = registerBasic("throwable_incendiary_grenade", ThrowableIncendiaryGrenadeEntity::new);
     public static final RegistryObject<EntityType<ThrowableMolotovEntity>> THROWABLE_MOLOTOV = registerBasic("throwable_molotov", ThrowableMolotovEntity::new);
+    public static final RegistryObject<EntityType<LightSourceEntity>> LIGHT_SOURCE = registerLight("light_source", LightSourceEntity::new);
 
     private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, Level, T> function)
     {
@@ -65,6 +66,17 @@ public class ModEntities
                 .fireImmune()
                 .setShouldReceiveVelocityUpdates(false)
                 .setCustomClientFactory((spawnEntity, world) -> null)
+                .build(id));
+    }
+
+    private static <T extends Entity> RegistryObject<EntityType<T>> registerLight(String id, BiFunction<EntityType<T>, Level, T> function)
+    {
+        return REGISTER.register(id, () -> EntityType.Builder.of(function::apply, MobCategory.MISC)
+                .sized(0.01F, 0.01F)
+                .setTrackingRange(256)
+                .setUpdateInterval(1)
+                .noSummon()
+                .fireImmune()
                 .build(id));
     }
 }

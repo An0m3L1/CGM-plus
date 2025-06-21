@@ -30,5 +30,6 @@ public class GunEntityRenderers
         event.registerEntityRenderer(ModEntities.THROWABLE_STUN_GRENADE.get(), ThrowableGrenadeRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWABLE_INCENDIARY_GRENADE.get(), ThrowableGrenadeRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWABLE_MOLOTOV.get(), ThrowableGrenadeRenderer::new);
+        event.registerEntityRenderer(ModEntities.LIGHT_SOURCE.get(), LightSourceRenderer::new);
     }
 }

@@ -225,6 +225,8 @@ public class Config
         public final Griefing griefing;
         public final ForgeConfigSpec.DoubleValue growBoundingBoxAmount;
         public final ForgeConfigSpec.BooleanValue enableHeadShots;
+        public final ForgeConfigSpec.BooleanValue enableDynamicLights;
+        public final ForgeConfigSpec.IntValue dynamicLightValue;
         public final ForgeConfigSpec.BooleanValue enableImmuneEntities;
         public final ForgeConfigSpec.DoubleValue headShotDamageMultiplier;
         public final ForgeConfigSpec.DoubleValue criticalDamageMultiplier;
@@ -246,6 +248,8 @@ public class Config
                 this.growBoundingBoxAmount = builder.comment("The extra amount to expand an entity's bounding box when checking for projectile collision.").defineInRange("growBoundingBoxAmount", 0.1, 0.0, 1.0);
                 this.enableImmuneEntities = builder.comment("If true, entities with tag 'hit_immune' can't be hit with projectiles.").define("enableImmuneEntities", true);
                 this.enableHeadShots = builder.comment("If true, headshots deal extra damage.").define("enableHeadShots", true);
+                this.enableDynamicLights = builder.comment("If true, guns, explosions and certain projectiles will produce light. Requires dynamic lights reforged. Works best with 'Realtime' setting.").define("enableDynamicLights", true);
+                this.dynamicLightValue = builder.comment("Strength of light produced by guns and projectiles.").defineInRange("dynamicLightValue", 7, 1, 15);
                 this.headShotDamageMultiplier = builder.comment("The value to multiply the damage by if a headshot occurs.").defineInRange("headShotDamageMultiplier", 2.0, 1.0, Double.MAX_VALUE);
                 this.criticalDamageMultiplier = builder.comment("The value to multiply the damage by if a crit occurs.").defineInRange("criticalDamageMultiplier", 1.5, 1.0, Double.MAX_VALUE);
                 this.enableResistantEntities = builder.comment("If true, entities with tag 'hit_resistant' take less damage and disallow projectile piercing.").define("enableResistantEntities", true);
@@ -350,12 +354,12 @@ public class Config
             builder.comment("Properties relating to explosives.").push("explosives");
             {
                 this.explosionGriefing = builder.comment("If enabled, explosions will destroy blocks. Doesn't affect Incendiary and Molotov Grenades.").define("explosionGriefing", false);
-                this.rocketExplosionRadius = builder.comment("Radius of a Rocket explosion.").defineInRange("rocketExplosionRadius", 2.75, 0.0, Double.MAX_VALUE);
+                this.rocketExplosionRadius = builder.comment("Radius of a Rocket explosion.").defineInRange("rocketExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
                 this.rocketExplosionGriefing = builder.comment("If enabled, Rockets will destroy blocks. Requires explosion griefing to be true.").define("rocketExplosionGriefing", true);
-                this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.25, 0.0, Double.MAX_VALUE);
+                this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
                 this.handGrenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
                 this.handGrenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks. Requires explosion griefing to be true.").define("handGrenadeExplosionGriefing", false);
-                this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
+                this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.25, 0.0, Double.MAX_VALUE);
                 this.pipeGrenadeExplosionGriefing = builder.comment("If enabled, Pipe Grenades will destroy blocks. Requires explosion griefing to be true.").define("pipeGrenadeExplosionGriefing", true);
                 this.smokeGrenadeCloudDiameter = builder.comment("Diameter of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.").defineInRange("smokeGrenadeCloudDiameter", 5.0, 0.0, Double.MAX_VALUE);
                 this.smokeGrenadeDamage = builder.comment("Damage per second inside a Smoke Grenade cloud.").defineInRange("smokeGrenadeDamage", 1.0, 0.0, Double.MAX_VALUE);

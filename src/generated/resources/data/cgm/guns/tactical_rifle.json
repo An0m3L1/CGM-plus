@@ -6,6 +6,7 @@
     "rate": 2,
     "burstCooldown": 4,
     "spawnCasings": true,
+    "emitLight": true,
 
     "adsSpeed": 0.9,
     "recoilAdsReduction": 0.4,

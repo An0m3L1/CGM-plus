@@ -5,6 +5,7 @@
     "auto": true,
     "rate": 16,
     "spawnCasings": false,
+    "emitLight": true,
 
     "recoilAngle": 8.0,
     "recoilKick": 2.0,

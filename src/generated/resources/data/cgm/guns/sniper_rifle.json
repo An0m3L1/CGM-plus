@@ -5,6 +5,7 @@
     "auto": false,
     "rate": 25,
     "spawnCasings": false,
+    "emitLight": true,
 
     "adsSpeed": 0.75,
     "recoilAdsReduction": 0.5,

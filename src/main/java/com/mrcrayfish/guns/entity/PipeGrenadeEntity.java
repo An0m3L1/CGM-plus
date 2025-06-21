@@ -49,31 +49,15 @@ public class PipeGrenadeEntity extends ProjectileEntity
     }
 
     @Override
-    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
-    {
-        createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
-        if(this.level.isClientSide)
-        {
-            return;
-        }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ()));    }
+    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {explode();}
 
     @Override
-    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
-    {
-        createCustomExplosion(this, radius, griefing);
-        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
-        if(this.level.isClientSide)
-        {
-            return;
-        }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ()));    }
+    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {explode();}
 
     @Override
-    public void onExpired()
+    public void onExpired() {explode();}
+
+    private void explode()
     {
         createCustomExplosion(this, radius, griefing);
         Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)this.getY(), (float)this.getZ(), 1, pitch, this.level.getRandom()));
@@ -81,6 +65,8 @@ public class PipeGrenadeEntity extends ProjectileEntity
         {
             return;
         }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ()));    }
+        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), 12);
+        level.addFreshEntity(light);
+        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ()));
+    }
 }

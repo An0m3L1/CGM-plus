@@ -80,6 +80,8 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
         {
             return;
         }
+        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), 12);
+        level.addFreshEntity(light);
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageGrenade(this.getX(), y, this.getZ()));
     }

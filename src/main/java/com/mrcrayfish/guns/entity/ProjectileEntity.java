@@ -2,7 +2,6 @@ package com.mrcrayfish.guns.entity;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.common.BoundingBoxManager;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.Gun.Projectile;
@@ -24,7 +23,6 @@ import com.mrcrayfish.guns.network.message.S2CMessageRemoveProjectile;
 import com.mrcrayfish.guns.util.*;
 import com.mrcrayfish.guns.util.math.ExtendedEntityRayTraceResult;
 import com.mrcrayfish.guns.world.ProjectileExplosion;
-import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -99,15 +97,11 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     public ProjectileEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {
         super(entityType, worldIn);
-        if(GunMod.dynamicLightsLoaded)
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> 7);
     }
 
     public ProjectileEntity(EntityType<? extends Entity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
     {
         this(entityType, worldIn);
-        if(GunMod.dynamicLightsLoaded)
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> 7);
         this.shooterId = shooter.getId();
         this.shooter = shooter;
         this.modifiedGun = modifiedGun;
@@ -987,18 +981,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
-    public static void createGenericExplosion(Entity entity, float radius, boolean forceNone)
-    {
+    public static void createGenericExplosion(Entity entity, float radius, boolean forceNone) {
         createExplosionInternal(entity, radius, forceNone, false, false);
     }
 
-    public static void createCustomExplosion(Entity entity, float radius, boolean forceNone)
-    {
+    public static void createCustomExplosion(Entity entity, float radius, boolean forceNone) {
         createExplosionInternal(entity, radius, forceNone, false, true);
     }
 
-    public static void createFireExplosion(Entity entity, float radius, boolean forceNone)
-    {
+    public static void createFireExplosion(Entity entity, float radius, boolean forceNone) {
         createExplosionInternal(entity, radius, true, true, true);
     }
 

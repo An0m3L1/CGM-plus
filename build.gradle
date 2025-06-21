@@ -80,6 +80,10 @@ repositories {
 
 dependencies {
     minecraft 'net.minecraftforge:forge:1.19.2-43.4.20'
+
+    implementation fg.deobf("curse.maven:embeddium-908741:5539178")
+    implementation fg.deobf("curse.maven:magnesium-extras-558905:4632201")
+
     implementation fg.deobf('curse.maven:framework-549225:4718247')
     implementation fg.deobf("curse.maven:create-328085:4835190")
     implementation fg.deobf("curse.maven:farmers-delight-398521:5051241")
@@ -101,6 +105,7 @@ dependencies {
     implementation fg.deobf("curse.maven:xaeros-world-map-317780:6538331")
     implementation fg.deobf("curse.maven:xaeros-minimap-263420:6515017")
     implementation fg.deobf("curse.maven:goprone-327968:3884694")
+    implementation fg.deobf("curse.maven:ibe-editor-256822:4216136")
 
     implementation fg.deobf("curse.maven:shoulder-surfing-reloaded-243190:5441683")
     compileOnly fg.deobf('curse.maven:controllable-317269:3936915')

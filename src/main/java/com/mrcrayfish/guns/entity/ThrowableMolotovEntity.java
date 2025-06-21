@@ -2,6 +2,7 @@ package com.mrcrayfish.guns.entity;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.audio.MolotovExplosionSound;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
@@ -9,6 +10,7 @@ import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageMolotov;
 import com.mrcrayfish.guns.util.GrenadeFireHelper;
+import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
@@ -34,6 +36,8 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
         super(entityType, world);
+        if(GunMod.dynamicLightsLoaded && Config.COMMON.gameplay.enableDynamicLights.get())
+            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.gameplay.dynamicLightValue.get());
     }
 
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)

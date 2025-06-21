@@ -220,6 +220,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         private int rampUpShotsNeeded = 8;
         @Optional
         private boolean spawnCasings = true;
+        @Optional
+        private boolean emitLight = true;
 
         @Override
         public CompoundTag serializeNBT()
@@ -270,6 +272,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             tag.putBoolean("DoRampUp", this.doRampUp);
             tag.putInt("RampUpShotsNeeded", this.rampUpShotsNeeded);
             tag.putBoolean("SpawnCasings", this.spawnCasings);
+            tag.putBoolean("EmitLight", this.emitLight);
             return tag;
         }
 
@@ -463,6 +466,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 this.spawnCasings = tag.getBoolean("SpawnCasings");
             }
+            if(tag.contains("EmitLight", Tag.TAG_ANY_NUMERIC))
+            {
+                this.emitLight = tag.getBoolean("EmitLight");
+            }
         }
 
         public JsonObject toJsonObject()
@@ -541,6 +548,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.doRampUp) object.addProperty("doRampUp", false);
             if(this.rampUpShotsNeeded != 8) object.addProperty("rampUpShotsNeeded", this.rampUpShotsNeeded);
             if(this.spawnCasings) object.addProperty("spawnCasings", this.spawnCasings);
+            if(this.emitLight) object.addProperty("emitLight", this.emitLight);
             return object;
         }
 
@@ -595,6 +603,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             general.doRampUp = this.doRampUp;
             general.rampUpShotsNeeded = this.rampUpShotsNeeded;
             general.spawnCasings = this.spawnCasings;
+            general.emitLight = this.emitLight;
             return general;
         }
 
@@ -1011,6 +1020,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public boolean shouldSpawnCasings()
         {
             return this.spawnCasings;
+        }
+
+        /**
+         * @return Whether this gun emits light when shooting
+         */
+        public boolean shouldEmitLight()
+        {
+            return this.emitLight;
         }
     }
 
@@ -4680,6 +4697,12 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public Builder setSpawnCasings(boolean spawnCasings)
         {
             this.gun.general.spawnCasings = spawnCasings;
+            return this;
+        }
+
+        public Builder setEmitLight(boolean emitLight)
+        {
+            this.gun.general.emitLight = emitLight;
             return this;
         }
 

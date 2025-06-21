@@ -1,13 +1,16 @@
 package com.mrcrayfish.guns.event;
 
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
+import com.mrcrayfish.guns.entity.LightSourceEntity;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModParticleTypes;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.GunItem;
+import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -38,8 +41,6 @@ public class GunEventBus
 
         if (heldItem.getItem() instanceof GunItem gunItem)
         {
-            Gun modifiedGun = gunItem.getModifiedGun(heldItem);
-
             // Decreasing durability
             if (heldItem.isDamageableItem() && Config.COMMON.gameplay.enableDurability.get())
             {
@@ -50,6 +51,25 @@ public class GunEventBus
                 if (currentDamage >= (maxDamage * 0.8))
                     level.playSound(player, player.blockPosition(), ModSounds.LOW_DURABILITY.get(), SoundSource.PLAYERS, 0.75F, 1.5F);
             }
+
+            // Fire light
+            Gun modifiedGun = gunItem.getModifiedGun(heldItem);
+            if (!level.isClientSide() && // Checks if world is on server-side
+                    Config.COMMON.gameplay.enableDynamicLights.get() && // Checks config
+                    GunMod.dynamicLightsLoaded && // Checks loaded dynamic lights mod
+                    modifiedGun.getGeneral().shouldEmitLight() && // Checks if this gun should emit light while shooting
+                    !GunModifierHelper.isSilencedFire(heldItem)) // Checks if this gun doesn't have a silencer attached
+            {
+                Vec3 lookVec = player.getLookAngle();
+                double forwardOffset = 2.0;
+                double x = player.getX() + lookVec.x * forwardOffset;
+                double y = (player.getEyeY() - 0.35) + lookVec.y * forwardOffset;
+                double z = player.getZ() + lookVec.z * forwardOffset;
+                int lightLevel = Config.COMMON.gameplay.dynamicLightValue.get();
+                LightSourceEntity light = new LightSourceEntity(level, x, y, z, lightLevel);
+                level.addFreshEntity(light);
+            }
+
             // Casing eject (WIP, not clean)
             /*
             if (gun.getGeneral().shouldSpawnCasings() && (tag.getInt("AmmoCount") >= 1 || player.getAbilities().instabuild)) {

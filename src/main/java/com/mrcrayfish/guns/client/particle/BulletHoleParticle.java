@@ -37,7 +37,7 @@ public class BulletHoleParticle extends TextureSheetParticle
         this.setSprite(this.getSprite(pos));
         this.direction = direction;
         this.pos = pos;
-        this.lifetime = (int) (Config.CLIENT.particle.bulletHoleLifeMin.get() + world.random.nextFloat() * (Config.CLIENT.particle.bulletHoleLifeMax.get() - Config.CLIENT.particle.bulletHoleLifeMin.get()));
+        this.lifetime = (int) (Config.CLIENT.bulletHoleLifeMin.get() + world.random.nextFloat() * (Config.CLIENT.bulletHoleLifeMax.get() - Config.CLIENT.bulletHoleLifeMin.get()));
         this.hasPhysics = false;
         this.gravity = 0.0F;
         this.quadSize = 0.05F;
@@ -141,7 +141,7 @@ public class BulletHoleParticle extends TextureSheetParticle
         float f5 = this.getV0();
         float f6 = this.getV1();
         int j = this.getLightColor(partialTicks);
-        float fade = Config.CLIENT.particle.bulletHoleFadeThreshold.get() >= 1.0f ? 1.0f : 1.0f - (Math.max((float) this.age - (float) this.lifetime * Config.CLIENT.particle.bulletHoleFadeThreshold.get().floatValue(), 0) / ((float) this.lifetime - (float) this.lifetime * Config.CLIENT.particle.bulletHoleFadeThreshold.get().floatValue()));
+        float fade = Config.CLIENT.bulletHoleFadeThreshold.get() >= 1.0f ? 1.0f : 1.0f - (Math.max((float) this.age - (float) this.lifetime * Config.CLIENT.bulletHoleFadeThreshold.get().floatValue(), 0) / ((float) this.lifetime - (float) this.lifetime * Config.CLIENT.bulletHoleFadeThreshold.get().floatValue()));
         buffer.vertex(points[0].x(), points[0].y(), points[0].z()).uv(f8, f6).color(this.rCol, this.gCol, this.bCol, this.alpha * fade).uv2(j).endVertex();
         buffer.vertex(points[1].x(), points[1].y(), points[1].z()).uv(f8, f5).color(this.rCol, this.gCol, this.bCol, this.alpha * fade).uv2(j).endVertex();
         buffer.vertex(points[2].x(), points[2].y(), points[2].z()).uv(f7, f5).color(this.rCol, this.gCol, this.bCol, this.alpha * fade).uv2(j).endVertex();

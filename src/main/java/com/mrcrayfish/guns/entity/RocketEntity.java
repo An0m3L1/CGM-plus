@@ -28,14 +28,14 @@ import net.minecraft.world.phys.Vec3;
  */
 public class RocketEntity extends ProjectileEntity
 {
-    protected float radius = Config.COMMON.explosives.rocketExplosionRadius.get().floatValue();
-    protected boolean griefing = !Config.COMMON.explosives.rocketExplosionGriefing.get();
+    protected float radius = Config.COMMON.rocketExplosionRadius.get().floatValue();
+    protected boolean griefing = !Config.COMMON.rocketExplosionGriefing.get();
 
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {
         super(entityType, worldIn);
-        if(GunMod.dynamicLightsLoaded && Config.COMMON.gameplay.enableDynamicLights.get())
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.gameplay.dynamicLightValue.get());
+        if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
+            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.dynamicLightValue.get());
     }
 
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)

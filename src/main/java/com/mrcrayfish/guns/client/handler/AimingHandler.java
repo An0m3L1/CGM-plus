@@ -144,11 +144,11 @@ public class AimingHandler
                 PacketHandler.getPlayChannel().sendToServer(new C2SMessageAim(true));
                 this.aiming = true;
             }
-            if (Config.CLIENT.display.forceFirstPersonOnZoomedAim.get() && getNormalisedAdsProgress()>=0.2 && getNormalisedAdsProgress()<=0.95)
+            if (Config.CLIENT.forceFirstPersonOnZoomedAim.get() && getNormalisedAdsProgress()>=0.2 && getNormalisedAdsProgress()<=0.95)
             {
             	if (!this.doTempFirstPerson && modifiedGun!=null)
                 {
-                	if(modifiedGun.getModules().getZoom() != null && Gun.getFovModifier(heldItem, modifiedGun) <= Config.CLIENT.display.firstPersonAimZoomThreshold.get())
+                	if(modifiedGun.getModules().getZoom() != null && Gun.getFovModifier(heldItem, modifiedGun) <= Config.CLIENT.firstPersonAimZoomThreshold.get())
                     {
                     	if (ShoulderSurfingHelper.isShoulderSurfing())
 	                    	{
@@ -195,13 +195,13 @@ public class AimingHandler
                 this.skipThirdPersonSwitch = true;
             }
         	if(modifiedGun==null || modifiedGun.getModules().getZoom() == null
-            || Gun.getFovModifier(heldItem, modifiedGun) > Config.CLIENT.display.firstPersonAimZoomThreshold.get())
+            || Gun.getFovModifier(heldItem, modifiedGun) > Config.CLIENT.firstPersonAimZoomThreshold.get())
             {
                 resetPOV = true;
             }
         }
 
-        if (resetPOV && Config.CLIENT.display.forceFirstPersonOnZoomedAim.get())
+        if (resetPOV && Config.CLIENT.forceFirstPersonOnZoomedAim.get())
         {
         	this.doTempFirstPerson = false;
         	if (mc.options.getCameraType()==CameraType.FIRST_PERSON && !skipThirdPersonSwitch)

@@ -53,7 +53,7 @@ public class MiniGunPose extends WeaponPose
     @Override
     public void applyPlayerModelRotation(Player player, ModelPart rightArm, ModelPart leftArm, ModelPart head, InteractionHand hand, float aimProgress)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
             ModelPart mainArm = right ? rightArm : leftArm;
@@ -74,7 +74,7 @@ public class MiniGunPose extends WeaponPose
     @Override
     public void applyPlayerPreRender(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
             player.yBodyRotO = player.yRotO + 45F * (right ? 1F : -1F);
@@ -90,7 +90,7 @@ public class MiniGunPose extends WeaponPose
     @OnlyIn(Dist.CLIENT)
     public void applyHeldItemTransforms(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             if(hand == InteractionHand.OFF_HAND)
             {

@@ -82,7 +82,7 @@ public class ShootingHandler
         if(PlayerReviveHelper.isBleeding(player))
             return;
 
-        if(Config.CLIENT.controls.flipControls.get() ? event.isUseItem() : event.isAttack())
+        if(Config.CLIENT.flipControls.get() ? event.isUseItem() : event.isAttack())
         {
             ItemStack heldItem = player.getMainHandItem();
             if(heldItem.getItem() instanceof GunItem gunItem)
@@ -93,7 +93,7 @@ public class ShootingHandler
         }
         else 
         {
-        	if(Config.CLIENT.controls.flipControls.get() ? event.isAttack() : event.isUseItem())
+        	if(Config.CLIENT.flipControls.get() ? event.isAttack() : event.isUseItem())
 	        {
 	            ItemStack heldItem = player.getMainHandItem();
 	            if(heldItem.getItem() instanceof GunItem gunItem)
@@ -113,7 +113,7 @@ public class ShootingHandler
 	                    event.setSwingHand(false);
 	                    return;
 	                }
-	                if(Config.CLIENT.controls.flipControls.get() || AimingHandler.get().isZooming() && AimingHandler.get().isLookingAtInteractableBlock())
+	                if(Config.CLIENT.flipControls.get() || AimingHandler.get().isZooming() && AimingHandler.get().isLookingAtInteractableBlock())
 	                {
 	                    event.setCanceled(true);
 	                    event.setSwingHand(false);

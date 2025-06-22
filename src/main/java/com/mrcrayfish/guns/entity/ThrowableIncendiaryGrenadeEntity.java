@@ -25,14 +25,14 @@ import net.minecraft.world.phys.Vec3;
  */
 public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
 {
-    protected float radius = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue();
-    protected int fireDuration = Config.COMMON.explosives.incendiaryGrenadeFireDuration.get();
+    protected float radius = Config.COMMON.incendiaryGrenadeExplosionRadius.get().floatValue();
+    protected int fireDuration = Config.COMMON.incendiaryGrenadeFireDuration.get();
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
         super(entityType, world);
-        if(GunMod.dynamicLightsLoaded && Config.COMMON.gameplay.enableDynamicLights.get())
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.gameplay.dynamicLightValue.get());
+        if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
+            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.dynamicLightValue.get());
     }
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)

@@ -150,7 +150,7 @@ public interface IColored
     {
         if(stack.getItem() instanceof IColored colored)
         {
-            return colored.canColor(stack) || Config.SERVER.experimental.forceDyeableAttachments.get();
+            return colored.canColor(stack) || Config.SERVER.forceDyeableAttachments.get();
         }
         return false;
     }

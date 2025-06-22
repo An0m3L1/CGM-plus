@@ -19,8 +19,8 @@ import net.minecraft.world.phys.Vec3;
  */
 public class GrenadeEntity extends ProjectileEntity
 {
-    protected float radius = Config.COMMON.explosives.handGrenadeExplosionRadius.get().floatValue();
-    protected boolean griefing = !Config.COMMON.explosives.handGrenadeExplosionGriefing.get();
+    protected float radius = Config.COMMON.handGrenadeExplosionRadius.get().floatValue();
+    protected boolean griefing = !Config.COMMON.handGrenadeExplosionGriefing.get();
 
     public GrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
     {

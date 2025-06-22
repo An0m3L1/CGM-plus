@@ -3,21 +3,14 @@ package com.mrcrayfish.guns.client.render.pose;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.client.handler.ReloadHandler;
-import com.mrcrayfish.guns.client.util.Easings;
 import com.mrcrayfish.guns.client.util.GunAnimationHelper;
 import com.mrcrayfish.guns.client.util.GunLegacyAnimationHelper;
-import com.mrcrayfish.guns.client.util.GunReloadAnimationHelper;
 import com.mrcrayfish.guns.client.util.PropertyHelper;
 import com.mrcrayfish.guns.client.util.RenderUtil;
 import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
-import com.mrcrayfish.guns.common.Gun.Display.ForwardHandPos;
-import com.mrcrayfish.guns.common.Gun.Display.RearHandPos;
-import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.model.PlayerModel;
 import net.minecraft.client.model.geom.ModelPart;
@@ -69,7 +62,7 @@ public class TwoHandedPose extends WeaponPose
     @OnlyIn(Dist.CLIENT)
     public void applyPlayerModelRotation(Player player, ModelPart rightArm, ModelPart leftArm, ModelPart head, InteractionHand hand, float aimProgress)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             Minecraft mc = Minecraft.getInstance();
             boolean right = mc.options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
@@ -98,7 +91,7 @@ public class TwoHandedPose extends WeaponPose
     @OnlyIn(Dist.CLIENT)
     public void applyPlayerPreRender(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
             player.yBodyRotO = player.yRotO + (right ? 25F : -25F) + aimProgress * (right ? 20F : -20F);
@@ -114,7 +107,7 @@ public class TwoHandedPose extends WeaponPose
     @OnlyIn(Dist.CLIENT)
     public void applyHeldItemTransforms(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             if(hand == InteractionHand.MAIN_HAND)
             {

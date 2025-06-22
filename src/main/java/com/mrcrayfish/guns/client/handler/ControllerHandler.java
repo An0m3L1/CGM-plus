@@ -102,7 +102,7 @@ public class ControllerHandler
             ItemStack heldItem = player.getMainHandItem();
             if(heldItem.getItem() instanceof GunItem && AimingHandler.get().isAiming())
             {
-                double adsSensitivity = Config.CLIENT.controls.aimDownSightSensitivity.get();
+                double adsSensitivity = Config.CLIENT.aimDownSightSensitivity.get();
                 event.setYawSpeed(10.0F * (float) adsSensitivity);
                 event.setPitchSpeed(7.5F * (float) adsSensitivity);
 

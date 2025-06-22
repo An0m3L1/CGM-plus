@@ -24,7 +24,7 @@ public class SmokeCloudParticle extends TextureSheetParticle
         this.setAlpha(1.00f);
         this.setSize(0.25F, 0.25F);
 
-        int life = (int) (Config.COMMON.explosives.smokeGrenadeCloudDuration.get() * 20);
+        int life = (int) (Config.COMMON.smokeGrenadeCloudDuration.get() * 20);
         this.lifetime = (int) (life + ((Math.random()-0.5) * (life * 0.25)));
         this.sprites = sprites;
         this.gravity = 3.0E-6F;

@@ -32,19 +32,19 @@ public class SpreadTracker
         Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.computeIfAbsent(item, gun -> Pair.of(new MutableLong(-1), new MutableInt()));
         MutableLong lastFire = entry.getLeft();
         MutableInt spreadCount = entry.getRight();
-        int spreadNegativeModifier = (int) Math.floor((float) Config.COMMON.projectileSpread.maxCount.get() * 0.5F);
-        int spreadPositiveModifier = (int) Math.floor((float) Config.COMMON.projectileSpread.maxCount.get() * 0.75F);
+        int spreadNegativeModifier = (int) Math.floor((float) Config.COMMON.maxCount.get() * 0.5F);
+        int spreadPositiveModifier = (int) Math.floor((float) Config.COMMON.maxCount.get() * 0.75F);
         if(lastFire.getValue() != -1)
         {
             long deltaTime = System.currentTimeMillis() - lastFire.getValue();
-            if(deltaTime < Config.COMMON.projectileSpread.spreadThreshold.get())
+            if(deltaTime < Config.COMMON.spreadThreshold.get())
             {
-                if(spreadCount.getValue() < Config.COMMON.projectileSpread.maxCount.get())
+                if(spreadCount.getValue() < Config.COMMON.maxCount.get())
                 {
                     spreadCount.increment();
 
                     /* Increases the spread count quicker if the player is not aiming down sight - can be disabled in the config */
-                    if(spreadCount.getValue() < Config.COMMON.projectileSpread.maxCount.get() && !ModSyncedDataKeys.AIMING.getValue(player) && (Config.COMMON.projectileSpread.doSpreadHipFirePenalty.get()))
+                    if(spreadCount.getValue() < Config.COMMON.maxCount.get() && !ModSyncedDataKeys.AIMING.getValue(player) && (Config.COMMON.doSpreadHipFirePenalty.get()))
                     {
                         spreadCount.increment();
                     }
@@ -75,8 +75,8 @@ public class SpreadTracker
     	Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.get(item);
         if(entry != null)
         {
-            float nextSpread = (Config.COMMON.projectileSpread.doSpreadHipFirePenalty.get() ? 1F+aim : 1F);
-        	return ((float) entry.getRight().getValue()+nextSpread) / (float) Config.COMMON.projectileSpread.maxCount.get();
+            float nextSpread = (Config.COMMON.doSpreadHipFirePenalty.get() ? 1F+aim : 1F);
+        	return ((float) entry.getRight().getValue()+nextSpread) / (float) Config.COMMON.maxCount.get();
         }
         return 0F;
     }
@@ -86,7 +86,7 @@ public class SpreadTracker
         Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.get(item);
         if(entry != null)
         {
-            return (float) entry.getRight().getValue() / (float) Config.COMMON.projectileSpread.maxCount.get();
+            return (float) entry.getRight().getValue() / (float) Config.COMMON.maxCount.get();
         }
         return 0F;
     }

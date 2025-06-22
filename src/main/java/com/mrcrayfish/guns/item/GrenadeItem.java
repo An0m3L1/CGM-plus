@@ -38,7 +38,7 @@ public class GrenadeItem extends AmmoItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double damage = Config.COMMON.explosives.handGrenadeExplosionDamage.get();
+        double damage = Config.COMMON.handGrenadeExplosionDamage.get();
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {

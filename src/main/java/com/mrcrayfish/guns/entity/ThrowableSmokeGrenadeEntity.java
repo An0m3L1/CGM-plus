@@ -66,7 +66,7 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
     {
         if (result.getType() == HitResult.Type.BLOCK && !this.level.isClientSide)
         {
-            double radius = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get() * 0.75;
+            double radius = Config.COMMON.smokeGrenadeCloudDiameter.get() * 0.75;
             if (radius > 0)
             {
                 BlockPos grenadePos = new BlockPos(this.getX(), this.getY(), this.getZ());
@@ -110,8 +110,8 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
     public void onDeath()
     {
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        double radius = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get() * 0.5;
-        double duration = ((Config.COMMON.explosives.smokeGrenadeCloudDuration.get() - 3) * 20);
+        double radius = Config.COMMON.smokeGrenadeCloudDiameter.get() * 0.5;
+        double duration = ((Config.COMMON.smokeGrenadeCloudDuration.get() - 3) * 20);
         @NotNull SimpleParticleType particle = ModParticleTypes.SMOKE_EFFECT.get();
         Minecraft.getInstance().getSoundManager().play(new SmokeGrenadeExplosionSound(ModSounds.SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(!this.level.isClientSide)

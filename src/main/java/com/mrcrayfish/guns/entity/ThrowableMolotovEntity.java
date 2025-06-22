@@ -30,14 +30,14 @@ import net.minecraft.world.phys.Vec3;
  */
 public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
 {
-    protected float radius = Config.COMMON.explosives.molotovExplosionRadius.get().floatValue();
-    protected int fireDuration = Config.COMMON.explosives.molotovFireDuration.get();
+    protected float radius = Config.COMMON.molotovExplosionRadius.get().floatValue();
+    protected int fireDuration = Config.COMMON.molotovFireDuration.get();
 
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
         super(entityType, world);
-        if(GunMod.dynamicLightsLoaded && Config.COMMON.gameplay.enableDynamicLights.get())
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.gameplay.dynamicLightValue.get());
+        if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
+            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.dynamicLightValue.get());
     }
 
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)

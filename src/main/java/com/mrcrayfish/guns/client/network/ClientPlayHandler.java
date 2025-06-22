@@ -65,13 +65,13 @@ public class ClientPlayHandler
     public static void handleMessageBlood(S2CMessageBlood message)
     {
         Level world = Minecraft.getInstance().level;
-        if(!Config.CLIENT.particle.enableHitParticle.get())
+        if(!Config.CLIENT.enableHitParticle.get())
         {
             return;
         }
         if(world != null)
         {
-            if(Config.CLIENT.particle.enableHeadshotParticle.get())
+            if(Config.CLIENT.enableHeadshotParticle.get())
             {
                 if (message.isHeadshot())
                 {
@@ -82,7 +82,7 @@ public class ClientPlayHandler
                 }
             }
 
-            if (Config.CLIENT.particle.enableBlood.get() && message.getAllowBlood())
+            if (Config.CLIENT.enableBlood.get() && message.getAllowBlood())
             {
                 for(int i = 0; i < 10; i++)
                 {
@@ -127,7 +127,7 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.explosives.handGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.COMMON.handGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -156,7 +156,7 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.explosives.rocketExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.COMMON.rocketExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -185,7 +185,7 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.explosives.pipeGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.COMMON.pipeGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -214,7 +214,7 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.COMMON.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -237,7 +237,7 @@ public class ClientPlayHandler
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
         Level world = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.explosives.molotovExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.COMMON.molotovExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -286,7 +286,7 @@ public class ClientPlayHandler
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
-        double diameter = Config.COMMON.explosives.smokeGrenadeCloudDiameter.get();
+        double diameter = Config.COMMON.smokeGrenadeCloudDiameter.get();
         double vel = 0.004;
         int amount = (int) (diameter * 15);
 
@@ -330,7 +330,7 @@ public class ClientPlayHandler
             double holeZ = message.getZ() + 0.005 * message.getFace().getStepZ();
             double distance = Math.sqrt(mc.player.distanceToSqr(message.getX(), message.getY(), message.getZ()));
             world.addParticle(new BulletHoleData(message.getFace(), message.getPos()), true, holeX, holeY, holeZ, 0, 0, 0);
-            if(distance < Config.CLIENT.particle.impactParticleDistance.get())
+            if(distance < Config.CLIENT.impactParticleDistance.get())
             {
                 for(int i = 0; i < 4; i++)
                 {
@@ -350,7 +350,7 @@ public class ClientPlayHandler
                 }
             }
 
-            if (!hasNearbyHit && distance <= Config.CLIENT.sounds.impactSoundDistance.get()) {
+            if (!hasNearbyHit && distance <= Config.CLIENT.impactSoundDistance.get()) {
                 world.playLocalSound(message.getX(), message.getY(), message.getZ(), state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, 2.0F, false);
             }
             currentTickHits.add(currentHit);
@@ -383,25 +383,25 @@ public class ClientPlayHandler
     {
         if(critical)
         {
-            if(Config.CLIENT.sounds.playSoundWhenCritical.get())
+            if(Config.CLIENT.playSoundWhenCritical.get())
             {
-                SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.sounds.criticalSound.get()));
+                SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.criticalSound.get()));
                 return event != null ? event : SoundEvents.PLAYER_ATTACK_CRIT;
             }
         }
         else if(headshot)
         {
-            if(Config.CLIENT.sounds.playSoundWhenHeadshot.get())
+            if(Config.CLIENT.playSoundWhenHeadshot.get())
             {
-                SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.sounds.headshotSound.get()));
+                SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.headshotSound.get()));
                 return event != null ? event : SoundEvents.PLAYER_ATTACK_KNOCKBACK;
             }
         }
         else
         {
-        	if(Config.CLIENT.sounds.playHitSound.get() && (!Config.CLIENT.sounds.hitSoundOnlyAgainstPlayers.get() || player))
+        	if(Config.CLIENT.playHitSound.get() && (!Config.CLIENT.hitSoundOnlyAgainstPlayers.get() || player))
             {
-                SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.sounds.hitSound.get()));
+                SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.hitSound.get()));
                 return event != null ? event : SoundEvents.TRIDENT_HIT;
             }
         }

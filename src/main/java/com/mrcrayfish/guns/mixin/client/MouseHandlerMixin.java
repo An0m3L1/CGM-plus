@@ -44,7 +44,7 @@ public class MouseHandlerMixin
                 }
             }
         }
-        double adsSensitivity = Config.CLIENT.controls.aimDownSightSensitivity.get();
+        double adsSensitivity = Config.CLIENT.aimDownSightSensitivity.get();
         return original * (1.0 - (1.0 - adsSensitivity) * AimingHandler.get().getNormalisedAdsProgress()) * additionalAdsSensitivity;
     }
 }

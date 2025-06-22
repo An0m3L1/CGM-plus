@@ -41,7 +41,7 @@ public class GunEventBus
         if (heldItem.getItem() instanceof GunItem gunItem)
         {
             // Decreasing durability
-            if (heldItem.isDamageableItem() && Config.COMMON.gameplay.enableDurability.get())
+            if (heldItem.isDamageableItem() && Config.COMMON.enableDurability.get())
             {
                 if (tag.getInt("AmmoCount") >= 1 )
                     damageGun(heldItem, level, player);
@@ -54,7 +54,7 @@ public class GunEventBus
             // Fire light
             Gun modifiedGun = gunItem.getModifiedGun(heldItem);
             if (!level.isClientSide() && // Checks if world is on server-side
-                    Config.COMMON.gameplay.enableDynamicLights.get() && // Checks config
+                    Config.COMMON.enableDynamicLights.get() && // Checks config
                     GunMod.dynamicLightsLoaded && // Checks loaded dynamic lights mod
                     modifiedGun.getGeneral().shouldEmitLight()) // Checks if this gun should emit light while shooting
             {
@@ -63,7 +63,7 @@ public class GunEventBus
                 double x = player.getX() + lookVec.x * forwardOffset;
                 double y = (player.getEyeY() - 0.35) + lookVec.y * forwardOffset;
                 double z = player.getZ() + lookVec.z * forwardOffset;
-                int lightLevel = Config.COMMON.gameplay.dynamicLightValue.get();
+                int lightLevel = Config.COMMON.dynamicLightValue.get();
                 LightSourceEntity light = new LightSourceEntity(level, x, y, z, lightLevel);
                 level.addFreshEntity(light);
             }

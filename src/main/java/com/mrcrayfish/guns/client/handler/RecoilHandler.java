@@ -95,7 +95,7 @@ public class RecoilHandler
         float cameraAngleChange = 0;
 
         //New camera recoil
-        if(!Config.CLIENT.display.useOldCameraRecoil.get())
+        if(!Config.CLIENT.useOldCameraRecoil.get())
         {
             int currentRecoilTick = mc.player.tickCount - this.lastFireTick;
             float recoilTime = ((float) currentRecoilTick) + mc.getFrameTime();

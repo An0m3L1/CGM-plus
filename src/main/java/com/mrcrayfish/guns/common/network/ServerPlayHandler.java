@@ -59,7 +59,7 @@ import java.util.function.Predicate;
  */
 public class ServerPlayHandler
 {
-    private static final Predicate<LivingEntity> HOSTILE_ENTITIES = entity -> entity.getSoundSource() == SoundSource.HOSTILE && !(entity instanceof NeutralMob) && !Config.COMMON.aggroMobs.exemptEntities.get().contains(EntityType.getKey(entity.getType()).toString());
+    private static final Predicate<LivingEntity> HOSTILE_ENTITIES = entity -> entity.getSoundSource() == SoundSource.HOSTILE && !(entity instanceof NeutralMob) && !Config.COMMON.exemptEntities.get().contains(EntityType.getKey(entity.getType()).toString());
 
     /**
      * Fires the weapon the player is currently holding.
@@ -137,7 +137,7 @@ public class ServerPlayHandler
                     double spawnX = player.getX();
                     double spawnY = player.getY() + 1.0;
                     double spawnZ = player.getZ();
-                    double radius = Config.COMMON.network.projectileTrackingRange.get();
+                    double radius = Config.COMMON.projectileTrackingRange.get();
                     ParticleOptions data = new TrailData(heldItem.isEnchanted());
                     S2CMessageBulletTrail messageBulletTrail = new S2CMessageBulletTrail(spawnedProjectiles, projectileProps, player.getId(), data);
                     PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, spawnX, spawnY, spawnZ, radius), messageBulletTrail);
@@ -145,9 +145,9 @@ public class ServerPlayHandler
 
                 MinecraftForge.EVENT_BUS.post(new GunFireEvent.Post(player, heldItem));
 
-                if(Config.COMMON.aggroMobs.enabled.get())
+                if(Config.COMMON.scareMobs.get())
                 {
-                    double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, Config.COMMON.aggroMobs.unsilencedRange.get());
+                    double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, Config.SERVER.gunShotSoundDistance.get());
                     double x = player.getX();
                     double y = player.getY() + 0.5;
                     double z = player.getZ();
@@ -161,7 +161,7 @@ public class ServerPlayHandler
                         dz = z - entity.getZ();
                         if(dx * dx + dy * dy + dz * dz <= radius)
                         {
-                            entity.setLastHurtByMob(Config.COMMON.aggroMobs.angerHostileMobs.get() ? player : entity);
+                            entity.setLastHurtByMob(Config.COMMON.angerHostileMobs.get() ? player : entity);
                         }
                     }
                 }

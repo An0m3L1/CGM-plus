@@ -46,7 +46,7 @@ public class DynamicCrosshair extends Crosshair
         this.prevFireBloom = this.fireBloom;
         if (this.fireBloom > 0)
         {
-        	float i = (float) Config.COMMON.projectileSpread.spreadThreshold.get()/50;
+        	float i = (float) Config.COMMON.spreadThreshold.get()/50;
         	this.fireBloom -= Math.min(3F/(Math.max(i,1)), this.fireBloom);
         }
     }
@@ -66,7 +66,7 @@ public class DynamicCrosshair extends Crosshair
         float size1 = 7F;
         float size2 = 1F;
         float spread = 0F;
-    	float scaleMultiplier = (float) (Config.CLIENT.display.dynamicCrosshairReactivity.get()*1F);
+    	float scaleMultiplier = (float) (Config.CLIENT.dynamicCrosshairReactivity.get()*1F);
     	boolean renderDot = false;
         if (mc.player != null)
         {
@@ -78,7 +78,7 @@ public class DynamicCrosshair extends Crosshair
             	float aiming = (float) AimingHandler.get().getNormalisedAdsProgress();
                 float sprintTransition = (float) GunRenderingHandler.get().getSprintTransition(Minecraft.getInstance().getFrameTime());
                 float spreadCount = (SpreadTracker.get(mc.player).getNextSpread(gun,aiming));
-            	float spreadModifier = ((spreadCount+(1F/Math.max(Config.COMMON.projectileSpread.maxCount.get(),1F)))*Math.min(Mth.lerp(partialTicks, this.prevFireBloom, this.fireBloom),1F));
+            	float spreadModifier = ((spreadCount+(1F/Math.max(Config.COMMON.maxCount.get(),1F)))*Math.min(Mth.lerp(partialTicks, this.prevFireBloom, this.fireBloom),1F));
             	spreadModifier = (float) (Mth.lerp(sprintTransition*0.5, spreadModifier, 1.0F));
             	float baseSpread = GunCompositeStatHelper.getCompositeSpread(heldItem, modifiedGun);
             	float minSpread = GunCompositeStatHelper.getCompositeMinSpread(heldItem, modifiedGun);
@@ -86,18 +86,18 @@ public class DynamicCrosshair extends Crosshair
             	float aimingSpreadMultiplier = (float) (Mth.lerp(aiming, 1.0F, 1.0F - modifiedGun.getGeneral().getSpreadAdsReduction()));
             	spread = Math.max(Mth.lerp(spreadModifier,minSpread,baseSpread)*(aimingSpreadMultiplier),0F);
             	
-            	DotRenderMode dotRenderMode = Config.CLIENT.display.dynamicCrosshairDotMode.get();
+            	DotRenderMode dotRenderMode = Config.CLIENT.dynamicCrosshairDotMode.get();
             	renderDot = (dotRenderMode == DotRenderMode.ALWAYS)
-            	|| (dotRenderMode == DotRenderMode.AT_MIN_SPREAD && (SpreadTracker.get(mc.player).getNextSpread(gun,aiming)*spreadModifier <= 0 && spread<=Config.CLIENT.display.dynamicCrosshairDotThreshold.get()))
-    			|| (dotRenderMode == DotRenderMode.THRESHOLD && spread <= Config.CLIENT.display.dynamicCrosshairDotThreshold.get())
-    			&& (!Config.CLIENT.display.onlyRenderDotWhileAiming.get() || aiming > 0.9F);
+            	|| (dotRenderMode == DotRenderMode.AT_MIN_SPREAD && (SpreadTracker.get(mc.player).getNextSpread(gun,aiming)*spreadModifier <= 0 && spread<=Config.CLIENT.dynamicCrosshairDotThreshold.get()))
+    			|| (dotRenderMode == DotRenderMode.THRESHOLD && spread <= Config.CLIENT.dynamicCrosshairDotThreshold.get())
+    			&& (!Config.CLIENT.onlyRenderDotWhileAiming.get() || aiming > 0.9F);
             }
         }
         
         float baseScale = 1F + (Mth.lerp(partialTicks, this.prevScale, this.scale)*scaleMultiplier);
-        float scale = (float) (baseScale + (spread*(2F*Config.CLIENT.display.dynamicCrosshairSpreadMultiplier.get())));
+        float scale = (float) (baseScale + (spread*(2F*Config.CLIENT.dynamicCrosshairSpreadMultiplier.get())));
         float scaleSize = (scale/6F)+1.15F;
-        float crosshairBaseTightness = (float) (0.8-(Config.CLIENT.display.dynamicCrosshairBaseSpread.get()/2));
+        float crosshairBaseTightness = (float) (0.8-(Config.CLIENT.dynamicCrosshairBaseSpread.get()/2));
         float finalSpreadTranslate = (float) ( (Mth.lerp(0.95,scaleSize-1,Math.log(scaleSize)))*(2.8F) );
         //float rawSpreadTranslation = (scaleSize-1)*(3.0F);
         //float finalSpreadTranslate = (float) (Mth.lerp(0.0,rawSpreadTranslation,Math.log(rawSpreadTranslation+1)-1));
@@ -105,7 +105,7 @@ public class DynamicCrosshair extends Crosshair
         double windowCenteredX = Math.round((windowWidth) / 2F)-0.5;
         double windowCenteredY = Math.round((windowHeight) / 2F)-0.5;
 
-        boolean blend = Config.CLIENT.display.blendCrosshair.get();
+        boolean blend = Config.CLIENT.blendCrosshair.get();
         RenderSystem.enableBlend();
         if (blend)
         RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);

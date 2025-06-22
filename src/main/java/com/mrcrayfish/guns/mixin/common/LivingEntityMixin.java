@@ -29,12 +29,12 @@ public class LivingEntityMixin
     {
         if(this.source instanceof DamageSourceProjectile)
         {
-            if(!Config.COMMON.gameplay.enableKnockback.get())
+            if(!Config.COMMON.enableKnockback.get())
             {
                 return 0;
             }
 
-            double strength = Config.COMMON.gameplay.knockbackStrength.get();
+            double strength = Config.COMMON.knockbackStrength.get();
             if(strength > 0)
             {
                 return strength;

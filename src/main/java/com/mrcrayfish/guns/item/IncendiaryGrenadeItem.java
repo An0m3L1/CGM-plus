@@ -27,8 +27,8 @@ public class IncendiaryGrenadeItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double fireDiameter = (Config.COMMON.explosives.incendiaryGrenadeExplosionRadius.get() * 2F);
-        int fireDuration = Config.COMMON.explosives.incendiaryGrenadeFireDuration.get();
+        double fireDiameter = (Config.COMMON.incendiaryGrenadeExplosionRadius.get() * 2F);
+        int fireDuration = Config.COMMON.incendiaryGrenadeFireDuration.get();
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {

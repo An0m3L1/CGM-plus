@@ -27,12 +27,12 @@ public class KeyBinds
     public static KeyMapping getAimMapping()
     {
         Minecraft mc = Minecraft.getInstance();
-        return Config.CLIENT.controls.flipControls.get() ? mc.options.keyAttack : mc.options.keyUse;
+        return Config.CLIENT.flipControls.get() ? mc.options.keyAttack : mc.options.keyUse;
     }
 
     public static KeyMapping getShootMapping()
     {
         Minecraft mc = Minecraft.getInstance();
-        return Config.CLIENT.controls.flipControls.get() ? mc.options.keyUse : mc.options.keyAttack;
+        return Config.CLIENT.flipControls.get() ? mc.options.keyUse : mc.options.keyAttack;
     }
 }

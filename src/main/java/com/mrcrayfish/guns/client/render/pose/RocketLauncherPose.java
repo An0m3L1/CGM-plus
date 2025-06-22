@@ -54,7 +54,7 @@ public class RocketLauncherPose extends WeaponPose
     @OnlyIn(Dist.CLIENT)
     public void applyPlayerModelRotation(Player player, ModelPart rightArm, ModelPart leftArm, ModelPart head, InteractionHand hand, float aimProgress)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
             ModelPart mainArm = right ? rightArm : leftArm;
@@ -75,7 +75,7 @@ public class RocketLauncherPose extends WeaponPose
     @Override
     public void applyPlayerPreRender(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(Config.CLIENT.display.oldAnimations.get())
+        if(Config.CLIENT.oldAnimations.get())
         {
             boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
             player.yBodyRotO = player.yRotO + 35F * (right ? 1F : -1F);
@@ -91,7 +91,7 @@ public class RocketLauncherPose extends WeaponPose
     @OnlyIn(Dist.CLIENT)
     public void applyHeldItemTransforms(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(!Config.CLIENT.display.oldAnimations.get())
+        if(!Config.CLIENT.oldAnimations.get())
         {
             super.applyHeldItemTransforms(player, hand, aimProgress, poseStack, buffer);
         }

@@ -1,11 +1,7 @@
 package com.mrcrayfish.guns.common;
 
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.common.headshot.BasicHeadshotBox;
-import com.mrcrayfish.guns.common.headshot.ChildHeadshotBox;
-import com.mrcrayfish.guns.common.headshot.NoChildHeadshotBox;
-import com.mrcrayfish.guns.common.headshot.NoChildRotatedHeadshotBox;
-import com.mrcrayfish.guns.common.headshot.RotatedHeadshotBox;
+import com.mrcrayfish.guns.common.headshot.*;
 import com.mrcrayfish.guns.interfaces.IHeadshotBox;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.Entity;
@@ -113,7 +109,7 @@ public class BoundingBoxManager
     @SubscribeEvent(receiveCanceled = true)
     public void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
-        if(!Config.COMMON.gameplay.improvedHitboxes.get())
+        if(!Config.COMMON.improvedHitboxes.get())
             return;
 
         if(event.side == LogicalSide.SERVER && event.phase == TickEvent.Phase.END)

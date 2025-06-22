@@ -34,7 +34,7 @@ public class LightSourceEntity extends Entity implements IEntityAdditionalSpawnD
 
     public LightSourceEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {
-        this(entityType, worldIn, Config.COMMON.gameplay.dynamicLightValue.get());
+        this(entityType, worldIn, Config.COMMON.dynamicLightValue.get());
     }
 
     public LightSourceEntity(Level worldIn, double x, double y, double z, int lightValue)

@@ -4,15 +4,10 @@ import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Reference;
-import com.mrcrayfish.guns.client.render.crosshair.Crosshair;
-import com.mrcrayfish.guns.client.render.crosshair.DynamicCrosshair;
-import com.mrcrayfish.guns.client.render.crosshair.SpecialHitMarker;
-import com.mrcrayfish.guns.client.render.crosshair.TechCrosshair;
-import com.mrcrayfish.guns.client.render.crosshair.TexturedCrosshair;
+import com.mrcrayfish.guns.client.render.crosshair.*;
 import com.mrcrayfish.guns.compat.ShoulderSurfingHelper;
 import com.mrcrayfish.guns.event.GunFireEvent;
 import com.mrcrayfish.guns.item.GunItem;
-
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -100,7 +95,7 @@ public class CrosshairHandler
     {
         if(this.currentCrosshair == null && this.registeredCrosshairs.size() > 0)
         {
-            ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.display.crosshair.get());
+            ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.crosshair.get());
             this.currentCrosshair = id != null ? this.idToCrosshair.getOrDefault(id, Crosshair.DEFAULT) : Crosshair.DEFAULT;
         }
         return this.currentCrosshair;
@@ -200,7 +195,7 @@ public class CrosshairHandler
         ModConfig config = event.getConfig();
         if(config.getType() == ModConfig.Type.CLIENT && config.getModId().equals(Reference.MOD_ID))
         {
-            ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.display.crosshair.get());
+            ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.crosshair.get());
             if(id != null)
             {
                 CrosshairHandler.get().setCrosshair(id);

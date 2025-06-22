@@ -10,7 +10,6 @@ import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModParticleTypes;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -57,8 +56,7 @@ public class GunEventBus
             if (!level.isClientSide() && // Checks if world is on server-side
                     Config.COMMON.gameplay.enableDynamicLights.get() && // Checks config
                     GunMod.dynamicLightsLoaded && // Checks loaded dynamic lights mod
-                    modifiedGun.getGeneral().shouldEmitLight() && // Checks if this gun should emit light while shooting
-                    !GunModifierHelper.isSilencedFire(heldItem)) // Checks if this gun doesn't have a silencer attached
+                    modifiedGun.getGeneral().shouldEmitLight()) // Checks if this gun should emit light while shooting
             {
                 Vec3 lookVec = player.getLookAngle();
                 double forwardOffset = 2.0;

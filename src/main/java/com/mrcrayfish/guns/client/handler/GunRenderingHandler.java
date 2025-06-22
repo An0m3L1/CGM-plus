@@ -520,8 +520,14 @@ public class GunRenderingHandler
         this.applyShieldTransforms(poseStack, player, modifiedGun, event.getPartialTick());
 
         /* Determines the lighting for the weapon. Weapon will appear bright from muzzle flash or light sources */
-        int blockLight = player.isOnFire() ? 15 : player.level.getBrightness(LightLayer.BLOCK, new BlockPos(player.getEyePosition(event.getPartialTick())));
-        blockLight += (this.entityIdForMuzzleFlash.contains(player.getId()) ? 3 : 0);
+        int blockLight;
+        if (player.isOnFire())
+            blockLight = 15;
+        else
+            blockLight = player.level.getBrightness(LightLayer.BLOCK, new BlockPos(player.getEyePosition(event.getPartialTick())));
+        if (this.entityIdForMuzzleFlash.contains(player.getId()))
+            blockLight += Config.COMMON.gameplay.dynamicLightValue.get();
+
         blockLight = Math.min(blockLight, 15);
         int packedLight = LightTexture.pack(blockLight, player.level.getBrightness(LightLayer.SKY, new BlockPos(player.getEyePosition(event.getPartialTick()))));
 

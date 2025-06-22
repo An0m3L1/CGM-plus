@@ -20,7 +20,6 @@ public class Config
         public final Display display;
         public final Particle particle;
         public final Controls controls;
-        public final Experimental experimental;
         public final ForgeConfigSpec.BooleanValue hideConfigButton;
         public final ForgeConfigSpec.EnumValue<ButtonAlignment> buttonAlignment;
 
@@ -32,7 +31,6 @@ public class Config
                 this.display = new Display(builder);
                 this.particle = new Particle(builder);
                 this.controls = new Controls(builder);
-                this.experimental = new Experimental(builder);
             }
             builder.pop();
             this.hideConfigButton = builder.comment("If enabled, hides the config button from the attachment screen.").define("hideConfigButton", true);

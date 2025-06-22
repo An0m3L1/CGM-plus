@@ -1,93 +1,32 @@
 {
-  "type": "create:sequenced_assembly",
-  "ingredient": {"tag": "forge:plates/steel"},
-  "loops": 1,
-  "results": [{"item": "cgm:gun_repair_kit"}
-  ],
-  "sequence": [
+  "type": "cgm:workbench",
+  "materials": [
     {
-      "type": "create:cutting",
-      "ingredients":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ],
-      "processingTime": 50,
-      "results":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ]
+      "count": 1,
+      "item": "cgm:sturdy_mechanism"
     },
     {
-      "type": "create:deploying",
-      "ingredients":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"},
-        {"tag": "forge:rods/steel"}
-      ],
-      "results":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ]
+      "count": 2,
+      "tag": "forge:rods/steel"
     },
     {
-      "type": "create:deploying",
-      "ingredients":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"},
-        {"tag": "forge:nuggets/steel"}
-      ],
-      "results":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ]
+      "count": 4,
+      "tag": "forge:plates/steel"
     },
     {
-      "type": "create:deploying",
-      "ingredients":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"},
-        {"item": "cgm:rubber"}
-      ],
-      "results":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ]
+      "count": 3,
+      "item": "cgm:plastic"
     },
     {
-      "type": "create:deploying",
-      "ingredients":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"},
-        {"item": "cgm:plastic"}
-      ],
-      "results":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ]
+      "count": 2,
+      "item": "cgm:rubber"
     },
     {
-      "type": "create:deploying",
-      "ingredients":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"},
-        {"item": "cgm:cloth"}
-      ],
-      "results":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ]
-    },
-    {
-      "type": "create:pressing",
-      "ingredients":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ],
-      "results":
-      [
-        {"item": "cgm:incomplete_gun_repair_kit"}
-      ]
+      "count": 1,
+      "item": "cgm:cloth"
     }
   ],
-  "transitionalItem": {"item": "cgm:incomplete_gun_repair_kit"}
+  "result": {
+    "item": "cgm:gun_repair_kit"
+  }
 }

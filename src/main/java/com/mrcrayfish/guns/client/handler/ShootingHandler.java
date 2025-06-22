@@ -336,7 +336,6 @@ public class ShootingHandler
         
         if(ModSyncedDataKeys.ONBURSTCOOLDOWN.getValue(player))
         {
-        	//GunItem gunItem = (GunItem) heldItem.getItem();
         	if (Gun.hasBurstFire(heldItem) && ModSyncedDataKeys.BURSTCOUNT.getValue(player)<=0)
             {
                 return false;
@@ -351,8 +350,8 @@ public class ShootingHandler
         if(!(heldItem.getItem() instanceof GunItem))
             return;
 
-        if(isEmpty(player, heldItem) || heldItem.getDamageValue() == (heldItem.getMaxDamage() - 1))
-        {	
+        if(isEmpty(player, heldItem) || heldItem.getDamageValue() >= (heldItem.getMaxDamage() - 1))
+        {
 
             ItemCooldowns tracker = player.getCooldowns();
             if(!tracker.isOnCooldown(heldItem.getItem()))

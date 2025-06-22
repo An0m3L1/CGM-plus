@@ -20,6 +20,3 @@ Overhaul items (models, textures, stats, datagen)
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul config (sort values etc.)
-Overhaul GunItem to hide enchantments and enchantment glint
-
-Check RenderUtil to change light value of first person model

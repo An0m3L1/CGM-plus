@@ -289,7 +289,19 @@ public class GunItem extends Item implements IColored, IMeta
     {
         return repair.is(ModItems.GUN_REPAIR_KIT.get());
     }
-    
+
+    @Override
+    public boolean isFoil(ItemStack stack)
+    {
+        return false;
+    }
+
+    @Override
+    public boolean isEnchantable(ItemStack stack)
+    {
+        return false;
+    }
+
     // Everything below is related to energy storage and transfer mechanics via Forge's EnergyStorage capability.
 
     public static void setCurrentEnergy(ItemStack stack, int Amount)

@@ -11,7 +11,8 @@ Add and overhaul animations
     - Crouched aiming (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-Add ammo pouches (check scorched guns)
+Add ammo belt
+    - Copy backpack functionality
 
 Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher

@@ -5,7 +5,7 @@ import com.mrcrayfish.guns.common.container.AttachmentContainer;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
+import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.player.Player;

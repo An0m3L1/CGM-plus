@@ -2,7 +2,7 @@ package com.mrcrayfish.guns.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.guns.entity.HeavyBulletEntity;
+import com.mrcrayfish.guns.entity.projectile.HeavyBulletEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;

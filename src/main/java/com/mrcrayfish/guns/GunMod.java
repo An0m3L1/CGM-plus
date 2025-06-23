@@ -12,7 +12,7 @@ import com.mrcrayfish.guns.datagen.BlockTagGen;
 import com.mrcrayfish.guns.datagen.EntityTagGen;
 import com.mrcrayfish.guns.datagen.GunGen;
 import com.mrcrayfish.guns.datagen.ItemTagGen;
-import com.mrcrayfish.guns.entity.*;
+import com.mrcrayfish.guns.entity.projectile.*;
 import com.mrcrayfish.guns.init.*;
 import com.mrcrayfish.guns.network.PacketHandler;
 import net.minecraft.core.NonNullList;

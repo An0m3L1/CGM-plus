@@ -2,7 +2,7 @@ package com.mrcrayfish.guns.client.render.entity;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.guns.entity.PipeGrenadeEntity;
+import com.mrcrayfish.guns.entity.projectile.PipeGrenadeEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;

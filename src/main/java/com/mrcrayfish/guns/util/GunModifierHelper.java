@@ -4,7 +4,7 @@ import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.interfaces.IGunModifier;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
+import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;

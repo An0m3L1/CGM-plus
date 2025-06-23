@@ -16,7 +16,7 @@ import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.IAmmo;
 import com.mrcrayfish.guns.item.IColored;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
+import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageCraft;
 import com.mrcrayfish.guns.util.InventoryUtil;

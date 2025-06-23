@@ -2,12 +2,11 @@ package com.mrcrayfish.guns.debug;
 
 import com.mrcrayfish.guns.client.ClientHandler;
 import com.mrcrayfish.guns.common.Gun;
-import com.mrcrayfish.guns.debug.client.screen.EditorScreen;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugButton;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugToggle;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.ScopeItem;
-import com.mrcrayfish.guns.item.attachment.impl.Scope;
+import com.mrcrayfish.guns.item.attachment.ScopeItem;
+import com.mrcrayfish.guns.item.attachment.impl.create.Scope;
 import net.minecraft.client.Minecraft;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.item.Item;

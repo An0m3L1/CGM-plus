@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.mrcrayfish.guns.client.SpecialModels;
 import com.mrcrayfish.guns.client.util.RenderUtil;
-import com.mrcrayfish.guns.entity.RocketEntity;
+import com.mrcrayfish.guns.entity.projectile.RocketEntity;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;

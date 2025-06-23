@@ -2,12 +2,8 @@ package com.mrcrayfish.guns.common.container;
 
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.container.slot.AttachmentSlot;
-import com.mrcrayfish.guns.common.network.ServerPlayHandler;
 import com.mrcrayfish.guns.init.ModContainers;
-import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
-import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-
+import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.Container;
 import net.minecraft.world.SimpleContainer;

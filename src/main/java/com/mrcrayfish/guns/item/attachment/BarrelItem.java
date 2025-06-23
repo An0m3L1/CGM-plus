@@ -1,11 +1,11 @@
-package com.mrcrayfish.guns.item;
+package com.mrcrayfish.guns.item.attachment;
 
-import com.mrcrayfish.guns.item.attachment.IBarrel;
-import com.mrcrayfish.guns.item.attachment.impl.Barrel;
+import com.mrcrayfish.guns.item.IColored;
+import com.mrcrayfish.guns.util.attachment.IBarrel;
+import com.mrcrayfish.guns.util.attachment.impl.Barrel;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.Enchantment;
-import net.minecraft.world.item.enchantment.Enchantments;
 
 /**
  * A basic barrel attachment item implementation with color support

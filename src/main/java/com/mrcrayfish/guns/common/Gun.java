@@ -15,11 +15,11 @@ import com.mrcrayfish.guns.debug.client.screen.widget.DebugButton;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugSlider;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugToggle;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.ScopeItem;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
-import com.mrcrayfish.guns.item.attachment.impl.Scope;
+import com.mrcrayfish.guns.item.attachment.ScopeItem;
 import com.mrcrayfish.guns.util.GunJsonUtil;
 import com.mrcrayfish.guns.util.SuperBuilder;
+import com.mrcrayfish.guns.util.attachment.IAttachment;
+import com.mrcrayfish.guns.util.attachment.impl.Scope;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
@@ -39,6 +39,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
 @SuppressWarnings("ALL")
@@ -3950,27 +3951,28 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     public static AmmoContext findAmmo(Player player, ResourceLocation id)
     {
     	ItemStack gunStack = player.getInventory().getSelected();
-        if(player.isCreative() || hasUnlimitedReloads(gunStack))
-        {
+        if(player.isCreative() || hasUnlimitedReloads(gunStack)) {
             Item item = ForgeRegistries.ITEMS.getValue(id);
             ItemStack ammo = item != null ? new ItemStack(item, Integer.MAX_VALUE) : ItemStack.EMPTY;
             return new AmmoContext(ammo, null);
         }
-        for(int i = 0; i < player.getInventory().getContainerSize(); ++i)
-        {
+
+        /* Check main inventory */
+        for(int i = 0; i < player.getInventory().getContainerSize(); ++i) {
             ItemStack stack = player.getInventory().getItem(i);
             if(isAmmo(stack, id))
-            {
                 return new AmmoContext(stack, player.getInventory());
-            }
         }
+
+        /* Check backpack */
         if(GunMod.backpackedLoaded)
-        {
             return BackpackHelper.findAmmo(player, id);
-        }
-        return AmmoContext.NONE;
+
+        AtomicReference<AmmoContext> ammoContextRef = new AtomicReference<>(AmmoContext.NONE);
+
+        return ammoContextRef.get();
     }
-    
+
     public static int getReserveAmmoCount(Player player, ResourceLocation id)
     {
     	int ammoCount = 0;

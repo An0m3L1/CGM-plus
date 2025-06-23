@@ -16,7 +16,7 @@ public class Config
      */
     public static class Client {
         /* Controls */
-        public final ForgeConfigSpec.DoubleValue aimDownSightSensitivity;
+        public final ForgeConfigSpec.DoubleValue aimingMouseSensitivityMultiplier;
         public final ForgeConfigSpec.BooleanValue flipControls;
 
         /* Display */
@@ -68,13 +68,13 @@ public class Config
         public Client(ForgeConfigSpec.Builder builder)
         {
             builder.push("controls");{
-                this.aimDownSightSensitivity = builder.comment("A value to multiply mouse sensitivity by when ADS.").defineInRange("aimDownSightSensitivity", 1.0, 0.0, 1.0);
-                this.flipControls = builder.comment("When enabled, switches the shoot and aim controls of weapons. Due to technical reasons, you won't be able to use offhand items if you enable this setting.").define("flipControls", false);
+                this.aimingMouseSensitivityMultiplier = builder.comment("When aiming down sights, mouse sensitivity is multiplied by this value. If set to 1.0, mouse sensitivity is unchanged.").defineInRange("aimingMouseSensitivityMultiplier", 1.0, 0.0, 1.0);
+                this.flipControls = builder.comment("If enabled, shoot and aim controls switch places. Due to technical reasons, you won't be able to use offhand items if you enable this setting.").define("flipControls", false);
             }builder.pop();
             builder.push("display");{
                 builder.push("crosshair");{
-                this.crosshair = builder.comment("The custom crosshair to use for weapons.").define("crosshair", "cgm:dynamic");
-                this.dynamicCrosshairBaseSpread = builder.comment("The resting size of the Dynamic Crosshair when spread is zero.").defineInRange("dynamicCrosshairBaseSpread", 1.0, 0, 5);
+                this.crosshair = builder.comment("Custom crosshair to use for guns.").define("crosshair", "cgm:dynamic");
+                this.dynamicCrosshairBaseSpread = builder.comment("Resting size of Dynamic Crosshair when spread is zero.").defineInRange("dynamicCrosshairBaseSpread", 1.0, 0, 5);
                 this.dynamicCrosshairSpreadMultiplier = builder.comment("The bloom factor of the Dynamic Crosshair when spread increases.").defineInRange("dynamicCrosshairSpreadMultiplier", 1.0, 1.0, 1.5);
                 this.dynamicCrosshairReactivity = builder.comment("How reactive the Dynamic Crosshair is to shooting.").defineInRange("dynamicCrosshairReactivity", 2.0, 0, 10);
                 this.dynamicCrosshairDotMode = builder.comment("The rendering mode used for the Dynamic Crosshair's center dot. At Min Spread will only render the dot when gun spread is stable.").defineEnum("dynamicCrosshairDotMode", DotRenderMode.ALWAYS);
@@ -287,11 +287,11 @@ public class Config
         public Server(ForgeConfigSpec.Builder builder)
         {
             builder.push("stun_grenades");{
-                this.alphaOverlay = builder.comment("After the duration drops to this many ticks, the transparency of the overlay when blinded will gradually fade to 0 alpha.").defineInRange("alphaOverlay", 255, 0, 255);
-                this.alphaFadeThreshold = builder.comment("Transparency of the overlay when blinded will be this alpha value, before eventually fading to 0 alpha.").defineInRange("alphaFadeThreshold", 60, 0, Integer.MAX_VALUE);
-                this.soundPercentage = builder.comment("Volume of most game sounds when deafened will play at this percent, before eventually fading back to %100.").defineInRange("soundPercentage", 0.1, 0.0, 1.0);
-                this.soundFadeThreshold = builder.comment("After the duration drops to this many ticks, the ringing volume will gradually fade to 0 and other sound volumes will fade back to %100.").defineInRange("soundFadeThreshold", 100, 0, Integer.MAX_VALUE);
-                this.ringVolume = builder.comment("Volume of the ringing sound when deafened will play at this volume, before eventually fading to 0.").defineInRange("ringVolume", 0.75, 0.0, 1.0);
+                this.alphaOverlay = builder.comment("Transparency of the overlay when blinded will be this alpha value, before eventually fading to 0 alpha.").defineInRange("alphaOverlay", 255, 0, 255);
+                this.alphaFadeThreshold = builder.comment("After the duration drops to this many ticks, the transparency of the overlay when blinded will gradually fade to 0 alpha.").defineInRange("alphaFadeThreshold", 60, 0, Integer.MAX_VALUE);
+                this.soundPercentage = builder.comment("Volume of most game sounds when stunned will play at this percent, before eventually fading back to 100%.").defineInRange("soundPercentage", 0.1, 0.0, 1.0);
+                this.soundFadeThreshold = builder.comment("After the duration drops to this many ticks, the ringing volume will gradually fade to 0 and other sound volumes will fade back to 100%.").defineInRange("soundFadeThreshold", 100, 0, Integer.MAX_VALUE);
+                this.ringVolume = builder.comment("Ringing sound when stunned will play at this volume, before eventually fading to 0.").defineInRange("ringVolume", 0.75, 0.0, 1.0);
             }builder.pop();
             builder.push("sounds");{
                 this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 96, 0, Double.MAX_VALUE);

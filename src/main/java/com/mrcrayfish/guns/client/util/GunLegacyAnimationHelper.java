@@ -4,11 +4,8 @@ import com.mrcrayfish.framework.api.serialize.DataArray;
 import com.mrcrayfish.framework.api.serialize.DataNumber;
 import com.mrcrayfish.framework.api.serialize.DataObject;
 import com.mrcrayfish.framework.api.serialize.DataType;
-import com.mrcrayfish.guns.cache.ObjectCache;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
-import com.mrcrayfish.guns.item.attachment.IAttachment.Type;
-
-import net.minecraft.util.Mth;
+import com.mrcrayfish.guns.util.attachment.IAttachment;
+import com.mrcrayfish.guns.util.attachment.IAttachment.Type;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 

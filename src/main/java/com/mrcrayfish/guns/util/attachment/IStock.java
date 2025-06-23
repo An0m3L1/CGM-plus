@@ -1,10 +1,11 @@
-package com.mrcrayfish.guns.item.attachment;
+package com.mrcrayfish.guns.util.attachment;
 
-import com.mrcrayfish.guns.item.attachment.impl.Stock;
+import com.mrcrayfish.guns.item.attachment.StockItem;
+import com.mrcrayfish.guns.util.attachment.impl.Stock;
 
 /**
  * An interface to turn an any item into a stock attachment. This is useful if your item extends a
- * custom item class otherwise {@link com.mrcrayfish.guns.item.StockItem} can be used instead of
+ * custom item class otherwise {@link StockItem} can be used instead of
  * this interface.
  * <p>
  * Author: MrCrayfish

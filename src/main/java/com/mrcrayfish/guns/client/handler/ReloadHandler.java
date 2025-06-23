@@ -113,20 +113,20 @@ public class ReloadHandler
                     {
                     	Gun gun = ((GunItem) stack.getItem()).getModifiedGun(stack);
                     	if(tag.getInt("AmmoCount") < GunCompositeStatHelper.getAmmoCapacity(stack, gun))
-                    	this.setReloading(!ModSyncedDataKeys.RELOADING.getValue(player), true);
+                    	    this.setReloading(!ModSyncedDataKeys.RELOADING.getValue(player), true);
                     }
                 }
         	}
             KeyBinds.KEY_RELOAD.setDown(false);
             if(player.getMainHandItem().getItem() instanceof GunItem)
-            GunRenderingHandler.get().updateReserveAmmo(player);
+                GunRenderingHandler.get().updateReserveAmmo(player);
         }
         if(KeyBinds.KEY_UNLOAD.consumeClick() && event.getAction() == GLFW.GLFW_PRESS && reloadTimer<=0)
         {
             this.setReloading(false, true);
             PacketHandler.getPlayChannel().sendToServer(new C2SMessageUnload(false));
             if(player.getMainHandItem().getItem() instanceof GunItem)
-        	GunRenderingHandler.get().stageReserveAmmoUpdate(2);
+        	    GunRenderingHandler.get().stageReserveAmmoUpdate(2);
         }
     }
 
@@ -148,15 +148,9 @@ public class ReloadHandler
                     CompoundTag tag = stack.getTag();
                     if(tag != null && !tag.contains("IgnoreAmmo", Tag.TAG_BYTE))
                     {
-                    	if (!Gun.hasAmmo(stack))
-                    		reloadFromEmpty = true;
-                    	else
-                        	reloadFromEmpty = false;
+                        reloadFromEmpty = !Gun.hasAmmo(stack);
 
-                    	if (Gun.usesMagReloads(stack))
-                    		doMagReload = true;
-                    	else
-                    		doMagReload = false;
+                        doMagReload = Gun.usesMagReloads(stack);
                     	
                         Gun gun = ((GunItem) stack.getItem()).getModifiedGun(stack);
                         if (Gun.findAmmo((Player) player, gun.getProjectile().getItem()) == AmmoContext.NONE && !Gun.hasUnlimitedReloads(stack))
@@ -186,41 +180,12 @@ public class ReloadHandler
             	ItemStack stack = player.getMainHandItem();
             	GunRenderingHandler.get().getReloadDeltaTime(stack);
             	if (fromInput)
-            	reloadFinish = false;
-            	
-            	// Debug 1
-                /*if(stack.getItem() instanceof GunItem gunItem)
-                {
-    		    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
-    		    	String logOutput = 
-    		    		"Cancelling after " + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*interval*10)/10)
-    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*1000)/10) + "%)"
-    		    		+ ", and at " + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*interval*10)/10)
-    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*1000)/10) + "%)"
-    		    		+ " into the current reload cycle."
-    		    		+ " (Full reload cycle is " + interval + " ticks long.)"
-    		    	;
-                	GunMod.LOGGER.info(logOutput);
-                }*/
-                    
+            	    reloadFinish = false;
+
                 ModSyncedDataKeys.RELOADING.setValue(player, false);
                 ModSyncedDataKeys.SWITCHTIME.setValue(player, storedReloadDelay+1);
                 PacketHandler.getPlayChannel().sendToServer(new C2SMessageReload(false));
                 this.reloadingSlot = -1;
-
-            	// Debug 2
-                /*if(stack.getItem() instanceof GunItem gunItem)
-                {
-    		    	float interval = GunEnchantmentHelper.getRealReloadSpeed(stack, ReloadHandler.get().isDoMagReload(), ReloadHandler.get().isReloadFromEmpty());
-    		    	String logOutput = 
-    		    		"Reload cancelled after " + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*interval*10)/10)
-    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadDeltaTime(stack)*1000)/10) + "%)"
-    		    		+ ", and at " + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*interval*10)/10)
-    		    		+ " ticks (" + (Math.round(GunRenderingHandler.get().getReloadCycleProgress(stack)*1000)/10) + "%)"
-    		    		+ " into the current reload cycle. (" + interval + " ticks per cycle)"
-    		    	;
-                	GunMod.LOGGER.info(logOutput);
-                }*/
             }
         }
     }
@@ -262,7 +227,7 @@ public class ReloadHandler
             else
             {
             	if (reloadStart)
-            	reloadStart = false;
+            	    reloadStart = false;
             }
         }
         else

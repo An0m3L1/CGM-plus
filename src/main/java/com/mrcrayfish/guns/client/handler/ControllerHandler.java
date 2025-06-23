@@ -13,11 +13,11 @@ import com.mrcrayfish.guns.client.screen.WorkbenchScreen;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.attachment.impl.Scope;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageAttachments;
 import com.mrcrayfish.guns.network.message.C2SMessageUnload;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
+import com.mrcrayfish.guns.util.attachment.impl.Scope;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.network.chat.Component;
@@ -102,7 +102,7 @@ public class ControllerHandler
             ItemStack heldItem = player.getMainHandItem();
             if(heldItem.getItem() instanceof GunItem && AimingHandler.get().isAiming())
             {
-                double adsSensitivity = Config.CLIENT.aimDownSightSensitivity.get();
+                double adsSensitivity = Config.CLIENT.aimingMouseSensitivityMultiplier.get();
                 event.setYawSpeed(10.0F * (float) adsSensitivity);
                 event.setPitchSpeed(7.5F * (float) adsSensitivity);
 

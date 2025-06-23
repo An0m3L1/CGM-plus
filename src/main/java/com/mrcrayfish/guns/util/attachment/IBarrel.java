@@ -1,10 +1,11 @@
-package com.mrcrayfish.guns.item.attachment;
+package com.mrcrayfish.guns.util.attachment;
 
-import com.mrcrayfish.guns.item.attachment.impl.Barrel;
+import com.mrcrayfish.guns.item.attachment.BarrelItem;
+import com.mrcrayfish.guns.util.attachment.impl.Barrel;
 
 /**
  * An interface to turn an any item into a barrel attachment. This is useful if your item extends a
- * custom item class otherwise {@link com.mrcrayfish.guns.item.BarrelItem} can be used instead of
+ * custom item class otherwise {@link BarrelItem} can be used instead of
  * this interface.
  * <p>
  * Author: Ocelot, MrCrayfish

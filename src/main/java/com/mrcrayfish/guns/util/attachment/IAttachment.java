@@ -1,6 +1,6 @@
-package com.mrcrayfish.guns.item.attachment;
+package com.mrcrayfish.guns.util.attachment;
 
-import com.mrcrayfish.guns.item.attachment.impl.Attachment;
+import com.mrcrayfish.guns.util.attachment.impl.Attachment;
 import net.minecraft.world.item.ItemStack;
 
 import javax.annotation.Nullable;

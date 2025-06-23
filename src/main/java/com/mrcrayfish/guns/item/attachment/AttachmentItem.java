@@ -1,5 +1,6 @@
-package com.mrcrayfish.guns.item;
+package com.mrcrayfish.guns.item.attachment;
 
+import com.mrcrayfish.guns.item.IMeta;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 

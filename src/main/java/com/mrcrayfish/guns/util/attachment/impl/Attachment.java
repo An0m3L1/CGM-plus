@@ -1,8 +1,8 @@
-package com.mrcrayfish.guns.item.attachment.impl;
+package com.mrcrayfish.guns.util.attachment.impl;
 
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.interfaces.IGunModifier;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
+import com.mrcrayfish.guns.util.attachment.IAttachment;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

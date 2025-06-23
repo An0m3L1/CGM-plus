@@ -1,4 +1,4 @@
-package com.mrcrayfish.guns.item;
+package com.mrcrayfish.guns.item.grenade;
 
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.entity.ThrowableMolotovEntity;

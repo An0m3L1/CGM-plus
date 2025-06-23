@@ -1,0 +1,11 @@
+{
+  "values":
+  [
+    "cgm:light_bullet",
+    "cgm:medium_bullet",
+    "cgm:heavy_bullet",
+    "cgm:buckshot_shell",
+    "cgm:rocket",
+    "cgm:pipe_grenade"
+  ]
+}

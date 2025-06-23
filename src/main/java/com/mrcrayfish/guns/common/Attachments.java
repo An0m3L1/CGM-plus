@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.common;
 
-import com.mrcrayfish.guns.item.attachment.impl.Scope;
+import com.mrcrayfish.guns.util.attachment.impl.Scope;
 
 /**
  * Author: MrCrayfish

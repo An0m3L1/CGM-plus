@@ -1,7 +1,6 @@
 package com.mrcrayfish.guns.compat;
 
 import com.mrcrayfish.backpacked.Backpacked;
-import com.mrcrayfish.backpacked.core.ModEnchantments;
 import com.mrcrayfish.backpacked.inventory.BackpackInventory;
 import com.mrcrayfish.backpacked.inventory.BackpackedInventoryAccess;
 import com.mrcrayfish.guns.common.AmmoContext;
@@ -9,7 +8,6 @@ import com.mrcrayfish.guns.common.Gun;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.enchantment.EnchantmentHelper;
 
 /**
  * Author: MrCrayfish
@@ -29,13 +27,10 @@ public class BackpackHelper
         if(inventory == null)
             return AmmoContext.NONE;
 
-        for(int i = 0; i < inventory.getContainerSize(); i++)
-        {
+        for(int i = 0; i < inventory.getContainerSize(); i++) {
             ItemStack stack = inventory.getItem(i);
             if(Gun.isAmmo(stack, id))
-            {
                 return new AmmoContext(stack, inventory);
-            }
         }
 
         return AmmoContext.NONE;

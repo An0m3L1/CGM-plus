@@ -61,19 +61,19 @@ public class ReloadTracker
         this.doMagReload = Gun.usesMagReloads(stack);
         
         if (stack.getItem() instanceof GunItem)
-        this.reloadFromEmpty = (Gun.hasAmmo(stack) ? false : true);
+        this.reloadFromEmpty = (!Gun.hasAmmo(stack));
         else
-        this.reloadFromEmpty = false;
+            this.reloadFromEmpty = false;
         	
         this.gun = ((GunItem) stack.getItem()).getModifiedGun(stack);
         if (reloadFromEmpty)
         this.reloadStartDelay = Math.max(gun.getGeneral().getReloadEmptyStartDelay(),0);
         else
-        this.reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
+            this.reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
         if (reloadFromEmpty)
         this.reloadEndDelay = Math.max(gun.getGeneral().getReloadEmptyEndDelay(),1);
         else
-        this.reloadEndDelay = Math.max(gun.getGeneral().getReloadEndDelay(),1);
+            this.reloadEndDelay = Math.max(gun.getGeneral().getReloadEndDelay(),1);
     }
 
     /**
@@ -87,9 +87,6 @@ public class ReloadTracker
         return !this.stack.isEmpty() && player.getInventory().selected == this.slot && player.getInventory().getSelected() == this.stack;
     }
 
-    /**
-     * @return
-     */
     private boolean isWeaponFull()
     {
         CompoundTag tag = this.stack.getOrCreateTag();
@@ -143,49 +140,42 @@ public class ReloadTracker
         {
         	attempts++;
         	ItemStack ammo = context.stack();
-            if(!ammo.isEmpty())
-            {
+            if(!ammo.isEmpty()) {
             	int amount = Math.min(ammo.getCount(), trueReloadAmount);
                 CompoundTag tag = this.stack.getTag();
-                if(tag != null)
-                {
+                if(tag != null) {
                     amount = Math.min(amount, maxAmmo - tag.getInt("AmmoCount"));
                     if (tag.getInt("AmmoCount") < GunCompositeStatHelper.getAmmoCapacity(stack, gun))
-                    tag.putInt("AmmoCount", tag.getInt("AmmoCount") + amount);
+                        tag.putInt("AmmoCount", tag.getInt("AmmoCount") + amount);
                     ammoLoaded += amount;
                     
                     if (tag.getInt("AmmoCount") >= maxAmmo)
-                    endReload = true;
+                        endReload = true;
                 }
                 ammo.shrink((int) Math.ceil(amount/ammoPerItem));
 
                 // Trigger that the container changed
                 Container container = context.container();
                 if(container != null)
-                {
                     container.setChanged();
-                }
             }
             else
-            endReload = true;
+                endReload = true;
             
             if ((ammoLoaded<trueReloadAmount || doMagReload) && !endReload)
-            context = Gun.findAmmo(player, this.gun.getProjectile().getItem());
+                context = Gun.findAmmo(player, this.gun.getProjectile().getItem());
         }
         
         int ammoAfterLoad = getInventoryAmmo(player);
         DelayedTask.runAfter(1, () ->
-        {
-        	GunRenderingHandler.get().forceSetReserveAmmo(ammoAfterLoad);
-        });
+                GunRenderingHandler.get().forceSetReserveAmmo(ammoAfterLoad));
         
         this.resetSoundStates = true;
         this.resetAnimationSounds();
 
         ResourceLocation reloadSound = this.gun.getSounds().getReload();
     	
-        if(reloadSound != null && (!gun.getGeneral().usesMagReload() && !Gun.hasExtraReloadSounds(gun)))
-        {
+        if(reloadSound != null && (!gun.getGeneral().usesMagReload() && !Gun.hasExtraReloadSounds(gun))) {
             double radius = Config.SERVER.reloadSoundDistance.get();
             double soundX = player.getX();
             double soundY = player.getY() + 1.0;
@@ -270,7 +260,7 @@ public class ReloadTracker
                     	playReloadSound(player, "reloadClipOut");
                     	else
                         if (gun.getGeneral().usesMagReload())
-                        playReloadSound(player, "reload");
+                            playReloadSound(player, "reload");
                 		tracker.reloadClipOutState=true;
             		}
             	}
@@ -282,16 +272,16 @@ public class ReloadTracker
                 	|| (!Gun.hasExtraReloadSounds(gun) && gun.getGeneral().usesMagReload() && tracker.getReloadProgress(player)>=0.75F))
                 	{
                 		if (Gun.hasExtraReloadSounds(gun))
-                    	playReloadSound(player, "reloadClipIn");
+                    	    playReloadSound(player, "reloadClipIn");
                     	else
                     	if (gun.getGeneral().usesMagReload())
-                        playReloadSound(player, "reload");
+                            playReloadSound(player, "reload");
                     	tracker.reloadClipInState=true;
             		}
             	}
             	
             	if (tracker.resetSoundStates)
-            	tracker.resetSoundStates = false;
+            	    tracker.resetSoundStates = false;
             }
             
             if(tracker.canReload(player))
@@ -325,10 +315,10 @@ public class ReloadTracker
     		                    });
     	                    }
 	                    	else
-	                        playReloadSound(finalPlayer, finalSound);
+	                            playReloadSound(finalPlayer, finalSound);
                     	}
                     	else
-                    	DelayedTask.runAfter(4, () ->
+                    	    DelayedTask.runAfter(4, () ->
 	                    {
 	                        ResourceLocation cockSound = tracker.gun.getSounds().getCock();
 	                        playReloadSound(finalPlayer, cockSound);
@@ -346,7 +336,7 @@ public class ReloadTracker
 		                    });
 	                    }
                     	else
-                        playReloadSound(finalPlayer, finalSound);
+                            playReloadSound(finalPlayer, finalSound);
                     }
                     
                     RELOAD_TRACKER_MAP.remove(player);
@@ -419,12 +409,11 @@ public class ReloadTracker
     	ResourceLocation sound = getReloadSound(player, soundType);
         
         if (sound != null)
-        playReloadSound(player, sound);
+            playReloadSound(player, sound);
     }
     
     private void resetAnimationSounds()
     {
-
     	this.reloadEarlyState = false;
         this.reloadMidState = false;
         this.reloadLateState = false;

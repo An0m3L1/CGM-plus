@@ -1,8 +1,9 @@
-package com.mrcrayfish.guns.item;
+package com.mrcrayfish.guns.item.grenade;
 
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.entity.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.init.ModSounds;
+import com.mrcrayfish.guns.item.AmmoItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;

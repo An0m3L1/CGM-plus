@@ -2,26 +2,14 @@ package com.mrcrayfish.guns.client.util;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.framework.api.client.FrameworkClientAPI;
-import com.mrcrayfish.framework.api.serialize.DataArray;
-import com.mrcrayfish.framework.api.serialize.DataNumber;
-import com.mrcrayfish.framework.api.serialize.DataObject;
-import com.mrcrayfish.framework.api.serialize.DataString;
-import com.mrcrayfish.framework.api.serialize.DataType;
+import com.mrcrayfish.framework.api.serialize.*;
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.cache.ObjectCache;
 import com.mrcrayfish.guns.client.AnimationLoader;
 import com.mrcrayfish.guns.client.AnimationMetaLoader;
-import com.mrcrayfish.guns.client.MetaLoader;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.client.handler.ReloadHandler;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.IMeta;
-import com.mrcrayfish.guns.item.attachment.IAttachment;
-import com.mrcrayfish.guns.item.attachment.IAttachment.Type;
-
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.player.LocalPlayer;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;

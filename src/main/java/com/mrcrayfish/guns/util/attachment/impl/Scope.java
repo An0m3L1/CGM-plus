@@ -1,4 +1,4 @@
-package com.mrcrayfish.guns.item.attachment.impl;
+package com.mrcrayfish.guns.util.attachment.impl;
 
 import com.mrcrayfish.guns.debug.IDebugWidget;
 import com.mrcrayfish.guns.debug.IEditorMenu;

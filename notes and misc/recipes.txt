@@ -1,0 +1,26 @@
+Look into modpack to find more recipes
+Overhaul recipes to include new materials
+    - Replace dried kelp with rubber/rubber sheets
+        Mechanical Belt
+        Andesite Tunnel
+        Brass Tunnel
+        Andesite Funnel
+        Brass Funnel
+        Spout
+        Hose Pulley
+        Elevator Pulley
+    - Replace wool with cloth
+        Windmill Sail
+        Banner
+        Painting
+        Bed (add cloth on top)
+    - Replace iron with cast iron
+        Cauldron
+        Chute
+    - Replace iron with steel
+        Flint and Steel
+        Anvil
+        Item Vault
+        Metal Girder
+        Metal Bracket
+        Blaze Burner

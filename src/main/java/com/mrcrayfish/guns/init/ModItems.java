@@ -6,6 +6,7 @@ import com.mrcrayfish.guns.common.Attachments;
 import com.mrcrayfish.guns.common.GunModifiers;
 import com.mrcrayfish.guns.item.AmmoItem;
 import com.mrcrayfish.guns.item.GunItem;
+import com.mrcrayfish.guns.item.TacticalBeltItem;
 import com.mrcrayfish.guns.item.UnobtainableItem;
 import com.mrcrayfish.guns.item.attachment.*;
 import com.mrcrayfish.guns.item.attachment.impl.create.Barrel;
@@ -178,10 +179,13 @@ public class ModItems
     public static final RegistryObject<Item> LIGHT_MAG = REGISTER.register("light_magazine", () -> new MagazineItem(Magazine.create(GunModifiers.LIGHT_MAG), new Item.Properties().stacksTo(1).tab(GunMod.GUNS)));
     public static final RegistryObject<Item> EXTENDED_MAG = REGISTER.register("extended_magazine", () -> new MagazineItem(Magazine.create(GunModifiers.EXTENDED_MAG), new Item.Properties().stacksTo(1).tab(GunMod.GUNS)));
 
+    /* Misc */
+    public static final RegistryObject<Item> GUN_REPAIR_KIT = REGISTER.register("gun_repair_kit",() -> new Item(new Item.Properties().stacksTo(16).tab(GunMod.MATERIALS)));
+    public static final RegistryObject<Item> TACTICAL_BELT = REGISTER.register("tactical_belt",() -> new TacticalBeltItem(new Item.Properties().tab(GunMod.MATERIALS)));
+
     /* Materials */
     public static final RegistryObject<Item> STURDY_MECHANISM = REGISTER.register("sturdy_mechanism",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));
     public static final RegistryObject<Item> INCOMPLETE_STURDY_MECHANISM = REGISTER.register("incomplete_sturdy_mechanism",() -> new SequencedAssemblyItem(new Item.Properties()));
-    public static final RegistryObject<Item> GUN_REPAIR_KIT = REGISTER.register("gun_repair_kit",() -> new Item(new Item.Properties().stacksTo(16).tab(GunMod.MATERIALS)));
 
     public static final RegistryObject<Item> LIGHT_BULLET_MODEL = REGISTER.register("light_bullet_model", () -> new UnobtainableItem(new Item.Properties()));
     public static final RegistryObject<Item> MEDIUM_BULLET_MODEL = REGISTER.register("medium_bullet_model", () -> new UnobtainableItem(new Item.Properties()));

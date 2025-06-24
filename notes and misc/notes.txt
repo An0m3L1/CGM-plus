@@ -1,0 +1,22 @@
+Add melee class system
+    - Blunt: applies slow and stunned effect, extra knockback
+    - Sharp: applies bleed effect (can be removed with healing items)
+    - Throwable: can be thrown on a cooldown
+Add bandits, marauders, zombies
+Add automatic turrets (check scorched guns)
+Add gun skins
+Add more attachment slots to existing guns
+Add and overhaul animations
+    - Prone shooting
+    - Crouched aiming (lower the weapon to align with eyes)
+    - Third person reload animation
+    - Smooth third person sprint animation for one-handed weapons
+Add tactical belt
+    - Check scorched guns
+
+Overhaul items (models, textures, stats, datagen)
+    - Grenade Launcher
+    - Rocket Launcher
+    - Minigun
+    - Sniper Rifle
+Overhaul item textures with changed recipes (change colors to correspond to new materials)

@@ -3,6 +3,7 @@
     "item.cgm.sturdy_mechanism": "Sturdy Mechanism",
     "item.cgm.incomplete_sturdy_mechanism": "Incomplete Sturdy Mechanism",
     "item.cgm.gun_repair_kit": "Gun Repair Kit",
+    "item.cgm.tactical_belt": "Tactical Belt",
     "item.cgm.brass_casing": "Brass Casing",
     "item.cgm.shell_casing": "Shell Casing",
     "item.cgm.bullet": "Bullet",
@@ -128,6 +129,7 @@
     "info.cgm.ammo": "Ammo Capacity: %s",
     "info.cgm.ammo_type": "Ammo Type: %s",
     "info.cgm.attachment_help": "Press %s in-game for Attachments",
+    "info.cgm.tactical_belt": "Stores ammunition",
     "info.cgm.unobtainable": "You really shouldn't have this.",
     "key.categories.cgm": "Gun Mod",
     "key.cgm.reload": "Reload Gun",
@@ -242,10 +244,5 @@
     "cgm.action.steady_aim": "Steady Aim",
     "cgm.button.config.tooltip": "Config Options",
     "cgm.chat.open_curseforge_page": "Open CurseForge Page",
-    "cgm.chat.install_configured": "Install %s to access config options",
-
-    "info.cgm.gun_details": "Stats:",
-    "info.cgm.gun_details_help": "Hold Ctrl to view Stats",
-    "perk.cgm.title": "Stats:",
-    "perk.cgm.title_help": "Hold Ctrl to view Stats"
+    "cgm.chat.install_configured": "Install %s to access config options"
 }

@@ -12,7 +12,6 @@ Accessories
     - Gloves
     - Combat shirt
     - Combat pants
-    - Marksman backpack
     - Ballistic shield
 Melee
     - Blunt: hammer, sledgehammer, baseball bat, crowbar

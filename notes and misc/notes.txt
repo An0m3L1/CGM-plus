@@ -11,8 +11,10 @@ Add and overhaul animations
     - Crouched aiming (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-Add tactical belt
+Add ammo pouch curio items <--
     - Check scorched guns
+    - Make guns get ammo from pouches
+    - Add curio slots to player (1 belt, 1 body, 2 hands)
 
 Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher
@@ -20,3 +22,6 @@ Overhaul items (models, textures, stats, datagen)
     - Minigun
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
+Overhaul grenade classes to use item properties instead of configs (like maxCookTime)
+
+Fix mouse tweaks not working on ammo pouch picking up items

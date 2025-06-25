@@ -129,7 +129,6 @@
     "info.cgm.ammo": "Ammo Capacity: %s",
     "info.cgm.ammo_type": "Ammo Type: %s",
     "info.cgm.attachment_help": "Press %s in-game for Attachments",
-    "info.cgm.tactical_belt": "Stores ammunition",
     "info.cgm.unobtainable": "You really shouldn't have this.",
     "key.categories.cgm": "Gun Mod",
     "key.cgm.reload": "Reload Gun",

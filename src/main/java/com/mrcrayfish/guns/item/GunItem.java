@@ -47,7 +47,7 @@ public class GunItem extends Item implements IColored, IMeta
 
     public GunItem(Item.Properties properties)
     {
-        super(properties);
+        super(properties.stacksTo(1).tab(GunMod.GUNS));
     }
 
     public void setGun(NetworkGunManager.Supplier supplier)

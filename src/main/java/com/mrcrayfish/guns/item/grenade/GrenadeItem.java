@@ -1,6 +1,7 @@
 package com.mrcrayfish.guns.item.grenade;
 
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.AmmoItem;
@@ -32,7 +33,7 @@ public class GrenadeItem extends AmmoItem
 
     public GrenadeItem(Item.Properties properties, int maxCookTime)
     {
-        super(properties);
+        super(properties.stacksTo(16).tab(GunMod.GUNS));
         this.maxCookTime = maxCookTime;
     }
 

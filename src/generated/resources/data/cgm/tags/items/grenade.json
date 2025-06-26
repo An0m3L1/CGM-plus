@@ -1,0 +1,9 @@
+{
+  "values": [
+    "cgm:grenade",
+    "cgm:stun_grenade",
+    "cgm:smoke_grenade",
+    "cgm:incendiary_grenade",
+    "cgm:molotov"
+  ]
+}

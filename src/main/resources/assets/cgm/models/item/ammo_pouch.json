@@ -1,6 +1,6 @@
 {
   "parent": "item/generated",
   "textures": {
-    "layer0": "cgm:item/tactical_belt"
+    "layer0": "cgm:item/ammo_pouch"
   }
 }

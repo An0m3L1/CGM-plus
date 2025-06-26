@@ -15,6 +15,7 @@ public class ModTags
         public static final TagKey<Item> HEAVY = modItemTag("heavy");
         public static final TagKey<Item> GUN = modItemTag("gun");
         public static final TagKey<Item> AMMO = modItemTag("ammo");
+        public static final TagKey<Item> GRENADE = modItemTag("grenade");
     }
 
     public static class Blocks

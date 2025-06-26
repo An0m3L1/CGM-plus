@@ -15,6 +15,7 @@ import com.mrcrayfish.guns.debug.client.screen.widget.DebugButton;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugSlider;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugToggle;
 import com.mrcrayfish.guns.item.GunItem;
+import com.mrcrayfish.guns.item.PouchItem;
 import com.mrcrayfish.guns.item.attachment.ScopeItem;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import com.mrcrayfish.guns.item.attachment.impl.create.Scope;
@@ -33,12 +34,15 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
+import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nullable;
 import java.util.List;
 import java.util.Objects;
+import java.util.concurrent.atomic.AtomicReference;
 import java.util.function.Supplier;
 
 @SuppressWarnings("ALL")
@@ -3968,7 +3972,39 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         {
             return BackpackHelper.findAmmo(player, id);
         }
-        return AmmoContext.NONE;
+
+        // Check ammo pouches in the player's inventory
+        for (ItemStack itemStack : player.getInventory().items) {
+            if (itemStack.getItem() instanceof PouchItem pouch) {
+                List<ItemStack> contents = PouchItem.getContents(itemStack).toList();
+                for (ItemStack ammoStack : contents) {
+                    if (isAmmo(ammoStack, id)) {
+                        return new AmmoContext(ammoStack, null);
+                    }
+                }
+            }
+        }
+
+        AtomicReference<AmmoContext> ammoContextRef = new AtomicReference<>(AmmoContext.NONE);
+        
+        CuriosApi.getCuriosHelper().ifPresent(handler -> {
+            IItemHandlerModifiable curios = handler.getEquippedCurios();
+            for (int i = 0; i < curios.getSlots(); i++) {
+                ItemStack stack = curios.getStackInSlot(i);
+                // Check for ammo pouches
+                if (stack.getItem() instanceof PouchItem pouch) {
+                    List<ItemStack> contents = PouchItem.getContents(stack).toList();
+                    for (ItemStack ammoStack : contents) {
+                        if (isAmmo(ammoStack, id)) {
+                            ammoContextRef.set(new AmmoContext(ammoStack, null));
+                            return;
+                        }
+                    }
+                }
+            }
+        });
+
+        return ammoContextRef.get();
     }
     
     public static int getReserveAmmoCount(Player player, ResourceLocation id)

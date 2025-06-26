@@ -27,16 +27,19 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.data.event.GatherDataEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.InterModComms;
 import net.minecraftforge.fml.ModList;
 import net.minecraftforge.fml.ModLoadingContext;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.config.ModConfig;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.SlotTypePreset;
 
 @Mod(Reference.MOD_ID)
 public class GunMod
@@ -99,6 +102,7 @@ public class GunMod
         bus.addListener(this::onCommonSetup);
         bus.addListener(this::onClientSetup);
         bus.addListener(this::onGatherData);
+        bus.addListener(this::enqueueIMC);
         DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> {
             FrameworkClientAPI.registerDataLoader(MetaLoader.getInstance());
             FrameworkClientAPI.registerDataLoader(AnimationLoader.getInstance());
@@ -157,6 +161,16 @@ public class GunMod
         generator.addProvider(event.includeServer(), new ItemTagGen(generator, blockTagGen, existingFileHelper));
         generator.addProvider(event.includeServer(), new EntityTagGen(generator, existingFileHelper));
         generator.addProvider(event.includeServer(), new GunGen(generator));
+    }
+
+    public void enqueueIMC(InterModEnqueueEvent event) {
+        SlotTypePreset[] types = new SlotTypePreset[]{SlotTypePreset.HEAD, SlotTypePreset.BODY};
+        for(SlotTypePreset type : types) {
+            InterModComms.sendTo("curios", "register_type", () -> type.getMessageBuilder().build());
+        }
+        InterModComms.sendTo("curios", "register_type", () -> SlotTypePreset.HANDS.getMessageBuilder().size(2).build());
+        InterModComms.sendTo("curios", "register_type", () -> SlotTypePreset.BELT.getMessageBuilder().size(2).build());
+
     }
 
     public static boolean isDebugging()

@@ -32,31 +32,37 @@ public class ModItems
 
     /* Assault Rifles */
     public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((32 * 30) + 1) // 32 mags, 960 shots
             ));
     public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((32 * 30) + 1) // 32 mags, 960 shots
             ));
     public static final RegistryObject<GunItem> COMBAT_RIFLE = REGISTER.register("combat_rifle", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((32 * 30) + 1) // 32 mags, 960 shots
             ));
 
     /* Sniper Rifles */
-    public static final RegistryObject<GunItem> SNIPER_RIFLE = REGISTER.register("sniper_rifle",
-            () -> new GunItem(new Item.Properties()
-                    .durability((48 * 10) + 1) // 48 mags, 480 shots
+    public static final RegistryObject<GunItem> SNIPER_RIFLE = REGISTER.register("sniper_rifle", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
+            .durability((48 * 10) + 1) // 48 mags, 480 shots
             ));
     public static final RegistryObject<GunItem> HEAVY_SNIPER_RIFLE = REGISTER.register("heavy_sniper_rifle", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((48 * 5) + 1) // 48 mags, 240 shots
             ));
 
     /* Shotguns */
     public static final RegistryObject<GunItem> SEMI_AUTO_SHOTGUN = REGISTER.register("semi_auto_shotgun", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((48 * 7) + 1) // 48 mags, 336 shots
             ));
 
     /* Machine Guns */
     public static final RegistryObject<GunItem> MINI_GUN = REGISTER.register("mini_gun", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((8 * 200) + 1) // 8 mags, 1600 shots
             ));
 
@@ -64,17 +70,21 @@ public class ModItems
 
     /* Pistols */
     public static final RegistryObject<GunItem> TACTICAL_PISTOL = REGISTER.register("tactical_pistol", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((48 * 12) + 1) // 48 mags, 576 shots
             ));
     public static final RegistryObject<GunItem> AUTOMATIC_PISTOL = REGISTER.register("automatic_pistol", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((24 * 32) + 1) // 24 mags, 768 shots
             ));
 
     /* Explosives */
     public static final RegistryObject<GunItem> GRENADE_LAUNCHER = REGISTER.register("grenade_launcher", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((24 * 6) + 1) // 24 mags, 144 shots
             ));
     public static final RegistryObject<GunItem> ROCKET_LAUNCHER = REGISTER.register("rocket_launcher", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
             .durability((96 * 1) + 1) // 96 shots
             ));
 
@@ -130,9 +140,12 @@ public class ModItems
 
     /* Misc */
     public static final RegistryObject<Item> GUN_REPAIR_KIT = REGISTER.register("gun_repair_kit",() -> new Item(new Item.Properties().stacksTo(16).tab(GunMod.GUNS)));
-    public static final RegistryObject<Item> TACTICAL_BELT = REGISTER.register("tactical_belt",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS),
+    public static final RegistryObject<Item> AMMO_POUCH = REGISTER.register("ammo_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS),
             4,
             ModTags.Items.AMMO));
+    public static final RegistryObject<Item> GRENADE_POUCH = REGISTER.register("grenade_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS),
+            4,
+             ModTags.Items.GRENADE));
 
     /* Materials */
     public static final RegistryObject<Item> STURDY_MECHANISM = REGISTER.register("sturdy_mechanism",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));

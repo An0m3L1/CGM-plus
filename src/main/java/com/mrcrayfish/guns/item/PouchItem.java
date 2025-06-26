@@ -1,5 +1,6 @@
 package com.mrcrayfish.guns.item;
 
+import com.mrcrayfish.guns.init.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -29,14 +30,16 @@ import java.util.Objects;
 import java.util.Optional;
 import java.util.stream.Stream;
 
+/**
+ * A bundle that accepts items of a certain tag and it's contents can be used to load weapons.
+ */
 public class PouchItem extends BundleItem
 {
     public static final String TAG_ITEMS = "Items";
     public int maxCount;
     public TagKey<Item> itemType;
 
-    public PouchItem(Properties properties, int maxStacks, TagKey<Item> itemType)
-    {
+    public PouchItem(Properties properties, int maxStacks, TagKey<Item> itemType) {
 		super(properties.stacksTo(1));
         this.maxCount = maxStacks * 64;
         this.itemType = itemType;
@@ -151,6 +154,13 @@ public class PouchItem extends BundleItem
         return getContents(stack).mapToInt((ItemStack) -> getWeight(ItemStack) * ItemStack.getCount()).sum();
     }
 
+    public int getMaxCount(ItemStack stack){
+        int count = this.maxCount;
+        if(itemType == ModTags.Items.GRENADE)
+            count = count / 4;
+        return count;
+    }
+
     private static Optional<ItemStack> removeOne(ItemStack stack) {
         CompoundTag compoundTag = stack.getOrCreateTag();
         if (!compoundTag.contains(TAG_ITEMS)) {
@@ -173,7 +183,7 @@ public class PouchItem extends BundleItem
 
     @Override
     public void appendHoverText(@NotNull ItemStack stack, Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag isAdvanced) {
-        tooltip.add(Component.translatable("item.minecraft.bundle.fullness", getContentWeight(stack), maxCount).withStyle(ChatFormatting.GRAY));
+        tooltip.add(Component.translatable("item.minecraft.bundle.fullness", getContentWeight(stack), getMaxCount(stack)).withStyle(ChatFormatting.GRAY));
     }
 
     private void playRemoveOneSound(Entity entity) {

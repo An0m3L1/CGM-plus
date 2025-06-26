@@ -34,10 +34,8 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.util.INBTSerializable;
 import net.minecraftforge.fml.DistExecutor;
-import net.minecraftforge.items.IItemHandlerModifiable;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.tuple.Pair;
-import top.theillusivec4.curios.api.CuriosApi;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -3986,7 +3984,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         AtomicReference<AmmoContext> ammoContextRef = new AtomicReference<>(AmmoContext.NONE);
-        
+
+        /*
         CuriosApi.getCuriosHelper().ifPresent(handler -> {
             IItemHandlerModifiable curios = handler.getEquippedCurios();
             for (int i = 0; i < curios.getSlots(); i++) {
@@ -4003,6 +4002,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
                 }
             }
         });
+        */
 
         return ammoContextRef.get();
     }

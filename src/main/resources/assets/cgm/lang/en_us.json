@@ -121,7 +121,7 @@
     "info.cgm.reload_rate": "Reload: %s sec.",
     "info.cgm.energy": "Energy Capacity: %s",
     "info.cgm.rate": "Fire Rate: %s rpm",
-    "info.cgm.ads_speed": "ADS Speed: %s s",
+    "info.cgm.ads_speed": "ADS Speed: %s sec.",
     "info.cgm.recoil": "Recoil: %s",
     "info.cgm.ads_recoil": "ADS Recoil: %s",
     "info.cgm.spread": "Spread: %s",

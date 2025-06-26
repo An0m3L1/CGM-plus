@@ -12,7 +12,7 @@ Add and overhaul animations
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouch curio items <--
-    - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
+    - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun), check quiver
 
 Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher

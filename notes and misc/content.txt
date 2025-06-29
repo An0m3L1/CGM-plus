@@ -22,7 +22,6 @@ Explosives
     - Flare
     - Mine
     - C4
-    - Impact grenade
 Attachments
     - Barrels: compensator, flash hider, muzzle break
     - Grips: angled, thumb

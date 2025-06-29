@@ -4,7 +4,6 @@ Add melee class system
     - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
-Add gun skins
 Add more attachment slots to existing guns
 Add and overhaul animations
     - Prone shooting
@@ -12,7 +11,7 @@ Add and overhaul animations
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouch curio items <--
-    - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun), check quiver
+    - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
 
 Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher

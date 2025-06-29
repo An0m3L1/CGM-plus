@@ -107,9 +107,11 @@ dependencies {
     implementation fg.deobf("curse.maven:goprone-327968:3884694")
     implementation fg.deobf("curse.maven:ibe-editor-256822:4216136")
     implementation fg.deobf("curse.maven:curios-309927:5843737")
+    implementation fg.deobf("curse.maven:bookshelf-228525:4556697")
+    implementation fg.deobf("curse.maven:enchantment-descriptions-250419:4277356")
     //implementation fg.deobf("curse.maven:artifacts-312353:5384768")
-    implementation fg.deobf("curse.maven:selene-499980:5567102")
-    implementation fg.deobf("curse.maven:supplementaries-412082:5152602")
+    //implementation fg.deobf("curse.maven:selene-499980:5567102")
+    //implementation fg.deobf("curse.maven:supplementaries-412082:5152602")
 
     implementation fg.deobf("curse.maven:shoulder-surfing-reloaded-243190:5441683")
     compileOnly fg.deobf('curse.maven:controllable-317269:3936915')

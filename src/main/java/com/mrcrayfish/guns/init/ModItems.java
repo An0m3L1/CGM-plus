@@ -6,7 +6,6 @@ import com.mrcrayfish.guns.common.Attachments;
 import com.mrcrayfish.guns.common.GunModifiers;
 import com.mrcrayfish.guns.item.AmmoItem;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.PouchItem;
 import com.mrcrayfish.guns.item.UnobtainableItem;
 import com.mrcrayfish.guns.item.attachment.*;
 import com.mrcrayfish.guns.item.attachment.impl.create.Barrel;
@@ -99,6 +98,8 @@ public class ModItems
     /* Grenades */
     public static final RegistryObject<Item> GRENADE = REGISTER.register("grenade", () -> new GrenadeItem(new Item.Properties(),
             20 * 3));
+    public static final RegistryObject<Item> IMPACT_GRENADE = REGISTER.register("impact_grenade", () -> new ImpactGrenadeItem(new Item.Properties(),
+            20 * 10));
     public static final RegistryObject<Item> STUN_GRENADE = REGISTER.register("stun_grenade", () -> new StunGrenadeItem(new Item.Properties(),
             20 * 2));
     public static final RegistryObject<Item> SMOKE_GRENADE = REGISTER.register("smoke_grenade", () -> new SmokeGrenadeItem(new Item.Properties(),
@@ -109,6 +110,7 @@ public class ModItems
             20 * 10));
 
     public static final RegistryObject<Item> GRENADE_NO_PIN = REGISTER.register("grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
+    public static final RegistryObject<Item> IMPACT_GRENADE_NO_PIN = REGISTER.register("impact_grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
     public static final RegistryObject<Item> STUN_GRENADE_NO_PIN = REGISTER.register("stun_grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
     public static final RegistryObject<Item> SMOKE_GRENADE_NO_PIN = REGISTER.register("smoke_grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
     public static final RegistryObject<Item> INCENDIARY_GRENADE_NO_PIN = REGISTER.register("incendiary_grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
@@ -140,12 +142,8 @@ public class ModItems
 
     /* Misc */
     public static final RegistryObject<Item> GUN_REPAIR_KIT = REGISTER.register("gun_repair_kit",() -> new Item(new Item.Properties().stacksTo(16).tab(GunMod.GUNS)));
-    public static final RegistryObject<Item> AMMO_POUCH = REGISTER.register("ammo_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS),
-            4,
-            ModTags.Items.AMMO));
-    public static final RegistryObject<Item> GRENADE_POUCH = REGISTER.register("grenade_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS),
-            4,
-             ModTags.Items.GRENADE));
+    //public static final RegistryObject<Item> AMMO_POUCH = REGISTER.register("ammo_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS), 4, ModTags.Items.AMMO));
+    //public static final RegistryObject<Item> GRENADE_POUCH = REGISTER.register("grenade_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS), 4, ModTags.Items.GRENADE));
 
     /* Materials */
     public static final RegistryObject<Item> STURDY_MECHANISM = REGISTER.register("sturdy_mechanism",() -> new Item(new Item.Properties().tab(GunMod.MATERIALS)));

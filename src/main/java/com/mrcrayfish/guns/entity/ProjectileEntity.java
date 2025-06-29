@@ -8,6 +8,7 @@ import com.mrcrayfish.guns.common.Gun.Projectile;
 import com.mrcrayfish.guns.common.ServerAimTracker;
 import com.mrcrayfish.guns.common.SpreadTracker;
 import com.mrcrayfish.guns.entity.grenade.ThrowableGrenadeEntity;
+import com.mrcrayfish.guns.entity.grenade.ThrowableImpactGrenadeEntity;
 import com.mrcrayfish.guns.entity.projectile.PipeGrenadeEntity;
 import com.mrcrayfish.guns.entity.projectile.RocketEntity;
 import com.mrcrayfish.guns.event.GunProjectileHitEvent;
@@ -925,11 +926,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         {
             boolean isProjectile = entity instanceof ProjectileEntity;
             boolean isGrenade = entity instanceof ThrowableGrenadeEntity;
+            boolean isImpactGrenade = entity instanceof ThrowableImpactGrenadeEntity;
 
             source = isProjectile ? DamageSource.explosion(((ProjectileEntity) entity).getShooter()) : null;
             boolean hasGunProjectile = isProjectile && ((ProjectileEntity) entity).getProjectile() != null;
 
-            damage = hasGunProjectile ? ((ProjectileEntity) entity).getDamage() : (isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() : 20F);
+            damage = hasGunProjectile ? ((ProjectileEntity) entity).getDamage() :
+                    isImpactGrenade ? Config.COMMON.impactGrenadeExplosionDamage.getDefault().floatValue() :
+                            isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() :
+                                    20F;
 
             mode = !forceNone && Config.COMMON.explosionGriefing.get()
                     ? Explosion.BlockInteraction.BREAK

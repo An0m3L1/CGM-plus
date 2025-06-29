@@ -169,8 +169,7 @@ public class GunMod
             InterModComms.sendTo("curios", "register_type", () -> type.getMessageBuilder().build());
         }
         InterModComms.sendTo("curios", "register_type", () -> SlotTypePreset.HANDS.getMessageBuilder().size(2).build());
-        InterModComms.sendTo("curios", "register_type", () -> SlotTypePreset.BELT.getMessageBuilder().size(2).build());
-
+        //InterModComms.sendTo("curios", "register_type", () -> SlotTypePreset.BELT.getMessageBuilder().size(2).build());
     }
 
     public static boolean isDebugging()

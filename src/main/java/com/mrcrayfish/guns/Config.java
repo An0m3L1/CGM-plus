@@ -147,6 +147,9 @@ public class Config
         public final ForgeConfigSpec.DoubleValue handGrenadeExplosionRadius;
         public final ForgeConfigSpec.DoubleValue handGrenadeExplosionDamage;
         public final ForgeConfigSpec.BooleanValue handGrenadeExplosionGriefing;
+        public final ForgeConfigSpec.DoubleValue impactGrenadeExplosionRadius;
+        public final ForgeConfigSpec.DoubleValue impactGrenadeExplosionDamage;
+        public final ForgeConfigSpec.BooleanValue impactGrenadeExplosionGriefing;
         public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionRadius;
         public final ForgeConfigSpec.BooleanValue pipeGrenadeExplosionGriefing;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeCloudDiameter;
@@ -203,6 +206,11 @@ public class Config
                     this.handGrenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.0, 0.0, Double.MAX_VALUE);
                     this.handGrenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
                     this.handGrenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks. Requires explosion griefing to be true.").define("handGrenadeExplosionGriefing", false);
+                }builder.pop();
+                builder.push("impact_grenade");{
+                    this.impactGrenadeExplosionRadius = builder.comment("Radius of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionRadius", 1.75, 0.0, Double.MAX_VALUE);
+                    this.impactGrenadeExplosionDamage = builder.comment("Damage of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionDamage", 12.0, 0.0, Double.MAX_VALUE);
+                    this.impactGrenadeExplosionGriefing = builder.comment("If enabled, Impact Grenades will destroy blocks. Requires explosion griefing to be true.").define("impactGrenadeExplosionGriefing", false);
                 }builder.pop();
                 builder.push("pipe_grenade");{
                     this.pipeGrenadeExplosionRadius = builder.comment("Radius of a Pipe Grenade explosion.").defineInRange("pipeGrenadeExplosionRadius", 2.25, 0.0, Double.MAX_VALUE);

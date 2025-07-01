@@ -40,4 +40,31 @@ public class BackpackHelper
 
         return AmmoContext.NONE;
     }
+
+    public static int getReserveAmmoCount(Player player, ResourceLocation id)
+    {
+        int ammoCount = 0;
+        ItemStack backpack = Backpacked.getBackpackStack(player);
+        if(backpack.isEmpty())
+            return ammoCount;
+
+        if(EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.MARKSMAN.get(), backpack) <= 0)
+            return ammoCount;
+
+        BackpackInventory inventory = ((BackpackedInventoryAccess) player).getBackpackedInventory();
+        if(inventory == null)
+            return ammoCount;
+
+        for(int i = 0; i < inventory.getContainerSize(); i++)
+        {
+            ItemStack stack = inventory.getItem(i);
+            if(Gun.isAmmo(stack, id))
+            {
+                AmmoContext context = new AmmoContext(stack, player.getInventory());
+                ammoCount += context.stack().getCount();
+            }
+        }
+
+        return ammoCount;
+    }
 }

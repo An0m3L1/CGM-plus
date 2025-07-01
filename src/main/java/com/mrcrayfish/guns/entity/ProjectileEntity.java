@@ -595,7 +595,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             this.deadProjectile = true;
         }
 
-        if(headshot)
+        if(headshot && modifiedGun != null)
         {
             if (this.modifiedGun.getProjectile().getHeadshotMultiplierOverride()!=0)
             	damage *= this.modifiedGun.getProjectile().getHeadshotMultiplierOverride();

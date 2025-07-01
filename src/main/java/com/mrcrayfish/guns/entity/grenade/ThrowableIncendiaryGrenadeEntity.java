@@ -3,13 +3,13 @@ package com.mrcrayfish.guns.entity.grenade;
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.client.audio.MolotovExplosionSound;
+import com.mrcrayfish.guns.client.audio.IncendiaryGrenadeExplosionSound;
 import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
-import com.mrcrayfish.guns.network.message.S2CMessageMolotov;
+import com.mrcrayfish.guns.network.message.S2CMessageIncendiaryGrenade;
 import com.mrcrayfish.guns.util.GrenadeFireHelper;
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
 import net.minecraft.client.Minecraft;
@@ -71,13 +71,13 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
         Vec3 center = new Vec3(this.getX(), y, this.getZ());
 
-        Minecraft.getInstance().getSoundManager().play(new MolotovExplosionSound(ModSounds.INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, pitch, this.level.getRandom()));
+        Minecraft.getInstance().getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)this.getX(),(float)y, (float)this.getZ(), 1, pitch, this.level.getRandom()));
         if(this.level.isClientSide)
         {
             return;
         }
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageMolotov(this.getX(), y, this.getZ()));
+                LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageIncendiaryGrenade(this.getX(), y, this.getZ()));
         GrenadeEntity.createFireExplosion(this, radius * 0.6F, true);
         GrenadeFireHelper.igniteEntities(level, center, radius * 1.1F, fireDuration);
     }

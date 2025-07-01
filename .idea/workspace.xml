@@ -4,10 +4,11 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Small fixes.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/compat/BackpackHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/compat/BackpackHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableIncendiaryGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableIncendiaryGrenadeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModEntities.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -302,7 +303,15 @@
       <option name="project" value="LOCAL" />
       <updated>1750971024799</updated>
     </task>
-    <option name="localTasksCounter" value="16" />
+    <task id="LOCAL-00016" summary="Reserve ammo fix for backpacks.">
+      <option name="closed" value="true" />
+      <created>1751329491201</created>
+      <option name="number" value="00016" />
+      <option name="presentableId" value="LOCAL-00016" />
+      <option name="project" value="LOCAL" />
+      <updated>1751329491201</updated>
+    </task>
+    <option name="localTasksCounter" value="17" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -310,7 +319,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer." />
     <MESSAGE value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer. Fixed NullPointerException for headshot particle." />
     <MESSAGE value="Fixed ADS speed tooltip (correct value is 0.25s). Balancing. Added custom explosion particle. Added heavy silencer. Fixed some null warnings." />
     <MESSAGE value="Added molotov cocktail (WIP)." />
@@ -335,7 +343,8 @@
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/mrcrayfish/guns/init/ModItems.java" />
     <MESSAGE value="Revert &quot;Merge remote-tracking branch 'origin/main'&quot;&#10;&#10;This reverts commit c5a74a4994bf602d3b28216519115f4071a8531d, reversing&#10;changes made to b41d062892eb5879f6f4cb08e654b2e2bf2b9ddc." />
     <MESSAGE value="Pouch item (WIP)&#10;&#10;Minor fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pouch item (WIP)&#10;&#10;Minor fixes." />
+    <MESSAGE value="Reserve ammo fix for backpacks." />
+    <option name="LAST_COMMIT_MESSAGE" value="Reserve ammo fix for backpacks." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

@@ -400,7 +400,7 @@ public class GunGen extends GunProvider
 
         /* Pistols */
         this.addGun(new ResourceLocation(Reference.MOD_ID, "tactical_pistol"), Gun.Builder.create()
-                        .setGripType(GripType.PISTOL_CUSTOM)
+                        .setGripType(GripType.TWO_HANDED_PISTOL)
                         .setAuto(false)
                         .setFireRate(3)
 
@@ -465,7 +465,7 @@ public class GunGen extends GunProvider
                 .build());
 
         this.addGun(new ResourceLocation(Reference.MOD_ID, "automatic_pistol"), Gun.Builder.create()
-                        .setGripType(GripType.PISTOL_CUSTOM)
+                        .setGripType(GripType.TWO_HANDED_PISTOL)
                         .setAuto(true)
                         .setFireRate(1)
 

@@ -1,7 +1,7 @@
 {
   "display": {"flash": {}},
   "general": {
-    "gripType": "cgm:pistol_custom",
+    "gripType": "cgm:two_handed_pistol",
     "auto": false,
     "rate": 3 ,
     "spawnCasings": true,

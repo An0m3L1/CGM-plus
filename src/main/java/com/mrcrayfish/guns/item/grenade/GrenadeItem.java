@@ -24,9 +24,6 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-/**
- * Author: MrCrayfish
- */
 public class GrenadeItem extends AmmoItem
 {
     public int maxCookTime;
@@ -111,8 +108,11 @@ public class GrenadeItem extends AmmoItem
             {
                 if(!(entityLiving instanceof Player) || !((Player) entityLiving).isCreative())
                     stack.shrink(1);
+                float velocity = 1.25F;
+                if(entityLiving.isCrouching())
+                    velocity *= 0.5f;
                 ThrowableGrenadeEntity grenade = this.create(worldIn, entityLiving, this.maxCookTime - duration);
-                grenade.shootFromRotation(entityLiving, entityLiving.getXRot(), entityLiving.getYRot(), 0.0F, 1.25f, 1.0F);
+                grenade.shootFromRotation(entityLiving, entityLiving.getXRot(), entityLiving.getYRot(), 0.0F, velocity, 1.0F);
                 worldIn.addFreshEntity(grenade);
                 this.onThrown(worldIn, grenade);
                 if(entityLiving instanceof Player)

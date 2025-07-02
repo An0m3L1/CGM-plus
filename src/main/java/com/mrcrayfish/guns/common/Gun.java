@@ -138,7 +138,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Optional
         private int burstCooldown = -1;
         @Ignored
-        private GripType gripType = GripType.ONE_HANDED;
+        private GripType gripType = GripType.ONE_HANDED_PISTOL;
         @Optional
         private int defaultColor = -1;
         private int maxAmmo;

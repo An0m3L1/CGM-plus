@@ -329,8 +329,6 @@ public class GunItem extends Item implements IColored, IMeta
     }
     
     public static class GunEnergyStorage implements IEnergyStorage, ICapabilityProvider {
-
-        
         private final LazyOptional<IEnergyStorage> user = LazyOptional.of(() -> this);
         private final ItemStack stack;
         

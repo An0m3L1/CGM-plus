@@ -4,6 +4,7 @@ import com.mrcrayfish.guns.init.ModTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.Items;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
@@ -39,7 +40,10 @@ public class PlayerHandler
         ItemStack heldItem = mc.player.getMainHandItem();
 
         /* Sprinting restrictions */
-        if(heldItem.is(ModTags.Items.HEAVY) || player.isVisuallyCrawling())
+        if(heldItem.is(ModTags.Items.HEAVY) ||
+                player.isVisuallyCrawling() ||
+                player.isCrouching() ||
+                (player.getUseItem().getItem() == Items.SHIELD))
         {
             mc.options.keySprint.setDown(false);
             player.setSprinting(false);

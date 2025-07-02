@@ -306,7 +306,7 @@ public class AimingHandler
         if(!gun.canAimDownSight())
             return false;
 
-        if(mc.player.getOffhandItem().getItem() == Items.SHIELD && (gun.getGeneral().getGripType() == GripType.ONE_HANDED || gun.getGeneral().getGripType() == GripType.PISTOL_CUSTOM))
+        if(mc.player.getOffhandItem().getItem() == Items.SHIELD && (gun.getGeneral().getGripType() == GripType.ONE_HANDED_PISTOL || gun.getGeneral().getGripType() == GripType.TWO_HANDED_PISTOL))
             return false;
 
         if(!this.localTracker.isAiming() && this.isLookingAtInteractableBlock())

@@ -104,7 +104,7 @@ public class GunEventBus
             verticalOffset = -0.3;
             forwardOffset = 0.4;
         }
-        else if(gripType.equals(ONE_HANDED) || gripType.equals(PISTOL_CUSTOM)) {
+        else if(gripType.equals(ONE_HANDED_PISTOL) || gripType.equals(TWO_HANDED_PISTOL)) {
             horizontalOffset = 0.275;
             verticalOffset = -0.2;
             forwardOffset = 0.5;

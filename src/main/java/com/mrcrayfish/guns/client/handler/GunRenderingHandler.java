@@ -640,7 +640,7 @@ public class GunRenderingHandler
         if(Config.CLIENT.sprintAnimation.get() && modifiedGun.getGeneral().getGripType().getHeldAnimation().canApplySprintingAnimation())
         {
         	GripType pose = modifiedGun.getGeneral().getGripType();
-        	if(pose == GripType.ONE_HANDED || pose == GripType.PISTOL_CUSTOM)
+        	if(pose == GripType.ONE_HANDED_PISTOL || pose == GripType.TWO_HANDED_PISTOL)
         	{
             	float transition = (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
             	transition = (float) Math.sin((transition * Math.PI) / 2);
@@ -715,7 +715,7 @@ public class GunRenderingHandler
 
     private void applyShieldTransforms(PoseStack poseStack, LocalPlayer player, Gun modifiedGun, float partialTick)
     {
-        if(player.isUsingItem() && player.getOffhandItem().getItem() == Items.SHIELD && (modifiedGun.getGeneral().getGripType() == GripType.ONE_HANDED || modifiedGun.getGeneral().getGripType() == GripType.PISTOL_CUSTOM))
+        if(player.isUsingItem() && player.getOffhandItem().getItem() == Items.SHIELD && (modifiedGun.getGeneral().getGripType() == GripType.ONE_HANDED_PISTOL || modifiedGun.getGeneral().getGripType() == GripType.TWO_HANDED_PISTOL))
         {
         	this.sprintCooldown = 1;
         	double time = Mth.clamp((player.getTicksUsingItem() + partialTick), 0.0, 4.0) / 4.0;

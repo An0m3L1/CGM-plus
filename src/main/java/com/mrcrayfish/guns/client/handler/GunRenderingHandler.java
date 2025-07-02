@@ -91,6 +91,9 @@ public class GunRenderingHandler
     private final Set<Integer> entityIdForDrawnMuzzleFlash = new HashSet<>();
     private final Map<Integer, Float> entityIdToRandomValue = new HashMap<>();
 
+    private double lastViewportFOV;
+    private boolean setNewViewportFOV = true;
+
     private int sprintTransition;
     private int prevSprintTransition;
     private int sprintCooldown;
@@ -188,7 +191,7 @@ public class GunRenderingHandler
     	this.prevSprintTransition = this.sprintTransition;
 
         Minecraft mc = Minecraft.getInstance();
-        if(mc.player != null && mc.player.isSprinting() && !ModSyncedDataKeys.SHOOTING.getValue(mc.player) && (!ModSyncedDataKeys.RELOADING.getValue(mc.player) && ReloadHandler.get().getReloadTimer()==0) && !AimingHandler.get().isAiming() && this.sprintCooldown == 0)
+        if(mc.player != null && mc.player.isSprinting() && ModSyncedDataKeys.SWITCHTIME.getValue(mc.player)<=0 && !ModSyncedDataKeys.SHOOTING.getValue(mc.player) && (!ModSyncedDataKeys.RELOADING.getValue(mc.player) && ReloadHandler.get().getReloadTimer()==0) && !AimingHandler.get().isAiming() && this.sprintCooldown == 0)
         {
             if(this.sprintTransition < 5)
             {
@@ -348,7 +351,10 @@ public class GunRenderingHandler
 
         // Change the FOV of the first person viewport based on the scope and aim progress
         if(AimingHandler.get().getNormalisedAdsProgress() <= 0)
+        {
+            this.setNewViewportFOV = true;
             return;
+        }
 
         // Calculate the time curve
         double time = AimingHandler.get().getNormalisedAdsProgress();
@@ -356,7 +362,16 @@ public class GunRenderingHandler
         time = sightAnimation.getViewportCurve().apply(time);
 
         // Apply the new FOV
-        double viewportFov = PropertyHelper.getViewportFov(heldItem, modifiedGun);
+        double newViewportFov = PropertyHelper.getViewportFov(heldItem, modifiedGun);
+        if (this.lastViewportFOV == 0)
+            lastViewportFOV = newViewportFov;
+
+        double viewportFov = lastViewportFOV;
+        if(AimingHandler.get().isZooming() && this.setNewViewportFOV)
+        {
+            this.lastViewportFOV = newViewportFov;
+            this.setNewViewportFOV = false;
+        }
         double newFov = viewportFov > 0 ? viewportFov : event.getFOV(); // Backwards compatibility
         event.setFOV(Mth.lerp(time, event.getFOV(), newFov));
     }
@@ -493,10 +508,10 @@ public class GunRenderingHandler
         /* Applies custom bobbing animations */
         this.applyBobbingTransforms(poseStack, event.getPartialTick());
 
-        /* Applies equip progress animation translations */
+        /* Applies equip progress animation */
         float equipProgress = this.getEquipProgress(event.getPartialTick());
-        //poseStack.translate(0, equipProgress * -0.6F, 0);
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(equipProgress * -50F));
+        if (GunAnimationHelper.getSmartAnimationType(heldItem, player, event.getPartialTick()) != "draw")
+            poseStack.mulPose(Vector3f.XP.rotationDegrees(equipProgress * -50F));
 
         /* Update the current reload progress, when applicable */
         this.updateReloadProgress(heldItem);

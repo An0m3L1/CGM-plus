@@ -8,6 +8,7 @@ import com.mrcrayfish.guns.client.AnimationLoader;
 import com.mrcrayfish.guns.client.AnimationMetaLoader;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.client.handler.ReloadHandler;
+import com.mrcrayfish.guns.client.handler.ShootingHandler;
 import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.client.Minecraft;
 import net.minecraft.resources.ResourceLocation;
@@ -38,7 +39,8 @@ public final class GunAnimationHelper
     public static String getSmartAnimationType(ItemStack weapon, Player player, float partialTicks)
     {
     	double reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
-    	if (reloadTransitionProgress>0.0 && hasAnimation("reload", weapon))
+		int weaponSwitchTick = ShootingHandler.get().getWeaponSwitchTick();
+		if (reloadTransitionProgress>0.0 && hasAnimation("reload", weapon))
 		{
 			if (reloadTransitionProgress<1.0)
 			{
@@ -59,12 +61,22 @@ public final class GunAnimationHelper
 		{
 			ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();
             float cooldown = tracker.getCooldownPercent(weapon.getItem(), Minecraft.getInstance().getFrameTime());
-            if (cooldown>0)
+            if (cooldown > 0 && weaponSwitchTick ==- 1)
             {
             	return "fire";
             }
 		}
-    	
+		if(hasAnimation("draw", weapon) && weaponSwitchTick!=-1 && player.tickCount>weaponSwitchTick && reloadTransitionProgress<=0.0)
+		{
+			ResourceLocation weapKey = lookForParentAnimation("draw", getItemLocationKey(weapon));
+			float animationSpeed = (float) getAnimationValue("draw", weapKey, "animationSpeed");
+			float drawProgress = ((player.tickCount-weaponSwitchTick)+partialTicks)*animationSpeed;
+			int totalFrames = Math.max(getAnimationFrames("draw", weapKey),1);
+
+			if ((drawProgress<totalFrames+1 || player.tickCount<weaponSwitchTick+10) && player.getMainHandItem() == weapon)
+				return "draw";
+		}
+
     	return "none";
     }
     
@@ -72,6 +84,15 @@ public final class GunAnimationHelper
     {
     	String animType = getSmartAnimationType(weapon, player, partialTicks);
     	ResourceLocation weapKey = lookForParentAnimation(animType, getItemLocationKey(weapon));
+		if (animType.equals("draw"))
+		{
+			float animationSpeed = (float) getAnimationValue(animType, weapKey, "animationSpeed");
+			int weaponSwitchTick = ShootingHandler.get().getWeaponSwitchTick();
+			float drawProgress = ((player.tickCount-weaponSwitchTick)+partialTicks)*animationSpeed;
+			int totalFrames = Math.max(getAnimationFrames(animType, weapKey),1);
+
+			return getAnimationTrans("draw", weapon, drawProgress/totalFrames, component);
+		}
     	if (animType.equals("reloadStart"))
     	{
     		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
@@ -114,6 +135,14 @@ public final class GunAnimationHelper
     {
     	String animType = getSmartAnimationType(weapon, player, partialTicks);
     	ResourceLocation weapKey = lookForParentAnimation(animType, getItemLocationKey(weapon));
+		if (animType.equals("draw"))
+		{
+			float animationSpeed = (float) getAnimationValue(animType, weapKey, "animationSpeed");
+			int weaponSwitchTick = ShootingHandler.get().getWeaponSwitchTick();
+			float drawProgress = ((player.tickCount-weaponSwitchTick)+partialTicks)*animationSpeed;
+			int totalFrames = Math.max(getAnimationFrames(animType, weapKey),1);
+			return getAnimationRot("draw", weapon, drawProgress/totalFrames, component);
+		}
     	if (animType.equals("reloadStart"))
     	{
     		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
@@ -162,6 +191,14 @@ public final class GunAnimationHelper
     public static Vec3 getSpecificAnimationTrans(String animType, ItemStack weapon, Player player, float partialTicks, String component)
     {
     	ResourceLocation weapKey = lookForParentAnimation(animType, getItemLocationKey(weapon));
+		if (animType.equals("draw"))
+		{
+			float animationSpeed = (float) getAnimationValue(animType, weapKey, "animationSpeed");
+			int weaponSwitchTick = ShootingHandler.get().getWeaponSwitchTick();
+			float drawProgress = ((player.tickCount-weaponSwitchTick)+partialTicks)*animationSpeed;
+			int totalFrames = Math.max(getAnimationFrames(animType, weapKey),1);
+			return getAnimationTrans("draw", weapon, drawProgress/totalFrames, component);
+		}
     	if (animType.equals("reloadStart"))
     	{
     		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
@@ -203,6 +240,14 @@ public final class GunAnimationHelper
     public static Vec3 getSpecificAnimationRot(String animType, ItemStack weapon, Player player, float partialTicks, String component)
     {
     	ResourceLocation weapKey = lookForParentAnimation(animType, getItemLocationKey(weapon));
+		if (animType.equals("draw"))
+		{
+			float animationSpeed = (float) getAnimationValue(animType, weapKey, "animationSpeed");
+			int weaponSwitchTick = ShootingHandler.get().getWeaponSwitchTick();
+			float drawProgress = ((player.tickCount-weaponSwitchTick)+partialTicks)*animationSpeed;
+			int totalFrames = Math.max(getAnimationFrames(animType, weapKey),1);
+			return getAnimationRot("draw", weapon, drawProgress/totalFrames, component);
+		}
     	if (animType.equals("reloadStart"))
     	{
     		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
@@ -212,7 +257,7 @@ public final class GunAnimationHelper
     	{
     		float reloadTransitionProgress = ReloadHandler.get().getReloadProgress(partialTicks);
     		return getAnimationRot("reloadEnd", weapon, 1-reloadTransitionProgress, component);
-    		
+
     	}
     	if (animType.equals("reload") && hasAnimation("reload", weapon))
     	{

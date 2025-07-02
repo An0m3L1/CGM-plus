@@ -328,11 +328,13 @@ public class ReloadTracker
 	                        playReloadSound(finalPlayer, finalSound);
                     	}
                     	else
-                    	DelayedTask.runAfter(4, () ->
-	                    {
-	                        ResourceLocation cockSound = tracker.gun.getSounds().getCock();
-	                        playReloadSound(finalPlayer, cockSound);
-	                    });
+                        {
+                            ResourceLocation finalCockSound = tracker.gun.getSounds().getCock();
+                            DelayedTask.runAfter(4, () ->
+                            {
+                                playReloadSound(finalPlayer, finalCockSound);
+                            });
+                        }
                     }
                     else
                     {

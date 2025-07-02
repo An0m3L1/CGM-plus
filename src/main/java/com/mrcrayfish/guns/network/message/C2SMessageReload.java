@@ -9,9 +9,6 @@ import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.common.MinecraftForge;
-import net.minecraftforge.network.NetworkEvent;
-
-import java.util.function.Supplier;
 
 /**
  * Author: MrCrayfish
@@ -50,7 +47,8 @@ public class C2SMessageReload extends PlayMessage<C2SMessageReload>
                 ModSyncedDataKeys.RELOADING.setValue(player, message.reload); // This has to be set in order to verify the packet is sent if the event is cancelled
                 if(!message.reload)
                 {
-                    ModSyncedDataKeys.SWITCHTIME.setValue(player, 6);
+                    if (ModSyncedDataKeys.SWITCHTIME.getValue(player)<=0)
+                        ModSyncedDataKeys.SWITCHTIME.setValue(player, 1);
                     return;
                 }
                 else

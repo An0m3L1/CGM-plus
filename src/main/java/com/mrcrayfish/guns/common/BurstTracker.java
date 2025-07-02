@@ -4,7 +4,6 @@ import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
-
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
@@ -82,8 +81,8 @@ public class BurstTracker
             }
             BurstTracker tracker = BURST_TRACKER_MAP.get(player);
            	boolean resetBurst = false;
-            
-          	if(player.getInventory().getSelected().getItem() instanceof GunItem)
+
+            if(tracker.stack.getItem() instanceof GunItem)
             {
             	GunItem gunItem = (GunItem) tracker.stack.getItem();
             	if (ModSyncedDataKeys.SHOOTING.getValue(player) && Gun.hasBurstFire(tracker.stack))

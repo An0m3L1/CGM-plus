@@ -22,6 +22,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
@@ -50,9 +51,12 @@ public class ShootingHandler
     }
 
     private boolean shooting;
+    private int lastShotTick=-1;
+    private int weaponSwitchTick=-1;
     private boolean doEmptyClick;
 
     private int slot = -1;
+    private Item lastItem;
 
     private ShootingHandler() {}
 
@@ -177,39 +181,46 @@ public class ShootingHandler
         if(event.phase != TickEvent.Phase.END)
             return;
 
-        if(isNotInGame())
-            return;
-
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
         if(player != null)
         {
-            if(PlayerReviveHelper.isBleeding(player))
-                return;
-
+            ItemStack heldItem = player.getMainHandItem();
+            // Weapon switch detection
             if (!isSameWeapon(player))
             {
-            	ModSyncedDataKeys.SWITCHTIME.setValue(player, 1);
+                lastItem = heldItem.getItem();
+                if (!isSameSlot(player))
+                    ModSyncedDataKeys.SWITCHTIME.setValue(player, 1);
             	ModSyncedDataKeys.BURSTCOUNT.setValue(player, 0);
-                if(player.getMainHandItem().getItem() instanceof GunItem)
+                ModSyncedDataKeys.AIMING.setValue(player, false);
+                weaponSwitchTick = player.tickCount;
+                if(heldItem.getItem() instanceof GunItem)
                 {
                     GunRenderingHandler.get().updateReserveAmmo(player);
                 }
                 ReloadHandler.get().weaponSwitched();
             }
+
+            if (ModSyncedDataKeys.RELOADING.getValue(player) == true)
+                weaponSwitchTick = -1;
+
+            // Update item and slot variables
+            lastItem = player.getInventory().getSelected().getItem();
+            slot = player.getInventory().selected;
+
+            if(isNotInGame())
+                return;
+
+            if(PlayerReviveHelper.isBleeding(player))
+                return;
             
-            ItemStack heldItem = player.getMainHandItem();
             if(heldItem.getItem() instanceof GunItem)
             {
             	//Gun gun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
             	if(KeyBinds.getShootMapping().isDown() || (ModSyncedDataKeys.BURSTCOUNT.getValue(player)>0 && Gun.hasBurstFire(heldItem)))
                 {
                     this.fire(player, heldItem);
-                    boolean doAutoFire = Gun.isAuto(heldItem) || (Gun.hasBurstFire(heldItem) && Gun.hasAutoBurst(heldItem));
-                    if(!doAutoFire)
-                    {
-                    	KeyBinds.getShootMapping().setDown(false);
-                    }
                 }
             	else
                 {
@@ -263,9 +274,6 @@ public class ShootingHandler
                 }
                 KeyBinds.KEY_FIRE_MODE.setDown(false);
             }
-            
-            // Update stack and slot variables
-            slot = player.getInventory().selected;
         }
     }
 
@@ -279,16 +287,20 @@ public class ShootingHandler
         
         if(ModSyncedDataKeys.RELOADING.getValue(player)) //*NEW* Disallow firing while reloading, and cancel reload.
         {
-        	GunItem gunItem = (GunItem) heldItem.getItem();
-        	if (!gunItem.getModifiedGun(heldItem).getGeneral().getUseMagReload())
+            if (!Gun.usesMagReloads(heldItem) && ReloadHandler.get().getReloadProgress(Minecraft.getInstance().getPartialTick()) >= 1F)
         	{
         		ReloadHandler.get().setReloading(false, true);
         		PacketHandler.getPlayChannel().sendToServer(new C2SMessageReload(false));
         	}
         	return false;
         }
-        
-        if(ModSyncedDataKeys.SWITCHTIME.getValue(player) > 0) //*NEW* Disallow firing during the weapon switch/reload time.
+
+        if(ReloadHandler.get().getReloadProgress(Minecraft.getInstance().getPartialTick()) > 0F)
+        {
+            return false;
+        }
+
+        if(ModSyncedDataKeys.SWITCHTIME.getValue(player) > 0) //*NEW* Disallow firing during the weapon switch time.
         {
         	return false;
         }
@@ -360,6 +372,11 @@ public class ShootingHandler
 	        	{
 		            Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(Objects.requireNonNull(gunItem.getModifiedGun(heldItem).getSounds().getEmptyClick()), SoundSource.PLAYERS, 0.8F, 1.0F, Objects.requireNonNull(Minecraft.getInstance().level).getRandom(), false, 0, SoundInstance.Attenuation.NONE, 0, 0, 0, true));
 		        	doEmptyClick = false;
+                    boolean doAutoFire = Gun.isAuto(heldItem) || (Gun.hasBurstFire(heldItem) && Gun.hasAutoBurst(heldItem));
+                    if(!doAutoFire)
+                    {
+                        KeyBinds.getShootMapping().setDown(false);
+                    }
 	        	}
         	}
         	if (ModSyncedDataKeys.BURSTCOUNT.getValue(player)>0)
@@ -399,7 +416,13 @@ public class ShootingHandler
                 }
             }
             PacketHandler.getPlayChannel().sendToServer(new C2SMessageShoot(player));
+            boolean doAutoFire = Gun.isAuto(heldItem) || (Gun.hasBurstFire(heldItem) && Gun.hasAutoBurst(heldItem));
+            if(!doAutoFire)
+            {
+                KeyBinds.getShootMapping().setDown(false);
+            }
             int lastShotTick = player.tickCount;
+            weaponSwitchTick = -1;
             MinecraftForge.EVENT_BUS.post(new GunFireEvent.Post(player, heldItem));
         }
     }
@@ -408,6 +431,27 @@ public class ShootingHandler
     {
         if (slot==-1)
         	return true;
-    	return player.getInventory().selected == slot;
+        boolean sameItem = (player.getInventory().getSelected().getItem() == lastItem);
+
+        return (isSameSlot(player) && sameItem);
+        //return (player.getInventory().selected == slot);
+    }
+
+    private boolean isSameSlot(Player player)
+    {
+        if (slot==-1)
+            return true;
+
+        return (player.getInventory().selected == slot);
+    }
+
+    public int getWeaponSwitchTick()
+    {
+        return weaponSwitchTick;
+    }
+
+    public void clearWeaponSwitchTick()
+    {
+        this.weaponSwitchTick = -1;
     }
 }

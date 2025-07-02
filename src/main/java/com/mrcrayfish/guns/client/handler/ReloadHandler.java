@@ -145,6 +145,9 @@ public class ReloadHandler
                 ItemStack stack = player.getMainHandItem();
                 if(stack.getItem() instanceof GunItem)
                 {
+                    if (ModSyncedDataKeys.SWITCHTIME.getValue(player) > 0)
+                        return;
+
                     CompoundTag tag = stack.getTag();
                     if(tag != null && !tag.contains("IgnoreAmmo", Tag.TAG_BYTE))
                     {
@@ -205,6 +208,11 @@ public class ReloadHandler
                     
                 ModSyncedDataKeys.RELOADING.setValue(player, false);
                 ModSyncedDataKeys.SWITCHTIME.setValue(player, storedReloadDelay+1);
+                if (ModSyncedDataKeys.RELOADING.getValue(player) == true)
+                {
+                    ModSyncedDataKeys.SWITCHTIME.setValue(player, storedReloadDelay+1);
+                    ModSyncedDataKeys.RELOADING.setValue(player, false);
+                }
                 PacketHandler.getPlayChannel().sendToServer(new C2SMessageReload(false));
                 this.reloadingSlot = -1;
 

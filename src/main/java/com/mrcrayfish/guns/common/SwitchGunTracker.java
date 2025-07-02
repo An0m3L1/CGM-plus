@@ -32,6 +32,7 @@ public class SwitchGunTracker
 
     private final int slot;
     private ItemStack stack;
+    private Item item;
     private Gun gun;
     private boolean playSelectSound;
 
@@ -39,7 +40,8 @@ public class SwitchGunTracker
     {
         this.slot = player.getInventory().selected;
         this.stack = player.getInventory().getSelected();
-        this.gun = ((GunItem) stack.getItem()).getModifiedGun(stack);
+        this.item = stack.getItem();
+        this.gun = ((GunItem) item).getModifiedGun(stack);
         this.playSelectSound = true;
     }
 
@@ -51,7 +53,7 @@ public class SwitchGunTracker
      */
     private boolean isSameWeapon(Player player)
     {
-        return !this.stack.isEmpty() && player.getInventory().selected == this.slot && player.getInventory().getSelected() == this.stack;
+        return !this.stack.isEmpty() && player.getInventory().selected == this.slot && player.getInventory().getSelected().getItem() == this.item;
     }
     
     private int getInventoryAmmo(Player player, Gun gun)
@@ -100,9 +102,16 @@ public class SwitchGunTracker
             if (doGunSelect && tracker.playSelectSound)
             {
             	tracker.playSelectSound=false;
-            	ModSyncedDataKeys.SWITCHTIME.setValue(player, 5);
-            	ResourceLocation selectSound = tracker.gun.getSounds().getWeaponSelect();
-            	playSelectSound(player, selectSound);
+                final ItemStack finalStack = player.getInventory().getSelected();
+                ModSyncedDataKeys.SWITCHTIME.setValue(player, tracker.gun.getGeneral().getDrawTime());
+                ResourceLocation selectSound = tracker.gun.getSounds().getWeaponSelect();
+                final Player finalPlayer=player;
+                if (tracker.gun.getSounds().getWeaponSelectDelay()>=0)
+                    DelayedTask.runAfter(tracker.gun.getSounds().getWeaponSelectDelay(), () ->
+                    {
+                        if (finalStack == finalPlayer.getInventory().getSelected())
+                            playSelectSound(finalPlayer, selectSound);
+                    });
             }
 			if (doGunSwitch)
             {

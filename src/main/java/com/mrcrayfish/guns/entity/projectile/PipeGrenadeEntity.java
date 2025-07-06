@@ -29,7 +29,7 @@ import net.minecraft.world.phys.Vec3;
 public class PipeGrenadeEntity extends ProjectileEntity
 {
     protected float radius = Config.COMMON.pipeGrenadeExplosionRadius.get().floatValue();
-    protected boolean griefing = !Config.COMMON.pipeGrenadeExplosionGriefing.get();
+    protected boolean griefing = Config.COMMON.pipeGrenadeExplosionGriefing.get();
 
     public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
     {

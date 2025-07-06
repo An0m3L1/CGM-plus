@@ -4,25 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Animation update.&#10;&#10;Added draw animations.&#10;Aiming FOV tweaks.&#10;Small fixes.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/OneHandedPistolPose.java" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Explosion fixes.&#10;&#10;Fixed an incompatibility issue with explosion enhance mod (thanks to NineZero!).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/OneHandedPose.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/PistolCustomPose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/TwoHandedPistolPose.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/WeaponPose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/WeaponPose.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/GunAnimationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/GunAnimationHelper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/GunGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/GunGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -341,7 +328,15 @@
       <option name="project" value="LOCAL" />
       <updated>1751423519464</updated>
     </task>
-    <option name="localTasksCounter" value="19" />
+    <task id="LOCAL-00019" summary="Animation update.&#10;&#10;Renamed some poses.&#10;One-handed pose now has smoother transitions for sprinting.&#10;Off-hand fix for pistol poses.&#10;More sprinting restrictions.&#10;Grenades are now thrown with half velocity if crouching.">
+      <option name="closed" value="true" />
+      <created>1751492967882</created>
+      <option name="number" value="00019" />
+      <option name="presentableId" value="LOCAL-00019" />
+      <option name="project" value="LOCAL" />
+      <updated>1751492967882</updated>
+    </task>
+    <option name="localTasksCounter" value="20" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -349,7 +344,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Added molotov cocktail (WIP)." />
     <MESSAGE value="Local" />
     <MESSAGE value="Fixed ticking entity issue. Tweaked fire grenade sounds. Changed rocket and pipe grenade sounds." />
     <MESSAGE value="Fixed ticking entity issue. Tweaked fire grenade sounds. Changed rocket and pipe grenade sounds. Cleaned up some code." />
@@ -374,7 +368,8 @@
     <MESSAGE value="Reserve ammo fix for backpacks." />
     <MESSAGE value="Small fixes." />
     <MESSAGE value="Animation update.&#10;&#10;Added draw animations.&#10;Aiming FOV tweaks.&#10;Small fixes." />
-    <option name="LAST_COMMIT_MESSAGE" value="Animation update.&#10;&#10;Added draw animations.&#10;Aiming FOV tweaks.&#10;Small fixes." />
+    <MESSAGE value="Animation update.&#10;&#10;Renamed some poses.&#10;One-handed pose now has smoother transitions for sprinting.&#10;Off-hand fix for pistol poses.&#10;More sprinting restrictions.&#10;Grenades are now thrown with half velocity if crouching." />
+    <option name="LAST_COMMIT_MESSAGE" value="Animation update.&#10;&#10;Renamed some poses.&#10;One-handed pose now has smoother transitions for sprinting.&#10;Off-hand fix for pistol poses.&#10;More sprinting restrictions.&#10;Grenades are now thrown with half velocity if crouching." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

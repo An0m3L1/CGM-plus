@@ -908,11 +908,11 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
      *
      * @param entity The entity to explode
      * @param radius The size of the explosion
-     * @param forceNone If true, forces explosion mode to be NONE
+     * @param griefing If true, forces explosion mode to be NONE
      * @param fire If true, creates a fire explosion
      * @param noFX If true, doesn't use vanilla SFX and VFX
      */
-    private static void createExplosionInternal(Entity entity, float radius, boolean forceNone, boolean fire, boolean noFX)
+    private static void createExplosionInternal(Entity entity, float radius, boolean griefing, boolean fire, boolean noFX)
     {
         Level world = entity.level;
         if (world.isClientSide()) return;
@@ -936,7 +936,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                             isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() :
                                     20F;
 
-            mode = !forceNone && Config.COMMON.explosionGriefing.get()
+            mode = griefing && Config.COMMON.explosionGriefing.get()
                     ? Explosion.BlockInteraction.BREAK
                     : Explosion.BlockInteraction.NONE;
         }
@@ -989,16 +989,17 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
-    public static void createGenericExplosion(Entity entity, float radius, boolean forceNone) {
-        createExplosionInternal(entity, radius, forceNone, false, false);
+    // Note: doesn't disable particle spawning in ClientPlayHandler.
+    public static void createGenericExplosion(Entity entity, float radius, boolean griefing) {
+        createExplosionInternal(entity, radius, griefing, false, false);
     }
 
-    public static void createCustomExplosion(Entity entity, float radius, boolean forceNone) {
-        createExplosionInternal(entity, radius, forceNone, false, true);
+    public static void createCustomExplosion(Entity entity, float radius, boolean griefing) {
+        createExplosionInternal(entity, radius, griefing, false, true);
     }
 
-    public static void createFireExplosion(Entity entity, float radius, boolean forceNone) {
-        createExplosionInternal(entity, radius, true, true, true);
+    public static void createFireExplosion(Entity entity, float radius, boolean griefing) {
+        createExplosionInternal(entity, radius, griefing, true, true);
     }
 
     /**

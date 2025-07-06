@@ -109,6 +109,7 @@ dependencies {
     implementation fg.deobf("curse.maven:curios-309927:5843737")
     implementation fg.deobf("curse.maven:bookshelf-228525:4556697")
     implementation fg.deobf("curse.maven:enchantment-descriptions-250419:4277356")
+    implementation fg.deobf("curse.maven:explosive-enhancement-reforged-1036246:5554087")
     //implementation fg.deobf("curse.maven:artifacts-312353:5384768")
     //implementation fg.deobf("curse.maven:selene-499980:5567102")
     //implementation fg.deobf("curse.maven:supplementaries-412082:5152602")

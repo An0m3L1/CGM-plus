@@ -31,7 +31,7 @@ import net.minecraft.world.phys.Vec3;
 public class RocketEntity extends ProjectileEntity
 {
     protected float radius = Config.COMMON.rocketExplosionRadius.get().floatValue();
-    protected boolean griefing = !Config.COMMON.rocketExplosionGriefing.get();
+    protected boolean griefing = Config.COMMON.rocketExplosionGriefing.get();
 
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {

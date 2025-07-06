@@ -104,7 +104,7 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         }
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageMolotov(this.getX(), y, this.getZ()));
-        GrenadeEntity.createFireExplosion(this, radius * 0.6F, true);
+        GrenadeEntity.createFireExplosion(this, radius * 0.6F, false);
         GrenadeFireHelper.igniteEntities(level, center, radius * 1.1F, fireDuration);
     }
 }

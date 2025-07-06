@@ -10,7 +10,7 @@ Add and overhaul animations
     - Crouched aiming (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-Add ammo pouch curio items <--
+Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
 
 Overhaul items (models, textures, stats, datagen)

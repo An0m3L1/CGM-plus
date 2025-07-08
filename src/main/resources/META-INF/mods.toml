@@ -4,11 +4,14 @@ license="GPL3"
 
 [[mods]]
 modId="cgm"
-version="1.0"
+version="1.0a"
 displayName="CGM+"
 logoFile="cgm_banner.png"
 authors="An0m3L1"
-description="Heavily modified, overhauled and expanded version of zaeonNineZeros CGM Expander Fork."
+credits="MrCrayfish, zaeonNineZero"
+description='''
+Heavily modified, overhauled and expanded version of zaeonNineZeros CGM Expander Fork.
+'''
 
 [[dependencies.cgm]]
     modId="forge"
@@ -75,9 +78,9 @@ description="Heavily modified, overhauled and expanded version of zaeonNineZeros
     mandatory=false
     versionRange="[1.19.2_v1.4.0,)"
     ordering="AFTER"
-    side="CLIENT"
+    side="BOTH"
 
 [modproperties.cgm]
     catalogueImageIcon="cgm_icon.png"
-    catalogueBackground="cgm_background.png"
+    catalogueBackground="cgm_banner.png"
     configuredBackground="minecraft:textures/block/gray_concrete.png"

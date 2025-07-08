@@ -33,8 +33,9 @@
   },
   "modules": {
     "attachments": {
-      "barrel": {},
-      "magazine": {}
+      "barrel": {"scale": 0.5},
+      "magazine": {},
+      "tactical": {}
     },
     "zoom": {"fovModifier": 0.75}
   },

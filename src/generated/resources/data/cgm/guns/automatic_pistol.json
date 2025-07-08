@@ -39,6 +39,7 @@
   },
   "modules": {
     "attachments": {
+      "barrel": {"scale": 0.5},
       "scope": {},
       "magazine": {}
     },
@@ -65,7 +66,7 @@
   },
   "sounds": {
     "fire": "cgm:item.automatic_pistol.fire",
-    "fireSwitch": "cgm:item.fire_switch",
+    "silencedFire": "cgm:item.automatic_pistol.silenced_fire",
 
     "reloadFrames": 29,
     "reloadClipOut": "cgm:item.automatic_pistol.mag_out",

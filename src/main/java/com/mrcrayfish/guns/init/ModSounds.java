@@ -48,6 +48,7 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> TACTICAL_PISTOL_SLIDE_FORWARD = register("item.tactical_pistol.slide_forward");
 
 	public static final RegistryObject<SoundEvent> AUTOMATIC_PISTOL_FIRE = register("item.automatic_pistol.fire");
+	public static final RegistryObject<SoundEvent> AUTOMATIC_PISTOL_SILENCED_FIRE = register("item.automatic_pistol.silenced_fire");
 	public static final RegistryObject<SoundEvent> AUTOMATIC_PISTOL_MAG_OUT = register("item.automatic_pistol.mag_out");
 	public static final RegistryObject<SoundEvent> AUTOMATIC_PISTOL_MAG_IN = register("item.automatic_pistol.mag_in");
 	public static final RegistryObject<SoundEvent> AUTOMATIC_PISTOL_SLIDE_BACK = register("item.automatic_pistol.slide_back");

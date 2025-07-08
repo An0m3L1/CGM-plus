@@ -33,6 +33,7 @@
    "item.tactical_pistol.slide_forward": {"sounds": [{"name":"cgm:item/tactical_pistol/slide_forward"}]},
 
    "item.automatic_pistol.fire": {"subtitle":"subtitle.cgm.fire", "sounds": [{"name": "cgm:item/automatic_pistol/fire", "volume": 0.5 }]},
+   "item.automatic_pistol.silenced_fire": {"subtitle":"subtitle.cgm.fire.silenced", "sounds": [{"name": "cgm:item/automatic_pistol/silenced_fire", "volume": 0.5 }]},
    "item.automatic_pistol.mag_out": {"sounds": [{"name":"cgm:item/automatic_pistol/mag_out"}]},
    "item.automatic_pistol.mag_in": {"subtitle":"subtitle.cgm.reload", "sounds": [{"name":"cgm:item/automatic_pistol/mag_in"}]},
    "item.automatic_pistol.slide_back": {"subtitle":"subtitle.cgm.cock", "sounds": [{"name":"cgm:item/automatic_pistol/slide_back"}]},

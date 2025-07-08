@@ -1,6 +1,9 @@
 {
     "cgm:weapon": {
         "attachments": {
+            "barrel": {
+                "translation": [8.0, 3.2, 7.525]
+            },
             "scope": {
                 "translation": [8.0, 3.933, 14.775]
             }

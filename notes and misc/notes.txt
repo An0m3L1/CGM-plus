@@ -4,7 +4,7 @@ Add melee class system
     - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
-Add more attachment slots to existing guns <--
+Add more attachment slots to existing guns
     - Tactical Pistol: scope, tactical
     - Semi-Auto Shotgun: tactical
 Add and overhaul animations
@@ -21,4 +21,3 @@ Overhaul items (models, textures, stats, datagen)
     - Minigun
     - Sniper Rifle
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul sounds (revisit all of them)

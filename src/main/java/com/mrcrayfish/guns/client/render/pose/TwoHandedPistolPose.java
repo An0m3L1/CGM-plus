@@ -91,7 +91,7 @@ public class TwoHandedPistolPose extends WeaponPose
             }
             */
             else if (player.isSprinting())
-                arm.xRot = (float) Math.toRadians(-90F);
+                arm.xRot = (float) Math.toRadians(-105F);
         }
         else {
         	super.applyPlayerModelRotation(player, rightArm, leftArm, head, hand, aimProgress);

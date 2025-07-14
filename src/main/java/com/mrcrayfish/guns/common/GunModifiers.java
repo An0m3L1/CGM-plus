@@ -78,18 +78,24 @@ public class GunModifiers
         }
 
         @Override
-        public float recoilModifier()
-        {
-            return 1.2F;
-        }
+        public float recoilModifier() {return 1.2F;}
         @Override
-        public float kickModifier()
-        {
-            return 1.1F;
-        }
+        public float kickModifier() {return 1.1F;}
 
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+    };
+    public static final IGunModifier FLASH_HIDER = new IGunModifier() {
+        @Override
+        public double modifyMuzzleFlashScale(double scale) {return scale * 0.5;}
+
+        @Override
+        public float recoilModifier() {return 0.9F;}
+        @Override
+        public float kickModifier() {return 0.95F;}
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;}
     };
 
     /* Stocks */
@@ -102,7 +108,7 @@ public class GunModifiers
         @Override
         public float kickModifier()
         {
-            return 0.35F;
+            return 0.85F;
         }
 
         @Override
@@ -120,7 +126,7 @@ public class GunModifiers
         @Override
         public float kickModifier()
         {
-            return 0.325F;
+            return 0.825F;
         }
 
         @Override
@@ -138,7 +144,7 @@ public class GunModifiers
         @Override
         public float kickModifier()
         {
-            return 0.3F;
+            return 0.8F;
         }
 
         @Override
@@ -169,7 +175,7 @@ public class GunModifiers
         @Override
         public float kickModifier()
         {
-            return 0.425F;
+            return 0.925F;
         }
 
         @Override

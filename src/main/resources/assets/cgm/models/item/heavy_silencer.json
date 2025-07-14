@@ -1,4 +1,5 @@
 {
+	"format_version": "1.21.6",
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"texture_size": [8, 8],
 	"textures": {
@@ -159,7 +160,7 @@
 		{
 			"name": "Flash",
 			"from": [8, 8, -4.1],
-			"to": [8, 8, -2.1],
+			"to": [8, 8, -4.1],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, 0, 1]},
 			"color": 8,
 			"faces": {
@@ -198,7 +199,7 @@
 			"scale": [0.55, 0.55, 0.55]
 		},
 		"gui": {
-			"rotation": [30, 225, 0],
+			"rotation": [30, -135, 0],
 			"translation": [-6.5, 3.5, 0],
 			"scale": [1.5, 1.5, 1.5]
 		},

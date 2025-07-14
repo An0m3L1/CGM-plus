@@ -23,7 +23,7 @@ Explosives
     - Mine
     - C4
 Attachments
-    - Barrels: compensator, flash hider, muzzle break
+    - Barrels: compensator, muzzle break
     - Grips: angled, thumb
     - Scopes: monocle, holo
     - Stocks: scar, solid, skeleton

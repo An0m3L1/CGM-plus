@@ -5,32 +5,28 @@ import com.mrcrayfish.guns.interfaces.IGunModifier;
 public class GunModifiers
 {
     /* Scopes */
-    public static final IGunModifier RED_DOT_SIGHT = new IGunModifier()
-    {
+    public static final IGunModifier RED_DOT = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed)
-        {return speed * 0.95F;
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.95F;
         }
     };
-    public static final IGunModifier X2_SCOPE = new IGunModifier()
-    {
+    public static final IGunModifier X2_SCOPE = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed)
-        {return speed * 0.9F;
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.9F;
         }
     };
-    public static final IGunModifier X4_SCOPE = new IGunModifier()
-    {
+    public static final IGunModifier X4_SCOPE = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed)
-        {return speed * 0.85F;
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.85F;
         }
     };
-    public static final IGunModifier X6_SCOPE = new IGunModifier()
-    {
+    public static final IGunModifier X6_SCOPE = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed)
-        {return speed * 0.8F;
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.8F;
         }
     };
 

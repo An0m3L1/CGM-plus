@@ -116,7 +116,7 @@ public class ModItems
     public static final RegistryObject<Item> INCENDIARY_GRENADE_NO_PIN = REGISTER.register("incendiary_grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
 
     /* Scopes */
-    public static final RegistryObject<Item> RED_DOT_SIGHT = REGISTER.register("red_dot_sight", () -> new ScopeItem(Attachments.RED_DOT_SIGHT, new Item.Properties()));
+    public static final RegistryObject<Item> RED_DOT_SIGHT = REGISTER.register("red_dot_sight", () -> new ScopeItem(Attachments.RED_DOT, new Item.Properties()));
     public static final RegistryObject<Item> X2_SCOPE = REGISTER.register("x2_scope", () -> new ScopeItem(Attachments.X2_SCOPE, new Item.Properties()));
     public static final RegistryObject<Item> X4_SCOPE = REGISTER.register("x4_scope", () -> new ScopeItem(Attachments.X4_SCOPE, new Item.Properties()));
     public static final RegistryObject<Item> X6_SCOPE = REGISTER.register("x6_scope", () -> new ScopeItem(Attachments.X6_SCOPE, new Item.Properties()));

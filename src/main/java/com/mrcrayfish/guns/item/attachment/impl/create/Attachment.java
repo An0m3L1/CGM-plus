@@ -82,6 +82,55 @@ public abstract class Attachment
             List<Component> perkType;
             String perkDescription = "";
 
+            /* Test for fire sound volume */
+            float inputSound = 1.0F;
+            float outputSound = inputSound;
+            for(IGunModifier modifier : modifiers)
+            {
+                outputSound = modifier.modifyFireSoundVolume(outputSound);
+            }
+            thisOutput = (float) outputSound;
+            thisInput = (float) inputSound;
+            if (thisOutput != inputSound)
+            {
+	            perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
+                boolean isPositive = thisOutput < thisInput;
+                float modifierValue = toPercent(thisOutput);
+	            //perkDescription = (isPositive ? "perk.cgm.fire_volume.positive" : "perk.cgm.fire_volume.negative");
+                perkDescription = "perk.cgm.fire_volume";
+	            
+	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
+            }
+
+            /* Test for silenced */
+            for(IGunModifier modifier : modifiers)
+            {
+                if(modifier.silencedFire())
+                {
+                    addPerk(positivePerks, true, "perk.cgm.silenced.positive");
+                    break;
+                }
+            }
+
+            /* Test for flash size */
+            double inputFlash = 10.0;
+            double outputFlash = inputFlash;
+            for(IGunModifier modifier : modifiers)
+            {
+                outputFlash = modifier.modifyMuzzleFlashScale(outputFlash);
+            }
+            thisOutput = (float) outputFlash;
+            thisInput = (float) inputFlash;
+            if (thisOutput != thisInput)
+            {
+                perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
+                boolean isPositive = thisOutput < thisInput;
+                float modifierValue = toPercent(thisOutput);
+                perkDescription = "perk.cgm.flash";
+
+                addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
+            }
+
             /* Test for Light Magazine */
             for(IGunModifier modifier : modifiers)
             {
@@ -104,7 +153,24 @@ public abstract class Attachment
                 }
             }
 
-            /* Damage and projectile related */
+            /* Test for sound radius */
+            double inputRadius = 10.0;
+            double outputRadius = inputRadius;
+            for(IGunModifier modifier : modifiers)
+            {
+                outputRadius = modifier.modifyFireSoundRadius(outputRadius);
+            }
+            thisOutput = (float) outputRadius;
+            thisInput = (float) inputRadius;
+            if (thisOutput != thisInput)
+            {
+	            perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
+                boolean isPositive = thisOutput < thisInput;
+                float modifierValue = toPercent(thisOutput);
+                perkDescription = "perk.cgm.sound_radius";
+	            
+	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
+            }
 
             /* Test for additional damage */
             float additionalDamage = 0.0F;
@@ -139,26 +205,6 @@ public abstract class Attachment
                 perkDescription = "perk.cgm.modified_damage";
 	            
 	            addPerk(perkType, isPositive, false, Math.round(modifierValue*100)/100, perkDescription);
-            }
-
-            /* Test for modified projectile life */
-            int inputLife = 100;
-            int outputLife = inputLife;
-            for(IGunModifier modifier : modifiers)
-            {
-                outputLife = modifier.modifyProjectileLife(outputLife);
-            }
-            thisOutput = (float) outputLife;
-            thisInput = (float) inputLife;
-            if (thisOutput != thisInput)
-            {
-                perkType = (thisOutput >= thisInput ? positivePerks : negativePerks);
-                boolean isPositive = thisOutput > thisInput;
-                float modifierValue = toPercent(thisOutput/10F);
-                //perkDescription = (isPositive ? "perk.cgm.projectile_life.positive" : "perk.cgm.projectile_life.negative");
-                perkDescription = "perk.cgm.projectile_life";
-
-                addPerk(perkType, isPositive, false, Math.round(modifierValue*100)/100, perkDescription);
             }
 
             /* Test for modified projectile speed */
@@ -201,6 +247,26 @@ public abstract class Attachment
 	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
             }
 
+            /* Test for modified projectile life */
+            int inputLife = 100;
+            int outputLife = inputLife;
+            for(IGunModifier modifier : modifiers)
+            {
+                outputLife = modifier.modifyProjectileLife(outputLife);
+            }
+            thisOutput = (float) outputLife;
+            thisInput = (float) inputLife;
+            if (thisOutput != thisInput)
+            {
+	            perkType = (thisOutput >= thisInput ? positivePerks : negativePerks);
+                boolean isPositive = thisOutput > thisInput;
+                float modifierValue = toPercent(thisOutput/10F);
+	            //perkDescription = (isPositive ? "perk.cgm.projectile_life.positive" : "perk.cgm.projectile_life.negative");
+                perkDescription = "perk.cgm.projectile_life";
+	            
+	            addPerk(perkType, isPositive, false, Math.round(modifierValue*100)/100, perkDescription);
+            }
+
             /* Test for modified recoil */
             float inputRecoil = 10.0F;
             float outputRecoil = inputRecoil;
@@ -220,6 +286,26 @@ public abstract class Attachment
 	            
 	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
             }
+
+            /* Test for aim down sight speed */
+            double inputAdsSpeed = 10.0;
+            double outputAdsSpeed = inputAdsSpeed;
+            for(IGunModifier modifier : modifiers)
+            {
+                outputAdsSpeed = modifier.modifyAimDownSightSpeed(outputAdsSpeed);
+            }
+            thisOutput = (float) outputAdsSpeed;
+            thisInput = (float) inputAdsSpeed;
+            if (thisOutput != thisInput)
+            {
+            	perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
+                boolean isPositive = thisOutput > thisInput;
+                float modifierValue = toPercent(thisOutput);
+            	//perkDescription = (isPositive ? "perk.cgm.ads_speed.positive" : "perk.cgm.ads_speed.negative");
+                perkDescription = "perk.cgm.ads_speed";
+	            
+	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
+        	}
 
             /* Test for fire rate */
             int inputRate = 10;
@@ -247,96 +333,6 @@ public abstract class Attachment
             {
                 event.getToolTip().add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GRAY, ChatFormatting.BOLD));
                 event.getToolTip().addAll(positivePerks);
-            }
-
-            /* Sound and flash related */
-
-            /* Test for fire sound volume */
-            float inputSound = 1.0F;
-            float outputSound = inputSound;
-            for(IGunModifier modifier : modifiers)
-            {
-                outputSound = modifier.modifyFireSoundVolume(outputSound);
-            }
-            thisOutput = (float) outputSound;
-            thisInput = (float) inputSound;
-            if (thisOutput != inputSound)
-            {
-                perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
-                boolean isPositive = thisOutput < thisInput;
-                float modifierValue = toPercent(thisOutput);
-                //perkDescription = (isPositive ? "perk.cgm.fire_volume.positive" : "perk.cgm.fire_volume.negative");
-                perkDescription = "perk.cgm.fire_volume";
-
-                addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
-            }
-
-            /* Test for sound radius */
-            double inputRadius = 10.0;
-            double outputRadius = inputRadius;
-            for(IGunModifier modifier : modifiers)
-            {
-                outputRadius = modifier.modifyFireSoundRadius(outputRadius);
-            }
-            thisOutput = (float) outputRadius;
-            thisInput = (float) inputRadius;
-            if (thisOutput != thisInput)
-            {
-                perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
-                boolean isPositive = thisOutput < thisInput;
-                float modifierValue = toPercent(thisOutput);
-                perkDescription = "perk.cgm.sound_radius";
-
-                addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
-            }
-
-            /* Test for silenced */
-            for(IGunModifier modifier : modifiers)
-            {
-                if(modifier.silencedFire())
-                {
-                    addPerk(positivePerks, true, "perk.cgm.silenced.positive");
-                    break;
-                }
-            }
-
-            /* Test for flash size */
-            double inputFlash = 10.0;
-            double outputFlash = inputFlash;
-            for(IGunModifier modifier : modifiers)
-            {
-                outputFlash = modifier.modifyMuzzleFlashScale(outputFlash);
-            }
-            thisOutput = (float) outputFlash;
-            thisInput = (float) inputFlash;
-            if (thisOutput != thisInput)
-            {
-                perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
-                boolean isPositive = thisOutput < thisInput;
-                float modifierValue = toPercent(thisOutput);
-                perkDescription = "perk.cgm.flash";
-
-                addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
-            }
-
-            /* Test for aim down sight speed */
-            double inputAdsSpeed = 10.0;
-            double outputAdsSpeed = inputAdsSpeed;
-            for(IGunModifier modifier : modifiers)
-            {
-                outputAdsSpeed = modifier.modifyAimDownSightSpeed(outputAdsSpeed);
-            }
-            thisOutput = (float) outputAdsSpeed;
-            thisInput = (float) inputAdsSpeed;
-            if (thisOutput != thisInput)
-            {
-                perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
-                boolean isPositive = thisOutput > thisInput;
-                float modifierValue = toPercent(thisOutput);
-                //perkDescription = (isPositive ? "perk.cgm.ads_speed.positive" : "perk.cgm.ads_speed.negative");
-                perkDescription = "perk.cgm.ads_speed";
-
-                addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
             }
         }
     }

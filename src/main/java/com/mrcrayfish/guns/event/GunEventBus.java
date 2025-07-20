@@ -48,7 +48,7 @@ public class GunEventBus
 
                 // Play sound when shooting a low durability gun
                 if (currentDamage >= (maxDamage * 0.8))
-                    level.playSound(player, player.blockPosition(), ModSounds.LOW_DURABILITY.get(), SoundSource.PLAYERS, 0.75F, 1.5F);
+                    level.playSound(player, player.blockPosition(), ModSounds.LOW_DURABILITY.get(), SoundSource.PLAYERS, 1F, 1.5F);
             }
 
             // Fire light

@@ -97,7 +97,7 @@ public class GunModifiers
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;}
     };
-    public static final IGunModifier MUZZLE_BREAK = new IGunModifier() {
+    public static final IGunModifier MUZZLE_BRAKE = new IGunModifier() {
         @Override
         public double modifyMuzzleFlashScale(double scale) {return scale * 0.75;}
 
@@ -111,15 +111,18 @@ public class GunModifiers
     };
     public static final IGunModifier COMPENSATOR = new IGunModifier() {
         @Override
-        public float recoilModifier() {return 0.9F;}
-        @Override
-        public float kickModifier() {return 0.95F;}
+        public double modifyMuzzleFlashScale(double scale) {return scale * 0.75;}
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.9F;}
+        public float recoilModifier() {return 0.95F;}
+        @Override
+        public float kickModifier() {return 0.975F;}
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
+        public float modifyProjectileSpread(float spread) {return spread * 0.95F;}
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;}
     };
 
     /* Stocks */

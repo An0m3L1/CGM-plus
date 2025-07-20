@@ -22,8 +22,8 @@ Explosives
     - Flare
     - Mine
     - C4
+    - Dynamite stick
 Attachments
-    - Barrels: compensator, muzzle break
     - Grips: angled, thumb
     - Scopes: monocle, holo
     - Stocks: scar, solid, skeleton

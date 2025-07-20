@@ -125,6 +125,8 @@ public class ModItems
     public static final RegistryObject<Item> SILENCER = REGISTER.register("silencer", () -> new BarrelItem(Barrel.create(10f, GunModifiers.SILENCER), new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_SILENCER = REGISTER.register("heavy_silencer", () -> new BarrelItem(Barrel.create(12f, GunModifiers.HEAVY_SILENCER), new Item.Properties()));
     public static final RegistryObject<Item> FLASH_HIDER = REGISTER.register("flash_hider", () -> new BarrelItem(Barrel.create(4f, GunModifiers.FLASH_HIDER), new Item.Properties()));
+    public static final RegistryObject<Item> MUZZLE_BRAKE = REGISTER.register("muzzle_brake", () -> new BarrelItem(Barrel.create(4f, GunModifiers.MUZZLE_BRAKE), new Item.Properties()));
+    public static final RegistryObject<Item> COMPENSATOR = REGISTER.register("compensator", () -> new BarrelItem(Barrel.create(4f, GunModifiers.COMPENSATOR), new Item.Properties()));
 
     /* Stocks */
     public static final RegistryObject<Item> LIGHT_STOCK = REGISTER.register("light_stock", () -> new StockItem(Stock.create(GunModifiers.LIGHT_STOCK), new Item.Properties()));

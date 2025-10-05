@@ -7,49 +7,51 @@
     "spawnCasings": false,
     "emitLight": true,
 
-    "adsSpeed": 0.75,
-    "recoilAdsReduction": 0.5,
+    "adsSpeed": 0.7,
+    "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 1.0,
 
-    "recoilAngle": 9.0,
-    "recoilKick": 2.0,
-    "recoilDurationOffset": 0.25,
-    "spread": 16.0,
+    "recoilAngle": 7.5,
+    "recoilKick": 1.5,
+    "recoilDurationOffset": 0.35,
+    "spread": 12.0,
     "restingSpread": 4.0,
 
     "maxAmmo": 10,
     "useMagReload": true,
     "magReloadTime": 60,
-    "reloadRate": 60
+
+    "reloadStartDelay": 1,
+    "reloadInterruptDelay": 6,
+    "reloadEndDelay": 1,
+    "reloadAllowedCooldown": 0.0
   },
   "modules": {
     "attachments": {
       "barrel": {"scale": 0.5},
       "scope": {},
-      "stock": {},
       "underBarrel": {},
       "magazine": {}
     },
     "zoom": {"fovModifier": 0.6}
   },
   "projectile": {
+    "item": "cgm:heavy_bullet",
     "damage": 16.0,
+    "headshotMultiplierOverride": 1.0,
+    "headshotExtraDamage": 14.0,
+
     "size": 0.1,
     "speed": 15.0,
     "life": 30,
 
-    "headshotMultiplierOverride": 1.0,
-    "headshotExtraDamage": 14.0,
-
     "armorBypass": 1.0,
-    "protectionBypass": 0.25,
+    "protectionBypass": 0.75,
 
     "breakFragile": true,
-    "maxPierceCount": 6,
+    "maxPierceCount": 7,
     "pierceDamagePenalty": 0.125,
-    "pierceDamageMaxPenalty": 0.5,
-
-    "item": "cgm:heavy_bullet"
+    "pierceDamageMaxPenalty": 0.875
   },
   "sounds": {
     "fire": "cgm:item.sniper_rifle.fire",

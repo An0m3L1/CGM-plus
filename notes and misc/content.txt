@@ -18,13 +18,14 @@ Melee
     - Sharp: katana, tanto, machete, m9 bayonet
     - Throwable: cleaver, tomahawk, shuriken
     - Basic: sword, longsword, fire axe
-Explosives
+Throwables
     - Flare
     - Mine
     - C4
     - Dynamite stick
+    - Glow stick
 Attachments
     - Grips: angled, thumb
     - Scopes: monocle, holo
     - Stocks: scar, solid, skeleton
-    - Tactical: laser, flashlight, wraps/tape
+    - Tactical: laser, flashlight

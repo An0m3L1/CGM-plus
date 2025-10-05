@@ -11,11 +11,11 @@
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 1.0,
 
-    "recoilAngle": 8.0,
+    "recoilAngle": 9.0,
     "recoilKick": 2.0,
     "recoilDurationOffset": 0.5,
     "spread": 24.0,
-    "restingSpread": 12.0,
+    "restingSpread": 8.0,
 
     "maxAmmo": 5,
     "useMagReload": true,
@@ -45,9 +45,9 @@
     "protectionBypass": 0.75,
 
     "breakFragile": true,
-    "maxPierceCount": 20,
-    "pierceDamagePenalty": 0.05,
-    "pierceDamageMaxPenalty": 0.95
+    "maxPierceCount": 9,
+    "pierceDamagePenalty": 0.1,
+    "pierceDamageMaxPenalty": 0.9
   },
   "sounds": {
     "fire": "cgm:item.heavy_sniper_rifle.fire",

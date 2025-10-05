@@ -1,0 +1,40 @@
+
+[golden_kit]
+	#Slowness/Fatigue
+	"Golden Kit Debuffs" = true
+	#Adjust How Strong Mining Fatigue Will Be 
+	"Golden Kit Mining Fatigue" = 1.0
+
+[diamond_kit]
+	#Slowness/Fatigue
+	"Diamond Kit Debuffs" = true
+	#Adjust How Strong Mining Fatigue Will Be 
+	"Diamond Kit Mining Fatigue" = 1.0
+	#Adjust How Strong Slowness Will Be 
+	"Diamond Kit Slowness" = 1.0
+
+[amethyst_kit]
+	#Slowness/Fatigue
+	"Amethyst Kit Debuffs" = true
+	#Adjust How Strong Mining Fatigue Will Be 
+	"Amethyst Kit Mining Fatigue" = 2.0
+	#Adjust How Strong Slowness Will Be 
+	"Amethyst Kit Slowness" = 1.0
+
+[netherite_kit]
+	#Slowness/Fatigue
+	"Netherite Kit Debuffs" = true
+	#Adjust How Strong Mining Fatigue Will Be 
+	"Netherite Kit Mining Fatigue" = 3.0
+	#Adjust How Strong Slowness Will Be 
+	"Netherite Kit Slowness" = 3.0
+
+[kit_disabling]
+	"Copper Kit Disabled" = false
+	"Iron Kit Disabled" = false
+	"Golden Kit Disabled" = false
+	"Diamond Kit Disabled" = false
+	"Amethyst Kit Disabled" = false
+	"Netherite Kit Disabled" = false
+	"Tape Disabled" = false
+

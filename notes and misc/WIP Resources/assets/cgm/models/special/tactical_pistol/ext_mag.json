@@ -1,0 +1,58 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"1": "cgm:item/tactical_pistol"
+	},
+	"elements": [
+		{
+			"name": "Handle",
+			"from": [7.625, -2.175, 14.65],
+			"to": [8.375, 1.75, 15.65],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 1.75, 14.5]},
+			"faces": {
+				"north": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"east": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"south": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"west": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"up": {"uv": [8, 14.5, 9, 16], "texture": "#1"},
+				"down": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"}
+			}
+		},
+		{
+			"from": [7.5, -2.01, 15.73],
+			"to": [8.5, -1.71, 17.18],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, -1.7, 15.575]},
+			"faces": {
+				"north": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"east": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"south": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"west": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"up": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"down": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Handle",
+			"from": [7.625, -2.475, 14.925],
+			"to": [8.375, -2.175, 15.65],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 1.75, 14.5]},
+			"faces": {
+				"north": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"east": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"south": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"west": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"up": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"},
+				"down": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Ext Mag",
+			"origin": [8, 4.5, 14.5],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

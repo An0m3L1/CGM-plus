@@ -19,5 +19,8 @@ Overhaul items (models, textures, stats, datagen)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-    - Sniper Rifle
+    - Sniper Rifle <--
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
+Overhaul sounds with new CS2 sfx
+Overhaul recoil (check nz fork)
+Overhaul server/client code to prevent crashes (check grenades a dozen)

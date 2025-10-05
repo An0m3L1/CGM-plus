@@ -1,0 +1,141 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"2": "cgm:item/heavy_sniper_rifle",
+		"particle": "cgm:item/heavy_sniper_rifle"
+	},
+	"elements": [
+		{
+			"name": "Left",
+			"from": [7.745, 4.88, 12.925],
+			"to": [7.755, 5.27, 13.175],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.875, 13.3]},
+			"faces": {
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Right",
+			"from": [8.245, 4.88, 12.925],
+			"to": [8.255, 5.27, 13.175],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.875, 13.3]},
+			"faces": {
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Left",
+			"from": [7.745, 4.88, 8.925],
+			"to": [7.755, 5.305, 9.175],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.875, 9.3]},
+			"faces": {
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Sight",
+			"from": [7.75, 4.88, 9.05],
+			"to": [8.25, 5.38, 9.06],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.13, 9.055]},
+			"faces": {
+				"north": {"uv": [7, 11.5, 10.5, 15], "texture": "#2"},
+				"south": {"uv": [7, 11.5, 10.5, 15], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Sight",
+			"from": [7.75, 4.88, 13.05],
+			"to": [8.25, 5.38, 13.06],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.25, 13.3]},
+			"faces": {
+				"north": {"uv": [10.5, 10.5, 15, 15], "texture": "#2"},
+				"south": {"uv": [10.5, 10.5, 15, 15], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Right",
+			"from": [8.245, 4.88, 8.925],
+			"to": [8.255, 5.305, 9.175],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.875, 9.3]},
+			"faces": {
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Front Rail",
+			"from": [7.499, 4.3801, 8.799],
+			"to": [8.501, 4.6303, 9.3],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.25, 4.375, 9.24437]},
+			"faces": {
+				"north": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"south": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"up": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Front Rail",
+			"from": [7.499, 4.3801, 12.799],
+			"to": [8.501, 4.6303, 13.3],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.25, 4.375, 13.24437]},
+			"faces": {
+				"north": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"south": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"up": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Front Rail",
+			"from": [7.749, 4.6301, 12.799],
+			"to": [8.251, 4.8803, 13.3],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.25, 4.625, 13.24437]},
+			"faces": {
+				"north": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"south": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"up": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Front Rail",
+			"from": [7.749, 4.6301, 8.799],
+			"to": [8.251, 4.8803, 9.3],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.25, 4.625, 9.24437]},
+			"faces": {
+				"north": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"east": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"south": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"west": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"},
+				"up": {"uv": [8.5, 13.5, 9, 14], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Emissive",
+			"from": [7.99, 5.095, 9.055],
+			"to": [8.01, 5.14, 9.056],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.115, 9.055]},
+			"faces": {
+				"north": {"uv": [0, 9.5, 0.5, 10], "texture": "#2", "emissivity": 15},
+				"south": {"uv": [0, 9.5, 0.5, 10], "texture": "#2", "emissivity": 15}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "sight",
+			"origin": [7.25, 4.375, 13.24437],
+			"color": 0,
+			"children": [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+		},
+		10
+	]
+}

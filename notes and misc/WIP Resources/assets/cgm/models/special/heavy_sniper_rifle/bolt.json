@@ -1,0 +1,57 @@
+{
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"2": "cgm:item/heavy_sniper_rifle",
+		"particle": "cgm:item/heavy_sniper_rifle"
+	},
+	"elements": [
+		{
+			"name": "Barrel",
+			"from": [7.75, 3.671, 13.3],
+			"to": [8.46, 4.006, 13.801],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.12071, 13.8]},
+			"faces": {
+				"north": {"uv": [14, 15.5, 14.5, 16], "texture": "#2"},
+				"east": {"uv": [14, 15.5, 14.5, 16], "texture": "#2"},
+				"south": {"uv": [14, 15.5, 14.5, 16], "texture": "#2"},
+				"up": {"uv": [14, 15.5, 14.5, 16], "texture": "#2"},
+				"down": {"uv": [14, 15.5, 14.5, 16], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Barrel",
+			"from": [8.3, 3.85, 13.3],
+			"to": [9.775, 4.325, 13.8],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 3.975, 9.2]},
+			"faces": {
+				"north": {"uv": [13.5, 15.5, 14.5, 16], "texture": "#2"},
+				"south": {"uv": [14.5, 15.5, 13.5, 16], "texture": "#2"},
+				"up": {"uv": [14.5, 15.5, 13.5, 16], "texture": "#2"},
+				"down": {"uv": [14.5, 15.5, 13.5, 16], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Barrel",
+			"from": [9.775, 3.775, 13.225],
+			"to": [10.425, 4.4, 13.875],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 3.975, 9.075]},
+			"faces": {
+				"north": {"uv": [14.5, 15.5, 15, 16], "texture": "#2"},
+				"east": {"uv": [14.5, 15.5, 15, 16], "texture": "#2"},
+				"south": {"uv": [14.5, 15.5, 15, 16], "texture": "#2"},
+				"west": {"uv": [14.5, 15.5, 15, 16], "texture": "#2"},
+				"up": {"uv": [14.5, 15.5, 15, 16], "texture": "#2"},
+				"down": {"uv": [14.5, 15.5, 15, 16], "texture": "#2"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "bolt handle",
+			"origin": [8, 3.75, 13.87],
+			"color": 0,
+			"children": [0, 1, 2]
+		}
+	]
+}

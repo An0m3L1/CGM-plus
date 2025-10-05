@@ -22,7 +22,7 @@ SMG:
     Tommy Gun
     Kriss Vector
 Rifles:
-    SSG-08 <---
+    SSG-08 <--
     SVD
     G3
     VSS
@@ -37,9 +37,9 @@ Shotguns:
     AA12
     Lever Action
 Other:
-    MiniGun <---
-    Milkor MGL <---
-    M202A1 <---
+    MiniGun <--
+    Milkor MGL <--
+    M202A1 <--
     M249
     RPK
     China Lake GL

@@ -1,6 +1,0 @@
-{
-  "parent": "minecraft:block/crop",
-  "textures": {
-    "crop": "cgm:block/hemp/hemp_stage5"
-  }
-}

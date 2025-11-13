@@ -1038,11 +1038,13 @@ public class GunRenderingHandler
                         poseStack.translate(-center.x, -center.y, -center.z);
                         
                         /* Lastly, rotate the attachment */
-                        if (animateableContext)
+                        if (type != IAttachment.Type.SCOPE)
                         {
-                        	Vec3 rotations = PropertyHelper.getAttachmentPosition(stack, modifiedGun, type).subtract(gunOrigin);
-                        	GunAnimationHelper.rotateAroundOffset(poseStack, animRot, animType, stack, "forwardHand");
+                            Vec3 rotations = PropertyHelper.getAttachmentRotation(stack, modifiedGun, type);
+                            GunAnimationHelper.rotateAroundOffset(poseStack, rotations, Vec3.ZERO);
                     	}
+                        if (animateableContext)
+                            GunAnimationHelper.rotateAroundOffset(poseStack, animRot, animType, stack, "forwardHand");
 
                         IOverrideModel model = ModelOverrides.getModel(attachmentStack);
                         if(model != null)

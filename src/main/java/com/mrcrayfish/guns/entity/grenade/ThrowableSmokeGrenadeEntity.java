@@ -32,12 +32,16 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
     public ThrowableSmokeGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
         super(entityType, world);
+        bounceSound = ModSounds.SMOKE_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableSmokeGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
     {
         super(entityType, world, player);
         this.setItem(new ItemStack(ModItems.SMOKE_GRENADE_NO_PIN.get()));
+        bounceSound = ModSounds.SMOKE_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableSmokeGrenadeEntity(Level world, LivingEntity player, int timeLeft)
@@ -45,6 +49,8 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
         super(ModEntities.THROWABLE_SMOKE_GRENADE.get(), world, player);
         this.setItem(new ItemStack(ModItems.SMOKE_GRENADE_NO_PIN.get()));
         this.setMaxLife(timeLeft);
+        bounceSound = ModSounds.SMOKE_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     @Override

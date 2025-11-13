@@ -63,9 +63,22 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> GRENADE_LAUNCHER_COCK = register("item.grenade_launcher.cock");
 
 	/* Grenades */
-	public static final RegistryObject<SoundEvent> GRENADE_THROW = register("item.grenade.throw");
-	public static final RegistryObject<SoundEvent> GRENADE_PIN = register("item.grenade.pin");
-	public static final RegistryObject<SoundEvent> GRENADE_LIGHT = register("item.grenade.light");
+	public static final RegistryObject<SoundEvent> GRENADE_THROW = register("item.grenade.he_throw");
+	public static final RegistryObject<SoundEvent> INCENDIARY_THROW = register("item.grenade.incendiary_throw");
+	public static final RegistryObject<SoundEvent> STUN_THROW = register("item.grenade.stun_throw");
+	public static final RegistryObject<SoundEvent> SMOKE_THROW = register("item.grenade.smoke_throw");
+	public static final RegistryObject<SoundEvent> MOLOTOV_THROW = register("item.grenade.molotov_throw");
+
+	public static final RegistryObject<SoundEvent> GRENADE_BOUNCE = register("item.grenade.he_bounce");
+	public static final RegistryObject<SoundEvent> INCENDIARY_BOUNCE = register("item.grenade.incendiary_bounce");
+	public static final RegistryObject<SoundEvent> STUN_BOUNCE = register("item.grenade.stun_bounce");
+	public static final RegistryObject<SoundEvent> SMOKE_BOUNCE = register("item.grenade.smoke_bounce");
+
+	public static final RegistryObject<SoundEvent> GRENADE_PIN = register("item.grenade.he_pin");
+	public static final RegistryObject<SoundEvent> INCENDIARY_PIN = register("item.grenade.incendiary_pin");
+	public static final RegistryObject<SoundEvent> STUN_PIN = register("item.grenade.stun_pin");
+	public static final RegistryObject<SoundEvent> SMOKE_PIN = register("item.grenade.smoke_pin");
+	public static final RegistryObject<SoundEvent> MOLOTOV_LIGHT = register("item.grenade.molotov_light");
 
 	/* Explosions */
 	public static final RegistryObject<SoundEvent> ROCKET_EXPLOSION = register("entity.rocket.explosion");

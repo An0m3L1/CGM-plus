@@ -1,6 +1,7 @@
 package com.mrcrayfish.guns.item.grenade;
 
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.entity.grenade.ThrowableMolotovEntity;
 import com.mrcrayfish.guns.init.ModSounds;
 import net.minecraft.ChatFormatting;
@@ -55,12 +56,18 @@ public class MolotovItem extends GrenadeItem
     {
         int duration = this.getUseDuration(stack) - count;
         if(duration == 10)
-            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.GRENADE_LIGHT.get(), SoundSource.PLAYERS, 2.5F, 1.0F, false);
+            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.MOLOTOV_LIGHT.get(), SoundSource.PLAYERS, 2.5F, 1.0F, false);
     }
 
     @Override
     public ThrowableMolotovEntity create(Level world, LivingEntity entity, int timeLeft)
     {
         return new ThrowableMolotovEntity(world, entity, timeLeft);
+    }
+
+    @Override
+    protected void onThrown(Level world, ThrowableGrenadeEntity entity)
+    {
+        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.MOLOTOV_THROW.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
     }
 }

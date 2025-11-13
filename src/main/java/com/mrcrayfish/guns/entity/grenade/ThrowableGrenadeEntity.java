@@ -32,6 +32,8 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     public ThrowableGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
     {
         super(entityType, worldIn);
+        bounceSound = ModSounds.GRENADE_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level world, LivingEntity entity)
@@ -41,6 +43,8 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
         this.setGravityVelocity(0.05F);
         this.setItem(new ItemStack(ModItems.GRENADE_NO_PIN.get()));
         this.setMaxLife(20 * 3);
+        bounceSound = ModSounds.GRENADE_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableGrenadeEntity(Level world, LivingEntity entity, int timeLeft)
@@ -50,6 +54,8 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
         this.setGravityVelocity(0.05F);
         this.setItem(new ItemStack(ModItems.GRENADE_NO_PIN.get()));
         this.setMaxLife(timeLeft);
+        bounceSound = ModSounds.GRENADE_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     @Override

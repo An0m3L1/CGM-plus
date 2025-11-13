@@ -140,6 +140,17 @@ public final class PropertyHelper
         return Vec3.ZERO;
     }
 
+    public static Vec3 getAttachmentRotation(ItemStack stack, Gun modifiedGun, IAttachment.Type type)
+    {
+        DataObject scopeObject = getObjectByPath(stack, WEAPON_KEY, "attachments", type.getSerializeKey());
+        if(scopeObject.has("rotation", DataType.ARRAY))
+        {
+            DataArray rotationArray = scopeObject.getDataArray("rotation");
+            return arrayToVec3(rotationArray, Vec3.ZERO);
+        }
+        return Vec3.ZERO;
+    }
+
     public static Vec3 getAttachmentScale(ItemStack weapon, Gun modifiedGun, IAttachment.Type type)
     {
         DataObject scopeObject = getObjectByPath(weapon, WEAPON_KEY, "attachments", type.getSerializeKey());

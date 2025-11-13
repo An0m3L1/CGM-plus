@@ -32,6 +32,8 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
         super(entityType, world);
+        bounceSound = ModSounds.INCENDIARY_BOUNCE.get();
+        useCustomBounceSound = true;
         if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
             DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.dynamicLightValue.get());
     }
@@ -40,6 +42,8 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
     {
         super(entityType, world, player);
         this.setItem(new ItemStack(ModItems.INCENDIARY_GRENADE_NO_PIN.get()));
+        bounceSound = ModSounds.INCENDIARY_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableIncendiaryGrenadeEntity(Level world, LivingEntity player, int timeLeft)
@@ -47,6 +51,8 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
         super(ModEntities.THROWABLE_INCENDIARY_GRENADE.get(), world, player);
         this.setItem(new ItemStack(ModItems.INCENDIARY_GRENADE_NO_PIN.get()));
         this.setMaxLife(timeLeft);
+        bounceSound = ModSounds.INCENDIARY_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     @Override

@@ -43,12 +43,16 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
     public ThrowableStunGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
         super(entityType, world);
+        bounceSound = ModSounds.STUN_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableStunGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
     {
         super(entityType, world, player);
         this.setItem(new ItemStack(ModItems.STUN_GRENADE_NO_PIN.get()));
+        bounceSound = ModSounds.STUN_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableStunGrenadeEntity(Level world, LivingEntity player, int maxCookTime)
@@ -56,6 +60,8 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
         super(ModEntities.THROWABLE_STUN_GRENADE.get(), world, player);
         this.setItem(new ItemStack(ModItems.STUN_GRENADE_NO_PIN.get()));
         this.setMaxLife(maxCookTime);
+        bounceSound = ModSounds.STUN_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     @SubscribeEvent

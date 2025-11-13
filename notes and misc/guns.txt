@@ -22,7 +22,6 @@ SMG:
     Tommy Gun
     Kriss Vector
 Rifles:
-    SSG-08 <--
     SVD
     G3
     VSS

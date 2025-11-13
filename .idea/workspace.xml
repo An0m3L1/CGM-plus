@@ -4,29 +4,377 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Sniper rifle update.&#10;&#10;Modified ammo stack sizes.&#10;Buffed gun durability.&#10;Modified rifles' stats.&#10;Overhauled grenade model.&#10;Started working on sniper rifle model.&#10;Added WIP resources and updated test world.">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/SniperRifleModel.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/bolt.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/chamber.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/ext_mag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/mag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/sights.json" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/heavy_sniper_rifle.cgmmeta" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/heavy_sniper_rifle.cgmmeta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/sniper_rifle.cgmmeta" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/sniper_rifle.cgmmeta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/ammo_pouch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/grenade_pouch.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/sniper_rifle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/sniper_rifle.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/assault_rifle.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/automatic_pistol.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/combat_rifle.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/semi_auto_shotgun.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/sniper_rifle.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/tactical_pistol.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/animations/tactical_rifle.cgmanim" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/blockstates/cast_iron_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/blockstates/gun_workbench.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/blockstates/hemp_crop.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/blockstates/steel_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/lang/en_us.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/lang/ru_ru.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/cast_iron_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/gun_workbench.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage0.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage1.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage2.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage3.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage4.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage5.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage6.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/hemp/hemp_stage7.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/block/steel_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/ammo_pouch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/assault_rifle.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/assault_rifle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/automatic_pistol.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/automatic_pistol.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/brass_casing.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/brass_rod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/buckshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/buckshot_model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/buckshot_shell.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/bullet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/cast_iron_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/cast_iron_ingot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/cast_iron_nugget.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/cast_iron_rod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/cast_iron_sheet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/cloth.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/combat_rifle.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/combat_rifle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/compensator.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/compensator.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/copper_rod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/extended_magazine.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/flash_hider.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/flash_hider.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/golden_rod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/grenade.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/grenade_launcher.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/grenade_launcher.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/grenade_no_pin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/grenade_pouch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/gun_repair_kit.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/gun_workbench.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/gunpowder_pinch.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/heavy_bullet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/heavy_bullet_model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/heavy_silencer.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/heavy_silencer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/heavy_sniper_rifle.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/heavy_sniper_rifle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/heavy_stock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/hemp.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/hemp_seeds.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/horizontal_grip.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/impact_grenade.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/impact_grenade_no_pin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/incendiary_grenade.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/incendiary_grenade_no_pin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/incomplete_sturdy_mechanism.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/iron_rod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/light_bullet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/light_bullet_model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/light_magazine.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/light_stock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/medium_bullet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/medium_bullet_model.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/medium_stock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/mini_gun.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/mini_gun.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/molotov.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/muzzle_brake.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/muzzle_brake.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/pipe_grenade.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/plastic.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/plastic_sheet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/red_dot_sight.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/red_dot_sight.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/rocket.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/rocket_launcher.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/rocket_launcher.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/rubber.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/rubber_sheet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/semi_auto_shotgun.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/semi_auto_shotgun.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/shell_casing.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/silencer.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/silencer.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/smoke_grenade.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/smoke_grenade_no_pin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/sniper_rifle.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/sniper_rifle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/steel_block.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/steel_ingot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/steel_nugget.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/steel_rod.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/steel_sheet.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/stun_grenade.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/stun_grenade_no_pin.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/sturdy_mechanism.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/tactical_pistol.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/tactical_pistol.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/tactical_rifle.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/tactical_rifle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/unused/grenade_no_pin_old.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/unused/grenade_old.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/unused/gun_repair_kit.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/vertical_grip.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/x2_scope.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/x2_scope.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/x4_scope.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/x4_scope.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/x6_scope.cgmmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/item/x6_scope.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/ext_mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/light_mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/no_sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/no_stock.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/assault_rifle/slide.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/automatic_pistol/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/automatic_pistol/ext_mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/automatic_pistol/light_mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/automatic_pistol/mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/automatic_pistol/no_sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/automatic_pistol/sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/automatic_pistol/slide.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/combat_rifle/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/combat_rifle/no_sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/combat_rifle/sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/flame.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/grenade_launcher/grenade_launcher_base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/grenade_launcher/grenade_launcher_cylinder.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/heavy_sniper_rifle/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/heavy_sniper_rifle/bolt.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/heavy_sniper_rifle/chamber.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/heavy_sniper_rifle/mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/heavy_sniper_rifle/sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/mini_gun/mini_gun_barrels.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/mini_gun/mini_gun_base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/semi_auto_shotgun/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/semi_auto_shotgun/handle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/semi_auto_shotgun/no_handle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/semi_auto_shotgun/sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/semi_auto_shotgun/slide.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/sniper_rifle/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/tactical_pistol/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/tactical_pistol/ext_mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/tactical_pistol/mag.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/tactical_pistol/slide.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/tactical_rifle/base.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/tactical_rifle/sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/z_gun/rocket_launcher.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/models/special/z_gun/sniper_rifle.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/blood.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/brass_casing.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/bullet_hole.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/casing.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/explosion.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/headshot.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/shell_casing.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/smoke_cloud.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/smoke_effect.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/particles/trail.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/grenade.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/incendiary.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/molotov.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/pipe_grenade.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/rocket.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/smoke.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/stun.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/explosion/stun_ring.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby1.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby2.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby3.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby4.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby5.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby6.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby7.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby8.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/entity/flyby/flyby9.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/assault_rifle/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/assault_rifle/mag_in.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/assault_rifle/mag_out.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/assault_rifle/silenced_fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/assault_rifle/slap.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/automatic_pistol/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/automatic_pistol/mag_in.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/automatic_pistol/mag_out.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/automatic_pistol/silenced_fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/automatic_pistol/slide_back.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/automatic_pistol/slide_forward.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/empty_click.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/fire_switch.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/grenade/light.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/grenade/pin.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/grenade/throw.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/grenade_launcher/cock.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/grenade_launcher/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/grenade_launcher/reload.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/heavy_sniper_rifle/cock.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/heavy_sniper_rifle/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/heavy_sniper_rifle/mag_in.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/heavy_sniper_rifle/mag_out.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/low_durability.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/mini_gun/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/rocket_launcher/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/rocket_launcher/reload.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/semi_auto_shotgun/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/semi_auto_shotgun/reload.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/sniper_rifle/cock.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/sniper_rifle/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/sniper_rifle/mag_in.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/sniper_rifle/mag_out.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/sniper_rifle/reload.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/sniper_rifle/silenced_fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/tactical_pistol/fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/tactical_pistol/mag_in.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/tactical_pistol/mag_out.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/tactical_pistol/silenced_fire.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/tactical_pistol/slide_back.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/item/tactical_pistol/slide_forward.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/sounds/ui/attach.ogg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/cast_iron_block.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/gun_workbench.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/hemp/hemp_stage7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/steel_block.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/block/steel_block_top.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/arrow.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/better_default.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/box.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/dot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/dynamic_horizontal.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/dynamic_vertical.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/filled_circle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/hit_marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/line.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/round.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/smiley.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/special_hit_marker.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/special_hit_marker2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/square.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/t.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/crosshair/tech.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/muzzle_flash.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/muzzle_flash_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/red_dot_sight_reticle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/scope_vignette.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/x2_scope_reticle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/x4_scope_reticle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/x4_scope_reticle_emissive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/x6_scope_reticle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/effect/x6_scope_reticle_emissive.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/gui/attachments.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/gui/attachments2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/gui/components.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/gui/debug.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/gui/gun_workbench.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/ammo_pouch.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/assault_rifle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/automatic_pistol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/barrel.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/brass_casing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/brass_rod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/buckshot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/bullet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/bullet_item.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/cast_iron_ingot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/cast_iron_nugget.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/cast_iron_rod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/cast_iron_sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/cloth.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/copper_rod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/golden_rod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/grenade.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/grenade_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/grenade_pouch.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/gun_repair_kit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/gunpowder_pinch.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/heavy_sniper_rifle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/heavy_stock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/hemp.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/hemp_seeds.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/horizontal_grip.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/incomplete_sturdy_mechanism.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/iron_rod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/light_stock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/medium_stock.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/mini_gun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/muzzle_brake.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/plastic.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/plastic_sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/rocket_launcher.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/rubber.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/rubber_sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/scope.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/semi_auto_shotgun.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/shell_casing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/silencer.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/sniper_rifle.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/steel_ingot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/steel_nugget.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/steel_rod.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/steel_sheet.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/sturdy_mechanism.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/tactical_pistol.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/unused/blueprint.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/unused/gun_repair_kit.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/unused/placeholder.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/unused/steel_screw.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/item/vertical_grip.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/mob_effect/blinded.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/mob_effect/smoked.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/mob_effect/stunned.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/blood.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/brass_casing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/brass_casing.png.mcmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/casing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/casing.png.mcmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_0.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_1.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_2.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_3.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_4.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_5.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_6.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/explosion/explosion_7.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/headshot.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/shell_casing.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/shell_casing.png.mcmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/cgm/textures/particle/smoke_effect.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/assets/minecraft/textures/item/iron_nugget.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/pack.mcmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/WIP Resources/pack.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/guns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/guns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/PropertyHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/PropertyHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableItemEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -87,38 +435,38 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [runClient --warning-mode'none'].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;JavaClassFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;false&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;Sources download failed&quot;,
-    &quot;Notification.DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/resourcepacks/WIP Resources/assets&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;editor.preferences.gutterIcons&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor": "Run",
+    "Gradle.CGM-plus [build].executor": "Run",
+    "Gradle.CGM-plus [createMcpToSrg].executor": "Run",
+    "Gradle.CGM-plus [runClient --warning-mode'none'].executor": "Run",
+    "Gradle.CGM-plus [runClient].executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "JavaClassFindUsagesOptions.isSearchForTextOccurrences": "false",
+    "Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed": "Sources download failed",
+    "Notification.DoNotAsk-gradle.notifications.sources.download.failed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/main/resources/assets/cgm/sounds/item/assault_rifle",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\item\assault_rifle" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\item\sniper_rifle" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets\cgm\textures\item" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets\cgm\models\special\sniper_rifle" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special\sniper_rifle" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item\unused" />
@@ -394,7 +742,15 @@
       <option name="project" value="LOCAL" />
       <updated>1759670233940</updated>
     </task>
-    <option name="localTasksCounter" value="25" />
+    <task id="LOCAL-00025" summary="Sniper rifle update.&#10;&#10;Overhauled sniper rifle.&#10;Modified ammo stack sizes.&#10;Buffed gun durability.&#10;Modified some gun stats.&#10;Overhauled grenade model.&#10;Added WIP resources and updated test world.&#10;Fixed fire switch sound not used by default.">
+      <option name="closed" value="true" />
+      <created>1763060764405</created>
+      <option name="number" value="00025" />
+      <option name="presentableId" value="LOCAL-00025" />
+      <option name="project" value="LOCAL" />
+      <updated>1763060764405</updated>
+    </task>
+    <option name="localTasksCounter" value="26" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -413,7 +769,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Small tweak to gunfire light." />
     <MESSAGE value="Small tweak to gunfire light. Added some code relating to an upcoming wallbang feature." />
     <MESSAGE value="A" />
     <MESSAGE value="Fixed datapack validation errors. More code changes in preparation for wallbang changes. Projectiles now continue flying if they destroy a fragile block." />
@@ -438,7 +793,8 @@
     <MESSAGE value="Attachment update.&#10;&#10;Added muzzle break.&#10;Added compensator.&#10;Slightly refreshed barrel models.&#10;Reordered attachment modifiers." />
     <MESSAGE value="Attachment update.&#10;&#10;Added muzzle break.&#10;Added compensator.&#10;Slightly refreshed barrel models." />
     <MESSAGE value="Sniper rifle update.&#10;&#10;Modified ammo stack sizes.&#10;Modified rifles' stats.&#10;Overhauled grenade model.&#10;Started working on sniper rifle model.&#10;Added WIP resources and updated test world." />
-    <option name="LAST_COMMIT_MESSAGE" value="Sniper rifle update.&#10;&#10;Modified ammo stack sizes.&#10;Modified rifles' stats.&#10;Overhauled grenade model.&#10;Started working on sniper rifle model.&#10;Added WIP resources and updated test world." />
+    <MESSAGE value="Sniper rifle update.&#10;&#10;Overhauled sniper rifle.&#10;Modified ammo stack sizes.&#10;Buffed gun durability.&#10;Modified some gun stats.&#10;Overhauled grenade model.&#10;Added WIP resources and updated test world.&#10;Fixed fire switch sound not used by default." />
+    <option name="LAST_COMMIT_MESSAGE" value="Sniper rifle update.&#10;&#10;Overhauled sniper rifle.&#10;Modified ammo stack sizes.&#10;Buffed gun durability.&#10;Modified some gun stats.&#10;Overhauled grenade model.&#10;Added WIP resources and updated test world.&#10;Fixed fire switch sound not used by default." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

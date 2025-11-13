@@ -47,9 +47,22 @@
    "item.grenade_launcher.reload": {"subtitle": "subtitle.cgm.reload", "sounds": [{"name": "cgm:item/grenade_launcher/reload" }]},
    "item.grenade_launcher.cock": {"subtitle": "subtitle.cgm.cock", "sounds": [{"name": "cgm:item/grenade_launcher/cock" }]},
 
-   "item.grenade.throw": {"subtitle": "subtitle.cgm.grenade.throw", "sounds": [{"name": "cgm:item/grenade/throw", "volume": 0.5 }]},
-   "item.grenade.pin": {"subtitle": "subtitle.cgm.grenade.pin", "sounds": [{"name": "cgm:item/grenade/pin", "volume": 0.5 }]},
-   "item.grenade.light": {"subtitle": "subtitle.cgm.grenade.light", "sounds": [{"name": "cgm:item/grenade/light", "volume": 0.5 }]},
+   "item.grenade.he_throw": {"subtitle": "subtitle.cgm.grenade.throw", "sounds": [{"name": "cgm:item/grenade/he_throw", "volume": 0.5 }]},
+   "item.grenade.incendiary_throw": {"subtitle": "subtitle.cgm.grenade.throw", "sounds": [{"name": "cgm:item/grenade/incendiary_throw", "volume": 0.5 }]},
+   "item.grenade.stun_throw": {"subtitle": "subtitle.cgm.grenade.throw", "sounds": [{"name": "cgm:item/grenade/stun_throw", "volume": 0.5 }]},
+   "item.grenade.smoke_throw": {"subtitle": "subtitle.cgm.grenade.throw", "sounds": [{"name": "cgm:item/grenade/smoke_throw", "volume": 0.5 }]},
+   "item.grenade.molotov_throw": {"subtitle": "subtitle.cgm.grenade.throw", "sounds": [{"name": "cgm:item/grenade/molotov_throw", "volume": 0.5 }]},
+
+   "item.grenade.he_bounce": {"subtitle": "subtitle.cgm.grenade.bounce", "sounds": [{"name": "cgm:item/grenade/he_bounce", "volume": 0.5 }]},
+   "item.grenade.incendiary_bounce": {"subtitle": "subtitle.cgm.grenade.bounce", "sounds": [{"name": "cgm:item/grenade/incendiary_bounce", "volume": 0.5 }]},
+   "item.grenade.stun_bounce": {"subtitle": "subtitle.cgm.grenade.bounce", "sounds": [{"name": "cgm:item/grenade/stun_bounce", "volume": 0.5 }]},
+   "item.grenade.smoke_bounce": {"subtitle": "subtitle.cgm.grenade.bounce", "sounds": [{"name": "cgm:item/grenade/smoke_bounce", "volume": 0.5 }]},
+
+   "item.grenade.he_pin": {"subtitle": "subtitle.cgm.grenade.pin", "sounds": [{"name": "cgm:item/grenade/he_pin", "volume": 0.5 }]},
+   "item.grenade.incendiary_pin": {"subtitle": "subtitle.cgm.grenade.pin", "sounds": [{"name": "cgm:item/grenade/incendiary_pin", "volume": 0.5 }]},
+   "item.grenade.stun_pin": {"subtitle": "subtitle.cgm.grenade.pin", "sounds": [{"name": "cgm:item/grenade/stun_pin", "volume": 0.5 }]},
+   "item.grenade.smoke_pin": {"subtitle": "subtitle.cgm.grenade.pin", "sounds": [{"name": "cgm:item/grenade/smoke_pin", "volume": 0.5 }]},
+   "item.grenade.molotov_light": {"subtitle": "subtitle.cgm.grenade.light", "sounds": [{"name": "cgm:item/grenade/molotov_light", "volume": 0.5 }]},
 
 
    "entity.rocket.explosion": {"subtitle": "subtitle.cgm.rocket.explosion", "sounds": [{"name": "cgm:entity/explosion/rocket", "volume": 0.75}]},

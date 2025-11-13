@@ -42,6 +42,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import org.lwjgl.glfw.GLFW;
 
 import java.lang.reflect.Field;
+import java.util.Objects;
 
 /**
  * Author: MrCrayfish
@@ -91,7 +92,7 @@ public class ClientHandler
             {
                 return -1;
             }
-            if(index == 0 && stack.hasTag() && stack.getTag().contains("Color", Tag.TAG_INT))
+            if(index == 0 && stack.hasTag() && Objects.requireNonNull(stack.getTag()).contains("Color", Tag.TAG_INT))
             {
                 return stack.getTag().getInt("Color");
             }
@@ -139,7 +140,7 @@ public class ClientHandler
         ModelOverrides.register(ModItems.AUTOMATIC_PISTOL.get(), new AutomaticPistolModel());
         ModelOverrides.register(ModItems.MINI_GUN.get(), new MiniGunModel());
         ModelOverrides.register(ModItems.TACTICAL_PISTOL.get(), new TacticalPistolModel());
-        ModelOverrides.register(ModItems.SNIPER_RIFLE.get(), new SimpleModel(SpecialModels.SNIPER_RIFLE::getModel));
+        ModelOverrides.register(ModItems.SNIPER_RIFLE.get(), new SniperRifleModel());
         ModelOverrides.register(ModItems.SEMI_AUTO_SHOTGUN.get(), new SemiAutoShotgunModel());
     }
 
@@ -191,9 +192,7 @@ public class ClientHandler
 
     public static void onRegisterReloadListener(RegisterClientReloadListenersEvent event)
     {
-        event.registerReloadListener((ResourceManagerReloadListener) manager -> {
-            PropertyHelper.resetCache();
-        });
+        event.registerReloadListener((ResourceManagerReloadListener) manager -> PropertyHelper.resetCache());
     }
 
     public static Screen createEditorScreen(IEditorMenu menu)

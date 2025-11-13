@@ -1,0 +1,33 @@
+{
+	"format_version": "1.21.6",
+	"credit": "Made with Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"0": "cgm:item/sniper_rifle",
+		"particle": "cgm:item/sniper_rifle"
+	},
+	"elements": [
+		{
+			"name": "clip",
+			"from": [7.6, 1.05, 10.7],
+			"to": [8.4, 3.05, 12.7],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 1.05, 10.7]},
+			"faces": {
+				"north": {"uv": [0, 11, 0.5, 13], "texture": "#0"},
+				"east": {"uv": [3, 11, 1, 13], "texture": "#0"},
+				"south": {"uv": [3, 11, 4, 13], "texture": "#0"},
+				"west": {"uv": [1, 11, 3, 13], "texture": "#0"},
+				"up": {"uv": [4, 12.5, 5, 14], "texture": "#0"},
+				"down": {"uv": [1, 13, 3, 14], "texture": "#0"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "mag",
+			"origin": [8, 1.05, 10.7],
+			"color": 0,
+			"children": [0]
+		}
+	]
+}

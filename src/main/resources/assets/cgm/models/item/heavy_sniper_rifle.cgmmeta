@@ -12,11 +12,11 @@
 				"boltAnimRotation": [2.5, 0.3, 1.0]
 			}
 		},
-      "attachments": {
-        "scope": {
-          "translation": [8.0, 4.3801, 11.8]
-        }
-      },
+        "attachments": {
+            "scope": {
+                "translation": [8.0, 4.3801, 11.8]
+            }
+        },
 		"hands": {
 			"animScalar": 0.8,
             "forward": {

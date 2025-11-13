@@ -2469,7 +2469,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public ResourceLocation getFireSwitch()
         {
             if (this.fireSwitch==null)
-            	return getEmptyClick();
+                return new ResourceLocation(Reference.MOD_ID, "item.fire_switch");
         	return this.fireSwitch;
         }
     }

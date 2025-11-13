@@ -13,13 +13,18 @@
 
     "recoilAngle": 7.5,
     "recoilKick": 1.5,
-    "recoilDurationOffset": 0.35,
+    "recoilDurationOffset": 0.5,
     "spread": 12.0,
     "restingSpread": 4.0,
 
-    "maxAmmo": 10,
+    "maxAmmo": 8,
+    "lightMagAmmo": 6,
+    "extendedMagAmmo": 10,
+
     "useMagReload": true,
-    "magReloadTime": 60,
+    "magReloadTime": 45,
+    "lightMagReloadTimeModifier": 0.9,
+    "extendedMagReloadTimeModifier": 1.1,
 
     "reloadStartDelay": 1,
     "reloadInterruptDelay": 6,
@@ -28,12 +33,11 @@
   },
   "modules": {
     "attachments": {
-      "barrel": {"scale": 0.5},
+      "barrel": {"scale": 0.6},
       "scope": {},
-      "underBarrel": {},
       "magazine": {}
     },
-    "zoom": {"fovModifier": 0.6}
+    "zoom": {"fovModifier": 0.75}
   },
   "projectile": {
     "item": "cgm:heavy_bullet",

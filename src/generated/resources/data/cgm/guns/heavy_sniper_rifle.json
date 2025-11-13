@@ -18,6 +18,7 @@
     "restingSpread": 8.0,
 
     "maxAmmo": 5,
+
     "useMagReload": true,
     "magReloadTime": 60,
 

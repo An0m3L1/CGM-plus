@@ -16,7 +16,6 @@ import net.minecraftforge.fml.common.Mod;
 public enum SpecialModels
 {
     ROCKET_LAUNCHER("z_gun/rocket_launcher"),
-    SNIPER_RIFLE("z_gun/sniper_rifle"),
     FLAME("flame"),
 
     MINI_GUN_BASE("mini_gun/mini_gun_base"),
@@ -46,6 +45,13 @@ public enum SpecialModels
     HEAVY_SNIPER_RIFLE_BOLT("heavy_sniper_rifle/bolt"),
     HEAVY_SNIPER_RIFLE_CHAMBER("heavy_sniper_rifle/chamber"),
     HEAVY_SNIPER_RIFLE_MAG("heavy_sniper_rifle/mag"),
+
+    SNIPER_RIFLE_BASE("sniper_rifle/base"),
+    SNIPER_RIFLE_SIGHTS("sniper_rifle/sights"),
+    SNIPER_RIFLE_BOLT("sniper_rifle/bolt"),
+    SNIPER_RIFLE_CHAMBER("sniper_rifle/chamber"),
+    SNIPER_RIFLE_MAG("sniper_rifle/mag"),
+    SNIPER_RIFLE_EXT_MAG("sniper_rifle/ext_mag"),
 
     TACTICAL_PISTOL_BASE("tactical_pistol/base"),
     TACTICAL_PISTOL_SLIDE("tactical_pistol/slide"),

@@ -22,7 +22,7 @@
     "extendedMagAmmo": 17,
 
     "useMagReload": true,
-    "magReloadTime": 40,
+    "magReloadTime": 35,
     "lightMagReloadTimeModifier": 0.85,
     "extendedMagReloadTimeModifier": 1.15,
 

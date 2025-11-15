@@ -58,7 +58,7 @@ public final class GunAnimationHelper
     		}
     	    return "reload";
 		}
-		else
+		else if (reloadTransitionProgress<=0.0)
 		{
 			ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();
             float cooldown = tracker.getCooldownPercent(weapon.getItem(), Minecraft.getInstance().getFrameTime());
@@ -74,7 +74,7 @@ public final class GunAnimationHelper
 			float drawProgress = ((player.tickCount-weaponSwitchTick)+partialTicks)*animationSpeed;
 			int totalFrames = Math.max(getAnimationFrames("draw", weapKey),1);
 
-			if ((drawProgress<totalFrames+1 || player.tickCount<weaponSwitchTick+10) && player.getMainHandItem() == weapon)
+			if ((drawProgress<totalFrames+1 || player.tickCount<weaponSwitchTick+7) && player.getMainHandItem() == weapon)
 				return "draw";
 		}
 

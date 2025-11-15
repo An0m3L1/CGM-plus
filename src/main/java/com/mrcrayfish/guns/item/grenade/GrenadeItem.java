@@ -69,7 +69,7 @@ public class GrenadeItem extends AmmoItem
         if(!this.canCook()) return;
 
         int duration = this.getUseDuration(stack) - count;
-        if(duration == 10)
+        if(duration == 9)
             player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.GRENADE_PIN.get(), SoundSource.PLAYERS, 1.0F, 1.0F, false);
     }
 

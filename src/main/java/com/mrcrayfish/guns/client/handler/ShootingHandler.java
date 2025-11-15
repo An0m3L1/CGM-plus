@@ -80,8 +80,12 @@ public class ShootingHandler
 
         Minecraft mc = Minecraft.getInstance();
         Player player = mc.player;
-        if(player == null)
+        if(player == null || player.isDeadOrDying())
+        {
+            lastShotTick = -1;
+            weaponSwitchTick=-1;
             return;
+        }
 
         if(PlayerReviveHelper.isBleeding(player))
             return;
@@ -197,8 +201,10 @@ public class ShootingHandler
                 weaponSwitchTick = player.tickCount;
                 if(heldItem.getItem() instanceof GunItem)
                 {
-                    GunRenderingHandler.get().updateReserveAmmo(player);
+                    GunRenderingHandler.get().weaponSwitched(player);
                 }
+                else
+                    weaponSwitchTick = -1;
                 ReloadHandler.get().weaponSwitched();
             }
 
@@ -431,7 +437,8 @@ public class ShootingHandler
     {
         if (slot==-1)
         	return true;
-        boolean sameItem = (player.getInventory().getSelected().getItem() == lastItem);
+        Item currentItem = player.getInventory().getSelected().getItem();
+        boolean sameItem = (Item.getId(currentItem) == Item.getId(lastItem));
 
         return (isSameSlot(player) && sameItem);
         //return (player.getInventory().selected == slot);

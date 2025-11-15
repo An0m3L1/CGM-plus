@@ -55,7 +55,7 @@ public class DynamicCrosshair extends Crosshair
     public void onGunFired()
     {
         this.prevScale = 0.0F;
-        this.scale = 0.6F;
+        this.scale = 0.5F;
         this.fireBloom = 3.0F;
     }
 

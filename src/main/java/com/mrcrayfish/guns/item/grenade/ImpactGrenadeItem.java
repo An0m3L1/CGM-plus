@@ -53,7 +53,7 @@ public class ImpactGrenadeItem extends GrenadeItem
     public void onUsingTick(ItemStack stack, LivingEntity player, int count)
     {
         int duration = this.getUseDuration(stack) - count;
-        if(duration == 10)
+        if(duration == 9)
             player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.GRENADE_PIN.get(), SoundSource.PLAYERS, 1.0F, 1.0F, false);
     }
 

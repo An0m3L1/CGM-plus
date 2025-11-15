@@ -55,7 +55,7 @@ public class MolotovItem extends GrenadeItem
     public void onUsingTick(ItemStack stack, LivingEntity player, int count)
     {
         int duration = this.getUseDuration(stack) - count;
-        if(duration == 10)
+        if(duration == 9)
             player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.MOLOTOV_LIGHT.get(), SoundSource.PLAYERS, 2.5F, 1.0F, false);
     }
 

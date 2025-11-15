@@ -186,8 +186,8 @@ public class ReloadHandler
             }
             else
             {
-            	ItemStack stack = player.getMainHandItem();
-            	GunRenderingHandler.get().getReloadDeltaTime(stack);
+            	//ItemStack stack = player.getMainHandItem();
+            	//GunRenderingHandler.get().getReloadDeltaTime(stack);
             	if (fromInput)
             	reloadFinish = false;
             	

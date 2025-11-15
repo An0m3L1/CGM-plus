@@ -1,12 +1,10 @@
 package com.mrcrayfish.guns.client.util;
 
 import com.mrcrayfish.framework.api.client.FrameworkClientAPI;
-import com.mrcrayfish.framework.api.serialize.DataArray;
-import com.mrcrayfish.framework.api.serialize.DataNumber;
-import com.mrcrayfish.framework.api.serialize.DataObject;
-import com.mrcrayfish.framework.api.serialize.DataType;
+import com.mrcrayfish.framework.api.serialize.*;
 import com.mrcrayfish.guns.cache.ObjectCache;
 import com.mrcrayfish.guns.client.MetaLoader;
+import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.properties.SightAnimation;
 import com.mrcrayfish.guns.item.IMeta;
@@ -16,6 +14,7 @@ import com.mrcrayfish.guns.item.attachment.impl.IScope;
 import com.mrcrayfish.guns.item.attachment.impl.create.Scope;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
@@ -396,7 +395,24 @@ public final class PropertyHelper
 		
 		return Vec3.ZERO;
 	}
-    
+
+    public static GripType getGripType(ItemStack weapon, Gun modifiedGun) {
+        // Gets the client-sided GripType of a gun for rendering purposes.
+        // Attempt to retrieve the GripType from the cgmmeta properties file
+        if (!modifiedGun.getGeneral().overrideClientGripType())
+        {
+            DataObject handObject = getObjectByPath(weapon, WEAPON_KEY);
+            if (handObject.has("renderGripType", DataType.STRING))
+            {
+                DataString gripTypeString = handObject.getDataString("renderGripType");
+                if (gripTypeString!=null)
+                    return GripType.getType(new ResourceLocation(gripTypeString.asString()));
+            }
+        }
+        // Fallback: retrieve the GripType from the gun's data
+        return modifiedGun.getGeneral().getGripType();
+    }
+
     public static double getHandPosScalar(ItemStack weapon) {
 		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands");
         if(handObject.has("posScalar", DataType.NUMBER))

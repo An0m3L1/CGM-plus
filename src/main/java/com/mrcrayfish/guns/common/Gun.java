@@ -140,6 +140,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Ignored
         private GripType gripType = GripType.ONE_HANDED_PISTOL;
         @Optional
+        private boolean overrideClientGripType = false;
+        @Optional
         private int defaultColor = -1;
         private int maxAmmo;
         @Optional
@@ -236,6 +238,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             tag.putInt("BurstCount", this.burstCount);
             tag.putInt("BurstCooldown", this.burstCooldown);
             tag.putString("GripType", this.gripType.getId().toString());
+            tag.putBoolean("OverrideClientGripTyper", this.overrideClientGripType);
             tag.putInt("DefaultColor", this.defaultColor);
             tag.putInt("MaxAmmo", this.maxAmmo);
             tag.putInt("LightMagAmmo", this.lightMagAmmo);
@@ -303,6 +306,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(tag.contains("GripType", Tag.TAG_STRING))
             {
                 this.gripType = GripType.getType(ResourceLocation.tryParse(tag.getString("GripType")));
+            }
+            if(tag.contains("OverrideClientGripType", Tag.TAG_ANY_NUMERIC))
+            {
+                this.overrideClientGripType = tag.getBoolean("OverrideClientGripType");
             }
             if(tag.contains("DefaultColor", Tag.TAG_ANY_NUMERIC))
             {
@@ -518,6 +525,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.burstCount != 0) object.addProperty("burstCount", this.burstCount);
             if(this.burstCooldown != -1) object.addProperty("burstCooldown", this.burstCooldown);
             object.addProperty("gripType", this.gripType.getId().toString());
+            if(this.overrideClientGripType != false) object.addProperty("overrideClientGripType", this.overrideClientGripType);
             if(this.defaultColor != 1) object.addProperty("defaultColor", this.defaultColor);
             object.addProperty("maxAmmo", this.maxAmmo);
             if(this.lightMagAmmo != -1) object.addProperty("lightMagAmmo", this.lightMagAmmo);
@@ -571,6 +579,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             general.burstCount = this.burstCount;
             general.burstCooldown = this.burstCooldown;
             general.gripType = this.gripType;
+            general.overrideClientGripType = this.overrideClientGripType;
             general.defaultColor = this.defaultColor;
             general.maxAmmo = this.maxAmmo;
             general.lightMagAmmo = this.lightMagAmmo;
@@ -662,6 +671,15 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public GripType getGripType()
         {
             return this.gripType;
+        }
+
+        /**
+         * @return If true, client-sided GripType parameters in the gun's cgmmeta
+         * file are ignored in favor of the GripType defined in the gun's data.
+         */
+        public boolean overrideClientGripType()
+        {
+            return this.overrideClientGripType;
         }
 
         /**

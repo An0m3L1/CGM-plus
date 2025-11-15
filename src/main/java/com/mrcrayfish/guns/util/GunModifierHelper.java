@@ -260,6 +260,9 @@ public class GunModifierHelper
 
     public static double getModifiedAimDownSightSpeed(ItemStack weapon, double speed)
     {
+        if (!(weapon.getItem() instanceof GunItem))
+            return speed;
+
         for(int i = 0; i < IAttachment.Type.values().length; i++)
         {
             IGunModifier[] modifiers = getModifiers(weapon, IAttachment.Type.values()[i]);

@@ -14,12 +14,15 @@ import java.util.stream.Collectors;
 public enum Easings implements StringRepresentable
 {
     LINEAR("linear", t -> t),
+    EASE_IN_SIN("ease_in_sin", t -> 1.0F - (float)(Math.cos((t * Math.PI) / 2F))),
     EASE_IN_QUAD("ease_in_quad", Mth::square),
     EASE_IN_CUBIC("ease_in_cubic", Mth::cube),
     EASE_IN_CIRC("ease_in_circ", t -> 1.0F - Mth.sqrt(1.0F - Mth.square(t))),
+    EASE_OUT_SIN("ease_out_sin", t -> (float)(Math.sin((t * Math.PI) / 2))),
     EASE_OUT_QUAD("ease_out_quad", t -> 1.0F - Mth.square(1.0F - t)),
     EASE_OUT_CUBIC("ease_out_cubic", t -> 1.0F - Mth.cube(1.0F - t)),
     EASE_OUT_CIRC("ease_out_circ", t -> Mth.sqrt(1.0F - Mth.square(t - 1.0F))),
+    EASE_IN_OUT_SIN("ease_in_out_sin", t -> (float)-(Math.cos(Math.PI * t) - 1) / 2),
     EASE_IN_OUT_QUAD("ease_in_out_quad", t -> t < 0.5F ? 2.0F * Mth.square(t) : 1.0F - Mth.square(-2.0F * t + 2.0F) / 2.0F),
     EASE_IN_OUT_CUBIC("ease_in_out_cubic", t -> t < 0.5F ? 4.0F * Mth.cube(t) : 1.0F - Mth.cube(-2.0F * t + 2.0F) / 2.0F),
     EASE_IN_OUT_CIRC("ease_in_out_circ", t -> t < 0.5F ? (1.0F - Mth.sqrt(1.0F - Mth.square(2.0F * t))) / 2.0F : (Mth.sqrt(1.0F - Mth.square(-2.0F * t + 2.0F)) + 1.0F) / 2.0F),

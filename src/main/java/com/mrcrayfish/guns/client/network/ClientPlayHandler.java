@@ -3,11 +3,12 @@ package com.mrcrayfish.guns.client.network;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.client.BulletTrail;
 import com.mrcrayfish.guns.client.CustomGunManager;
-import com.mrcrayfish.guns.client.audio.GunShotSound;
+import com.mrcrayfish.guns.client.audio.*;
 import com.mrcrayfish.guns.client.handler.BulletTrailRenderingHandler;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.common.NetworkGunManager;
 import com.mrcrayfish.guns.init.ModParticleTypes;
+import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.message.*;
 import com.mrcrayfish.guns.particles.BulletHoleData;
 import net.minecraft.client.Minecraft;
@@ -126,28 +127,31 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
-        Level world = Objects.requireNonNull(mc.level);
+        Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.handGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
         explosion.scale(size);
 
         //Spawn lingering smoke particles
         for(int i = 0; i < 60; i++)
         {
-            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, world.random, 0.2);
+            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.2);
         }
 
         //Spawn fast moving flame/spark particles
         for(int i = 0; i < 60; i++)
         {
-            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, world.random, 2.0);
+            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, level.random, 2.0);
             flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
-            spawnParticle(particleManager, ParticleTypes.CRIT, x, y, z, world.random, 3.0);
+            spawnParticle(particleManager, ParticleTypes.CRIT, x, y, z, level.random, 3.0);
         }
     }
 
@@ -155,28 +159,31 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
-        Level world = Objects.requireNonNull(mc.level);
+        Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.impactGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
         explosion.scale(size);
 
         //Spawn lingering smoke particles
         for(int i = 0; i < 60; i++)
         {
-            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, world.random, 0.2);
+            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.2);
         }
 
         //Spawn fast moving flame/spark particles
         for(int i = 0; i < 60; i++)
         {
-            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, world.random, 2.0);
+            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, level.random, 2.0);
             flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
-            spawnParticle(particleManager, ParticleTypes.CRIT, x, y, z, world.random, 3.0);
+            spawnParticle(particleManager, ParticleTypes.CRIT, x, y, z, level.random, 3.0);
         }
     }
 
@@ -184,26 +191,29 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
-        Level world = Objects.requireNonNull(mc.level);
+        Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.rocketExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
         explosion.scale(size);
 
         //Spawn lingering smoke particles
         for(int i = 0; i < 90; i++)
         {
-            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, world.random, 0.25);
+            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.25);
         }
 
         //Spawn fast moving flame particles
         for(int i = 0; i < 120; i++)
         {
-            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, world.random, 1.5);
+            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, level.random, 1.5);
             flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
             flame.scale(3f);
         }
@@ -213,26 +223,29 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
-        Level world = Objects.requireNonNull(mc.level);
+        Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.pipeGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
         explosion.scale(size);
 
         //Spawn lingering smoke particles
         for(int i = 0; i < 90; i++)
         {
-            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, world.random, 0.25);
+            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.25);
         }
 
         //Spawn fast moving flame particles
         for(int i = 0; i < 120; i++)
         {
-            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, world.random, 1.5);
+            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, level.random, 1.5);
             flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
             flame.scale(3f);
         }
@@ -242,20 +255,23 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
-        Level world = Objects.requireNonNull(mc.level);
+        Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
         explosion.scale(size);
 
         //Spawn fast moving flame particles
         for(int i = 0; i < 90; i++)
         {
-            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, world.random, 1.5);
+            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, level.random, 1.5);
             flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
             flame.scale(3f);
         }
@@ -265,20 +281,23 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
-        Level world = Objects.requireNonNull(mc.level);
+        Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.molotovExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new MolotovExplosionSound(ModSounds.MOLOTOV_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
         //Spawn explosion particle
-        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, world.random, 0.0);
+        Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
         explosion.scale(size);
 
         //Spawn fast moving flame particles
         for(int i = 0; i < 90; i++)
         {
-            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, world.random, 1.5);
+            Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, level.random, 1.5);
             flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
             flame.scale(3f);
         }
@@ -288,23 +307,26 @@ public class ClientPlayHandler
     {
         Minecraft mc = Minecraft.getInstance();
         ParticleEngine particleManager = mc.particleEngine;
-        Level world = Objects.requireNonNull(mc.level);
+        Level level = Objects.requireNonNull(mc.level);
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
 
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new StunGrenadeExplosionSound(ModSounds.STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
         /* Spawn lingering smoke particles */
         for(int i = 0; i < 30; i++)
         {
-            spawnParticle(particleManager, ParticleTypes.CLOUD, x, y, z, world.random, 0.2);
+            spawnParticle(particleManager, ParticleTypes.CLOUD, x, y, z, level.random, 0.2);
         }
 
         /* Spawn fast moving smoke/spark particles */
         for(int i = 0; i < 30; i++)
         {
-            Particle smoke = spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, world.random, 4.0);
+            Particle smoke = spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 4.0);
             smoke.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.4)) * 0.5));
-            spawnParticle(particleManager, ParticleTypes.CRIT, x, y, z, world.random, 4.0);
+            spawnParticle(particleManager, ParticleTypes.CRIT, x, y, z, level.random, 4.0);
         }
     }
 
@@ -318,6 +340,9 @@ public class ClientPlayHandler
         double diameter = Config.COMMON.smokeGrenadeCloudDiameter.get();
         double vel = 0.004;
         int amount = (int) (diameter * 15);
+
+        //Play explosion sound
+        Minecraft.getInstance().getSoundManager().play(new SmokeGrenadeExplosionSound(ModSounds.SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float) x,(float) y, (float) z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         /* Spawn smoke cloud */
         for(int i = 0; i < amount; i++)

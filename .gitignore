@@ -23,3 +23,357 @@ SourceTree.lnk
 .idea/modules/CGM-plus.main.iml
 .idea/modules/Documents.GitHub.CGM-plus.test.iml
 .idea/workspace.xml
+notes and misc/CGM-E_Datapack/data/cgm/guns/assault_rifle.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/bazooka.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/grenade_launcher.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/heavy_rifle.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/machine_pistol.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/mini_gun.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/pistol.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/rifle.json
+notes and misc/CGM-E_Datapack/data/cgm/guns/shotgun.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/automatic_shotgun.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/automatic_sniper_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/battle_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/bolt_action_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/bullpup_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/compact_smg.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/double_barreled_shotgun.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/heavy_assault_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/heavy_pistol.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/heavy_revolver.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/hunting_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/hunting_shotgun.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/infantry_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/lever_action_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/machine_gun.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/pump_shotgun.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/rapid_smg.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/revolver.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/sniper_rifle.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/submachine_gun.json
+notes and misc/CGM-E_Datapack/data/nzgmaddon/guns/uzi.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/carbine_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/combat_assault_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/combat_marksman_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/combat_pistol.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/mares_leg_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/precision_battle_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/ranger_assault_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/sidearm_pistol.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/tactical_carbine.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/tactical_infantry_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/tactical_sniper_rifle.json
+notes and misc/CGM-E_Datapack/data/redundantguns/guns/vintage_bolt_rifle.json
+notes and misc/CGM-E_Datapack/pack.mcmeta
+notes and misc/CGM-E_Datapack/pack.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/assault_rifle-ark.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/assault_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/flans_style_reload.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/hand_movement_demo.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/heavy_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/machine_pistol.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/mini_gun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/pistol old.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/pistol.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/pistol_draw-only.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/shotgun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/animations/template.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/assault_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/grenade.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/grenade_launcher.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/grenade_throwing.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/heavy_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/light_grip.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/long_scope.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/long_scope.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/machine_pistol.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/machine_pistol.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/medium_scope.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/medium_scope.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/mini_gun.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/mini_gun.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/pistol.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/pistol.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/short_scope.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/short_scope.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/shotgun.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/shotgun.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/stun_grenade.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/stun_grenade_throwing.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/tactical_stock.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/item/weighted_stock.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/assault_rifle.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/assault_rifle/assault_rifle_base.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/assault_rifle/assault_rifle_bolt_handle.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/assault_rifle/assault_rifle_extended_mag.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/assault_rifle/assault_rifle_light_mag.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/assault_rifle/assault_rifle_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/assault_rifle/assault_rifle_sights.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/heavy_rifle.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/machine_pistol.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/machine_pistol/machine_pistol_base.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/machine_pistol/machine_pistol_bolt_handle.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/machine_pistol/machine_pistol_extended_mag.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/machine_pistol/machine_pistol_light_mag.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/machine_pistol/machine_pistol_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/machine_pistol/machine_pistol_rear_sight.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/pistol.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/pistol/pistol_base.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/pistol/pistol_extended_mag.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/pistol/pistol_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/pistol/pistol_sightmount.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/pistol/pistol_slide.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle/rifle_base.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle/rifle_base_1.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle/rifle_bolt.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle/rifle_extended_mag.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle/rifle_light_mag.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle/rifle_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/rifle/rifle_rear_sight.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun-old.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun/shotgun_base.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun/shotgun_base_1.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun/shotgun_bolt.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun/shotgun_heat_shield.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun/shotgun_heat_shield_1.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/gun/shotgun/shotgun_shell.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/models/special/mini_gun_barrels.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds.json
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/entity/stun_grenade/explosion.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/cock2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/mag_in.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/mag_out.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/New folder/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/New folder/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/New folder/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/New folder/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/New folder/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/New folder/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/New folder/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/_old/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/cock2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/mag_in.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/mag_out.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/assault_rifle/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/bazooka/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/grenade/pin.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/grenade/pin_old.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/grenade_launcher/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/heavy_rifle/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/heavy_rifle/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/heavy_rifle/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/heavy_rifle/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/heavy_rifle/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/heavy_rifle/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/New folder/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/New folder/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/New folder/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/New folder/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/New folder/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/New folder/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/machine_pistol/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/mini_gun/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/mini_gun/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/mini_gun/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/mini_gun/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/enchanted_fire4.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/enchanted_fire5.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/fire4.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/fire5.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/_old/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/enchanted_fire4.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/fire4.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/mag_in.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/mag_out.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/reload.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/slide_back.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/pistol/slide_forward.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/mag_in.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/mag_out.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/mag_in.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/mag_out.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/_older/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/mag_in.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/mag_out.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/New folder/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/rifle/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/cock.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/enchanted_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/enchanted_fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/enchanted_fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/fire2.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/fire3.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/item/shotgun/silenced_fire.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/sounds/ui/weapon/attach.ogg
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/effect/circular_reticle.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/effect/holo_reticle2.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/effect/long_scope_reticle2.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/effect/muzzle_flash - Copy.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/effect/muzzle_flash.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/effect/scope_vignette.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/items/grenade.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/items/heavy_rifle_2.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/items/shell.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/items/short_scope.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/items/shotgun2.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/items/stun_grenade.png
+notes and misc/CGM_AVE_Expanded/assets/cgm/textures/items/weighted_stock_2.png
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/automatic_shotgun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/automatic_sniper_rifle-orig.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/automatic_sniper_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/battle_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/bolt_action_rifle - Copy.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/bolt_action_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/bolt_action_rifle_draw-only.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/bullpup_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/compact_smg.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/double_barreled_shotgun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/heavy_assault_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/heavy_pistol old.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/heavy_pistol.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/heavy_revolver.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/hunting_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/hunting_shotgun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/infantry_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/lever_action_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/machine_gun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/pump_shotgun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/rapid_smg.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/revolver.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/sniper_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/sniper_rifle_draw-only.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/submachine_gun-old1.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/submachine_gun.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/submachine_gun_pre-reanim.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/animations/uzi.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/automatic_shotgun.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/automatic_sniper_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/ballistic_scope.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/bolt_action_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/bullpup_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/chevron_scope.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/chevron_scope.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/compact_smg.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/dyeable_tactical_stock.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/heavy_assault_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/heavy_pistol.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/heavy_revolver.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/hunting_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/hunting_shotgun.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/infantry_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/lever_action_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/pump_shotgun.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/rapid_smg.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/revolver.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/sniper_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/item/submachine_gun.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/bullpup_rifle_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/gun/automatic_sniper_rifle/auto_sniper_rifle_handguard_1.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/gun/battle_rifle/battle_rifle_extended_mag.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/heavy_ar_base.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/heavy_ar_base_1.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/heavy_ar_top_rail.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/heavy_pistol_base.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/revolver_base.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/submachine_gun_base.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/submachine_gun_base_1.json
+notes and misc/CGM_AVE_Expanded/assets/nzgmaddon/models/special/submachine_gun_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/carbine_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/combat_assault_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/combat_marksman_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/combat_pistol.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/mares_leg_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/precision_battle_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/ranger_assault_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/sidearm_pistol.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/tactical_carbine.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/tactical_infantry_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/tactical_sniper_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/animations/vintage_bolt_rifle.cgmanim
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/carbine_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/combat_pistol.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/mares_leg_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/mares_leg_rifle.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/precision_battle_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/sidearm_pistol.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/tactical_carbine.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/tactical_sniper_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/item/vintage_bolt_rifle.cgmmeta
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/carbine_rifle/carbine_rifle_base.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/carbine_rifle/carbine_rifle_base_1.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/carbine_rifle/carbine_rifle_carryhandle.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/carbine_rifle/carbine_rifle_carryhandle_1.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/carbine_rifle/carbine_rifle_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/carbine_rifle/carbine_rifle_pmag.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/combat_assault_rifle/combat_assault_rifle_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/precision_battle_rifle/precision_battle_rifle_extended_mag.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/ranger_assault_rifle/ranger_ar_base.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/ranger_assault_rifle/ranger_ar_base_1.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/ranger_assault_rifle/ranger_ar_magazine.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/tactical_carbine/tactical_carbine_base.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/tactical_carbine/tactical_carbine_base_1.json
+notes and misc/CGM_AVE_Expanded/assets/redundantguns/models/special/gun/tactical_carbine/tactical_carbine_handguard_0.json
+notes and misc/CGM_AVE_Expanded/pack.mcmeta
+notes and misc/CGM_AVE_Expanded/pack.png
+.idea/workspace.xml

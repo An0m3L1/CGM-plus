@@ -4,22 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Recoil update.&#10;&#10;Updated some sounds.&#10;Reduced the time to play pin sound.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/ImpactGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/ImpactGrenadeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/IncendiaryGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/IncendiaryGrenadeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/MolotovItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/MolotovItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/SmokeGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/SmokeGrenadeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/StunGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/StunGrenadeItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/assault_rifle/mag_in.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/assault_rifle/mag_in.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/grenade/incendiary_throw.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/grenade/incendiary_throw.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/mag_in.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/heavy_sniper_rifle/mag_in.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/mag_in.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/sniper_rifle/mag_in.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/tactical_pistol/mag_in.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/tactical_pistol/mag_in.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/tactical_pistol/mag_out.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/tactical_pistol/mag_out.ogg" afterDir="false" />
-    </list>
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Recoil update.&#10;&#10;Reworked recoil mechanics.&#10;Updated some sounds.&#10;Reduced the time to play pin sound." />
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -63,6 +48,9 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
     <option name="UPDATE_TYPE" value="REBASE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="CurrentFile" />
@@ -410,7 +398,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763078422479</updated>
     </task>
-    <option name="localTasksCounter" value="28" />
+    <task id="LOCAL-00028" summary="Recoil update.&#10;&#10;Reworked recoil mechanics.&#10;Updated some sounds.&#10;Reduced the time to play pin sound.">
+      <option name="closed" value="true" />
+      <created>1763165210500</created>
+      <option name="number" value="00028" />
+      <option name="presentableId" value="LOCAL-00028" />
+      <option name="project" value="LOCAL" />
+      <updated>1763165210500</updated>
+    </task>
+    <option name="localTasksCounter" value="29" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -429,7 +425,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Fixed datapack validation errors. More code changes in preparation for wallbang changes. Projectiles now continue flying if they destroy a fragile block." />
     <MESSAGE value="Fixed datapack validation errors. More code changes in preparation for wallbang changes. Projectiles now continue flying if they destroy a fragile block (WIP)." />
     <MESSAGE value="Fixed datapack validation errors. More code changes in preparation for fragile breaking changes. Added tags that make entites immune (entities completely ignore projectiles) or resistant (entities take less damage from projectiles and disallow piercing). Fixed endermen showing hitmarkers and spilling blood when shot. Explosion code optimizations." />
     <MESSAGE value="Datagen update and fixes, sounds clean up. &#10;&#10;Removed chests, barrels and logs from fragile tag. Refactored ModSounds. Flyby sounds no longer play for rockets and pipe grenades. Optimized sounds.json. Preparing to overhaul sniper rifle. Updated and added datagen for:&#10;- Block tags&#10;- Entity tags&#10;- Guns (partially)" />
@@ -454,7 +449,8 @@
     <MESSAGE value="Sniper rifle update.&#10;&#10;Overhauled sniper rifle.&#10;Modified ammo stack sizes.&#10;Buffed gun durability.&#10;Modified some gun stats.&#10;Overhauled grenade model.&#10;Added WIP resources and updated test world.&#10;Fixed fire switch sound not used by default." />
     <MESSAGE value="Grenade sounds.&#10;&#10;Added bounce sounds to all grenades.&#10;Added custom pinpull sounds to all grenades.&#10;Added custom throwing sounds to all grenades.&#10;Slightly tweaked sniper rifle model.&#10;Removed WIP Resources." />
     <MESSAGE value="Sound update.&#10;&#10;Updated some sounds." />
-    <option name="LAST_COMMIT_MESSAGE" value="Sound update.&#10;&#10;Updated some sounds." />
+    <MESSAGE value="Recoil update.&#10;&#10;Reworked recoil mechanics.&#10;Updated some sounds.&#10;Reduced the time to play pin sound." />
+    <option name="LAST_COMMIT_MESSAGE" value="Recoil update.&#10;&#10;Reworked recoil mechanics.&#10;Updated some sounds.&#10;Reduced the time to play pin sound." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

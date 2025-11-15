@@ -16,9 +16,8 @@ Add and overhaul animations
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
 
-Overhaul items (models, textures, stats, datagen)
+Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul server/client code to prevent crashes (check grenades a dozen)

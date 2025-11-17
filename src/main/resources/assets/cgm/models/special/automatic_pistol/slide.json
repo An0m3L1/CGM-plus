@@ -1,4 +1,5 @@
 {
+	"format_version": "1.21.6",
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
@@ -12,11 +13,11 @@
 			"to": [8, 4.5, 12.525],
 			"rotation": {"angle": 45, "axis": "z", "origin": [8, 3.2, 14.025]},
 			"faces": {
-				"north": {"uv": [13, 15.5, 13.5, 16], "texture": "#1", "tintindex": 0},
-				"east": {"uv": [13, 15.5, 13.5, 16], "texture": "#1", "tintindex": 0},
-				"south": {"uv": [13, 15.5, 13.5, 16], "texture": "#1", "tintindex": 0},
-				"west": {"uv": [13, 15.5, 13.5, 16], "texture": "#1", "tintindex": 0},
-				"up": {"uv": [13, 15.5, 13.5, 16], "texture": "#1", "tintindex": 0}
+				"north": {"uv": [13, 15.5, 13.5, 16], "texture": "#1"},
+				"east": {"uv": [13, 15.5, 13.5, 16], "texture": "#1"},
+				"south": {"uv": [13, 15.5, 13.5, 16], "texture": "#1"},
+				"west": {"uv": [13, 15.5, 13.5, 16], "texture": "#1"},
+				"up": {"uv": [13, 15.5, 13.5, 16], "texture": "#1"}
 			}
 		},
 		{

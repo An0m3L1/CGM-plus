@@ -20,10 +20,10 @@
     "maxAmmo": 5,
 
     "useMagReload": true,
-    "magReloadTime": 60,
+    "magReloadTime": 65,
 
-    "reloadStartDelay": 1,
-    "reloadInterruptDelay": 6,
+    "reloadStartDelay": 0,
+    "reloadInterruptDelay": 10,
     "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },

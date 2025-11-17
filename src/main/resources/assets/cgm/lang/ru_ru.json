@@ -134,6 +134,8 @@
     "info.cgm.ads_spread": "Разброс при прицеливании: %s",
     "info.cgm.ignore_ammo": "Бесконечный боезапас",
     "info.cgm.ammo": "Боезапас: %s",
+    "info.cgm.armor_pierce": "Пробивание брони: %s",
+    "info.cgm.protection_pierce": "Пробивание защиты: %s",
     "info.cgm.ammo_type": "Тип снаряда: %s",
     "info.cgm.attachment_help": "Нажми %s в игре для аксессуаров",
     "info.cgm.unobtainable": "У тебя не должно быть этого.",

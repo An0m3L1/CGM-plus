@@ -134,6 +134,12 @@ public class GunItem extends Item implements IColored, IMeta
                 }
             }
 
+            // Armor and protection piercing
+            float armorPierce = modifiedGun.getProjectile().getArmorBypass() * 100;
+            float protPierce = modifiedGun.getProjectile().getProtectionBypass() * 100;
+            tooltip.add(Component.translatable("info.cgm.armor_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(armorPierce) + "%").withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("info.cgm.protection_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(protPierce) + "%").withStyle(ChatFormatting.GRAY));
+
             // Reload Speed
             float reload;
             if(modifiedGun.getGeneral().usesMagReload())

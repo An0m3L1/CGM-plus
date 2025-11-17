@@ -12,7 +12,6 @@ Add and overhaul animations
     - Crouched aiming (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-    - Reload animations (check NZ mods)
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
 
@@ -21,3 +20,4 @@ Overhaul items (models, textures, stats)
     - Rocket Launcher
     - Minigun
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
+Overhaul grenade throwing to not slow down movement while throwing

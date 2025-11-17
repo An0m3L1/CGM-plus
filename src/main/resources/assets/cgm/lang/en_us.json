@@ -134,6 +134,8 @@
     "info.cgm.ads_spread": "ADS Spread: %s",
     "info.cgm.ignore_ammo": "Infinite Ammo",
     "info.cgm.ammo": "Ammo Capacity: %s",
+    "info.cgm.armor_pierce": "Armor Piercing: %s",
+    "info.cgm.protection_pierce": "Protection Piercing: %s",
     "info.cgm.ammo_type": "Ammo Type: %s",
     "info.cgm.attachment_help": "Press %s in-game for Attachments",
     "info.cgm.unobtainable": "You really shouldn't have this.",

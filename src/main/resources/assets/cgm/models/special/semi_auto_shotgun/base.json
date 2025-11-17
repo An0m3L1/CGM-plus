@@ -1,4 +1,5 @@
 {
+	"format_version": "1.21.6",
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
@@ -52,7 +53,7 @@
 		},
 		{
 			"name": "Lower Plank",
-			"from": [7.505, 1.04, 13.245],
+			"from": [7.505, 1.04, 13.745],
 			"to": [8.495, 1.05, 14.945],
 			"rotation": {"angle": 0, "axis": "y", "origin": [0, -1.25, 1.325]},
 			"faces": {
@@ -61,9 +62,9 @@
 			}
 		},
 		{
-			"from": [7.505, 1.04, 13.245],
-			"to": [8.495, 2.09, 13.255],
-			"rotation": {"angle": -22.5, "axis": "x", "origin": [8.005, 1.04, 13.245]},
+			"from": [7.505, 1.04, 13.745],
+			"to": [8.495, 2.09, 13.755],
+			"rotation": {"angle": -22.5, "axis": "x", "origin": [8.005, 1.04, 13.745]},
 			"faces": {
 				"north": {"uv": [13.5, 0, 14.5, 0.5], "texture": "#1"},
 				"south": {"uv": [13.5, 0, 14.5, 0.5], "texture": "#1"}

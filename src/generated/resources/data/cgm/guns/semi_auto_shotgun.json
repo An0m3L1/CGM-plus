@@ -24,9 +24,9 @@
     "reloadAmount": 1,
     "reloadRate": 11,
     "reloadStartDelay": 6,
-    "reloadInterruptDelay": 6,
-    "reloadEndDelay": 8,
-    "reloadAllowedCooldown": 0.0
+    "reloadInterruptDelay": 9,
+    "reloadEndDelay": 9,
+    "reloadAllowedCooldown": 0.2
   },
   "modules": {
     "attachments": {

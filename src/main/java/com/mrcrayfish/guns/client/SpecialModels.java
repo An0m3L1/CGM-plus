@@ -70,7 +70,9 @@ public enum SpecialModels
     SEMI_AUTO_SHOTGUN_SIGHTS("semi_auto_shotgun/sights"),
     SEMI_AUTO_SHOTGUN_HANDLE("semi_auto_shotgun/handle"),
     SEMI_AUTO_SHOTGUN_NO_HANDLE("semi_auto_shotgun/no_handle"),
-    SEMI_AUTO_SHOTGUN_SLIDE("semi_auto_shotgun/slide");
+    SEMI_AUTO_SHOTGUN_SLIDE("semi_auto_shotgun/slide"),
+
+    SHELL("shell");
 
     /**
      * The location of an item model in the [MOD_ID]/models/special/[NAME] folder

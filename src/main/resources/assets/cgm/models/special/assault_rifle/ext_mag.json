@@ -1,4 +1,5 @@
 {
+	"format_version": "1.21.6",
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
@@ -8,14 +9,14 @@
 	"elements": [
 		{
 			"name": "Top",
-			"from": [7.4822, 0.5, 10.7],
-			"to": [8.5177, 1.499, 12.7],
+			"from": [7.5, 0.5, 10.7],
+			"to": [8.5, 2.999, 12.7],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, -0.5, 10.7]},
 			"faces": {
-				"north": {"uv": [0, 6, 1, 7], "texture": "#1"},
-				"east": {"uv": [3.5, 6, 1, 7], "texture": "#1"},
-				"south": {"uv": [3.5, 6, 4.5, 7], "texture": "#1"},
-				"west": {"uv": [1, 6, 3.5, 7], "texture": "#1"},
+				"north": {"uv": [0, 6, 1, 8.5], "texture": "#1"},
+				"east": {"uv": [3.5, 6, 1, 8.5], "texture": "#1"},
+				"south": {"uv": [3.5, 6, 4.5, 8.5], "texture": "#1"},
+				"west": {"uv": [1, 6, 3.5, 8.5], "texture": "#1"},
 				"up": {"uv": [8, 9.5, 9, 11], "texture": "#1"}
 			}
 		},
@@ -59,8 +60,8 @@
 		},
 		{
 			"name": "octagon",
-			"from": [7.48223, 0, 10.7],
-			"to": [8.51777, 0.5, 12.7],
+			"from": [7.5, 0, 10.699],
+			"to": [8.5, 0.517, 12.701],
 			"rotation": {"angle": 0, "axis": "z", "origin": [8, 1.25, 12]},
 			"faces": {
 				"north": {"uv": [1.5, 8.5, 2, 9], "texture": "#1"},
@@ -74,7 +75,7 @@
 		{
 			"name": "octagon",
 			"from": [7.48223, 0, 10.7],
-			"to": [8.51777, 0.5, 12.7],
+			"to": [8.54277, 0.5, 12.7],
 			"rotation": {"angle": 45, "axis": "z", "origin": [8, -0.75, 12]},
 			"faces": {
 				"north": {"uv": [1.5, 8.5, 2, 9], "texture": "#1"},
@@ -116,7 +117,7 @@
 		{
 			"name": "octagon",
 			"from": [8.75, -1.26777, 10.7],
-			"to": [9.25, -0.23223, 12.7],
+			"to": [9.25, -0.20723, 12.7],
 			"rotation": {"angle": 45, "axis": "z", "origin": [8, -0.75, 12]},
 			"faces": {
 				"north": {"uv": [1.5, 8.5, 2, 9], "texture": "#1"},

@@ -20,6 +20,10 @@
     {
       "count": 8,
       "item": "cgm:rubber"
+    },
+    {
+      "count": 4,
+      "tag": "forge:dyes/gray"
     }
   ],
   "result": {

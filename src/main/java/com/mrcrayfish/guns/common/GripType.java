@@ -39,8 +39,7 @@ public class GripType
     public static final GripType TWO_HANDED_SHORT = new GripType(new ResourceLocation(Reference.MOD_ID, "two_handed_short"), new TwoHandedShortPose());
 
     /**
-     * A custom grip type designed for the mini gun simply due it's nature of being a completely
-     * unique way to hold the weapon
+     * A custom grip type designed for the mini gun
      */
     public static final GripType MINI_GUN = new GripType(new ResourceLocation(Reference.MOD_ID, "mini_gun"), new MiniGunPose());
 

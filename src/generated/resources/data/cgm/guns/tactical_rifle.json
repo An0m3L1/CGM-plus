@@ -22,13 +22,13 @@
     "extendedMagAmmo": 50,
 
     "useMagReload": true,
-    "magReloadTime": 35,
+    "magReloadTime": 50,
     "lightMagReloadTimeModifier": 0.9,
     "extendedMagReloadTimeModifier": 1.1,
 
-    "reloadStartDelay": 1,
-    "reloadInterruptDelay": 6,
-    "reloadEndDelay": 6,
+    "reloadStartDelay": 0,
+    "reloadInterruptDelay": 8,
+    "reloadEndDelay": 0,
     "reloadAllowedCooldown": 0.0
   },
   "fireModes": {
@@ -72,12 +72,12 @@
     "silencedFire": "cgm:item.assault_rifle.silenced_fire",
     "fireSwitch": "cgm:item.fire_switch",
 
-    "reloadFrames": 32,
+    "reloadFrames": 70,
     "reloadClipOut": "cgm:item.assault_rifle.mag_out",
-    "reloadClipOutThreshold": 6,
+    "reloadClipOutThreshold": 10,
     "reloadClipIn": "cgm:item.assault_rifle.mag_in",
-    "reloadClipInThreshold": 17,
+    "reloadClipInThreshold": 32,
     "reloadLate": "cgm:item.assault_rifle.slap",
-    "reloadLateThreshold": 27
+    "reloadLateThreshold": 52
   }
 }

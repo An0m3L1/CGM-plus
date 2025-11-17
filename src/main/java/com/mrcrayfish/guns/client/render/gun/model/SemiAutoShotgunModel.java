@@ -72,11 +72,19 @@ public class SemiAutoShotgunModel implements IOverrideModel
 
         Vec3 slideTranslations = Vec3.ZERO;
 
+        Vec3 shellTranslations = Vec3.ZERO;
+        Vec3 shellRotations = Vec3.ZERO;
+        Vec3 shellRotOffset = Vec3.ZERO;
+
         if(isPlayer && correctContext && !disableAnimations)
         {
             try {
                 Player player = (Player) entity;
                 slideTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "slide");
+
+                shellTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "shell");
+                shellRotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "shell");
+                shellRotOffset = GunAnimationHelper.getSmartAnimationRotOffset(stack, player, partialTicks, "shell");
             }
             catch(NoClassDefFoundError ignored) {
                 disableAnimations = true;
@@ -118,5 +126,26 @@ public class SemiAutoShotgunModel implements IOverrideModel
         RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.
         poseStack.popPose();
+
+        // SG Shell, which is only used during custom reload animations.
+        if(isPlayer && isFirstPerson && !disableAnimations)
+        {
+            // Push pose so we can make do transformations without affecting the models above.
+            poseStack.pushPose();
+            // Initial translation to the starting position.
+            poseStack.translate(0.0, -5.15*0.0625, 2.2*0.0625);
+            // Apply the transformations
+            if(isPlayer && isFirstPerson)
+            {
+                if(shellTranslations!=Vec3.ZERO)
+                    poseStack.translate(shellTranslations.x*0.0625, shellTranslations.y*0.0625, shellTranslations.z*0.0625);
+                if(shellRotations!=Vec3.ZERO)
+                    GunAnimationHelper.rotateAroundOffset(poseStack, shellRotations, shellRotOffset);
+            }
+            // Render the model.
+            RenderUtil.renderModel(SpecialModels.SHELL.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            // Pop pose to compile everything in the render matrix.
+            poseStack.popPose();
+        }
     }
 }

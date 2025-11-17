@@ -22,12 +22,12 @@
     "extendedMagAmmo": 10,
 
     "useMagReload": true,
-    "magReloadTime": 45,
+    "magReloadTime": 55,
     "lightMagReloadTimeModifier": 0.9,
     "extendedMagReloadTimeModifier": 1.1,
 
-    "reloadStartDelay": 1,
-    "reloadInterruptDelay": 6,
+    "reloadStartDelay": 0,
+    "reloadInterruptDelay": 10,
     "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },

@@ -22,12 +22,12 @@
     "extendedMagAmmo": 17,
 
     "useMagReload": true,
-    "magReloadTime": 35,
+    "magReloadTime": 40,
     "lightMagReloadTimeModifier": 0.85,
     "extendedMagReloadTimeModifier": 1.15,
 
-    "reloadStartDelay": 1,
-    "reloadInterruptDelay": 6,
+    "reloadStartDelay": 0,
+    "reloadInterruptDelay": 5,
     "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },
@@ -62,14 +62,14 @@
     "fire": "cgm:item.tactical_pistol.fire",
     "silencedFire": "cgm:item.tactical_pistol.silenced_fire",
 
-    "reloadFrames": 29,
+    "reloadFrames": 48,
+    "reloadEarly": "cgm:item.tactical_pistol.slide_back",
+    "reloadEarlyThreshold": 0,
     "reloadClipOut": "cgm:item.tactical_pistol.mag_out",
-    "reloadClipOutThreshold": 3.5,
+    "reloadClipOutThreshold": 7,
     "reloadClipIn": "cgm:item.tactical_pistol.mag_in",
-    "reloadClipInThreshold": 13.1,
-    "reloadMid": "cgm:item.tactical_pistol.slide_back",
-    "reloadMidThreshold": 20.9,
+    "reloadClipInThreshold": 24,
     "reloadLate": "cgm:item.tactical_pistol.slide_forward",
-    "reloadLateThreshold": 23.5
+    "reloadLateThreshold": 37
   }
 }

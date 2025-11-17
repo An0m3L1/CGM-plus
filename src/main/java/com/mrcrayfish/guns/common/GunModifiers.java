@@ -162,6 +162,24 @@ public class GunModifiers
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
     };
+    public static final IGunModifier SOLID_STOCK = new IGunModifier() {
+        @Override
+        public float recoilModifier()
+        {
+            return 0.65F;
+        }
+        @Override
+        public float kickModifier()
+        {
+            return 0.825F;
+        }
+
+        @Override
+        public float modifyProjectileSpread(float spread) {return spread * 0.7F;}
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+    };
     public static final IGunModifier HEAVY_STOCK = new IGunModifier() {
         @Override
         public float recoilModifier()
@@ -188,6 +206,26 @@ public class GunModifiers
             return spread * 0.8F;
         }
 
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.9F;
+        }
+    };
+    public static final IGunModifier ANGLED_GRIP = new IGunModifier() {
+        @Override
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.9F;
+        }
+        @Override
+        public float recoilModifier()
+        {
+            return 0.9F;
+        }
+        @Override
+        public float kickModifier()
+        {
+            return 0.95F;
+        }
         @Override
         public double modifyAimDownSightSpeed(double speed) {
             return speed * 0.9F;

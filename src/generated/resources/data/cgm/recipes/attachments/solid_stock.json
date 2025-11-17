@@ -6,15 +6,19 @@
       "item": "cgm:sturdy_mechanism"
     },
     {
-      "count": 6,
+      "count": 2,
+      "tag": "forge:rods/steel"
+    },
+    {
+      "count": 8,
       "tag": "forge:plates/plastic"
     },
     {
-      "count": 3,
+      "count": 4,
       "tag": "forge:plates/rubber"
     }
   ],
   "result": {
-    "item": "cgm:horizontal_grip"
+    "item": "cgm:solid_stock"
   }
 }

@@ -8,14 +8,14 @@
     "spawnCasings": true,
     "emitLight": true,
 
-    "adsSpeed": 0.8,
+    "adsSpeed": 0.9,
     "recoilAdsReduction": 0.6,
     "spreadAdsReduction": 0.6,
 
-    "recoilAngle": 3.5,
-    "recoilKick": 0.35,
+    "recoilAngle": 3.0,
+    "recoilKick": 0.3,
     "recoilDurationOffset": 0.0,
-    "spread": 6.5,
+    "spread": 6.0,
 
     "maxAmmo": 30,
     "lightMagAmmo": 20,
@@ -34,15 +34,14 @@
   "fireModes": {
     "useFireModes": true,
     "hasSemiMode": true,
-    "hasAutoMode": true,
-    "hasBurstMode": false,
+    "hasAutoMode": false,
+    "hasBurstMode": true,
     "useAutoBurst": true,
     "burstCount": 3
   },
   "modules": {
     "attachments": {
       "barrel": {"scale": 0.5},
-      "scope": {},
       "stock": {},
       "magazine": {}
     },

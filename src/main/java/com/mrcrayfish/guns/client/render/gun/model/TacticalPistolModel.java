@@ -125,11 +125,13 @@ public class TacticalPistolModel implements IOverrideModel
             ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), stack);
             if(!magStack.isEmpty())
             {
+                if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("light_magazine"))
+                    magModel = SpecialModels.TACTICAL_PISTOL_LIGHT_MAG;
                 if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
                     magModel = SpecialModels.TACTICAL_PISTOL_EXT_MAG;
             }
         }
-        catch(Error ignored) {} catch(Exception ignored) {}
+        catch(Error | Exception ignored) {}
 
         RenderUtil.renderModel(magModel.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.

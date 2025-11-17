@@ -25,7 +25,7 @@ Throwables
     - Dynamite stick
     - Glow stick
 Attachments
-    - Grips: angled, thumb
+    - Grips: thumb
     - Scopes: monocle, holo
-    - Stocks: scar, solid, skeleton
+    - Stocks: scar, skeleton
     - Tactical: laser, flashlight

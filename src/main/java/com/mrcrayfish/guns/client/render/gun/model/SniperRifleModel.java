@@ -150,6 +150,8 @@ public class SniperRifleModel implements IOverrideModel
 			ItemStack magStack = Gun.getAttachment(IAttachment.Type.byTagKey("Magazine"), stack);
 			if(!magStack.isEmpty())
 			{
+				if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("light_magazine"))
+					magModel = SpecialModels.SNIPER_RIFLE_LIGHT_MAG;
 				if (magStack.getItem().builtInRegistryHolder().key().location().getPath().equals("extended_magazine"))
 					magModel = SpecialModels.SNIPER_RIFLE_EXT_MAG;
 			}

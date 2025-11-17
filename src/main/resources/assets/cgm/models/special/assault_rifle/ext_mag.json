@@ -144,13 +144,20 @@
 		}
 	],
 	"groups": [
-		0,
-		1,
 		{
-			"name": "octagon",
+			"name": "Extended Mag",
 			"origin": [8, 8, 8],
 			"color": 0,
-			"children": [2, 3, 4, 5, 6, 7, 8, 9]
+			"children": [
+				0,
+				1,
+				{
+					"name": "octagon",
+					"origin": [8, 8, 8],
+					"color": 0,
+					"children": [2, 3, 4, 5, 6, 7, 8, 9]
+				}
+			]
 		}
 	]
 }

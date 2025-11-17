@@ -9,8 +9,8 @@
     "emitLight": true,
 
     "adsSpeed": 0.9,
-    "recoilAdsReduction": 0.4,
-    "spreadAdsReduction": 0.4,
+    "recoilAdsReduction": 0.45,
+    "spreadAdsReduction": 0.45,
 
     "recoilAngle": 3.0,
     "recoilKick": 0.3,

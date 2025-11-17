@@ -22,7 +22,7 @@
     "projectileAmount": 7,
 
     "reloadAmount": 1,
-    "reloadRate": 11,
+    "reloadRate": 9,
     "reloadStartDelay": 6,
     "reloadInterruptDelay": 9,
     "reloadEndDelay": 9,

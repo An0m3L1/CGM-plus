@@ -46,6 +46,12 @@ public class TacticalPistolModel implements IOverrideModel
         // We have to grab the gun's scope attachment slot and check whether it is empty or not.
         // If the isEmpty function returns false, then we render the attachment rail.
 
+        ItemStack scopeStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
+        if(!scopeStack.isEmpty())
+        {
+            RenderUtil.renderModel(SpecialModels.TACTICAL_PISTOL_SCOPE_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        }
+
         // Special animated segment for compat with the CGM Expanded fork.
         // First, some variables for animation building
         boolean isPlayer = entity != null && entity.equals(Minecraft.getInstance().player);

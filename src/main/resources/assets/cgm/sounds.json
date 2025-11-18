@@ -79,6 +79,8 @@
    "item.empty_click": {"subtitle": "subtitle.cgm.empty", "sounds": ["cgm:item/empty_click"]},
    "item.fire_switch": {"subtitle": "subtitle.cgm.switch", "sounds": ["cgm:item/fire_switch"]},
    "item.low_durability": {"sounds": ["cgm:item/low_durability"]},
+   "item.throw": {"sounds": ["cgm:item/throw"]},
+   "item.party_horn": {"sounds": ["cgm:item/party_horn"]},
    "entity.flyby": {"subtitle": "subtitle.cgm.flyby", "sounds": [
          "cgm:entity/flyby/flyby1",
          "cgm:entity/flyby/flyby2",

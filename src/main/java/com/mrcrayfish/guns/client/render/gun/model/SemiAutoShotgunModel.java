@@ -47,6 +47,7 @@ public class SemiAutoShotgunModel implements IOverrideModel
         // If the isEmpty function returns true, then we render the iron sights.
         ItemStack scopeStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
         ItemStack handleStack = Gun.getAttachment(IAttachment.Type.UNDER_BARREL, stack);
+        ItemStack stockStack = Gun.getAttachment(IAttachment.Type.STOCK, stack);
 
         if(scopeStack.isEmpty())
         {
@@ -57,7 +58,12 @@ public class SemiAutoShotgunModel implements IOverrideModel
             RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_NO_HANDLE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
         else{
-            RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_HANDLE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_HANDLE_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+        }
+
+        if(!stockStack.isEmpty())
+        {
+            RenderUtil.renderModel(SpecialModels.SEMI_AUTO_SHOTGUN_STOCK_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         // Render the top rail element that appears when a scope is attached.
@@ -135,13 +141,10 @@ public class SemiAutoShotgunModel implements IOverrideModel
             // Initial translation to the starting position.
             poseStack.translate(0.0, -5.15*0.0625, 2.2*0.0625);
             // Apply the transformations
-            if(isPlayer && isFirstPerson)
-            {
-                if(shellTranslations!=Vec3.ZERO)
-                    poseStack.translate(shellTranslations.x*0.0625, shellTranslations.y*0.0625, shellTranslations.z*0.0625);
-                if(shellRotations!=Vec3.ZERO)
-                    GunAnimationHelper.rotateAroundOffset(poseStack, shellRotations, shellRotOffset);
-            }
+            if (shellTranslations != Vec3.ZERO)
+                poseStack.translate(shellTranslations.x * 0.0625, shellTranslations.y * 0.0625, shellTranslations.z * 0.0625);
+            if(shellRotations!=Vec3.ZERO)
+                GunAnimationHelper.rotateAroundOffset(poseStack, shellRotations, shellRotOffset);
             // Render the model.
             RenderUtil.renderModel(SpecialModels.SHELL.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
             // Pop pose to compile everything in the render matrix.

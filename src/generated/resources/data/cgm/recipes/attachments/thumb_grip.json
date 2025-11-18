@@ -1,0 +1,20 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 1,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 6,
+      "tag": "forge:plates/plastic"
+    },
+    {
+      "count": 3,
+      "tag": "forge:plates/rubber"
+    }
+  ],
+  "result": {
+    "item": "cgm:thumb_grip"
+  }
+}

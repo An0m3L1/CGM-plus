@@ -98,17 +98,29 @@ public class ModItems
 
     /* Grenades */
     public static final RegistryObject<Item> GRENADE = REGISTER.register("grenade", () -> new GrenadeItem(new Item.Properties(),
-            20 * 3));
+            20 * 3,
+            ModSounds.GRENADE_THROW.get(),
+            ModSounds.GRENADE_PIN.get()));
     public static final RegistryObject<Item> IMPACT_GRENADE = REGISTER.register("impact_grenade", () -> new ImpactGrenadeItem(new Item.Properties(),
-            20 * 10));
+            20 * 10,
+            ModSounds.GRENADE_THROW.get(),
+            ModSounds.GRENADE_PIN.get()));
     public static final RegistryObject<Item> STUN_GRENADE = REGISTER.register("stun_grenade", () -> new StunGrenadeItem(new Item.Properties(),
-            20 * 2));
+            20 * 2,
+            ModSounds.STUN_THROW.get(),
+            ModSounds.STUN_PIN.get()));
     public static final RegistryObject<Item> SMOKE_GRENADE = REGISTER.register("smoke_grenade", () -> new SmokeGrenadeItem(new Item.Properties(),
-            20 * 5));
+            20 * 5,
+            ModSounds.SMOKE_THROW.get(),
+            ModSounds.SMOKE_PIN.get()));
     public static final RegistryObject<Item> INCENDIARY_GRENADE = REGISTER.register("incendiary_grenade", () -> new IncendiaryGrenadeItem(new Item.Properties(),
-            20 * 3));
+            20 * 3,
+            ModSounds.INCENDIARY_THROW.get(),
+            ModSounds.INCENDIARY_PIN.get()));
     public static final RegistryObject<Item> MOLOTOV = REGISTER.register("molotov", () -> new MolotovItem(new Item.Properties(),
-            20 * 10));
+            20 * 10,
+            ModSounds.MOLOTOV_THROW.get(),
+            ModSounds.MOLOTOV_LIGHT.get()));
 
     public static final RegistryObject<Item> GRENADE_NO_PIN = REGISTER.register("grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
     public static final RegistryObject<Item> IMPACT_GRENADE_NO_PIN = REGISTER.register("impact_grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
@@ -138,6 +150,7 @@ public class ModItems
     /* Grips */
     public static final RegistryObject<Item> HORIZONTAL_GRIP = REGISTER.register("horizontal_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.HORIZONTAL_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> ANGLED_GRIP = REGISTER.register("angled_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.ANGLED_GRIP), new Item.Properties()));
+    public static final RegistryObject<Item> THUMB_GRIP = REGISTER.register("thumb_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.THUMB_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> VERTICAL_GRIP = REGISTER.register("vertical_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.VERTICAL_GRIP), new Item.Properties()));
 
     /* Tactical */

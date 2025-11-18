@@ -54,7 +54,7 @@ public class CombatRifleModel implements IOverrideModel
         }
         else
         {
-            RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_NO_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.COMBAT_RIFLE_SCOPE_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         if(stockStack.isEmpty())

@@ -1,0 +1,117 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
+	"texture_size": [32, 32],
+	"textures": {
+		"1": "cgm:item/semi_auto_shotgun",
+		"particle": "cgm:item/semi_auto_shotgun"
+	},
+	"elements": [
+		{
+			"name": "Upper Handle",
+			"from": [8.50126, 2.10052, 16.251],
+			"to": [8.74874, 2.39948, 16.751],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.00126, 1.39948, 16.75]},
+			"faces": {
+				"north": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"east": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"south": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"west": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"up": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"down": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Upper Handle",
+			"from": [7.25126, 2.10052, 16.251],
+			"to": [7.49874, 2.39948, 16.751],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.00126, 1.39948, 16.75]},
+			"faces": {
+				"north": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"east": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"south": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"west": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"up": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"down": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Upper Handle",
+			"from": [7.5, 1.5, 16.251],
+			"to": [8.5, 3, 16.751],
+			"rotation": {"angle": 0, "axis": "y", "origin": [7.25, 2, 16.75]},
+			"faces": {
+				"north": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"east": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"south": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"west": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"up": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"down": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Upper Handle",
+			"from": [7.6147, 1.42336, 16.251],
+			"to": [8.1147, 2.07336, 16.751],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [7.3647, 1.17336, 16.75]},
+			"faces": {
+				"north": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"east": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"south": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"west": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"up": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"down": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Upper Handle",
+			"from": [7.23202, 2.50276, 16.251],
+			"to": [7.73202, 3.15276, 16.751],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [6.98202, 2.40276, 16.75]},
+			"faces": {
+				"north": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"east": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"south": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"west": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"up": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"down": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Upper Handle",
+			"from": [8.3441, 2.12008, 16.251],
+			"to": [8.8441, 2.77008, 16.751],
+			"rotation": {"angle": 22.5, "axis": "z", "origin": [8.0941, 2.02008, 16.75]},
+			"faces": {
+				"north": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"east": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"south": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"west": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"up": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"down": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"}
+			}
+		},
+		{
+			"name": "Upper Handle",
+			"from": [7.96142, 1.80604, 16.251],
+			"to": [8.46142, 2.45604, 16.751],
+			"rotation": {"angle": -22.5, "axis": "z", "origin": [7.71142, 1.55604, 16.75]},
+			"faces": {
+				"north": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"east": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"south": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"west": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"up": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"},
+				"down": {"uv": [6, 3.5, 6.5, 4], "texture": "#1"}
+			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Stock Mount",
+			"origin": [8, 6.325, 11.5],
+			"color": 0,
+			"children": [0, 1, 2, 3, 4, 5, 6]
+		}
+	]
+}

@@ -4,46 +4,49 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Slight rebalance of ARs.&#10;Further tweaks to new animations.">
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/attachments/angled_grip.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/attachments/solid_stock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/angled_grip.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/solid_stock.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/light_mag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_pistol/light_mag.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/angled_grip.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/solid_stock.png" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Model and sound update.&#10;&#10;Added thumb grip.&#10;Added an easter egg for unobtainable items.&#10;Renamed some models for clarity.&#10;Overhauled assault rifle barrel covers.&#10;Overhauled sniper rifle extended mag model.&#10;Added generic throw sound to all grenades.&#10;Rewrote code related to throw sounds.&#10;Added scope mount to tactical pistol.&#10;Added stock mount to semi auto shotgun.">
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/attachments/thumb_grip.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/thumb_grip.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/semi_auto_shotgun/stock_mount.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_pistol/scope_mount.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/party_horn.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/throw.ogg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/thumb_grip.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/content.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/content.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/attachments/horizontal_grip.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/attachments/horizontal_grip.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/SniperRifleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/SniperRifleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AssaultRifleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AssaultRifleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AutomaticPistolModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AutomaticPistolModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/CombatRifleModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/CombatRifleModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/SemiAutoShotgunModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/SemiAutoShotgunModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/TacticalPistolModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/TacticalPistolModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GunModifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GunModifiers.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/UnobtainableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/UnobtainableItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/ImpactGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/ImpactGrenadeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/IncendiaryGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/IncendiaryGrenadeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/MolotovItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/MolotovItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/SmokeGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/SmokeGrenadeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/StunGrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/StunGrenadeItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/medium_stock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/medium_stock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/semi_auto_shotgun.cgmmeta" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/semi_auto_shotgun.cgmmeta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/tactical_pistol.cgmmeta" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/tactical_pistol.cgmmeta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/ext_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/ext_mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/light_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/light_mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/sights.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/sights.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/no_sights.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/assault_rifle/scope_mount.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/no_sights.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/scope_mount.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/no_sights.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/scope_mount.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/semi_auto_shotgun/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/semi_auto_shotgun/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/semi_auto_shotgun/slide.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/semi_auto_shotgun/slide.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_rifle/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_rifle/base.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/semi_auto_shotgun/handle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/semi_auto_shotgun/handle_mount.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/ext_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/sniper_rifle/ext_mag.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_pistol/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_pistol/base.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/assault_rifle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/assault_rifle.png" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/sniper_rifle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/sniper_rifle.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/tactical_pistol.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/tactical_pistol.png" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
@@ -126,20 +129,20 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/generated/resources/data/cgm/recipes/attachments",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/main/resources/assets/cgm/models/special/semi_auto_shotgun",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "org.jetbrains.plugins.github.ui.GithubSettingsConfigurable"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special\semi_auto_shotgun" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\attachments" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\item" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\animations\old" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special" />
@@ -188,7 +191,7 @@
         <option name="executionName" />
         <option name="externalProjectPath" value="$PROJECT_DIR$" />
         <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--warning-mode='none'" />
+        <option name="scriptParameters" value="--warning-mode='none' --build-cache --configuration-cache --offline" />
         <option name="taskDescriptions">
           <list />
         </option>
@@ -471,7 +474,15 @@
       <option name="project" value="LOCAL" />
       <updated>1763393496473</updated>
     </task>
-    <option name="localTasksCounter" value="32" />
+    <task id="LOCAL-00032" summary="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Various balance changes.&#10;Further tweaks to new animations.">
+      <option name="closed" value="true" />
+      <created>1763403707636</created>
+      <option name="number" value="00032" />
+      <option name="presentableId" value="LOCAL-00032" />
+      <option name="project" value="LOCAL" />
+      <updated>1763403707636</updated>
+    </task>
+    <option name="localTasksCounter" value="33" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -490,8 +501,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Spread and aiming update, smoke update, various fixes.&#10;&#10;Explosions now destroy fragile blocks regardless of block griefing config and uses it's own config instead. Player speed is reduced while aiming. Spread is now influenced by different player actions:&#10;- If player is sprinting or in air, spread is no less than 50%.&#10;- If player is crouching or crawling, spread is no more than 75%" />
-    <MESSAGE value="Player behavior update.&#10;&#10;Moved ModTags to init. Added PlayerHandler and finished working on heavy item tag. Player no longer can sprint while crawling. Added spawnCasings property to guns (WIP)." />
     <MESSAGE value="Dynamic light update.&#10;&#10;Rockets and fire grenades now produce light when flying/thrown.&#10;Guns now produce light when shot.&#10;Explosions now produce light." />
     <MESSAGE value="Dynamic light and durability fixes.&#10;&#10;Guns and attachments can't be enchanted now.&#10;Gunfire light visual effect is now tied to config value.&#10;Changed repair kit recipe and model.&#10;Fixed bug that allowed guns to shoot if their durability was negative." />
     <MESSAGE value="Clean up.&#10;&#10;Moved around files and folders.&#10;Cleaned up various files and classes." />
@@ -515,7 +524,9 @@
     <MESSAGE value="Small fixes.&#10;&#10;Fixed client and server crash issues with explosions." />
     <MESSAGE value="Animation update and small fixes.&#10;&#10;Updated animations.&#10;Updated AR mag models to be longer.&#10;Added armor and protection piercing tooltips.&#10;Fixed clipping issues with gun workbench.&#10;Fixed tint values for automatic pistol.&#10;Updated sniper rifle recipe.&#10;Updated some sounds." />
     <MESSAGE value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Slight rebalance of ARs.&#10;Further tweaks to new animations." />
-    <option name="LAST_COMMIT_MESSAGE" value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Slight rebalance of ARs.&#10;Further tweaks to new animations." />
+    <MESSAGE value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Various balance changes.&#10;Further tweaks to new animations." />
+    <MESSAGE value="Model and sound update.&#10;&#10;Added thumb grip.&#10;Added an easter egg for unobtainable items.&#10;Renamed some models for clarity.&#10;Overhauled assault rifle barrel covers.&#10;Overhauled sniper rifle extended mag model.&#10;Added generic throw sound to all grenades.&#10;Rewrote code related to throw sounds.&#10;Added scope mount to tactical pistol.&#10;Added stock mount to semi auto shotgun." />
+    <option name="LAST_COMMIT_MESSAGE" value="Model and sound update.&#10;&#10;Added thumb grip.&#10;Added an easter egg for unobtainable items.&#10;Renamed some models for clarity.&#10;Overhauled assault rifle barrel covers.&#10;Overhauled sniper rifle extended mag model.&#10;Added generic throw sound to all grenades.&#10;Rewrote code related to throw sounds.&#10;Added scope mount to tactical pistol.&#10;Added stock mount to semi auto shotgun." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

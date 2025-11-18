@@ -3,6 +3,9 @@
         "attachments": {
             "barrel": {
                 "translation": [8.0, 3.0, 10.5]
+            },
+            "scope": {
+                "translation": [8.0, 3.6632, 13.25]
             }
         },
         "ironSight": {

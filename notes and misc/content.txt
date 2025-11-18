@@ -1,31 +1,32 @@
-Armor
+Armor:
     - Helmet
     - Vest and elbow pads
     - Belt and knee pads
     - Boots
-Accessories
-    - NV goggles
-    - Gas mask
-    - Ballistic goggles
+Accessories:
+    - NV goggles (gives night vision with a green filter)
+    - Gas mask (gives immunity to smoke effect)
+    - Ballistic goggles (gives resistance to blind effect)
+    - Headphones (gives resistance to stun effect)
     - Balaclava
     - Face mask
     - Gloves
     - Combat shirt
     - Combat pants
     - Ballistic shield
-Melee
+Melee:
     - Blunt: hammer, sledgehammer, baseball bat, crowbar
     - Sharp: katana, tanto, machete, m9 bayonet
     - Throwable: cleaver, tomahawk, shuriken
     - Basic: sword, longsword, fire axe
-Throwables
+Throwables:
     - Flare
     - Mine
     - C4
     - Dynamite stick
     - Glow stick
-Attachments
-    - Grips: thumb
+Attachments:
+    - Grips: DONE
     - Scopes: monocle, holo
     - Stocks: scar, skeleton
     - Tactical: laser, flashlight

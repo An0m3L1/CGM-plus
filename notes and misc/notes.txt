@@ -5,20 +5,25 @@ Add melee class system
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
 Add more attachment slots to existing guns
-    - Tactical Pistol: scope, tactical
+    - Sniper rifle: tactical
+    - Tactical Pistol: tactical
     - Semi-Auto Shotgun: tactical
 Add and overhaul animations
     - Prone shooting
     - Crouched aiming (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
+    - Custom recoil animations
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
+Add gun repair kit block
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul grenade throwing to not slow down player movement
-Overhaul pipe grenades to make them bouncy
+Overhaul grenades
+    - Remove movement slow while using
+    - Remove molotov and incendiary explosions underwater
+    - Make pipe grenades bouncy

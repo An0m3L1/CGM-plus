@@ -54,7 +54,7 @@ public class AssaultRifleModel implements IOverrideModel
         }
         else
         {
-            RenderUtil.renderModel(SpecialModels.ASSAULT_RIFLE_NO_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.ASSAULT_RIFLE_SCOPE_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         if(stockStack.isEmpty())

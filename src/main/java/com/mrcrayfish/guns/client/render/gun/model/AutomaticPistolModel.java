@@ -53,7 +53,7 @@ public class AutomaticPistolModel implements IOverrideModel
         }
         else
         {
-            RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_NO_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+            RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SCOPE_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         }
 
         // Special animated segment for compat with the CGM Expanded fork.

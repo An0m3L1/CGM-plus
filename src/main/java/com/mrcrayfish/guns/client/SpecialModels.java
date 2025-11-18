@@ -27,9 +27,9 @@ public enum SpecialModels
     ASSAULT_RIFLE_BASE("assault_rifle/base"),
     ASSAULT_RIFLE_SLIDE("assault_rifle/slide"),
     ASSAULT_RIFLE_NO_STOCK("assault_rifle/no_stock"),
-    ASSAULT_RIFLE_MAG("assault_rifle/mag"),
     ASSAULT_RIFLE_SIGHTS("assault_rifle/sights"),
-    ASSAULT_RIFLE_NO_SIGHTS("assault_rifle/no_sights"),
+    ASSAULT_RIFLE_SCOPE_MOUNT("assault_rifle/scope_mount"),
+    ASSAULT_RIFLE_MAG("assault_rifle/mag"),
     ASSAULT_RIFLE_LIGHT_MAG("assault_rifle/light_mag"),
     ASSAULT_RIFLE_EXT_MAG("assault_rifle/ext_mag"),
 
@@ -38,7 +38,7 @@ public enum SpecialModels
 
     COMBAT_RIFLE_BASE("combat_rifle/base"),
     COMBAT_RIFLE_SIGHTS("combat_rifle/sights"),
-    COMBAT_RIFLE_NO_SIGHTS("combat_rifle/no_sights"),
+    COMBAT_RIFLE_SCOPE_MOUNT("combat_rifle/scope_mount"),
 
     HEAVY_SNIPER_RIFLE_BASE("heavy_sniper_rifle/base"),
     HEAVY_SNIPER_RIFLE_SIGHTS("heavy_sniper_rifle/sights"),
@@ -56,6 +56,7 @@ public enum SpecialModels
 
     TACTICAL_PISTOL_BASE("tactical_pistol/base"),
     TACTICAL_PISTOL_SLIDE("tactical_pistol/slide"),
+    TACTICAL_PISTOL_SCOPE_MOUNT("tactical_pistol/scope_mount"),
     TACTICAL_PISTOL_MAG("tactical_pistol/mag"),
     TACTICAL_PISTOL_LIGHT_MAG("tactical_pistol/light_mag"),
     TACTICAL_PISTOL_EXT_MAG("tactical_pistol/ext_mag"),
@@ -64,13 +65,14 @@ public enum SpecialModels
     AUTOMATIC_PISTOL_SLIDE("automatic_pistol/slide"),
     AUTOMATIC_PISTOL_MAG("automatic_pistol/mag"),
     AUTOMATIC_PISTOL_SIGHTS("automatic_pistol/sights"),
-    AUTOMATIC_PISTOL_NO_SIGHTS("automatic_pistol/no_sights"),
+    AUTOMATIC_PISTOL_SCOPE_MOUNT("automatic_pistol/scope_mount"),
     AUTOMATIC_PISTOL_LIGHT_MAG("automatic_pistol/light_mag"),
     AUTOMATIC_PISTOL_EXT_MAG("automatic_pistol/ext_mag"),
 
     SEMI_AUTO_SHOTGUN_BASE("semi_auto_shotgun/base"),
     SEMI_AUTO_SHOTGUN_SIGHTS("semi_auto_shotgun/sights"),
-    SEMI_AUTO_SHOTGUN_HANDLE("semi_auto_shotgun/handle"),
+    SEMI_AUTO_SHOTGUN_STOCK_MOUNT("semi_auto_shotgun/stock_mount"),
+    SEMI_AUTO_SHOTGUN_HANDLE_MOUNT("semi_auto_shotgun/handle_mount"),
     SEMI_AUTO_SHOTGUN_NO_HANDLE("semi_auto_shotgun/no_handle"),
     SEMI_AUTO_SHOTGUN_SLIDE("semi_auto_shotgun/slide"),
 

@@ -8,13 +8,13 @@ import com.mrcrayfish.guns.item.AmmoItem;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
-import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
@@ -27,11 +27,15 @@ import java.util.List;
 public class GrenadeItem extends AmmoItem
 {
     public int maxCookTime;
+    public SoundEvent throwSound;
+    public SoundEvent pinSound;
 
-    public GrenadeItem(Item.Properties properties, int maxCookTime)
+    public GrenadeItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
     {
         super(properties.stacksTo(16).tab(GunMod.GUNS));
         this.maxCookTime = maxCookTime;
+        this.throwSound = throwSound;
+        this.pinSound = pinSound;
     }
 
     @Override
@@ -66,11 +70,9 @@ public class GrenadeItem extends AmmoItem
     @Override
     public void onUsingTick(ItemStack stack, LivingEntity player, int count)
     {
-        if(!this.canCook()) return;
-
         int duration = this.getUseDuration(stack) - count;
         if(duration == 9)
-            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), ModSounds.GRENADE_PIN.get(), SoundSource.PLAYERS, 1.0F, 1.0F, false);
+            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), pinSound, SoundSource.PLAYERS, 1.0F, 1.0F, false);
     }
 
     @Override
@@ -135,6 +137,9 @@ public class GrenadeItem extends AmmoItem
 
     protected void onThrown(Level world, ThrowableGrenadeEntity entity)
     {
-        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.GRENADE_THROW.get(), SoundSource.PLAYERS, 1.0F, 1.0F);
+        // Generic throw sound
+        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.THROW.get(), SoundSource.PLAYERS, 0.5F, 1.0F);
+        // Grenade specific throw sound
+        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), throwSound, SoundSource.PLAYERS, 1.0F, 1.0F);
     }
 }

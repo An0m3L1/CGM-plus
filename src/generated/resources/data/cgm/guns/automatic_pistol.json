@@ -67,6 +67,7 @@
   "sounds": {
     "fire": "cgm:item.automatic_pistol.fire",
     "silencedFire": "cgm:item.automatic_pistol.silenced_fire",
+    "weaponSelect": "cgm:item.draw",
 
     "reloadFrames": 29,
     "reloadClipOut": "cgm:item.automatic_pistol.mag_out",

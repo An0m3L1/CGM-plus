@@ -62,6 +62,7 @@
   "sounds": {
     "fire": "cgm:item.tactical_pistol.fire",
     "silencedFire": "cgm:item.tactical_pistol.silenced_fire",
+    "weaponSelect": "cgm:item.draw",
 
     "reloadFrames": 48,
     "reloadEarly": "cgm:item.tactical_pistol.slide_back",

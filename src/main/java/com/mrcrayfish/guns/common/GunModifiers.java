@@ -47,12 +47,12 @@ public class GunModifiers
         @Override
         public float recoilModifier()
         {
-            return 0.9F;
+            return 0.95F;
         }
         @Override
         public float kickModifier()
         {
-            return 0.95F;
+            return 0.975F;
         }
 
         @Override
@@ -74,12 +74,12 @@ public class GunModifiers
         @Override
         public float recoilModifier()
         {
-            return 0.85F;
+            return 0.9F;
         }
         @Override
         public float kickModifier()
         {
-            return 0.925F;
+            return 0.95F;
         }
 
         @Override

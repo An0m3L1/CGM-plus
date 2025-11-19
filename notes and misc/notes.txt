@@ -22,8 +22,9 @@ Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
+Overhaul gun workbench model
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
+Overhaul projectiles to gradually slow down, leave a bubble trail and disappear underwater
 Overhaul grenades
     - Remove movement slow while using
-    - Remove molotov and incendiary explosions underwater
     - Make pipe grenades bouncy

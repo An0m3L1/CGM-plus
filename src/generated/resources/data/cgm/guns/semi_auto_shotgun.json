@@ -50,6 +50,7 @@
 
     "armorBypass": 0.25,
     "protectionBypass": 0.25,
+    "weaponSelect": "cgm:item.draw",
 
     "breakFragile": true,
     "maxPierceCount": 3,

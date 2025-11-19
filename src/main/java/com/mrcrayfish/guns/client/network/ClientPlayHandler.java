@@ -277,6 +277,26 @@ public class ClientPlayHandler
         }
     }
 
+    public static void handleIncendiaryGrenadeUnderwater(S2CMessageIncendiaryGrenadeUnderwater message)
+    {
+        Minecraft mc = Minecraft.getInstance();
+        ParticleEngine particleManager = mc.particleEngine;
+        Level level = Objects.requireNonNull(mc.level);
+        double x = message.getX();
+        double y = message.getY();
+        double z = message.getZ();
+
+        //Play explosion sound
+        mc.getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
+        //Spawn lingering smoke particles
+        for(int i = 0; i < 60; i++)
+        {
+            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.2);
+            spawnParticle(particleManager, ParticleTypes.BUBBLE, x, y, z, level.random, 0.5);
+        }
+    }
+
     public static void handleExplosionMolotov(S2CMessageMolotov message)
     {
         Minecraft mc = Minecraft.getInstance();
@@ -300,6 +320,26 @@ public class ClientPlayHandler
             Particle flame = spawnParticle(particleManager, ParticleTypes.FLAME, x, y, z, level.random, 1.5);
             flame.setLifetime((int) ((8 / (Math.random() * 0.1 + 0.6)) * 0.5));
             flame.scale(3f);
+        }
+    }
+
+    public static void handleMolotovUnderwater (S2CMessageMolotovUnderwater message)
+    {
+        Minecraft mc = Minecraft.getInstance();
+        ParticleEngine particleManager = mc.particleEngine;
+        Level level = Objects.requireNonNull(mc.level);
+        double x = message.getX();
+        double y = message.getY();
+        double z = message.getZ();
+
+        //Play explosion sound
+        mc.getSoundManager().play(new MolotovExplosionSound(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+
+        //Spawn lingering smoke and bubble particles
+        for(int i = 0; i < 60; i++)
+        {
+            spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.2);
+            spawnParticle(particleManager, ParticleTypes.BUBBLE, x, y, z, level.random, 0.5);
         }
     }
 

@@ -35,7 +35,8 @@
     "attachments": {
       "barrel": {"scale": 0.6},
       "scope": {},
-      "magazine": {}
+      "magazine": {},
+      "tactical": {}
     },
     "zoom": {"fovModifier": 0.75}
   },
@@ -60,6 +61,7 @@
   "sounds": {
     "fire": "cgm:item.sniper_rifle.fire",
     "silencedFire": "cgm:item.sniper_rifle.silenced_fire",
+    "weaponSelect": "cgm:item.draw",
 
     "reloadFrames": 62,
     "reloadClipOut": "cgm:item.sniper_rifle.mag_out",

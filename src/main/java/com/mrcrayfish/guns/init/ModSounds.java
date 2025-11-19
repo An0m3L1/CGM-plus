@@ -81,6 +81,7 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> MOLOTOV_LIGHT = register("item.grenade.molotov_light");
 
 	/* Explosions */
+	public static final RegistryObject<SoundEvent> EXTINGUISH = register("entity.extinguish");
 	public static final RegistryObject<SoundEvent> ROCKET_EXPLOSION = register("entity.rocket.explosion");
 	public static final RegistryObject<SoundEvent> PIPE_GRENADE_EXPLOSION = register("entity.pipe_grenade.explosion");
 	public static final RegistryObject<SoundEvent> GRENADE_EXPLOSION = register("entity.grenade.explosion");

@@ -588,6 +588,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         boolean isImmune = Config.COMMON.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
         boolean isResistant = Config.COMMON.enableResistantEntities.get() && entity.getType().is(HIT_RESISTANT);
 
+        if(entity.isInWater() && this.isInWater())
+            damage *= 0.5F;
+
         if(isResistant)
         {
             damage *= Config.COMMON.resistantDamageMultiplier.get();
@@ -935,6 +938,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     isImpactGrenade ? Config.COMMON.impactGrenadeExplosionDamage.getDefault().floatValue() :
                             isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() :
                                     20F;
+
+            if(entity.isInWater())
+                damage *= 0.5F;
 
             mode = griefing && Config.COMMON.explosionGriefing.get()
                     ? Explosion.BlockInteraction.BREAK

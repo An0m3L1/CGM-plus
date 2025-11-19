@@ -52,6 +52,7 @@
   },
   "sounds": {
     "fire": "cgm:item.heavy_sniper_rifle.fire",
+    "weaponSelect": "cgm:item.draw",
 
     "reloadFrames": 62,
     "reloadClipOut": "cgm:item.heavy_sniper_rifle.mag_out",

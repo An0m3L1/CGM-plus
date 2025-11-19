@@ -8,6 +8,7 @@ import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageMolotov;
+import com.mrcrayfish.guns.network.message.S2CMessageMolotovUnderwater;
 import com.mrcrayfish.guns.util.GrenadeFireHelper;
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
 import net.minecraft.core.Direction;
@@ -97,9 +98,18 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         {
             return;
         }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageMolotov(this.getX(), y, this.getZ()));
-        GrenadeEntity.createFireExplosion(this, radius * 0.6F, false);
-        GrenadeFireHelper.igniteEntities(level, center, radius * 1.1F, fireDuration);
+
+        if(!this.isInWater())
+        {
+            PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
+                    LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageMolotov(this.getX(), y, this.getZ()));
+            GrenadeEntity.createFireExplosion(this, radius * 0.6F, false);
+            GrenadeFireHelper.igniteEntities(level, center, radius * 1.1F, fireDuration);
+        }
+        else
+        {
+            PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
+                    LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageMolotovUnderwater(this.getX(), y, this.getZ()));
+        }
     }
 }

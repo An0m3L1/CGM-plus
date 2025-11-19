@@ -1806,7 +1806,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Nullable
         private ResourceLocation weaponSelect;
         @Optional
-        private int weaponSelectDelay = -1;
+        private int weaponSelectDelay = 0;
         @Optional
         @Nullable
         private ResourceLocation emptyClick;

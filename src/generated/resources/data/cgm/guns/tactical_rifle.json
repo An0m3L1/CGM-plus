@@ -9,13 +9,13 @@
     "emitLight": true,
 
     "adsSpeed": 0.9,
-    "recoilAdsReduction": 0.45,
-    "spreadAdsReduction": 0.45,
+    "recoilAdsReduction": 0.4,
+    "spreadAdsReduction": 0.4,
 
     "recoilAngle": 3.0,
     "recoilKick": 0.3,
     "recoilDurationOffset": 0.0,
-    "spread": 5.5,
+    "spread": 5.0,
 
     "maxAmmo": 30,
     "lightMagAmmo": 20,
@@ -71,6 +71,7 @@
     "fire": "cgm:item.assault_rifle.fire",
     "silencedFire": "cgm:item.assault_rifle.silenced_fire",
     "fireSwitch": "cgm:item.fire_switch",
+    "weaponSelect": "cgm:item.draw",
 
     "reloadFrames": 70,
     "reloadClipOut": "cgm:item.assault_rifle.mag_out",

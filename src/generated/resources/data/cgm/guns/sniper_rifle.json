@@ -56,7 +56,8 @@
     "breakFragile": true,
     "maxPierceCount": 7,
     "pierceDamagePenalty": 0.125,
-    "pierceDamageMaxPenalty": 0.875
+    "pierceDamageMaxPenalty": 0.875,
+    "waterDamagePenalty": 0.75
   },
   "sounds": {
     "fire": "cgm:item.sniper_rifle.fire",

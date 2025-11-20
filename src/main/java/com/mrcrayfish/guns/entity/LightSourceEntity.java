@@ -1,6 +1,7 @@
 package com.mrcrayfish.guns.entity;
 
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.init.ModEntities;
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
 import net.minecraft.nbt.CompoundTag;
@@ -27,7 +28,7 @@ public class LightSourceEntity extends Entity implements IEntityAdditionalSpawnD
         super(entityType, worldIn);
         this.life = 3;
         this.lightValue = lightValue;
-        if (REGISTERED_TYPES.add(entityType)) {
+        if (GunMod.dynamicLightsLoaded && REGISTERED_TYPES.add(entityType)) {
             DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> ((LightSourceEntity)entity).getLightValue());
         }
     }

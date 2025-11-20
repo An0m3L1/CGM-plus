@@ -1256,6 +1256,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Optional
         private float pierceDamageMaxPenalty = 0.8F;
         @Optional
+        private float waterDamagePenalty = 0.5F;
+        @Optional
         private float headshotExtraDamage = 0;
         @Optional
         private float headshotMultiplierBonus = 0;
@@ -1300,6 +1302,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             tag.putInt("CollateralMaxPierce", this.collateralMaxPierce);
             tag.putFloat("PierceDamagePenalty", this.pierceDamagePenalty);
             tag.putFloat("PierceDamageMaxPenalty", this.pierceDamageMaxPenalty);
+            tag.putFloat("WaterDamagePenalty", this.waterDamagePenalty);
             tag.putFloat("HeadshotExtraDamage", this.headshotExtraDamage);
             tag.putFloat("HeadshotMultiplierBonus", this.headshotMultiplierBonus);
             tag.putFloat("HeadshotMultiplierMin", this.headshotMultiplierMin);
@@ -1364,6 +1367,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(tag.contains("PierceDamageMaxPenalty", Tag.TAG_ANY_NUMERIC))
             {
                 this.pierceDamageMaxPenalty = tag.getFloat("PierceDamageMaxPenalty");
+            }
+            if(tag.contains("WaterDamagePenalty", Tag.TAG_ANY_NUMERIC))
+            {
+                this.waterDamagePenalty = tag.getFloat("WaterDamagePenalty");
             }
             if(tag.contains("HeadshotExtraDamage", Tag.TAG_ANY_NUMERIC))
             {
@@ -1431,6 +1438,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             Preconditions.checkArgument(this.collateralMaxPierce >= 0 || this.collateralMaxPierce==-1, "Maximum pierce count may only be positive or -1; set to -1 to enable infinite piercing");
             Preconditions.checkArgument(this.pierceDamagePenalty >= 0.0F && this.pierceDamagePenalty < 0.9F, "Pierce damage penalty must be between 0.0 and 0.9");
             Preconditions.checkArgument(this.pierceDamageMaxPenalty >= 0.0F && this.pierceDamageMaxPenalty < 0.9F, "Pierce damage maximum penalty must be between 0.0 and 0.9");
+            Preconditions.checkArgument(this.waterDamagePenalty >= 0.0F && this.waterDamagePenalty <= 1.0F, "Water damage penalty must be between 0.0 and 1.0");
             Preconditions.checkArgument(this.size >= 0.0F, "Projectile size must be more than or equal to zero");
             Preconditions.checkArgument(this.speed >= 0.0, "Projectile speed must be more than or equal to zero");
             Preconditions.checkArgument(this.life > 0, "Projectile life must be more than zero");
@@ -1453,6 +1461,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.collateralMaxPierce != 5) object.addProperty("collateralMaxPierce", this.collateralMaxPierce);
             if(this.pierceDamagePenalty != 0.2) object.addProperty("pierceDamagePenalty", this.pierceDamagePenalty);
             if(this.pierceDamageMaxPenalty != 0.8) object.addProperty("pierceDamageMaxPenalty", this.pierceDamageMaxPenalty);
+            if(this.waterDamagePenalty != 0.5F) object.addProperty("waterDamagePenalty", this.waterDamagePenalty);
             if(this.headshotExtraDamage != 0.0F) object.addProperty("headshotExtraDamage", this.headshotExtraDamage);
             if(this.headshotMultiplierBonus != 0.0F) object.addProperty("headshotMultiplierBonus", this.headshotMultiplierBonus);
             if(this.headshotMultiplierMin != 1.0F) object.addProperty("headshotMultiplierMin", this.headshotMultiplierMin);
@@ -1482,6 +1491,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             projectile.collateralMaxPierce = this.collateralMaxPierce;
             projectile.pierceDamagePenalty = this.pierceDamagePenalty;
             projectile.pierceDamageMaxPenalty = this.pierceDamageMaxPenalty;
+            projectile.waterDamagePenalty = this.waterDamagePenalty;
             projectile.headshotExtraDamage = this.headshotExtraDamage;
             projectile.headshotMultiplierBonus = this.headshotMultiplierBonus;
             projectile.headshotMultiplierMin = this.headshotMultiplierMin;
@@ -1585,6 +1595,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public float getPierceDamageMaxPenalty()
         {
         	return Mth.clamp(this.pierceDamageMaxPenalty,0.0F,0.9F);
+        }
+
+        /**
+         * @return The penalty to damage that applies when dealing damage underwater.
+         */
+        public float getWaterDamagePenalty()
+        {
+            return this.waterDamagePenalty;
         }
 
         /**
@@ -4940,6 +4958,12 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public Builder setPierceDamageMaxPenalty(float pierceDamageMaxPenalty)
         {
             this.gun.projectile.pierceDamageMaxPenalty = pierceDamageMaxPenalty;
+            return this;
+        }
+
+        public Builder setWaterDamagePenalty(float waterDamagePenalty)
+        {
+            this.gun.projectile.waterDamagePenalty = waterDamagePenalty;
             return this;
         }
 

@@ -20,7 +20,7 @@
     "reloadRate": 90
   },
   "projectile": {
-    "damage": 5.0,
+    "damage": 6.0,
     "damageReduceOverLife": true,
     "size": 0.1,
     "speed": 20.0,
@@ -35,6 +35,7 @@
     "maxPierceCount": 4,
     "pierceDamagePenalty": 0.25,
     "pierceDamageMaxPenalty": 0.75,
+    "waterDamagePenalty": 0.25,
 
     "item": "cgm:medium_bullet"
   },

@@ -30,6 +30,7 @@ import com.mrcrayfish.guns.world.ProjectileExplosion;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
+import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
 import net.minecraft.network.FriendlyByteBuf;
@@ -97,6 +98,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
     public float rotation;
     public float prevRotation;
+    public float waterDamagePenalty;
 
     public ProjectileEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {
@@ -114,7 +116,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.entitySize = new EntityDimensions(this.projectile.getSize(), this.projectile.getSize(), false);
         this.modifiedGravity = modifiedGun.getProjectile().isGravity() ? GunModifierHelper.getModifiedProjectileGravity(weapon, -0.04 * modifiedGun.getProjectile().getGravity()) : 0.0;
         this.life = GunModifierHelper.getModifiedProjectileLife(weapon, this.projectile.getLife());
-
+        this.waterDamagePenalty = 1.0F - projectile.getWaterDamagePenalty();
         /* Get speed and set motion */
         Vec3 dir = this.getDirection(shooter, weapon, item, modifiedGun);
         double speed = GunModifierHelper.getModifiedProjectileSpeed(weapon, this.projectile.getSpeed());
@@ -246,6 +248,13 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         if (speed > 0.1)
         {
             this.rotation += speed * 50;
+        }
+
+        Vec3 vec3 = this.getDeltaMovement();
+        if (this.isInWater()) {
+            for(int j = 0; j < 4; ++j) {
+                this.level.addParticle(ParticleTypes.BUBBLE, this.getX() - vec3.x * 0.1D, this.getY() - vec3.y * 0.1D, this.getZ() - vec3.z * 0.1D, vec3.x, vec3.y, vec3.z);
+            }
         }
 
         if(!this.level.isClientSide())
@@ -588,9 +597,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         boolean isImmune = Config.COMMON.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
         boolean isResistant = Config.COMMON.enableResistantEntities.get() && entity.getType().is(HIT_RESISTANT);
 
-        if(entity.isInWater() && this.isInWater())
-            damage *= 0.5F;
-
         if(isResistant)
         {
             damage *= Config.COMMON.resistantDamageMultiplier.get();
@@ -760,6 +766,10 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
         float damage = initialDamage / this.general.getProjectileAmount();
         damage = GunModifierHelper.getModifiedDamage(this.weapon, this.modifiedGun, damage);
+
+        if(this.isInWater())
+            damage *= waterDamagePenalty;
+
         return Math.max(0F, damage);
     }
 
@@ -939,7 +949,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                             isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() :
                                     20F;
 
-            if(entity.isInWater())
+            // If the explosion doesn't come from a gun, its damage is halved (for example, grenades)
+            if(entity.isInWater() && !hasGunProjectile)
                 damage *= 0.5F;
 
             mode = griefing && Config.COMMON.explosionGriefing.get()

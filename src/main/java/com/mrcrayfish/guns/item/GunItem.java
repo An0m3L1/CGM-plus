@@ -152,12 +152,12 @@ public class GunItem extends Item implements IColored, IMeta
             }
             tooltip.add(Component.translatable("info.cgm.reload_rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(reload)).withStyle(ChatFormatting.GRAY));
 
-            // ADS Speed (0.25 s by default)
-            double adsSpeed = 0.25;
-            adsSpeed = adsSpeed - (GunCompositeStatHelper.getCompositeAimDownSightSpeed(stack) * adsSpeed - adsSpeed);
+            // ADS Time (0.25 s by default)
+            double adsTime = 0.25;
+            adsTime = adsTime - (GunCompositeStatHelper.getCompositeAimDownSightSpeed(stack) * adsTime - adsTime);
             if(modifiedGun.getModules().getZoom() != null)
             {
-                tooltip.add(Component.translatable("info.cgm.ads_speed", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpeed)).withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("info.cgm.ads_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsTime)).withStyle(ChatFormatting.GRAY));
             }
 
             // Fire Rate

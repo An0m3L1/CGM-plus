@@ -287,22 +287,22 @@ public abstract class Attachment
 	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
             }
 
-            /* Test for aim down sight speed */
-            double inputAdsSpeed = 10.0;
-            double outputAdsSpeed = inputAdsSpeed;
+            /* Test for ADS time */
+            double inputAdsTime = 10.0;
+            double outputAdsTime = inputAdsTime;
             for(IGunModifier modifier : modifiers)
             {
-                outputAdsSpeed = modifier.modifyAimDownSightSpeed(outputAdsSpeed);
+                outputAdsTime = modifier.modifyAimDownSightSpeed(outputAdsTime);
             }
-            thisOutput = (float) outputAdsSpeed;
-            thisInput = (float) inputAdsSpeed;
+            thisOutput = (float) outputAdsTime;
+            thisInput = (float) inputAdsTime;
             if (thisOutput != thisInput)
             {
             	perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
                 boolean isPositive = thisOutput > thisInput;
                 float modifierValue = toPercent(thisOutput);
-            	//perkDescription = (isPositive ? "perk.cgm.ads_speed.positive" : "perk.cgm.ads_speed.negative");
-                perkDescription = "perk.cgm.ads_speed";
+            	perkDescription = (isPositive ? "perk.cgm.ads_time.positive" : "perk.cgm.ads_time.negative");
+                perkDescription = "perk.cgm.ads_time";
 	            
 	            addPerk(perkType, isPositive, true, Math.round(modifierValue*100)/100, perkDescription);
         	}

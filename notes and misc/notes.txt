@@ -24,7 +24,6 @@ Overhaul items (models, textures, stats)
     - Minigun
 Overhaul gun workbench model
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul projectiles to gradually slow down, leave a bubble trail and disappear underwater
 Overhaul grenades
-    - Remove movement slow while using
+    - Remove movement slow while throwing
     - Make pipe grenades bouncy

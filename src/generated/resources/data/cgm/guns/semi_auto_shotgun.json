@@ -55,7 +55,8 @@
     "breakFragile": true,
     "maxPierceCount": 3,
     "pierceDamagePenalty": 0.25,
-    "pierceDamageMaxPenalty": 0.75
+    "pierceDamageMaxPenalty": 0.75,
+    "waterDamagePenalty": 0.75
   },
   "sounds": {
     "fire": "cgm:item.semi_auto_shotgun.fire",

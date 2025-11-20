@@ -16,7 +16,7 @@
     "reloadRate": 14
   },
   "projectile": {
-    "damage": 20.0,
+    "damage": 32.0,
     "size": 0.2,
     "speed": 2.00,
     "life": 100,
@@ -26,7 +26,8 @@
     "visible": true,
     "gravityStrength": 1.25,
     "maxPierceCount": 1,
-    "item": "cgm:pipe_grenade"
+    "item": "cgm:pipe_grenade",
+    "waterDamagePenalty": 0.25
   },
   "sounds": {
     "cock": "cgm:item.grenade_launcher.cock",

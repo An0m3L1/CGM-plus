@@ -57,7 +57,8 @@
     "breakFragile": true,
     "maxPierceCount": 4,
     "pierceDamagePenalty": 0.25,
-    "pierceDamageMaxPenalty": 0.75
+    "pierceDamageMaxPenalty": 0.75,
+    "waterDamagePenalty": 0.6
   },
   "sounds": {
     "fire": "cgm:item.tactical_pistol.fire",

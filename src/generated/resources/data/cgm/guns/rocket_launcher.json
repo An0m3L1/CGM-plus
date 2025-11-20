@@ -16,7 +16,7 @@
     "reloadRate": 18
   },
   "projectile": {
-    "damage": 25.0,
+    "damage": 40.0,
     "size": 0.2,
     "speed": 4.0,
     "life": 100,
@@ -25,7 +25,8 @@
     "gravity": false,
     "visible": true,
     "maxPierceCount": 1,
-    "item": "cgm:rocket"
+    "item": "cgm:rocket",
+    "waterDamagePenalty": 0.25
   },
   "sounds": {
     "fire": "cgm:item.rocket_launcher.fire",

@@ -6,7 +6,7 @@ import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
-import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
+import com.mrcrayfish.guns.network.message.S2CMessageGunshotOrReload;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.sounds.SoundSource;
@@ -142,7 +142,7 @@ public class SwitchGunTracker
             double soundY = player.getY() + 1.0;
             double soundZ = player.getZ();
             double radius = Config.SERVER.reloadSoundDistance.get();
-            S2CMessageGunSound messageSound = new S2CMessageGunSound(sound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
+            S2CMessageGunshotOrReload messageSound = new S2CMessageGunshotOrReload(sound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
             PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, soundX, soundY, soundZ, radius), messageSound);
         }
     }

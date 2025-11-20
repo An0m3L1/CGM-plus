@@ -586,7 +586,7 @@ public class GunRenderingHandler
         else
             blockLight = player.level.getBrightness(LightLayer.BLOCK, new BlockPos(player.getEyePosition(event.getPartialTick())));
         if (this.entityIdForMuzzleFlash.contains(player.getId()))
-            blockLight += Config.COMMON.dynamicLightValue.get();
+            blockLight += GunCompositeStatHelper.getGunshotLightValue(heldItem);
 
         blockLight = Math.min(blockLight, 15);
         int packedLight = LightTexture.pack(blockLight, player.level.getBrightness(LightLayer.SKY, new BlockPos(player.getEyePosition(event.getPartialTick()))));

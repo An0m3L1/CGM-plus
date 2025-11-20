@@ -1,9 +1,12 @@
 package com.mrcrayfish.guns.entity;
 
+import com.mrcrayfish.guns.client.audio.DistancedSound;
+import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraft.network.protocol.Packet;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.world.damagesource.DamageSource;
@@ -117,13 +120,22 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
                 {
                     BlockPos resultPos = blockResult.getBlockPos();
                     BlockState state = this.level.getBlockState(resultPos);
-                    SoundEvent event = state.getBlock().getSoundType(state, this.level, resultPos, this).getStepSound();
+                    ResourceLocation sound = state.getBlock().getSoundType(state, this.level, resultPos, this).getStepSound().getLocation();
                     if (bounceSound != null && useCustomBounceSound)
-                        event = bounceSound;
+                        sound = bounceSound.getLocation();
+
                     double speed = this.getDeltaMovement().length();
-                    if(speed > 0.15)
+                    float x = (float)result.getLocation().x;
+                    float y = (float)result.getLocation().y;
+                    float z = (float)result.getLocation().z;
+
+                    if(speed > 0.35)
                     {
-                        this.level.playSound(null, result.getLocation().x, result.getLocation().y, result.getLocation().z, event, SoundSource.AMBIENT, (float) Math.min(speed*1.6F, 1), 1.0F);                    }
+                        if(this.level.isClientSide())
+                        {
+                            Minecraft.getInstance().getSoundManager().play(DistancedSound.grenadeBounce(sound, SoundSource.BLOCKS, x, y, z, 0.85F, 1, level.getRandom()));
+                        }
+                    }
                     this.bounce(blockResult.getDirection());
                 }
                 else

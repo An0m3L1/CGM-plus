@@ -25,6 +25,8 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     public float prevRotation;
     protected float radius = Config.COMMON.handGrenadeExplosionRadius.get().floatValue();
     protected boolean griefing = Config.COMMON.handGrenadeExplosionGriefing.get();
+    public int explosionLightValue = 12;
+    public int explosionLightLife = 6;
 
     public ThrowableGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
     {
@@ -85,9 +87,14 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
         {
             return;
         }
-        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), 12);
-        level.addFreshEntity(light);
+        this.createLight(this.explosionLightValue, this.explosionLightLife);
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageGrenade(this.getX(), y, this.getZ()));
+    }
+
+    public void createLight(int lightValue, int lightLife)
+    {
+        LightSourceEntity lightSource = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), lightValue, lightLife);
+        level.addFreshEntity(lightSource);
     }
 }

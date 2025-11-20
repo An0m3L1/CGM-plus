@@ -68,8 +68,6 @@ public class RecoilHandler
         if(mc.player == null)
             return;
 
-        if(!Config.SERVER.enableCameraRecoil.get())
-            return;
 
         ItemStack heldItem = event.getStack();
         GunItem gunItem = (GunItem) heldItem.getItem();
@@ -103,9 +101,6 @@ public class RecoilHandler
             return;
         }
         if (mc.isPaused())
-            return;
-
-        if (!Config.SERVER.enableCameraRecoil.get())
             return;
 
         float cameraVAngleChange = 0;

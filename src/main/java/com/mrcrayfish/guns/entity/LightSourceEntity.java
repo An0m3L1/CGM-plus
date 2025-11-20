@@ -1,6 +1,5 @@
 package com.mrcrayfish.guns.entity;
 
-import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.init.ModEntities;
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
@@ -26,7 +25,6 @@ public class LightSourceEntity extends Entity implements IEntityAdditionalSpawnD
     public LightSourceEntity(EntityType<? extends Entity> entityType, Level worldIn, int lightValue)
     {
         super(entityType, worldIn);
-        this.life = 3;
         this.lightValue = lightValue;
         if (GunMod.dynamicLightsLoaded && REGISTERED_TYPES.add(entityType)) {
             DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> ((LightSourceEntity)entity).getLightValue());
@@ -35,13 +33,14 @@ public class LightSourceEntity extends Entity implements IEntityAdditionalSpawnD
 
     public LightSourceEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {
-        this(entityType, worldIn, Config.COMMON.dynamicLightValue.get());
+        this(entityType, worldIn, 7);
     }
 
-    public LightSourceEntity(Level worldIn, double x, double y, double z, int lightValue)
+    public LightSourceEntity(Level worldIn, double x, double y, double z, int lightValue, int life)
     {
         this(ModEntities.LIGHT_SOURCE.get(), worldIn, lightValue);
         this.setPos(x, y, z);
+        this.life = life;
     }
 
     public int getLightValue() {

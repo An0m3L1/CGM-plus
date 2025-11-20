@@ -20,7 +20,7 @@ import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageFireSwitch;
 import com.mrcrayfish.guns.network.message.C2SMessageShoot;
 import com.mrcrayfish.guns.network.message.S2CMessageBulletTrail;
-import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
+import com.mrcrayfish.guns.network.message.S2CMessageGunshotOrReload;
 import com.mrcrayfish.guns.particles.TrailData;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
@@ -176,7 +176,7 @@ public class ServerPlayHandler
                     float pitch = 0.9F + world.random.nextFloat() * 0.2F;
                     double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, Config.SERVER.gunShotSoundDistance.get());
                     boolean muzzle = modifiedGun.getDisplay().getFlash() != null;
-                    S2CMessageGunSound messageSound = new S2CMessageGunSound(fireSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, volume, pitch, player.getId(), muzzle, false);
+                    S2CMessageGunshotOrReload messageSound = new S2CMessageGunshotOrReload(fireSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, volume, pitch, player.getId(), muzzle, false);
                     PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
                 }
 
@@ -199,7 +199,7 @@ public class ServerPlayHandler
 		                        double posY = finalPlayer.getY() + finalPlayer.getEyeHeight();
 		                        double posZ = finalPlayer.getZ();
 			                  	double radius = Config.SERVER.reloadSoundDistance.get();
-			                    S2CMessageGunSound messageSound = new S2CMessageGunSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
+			                    S2CMessageGunshotOrReload messageSound = new S2CMessageGunshotOrReload(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 			                    PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
 		                    }
                     	});
@@ -210,7 +210,7 @@ public class ServerPlayHandler
                         double posY = player.getY() + player.getEyeHeight();
                         double posZ = player.getZ();
 	                  	double radius = Config.SERVER.reloadSoundDistance.get();
-	                    S2CMessageGunSound messageSound = new S2CMessageGunSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
+	                    S2CMessageGunshotOrReload messageSound = new S2CMessageGunshotOrReload(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 	                    PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
                 	}
                 }
@@ -330,7 +330,7 @@ public class ServerPlayHandler
 		double posY = player.getY() + 1.0;
 		double posZ = player.getZ();
 		double radius = Config.SERVER.reloadSoundDistance.get();
-		S2CMessageGunSound messageSound = new S2CMessageGunSound(sound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
+		S2CMessageGunshotOrReload messageSound = new S2CMessageGunshotOrReload(sound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 		PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
     }
 

@@ -33,7 +33,7 @@ public class RocketEntity extends ProjectileEntity
     {
         super(entityType, worldIn);
         if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.dynamicLightValue.get());
+            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> 7);
     }
 
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
@@ -74,7 +74,7 @@ public class RocketEntity extends ProjectileEntity
         {
             return;
         }
-        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), 12);
+        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), explosionLightValue, explosionLightLife);
         level.addFreshEntity(light);
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ()));
     }

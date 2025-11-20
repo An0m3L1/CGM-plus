@@ -99,6 +99,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     public float rotation;
     public float prevRotation;
     public float waterDamagePenalty;
+    public int explosionLightValue = 12;
+    public int explosionLightLife = 6;
 
     public ProjectileEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {

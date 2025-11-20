@@ -94,4 +94,15 @@ public class GunCompositeStatHelper
     	}
         return Math.max(speed, 4);
     }
+
+    public static int getGunshotLightValue(ItemStack weapon)
+    {
+        Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
+        int lightLevel = 7;
+
+        if(GunModifierHelper.isSilencedFire(weapon))
+            lightLevel = 4;
+
+        return lightLevel;
+    }
 }

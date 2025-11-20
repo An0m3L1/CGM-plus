@@ -3,7 +3,7 @@ package com.mrcrayfish.guns.client.network;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.client.BulletTrail;
 import com.mrcrayfish.guns.client.CustomGunManager;
-import com.mrcrayfish.guns.client.audio.*;
+import com.mrcrayfish.guns.client.audio.DistancedSound;
 import com.mrcrayfish.guns.client.handler.BulletTrailRenderingHandler;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.common.NetworkGunManager;
@@ -16,6 +16,7 @@ import net.minecraft.client.particle.Particle;
 import net.minecraft.client.particle.ParticleEngine;
 import net.minecraft.client.resources.sounds.SimpleSoundInstance;
 import net.minecraft.client.resources.sounds.SoundInstance;
+import net.minecraft.client.sounds.SoundManager;
 import net.minecraft.core.Vec3i;
 import net.minecraft.core.particles.BlockParticleOption;
 import net.minecraft.core.particles.ParticleOptions;
@@ -42,9 +43,10 @@ public class ClientPlayHandler
     private static final Map<Long, List<Vec3>> projectileHitsPerTick = new HashMap<>();
     private static long lastProcessedTick = -1;
 
-    public static void handleMessageGunSound(S2CMessageGunSound message)
+    public static void handleMessageGunshotOrReload(S2CMessageGunshotOrReload message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         if(mc.player == null || mc.level == null)
             return;
 
@@ -55,11 +57,11 @@ public class ClientPlayHandler
 
         if(message.getShooterId() == mc.player.getId())
         {
-            Minecraft.getInstance().getSoundManager().play(new SimpleSoundInstance(message.getId(), SoundSource.PLAYERS, message.getVolume(), message.getPitch(), mc.level.getRandom(), false, 0, SoundInstance.Attenuation.NONE, 0, 0, 0, true));
+            soundManager.play(new SimpleSoundInstance(message.getId(), SoundSource.PLAYERS, message.getVolume(), message.getPitch(), mc.level.getRandom(), false, 0, SoundInstance.Attenuation.NONE, 0, 0, 0, true));
         }
         else
         {
-            Minecraft.getInstance().getSoundManager().play(new GunShotSound(message.getId(), SoundSource.PLAYERS, message.getX(), message.getY(), message.getZ(), message.getVolume(), message.getPitch(), message.isReload(), mc.level.getRandom()));
+            soundManager.play(DistancedSound.gunshotOrReload(message.getId(), SoundSource.PLAYERS, message.getX(), message.getY(), message.getZ(), message.getVolume(), message.getPitch(), message.isReload(), mc.level.getRandom()));
         }
     }
 
@@ -126,6 +128,7 @@ public class ClientPlayHandler
     public static void handleExplosionGrenade(S2CMessageGrenade message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.handGrenadeExplosionRadius.get().floatValue() * 2.0F;
@@ -134,7 +137,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.grenadeExplosion(ModSounds.GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn explosion particle
         Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
@@ -158,6 +161,7 @@ public class ClientPlayHandler
     public static void handleExplosionImpactGrenade(S2CMessageImpactGrenade message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.impactGrenadeExplosionRadius.get().floatValue() * 2.0F;
@@ -166,7 +170,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new GrenadeExplosionSound(ModSounds.GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.impactGrenadeExplosion(ModSounds.GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn explosion particle
         Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
@@ -190,6 +194,7 @@ public class ClientPlayHandler
     public static void handleExplosionRocket(S2CMessageRocket message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.rocketExplosionRadius.get().floatValue() * 2.0F;
@@ -198,7 +203,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new RocketExplosionSound(ModSounds.ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.rocketExplosion(ModSounds.ROCKET_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn explosion particle
         Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
@@ -222,6 +227,7 @@ public class ClientPlayHandler
     public static void handleExplosionPipeGrenade(S2CMessagePipeGrenade message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.pipeGrenadeExplosionRadius.get().floatValue() * 2.0F;
@@ -230,7 +236,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new PipeGrenadeExplosionSound(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.pipeGrenadeExplosion(ModSounds.PIPE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn explosion particle
         Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
@@ -254,6 +260,7 @@ public class ClientPlayHandler
     public static void handleExplosionIncendiaryGrenade(S2CMessageIncendiaryGrenade message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
@@ -262,7 +269,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.incendiaryGrenadeExplosion(ModSounds.INCENDIARY_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn explosion particle
         Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
@@ -287,9 +294,9 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        mc.getSoundManager().play(new IncendiaryGrenadeExplosionSound(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        mc.getSoundManager().play(DistancedSound.incendiaryGrenadeExplosion(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
-        //Spawn lingering smoke particles
+        //Spawn lingering smoke and bubble particles
         for(int i = 0; i < 60; i++)
         {
             spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.2);
@@ -300,6 +307,7 @@ public class ClientPlayHandler
     public static void handleExplosionMolotov(S2CMessageMolotov message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         float size = Config.COMMON.molotovExplosionRadius.get().floatValue() * 2.0F;
@@ -308,7 +316,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new MolotovExplosionSound(ModSounds.MOLOTOV_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.molotovExplosion(ModSounds.MOLOTOV_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn explosion particle
         Particle explosion = spawnParticle(particleManager, ModParticleTypes.EXPLOSION.get(), x, y, z, level.random, 0.0);
@@ -326,6 +334,7 @@ public class ClientPlayHandler
     public static void handleMolotovUnderwater (S2CMessageMolotovUnderwater message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         double x = message.getX();
@@ -333,7 +342,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        mc.getSoundManager().play(new MolotovExplosionSound(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.molotovExplosion(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn lingering smoke and bubble particles
         for(int i = 0; i < 60; i++)
@@ -346,6 +355,7 @@ public class ClientPlayHandler
     public static void handleExplosionStunGrenade(S2CMessageStunGrenade message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
         double x = message.getX();
@@ -353,7 +363,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new StunGrenadeExplosionSound(ModSounds.STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.stunGrenadeExplosion(ModSounds.STUN_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         /* Spawn lingering smoke particles */
         for(int i = 0; i < 30; i++)
@@ -373,6 +383,7 @@ public class ClientPlayHandler
     public static void handleExplosionSmokeGrenade(S2CMessageSmokeGrenade message)
     {
         Minecraft mc = Minecraft.getInstance();
+        SoundManager soundManager = mc.getSoundManager();
         Level level = Objects.requireNonNull(mc.level);
         double x = message.getX();
         double y = message.getY();
@@ -382,7 +393,7 @@ public class ClientPlayHandler
         int amount = (int) (diameter * 15);
 
         //Play explosion sound
-        Minecraft.getInstance().getSoundManager().play(new SmokeGrenadeExplosionSound(ModSounds.SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float) x,(float) y, (float) z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.smokeGrenadeExplosion(ModSounds.SMOKE_GRENADE_EXPLOSION.getId(), SoundSource.BLOCKS, (float) x,(float) y, (float) z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         /* Spawn smoke cloud */
         for(int i = 0; i < amount; i++)

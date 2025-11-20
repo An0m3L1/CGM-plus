@@ -35,7 +35,7 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
     {
         super(entityType, world);
         if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> Config.COMMON.dynamicLightValue.get());
+            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> 7);
     }
 
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
@@ -103,6 +103,7 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         {
             PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                     LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageMolotov(this.getX(), y, this.getZ()));
+            this.createLight(explosionLightValue, explosionLightLife);
             GrenadeEntity.createFireExplosion(this, radius * 0.6F, false);
             GrenadeFireHelper.igniteEntities(level, center, radius * 1.1F, fireDuration);
         }

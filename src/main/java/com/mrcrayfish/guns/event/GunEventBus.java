@@ -10,6 +10,7 @@ import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModParticleTypes;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.GunItem;
+import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -63,8 +64,9 @@ public class GunEventBus
                 double x = player.getX() + lookVec.x * forwardOffset;
                 double y = (player.getEyeY() - 0.35) + lookVec.y * forwardOffset;
                 double z = player.getZ() + lookVec.z * forwardOffset;
-                int lightLevel = Config.COMMON.dynamicLightValue.get();
-                LightSourceEntity light = new LightSourceEntity(level, x, y, z, lightLevel);
+                int lightLevel = GunCompositeStatHelper.getGunshotLightValue(heldItem);
+
+                LightSourceEntity light = new LightSourceEntity(level, x, y, z, lightLevel, 3);
                 level.addFreshEntity(light);
             }
 

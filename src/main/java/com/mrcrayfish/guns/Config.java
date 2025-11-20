@@ -182,7 +182,6 @@ public class Config
         public final ForgeConfigSpec.DoubleValue criticalDamageMultiplier;
         public final ForgeConfigSpec.BooleanValue enableHeadShots;
         public final ForgeConfigSpec.BooleanValue enableDynamicLights;
-        public final ForgeConfigSpec.IntValue dynamicLightValue;
         public final ForgeConfigSpec.DoubleValue headShotDamageMultiplier;
         public final ForgeConfigSpec.BooleanValue ignoreLeaves;
         public final ForgeConfigSpec.DoubleValue projectileTrackingRange;
@@ -262,7 +261,6 @@ public class Config
                 this.maxCount = builder.comment("The amount of times a player has to shoot within the spread threshold before the maximum amount of spread is applied. Setting the value higher means it will take longer for the spread to be applied.").defineInRange("maxCount", 10, 1, Integer.MAX_VALUE);
                 this.doSpreadHipFirePenalty = builder.comment("When enabled, spread increases faster when not aiming.").define("doSpreadHipFirePenalty", true);
                 this.enableDynamicLights = builder.comment("If true, guns, explosions and certain projectiles will produce light. Requires dynamic lights reforged. Works best with 'Realtime' setting.").define("enableDynamicLights", true);
-                this.dynamicLightValue = builder.comment("Strength of light produced by guns and projectiles.").defineInRange("dynamicLightValue", 7, 1, 15);
                 this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision.").define("ignoreLeaves", true);
                 this.projectileTrackingRange = builder.comment("The distance players need to be within to be able to track new projectiles trails. Higher values means you can see projectiles from that start from further away.").defineInRange("projectileTrackingRange", 256.0, 1, Double.MAX_VALUE);
                 this.enableDurability = builder.comment("If true, guns will decrease in durability and break.").define("enableDurability", true);
@@ -280,15 +278,16 @@ public class Config
         public final ForgeConfigSpec.IntValue soundFadeThreshold;
         public final ForgeConfigSpec.DoubleValue ringVolume;
         public final ForgeConfigSpec.DoubleValue gunShotSoundDistance;
+        public final ForgeConfigSpec.DoubleValue reloadSoundDistance;
+        public final ForgeConfigSpec.DoubleValue grenadeBounceSoundDistance;
         public final ForgeConfigSpec.DoubleValue rocketExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue pipeGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue handGrenadeExplosionSoundDistance;
+        public final ForgeConfigSpec.DoubleValue impactGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue stunGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue molotovExplosionSoundDistance;
-        public final ForgeConfigSpec.DoubleValue reloadSoundDistance;
-        public final ForgeConfigSpec.BooleanValue enableCameraRecoil;
         public final ForgeConfigSpec.IntValue cooldownThreshold;
         public final ForgeConfigSpec.BooleanValue forceDyeableAttachments;
 
@@ -303,17 +302,18 @@ public class Config
             }builder.pop();
             builder.push("sounds");{
                 this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 128, 0, Double.MAX_VALUE);
+                this.reloadSoundDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 16, 0, Double.MAX_VALUE);
+                this.grenadeBounceSoundDistance = builder.comment("The maximum distance grenade bouncing can be heard by players.").defineInRange("grenadeBounceSoundDistance", 24, 0, Double.MAX_VALUE);
                 this.rocketExplosionSoundDistance = builder.comment("The maximum distance rocket explosions can be heard by players.").defineInRange("rocketExplosionMaxDistance", 128, 0, Double.MAX_VALUE);
                 this.pipeGrenadeExplosionSoundDistance = builder.comment("The maximum distance pipe grenade explosions can be heard by players.").defineInRange("pipeGrenadeExplosionMaxDistance", 128, 0, Double.MAX_VALUE);
                 this.handGrenadeExplosionSoundDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("handGrenadeExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
+                this.impactGrenadeExplosionSoundDistance = builder.comment("The maximum distance impact grenade explosions can be heard by players.").defineInRange("impactGrenadeExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
                 this.stunGrenadeExplosionSoundDistance = builder.comment("The maximum distance stun grenade explosions can be heard by players.").defineInRange("stunGrenadeExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
                 this.smokeGrenadeExplosionSoundDistance = builder.comment("The maximum distance smoke grenade explosions can be heard by players.").defineInRange("smokeGrenadeExplosionMaxDistance", 48, 0, Double.MAX_VALUE);
                 this.incendiaryGrenadeExplosionSoundDistance = builder.comment("The maximum distance incendiary grenade explosions can be heard by players.").defineInRange("incendiaryGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
                 this.molotovExplosionSoundDistance = builder.comment("The maximum distance molotov explosions can be heard by players.").defineInRange("molotovExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
-                this.reloadSoundDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 16, 0, Double.MAX_VALUE);
             }builder.pop();
             this.forceDyeableAttachments = builder.comment("Forces all attachments to be dyeable regardless if this has an effect on the model. This is useful if your server uses custom models for attachments and the models have dyeable elements.").define("forceDyeableAttachments", false);
-            this.enableCameraRecoil = builder.comment("If true, enables camera recoil when firing a weapon.").define("enableCameraRecoil", true);
             this.cooldownThreshold = builder.comment("The maximum amount of cooldown time remaining before the server will accept another shoot packet from a client. This allows for a litle slack since the server may be lagging.").defineInRange("cooldownThreshold", 100, 75, 1000);
         }
     }

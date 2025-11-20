@@ -3,7 +3,6 @@ package com.mrcrayfish.guns.entity.grenade;
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Config.EffectCriteria;
-import com.mrcrayfish.guns.entity.LightSourceEntity;
 import com.mrcrayfish.guns.init.ModEffects;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
@@ -78,8 +77,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
         {
             return;
         }
-        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), 15);
-        level.addFreshEntity(light);
+        this.createLight(explosionLightValue, explosionLightLife);
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageStunGrenade(this.getX(), y, this.getZ()));
 

@@ -62,7 +62,7 @@ public class PipeGrenadeEntity extends ProjectileEntity
         {
             return;
         }
-        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), 12);
+        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), explosionLightValue, explosionLightLife);
         level.addFreshEntity(light);
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ()));
     }

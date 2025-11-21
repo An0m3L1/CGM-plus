@@ -18,10 +18,12 @@ public class GunEntityRenderers
     public static void registerEntityRenders(EntityRenderersEvent.RegisterRenderers event)
     {
         event.registerEntityRenderer(ModEntities.PROJECTILE.get(), ProjectileRenderer::new);
-        event.registerEntityRenderer(ModEntities.LIGHT_BULLET.get(), LightBulletRenderer::new);
-        event.registerEntityRenderer(ModEntities.MEDIUM_BULLET.get(), MediumBulletRenderer::new);
-        event.registerEntityRenderer(ModEntities.HEAVY_BULLET.get(), HeavyBulletRenderer::new);
-        event.registerEntityRenderer(ModEntities.BUCKSHOT_SHELL.get(), BuckshotRenderer::new);
+
+        event.registerEntityRenderer(ModEntities.LIGHT_BULLET.get(), BulletRenderer::new);
+        event.registerEntityRenderer(ModEntities.MEDIUM_BULLET.get(), BulletRenderer::new);
+        event.registerEntityRenderer(ModEntities.HEAVY_BULLET.get(), BulletRenderer::new);
+        event.registerEntityRenderer(ModEntities.BUCKSHOT_SHELL.get(), BulletRenderer::new);
+
         event.registerEntityRenderer(ModEntities.GRENADE.get(), GrenadeRenderer::new);
         event.registerEntityRenderer(ModEntities.PIPE_GRENADE.get(), PipeGrenadeRenderer::new);
         event.registerEntityRenderer(ModEntities.ROCKET.get(), RocketRenderer::new);

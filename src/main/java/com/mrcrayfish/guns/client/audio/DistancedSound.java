@@ -30,66 +30,37 @@ public class DistancedSound extends AbstractSoundInstance
         }
     }
 
-    public static DistancedSound gunshotOrReload
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, boolean reload, RandomSource source)
-    {
+    public static DistancedSound gunshotOrReload(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, boolean reload, RandomSource source) {
         Supplier<Number> distanceSupplier = reload ?
                 Config.SERVER.reloadSoundDistance::get :
                 Config.SERVER.gunShotSoundDistance::get;
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, distanceSupplier);
     }
-
-    public static DistancedSound grenadeBounce
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound grenadeBounce(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.grenadeBounceSoundDistance::get);
     }
-
-    public static DistancedSound grenadeExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound grenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.handGrenadeExplosionSoundDistance::get);
     }
-
-    public static DistancedSound impactGrenadeExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound impactGrenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.handGrenadeExplosionSoundDistance::get);
     }
-
-    public static DistancedSound incendiaryGrenadeExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound incendiaryGrenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.incendiaryGrenadeExplosionSoundDistance::get);
     }
-
-    public static DistancedSound molotovExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound molotovExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.molotovExplosionSoundDistance::get);
     }
-
-    public static DistancedSound pipeGrenadeExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound pipeGrenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.pipeGrenadeExplosionSoundDistance::get);
     }
-
-    public static DistancedSound rocketExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound rocketExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.rocketExplosionSoundDistance::get);
     }
-
-    public static DistancedSound smokeGrenadeExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound smokeGrenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.smokeGrenadeExplosionSoundDistance::get);
     }
-
-    public static DistancedSound stunGrenadeExplosion
-            (ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source)
-    {
+    public static DistancedSound stunGrenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.stunGrenadeExplosionSoundDistance::get);
     }
 }

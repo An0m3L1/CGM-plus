@@ -17,7 +17,6 @@ Add and overhaul animations
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
 Add gun repair kit block
-Add headshot damage tooltip
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher

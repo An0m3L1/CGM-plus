@@ -109,7 +109,7 @@ public class GunItem extends Item implements IColored, IMeta
         float damage = modifiedGun.getProjectile().getDamage();
         damage = GunModifierHelper.getModifiedProjectileDamage(stack, damage);
         tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
-        
+
         if (Screen.hasControlDown())
         {
         	tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
@@ -133,6 +133,10 @@ public class GunItem extends Item implements IColored, IMeta
                     tooltip.add(Component.translatable("info.cgm.energy", ChatFormatting.WHITE.toString() + energy + "/" + modifiedGun.getGeneral().getEnergyCapacity()).withStyle(ChatFormatting.DARK_AQUA));
                 }
             }
+
+            // Headshot damage
+            float headshotDamage = GunCompositeStatHelper.getHeadshotDamage(stack);
+            tooltip.add(Component.translatable("info.cgm.headshot_damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotDamage)).withStyle(ChatFormatting.GRAY));
 
             // Armor and protection piercing
             float armorPierce = modifiedGun.getProjectile().getArmorBypass() * 100;

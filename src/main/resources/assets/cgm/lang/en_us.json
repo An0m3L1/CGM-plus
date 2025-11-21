@@ -117,6 +117,7 @@
     "info.cgm.stats": "Stats:",
     "info.cgm.stats_help": "Hold Ctrl to view Stats",
     "info.cgm.damage": "Damage: %s",
+    "info.cgm.headshot_damage": "Headshot damage: %s",
     "info.cgm.damage_tick": "Damage per second: %s",
     "info.cgm.blind": "Max Blind Duration: %s sec.",
     "info.cgm.stun": "Max Stun Duration: %s sec.",

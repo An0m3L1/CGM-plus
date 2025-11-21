@@ -4,6 +4,7 @@ import com.mrcrayfish.framework.api.FrameworkAPI;
 import com.mrcrayfish.framework.api.client.FrameworkClientAPI;
 import com.mrcrayfish.guns.client.*;
 import com.mrcrayfish.guns.client.handler.CrosshairHandler;
+import com.mrcrayfish.guns.client.render.entity.BulletRenderer;
 import com.mrcrayfish.guns.common.BoundingBoxManager;
 import com.mrcrayfish.guns.common.NetworkGunManager;
 import com.mrcrayfish.guns.common.ProjectileManager;
@@ -12,9 +13,13 @@ import com.mrcrayfish.guns.datagen.BlockTagGen;
 import com.mrcrayfish.guns.datagen.EntityTagGen;
 import com.mrcrayfish.guns.datagen.GunGen;
 import com.mrcrayfish.guns.datagen.ItemTagGen;
-import com.mrcrayfish.guns.entity.projectile.*;
+import com.mrcrayfish.guns.entity.projectile.BulletEntity;
+import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
+import com.mrcrayfish.guns.entity.projectile.PipeGrenadeEntity;
+import com.mrcrayfish.guns.entity.projectile.RocketEntity;
 import com.mrcrayfish.guns.init.*;
 import com.mrcrayfish.guns.network.PacketHandler;
+import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.core.NonNullList;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.resources.ResourceLocation;
@@ -133,13 +138,20 @@ public class GunMod
             FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "network_gun_manager"), NetworkGunManager.LoginData::new);
             FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "custom_gun_manager"), CustomGunManager.LoginData::new);
             CraftingHelper.register(new ResourceLocation(Reference.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);
-            ProjectileManager.getInstance().registerFactory(ModItems.LIGHT_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new LightBulletEntity(ModEntities.LIGHT_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
-            ProjectileManager.getInstance().registerFactory(ModItems.MEDIUM_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new MediumBulletEntity(ModEntities.MEDIUM_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
-            ProjectileManager.getInstance().registerFactory(ModItems.HEAVY_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new HeavyBulletEntity(ModEntities.HEAVY_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
-            ProjectileManager.getInstance().registerFactory(ModItems.BUCKSHOT_SHELL.get(), (worldIn, entity, weapon, item, modifiedGun) -> new BuckshotEntity(ModEntities.BUCKSHOT_SHELL.get(), worldIn, entity, weapon, item, modifiedGun));
+
+            ProjectileManager.getInstance().registerFactory(ModItems.LIGHT_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) ->
+                    BulletEntity.createLight(ModEntities.LIGHT_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
+            ProjectileManager.getInstance().registerFactory(ModItems.MEDIUM_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) ->
+                    BulletEntity.createMedium(ModEntities.MEDIUM_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
+            ProjectileManager.getInstance().registerFactory(ModItems.HEAVY_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) ->
+                    BulletEntity.createHeavy(ModEntities.HEAVY_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
+            ProjectileManager.getInstance().registerFactory(ModItems.BUCKSHOT_SHELL.get(), (worldIn, entity, weapon, item, modifiedGun) ->
+                    BulletEntity.createBuckshot(ModEntities.BUCKSHOT_SHELL.get(), worldIn, entity, weapon, item, modifiedGun));
+
             ProjectileManager.getInstance().registerFactory(ModItems.GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new GrenadeEntity(ModEntities.GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
             ProjectileManager.getInstance().registerFactory(ModItems.PIPE_GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PipeGrenadeEntity(ModEntities.PIPE_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
             ProjectileManager.getInstance().registerFactory(ModItems.ROCKET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new RocketEntity(ModEntities.ROCKET.get(), worldIn, entity, weapon, item, modifiedGun));
+
             if(Config.COMMON.improvedHitboxes.get())
             {
                 MinecraftForge.EVENT_BUS.register(new BoundingBoxManager());
@@ -149,7 +161,15 @@ public class GunMod
 
     private void onClientSetup(FMLClientSetupEvent event)
     {
-        event.enqueueWork(ClientHandler::setup);
+        event.enqueueWork(() -> {
+            ClientHandler.setup();
+
+            // Регистрация универсального рендерера для всех типов пуль
+            EntityRenderers.register(ModEntities.LIGHT_BULLET.get(), BulletRenderer::new);
+            EntityRenderers.register(ModEntities.MEDIUM_BULLET.get(), BulletRenderer::new);
+            EntityRenderers.register(ModEntities.HEAVY_BULLET.get(), BulletRenderer::new);
+            EntityRenderers.register(ModEntities.BUCKSHOT_SHELL.get(), BulletRenderer::new);
+        });
     }
 
     private void onGatherData(GatherDataEvent event)

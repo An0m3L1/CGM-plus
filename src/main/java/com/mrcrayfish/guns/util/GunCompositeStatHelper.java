@@ -1,5 +1,6 @@
 package com.mrcrayfish.guns.util;
 
+import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.world.entity.player.Player;
@@ -104,5 +105,26 @@ public class GunCompositeStatHelper
             lightLevel = 4;
 
         return lightLevel;
+    }
+
+    public static float getHeadshotDamage(ItemStack weapon)
+    {
+        Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
+        float damage = modifiedGun.getProjectile().getDamage(); // Get base damage of the gun
+        damage = GunModifierHelper.getModifiedProjectileDamage(weapon, damage); // Get modified damage of the gun
+
+        if (modifiedGun.getProjectile().getHeadshotMultiplierOverride()!=0)
+            damage *= modifiedGun.getProjectile().getHeadshotMultiplierOverride();
+        else
+        {
+            double hm = Config.COMMON.headShotDamageMultiplier.get();
+            float headshotMultiplier = (float) Math.max(hm,modifiedGun.getProjectile().getHeadshotMultiplierMin());
+            damage *= headshotMultiplier+modifiedGun.getProjectile().getHeadshotMultiplierBonus();
+        }
+
+        if (modifiedGun.getProjectile().getHeadshotExtraDamage()>0)
+            damage += modifiedGun.getProjectile().getHeadshotExtraDamage();
+
+        return damage;
     }
 }

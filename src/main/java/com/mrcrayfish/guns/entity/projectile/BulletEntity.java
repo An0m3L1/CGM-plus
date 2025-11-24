@@ -17,7 +17,7 @@ public class BulletEntity extends ProjectileEntity
     public BulletEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {
         super(entityType, worldIn);
-        this.bulletModel = ModItems.LIGHT_BULLET_MODEL.get(); // Значение по умолчанию
+        this.bulletModel = ModItems.LIGHT_BULLET_MODEL.get();
     }
 
     public BulletEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun, Item bulletModel)

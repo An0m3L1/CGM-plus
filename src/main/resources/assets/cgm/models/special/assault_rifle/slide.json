@@ -1,4 +1,5 @@
 {
+	"format_version": "1.21.6",
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
@@ -19,6 +20,14 @@
 				"up": {"uv": [12.5, 1.5, 14, 2], "rotation": 90, "texture": "#1"},
 				"down": {"uv": [12.5, 1.5, 14, 2], "rotation": 90, "texture": "#1"}
 			}
+		}
+	],
+	"groups": [
+		{
+			"name": "Striker",
+			"origin": [8, 3.75, 11.7],
+			"color": 0,
+			"children": [0]
 		}
 	]
 }

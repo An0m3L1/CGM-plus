@@ -14,6 +14,7 @@ import com.mrcrayfish.guns.debug.IEditorMenu;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugButton;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugSlider;
 import com.mrcrayfish.guns.debug.client.screen.widget.DebugToggle;
+import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.PouchItem;
 import com.mrcrayfish.guns.item.attachment.ScopeItem;
@@ -1822,7 +1823,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         private ResourceLocation enchantedFireEx;
         @Optional
         @Nullable
-        private ResourceLocation weaponSelect;
+        private ResourceLocation weaponSelect = ModSounds.DRAW.getId();
         @Optional
         private int weaponSelectDelay = 0;
         @Optional

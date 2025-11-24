@@ -122,7 +122,7 @@ public class RecoilHandler
 
                 float hRecoilRandom = Mth.clamp(1F-(gunRecoilRandom*2.0F),-1,1);
                 hRecoilPushForce = Mth.clamp((lastHRecoilPushForce+(Math.min(Easings.EASE_IN_QUAD.apply(excessRecoilRatio-1),1)*hRecoilRandom)*0.5F),-cameraRecoil/1.5F,cameraRecoil/1.5F);
-                float clampedLastShotHRecoil = Mth.clamp(lastShotHRecoil, -targetVRecoil*0.75F,targetVRecoil*0.75F);
+                float clampedLastShotHRecoil = Mth.clamp(lastShotHRecoil, -targetVRecoil*0.65F,targetVRecoil*0.65F);
                 float targetHRecoil = Mth.clamp(clampedLastShotHRecoil + hRecoilPushForce, -targetVRecoil,targetVRecoil);
 
                 //float hRecoilPushForce = Math.min(cameraRecoil * (Easings.EASE_IN_SIN.apply(excessRecoilRatio-1)*0.5F),cameraRecoil/2F);

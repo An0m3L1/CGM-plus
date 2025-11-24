@@ -17,6 +17,7 @@
   },
   "projectile": {
     "damage": 32.0,
+    "headshotMultiplierOverride": 1.0,
     "size": 0.2,
     "speed": 2.00,
     "life": 100,

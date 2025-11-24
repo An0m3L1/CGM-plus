@@ -94,12 +94,13 @@ public class ModSounds
 	public static final RegistryObject<SoundEvent> SMOKE_GRENADE_EXPLOSION = register("entity.smoke_grenade.explosion");
 
 	/* Other sounds */
-	public static final RegistryObject<SoundEvent> ATTACHMENT = register("ui.attach");
+	public static final RegistryObject<SoundEvent> DRAW = register("item.draw");
 	public static final RegistryObject<SoundEvent> EMPTY_CLICK = register("item.empty_click");
 	public static final RegistryObject<SoundEvent> FIRE_SWITCH = register("item.fire_switch");
 	public static final RegistryObject<SoundEvent> LOW_DURABILITY = register("item.low_durability");
-	public static final RegistryObject<SoundEvent> THROW = register("item.throw");
 	public static final RegistryObject<SoundEvent> PARTY_HORN = register("item.party_horn");
+	public static final RegistryObject<SoundEvent> THROW = register("item.throw");
+	public static final RegistryObject<SoundEvent> ATTACHMENT = register("ui.attach");
 	public static final RegistryObject<SoundEvent> FLYBY = register("entity.flyby");
 
 	private static RegistryObject<SoundEvent> register(String key)

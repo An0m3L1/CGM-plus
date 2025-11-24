@@ -420,6 +420,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/food/dried_kelp_from_smoking": {
+    "criteria": {
+      "has_kelp": "2025-11-19 02:45:30 +0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/redstone/hopper": {
     "criteria": {
       "has_iron_ingot": "2024-06-07 15:07:25 +0300"
@@ -615,6 +621,12 @@
   "minecraft:recipes/building_blocks/cobblestone_slab_from_cobblestone_stonecutting": {
     "criteria": {
       "has_cobblestone": "2025-02-17 02:52:19 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/dried_kelp_from_smelting": {
+    "criteria": {
+      "has_kelp": "2025-11-19 02:45:30 +0300"
     },
     "done": true
   },
@@ -1694,6 +1706,12 @@
   "minecraft:recipes/misc/light_gray_dye_from_gray_white_dye": {
     "criteria": {
       "has_white_dye": "2024-06-10 01:10:09 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/food/dried_kelp_from_campfire_cooking": {
+    "criteria": {
+      "has_kelp": "2025-11-19 02:45:30 +0300"
     },
     "done": true
   },
@@ -3003,6 +3021,7 @@
     "criteria": {
       "cabbage": "2025-02-01 01:14:25 +0300",
       "tomato": "2025-02-01 01:14:30 +0300",
+      "kelp": "2025-11-19 02:45:32 +0300",
       "beetroot": "2025-02-01 01:14:02 +0300",
       "potato": "2025-02-01 11:20:35 +0300",
       "carrot": "2025-02-01 11:19:48 +0300"
@@ -3444,6 +3463,12 @@
   "minecraft:nether/obtain_blaze_rod": {
     "criteria": {
       "blaze_rod": "2025-01-27 21:18:38 +0300"
+    },
+    "done": true
+  },
+  "minecraft:adventure/ol_betsy": {
+    "criteria": {
+      "shot_crossbow": "2025-11-21 23:26:34 +0300"
     },
     "done": true
   },

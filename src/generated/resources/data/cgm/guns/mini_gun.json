@@ -41,6 +41,7 @@
   },
   "sounds": {
     "fire": "cgm:item.mini_gun.fire",
+    "weaponSelect": "cgm:item.draw",
     "reload": "cgm:item.pistol.reload"
   }
 }

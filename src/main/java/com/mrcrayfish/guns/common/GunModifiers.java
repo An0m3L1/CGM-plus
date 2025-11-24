@@ -33,30 +33,29 @@ public class GunModifiers
     /* Barrels */
     public static final IGunModifier SILENCER = new IGunModifier() {
         @Override
-        public boolean silencedFire()
-        {
+        public boolean silencedFire() {
             return true;
         }
         @Override
-        public double modifyMuzzleFlashScale(double scale) {return scale * 0.5;}
+        public double modifyMuzzleFlashScale(double scale) {
+            return scale * 0.5;
+        }
         @Override
-        public double modifyFireSoundRadius(double radius)
-        {
+        public double modifyFireSoundRadius(double radius) {
             return radius * 0.75;
         }
         @Override
-        public float recoilModifier()
-        {
+        public float recoilModifier() {
             return 0.95F;
         }
         @Override
-        public float kickModifier()
-        {
+        public float kickModifier() {
             return 0.975F;
         }
-
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.9F;
+        }
     };
     public static final IGunModifier HEAVY_SILENCER = new IGunModifier() {
         @Override
@@ -81,46 +80,62 @@ public class GunModifiers
         {
             return 0.95F;
         }
-
         @Override
         public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
     };
     public static final IGunModifier FLASH_HIDER = new IGunModifier() {
         @Override
-        public double modifyMuzzleFlashScale(double scale) {return scale * 0.5;}
-
+        public double modifyMuzzleFlashScale(double scale) {
+            return scale * 0.75;
+        }
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.9F;}
-
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.9F;
+        }
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.95F;
+        }
     };
     public static final IGunModifier MUZZLE_BRAKE = new IGunModifier() {
         @Override
-        public double modifyMuzzleFlashScale(double scale) {return scale * 0.75;}
-
+        public double modifyMuzzleFlashScale(double scale) {
+            return scale * 0.75;
+        }
         @Override
-        public float recoilModifier() {return 0.9F;}
+        public float recoilModifier() {
+            return 0.9F;
+        }
         @Override
-        public float kickModifier() {return 0.95F;}
-
+        public float kickModifier() {
+            return 0.95F;
+        }
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.95F;
+        }
     };
     public static final IGunModifier COMPENSATOR = new IGunModifier() {
         @Override
-        public double modifyMuzzleFlashScale(double scale) {return scale * 0.75;}
-
+        public double modifyMuzzleFlashScale(double scale) {
+            return scale * 0.75;
+        }
         @Override
-        public float recoilModifier() {return 0.95F;}
+        public float recoilModifier() {
+            return 0.95F;
+        }
         @Override
-        public float kickModifier() {return 0.975F;}
-
+        public float kickModifier() {
+            return 0.975F;
+        }
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.95F;}
-
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.95F;
+        }
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.95F;
+        }
     };
 
     /* Stocks */
@@ -137,10 +152,14 @@ public class GunModifiers
         }
 
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.8F;}
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.8F;
+        }
 
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.9F;
+        }
     };
     public static final IGunModifier MEDIUM_STOCK = new IGunModifier() {
         @Override
@@ -153,12 +172,14 @@ public class GunModifiers
         {
             return 0.825F;
         }
-
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.7F;}
-
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.7F;
+        }
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.85F;
+        }
     };
     public static final IGunModifier SOLID_STOCK = new IGunModifier() {
         @Override
@@ -171,12 +192,14 @@ public class GunModifiers
         {
             return 0.825F;
         }
-
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.7F;}
-
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.7F;
+        }
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.85F;
+        }
     };
     public static final IGunModifier HEAVY_STOCK = new IGunModifier() {
         @Override
@@ -185,16 +208,17 @@ public class GunModifiers
             return 0.6F;
         }
         @Override
-        public float kickModifier()
-        {
+        public float kickModifier() {
             return 0.8F;
         }
-
         @Override
-        public float modifyProjectileSpread(float spread) {return spread * 0.6F;}
-
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.6F;
+        }
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.8F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.8F;
+        }
     };
 
     /* Grips */
@@ -203,7 +227,6 @@ public class GunModifiers
         public float modifyProjectileSpread(float spread) {
             return spread * 0.8F;
         }
-
         @Override
         public double modifyAimDownSightSpeed(double speed) {
             return speed * 0.9F;
@@ -245,24 +268,35 @@ public class GunModifiers
         {
             return 0.9F;
         }
-
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.9F;
+        }
     };
 
     /* Magazines */
     public static final IGunModifier LIGHT_MAG = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 1.15F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 1.15F;
+        }
         @Override
-        public boolean lightMag() {return true;}
+        public boolean lightMag() {
+            return true;
+        }
     };
     public static final IGunModifier EXTENDED_MAG = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed) {return speed * 0.85F;}
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.85F;
+        }
         @Override
-        public boolean extMag() {return true;}
+        public boolean extMag() {
+            return true;
+        }
     };
+
+    /* Tactical */
 
     public static final IGunModifier NONE = new IGunModifier() {};
 }

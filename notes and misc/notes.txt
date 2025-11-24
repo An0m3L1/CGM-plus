@@ -17,12 +17,14 @@ Add and overhaul animations
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
 Add gun repair kit block
+Add specific draw sounds for ARs, pistols, snipers, etc
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
 Overhaul gun workbench model
+Overhaul gun workbench recipes to put the item directly into the inventory and return buckets
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul grenades
     - Remove movement slow while throwing

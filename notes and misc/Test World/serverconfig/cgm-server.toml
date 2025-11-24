@@ -1,7 +1,5 @@
 #Forces all attachments to be dyeable regardless if this has an effect on the model. This is useful if your server uses custom models for attachments and the models have dyeable elements.
 forceDyeableAttachments = false
-#If true, enables camera recoil when firing a weapon.
-enableCameraRecoil = true
 #The maximum amount of cooldown time remaining before the server will accept another shoot packet from a client. This allows for a litle slack since the server may be lagging.
 #Range: 75 ~ 1000
 cooldownThreshold = 100
@@ -26,29 +24,35 @@ cooldownThreshold = 100
 [sounds]
 	#The maximum distance weapons can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	gunShotMaxDistance = 96.0
+	gunShotMaxDistance = 128.0
 	#The maximum distance rocket explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	rocketExplosionMaxDistance = 96.0
+	rocketExplosionMaxDistance = 128.0
 	#The maximum distance pipe grenade explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	pipeGrenadeExplosionMaxDistance = 96.0
+	pipeGrenadeExplosionMaxDistance = 128.0
 	#The maximum distance grenade explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	handGrenadeExplosionMaxDistance = 64.0
+	handGrenadeExplosionMaxDistance = 96.0
 	#The maximum distance stun grenade explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	stunGrenadeExplosionMaxDistance = 64.0
+	stunGrenadeExplosionMaxDistance = 96.0
 	#The maximum distance smoke grenade explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
 	smokeGrenadeExplosionMaxDistance = 48.0
 	#The maximum distance incendiary grenade explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	incendiaryGrenadeExplosionMaxDistance = 48.0
+	incendiaryGrenadeExplosionMaxDistance = 64.0
 	#The maximum distance molotov explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	molotovExplosionMaxDistance = 48.0
+	molotovExplosionMaxDistance = 64.0
 	#The maximum distance reloading can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
 	reloadMaxDistance = 16.0
+	#The maximum distance grenade bouncing can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	grenadeBounceSoundDistance = 24.0
+	#The maximum distance impact grenade explosions can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	impactGrenadeExplosionMaxDistance = 96.0
 

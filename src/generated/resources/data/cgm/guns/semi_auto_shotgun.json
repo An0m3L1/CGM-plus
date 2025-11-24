@@ -50,7 +50,6 @@
 
     "armorBypass": 0.25,
     "protectionBypass": 0.25,
-    "weaponSelect": "cgm:item.draw",
 
     "breakFragile": true,
     "maxPierceCount": 3,
@@ -60,6 +59,7 @@
   },
   "sounds": {
     "fire": "cgm:item.semi_auto_shotgun.fire",
+    "weaponSelect": "cgm:item.draw",
     "reload": "cgm:item.semi_auto_shotgun.reload"
   }
 }

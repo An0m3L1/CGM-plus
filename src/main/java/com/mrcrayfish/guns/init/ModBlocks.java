@@ -7,13 +7,15 @@ import com.mrcrayfish.guns.block.WorkbenchBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.level.block.*;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.RotatedPillarBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.material.Material;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+
 import java.util.function.Supplier;
 /**
  * Author: MrCrayfish
@@ -23,9 +25,9 @@ public class ModBlocks
     public static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
 
     public static final RegistryObject<Block> GUN_WORKBENCH = registerBlock("gun_workbench",
-            () -> new WorkbenchBlock(Block.Properties.of(Material.WOOD)
+            () -> new WorkbenchBlock(Block.Properties.of(Material.METAL)
             .requiresCorrectToolForDrops()
-            .strength(1.0F)), GunMod.MATERIALS);
+            .strength(6.0F)), GunMod.MATERIALS);
     public static final RegistryObject<Block> CAST_IRON_BLOCK = registerBlock("cast_iron_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
             .requiresCorrectToolForDrops()

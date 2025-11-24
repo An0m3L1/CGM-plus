@@ -2,15 +2,15 @@
   "type": "minecraft:crafting_shaped",
   "key":
   {
-    "S": {"item": "create:empty_schematic"},
+    "s": {"item": "create:empty_schematic"},
     "C": {"item": "minecraft:crafting_table"},
-    "A": {"item": "create:andesite_casing"}
+    "S": {"tag": "forge:storage_blocks/steel"}
   },
   "pattern":
   [
-    "S",
+    "s",
     "C",
-    "A"
+    "S"
   ],
   "result": {"item": "cgm:gun_workbench"}
 }

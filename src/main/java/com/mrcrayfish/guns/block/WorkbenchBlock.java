@@ -46,9 +46,12 @@ public class WorkbenchBlock extends RotatedObjectBlock implements EntityBlock
         }
         Direction direction = state.getValue(FACING);
         List<VoxelShape> shapes = new ArrayList<>();
-        shapes.add(Block.box(1, 0, 1, 15, 13, 15));
-        shapes.add(Block.box(0, 13, 0, 16, 15, 16));
-        shapes.add(VoxelShapeHelper.getRotatedShapes(VoxelShapeHelper.rotate(Block.box(0, 15, 0, 16, 16, 2), Direction.SOUTH))[direction.get2DDataValue()]);
+        shapes.add(Block.box(1, 2, 1, 15, 14, 15));
+        shapes.add(Block.box(0, 14, 0, 16, 16, 16));
+        shapes.add(Block.box(1, 0, 1, 3, 2, 3));
+        shapes.add(Block.box(13, 0, 1, 15, 2, 3));
+        shapes.add(Block.box(1, 0, 13, 3, 2, 15));
+        shapes.add(Block.box(13, 0, 13, 15, 2, 15));
         VoxelShape shape = VoxelShapeHelper.combineAll(shapes);
         SHAPES.put(state, shape);
         return shape;

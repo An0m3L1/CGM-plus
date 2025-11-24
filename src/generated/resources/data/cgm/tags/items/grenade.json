@@ -1,6 +1,7 @@
 {
   "values": [
     "cgm:grenade",
+    "cgm:impact_grenade",
     "cgm:stun_grenade",
     "cgm:smoke_grenade",
     "cgm:incendiary_grenade",

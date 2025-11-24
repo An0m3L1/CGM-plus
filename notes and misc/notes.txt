@@ -23,9 +23,8 @@ Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-Overhaul gun workbench model
-Overhaul gun workbench recipes to put the item directly into the inventory and return buckets
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
+Overhaul gun repair kit textures
 Overhaul grenades
     - Remove movement slow while throwing
     - Make pipe grenades bouncy

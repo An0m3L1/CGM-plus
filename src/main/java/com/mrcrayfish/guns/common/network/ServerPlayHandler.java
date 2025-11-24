@@ -373,7 +373,10 @@ public class ServerPlayHandler
                     }
                 }
 
-                Containers.dropItemStack(world, pos.getX() + 0.5, pos.getY() + 1.125, pos.getZ() + 0.5, stack);
+                if(!player.getInventory().add(stack))
+                {
+                    Containers.dropItemStack(world, pos.getX() + 0.5, pos.getY() + 1.125, pos.getZ() + 0.5, stack);
+                }
             }
         }
     }

@@ -6,11 +6,14 @@ import com.mrcrayfish.guns.init.ModRecipeSerializers;
 import com.mrcrayfish.guns.init.ModRecipeTypes;
 import com.mrcrayfish.guns.util.InventoryUtil;
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
+
+import java.util.List;
 
 /**
  * Author: MrCrayfish
@@ -20,12 +23,14 @@ public class WorkbenchRecipe implements Recipe<WorkbenchBlockEntity>
     private final ResourceLocation id;
     private final ItemStack item;
     private final ImmutableList<WorkbenchIngredient> materials;
+    private final List<ItemStack> returnItems;
 
-    public WorkbenchRecipe(ResourceLocation id, ItemStack item, ImmutableList<WorkbenchIngredient> materials)
+    public WorkbenchRecipe(ResourceLocation id, ItemStack item, ImmutableList<WorkbenchIngredient> materials, List<ItemStack> returnItems)
     {
         this.id = id;
         this.item = item;
         this.materials = materials;
+        this.returnItems = returnItems;
     }
 
     public ItemStack getItem()
@@ -41,6 +46,11 @@ public class WorkbenchRecipe implements Recipe<WorkbenchBlockEntity>
     public WorkbenchIngredient getSpecificMaterial(int i)
     {
         return this.materials.get(i);
+    }
+
+    public List<ItemStack> getReturnItems()
+    {
+        return this.returnItems;
     }
 
     @Override
@@ -102,6 +112,15 @@ public class WorkbenchRecipe implements Recipe<WorkbenchBlockEntity>
         for(WorkbenchIngredient ingredient : this.getMaterials())
         {
             InventoryUtil.removeWorkstationIngredient(player, ingredient);
+        }
+
+        for(ItemStack returnItem : this.returnItems)
+        {
+            ItemStack returnItemCopy = returnItem.copy();
+            if(!player.getInventory().add(returnItemCopy))
+            {
+                player.level.addFreshEntity(new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), returnItemCopy));
+            }
         }
     }
 }

@@ -6,5 +6,6 @@
     {"item": "cgm:cloth"},
     {"item": "createdieselgenerators:gasoline_bucket"}
   ],
-  "result": {"item": "cgm:molotov"}
+  "result": {"item": "cgm:molotov"},
+  "return_items": [{"item": "minecraft:bucket"}]
 }

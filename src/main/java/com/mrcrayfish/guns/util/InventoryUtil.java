@@ -90,16 +90,18 @@ public class InventoryUtil
             ItemStack stack = player.getInventory().getItem(i);
             if(!stack.isEmpty() && find.test(stack))
             {
-                if(amount - stack.getCount() < 0)
+                int removeAmount = Math.min(amount, stack.getCount());
+                stack.shrink(removeAmount);
+                amount -= removeAmount;
+
+                if(stack.isEmpty())
                 {
-                    stack.shrink(amount);
-                    return true;
+                    player.getInventory().setItem(i, ItemStack.EMPTY);
                 }
-                else
+
+                if(amount == 0)
                 {
-                    amount -= stack.getCount();
-                    player.getInventory().items.set(i, ItemStack.EMPTY);
-                    if(amount == 0) return true;
+                    return true;
                 }
             }
         }

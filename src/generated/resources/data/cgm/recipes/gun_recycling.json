@@ -9,26 +9,27 @@
   "results": [
     {
       "chance": 0.5,
+      "count": 2,
       "item": "cgm:sturdy_mechanism"
     },
     {
       "chance": 0.5,
-      "count": 2,
+      "count": 4,
       "item": "cgm:steel_rod"
     },
     {
       "chance": 0.5,
-      "count": 4,
+      "count": 8,
       "item": "cgm:steel_sheet"
     },
     {
       "chance": 0.5,
-      "count": 3,
+      "count": 6,
       "item": "cgm:plastic"
     },
     {
       "chance": 0.5,
-      "count": 2,
+      "count": 4,
       "item": "cgm:rubber"
     }
   ]

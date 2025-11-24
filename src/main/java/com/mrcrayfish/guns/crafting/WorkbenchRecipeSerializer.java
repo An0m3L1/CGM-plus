@@ -13,6 +13,8 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
 
 import javax.annotation.Nullable;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Author: MrCrayfish
@@ -35,7 +37,20 @@ public class WorkbenchRecipeSerializer implements RecipeSerializer<WorkbenchReci
         }
         JsonObject resultObject = GsonHelper.getAsJsonObject(parent, "result");
         ItemStack resultItem = ShapedRecipe.itemStackFromJson(resultObject);
-        return new WorkbenchRecipe(recipeId, resultItem, builder.build());
+
+        List<ItemStack> returnItems = new ArrayList<>();
+        if(parent.has("return_items"))
+        {
+            JsonArray returnItemsArray = GsonHelper.getAsJsonArray(parent, "return_items");
+            for(int i = 0; i < returnItemsArray.size(); i++)
+            {
+                JsonObject returnItemObject = returnItemsArray.get(i).getAsJsonObject();
+                ItemStack returnItem = ShapedRecipe.itemStackFromJson(returnItemObject);
+                returnItems.add(returnItem);
+            }
+        }
+
+        return new WorkbenchRecipe(recipeId, resultItem, builder.build(), returnItems);
     }
 
     @Nullable
@@ -49,7 +64,15 @@ public class WorkbenchRecipeSerializer implements RecipeSerializer<WorkbenchReci
         {
             builder.add((WorkbenchIngredient) Ingredient.fromNetwork(buffer));
         }
-        return new WorkbenchRecipe(recipeId, result, builder.build());
+
+        List<ItemStack> returnItems = new ArrayList<>();
+        int returnItemCount = buffer.readVarInt();
+        for(int i = 0; i < returnItemCount; i++)
+        {
+            returnItems.add(buffer.readItem());
+        }
+
+        return new WorkbenchRecipe(recipeId, result, builder.build(), returnItems);
     }
 
     @Override
@@ -60,6 +83,13 @@ public class WorkbenchRecipeSerializer implements RecipeSerializer<WorkbenchReci
         for(WorkbenchIngredient ingredient : recipe.getMaterials())
         {
             ingredient.toNetwork(buffer);
+        }
+
+        List<ItemStack> returnItems = recipe.getReturnItems();
+        buffer.writeVarInt(returnItems.size());
+        for(ItemStack returnItem : returnItems)
+        {
+            buffer.writeItem(returnItem);
         }
     }
 }

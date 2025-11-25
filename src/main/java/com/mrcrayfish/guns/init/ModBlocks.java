@@ -31,7 +31,7 @@ public class ModBlocks
                     .strength(6.0F)), GunMod.MATERIALS);
     public static final RegistryObject<Block> GUN_REPAIR_KIT = registerBlock("gun_repair_kit",
             () -> new RepairKitBlock(Block.Properties.of(Material.METAL)
-                    .strength(0.1F)), GunMod.MATERIALS);
+                    .instabreak()), GunMod.GUNS);
     public static final RegistryObject<Block> CAST_IRON_BLOCK = registerBlock("cast_iron_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
                     .requiresCorrectToolForDrops()

@@ -156,9 +156,6 @@
 			}
 		}
 	],
-	"overrides": [
-		{"predicate": {"throwing": 1}, "model": "grenadesadozen:item/impact_grenade_throwing"}
-	],
 	"display": {
 		"thirdperson_righthand": {
 			"rotation": [0, -180, 0],

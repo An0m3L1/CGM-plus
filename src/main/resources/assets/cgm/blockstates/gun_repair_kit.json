@@ -1,0 +1,8 @@
+{
+    "variants": {
+        "facing=north": { "model": "cgm:block/gun_repair_kit", "y": 0   },
+        "facing=east":  { "model": "cgm:block/gun_repair_kit", "y": 90  },
+        "facing=south": { "model": "cgm:block/gun_repair_kit", "y": 180 },
+        "facing=west":  { "model": "cgm:block/gun_repair_kit", "y": 270 }
+    }
+}

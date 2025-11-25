@@ -16,7 +16,6 @@ Add and overhaul animations
     - Custom recoil animations
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
-Add gun repair kit block <--
 Add specific draw sounds for ARs, pistols, snipers, etc
 
 Overhaul items (models, textures, stats)

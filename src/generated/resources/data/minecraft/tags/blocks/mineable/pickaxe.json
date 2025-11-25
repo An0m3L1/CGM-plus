@@ -4,6 +4,7 @@
   [
     "cgm:cast_iron_block",
     "cgm:steel_block",
-    "cgm:gun_workbench"
+    "cgm:gun_workbench",
+    "cgm:gun_repair_kit"
   ]
 }

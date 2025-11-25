@@ -144,7 +144,6 @@
     "info.cgm.ammo_type": "Тип снаряда: %s",
     "info.cgm.attachment_help": "Нажми %s в игре для аксессуаров",
     "info.cgm.unobtainable": "У тебя не должно быть этого.",
-    "info.cgm.repair_kit": "Используй этот набор для починки на наковальне",
     "key.categories.cgm": "Оружейный мод",
     "key.cgm.reload": "Перезарядить оружие",
     "key.cgm.unload": "Разрядить оружие",

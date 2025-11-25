@@ -144,7 +144,6 @@
     "info.cgm.ammo_type": "Ammo Type: %s",
     "info.cgm.attachment_help": "Press %s in-game for Attachments",
     "info.cgm.unobtainable": "You really shouldn't have this.",
-    "info.cgm.repair_kit": "Use this Repair Kit at an Anvil",
     "key.categories.cgm": "Gun Mod",
     "key.cgm.reload": "Reload Gun",
     "key.cgm.unload": "Unload Gun",

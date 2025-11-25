@@ -27,7 +27,7 @@
     "visible": true,
     "maxPierceCount": 1,
     "item": "cgm:rocket",
-    "waterDamagePenalty": 0.25
+    "waterDamagePenalty": 0.5
   },
   "sounds": {
     "fire": "cgm:item.rocket_launcher.fire",

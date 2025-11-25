@@ -25,5 +25,8 @@ Overhaul items (models, textures, stats)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul grenades
     - Remove movement slow while throwing
-    - Make pipe grenades bouncy
-    - Make molotovs bounce off horizontal walls
+    - Make pipe grenades bouncy <--
+    - Remove dynamic lights for grenades underwater (waterSensitive) <--
+Improve projectile tracking code
+    - Water penalty calculation should occur faster
+    - Add bullets breaking multiple fragile blocks using the existing piercing system

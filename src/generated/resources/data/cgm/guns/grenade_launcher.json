@@ -28,7 +28,7 @@
     "gravityStrength": 1.25,
     "maxPierceCount": 1,
     "item": "cgm:pipe_grenade",
-    "waterDamagePenalty": 0.25
+    "waterDamagePenalty": 0.5
   },
   "sounds": {
     "cock": "cgm:item.grenade_launcher.cock",

@@ -63,7 +63,7 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
         {
             this.rotation += (speed * 50);
         }
-        if (this.level.isClientSide)
+        if (this.level.isClientSide && !this.isInWater())
         {
             this.level.addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY() + 0.25, this.getZ(), (Math.random()-0.5) * 0.1, 0.1, (Math.random()-0.5) * 0.1);
         }

@@ -3,6 +3,7 @@ package com.mrcrayfish.guns.init;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.block.HempCropBlock;
+import com.mrcrayfish.guns.block.RepairKitBlock;
 import com.mrcrayfish.guns.block.WorkbenchBlock;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.CreativeModeTab;
@@ -26,16 +27,19 @@ public class ModBlocks
 
     public static final RegistryObject<Block> GUN_WORKBENCH = registerBlock("gun_workbench",
             () -> new WorkbenchBlock(Block.Properties.of(Material.METAL)
-            .requiresCorrectToolForDrops()
-            .strength(6.0F)), GunMod.MATERIALS);
+                    .requiresCorrectToolForDrops()
+                    .strength(6.0F)), GunMod.MATERIALS);
+    public static final RegistryObject<Block> GUN_REPAIR_KIT = registerBlock("gun_repair_kit",
+            () -> new RepairKitBlock(Block.Properties.of(Material.METAL)
+                    .strength(0.1F)), GunMod.MATERIALS);
     public static final RegistryObject<Block> CAST_IRON_BLOCK = registerBlock("cast_iron_block",
             () -> new Block(BlockBehaviour.Properties.of(Material.METAL)
-            .requiresCorrectToolForDrops()
-            .strength(6.0F)), GunMod.MATERIALS);
+                    .requiresCorrectToolForDrops()
+                    .strength(6.0F)), GunMod.MATERIALS);
     public static final RegistryObject<RotatedPillarBlock> STEEL_BLOCK = registerBlock("steel_block",
             () -> new RotatedPillarBlock(BlockBehaviour.Properties.of(Material.METAL)
-            .requiresCorrectToolForDrops()
-            .strength(6.0F)), GunMod.MATERIALS);
+                    .requiresCorrectToolForDrops()
+                    .strength(6.0F)), GunMod.MATERIALS);
     public static final RegistryObject<HempCropBlock> HEMP_CROP_BLOCK = REGISTER.register("hemp_crop",
             () -> new HempCropBlock(BlockBehaviour.Properties.copy(Blocks.WHEAT)));
 

@@ -12,6 +12,7 @@ import com.mrcrayfish.guns.common.container.WorkbenchContainer;
 import com.mrcrayfish.guns.crafting.WorkbenchIngredient;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipe;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipes;
+import com.mrcrayfish.guns.init.ModBlocks;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.IAmmo;
@@ -127,7 +128,8 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 
         if(!misc.isEmpty())
         {
-            this.tabs.add(new Tab(new ItemStack(ModItems.GUN_REPAIR_KIT.get()), "misc", misc));
+            //this.tabs.add(new Tab(new ItemStack(ModItems.GUN_REPAIR_KIT.get()), "misc", misc));
+            this.tabs.add(new Tab(new ItemStack(ModBlocks.GUN_REPAIR_KIT.get()), "misc", misc));
         }
 
         if(!this.tabs.isEmpty())

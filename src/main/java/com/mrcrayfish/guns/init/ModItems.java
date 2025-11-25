@@ -6,7 +6,6 @@ import com.mrcrayfish.guns.common.Attachments;
 import com.mrcrayfish.guns.common.GunModifiers;
 import com.mrcrayfish.guns.item.AmmoItem;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.RepairKitItem;
 import com.mrcrayfish.guns.item.UnobtainableItem;
 import com.mrcrayfish.guns.item.attachment.*;
 import com.mrcrayfish.guns.item.attachment.impl.create.Barrel;
@@ -161,7 +160,7 @@ public class ModItems
     public static final RegistryObject<Item> EXTENDED_MAG = REGISTER.register("extended_magazine", () -> new MagazineItem(Magazine.create(GunModifiers.EXTENDED_MAG), new Item.Properties()));
 
     /* Misc */
-    public static final RegistryObject<Item> GUN_REPAIR_KIT = REGISTER.register("gun_repair_kit",() -> new RepairKitItem(new Item.Properties()));
+    //public static final RegistryObject<Item> GUN_REPAIR_KIT = REGISTER.register("gun_repair_kit",() -> new RepairKitItem(new Item.Properties()));
     //public static final RegistryObject<Item> AMMO_POUCH = REGISTER.register("ammo_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS), 4, ModTags.Items.AMMO));
     //public static final RegistryObject<Item> GRENADE_POUCH = REGISTER.register("grenade_pouch",() -> new PouchItem(new Item.Properties().tab(GunMod.GUNS), 4, ModTags.Items.GRENADE));
 

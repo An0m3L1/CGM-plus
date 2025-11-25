@@ -5,7 +5,7 @@ import com.mrcrayfish.guns.client.GunItemStackRenderer;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.NetworkGunManager;
 import com.mrcrayfish.guns.debug.Debug;
-import com.mrcrayfish.guns.init.ModItems;
+import com.mrcrayfish.guns.init.ModBlocks;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.ChatFormatting;
@@ -298,7 +298,8 @@ public class GunItem extends Item implements IColored, IMeta
 
     public boolean isValidRepairItem(ItemStack toRepair, ItemStack repair)
     {
-        return repair.is(ModItems.GUN_REPAIR_KIT.get());
+        //return repair.is(ModItems.GUN_REPAIR_KIT.get());
+        return repair.is(ModBlocks.GUN_REPAIR_KIT.get().asItem());
     }
 
     @Override

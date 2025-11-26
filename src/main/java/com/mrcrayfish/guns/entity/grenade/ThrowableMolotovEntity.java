@@ -6,6 +6,7 @@ import com.mrcrayfish.guns.client.audio.DistancedSound;
 import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
+import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageMolotov;
 import com.mrcrayfish.guns.network.message.S2CMessageMolotovUnderwater;
@@ -41,6 +42,8 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {
         super(entityType, world);
+        bounceSound = ModSounds.MOLOTOV_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableMolotovEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
@@ -48,6 +51,8 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         super(entityType, world, player);
         this.setItem(new ItemStack(ModItems.MOLOTOV.get()));
         this.setShouldBounce(false);
+        bounceSound = ModSounds.MOLOTOV_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public ThrowableMolotovEntity(Level world, LivingEntity player, int timeLeft)
@@ -56,6 +61,8 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
         this.setItem(new ItemStack(ModItems.MOLOTOV.get()));
         this.setMaxLife(200);
         this.setShouldBounce(false);
+        bounceSound = ModSounds.MOLOTOV_BOUNCE.get();
+        useCustomBounceSound = true;
     }
 
     public void tick()
@@ -102,6 +109,8 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
                     BlockPos resultPos = blockResult.getBlockPos();
                     BlockState state = this.level.getBlockState(resultPos);
                     ResourceLocation sound = state.getBlock().getSoundType(state, this.level, resultPos, this).getStepSound().getLocation();
+                    if (bounceSound != null && useCustomBounceSound)
+                        sound = bounceSound.getLocation();
 
                     double speed = this.getDeltaMovement().length();
                     float x = (float)result.getLocation().x;

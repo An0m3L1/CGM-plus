@@ -73,6 +73,7 @@ public class ModSounds
 
 	public static final RegistryObject<SoundEvent> MOLOTOV_LIGHT = register("item.grenade.molotov_light");
 	public static final RegistryObject<SoundEvent> MOLOTOV_THROW = register("item.grenade.molotov_throw");
+	public static final RegistryObject<SoundEvent> MOLOTOV_BOUNCE = register("item.grenade.molotov_bounce");
 
 	public static final RegistryObject<SoundEvent> STUN_PIN = register("item.grenade.stun_pin");
 	public static final RegistryObject<SoundEvent> STUN_THROW = register("item.grenade.stun_throw");
@@ -84,6 +85,7 @@ public class ModSounds
 
 	/* Explosions */
 	public static final RegistryObject<SoundEvent> EXTINGUISH = register("entity.extinguish");
+	public static final RegistryObject<SoundEvent> BOTTLE_BREAK = register("entity.bottle_break");
 	public static final RegistryObject<SoundEvent> ROCKET_EXPLOSION = register("entity.rocket.explosion");
 	public static final RegistryObject<SoundEvent> PIPE_GRENADE_EXPLOSION = register("entity.pipe_grenade.explosion");
 	public static final RegistryObject<SoundEvent> GRENADE_EXPLOSION = register("entity.grenade.explosion");

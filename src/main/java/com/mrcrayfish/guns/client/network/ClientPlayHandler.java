@@ -300,7 +300,6 @@ public class ClientPlayHandler
         for(int i = 0; i < 60; i++)
         {
             spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.2);
-            spawnParticle(particleManager, ParticleTypes.BUBBLE, x, y, z, level.random, 0.5);
         }
     }
 
@@ -342,13 +341,12 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        soundManager.play(DistancedSound.molotovExplosion(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.molotovExplosion(ModSounds.BOTTLE_BREAK.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn lingering smoke and bubble particles
         for(int i = 0; i < 60; i++)
         {
             spawnParticle(particleManager, ParticleTypes.SMOKE, x, y, z, level.random, 0.2);
-            spawnParticle(particleManager, ParticleTypes.BUBBLE, x, y, z, level.random, 0.5);
         }
     }
 

@@ -9,8 +9,7 @@ import com.mrcrayfish.guns.common.ServerAimTracker;
 import com.mrcrayfish.guns.common.SpreadTracker;
 import com.mrcrayfish.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.entity.grenade.ThrowableImpactGrenadeEntity;
-import com.mrcrayfish.guns.entity.projectile.PipeGrenadeEntity;
-import com.mrcrayfish.guns.entity.projectile.RocketEntity;
+import com.mrcrayfish.guns.entity.projectile.BulletEntity;
 import com.mrcrayfish.guns.event.GunProjectileHitEvent;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
@@ -266,7 +265,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             HitResult result = rayTraceBlocks(this.level, new ClipContext(startVec, endVec, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_LEAVES);
 
             //Projectile flyby sound
-            boolean isBullet = !(this instanceof RocketEntity || this instanceof PipeGrenadeEntity);
+            boolean isBullet = this instanceof BulletEntity;
             if(isBullet)
             {
                 AABB range = new AABB(startVec.x-5, startVec.y-5, startVec.z-5, startVec.x+5, startVec.y+5, startVec.z+5);

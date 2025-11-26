@@ -2,7 +2,6 @@ package com.mrcrayfish.guns.entity.grenade;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
@@ -11,8 +10,6 @@ import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageIncendiaryGrenade;
 import com.mrcrayfish.guns.network.message.S2CMessageIncendiaryGrenadeUnderwater;
 import com.mrcrayfish.guns.util.GrenadeFireHelper;
-import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
-import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -32,8 +29,6 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
         super(entityType, world);
         bounceSound = ModSounds.INCENDIARY_BOUNCE.get();
         useCustomBounceSound = true;
-        if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
-            DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> 7);
     }
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
@@ -62,10 +57,6 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
         if (speed > 0.1)
         {
             this.rotation += (speed * 50);
-        }
-        if (this.level.isClientSide && !this.isInWater())
-        {
-            this.level.addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY() + 0.25, this.getZ(), (Math.random()-0.5) * 0.1, 0.1, (Math.random()-0.5) * 0.1);
         }
     }
 

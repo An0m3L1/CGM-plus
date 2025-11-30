@@ -5,10 +5,14 @@ import com.mrcrayfish.guns.interfaces.IGunModifier;
 public class GunModifiers
 {
     /* Scopes */
-    public static final IGunModifier RED_DOT = new IGunModifier() {
+    public static final IGunModifier RED_DOT_SIGHT = new IGunModifier() {
         @Override
-        public double modifyAimDownSightSpeed(double speed) {
-            return speed * 0.95F;
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.95F;
+        }
+    };
+    public static final IGunModifier HOLOGRAPHIC_SIGHT = new IGunModifier() {
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {return speed * 0.9F;
         }
     };
     public static final IGunModifier X2_SCOPE = new IGunModifier() {
@@ -161,6 +165,28 @@ public class GunModifiers
             return speed * 0.9F;
         }
     };
+    public static final IGunModifier SKELETON_STOCK = new IGunModifier() {
+        @Override
+        public float recoilModifier()
+        {
+            return 0.7F;
+        }
+        @Override
+        public float kickModifier()
+        {
+            return 0.85F;
+        }
+
+        @Override
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.8F;
+        }
+
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.9F;
+        }
+    };
     public static final IGunModifier MEDIUM_STOCK = new IGunModifier() {
         @Override
         public float recoilModifier()
@@ -202,6 +228,25 @@ public class GunModifiers
         }
     };
     public static final IGunModifier HEAVY_STOCK = new IGunModifier() {
+        @Override
+        public float recoilModifier()
+        {
+            return 0.6F;
+        }
+        @Override
+        public float kickModifier() {
+            return 0.8F;
+        }
+        @Override
+        public float modifyProjectileSpread(float spread) {
+            return spread * 0.6F;
+        }
+        @Override
+        public double modifyAimDownSightSpeed(double speed) {
+            return speed * 0.8F;
+        }
+    };
+    public static final IGunModifier MODULAR_STOCK = new IGunModifier() {
         @Override
         public float recoilModifier()
         {
@@ -278,7 +323,7 @@ public class GunModifiers
     public static final IGunModifier LIGHT_MAG = new IGunModifier() {
         @Override
         public double modifyAimDownSightSpeed(double speed) {
-            return speed * 1.15F;
+            return speed * 1.1F;
         }
         @Override
         public boolean lightMag() {
@@ -288,7 +333,7 @@ public class GunModifiers
     public static final IGunModifier EXTENDED_MAG = new IGunModifier() {
         @Override
         public double modifyAimDownSightSpeed(double speed) {
-            return speed * 0.85F;
+            return speed * 0.9F;
         }
         @Override
         public boolean extMag() {

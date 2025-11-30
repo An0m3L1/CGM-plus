@@ -34,7 +34,7 @@
   "fireModes": {
     "useFireModes": true,
     "hasSemiMode": true,
-    "hasAutoMode": false,
+    "hasAutoMode": true,
     "hasBurstMode": true,
     "useAutoBurst": true,
     "burstCount": 3

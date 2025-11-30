@@ -287,7 +287,9 @@ public class Config
         public final ForgeConfigSpec.DoubleValue stunGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue smokeGrenadeExplosionSoundDistance;
         public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExplosionSoundDistance;
+        public final ForgeConfigSpec.DoubleValue incendiaryGrenadeExtinguishSoundDistance;
         public final ForgeConfigSpec.DoubleValue molotovExplosionSoundDistance;
+        public final ForgeConfigSpec.DoubleValue molotovBreakSoundDistance;
         public final ForgeConfigSpec.IntValue cooldownThreshold;
         public final ForgeConfigSpec.BooleanValue forceDyeableAttachments;
 
@@ -311,8 +313,10 @@ public class Config
                 this.stunGrenadeExplosionSoundDistance = builder.comment("The maximum distance stun grenade explosions can be heard by players.").defineInRange("stunGrenadeExplosionMaxDistance", 96, 0, Double.MAX_VALUE);
                 this.smokeGrenadeExplosionSoundDistance = builder.comment("The maximum distance smoke grenade explosions can be heard by players.").defineInRange("smokeGrenadeExplosionMaxDistance", 48, 0, Double.MAX_VALUE);
                 this.incendiaryGrenadeExplosionSoundDistance = builder.comment("The maximum distance incendiary grenade explosions can be heard by players.").defineInRange("incendiaryGrenadeExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
+                this.incendiaryGrenadeExtinguishSoundDistance = builder.comment("The maximum distance incendiary grenade extinguished explosions can be heard by players.").defineInRange("incendiaryGrenadeExtinguishMaxDistance", 32, 0, Double.MAX_VALUE);
                 this.molotovExplosionSoundDistance = builder.comment("The maximum distance molotov explosions can be heard by players.").defineInRange("molotovExplosionMaxDistance", 64, 0, Double.MAX_VALUE);
-            }builder.pop();
+                this.molotovBreakSoundDistance = builder.comment("The maximum distance molotov bottle breaking can be heard by players.").defineInRange("molotovBreakMaxDistance", 32, 0, Double.MAX_VALUE);
+        }builder.pop();
             this.forceDyeableAttachments = builder.comment("Forces all attachments to be dyeable regardless if this has an effect on the model. This is useful if your server uses custom models for attachments and the models have dyeable elements.").define("forceDyeableAttachments", false);
             this.cooldownThreshold = builder.comment("The maximum amount of cooldown time remaining before the server will accept another shoot packet from a client. This allows for a litle slack since the server may be lagging.").defineInRange("cooldownThreshold", 100, 75, 1000);
         }

@@ -1,4 +1,5 @@
 {
+	"format_version": "1.21.6",
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"textures": {
 		"1": "cgm:item/light_stock"
@@ -68,8 +69,8 @@
 		},
 		{
 			"name": "Curve",
-			"from": [7.755, 5.17, 12.75],
-			"to": [8.245, 7.16, 13.325],
+			"from": [7.655, 5.17, 12.75],
+			"to": [8.345, 7.16, 13.325],
 			"rotation": {"angle": -22.5, "axis": "x", "origin": [8, 5.055, 12.75]},
 			"faces": {
 				"north": {"uv": [9, 5, 10, 6], "rotation": 180, "texture": "#1"},
@@ -79,8 +80,8 @@
 		},
 		{
 			"name": "Mask",
-			"from": [7.75, 7, 10.25],
-			"to": [8.25, 7.55, 13.25],
+			"from": [7.65, 7, 10.25],
+			"to": [8.35, 7.8, 13.25],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, 7, 10.75]},
 			"faces": {
 				"east": {"uv": [10, 5, 16, 6], "rotation": 180, "texture": "#1"},
@@ -90,8 +91,8 @@
 		},
 		{
 			"name": "Mask",
-			"from": [7.75, 7, 10.25],
-			"to": [8.25, 7.775, 10.65],
+			"from": [7.65, 7, 10.25],
+			"to": [8.35, 8.025, 10.9],
 			"rotation": {"angle": -45, "axis": "x", "origin": [8, 7, 10.25]},
 			"faces": {
 				"north": {"uv": [7, 3, 8, 4], "texture": "#1"},
@@ -101,8 +102,8 @@
 		},
 		{
 			"name": "Mask",
-			"from": [7.75, 6.5, 12.25],
-			"to": [8.25, 7, 13.25],
+			"from": [7.65, 6.5, 12.25],
+			"to": [8.35, 7, 13.25],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, 6.505, 12.75]},
 			"faces": {
 				"east": {"uv": [14, 6, 16, 7], "rotation": 180, "texture": "#1"},
@@ -111,8 +112,8 @@
 		},
 		{
 			"name": "Mask",
-			"from": [7.75, 6, 12.75],
-			"to": [8.25, 6.5, 13.25],
+			"from": [7.65, 6, 12.75],
+			"to": [8.35, 6.5, 13.25],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, 6.005, 12.75]},
 			"faces": {
 				"east": {"uv": [15, 7, 16, 8], "texture": "#1"},
@@ -121,8 +122,8 @@
 		},
 		{
 			"name": "Mask",
-			"from": [7.75, 5.5, 12.75],
-			"to": [8.25, 6, 13.25],
+			"from": [7.65, 5.5, 12.75],
+			"to": [8.35, 6, 13.25],
 			"rotation": {"angle": 0, "axis": "x", "origin": [8, 5.505, 12.75]},
 			"faces": {
 				"east": {"uv": [15, 9, 16, 10], "texture": "#1"},
@@ -152,7 +153,7 @@
 			"scale": [1.1, 1.1, 1.1]
 		},
 		"gui": {
-			"rotation": [30, 225, 0],
+			"rotation": [30, -135, 0],
 			"translation": [5.25, -1.5, 0],
 			"scale": [2.5, 2.5, 2.5]
 		},

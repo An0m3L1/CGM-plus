@@ -27,6 +27,6 @@ Throwables:
     - Glow stick
 Attachments:
     - Grips: DONE
-    - Scopes: monocle, holo
-    - Stocks: scar, skeleton
+    - Scopes: DONE
+    - Stocks: DONE
     - Tactical: laser, flashlight

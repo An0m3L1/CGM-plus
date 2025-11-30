@@ -294,7 +294,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        mc.getSoundManager().play(DistancedSound.incendiaryGrenadeExplosion(ModSounds.EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        mc.getSoundManager().play(DistancedSound.incendiaryGrenadeExtinguish(ModSounds.INCENDIARY_EXTINGUISH.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn lingering smoke and bubble particles
         for(int i = 0; i < 60; i++)
@@ -341,7 +341,7 @@ public class ClientPlayHandler
         double z = message.getZ();
 
         //Play explosion sound
-        soundManager.play(DistancedSound.molotovExplosion(ModSounds.BOTTLE_BREAK.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
+        soundManager.play(DistancedSound.molotovBreak(ModSounds.MOLOTOV_BREAK.getId(), SoundSource.BLOCKS, (float)x,(float)y, (float)z, 1, 0.9F + level.random.nextFloat() * 0.1F, level.getRandom()));
 
         //Spawn lingering smoke and bubble particles
         for(int i = 0; i < 60; i++)

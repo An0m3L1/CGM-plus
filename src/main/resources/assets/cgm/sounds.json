@@ -66,8 +66,8 @@
    "item.grenade.molotov_light": {"subtitle": "subtitle.cgm.grenade.light", "sounds": [{"name": "cgm:item/grenade/molotov_light", "volume": 0.5 }]},
 
 
-   "entity.extinguish": {"subtitle": "subtitle.cgm.grenade.extinguish", "sounds": [{"name": "cgm:entity/explosion/extinguish", "volume": 0.75}]},
-   "entity.bottle_break": {"subtitle": "subtitle.cgm.grenade.extinguish", "sounds": [{"name": "cgm:entity/explosion/bottle_break", "volume": 0.75}]},
+   "entity.incendiary.extinguish": {"subtitle": "subtitle.cgm.incendiary.extinguish", "sounds": [{"name": "cgm:entity/explosion/incendiary_extinguish", "volume": 0.75}]},
+   "entity.molotov.break": {"subtitle": "subtitle.cgm.molotov.break", "sounds": [{"name": "cgm:entity/explosion/molotov_break", "volume": 0.75}]},
    "entity.rocket.explosion": {"subtitle": "subtitle.cgm.rocket.explosion", "sounds": [{"name": "cgm:entity/explosion/rocket", "volume": 0.75}]},
    "entity.pipe_grenade.explosion": {"subtitle": "subtitle.cgm.pipe_grenade.explosion", "sounds": [{"name": "cgm:entity/explosion/pipe_grenade", "volume": 0.75}]},
    "entity.grenade.explosion": {"subtitle": "subtitle.cgm.grenade.explosion", "sounds": [{"name": "cgm:entity/explosion/grenade", "volume": 0.75}]},

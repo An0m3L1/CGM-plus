@@ -16,7 +16,6 @@ Add and overhaul animations
     - Custom recoil animations
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
-Add specific draw sounds for ARs, pistols, snipers, etc
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher
@@ -25,7 +24,5 @@ Overhaul items (models, textures, stats)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul grenades
     - Remove movement slow while throwing
-    - Make pipe grenades bouncy <--
-Improve projectile tracking code
-    - Water penalty calculation should occur faster
-    - Add bullets breaking multiple fragile blocks using the existing piercing system
+    - Make pipe grenades bouncy
+Optimize textures

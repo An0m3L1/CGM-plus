@@ -118,6 +118,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.modifiedGravity = modifiedGun.getProjectile().isGravity() ? GunModifierHelper.getModifiedProjectileGravity(weapon, -0.04 * modifiedGun.getProjectile().getGravity()) : 0.0;
         this.life = GunModifierHelper.getModifiedProjectileLife(weapon, this.projectile.getLife());
         this.waterDamagePenalty = 1.0F - projectile.getWaterDamagePenalty();
+
         /* Get speed and set motion */
         Vec3 dir = this.getDirection(shooter, weapon, item, modifiedGun);
         double speed = GunModifierHelper.getModifiedProjectileSpeed(weapon, this.projectile.getSpeed());
@@ -264,7 +265,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             Vec3 endVec = startVec.add(this.getDeltaMovement());
             HitResult result = rayTraceBlocks(this.level, new ClipContext(startVec, endVec, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_LEAVES);
 
-            //Projectile flyby sound
+            /* Projectile flyby sound */
             boolean isBullet = this instanceof BulletEntity;
             if(isBullet)
             {
@@ -274,7 +275,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 boolean isShotgun = general.getProjectileAmount() > 1;
                 if (!players.isEmpty() && this.tickCount > 3 && soundTime < this.tickCount - 3)
                 {
-                    if(isShotgun) //Divide volume by projectile amount to avoid deafening players irl.
+                    /* Divide volume by projectile amount to avoid deafening players irl. */
+                    if(isShotgun)
                     {
                         volume = volume / general.getProjectileAmount();
                     }

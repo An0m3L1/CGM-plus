@@ -1,0 +1,162 @@
+{
+	"format_version": "1.9.0",
+	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
+	"textures": {
+		"2": "cgm:item/skeleton_stock",
+		"particle": "cgm:item/skeleton_stock"
+	},
+	"elements": [
+		{
+			"name": "Front Barrel",
+			"from": [7.5, 7.5, 8],
+			"to": [8.5, 8.5, 9.75],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 8, 8.75]},
+			"faces": {
+				"north": {"uv": [10, 14, 12, 16], "texture": "#2"},
+				"east": {"uv": [12, 16, 15.5, 14], "rotation": 180, "texture": "#2"},
+				"west": {"uv": [12, 16, 15.5, 14], "texture": "#2"},
+				"up": {"uv": [12, 14, 15.5, 16], "rotation": 90, "texture": "#2"},
+				"down": {"uv": [12, 14, 15.5, 16], "rotation": 270, "texture": "#2"}
+			}
+		},
+		{
+			"name": "Back Barrel",
+			"from": [7.5, 7.5, 9.75],
+			"to": [8.5, 8.5, 13.25],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 8, 10.5]},
+			"faces": {
+				"east": {"uv": [0, 0, 7, 2], "texture": "#2"},
+				"west": {"uv": [0, 0, 7, 2], "rotation": 180, "texture": "#2"},
+				"up": {"uv": [0, 2, 7, 0], "rotation": 270, "texture": "#2"},
+				"down": {"uv": [0, 2, 7, 0], "rotation": 90, "texture": "#2"}
+			}
+		},
+		{
+			"name": "Back Barrel",
+			"from": [7.375, 7.375, 9],
+			"to": [8.625, 8.625, 12.25],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 8, 10]},
+			"faces": {
+				"north": {"uv": [0, 6, 1, 7], "texture": "#2"},
+				"east": {"uv": [0, 5, 6, 7], "rotation": 180, "texture": "#2"},
+				"south": {"uv": [5, 6, 6, 7], "texture": "#2"},
+				"west": {"uv": [0, 5, 6, 7], "texture": "#2"},
+				"up": {"uv": [0, 5, 6, 7], "rotation": 270, "texture": "#2"},
+				"down": {"uv": [0, 5, 6, 7], "rotation": 90, "texture": "#2"}
+			}
+		},
+		{
+			"name": "Top Butt",
+			"from": [7.5, 7.5, 13.25],
+			"to": [8.5, 8.5, 13.75],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 8, 13]},
+			"faces": {
+				"south": {"uv": [7, 2, 9, 4], "rotation": 180, "texture": "#2"},
+				"west": {"uv": [8, 2, 9, 4], "texture": "#2"},
+				"up": {"uv": [8, 2, 9, 4], "rotation": 270, "texture": "#2"}
+			}
+		},
+		{
+			"name": "Top Butt",
+			"from": [7.5, 5, 13.25],
+			"to": [8.5, 6, 13.75],
+			"rotation": {"angle": -45, "axis": "z", "origin": [8, 5.5, 13]},
+			"faces": {
+				"north": {"uv": [7, 2, 9, 4], "rotation": 90, "texture": "#2"},
+				"east": {"uv": [8, 2, 9, 4], "rotation": 270, "texture": "#2"},
+				"south": {"uv": [7, 2, 9, 4], "texture": "#2"},
+				"down": {"uv": [8, 2, 9, 4], "rotation": 270, "texture": "#2"}
+			}
+		},
+		{
+			"name": "Butt",
+			"from": [7.29289, 5.5, 13.249],
+			"to": [8.70711, 8, 13.751],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.5, 13.2475]},
+			"faces": {
+				"north": {"uv": [14, 0, 16, 5], "texture": "#2"},
+				"east": {"uv": [10, 0, 11, 5], "texture": "#2"},
+				"south": {"uv": [11, 0, 13, 5], "texture": "#2"},
+				"west": {"uv": [13, 0, 14, 5], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Mask",
+			"from": [7.65, 5.65, 12.75],
+			"to": [8.35, 7.65, 13.25],
+			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.505, 12.75]},
+			"faces": {
+				"north": {"uv": [7, 5.7, 8, 9.7], "texture": "#2"},
+				"east": {"uv": [7, 5.7, 8, 9.7], "texture": "#2"},
+				"west": {"uv": [7, 5.7, 8, 9.7], "texture": "#2"}
+			}
+		},
+		{
+			"name": "Mask",
+			"from": [7.65, 4.95, 12.75],
+			"to": [8.35, 5.65, 13.25],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 5.655, 12.75]},
+			"faces": {
+				"north": {"uv": [7, 9, 8, 10], "texture": "#2"},
+				"east": {"uv": [7, 9, 8, 10], "texture": "#2"},
+				"west": {"uv": [7, 9, 8, 10], "texture": "#2"}
+			}
+		}
+	],
+	"display": {
+		"thirdperson_righthand": {
+			"translation": [0, 1.25, -4.5],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"thirdperson_lefthand": {
+			"translation": [0, 1.25, -4.5],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"firstperson_righthand": {
+			"translation": [-3.5, 5.5, 3.25],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"firstperson_lefthand": {
+			"translation": [-3.5, 5.5, 3.25],
+			"scale": [0.8, 0.8, 0.8]
+		},
+		"ground": {
+			"translation": [0, -0.5, -2.25],
+			"scale": [1.1, 1.1, 1.1]
+		},
+		"gui": {
+			"rotation": [30, -135, 0],
+			"translation": [5.25, -1.5, 0],
+			"scale": [2.5, 2.5, 2.5]
+		},
+		"fixed": {
+			"rotation": [0, 90, 0],
+			"translation": [-5.75, 1.25, -1.25],
+			"scale": [2, 2, 2]
+		}
+	},
+	"groups": [
+		{
+			"name": "Skeleton Stock",
+			"origin": [8, 6.325, 11.5],
+			"color": 0,
+			"children": [
+				0,
+				1,
+				2,
+				{
+					"name": "Butt",
+					"origin": [8, 5.5, 13.75],
+					"color": 0,
+					"children": [3, 4, 5]
+				}
+			]
+		},
+		{
+			"name": "Detail",
+			"origin": [8, 6.325, 11.5],
+			"color": 0,
+			"children": [6, 7]
+		}
+	]
+}

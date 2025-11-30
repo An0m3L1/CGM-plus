@@ -4,14 +4,37 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Repair kit update.&#10;&#10;Finished working on repair kit.&#10;Fixed some missing texture and model calls.">
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/explosion/bottle_break.ogg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/grenade/molotov_bounce.ogg" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Attachment update.&#10;&#10;Added skeleton stock.&#10;Added modular stock.&#10;Added holographic sight.&#10;Tweaked other stocks' models.&#10;Added fire grenade sounds.&#10;Fixed non-functional impact grenade config.">
+      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/attachments/skeleton_stock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/holographic_sight.cgmmeta" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/holographic_sight.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/modular_stock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/skeleton_stock.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/effect/holographic_sight_reticle.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/modular_stock.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/skeleton_stock.png" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/content.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/content.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/audio/DistancedSound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/audio/DistancedSound.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Attachments.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Attachments.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GunModifiers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GunModifiers.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModSounds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/light_stock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/light_stock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/medium_stock.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/medium_stock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/red_dot_sight.cgmmeta" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/red_dot_sight.cgmmeta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/sights.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/combat_rifle/sights.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/explosion/bottle_break.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/explosion/molotov_break.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/explosion/extinguish.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/entity/explosion/incendiary_extinguish.ogg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/effect/x2_scope_reticle.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/effect/x2_scope_reticle.png" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -47,9 +70,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="ForgeItem (1.17+)" />
         <option value="ForgeBlock (1.17+)" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -93,7 +116,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/saves&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/resourcepacks/WIP Resources/assets/cgm/textures/item&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -102,11 +125,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\loot_tables\blocks" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\blockstates" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\block" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets\cgm\textures\item" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\item" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\attachments" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special" />
@@ -478,7 +501,15 @@
       <option name="project" value="LOCAL" />
       <updated>1764009222302</updated>
     </task>
-    <option name="localTasksCounter" value="37" />
+    <task id="LOCAL-00037" summary="Grenade update.&#10;&#10;Added molotov bounce and break sounds.">
+      <option name="closed" value="true" />
+      <created>1764192622967</created>
+      <option name="number" value="00037" />
+      <option name="presentableId" value="LOCAL-00037" />
+      <option name="project" value="LOCAL" />
+      <updated>1764192622967</updated>
+    </task>
+    <option name="localTasksCounter" value="38" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -497,7 +528,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Dynamic light and durability fixes.&#10;&#10;Guns and attachments can't be enchanted now.&#10;Gunfire light visual effect is now tied to config value.&#10;Changed repair kit recipe and model.&#10;Fixed bug that allowed guns to shoot if their durability was negative." />
     <MESSAGE value="Clean up.&#10;&#10;Moved around files and folders.&#10;Cleaned up various files and classes." />
     <MESSAGE value="Tactical belt (WIP)&#10;&#10;Added files in preparation of tactical belt implementation.&#10;Added test world to project files." />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'&#10;&#10;# Conflicts:&#10;#&#9;.idea/workspace.xml&#10;#&#9;src/main/java/com/mrcrayfish/guns/init/ModItems.java" />
@@ -522,7 +552,8 @@
     <MESSAGE value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Various balance changes.&#10;Further tweaks to new animations." />
     <MESSAGE value="Model and sound update.&#10;&#10;Added thumb grip.&#10;Added an easter egg for unobtainable items.&#10;Renamed some models for clarity.&#10;Overhauled assault rifle barrel covers.&#10;Overhauled sniper rifle extended mag model.&#10;Added generic throw sound to all grenades.&#10;Rewrote code related to throw sounds.&#10;Added scope mount to tactical pistol.&#10;Added stock mount to semi auto shotgun." />
     <MESSAGE value="Small tweaks and fixes.&#10;&#10;Tweaked headshot tooltip to not show for identical damage to base damage.&#10;Registered weapon select sound.&#10;Added default weapon select sound to Gun.java.&#10;Added missing weapon select sound to guns.&#10;Added repair kit item class to show a custom tooltip.&#10;Updated test world.&#10;Updated icons for the mod and WIP resource pack.&#10;Slightly reduced horizontal recoil.&#10;Changed molotov recipe to use gasoline instead of ethanol." />
-    <option name="LAST_COMMIT_MESSAGE" value="Small tweaks and fixes.&#10;&#10;Tweaked headshot tooltip to not show for identical damage to base damage.&#10;Registered weapon select sound.&#10;Added default weapon select sound to Gun.java.&#10;Added missing weapon select sound to guns.&#10;Added repair kit item class to show a custom tooltip.&#10;Updated test world.&#10;Updated icons for the mod and WIP resource pack.&#10;Slightly reduced horizontal recoil.&#10;Changed molotov recipe to use gasoline instead of ethanol." />
+    <MESSAGE value="Grenade update.&#10;&#10;Added molotov bounce and break sounds." />
+    <option name="LAST_COMMIT_MESSAGE" value="Grenade update.&#10;&#10;Added molotov bounce and break sounds." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

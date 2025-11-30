@@ -129,7 +129,8 @@ public class ModItems
     public static final RegistryObject<Item> INCENDIARY_GRENADE_NO_PIN = REGISTER.register("incendiary_grenade_no_pin", () -> new UnobtainableItem(new Item.Properties()));
 
     /* Scopes */
-    public static final RegistryObject<Item> RED_DOT_SIGHT = REGISTER.register("red_dot_sight", () -> new ScopeItem(Attachments.RED_DOT, new Item.Properties()));
+    public static final RegistryObject<Item> RED_DOT_SIGHT = REGISTER.register("red_dot_sight", () -> new ScopeItem(Attachments.RED_DOT_SIGHT, new Item.Properties()));
+    public static final RegistryObject<Item> HOLOGRAPHIC_SIGHT = REGISTER.register("holographic_sight", () -> new ScopeItem(Attachments.HOLOGRAPHIC_SIGHT, new Item.Properties()));
     public static final RegistryObject<Item> X2_SCOPE = REGISTER.register("x2_scope", () -> new ScopeItem(Attachments.X2_SCOPE, new Item.Properties()));
     public static final RegistryObject<Item> X4_SCOPE = REGISTER.register("x4_scope", () -> new ScopeItem(Attachments.X4_SCOPE, new Item.Properties()));
     public static final RegistryObject<Item> X6_SCOPE = REGISTER.register("x6_scope", () -> new ScopeItem(Attachments.X6_SCOPE, new Item.Properties()));
@@ -143,14 +144,16 @@ public class ModItems
 
     /* Stocks */
     public static final RegistryObject<Item> LIGHT_STOCK = REGISTER.register("light_stock", () -> new StockItem(Stock.create(GunModifiers.LIGHT_STOCK), new Item.Properties()));
+    public static final RegistryObject<Item> SKELETON_STOCK = REGISTER.register("skeleton_stock", () -> new StockItem(Stock.create(GunModifiers.SKELETON_STOCK), new Item.Properties()));
     public static final RegistryObject<Item> MEDIUM_STOCK = REGISTER.register("medium_stock", () -> new StockItem(Stock.create(GunModifiers.MEDIUM_STOCK), new Item.Properties()));
     public static final RegistryObject<Item> SOLID_STOCK = REGISTER.register("solid_stock", () -> new StockItem(Stock.create(GunModifiers.SOLID_STOCK), new Item.Properties()));
     public static final RegistryObject<Item> HEAVY_STOCK = REGISTER.register("heavy_stock", () -> new StockItem(Stock.create(GunModifiers.HEAVY_STOCK), new Item.Properties()));
+    public static final RegistryObject<Item> MODULAR_STOCK = REGISTER.register("modular_stock", () -> new StockItem(Stock.create(GunModifiers.MODULAR_STOCK), new Item.Properties()));
 
     /* Grips */
+    public static final RegistryObject<Item> THUMB_GRIP = REGISTER.register("thumb_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.THUMB_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> HORIZONTAL_GRIP = REGISTER.register("horizontal_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.HORIZONTAL_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> ANGLED_GRIP = REGISTER.register("angled_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.ANGLED_GRIP), new Item.Properties()));
-    public static final RegistryObject<Item> THUMB_GRIP = REGISTER.register("thumb_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.THUMB_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> VERTICAL_GRIP = REGISTER.register("vertical_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.VERTICAL_GRIP), new Item.Properties()));
 
     /* Tactical */

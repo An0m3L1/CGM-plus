@@ -1,5 +1,5 @@
 {
-	"format_version": "1.21.6",
+	"format_version": "1.9.0",
 	"credit": "Model by MrCrayfish (https://twitter.com/MrCraayfish) using Blockbench",
 	"texture_size": [32, 32],
 	"textures": {
@@ -119,7 +119,7 @@
 		},
 		{
 			"name": "Front Body",
-			"from": [7.75, 4.75, 9.95],
+			"from": [7.75, 5, 9.95],
 			"to": [8.25, 5.5, 10.45],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 4.75, 9.95]},
 			"faces": {
@@ -153,9 +153,9 @@
 		},
 		{
 			"name": "Front Body Bottom Curve",
-			"from": [7.7501, 4.5, 10.375],
-			"to": [8.2481, 4.65, 10.45],
-			"rotation": {"angle": -45, "axis": "x", "origin": [8, 4.75, 10.2]},
+			"from": [7.7501, 4.75, 10.375],
+			"to": [8.2481, 4.9, 10.45],
+			"rotation": {"angle": -45, "axis": "x", "origin": [8, 5, 10.2]},
 			"faces": {
 				"east": {"uv": [1.5, 1, 2, 1.5], "texture": "#1"},
 				"south": {"uv": [1.5, 1, 2, 1.5], "texture": "#1"},
@@ -220,7 +220,7 @@
 		{
 			"name": "Bottom Body",
 			"from": [7.75, 4.5, 9.95],
-			"to": [8.25, 4.75, 15.95],
+			"to": [8.25, 5, 15.95],
 			"rotation": {"angle": 0, "axis": "y", "origin": [8, 5.25, 15.95]},
 			"faces": {
 				"north": {"uv": [1, 1, 1.5, 1.5], "texture": "#1"},

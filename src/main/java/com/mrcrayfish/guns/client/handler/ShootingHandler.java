@@ -58,6 +58,8 @@ public class ShootingHandler
     private int slot = -1;
     private Item lastItem;
 
+    private boolean fireModeKeyPressed = false;
+
     private ShootingHandler() {}
 
     private boolean isNotInGame()
@@ -235,7 +237,8 @@ public class ShootingHandler
             }
 
             // Handling fire mode switch logic here for convenience.
-            if(KeyBinds.KEY_FIRE_MODE.isDown())
+            boolean fireModeKeyDown = KeyBinds.KEY_FIRE_MODE.isDown();
+            if(fireModeKeyDown && !fireModeKeyPressed)
             {
             	if(heldItem.getItem() instanceof GunItem gunItem)
                 {
@@ -278,8 +281,9 @@ public class ShootingHandler
                         }
                 	}
                 }
-                KeyBinds.KEY_FIRE_MODE.setDown(false);
             }
+
+            fireModeKeyPressed = fireModeKeyDown;
         }
     }
 

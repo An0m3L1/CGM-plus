@@ -5,7 +5,6 @@ Add melee class system
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
 Add more attachment slots to existing guns
-    - Sniper rifle: tactical
     - Tactical Pistol: tactical
     - Semi-Auto Shotgun: tactical
 Add and overhaul animations
@@ -13,7 +12,6 @@ Add and overhaul animations
     - Crouched aiming (lower the weapon to align with eyes)
     - Third person reload animation
     - Smooth third person sprint animation for one-handed weapons
-    - Custom recoil animations
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
 

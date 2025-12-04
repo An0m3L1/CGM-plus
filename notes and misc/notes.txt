@@ -20,7 +20,5 @@ Overhaul items (models, textures, stats)
     - Rocket Launcher
     - Minigun
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul grenades
-    - Remove movement slow while throwing
-    - Make pipe grenades bouncy
+Overhaul pipe grenades to make them bouncy
 Optimize textures

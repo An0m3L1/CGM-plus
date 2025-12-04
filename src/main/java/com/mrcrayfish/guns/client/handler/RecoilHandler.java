@@ -5,6 +5,7 @@ import com.mrcrayfish.guns.client.util.Easings;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.event.GunFireEvent;
 import com.mrcrayfish.guns.item.GunItem;
+import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.Mth;
@@ -46,6 +47,7 @@ public class RecoilHandler
     private float currentCameraVRecoil;
     private float prevCameraVRecoil;
     private float lastShotVRecoil;
+    private float vRecoilPushForce;
 
     private float currentCameraHRecoil;
     private float prevCameraHRecoil;
@@ -53,8 +55,11 @@ public class RecoilHandler
     private float hRecoilPushForce;
     private float lastHRecoilPushForce;
 
-    private float maxRecoilScaling = 15;
+    private float maxRecoilScaling = 18;
     private int lastFireTick = -1;
+    private double recoilBuildup = 0;
+    private float recoilVarianceFraction = 1.0F;
+    private float maxRecoilVariance = 3.0F;
 
     private RecoilHandler() {}
 
@@ -81,11 +86,30 @@ public class RecoilHandler
 
         this.lastShotVRecoil = currentCameraVRecoil;
         this.lastShotHRecoil = currentCameraHRecoil;
-        this.hRecoilPushForce = lastHRecoilPushForce;
+        //this.lastVRecoilPushForce = vRecoilPushForce;
+        this.lastHRecoilPushForce = hRecoilPushForce*0.6F;
+
+        float timeSinceLastShot = mc.player.tickCount - this.lastFireTick;
+        double fireRate = GunCompositeStatHelper.getCompositeBaseRate(heldItem, modifiedGun);
+        double scaledRecoilRate = Math.min(fireRate/18,1);
+        double maxTimeBetweenShots = (10-1)+fireRate;
+        if (timeSinceLastShot<=maxTimeBetweenShots)
+        {
+            if (recoilBuildup>0 && timeSinceLastShot>4)
+                recoilBuildup = Math.max(Mth.lerp(Easings.EASE_IN_OUT_SIN.apply((timeSinceLastShot)/maxTimeBetweenShots), recoilBuildup, 0), 0);
+
+            recoilBuildup = Math.min(recoilBuildup+scaledRecoilRate,1);
+        }
+        else
+        {
+            recoilBuildup=0;
+            //this.lastVRecoilPushForce = 0;
+            this.lastHRecoilPushForce = 0;
+        }
 
         this.lastFireTick = mc.player.tickCount;
-
-        this.progressCameraRecoil = 0F;
+        if (this.progressCameraRecoil != 0F)
+            this.progressCameraRecoil = 0F;
     }
 
     @SubscribeEvent
@@ -112,23 +136,25 @@ public class RecoilHandler
             if (lastFireTick != -1) {
                 int currentRecoilTick = mc.player.tickCount - this.lastFireTick;
 
-                float prevVRecoil = lastShotVRecoil - Math.min(lastShotVRecoil * 0.4F, 0.2F);
+                float prevVRecoil = lastShotVRecoil - Math.min(lastShotVRecoil * 0.2F, 0.1F);
                 float stackedVRecoil = cameraRecoil + lastShotVRecoil;
                 float targetVRecoil = cameraRecoil != 0 ? Mth.lerp(Easings.EASE_OUT_SIN.apply((stackedVRecoil/cameraRecoil)/maxRecoilScaling),0,cameraRecoil*(maxRecoilScaling/2)) : cameraRecoil;
 
-                float excessRecoilRatio = cameraRecoil != 0 ? (targetVRecoil/cameraRecoil) : 0;
-                if (excessRecoilRatio>1)
-                    targetVRecoil*=(gunVRecoilRandom*0.1F)+0.95F;
+                float recoilVariance = Mth.clamp(cameraRecoil*recoilVarianceFraction,-maxRecoilVariance,maxRecoilVariance);
+
+                float vRecoilRandom = Mth.clamp(1F-(gunVRecoilRandom*2.0F),-1,1);
+                vRecoilPushForce = Mth.clamp(((Math.min(Easings.EASE_IN_QUAD.apply((float) recoilBuildup),1)*vRecoilRandom)*0.2F),-recoilVariance/4F,recoilVariance/4F);
+                targetVRecoil += Mth.clamp(vRecoilPushForce, -recoilVariance,recoilVariance);
 
                 float hRecoilRandom = Mth.clamp(1F-(gunRecoilRandom*2.0F),-1,1);
-                hRecoilPushForce = Mth.clamp((lastHRecoilPushForce+(Math.min(Easings.EASE_IN_QUAD.apply(excessRecoilRatio-1),1)*hRecoilRandom)*0.5F),-cameraRecoil/1.5F,cameraRecoil/1.5F);
-                float clampedLastShotHRecoil = Mth.clamp(lastShotHRecoil, -targetVRecoil*0.65F,targetVRecoil*0.65F);
-                float targetHRecoil = Mth.clamp(clampedLastShotHRecoil + hRecoilPushForce, -targetVRecoil,targetVRecoil);
+                hRecoilPushForce = Mth.clamp((lastHRecoilPushForce+(Math.min(Easings.EASE_IN_OUT_QUAD.apply((float) recoilBuildup),1)*hRecoilRandom)/2F),-recoilVariance/3F,recoilVariance/3F);
+                float clampedLastShotHRecoil = Mth.clamp(lastShotHRecoil, -recoilVariance/1.4F,recoilVariance/1.4F);
+                float targetHRecoil = clampedLastShotHRecoil + hRecoilPushForce;
 
                 //float hRecoilPushForce = Math.min(cameraRecoil * (Easings.EASE_IN_SIN.apply(excessRecoilRatio-1)*0.5F),cameraRecoil/2F);
                 //float targetHRecoil = Mth.clamp(lastShotHRecoil + (hRecoilPushForce * Mth.clamp(2F-(gunRecoilRandom*4.0F),-1,1)) , -targetVRecoil*0.8F,targetVRecoil*0.8F);
-                double recoilUpwardTime = ((targetVRecoil - prevVRecoil) / 7) + 2;
-                double recoilDownwardTime = ((targetVRecoil / 4.4) + 8);
+                double recoilUpwardTime = (Math.abs(targetVRecoil-prevVRecoil)/6)+2;
+                double recoilDownwardTime = ((targetVRecoil/4)+8);
 
                 float recoilTime = (float) Math.min(((float) currentRecoilTick) + mc.getPartialTick(), recoilUpwardTime + recoilDownwardTime);
 
@@ -216,9 +242,21 @@ public class RecoilHandler
         this.gunRecoilAngle = modifiedGun.getGeneral().getRecoilAngle();
     }
 
-    public double getAdsRecoilReduction(Gun gun)
-    {
+    public double getAdsRecoilReduction(Gun gun) {
         return 1.0 - gun.getGeneral().getRecoilAdsReduction() * AimingHandler.get().getNormalisedAdsProgress();
+    }
+
+    public double getRecoilBuildup()
+    {
+        return this.recoilBuildup;
+    }
+
+    public float getCurrentVRecoil(float partialTicks) {
+        return Mth.lerp(partialTicks, prevCameraVRecoil, currentCameraVRecoil);
+    }
+
+    public float getCurrentHRecoil(float partialTicks) {
+        return Mth.lerp(partialTicks, prevCameraHRecoil, currentCameraHRecoil);
     }
 
     public double getGunRecoilNormal()

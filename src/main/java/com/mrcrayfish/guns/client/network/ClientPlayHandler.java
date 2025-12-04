@@ -517,6 +517,11 @@ public class ClientPlayHandler
         BulletTrailRenderingHandler.get().remove(message.getEntityId());
     }
 
+    public static void handleForceSetReserveAmmo(C2SMessageForceSetReserveAmmo message)
+    {
+        GunRenderingHandler.get().forceSetReserveAmmo(message.getAmmoAfterLoad());
+    }
+
     public static void handleUpdateGuns(S2CMessageUpdateGuns message)
     {
         NetworkGunManager.updateRegisteredGuns(message);

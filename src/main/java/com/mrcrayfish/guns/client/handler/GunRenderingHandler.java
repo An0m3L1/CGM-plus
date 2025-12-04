@@ -328,7 +328,8 @@ public class GunRenderingHandler
         this.sprintTransition = 0;
         this.sprintCooldown = 10;
 
-        if (lastFireTick!=-1)
+        // Handling code for CS-style viewmodel recoil accumulation.
+        /*if (lastFireTick!=-1)
         {
             float timeSinceLastShot = event.getEntity().tickCount + mc.getPartialTick() - lastFireTick;
             if (timeSinceLastShot<=csRecoilTime)
@@ -344,6 +345,7 @@ public class GunRenderingHandler
         }
         else
             shotCountScaled=0;
+        */
 
         lastFireTick=event.getEntity().tickCount;
 
@@ -779,7 +781,23 @@ public class GunRenderingHandler
             poseStack.translate(0, 0, -0.15);
         }
 
+        // Viewmodel angular kick from accumulated recoil.
+        double recoilBuildup = RecoilHandler.get().getRecoilBuildup();
+        if (recoilBuildup>0)
+        {
+            float aiming = getAimProgress(item);
+            aiming = Math.max(1-(aiming*0.8F), 0);
+
+            float vRecoil = RecoilHandler.get().getCurrentVRecoil(partialTicks);
+            float hRecoil = RecoilHandler.get().getCurrentHRecoil(partialTicks);
+            Vec3 recoilXRotations = new Vec3(vRecoil*0.3F,0,0).scale(Easings.EASE_IN_OUT_SIN.apply(recoilBuildup)).scale(aiming);
+            Vec3 recoilHRotations = new Vec3(0,hRecoil*1.8f,hRecoil*1.3f).scale(Easings.EASE_IN_OUT_SIN.apply(recoilBuildup)).scale(aiming);
+            GunAnimationHelper.rotateAroundOffset(poseStack, recoilXRotations, new Vec3(0,1.0,2.0));
+            GunAnimationHelper.rotateAroundOffset(poseStack, recoilHRotations, new Vec3(0,2.0,4.0));
+        }
+
         // CS-style viewmodel recoil accumulation.
+        /*
         if (lastFireTick!=-1)
         {
             float aiming = getAimProgress(item);
@@ -792,6 +810,7 @@ public class GunRenderingHandler
                 GunAnimationHelper.rotateAroundOffset(poseStack, recoilRotations, new Vec3(0,0,16.0));
             }
         }
+        */
     }
 
     private void applyShieldTransforms(PoseStack poseStack, LocalPlayer player, Gun modifiedGun, float partialTick)

@@ -61,7 +61,7 @@ public class SpreadTracker
                 }
             }
             /* Spread is always no more than ~75% when crouching or crawling */
-            if(player.isCrouching() || player.isVisuallyCrawling()) {
+            if((player.isCrouching() || player.isVisuallyCrawling()) && player.isOnGround()) {
                 if (spreadCount.getValue() > spreadPositiveModifier) {
                     spreadCount.setValue(spreadPositiveModifier);
                 }

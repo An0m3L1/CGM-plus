@@ -21,4 +21,6 @@ Overhaul items (models, textures, stats)
     - Minigun
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul pipe grenades to make them bouncy
+Overhaul fire sound distance check to take vertical distance into account
+
 Optimize textures

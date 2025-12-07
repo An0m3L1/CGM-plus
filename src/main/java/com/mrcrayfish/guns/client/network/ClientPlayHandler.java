@@ -386,7 +386,7 @@ public class ClientPlayHandler
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
-        double diameter = Config.COMMON.smokeGrenadeCloudDiameter.get();
+        double diameter = Config.COMMON.smokeGrenadeCloudRadius.get() * 2F;
         double vel = 0.004;
         int amount = (int) (diameter * 15);
 

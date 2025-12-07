@@ -31,14 +31,14 @@ public class SmokeGrenadeItem extends GrenadeItem
     {
         double damage = Config.COMMON.smokeGrenadeDamage.get();
         double smokeDuration = Config.COMMON.smokeGrenadeCloudDuration.get();
-        double smokeDiameter = Config.COMMON.smokeGrenadeCloudDiameter.get();
+        double smokeRadius = Config.COMMON.smokeGrenadeCloudRadius.get();
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {
             tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
             tooltip.add(Component.translatable("info.cgm.damage_tick", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.smoke_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(smokeDuration)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.smoke_diameter", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(smokeDiameter)).withStyle(ChatFormatting.GRAY));
+            tooltip.add(Component.translatable("info.cgm.smoke_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(smokeRadius)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
             tooltip.add(Component.translatable("info.cgm.extinguish").withStyle(ChatFormatting.GRAY));
         }

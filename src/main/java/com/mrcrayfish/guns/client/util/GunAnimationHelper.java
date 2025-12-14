@@ -21,9 +21,12 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
 /**
+ * Author: zaeonNineZero
+ *
  * Helper class for more complex gun animations, including attachment and hand movements.
- * These animations are built around a "Common Animation System", a keyframe-based animation
- * system built specifically for CGM Expanded.
+ * These animations are built around a custom keyframe-based animation system built
+ * specifically for CGM Expanded. This system could someday be expanded upon into a
+ * more comprehensive animation system.
  */
 public final class GunAnimationHelper
 {
@@ -440,6 +443,10 @@ public final class GunAnimationHelper
 	}
 	public static double getAnimationValue(String animationType, ItemStack weapon, float progress, String component, String valueName)
 	{
+		return getAnimationValue(animationType, weapon, progress, component, valueName, 0);
+	}
+	public static double getAnimationValue(String animationType, ItemStack weapon, float progress, String component, String valueName, double returnVal)
+	{
 		ResourceLocation weapKey = lookForParentAnimation(animationType, getItemLocationKey(weapon));
 
 		animationType = addReloadAnimSuffix(animationType, weapKey);
@@ -448,7 +455,7 @@ public final class GunAnimationHelper
 		int currentFrame = getCurrentFrame(weapon, scaledProgress);
 		int priorFrame = findPriorFrameValue(animationType, weapKey, component, currentFrame, valueName);
 
-		double animationValue = getAnimationValue(animationType, weapKey, component, priorFrame, valueName);
+		double animationValue = getAnimationValue(animationType, weapKey, component, priorFrame, valueName, returnVal);
 
 		return animationValue;
 	}
@@ -553,18 +560,29 @@ public final class GunAnimationHelper
 	public static double getAnimationValuePublic(String animationType, ResourceLocation weapKey, String transform) {
 		return getAnimationValue(animationType, weapKey, transform);
 	}
+	public static double getAnimationValuePublic(String animationType, ResourceLocation weapKey, String transform, double returnVal) {
+		return getAnimationValue(animationType, weapKey, transform, returnVal);
+	}
 	public static double getAnimationValuePublic(String animationType, ItemStack weapon, String transform) {
 		return getAnimationValue(animationType, lookForParentAnimation(animationType, getItemLocationKey(weapon)), transform);
 	}
+	public static double getAnimationValuePublic(String animationType, ItemStack weapon, String transform, double returnVal) {
+		return getAnimationValue(animationType, lookForParentAnimation(animationType, getItemLocationKey(weapon)), transform, returnVal);
+	}
 	public static double getAnimationValuePublic(String animationType, ItemStack weapon, String component, String transform) {
-		return getAnimationValue(animationType, lookForParentAnimation(animationType, getItemLocationKey(weapon)), component, transform);
+		return getAnimationValue(animationType, lookForParentAnimation(animationType, getItemLocationKey(weapon)), component, transform, 0);
+	}
+	public static double getAnimationValuePublic(String animationType, ItemStack weapon, String component, String transform, double returnVal) {
+		return getAnimationValue(animationType, lookForParentAnimation(animationType, getItemLocationKey(weapon)), component, transform, returnVal);
 	}
 	public static double getAnimationValuePublic(String animationType, ResourceLocation weapKey, String component, int frame, String transform) {
-		return getAnimationValue(animationType, weapKey, component, frame, transform);
+		return getAnimationValue(animationType, weapKey, component, frame, transform, 0);
+	}
+	public static double getAnimationValuePublic(String animationType, ResourceLocation weapKey, String component, int frame, String transform, double returnVal) {
+		return getAnimationValue(animationType, weapKey, component, frame, transform, returnVal);
 	}
 
 	/* Property Helpers for animations */
-
 	// General
 	public static boolean hasAnimation(String animationType, ResourceLocation weapKey) {
 		DataObject animObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType);
@@ -583,6 +601,7 @@ public final class GunAnimationHelper
 	public static boolean hasAnimation(String animationType, ItemStack weapon) {
 		return hasAnimation(animationType, lookForParentAnimation(animationType, getItemLocationKey(weapon)));
 	}
+
 	static ResourceLocation lookForParentAnimation(String animationType, ResourceLocation weapKey) {
 		DataObject animObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType);
 		if (animObject.has("parent", DataType.STRING))
@@ -615,6 +634,7 @@ public final class GunAnimationHelper
 
 		return weapKey;
 	}
+
 	static int getAnimationFrames(String animationType, ResourceLocation weapKey) {
 		DataObject animObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType);
 		if (animObject.has("frames", DataType.NUMBER))
@@ -630,6 +650,7 @@ public final class GunAnimationHelper
 		ResourceLocation weapKey = lookForParentAnimation(animationType, getItemLocationKey(weapon));
 		return getAnimationFrames(animationType, weapKey);
 	}
+
 
 	// Rotation offset points
 	public static Vec3 getRotationOffsetPoint(String animationType, ResourceLocation weapKey, String component) {
@@ -658,6 +679,7 @@ public final class GunAnimationHelper
 		return Vec3.ZERO;
 	}*/
 
+
 	// Frames
 	static int findPriorFrame(String animationType, ResourceLocation weapKey, String component, int frame, String transform) {
 		int returnFrame=-1;
@@ -676,6 +698,7 @@ public final class GunAnimationHelper
 		else
 			return 0;
 	}
+
 	static int findPriorFrameValue(String animationType, ResourceLocation weapKey, String component, int frame, String transform) {
 		int returnFrame=-1;
 		for (int i=frame; returnFrame==-1 && i>=0; i--)
@@ -693,6 +716,7 @@ public final class GunAnimationHelper
 		else
 			return 0;
 	}
+
 	static int findNextFrame(String animationType, ResourceLocation weapKey, String component, int frame, String transform) {
 		int returnFrame=-1;
 		for (int i=frame; returnFrame==-1 && i<=getAnimationFrames(animationType, weapKey); i++)
@@ -710,6 +734,7 @@ public final class GunAnimationHelper
 		else
 			return findPriorFrame(animationType, weapKey, component, frame, transform);
 	}
+
 
 	// Animation values
 	static Vec3 getAnimationArray(String animationType, ResourceLocation weapKey, String component, String transform) {
@@ -740,9 +765,11 @@ public final class GunAnimationHelper
 
 		return Vec3.ZERO;
 	}
+
 	static boolean getAnimationBoolean(String animationType, ResourceLocation weapKey, String transform) {
 		return getAnimationBoolean(animationType, weapKey, transform, false);
 	}
+
 	static boolean getAnimationBoolean(String animationType, ResourceLocation weapKey, String transform, boolean defaultReturn) {
 		DataObject transformObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType);
 		if (transformObject.has(transform, DataType.BOOLEAN))
@@ -759,6 +786,7 @@ public final class GunAnimationHelper
 
 		return defaultReturn;
 	}
+
 	static double getAnimationValue(String animationType, ResourceLocation weapKey, String transform) {
 		DataObject transformObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType);
 		if (transformObject.has(transform, DataType.NUMBER))
@@ -775,10 +803,27 @@ public final class GunAnimationHelper
 
 		return 0;
 	}
+	static double getAnimationValue(String animationType, ResourceLocation weapKey, String transform, double defaultReturn) {
+		DataObject transformObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType);
+		if (transformObject.has(transform, DataType.NUMBER))
+		{
+			DataNumber transformData = transformObject.getDataNumber(transform);
+			if (transformData!=null)
+			{
+				//GunMod.LOGGER.info("Animation System: Found " + transform + " number data of " + weapKey);
+				return transformData.asDouble();
+			}
+			//GunMod.LOGGER.info("Animation System: Found animation object of " + weapKey + " but did not find " + transform + " number data");
+
+		}
+
+		return defaultReturn;
+	}
 	static float getAnimationValueFloat(String animationType, ResourceLocation weapKey, String transform) {
 		return (float) getAnimationValue(animationType, weapKey, transform);
 	}
-	static double getAnimationValue(String animationType, ResourceLocation weapKey, String component, String transform) {
+
+	static double getAnimationValue(String animationType, ResourceLocation weapKey, String component, String transform, double returnVal) {
 		DataObject transformObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType, component);
 		if (transformObject.has(transform, DataType.NUMBER))
 		{
@@ -787,12 +832,13 @@ public final class GunAnimationHelper
 				return transformData.asDouble();
 		}
 
-		return 0;
+		return returnVal;
 	}
-	static float getAnimationValueFloat(String animationType, ResourceLocation weapKey, String component, String transform) {
-		return (float) getAnimationValue(animationType, weapKey, component, transform);
+	static float getAnimationValueFloat(String animationType, ResourceLocation weapKey, String component, String transform, double returnVal) {
+		return (float) getAnimationValue(animationType, weapKey, component, transform, returnVal);
 	}
-	static double getAnimationValue(String animationType, ResourceLocation weapKey, String component, int frame, String transform) {
+
+	static double getAnimationValue(String animationType, ResourceLocation weapKey, String component, int frame, String transform, double returnVal) {
 		DataObject transformObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType, component, ""+frame);
 		if (transformObject.has(transform, DataType.NUMBER))
 		{
@@ -801,11 +847,12 @@ public final class GunAnimationHelper
 				return transformData.asDouble();
 		}
 
-		return 0;
+		return returnVal;
 	}
-	static float getAnimationValueFloat(String animationType, ResourceLocation weapKey, String component, int frame, String transform) {
-		return (float) getAnimationValue(animationType, weapKey, component, frame, transform);
+	static float getAnimationValueFloat(String animationType, ResourceLocation weapKey, String component, int frame, String transform, double returnVal) {
+		return (float) getAnimationValue(animationType, weapKey, component, frame, transform, returnVal);
 	}
+
 	static Vec3 getAnimTranslation(String animationType, ResourceLocation weapKey, String component, int frame) {
 		DataObject frameObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType, component, ""+frame);
 		if (frameObject.has("translation", DataType.ARRAY))
@@ -874,6 +921,8 @@ public final class GunAnimationHelper
 
 		return Easings.LINEAR;
 	}
+
+
 	public static int getAnimationSoundEventCount(String animationType, ItemStack weapon) {
 		ResourceLocation weapKey = lookForParentAnimation(animationType, getItemLocationKey(weapon));
 		DataObject audioObject = getObjectByPath(weapKey, ANIMATION_KEY, animationType, "sounds");
@@ -915,6 +964,8 @@ public final class GunAnimationHelper
 		return getAnimationSoundParamFloat(animationType, weapon, soundIntID, parameter, -1);
 	}
 
+
+
 	// Additional methods to aid with interfacing with the animation system.
 	@SuppressWarnings("deprecation")
 	public static ResourceLocation getItemLocationKey(ItemStack stack)
@@ -922,6 +973,8 @@ public final class GunAnimationHelper
 		ResourceLocation location = stack.getItem().builtInRegistryHolder().key().location();
 		return location;
 	}
+
+
 
 	// Copies of methods from PropertyHelper, reworked to support animations.
 	static DataObject getObjectByPath(ResourceLocation locationKey, String ... path)

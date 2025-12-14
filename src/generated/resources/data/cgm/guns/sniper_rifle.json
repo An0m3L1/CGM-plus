@@ -7,7 +7,7 @@
     "spawnCasings": false,
     "emitLight": true,
 
-    "adsSpeed": 0.7,
+    "adsSpeed": 0.75,
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 1.0,
 

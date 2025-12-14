@@ -1,16 +1,10 @@
 package com.mrcrayfish.guns.debug.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mojang.blaze3d.vertex.BufferBuilder;
-import com.mojang.blaze3d.vertex.BufferUploader;
-import com.mojang.blaze3d.vertex.DefaultVertexFormat;
-import com.mojang.blaze3d.vertex.PoseStack;
-import com.mojang.blaze3d.vertex.Tesselator;
-import com.mojang.blaze3d.vertex.VertexFormat;
+import com.mojang.blaze3d.vertex.*;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.debug.IDebugWidget;
 import com.mrcrayfish.guns.debug.IEditorMenu;
-import com.mrcrayfish.guns.util.ScreenUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.components.Button;
@@ -174,9 +168,9 @@ public class EditorScreen extends Screen
         @Override
         public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTick)
         {
-            ScreenUtil.startScissor(this.x0, this.y0, this.x1 - this.x0, this.y1 - this.y0);
+            startScissor(this.x0, this.y0, this.x1 - this.x0, this.y1 - this.y0);
             super.render(poseStack, mouseX, mouseY, partialTick);
-            ScreenUtil.endScissor();
+            endScissor();
         }
     }
 
@@ -216,7 +210,35 @@ public class EditorScreen extends Screen
         @Override
         public boolean isMouseOver(double mouseX, double mouseY)
         {
-            return ScreenUtil.isMouseWithin(EditorScreen.this.list.getRowLeft(), EditorScreen.this.list.getTop(), EditorScreen.this.list.getRowWidth(), EditorScreen.this.list.getHeight(), (int) mouseX, (int) mouseY) && super.isMouseOver(mouseX, mouseY);
+            return isMouseWithin(EditorScreen.this.list.getRowLeft(), EditorScreen.this.list.getTop(), EditorScreen.this.list.getRowWidth(), EditorScreen.this.list.getHeight(), (int) mouseX, (int) mouseY) && super.isMouseOver(mouseX, mouseY);
         }
+    }
+
+    /**
+     * Creates a scissor test using minecraft screen coordinates instead of pixel coordinates.
+     * @param screenX
+     * @param screenY
+     * @param boxWidth
+     * @param boxHeight
+     */
+    public static void startScissor(int screenX, int screenY, int boxWidth, int boxHeight)
+    {
+        Minecraft mc = Minecraft.getInstance();
+        int scale = (int) mc.getWindow().getGuiScale();
+        int x = screenX * scale;
+        int y = mc.getWindow().getHeight() - screenY * scale - boxHeight * scale;
+        int width = Math.max(0, boxWidth * scale);
+        int height = Math.max(0, boxHeight * scale);
+        RenderSystem.enableScissor(x, y, width, height);
+    }
+
+    public static void endScissor()
+    {
+        RenderSystem.disableScissor();
+    }
+
+    public static boolean isMouseWithin(int x, int y, int width, int height, int mouseX, int mouseY)
+    {
+        return mouseX >= x && mouseX < x + width && mouseY >= y && mouseY < y + height;
     }
 }

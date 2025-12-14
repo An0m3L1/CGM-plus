@@ -10,7 +10,6 @@ import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageMolotov;
 import com.mrcrayfish.guns.network.message.S2CMessageMolotovUnderwater;
-import com.mrcrayfish.guns.util.GrenadeFireHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -117,7 +116,7 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
                     float y = (float)result.getLocation().y;
                     float z = (float)result.getLocation().z;
 
-                    if(speed > 0.35 && this.level.isClientSide())
+                    if(speed > 0.3 && this.level.isClientSide())
                     {
                         Minecraft.getInstance().getSoundManager().play(DistancedSound.grenadeBounce(sound, SoundSource.BLOCKS, x, y, z, 0.85F, 1, level.getRandom()));
                     }
@@ -167,7 +166,7 @@ public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
                     LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageMolotov(this.getX(), y, this.getZ()));
             this.createLight(explosionLightValue, explosionLightLife);
             GrenadeEntity.createFireExplosion(this, radius * 0.6F, false);
-            GrenadeFireHelper.igniteEntities(level, center, radius * 1.1F, fireDuration);
+            ThrowableGrenadeEntity.igniteEntities(level, center, radius * 1.1F, fireDuration);
         }
     }
 }

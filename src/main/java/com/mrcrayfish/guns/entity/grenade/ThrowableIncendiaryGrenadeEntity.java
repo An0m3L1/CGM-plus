@@ -9,7 +9,6 @@ import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessageIncendiaryGrenade;
 import com.mrcrayfish.guns.network.message.S2CMessageIncendiaryGrenadeUnderwater;
-import com.mrcrayfish.guns.util.GrenadeFireHelper;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
@@ -77,7 +76,7 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
                     LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageIncendiaryGrenade(this.getX(), y, this.getZ()));
             this.createLight(explosionLightValue, explosionLightLife);
             GrenadeEntity.createFireExplosion(this, radius * 0.6F, false);
-            GrenadeFireHelper.igniteEntities(level, center, radius * 1.1F, fireDuration);
+            ThrowableGrenadeEntity.igniteEntities(level, center, radius * 1.1F, fireDuration);
         }
         else
         {

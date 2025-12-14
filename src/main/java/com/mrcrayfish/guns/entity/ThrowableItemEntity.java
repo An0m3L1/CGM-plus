@@ -129,7 +129,7 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
                     float y = (float)result.getLocation().y;
                     float z = (float)result.getLocation().z;
 
-                    if(speed > 0.35)
+                    if(speed > 0.3)
                     {
                         if(this.level.isClientSide())
                         {

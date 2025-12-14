@@ -302,7 +302,7 @@ public class Config
                 this.ringVolume = builder.comment("Volume of the ringing sound when deafened will play at this volume, before eventually fading to 0.").defineInRange("ringVolume", 0.75, 0.0, 1.0);
             }builder.pop();
             builder.push("sounds");{
-                this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 128, 0, Double.MAX_VALUE);
+                this.gunShotSoundDistance = builder.comment("The maximum distance weapons can be heard by players.").defineInRange("gunShotMaxDistance", 96, 0, Double.MAX_VALUE);
                 this.reloadSoundDistance = builder.comment("The maximum distance reloading can be heard by players.").defineInRange("reloadMaxDistance", 16, 0, Double.MAX_VALUE);
                 this.grenadeBounceSoundDistance = builder.comment("The maximum distance grenade bouncing can be heard by players.").defineInRange("grenadeBounceSoundDistance", 24, 0, Double.MAX_VALUE);
                 this.rocketExplosionSoundDistance = builder.comment("The maximum distance rocket explosions can be heard by players.").defineInRange("rocketExplosionMaxDistance", 128, 0, Double.MAX_VALUE);

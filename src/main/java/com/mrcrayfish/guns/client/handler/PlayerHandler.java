@@ -1,5 +1,6 @@
 package com.mrcrayfish.guns.client.handler;
 
+import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.init.ModTags;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.entity.player.Player;
@@ -39,14 +40,20 @@ public class PlayerHandler
 
         ItemStack heldItem = mc.player.getMainHandItem();
 
-        /* Sprinting restrictions */
+        // Sprinting restrictions
         if(heldItem.is(ModTags.Items.HEAVY) ||
                 player.isVisuallyCrawling() ||
                 player.isCrouching() ||
-                (player.getUseItem().getItem() == Items.SHIELD))
+                (player.getUseItem().getItem() == Items.SHIELD) ||
+                ModSyncedDataKeys.RELOADING.getValue(player))
         {
             mc.options.keySprint.setDown(false);
             player.setSprinting(false);
         }
+
+        // Crouching restrictions
+        if(player.isVisuallyCrawling())
+            mc.options.keyShift.setDown(false);
+            player.setShiftKeyDown(false);
     }
 }

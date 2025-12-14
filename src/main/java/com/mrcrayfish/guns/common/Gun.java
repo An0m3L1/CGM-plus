@@ -20,7 +20,6 @@ import com.mrcrayfish.guns.item.PouchItem;
 import com.mrcrayfish.guns.item.attachment.ScopeItem;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import com.mrcrayfish.guns.item.attachment.impl.create.Scope;
-import com.mrcrayfish.guns.util.GunJsonUtil;
 import com.mrcrayfish.guns.util.SuperBuilder;
 import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
@@ -3183,15 +3182,15 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             JsonObject object = new JsonObject();
             if(this.flash != null)
             {
-                GunJsonUtil.addObjectIfNotEmpty(object, "flash", this.flash.toJsonObject());
+                addObjectIfNotEmpty(object, "flash", this.flash.toJsonObject());
             }
             if(this.forwardHand != null)
             {
-                GunJsonUtil.addObjectIfNotEmpty(object, "forwardHand", this.forwardHand.toJsonObject());
+                addObjectIfNotEmpty(object, "forwardHand", this.forwardHand.toJsonObject());
             }
             if(this.rearHand != null)
             {
-                GunJsonUtil.addObjectIfNotEmpty(object, "rearHand", this.rearHand.toJsonObject());
+                addObjectIfNotEmpty(object, "rearHand", this.rearHand.toJsonObject());
             }
             return object;
         }
@@ -3579,7 +3578,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 object.add("zoom", this.zoom.toJsonObject());
             }
-            GunJsonUtil.addObjectIfNotEmpty(object, "attachments", this.attachments.toJsonObject());
+            addObjectIfNotEmpty(object, "attachments", this.attachments.toJsonObject());
             return object;
         }
 
@@ -3848,14 +3847,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         JsonObject object = new JsonObject();
         object.add("general", this.general.toJsonObject());
         object.add("projectile", this.projectile.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "fireModes", this.fireModes.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "sounds", this.sounds.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "reloadSounds", this.reloadSounds.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "emptyReloadSounds", this.emptyReloadSounds.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "magReloadSounds", this.magReloadSounds.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "emptyMagReloadSounds", this.emptyMagReloadSounds.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "display", this.display.toJsonObject());
-        GunJsonUtil.addObjectIfNotEmpty(object, "modules", this.modules.toJsonObject());
+        addObjectIfNotEmpty(object, "fireModes", this.fireModes.toJsonObject());
+        addObjectIfNotEmpty(object, "sounds", this.sounds.toJsonObject());
+        addObjectIfNotEmpty(object, "reloadSounds", this.reloadSounds.toJsonObject());
+        addObjectIfNotEmpty(object, "emptyReloadSounds", this.emptyReloadSounds.toJsonObject());
+        addObjectIfNotEmpty(object, "magReloadSounds", this.magReloadSounds.toJsonObject());
+        addObjectIfNotEmpty(object, "emptyMagReloadSounds", this.emptyMagReloadSounds.toJsonObject());
+        addObjectIfNotEmpty(object, "display", this.display.toJsonObject());
+        addObjectIfNotEmpty(object, "modules", this.modules.toJsonObject());
         return object;
     }
 
@@ -4568,8 +4567,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     	
     	return output;
     }
-    
-    
 
     public static class Builder
     {
@@ -5192,6 +5189,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             positioned.zOffset = zOffset;
             this.gun.modules.attachments.tactical = positioned;
             return this;
+        }
+    }
+
+    public static void addObjectIfNotEmpty(JsonObject parent, String key, JsonObject child)
+    {
+        if(child.size() > 0)
+        {
+            parent.add(key, child);
         }
     }
 }

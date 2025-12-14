@@ -147,7 +147,9 @@ public class ShootingHandler
         if(player != null)
         {
             ItemStack heldItem = player.getMainHandItem();
-            if(heldItem.getItem() instanceof GunItem && !isEmpty(player, heldItem) && !PlayerReviveHelper.isBleeding(player))
+            if(heldItem.getItem() instanceof GunItem
+                    && !isEmpty(player, heldItem) && !isBroken(player, heldItem)
+                    && !PlayerReviveHelper.isBleeding(player))
             {
                 //Gun gun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
                 boolean shooting = (KeyBinds.getShootMapping().isDown() && !ModSyncedDataKeys.ONBURSTCOOLDOWN.getValue(player)) || (ModSyncedDataKeys.BURSTCOUNT.getValue(player)>0 && Gun.hasBurstFire(heldItem));
@@ -337,7 +339,18 @@ public class ShootingHandler
 
         return (!Gun.hasAmmo(heldItem) || Gun.cantShoot(heldItem)) && !player.isCreative();
     }
-    
+
+    private boolean isBroken(Player player, ItemStack heldItem)
+    {
+        if(!(heldItem.getItem() instanceof GunItem))
+            return false;
+
+        if(player.isSpectator())
+            return false;
+
+        return heldItem.getDamageValue() >= (heldItem.getMaxDamage() - 1);
+    }
+
     private boolean canUseTrigger(Player player, ItemStack heldItem)
     {
     	if(!(heldItem.getItem() instanceof GunItem))
@@ -372,9 +385,9 @@ public class ShootingHandler
         if(!(heldItem.getItem() instanceof GunItem))
             return;
 
-        if(isEmpty(player, heldItem) || heldItem.getDamageValue() >= (heldItem.getMaxDamage() - 1))
+        // Play empty click sound when the gun is empty or broken
+        if(isEmpty(player, heldItem) || isBroken(player, heldItem))
         {
-
             ItemCooldowns tracker = player.getCooldowns();
             if(!tracker.isOnCooldown(heldItem.getItem()))
             {

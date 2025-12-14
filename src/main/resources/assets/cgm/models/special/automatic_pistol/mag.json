@@ -21,5 +21,13 @@
 				"down": {"uv": [0.5, 1, 1, 1.5], "texture": "#1"}
 			}
 		}
+	],
+	"groups": [
+		{
+			"name": "Mag",
+			"origin": [0, -2.55, 0.075],
+			"color": 0,
+			"children": [0]
+		}
 	]
 }

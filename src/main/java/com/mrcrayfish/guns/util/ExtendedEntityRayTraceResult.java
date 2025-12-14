@@ -1,4 +1,4 @@
-package com.mrcrayfish.guns.util.math;
+package com.mrcrayfish.guns.util;
 
 import com.mrcrayfish.guns.entity.ProjectileEntity;
 import net.minecraft.world.phys.EntityHitResult;

@@ -54,7 +54,8 @@ public class TacticalPistolModel implements IOverrideModel
 
         // Special animated segment for compat with the CGM Expanded fork.
         // First, some variables for animation building
-        boolean isPlayer = entity != null && entity.equals(Minecraft.getInstance().player);
+        Player player = Minecraft.getInstance().player;
+        boolean isPlayer = entity != null && entity.equals(player);
         boolean isFirstPerson = (transformType.firstPerson());
         boolean correctContext = (transformType.firstPerson() || transformType == ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND || transformType == ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND);
 
@@ -67,7 +68,6 @@ public class TacticalPistolModel implements IOverrideModel
         if(isPlayer && correctContext && !disableAnimations)
         {
             try {
-                Player player = (Player) entity;
                 slideTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "slide");
 
                 magTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "magazine");
@@ -89,7 +89,7 @@ public class TacticalPistolModel implements IOverrideModel
         Gun gun = gunStack.getModifiedGun(stack);
         if(isPlayer && correctContext)
         {
-            float cooldownDivider = 1.0F*Math.max((float) gun.getGeneral().getRate()/2F,1);
+            float cooldownDivider = Math.max((float) gun.getGeneral().getRate() / 2F, 1);
             float cooldownOffset1 = cooldownDivider - 1.0F;
             float intensity = 1.0F +1;
 
@@ -103,6 +103,9 @@ public class TacticalPistolModel implements IOverrideModel
             float cooldown_d = Math.min(cooldown_b,cooldown_c);
 
             slideTranslations = slideTranslations.add(0, 0, cooldown_d * 1.35);
+
+            //if(!Gun.hasAmmo(stack))
+            //    slideTranslations = slideTranslations.add(0,0,1.35);
         }
 
         // Pistol slide. This animated part kicks backward on firing, then moves back to its resting position.

@@ -23,9 +23,11 @@ import com.mrcrayfish.guns.network.message.S2CMessageBlood;
 import com.mrcrayfish.guns.network.message.S2CMessageProjectileHitBlock;
 import com.mrcrayfish.guns.network.message.S2CMessageProjectileHitEntity;
 import com.mrcrayfish.guns.network.message.S2CMessageRemoveProjectile;
-import com.mrcrayfish.guns.util.*;
-import com.mrcrayfish.guns.util.math.ExtendedEntityRayTraceResult;
+import com.mrcrayfish.guns.util.ExtendedEntityRayTraceResult;
+import com.mrcrayfish.guns.util.GunCompositeStatHelper;
+import com.mrcrayfish.guns.util.GunModifierHelper;
 import com.mrcrayfish.guns.world.ProjectileExplosion;
+import io.netty.buffer.ByteBuf;
 import net.minecraft.advancements.CriteriaTriggers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
@@ -41,16 +43,20 @@ import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
+import net.minecraft.world.damagesource.CombatRules;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.*;
+import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.monster.EnderMan;
 import net.minecraft.world.entity.player.Inventory;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.EnchantmentHelper;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BellBlock;
 import net.minecraft.world.level.block.Block;
 import net.minecraft.world.level.block.LeavesBlock;
@@ -61,11 +67,14 @@ import net.minecraft.world.phys.*;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.entity.IEntityAdditionalSpawnData;
+import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
 import net.minecraftforge.network.NetworkHooks;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
+import java.lang.reflect.InvocationTargetException;
+import java.lang.reflect.Method;
 import java.util.*;
 import java.util.function.BiFunction;
 import java.util.function.Function;
@@ -78,6 +87,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 {
     private static final Predicate<Entity> PROJECTILE_TARGETS = input -> input != null && input.isPickable() && !input.isSpectator();
     private static final Predicate<BlockState> IGNORE_LEAVES = input -> input != null && Config.COMMON.ignoreLeaves.get() && input.getBlock() instanceof LeavesBlock;
+    private static final Method updateRedstoneOutputMethod = ObfuscationReflectionHelper.findMethod(TargetBlock.class, "m_57391_", LevelAccessor.class, BlockState.class, BlockHitResult.class, Entity.class);
 
     protected int shooterId;
     protected LivingEntity shooter;
@@ -523,7 +533,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
             if(block instanceof TargetBlock targetBlock)
             {
-                int power = ReflectionUtil.updateTargetBlock(targetBlock, this.level, state, blockHitResult, this);
+                int power = updateTargetBlock(targetBlock, this.level, state, blockHitResult, this);
                 if(this.shooter instanceof ServerPlayer serverPlayer)
                 {
                     serverPlayer.awardStat(Stats.TARGET_HIT);
@@ -628,8 +638,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         float bypassDamage = 0;
         if (entity instanceof LivingEntity)
         {
-        	damage = ProjectileStatHelper.getArmorReducedDamage(this, (LivingEntity) entity, damage);
-        	bypassDamage = ProjectileStatHelper.getProtectionBypassDamage(this, (LivingEntity) entity, damage, source);
+        	damage = getArmorReducedDamage(this, (LivingEntity) entity, damage);
+        	bypassDamage = getProtectionBypassDamage(this, (LivingEntity) entity, damage, source);
         }
 
         boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
@@ -692,7 +702,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         buffer.writeNbt(this.projectile.serializeNBT());
         buffer.writeNbt(this.general.serializeNBT());
         buffer.writeInt(this.shooterId);
-        BufferUtil.writeItemStackToBufIgnoreTag(buffer, this.item);
+        writeItemStackToBufIgnoreTag(buffer, this.item);
         buffer.writeDouble(this.modifiedGravity);
         buffer.writeVarInt(this.life);
     }
@@ -705,7 +715,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.general = new Gun.General();
         this.general.deserializeNBT(Objects.requireNonNull(buffer.readNbt()));
         this.shooterId = buffer.readInt();
-        this.item = BufferUtil.readItemStackFromBufIgnoreTag(buffer);
+        this.item = readItemStackFromBufIgnoreTag(buffer);
         this.modifiedGravity = buffer.readDouble();
         this.life = buffer.readVarInt();
         this.entitySize = new EntityDimensions(this.projectile.getSize(), this.projectile.getSize(), false);
@@ -1088,6 +1098,76 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         @Override
         public int compare(EntityResult a, EntityResult b) {
             return (int) (a.getDistanceToHit()*100 - b.getDistanceToHit()*100);
+        }
+    }
+
+    /**
+     * Writes an ItemStack to a buffer without it's tag compound
+     *
+     * @param buf   the byte buffer to write to
+     * @param stack the item stack to write
+     */
+    public static void writeItemStackToBufIgnoreTag(ByteBuf buf, ItemStack stack)
+    {
+        if(stack.isEmpty())
+        {
+            buf.writeShort(-1);
+            return;
+        }
+        buf.writeShort(Item.getId(stack.getItem()));
+        buf.writeByte(stack.getCount());
+    }
+
+    /**
+     * Reads an ItemStack from a buffer that has no tag compound.
+     *
+     * @param buf the byte buffer to read from
+     * @return the read item stack
+     */
+    public static ItemStack readItemStackFromBufIgnoreTag(ByteBuf buf)
+    {
+        int id = buf.readShort();
+        if(id < 0)
+        {
+            return ItemStack.EMPTY;
+        }
+        return new ItemStack(Item.byId(id), buf.readByte());
+    }
+
+    public static float getArmorReducedDamage(ProjectileEntity bullet, LivingEntity entity, float damage)
+    {
+        if (!(entity instanceof LivingEntity))
+            return damage;
+
+        float reducedDamage = CombatRules.getDamageAfterAbsorb(damage, (float) entity.getArmorValue(), (float) entity.getAttributeValue(Attributes.ARMOR_TOUGHNESS));
+
+        float bypassLevel = Mth.clamp(bullet.getProjectile().getArmorBypass(),0,1);
+        return Mth.lerp(bypassLevel, reducedDamage, damage);
+    }
+
+    public static float getProtectionBypassDamage(ProjectileEntity bullet, LivingEntity entity, float damage, DamageSource source)
+    {
+        if (!(entity instanceof LivingEntity) || damage==0)
+            return 0;
+
+        int protection = Mth.clamp(EnchantmentHelper.getDamageProtection(entity.getArmorSlots(), source), 0, 20);
+        float reducedDamage = CombatRules.getDamageAfterMagicAbsorb(damage, (float) protection);
+        float damageReductionFactor = reducedDamage/damage;
+        float finalDamage = damage/damageReductionFactor;
+
+        float bypassLevel = Mth.clamp(bullet.getProjectile().getProtectionBypass(),0,1);
+        return (finalDamage-damage)*bypassLevel;
+    }
+
+    public static int updateTargetBlock(TargetBlock block, LevelAccessor accessor, BlockState state, BlockHitResult result, Entity entity)
+    {
+        try
+        {
+            return (int) updateRedstoneOutputMethod.invoke(block, accessor, state, result, entity);
+        }
+        catch(IllegalAccessException | InvocationTargetException ignored)
+        {
+            return 0;
         }
     }
 }

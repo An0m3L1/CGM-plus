@@ -101,11 +101,12 @@ public class ReloadHandler
         if(player == null)
             return;
 
+        ItemStack stack = player.getMainHandItem();
+
         if(KeyBinds.KEY_RELOAD.isDown() && event.getAction() == GLFW.GLFW_PRESS)
         {
         	if (reloadTimer<=0 || reloadTimer>=1)
         	{
-        		ItemStack stack = player.getMainHandItem();
                 if(stack.getItem() instanceof GunItem)
                 {
                     CompoundTag tag = stack.getTag();
@@ -118,15 +119,21 @@ public class ReloadHandler
                 }
         	}
             KeyBinds.KEY_RELOAD.setDown(false);
-            if(player.getMainHandItem().getItem() instanceof GunItem)
-            GunRenderingHandler.get().updateReserveAmmo(player);
+            if(stack.getItem() instanceof GunItem)
+                GunRenderingHandler.get().updateReserveAmmo(player);
         }
         if(KeyBinds.KEY_UNLOAD.consumeClick() && event.getAction() == GLFW.GLFW_PRESS && reloadTimer<=0)
         {
-            this.setReloading(false, true);
-            PacketHandler.getPlayChannel().sendToServer(new C2SMessageUnload(false));
-            if(player.getMainHandItem().getItem() instanceof GunItem)
-        	GunRenderingHandler.get().stageReserveAmmoUpdate(2);
+            if(stack.getItem() instanceof GunItem)
+            {
+                if(Gun.hasAmmo(stack))
+                {
+                    this.setReloading(false, true);
+                    PacketHandler.getPlayChannel().sendToServer(new C2SMessageUnload(false));
+                    if(stack.getItem() instanceof GunItem)
+                        GunRenderingHandler.get().stageReserveAmmoUpdate(2);
+                }
+            }
         }
     }
 
@@ -151,22 +158,15 @@ public class ReloadHandler
                     CompoundTag tag = stack.getTag();
                     if(tag != null && !tag.contains("IgnoreAmmo", Tag.TAG_BYTE))
                     {
-                    	if (!Gun.hasAmmo(stack))
-                    		reloadFromEmpty = true;
-                    	else
-                        	reloadFromEmpty = false;
-
-                    	if (Gun.usesMagReloads(stack))
-                    		doMagReload = true;
-                    	else
-                    		doMagReload = false;
+                        reloadFromEmpty = !Gun.hasAmmo(stack);
+                        doMagReload = Gun.usesMagReloads(stack);
                     	
                         Gun gun = ((GunItem) stack.getItem()).getModifiedGun(stack);
-                        if (Gun.findAmmo((Player) player, gun.getProjectile().getItem()) == AmmoContext.NONE && !Gun.hasUnlimitedReloads(stack))
+                        if (Gun.findAmmo(player, gun.getProjectile().getItem()) == AmmoContext.NONE && !Gun.hasUnlimitedReloads(stack))
                         	return;
                         
                         ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();
-                        float cooldown = 0F;
+                        float cooldown;
                         cooldown = tracker.getCooldownPercent(stack.getItem(), Minecraft.getInstance().getFrameTime());
                         if (cooldown > gun.getGeneral().getReloadAllowedCooldown())
                             return;

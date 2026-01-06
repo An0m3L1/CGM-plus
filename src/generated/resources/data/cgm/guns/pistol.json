@@ -3,7 +3,7 @@
   "general": {
     "gripType": "cgm:two_handed_pistol",
     "auto": false,
-    "rate": 3 ,
+    "rate": 3,
     "spawnCasings": true,
     "emitLight": true,
 
@@ -11,18 +11,18 @@
     "recoilAdsReduction": 0.25,
     "spreadAdsReduction": 0.25,
 
-    "recoilAngle": 2.5,
-    "recoilKick": 0.25,
+    "recoilAngle": 2.0,
+    "recoilKick": 0.2,
     "recoilDurationOffset": 0.0,
-    "spread": 4.5,
-    "restingSpread": 0.25,
+    "spread": 3.5,
+    "restingSpread": 0.5,
 
-    "maxAmmo": 12,
-    "lightMagAmmo": 10,
-    "extendedMagAmmo": 17,
+    "maxAmmo": 17,
+    "lightMagAmmo": 13,
+    "extendedMagAmmo": 40,
 
     "useMagReload": true,
-    "magReloadTime": 40,
+    "magReloadTime": 35,
     "lightMagReloadTimeModifier": 0.85,
     "extendedMagReloadTimeModifier": 1.15,
 
@@ -34,45 +34,43 @@
   "modules": {
     "attachments": {
       "barrel": {"scale": 0.5},
-      "scope": {},
-      "magazine": {},
-      "tactical": {}
+      "magazine": {}
     },
     "zoom": {"fovModifier": 0.75}
   },
   "projectile": {
     "item": "cgm:light_bullet",
-    "damage": 5.0,
+    "damage": 4.0,
     "damageReduceOverLife": true,
     "maxRangeDamageMultiplier": 0.5,
     "headshotMultiplierOverride": 2.0,
 
     "size": 0.1,
     "speed": 20.0,
-    "life": 7,
+    "life": 5,
 
-    "armorBypass": 0.5,
+    "armorBypass": 0.25,
     "protectionBypass": 0.25,
 
     "breakFragile": true,
-    "maxPierceCount": 4,
-    "pierceDamagePenalty": 0.25,
-    "pierceDamageMaxPenalty": 0.75,
-    "waterDamagePenalty": 0.6
+    "maxPierceCount": 2,
+    "pierceDamagePenalty": 0.5,
+    "pierceDamageMaxPenalty": 0.5,
+    "waterDamagePenalty": 0.5
   },
   "sounds": {
-    "fire": "cgm:item.tactical_pistol.fire",
-    "silencedFire": "cgm:item.tactical_pistol.silenced_fire",
+    "fire": "cgm:item.pistol.fire",
+    "silencedFire": "cgm:item.pistol.silenced_fire",
     "weaponSelect": "cgm:item.draw",
 
     "reloadFrames": 48,
-    "reloadEarly": "cgm:item.tactical_pistol.slide_back",
+    "reloadEarly": "cgm:item.pistol.slide_back",
     "reloadEarlyThreshold": 0,
-    "reloadClipOut": "cgm:item.tactical_pistol.mag_out",
+    "reloadClipOut": "cgm:item.pistol.mag_out",
     "reloadClipOutThreshold": 7,
-    "reloadClipIn": "cgm:item.tactical_pistol.mag_in",
+    "reloadClipIn": "cgm:item.pistol.mag_in",
     "reloadClipInThreshold": 24,
-    "reloadLate": "cgm:item.tactical_pistol.slide_forward",
+    "reloadLate": "cgm:item.pistol.slide_forward",
     "reloadLateThreshold": 37
   }
 }

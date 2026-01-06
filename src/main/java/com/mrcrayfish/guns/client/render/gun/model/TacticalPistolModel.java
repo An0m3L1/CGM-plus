@@ -102,10 +102,10 @@ public class TacticalPistolModel implements IOverrideModel
             float cooldown_c = Math.min(Math.max((-cooldown_a*intensity)+intensity,0),1);
             float cooldown_d = Math.min(cooldown_b,cooldown_c);
 
-            slideTranslations = slideTranslations.add(0, 0, cooldown_d * 1.35);
+            slideTranslations = slideTranslations.add(0, 0, cooldown_d * 1);
 
             //if(!Gun.hasAmmo(stack))
-            //    slideTranslations = slideTranslations.add(0,0,1.35);
+            //    slideTranslations = slideTranslations.add(0,0,1);
         }
 
         // Pistol slide. This animated part kicks backward on firing, then moves back to its resting position.

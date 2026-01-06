@@ -140,6 +140,7 @@ public class ClientHandler
         ModelOverrides.register(ModItems.AUTOMATIC_PISTOL.get(), new AutomaticPistolModel());
         ModelOverrides.register(ModItems.MINI_GUN.get(), new MiniGunModel());
         ModelOverrides.register(ModItems.TACTICAL_PISTOL.get(), new TacticalPistolModel());
+        ModelOverrides.register(ModItems.PISTOL.get(), new PistolModel());
         ModelOverrides.register(ModItems.SNIPER_RIFLE.get(), new SniperRifleModel());
         ModelOverrides.register(ModItems.SEMI_AUTO_SHOTGUN.get(), new SemiAutoShotgunModel());
     }

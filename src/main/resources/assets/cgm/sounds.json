@@ -25,6 +25,13 @@
    "item.mini_gun.fire": {"subtitle": "subtitle.cgm.fire", "sounds": [{"name": "cgm:item/mini_gun/fire", "volume": 0.5 }]},
 
 
+   "item.pistol.fire": {"subtitle":"subtitle.cgm.fire", "sounds": [{"name": "cgm:item/pistol/fire", "volume": 0.5 }]},
+   "item.pistol.silenced_fire": {"subtitle":"subtitle.cgm.fire.silenced", "sounds": [{"name":"cgm:item/pistol/silenced_fire", "volume": 0.5}]},
+   "item.pistol.mag_out": {"sounds": [{"name":"cgm:item/pistol/mag_out"}]},
+   "item.pistol.mag_in": {"subtitle":"subtitle.cgm.reload", "sounds": [{"name":"cgm:item/pistol/mag_in"}]},
+   "item.pistol.slide_back": {"subtitle":"subtitle.cgm.cock", "sounds": [{"name":"cgm:item/pistol/slide_back"}]},
+   "item.pistol.slide_forward": {"sounds": [{"name":"cgm:item/pistol/slide_forward"}]},
+
    "item.tactical_pistol.fire": {"subtitle":"subtitle.cgm.fire", "sounds": [{"name": "cgm:item/tactical_pistol/fire", "volume": 0.5 }]},
    "item.tactical_pistol.silenced_fire": {"subtitle":"subtitle.cgm.fire.silenced", "sounds": [{"name":"cgm:item/tactical_pistol/silenced_fire", "volume": 0.5}]},
    "item.tactical_pistol.mag_out": {"sounds": [{"name":"cgm:item/tactical_pistol/mag_out"}]},

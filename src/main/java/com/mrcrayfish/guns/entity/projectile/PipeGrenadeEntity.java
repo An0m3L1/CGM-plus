@@ -47,13 +47,19 @@ public class PipeGrenadeEntity extends ProjectileEntity
     }
 
     @Override
-    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {explode();}
+    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {
+        explode();
+    }
 
     @Override
-    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {explode();}
+    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {
+        explode();
+    }
 
     @Override
-    public void onExpired() {explode();}
+    public void onExpired() {
+        explode();
+    }
 
     private void explode()
     {

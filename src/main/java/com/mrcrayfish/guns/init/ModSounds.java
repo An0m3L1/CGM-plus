@@ -40,6 +40,13 @@ public class ModSounds
 	/* Submachine guns */
 
 	/* Pistols */
+	public static final RegistryObject<SoundEvent> PISTOL_FIRE = register("item.pistol.fire");
+	public static final RegistryObject<SoundEvent> PISTOL_SILENCED_FIRE = register("item.pistol.silenced_fire");
+	public static final RegistryObject<SoundEvent> PISTOL_MAG_OUT = register("item.pistol.mag_out");
+	public static final RegistryObject<SoundEvent> PISTOL_MAG_IN = register("item.pistol.mag_in");
+	public static final RegistryObject<SoundEvent> PISTOL_SLIDE_BACK = register("item.pistol.slide_back");
+	public static final RegistryObject<SoundEvent> PISTOL_SLIDE_FORWARD = register("item.pistol.slide_forward");
+
 	public static final RegistryObject<SoundEvent> TACTICAL_PISTOL_FIRE = register("item.tactical_pistol.fire");
 	public static final RegistryObject<SoundEvent> TACTICAL_PISTOL_SILENCED_FIRE = register("item.tactical_pistol.silenced_fire");
 	public static final RegistryObject<SoundEvent> TACTICAL_PISTOL_MAG_OUT = register("item.tactical_pistol.mag_out");

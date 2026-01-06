@@ -18,7 +18,6 @@ Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-    - Tactical Pistol (slide lock)
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul pipe grenades to make them bouncy
 

@@ -1,26 +1,25 @@
 Assault Rifles:
-    Famas
-    AUG
-    AK-12
-    AK-74
-    Scar-H
+    Famas (___ Rifle)
+    AUG (___ Rifle)
+    AK-12 (___ Rifle)
+    AK-74 (___ Rifle)
+    Scar-H (___ Rifle)
 Pistols:
-    Five-Seven
-    Glock
-    Beretta M9
-    Desert Eagle
+    Five-Seven (Sidearm Pistol)
+    Glock-17 (Pistol)
+    Beretta M9 (Combat Pistol)
+    Desert Eagle (Heavy Pistol)
 Revolvers:
-    Colt Python
-    Colt Trooper
-    Taurus Raging Bull
-    S&W M&P R8
+    Colt Python (Revolver)
+    Taurus Raging Hunter (Heavy Revolver)
+    S&W M&P R8 (Tactical Revolver)
 SMG:
-    P90
-    MP5
-    Uzi
-    Mac-10
-    Tommy Gun
-    Kriss Vector
+    P90 (Heavy SMG)
+    MP5 (Combat SMG)
+    Uzi (SMG)
+    Mac-10 (Compact SMG)
+    Tommy Gun (Drum SMG)
+    Kriss Vector (Tactical SMG)
 Rifles:
     SVD
     G3

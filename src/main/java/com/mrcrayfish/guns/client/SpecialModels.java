@@ -54,6 +54,12 @@ public enum SpecialModels
     SNIPER_RIFLE_LIGHT_MAG("sniper_rifle/light_mag"),
     SNIPER_RIFLE_EXT_MAG("sniper_rifle/ext_mag"),
 
+    PISTOL_BASE("pistol/base"),
+    PISTOL_SLIDE("pistol/slide"),
+    PISTOL_MAG("pistol/mag"),
+    PISTOL_LIGHT_MAG("pistol/light_mag"),
+    PISTOL_EXT_MAG("pistol/ext_mag"),
+
     TACTICAL_PISTOL_BASE("tactical_pistol/base"),
     TACTICAL_PISTOL_SLIDE("tactical_pistol/slide"),
     TACTICAL_PISTOL_SCOPE_MOUNT("tactical_pistol/scope_mount"),

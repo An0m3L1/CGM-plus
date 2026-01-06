@@ -69,9 +69,13 @@ public class ModItems
     /* Submachine Guns */
 
     /* Pistols */
+    public static final RegistryObject<GunItem> PISTOL = REGISTER.register("pistol", () -> new GunItem(new Item.Properties()
+            .stacksTo(1)
+            .durability((64 * 17) + 1) // 64 mags, 1088 shots
+            ));
     public static final RegistryObject<GunItem> TACTICAL_PISTOL = REGISTER.register("tactical_pistol", () -> new GunItem(new Item.Properties()
             .stacksTo(1)
-            .durability((64 * 12) + 1) // 48 mags, 768 shots
+            .durability((64 * 12) + 1) // 64 mags, 768 shots
             ));
     public static final RegistryObject<GunItem> AUTOMATIC_PISTOL = REGISTER.register("automatic_pistol", () -> new GunItem(new Item.Properties()
             .stacksTo(1)

@@ -220,7 +220,7 @@ public class Config
                     this.smokeGrenadeCloudDuration = builder.comment("Duration of a Smoke Grenade cloud in seconds.").defineInRange("smokeGrenadeCloudDuration", 20.0, 0.0, Double.MAX_VALUE);
                 }builder.pop();
                 builder.push("incendiary_grenade");{
-                    this.incendiaryGrenadeExplosionRadius = builder.comment("Radius of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionRadius", 3.5, 0.0, Double.MAX_VALUE);
+                    this.incendiaryGrenadeExplosionRadius = builder.comment("Radius of a Incendiary Grenade explosion.").defineInRange("incendiaryGrenadeExplosionRadius", 3.0, 0.0, Double.MAX_VALUE);
                     this.incendiaryGrenadeFireDuration = builder.comment("Duration of fire forcefully set on entities by the Incendiary Grenade.").defineInRange("incendiaryGrenadeFireDuration", 15, 0, Integer.MAX_VALUE);
                 }builder.pop();
                 builder.push("molotov_cocktail");{

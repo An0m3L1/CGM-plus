@@ -318,9 +318,6 @@ public class AimingHandler
         if(mc.player.tickCount<ShootingHandler.get().getWeaponSwitchTick()+3 || (GunAnimationHelper.getSmartAnimationType(heldItem, mc.player, mc.getPartialTick()) == "draw" && ModSyncedDataKeys.SWITCHTIME.getValue(mc.player) > 0))
             return false;
 
-        if(!mc.player.isOnGround())
-            return false;
-
         boolean zooming = KeyBinds.getAimMapping().isDown();
         if(GunMod.controllableLoaded)
         {

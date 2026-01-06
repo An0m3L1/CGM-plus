@@ -34,7 +34,7 @@ public class MolotovItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double fireRadius = (Config.COMMON.molotovExplosionRadius.get());
+        double fireRadius = Config.COMMON.molotovExplosionRadius.get();
         int fireDuration = Config.COMMON.molotovFireDuration.get();
         if(Screen.hasControlDown())
         {

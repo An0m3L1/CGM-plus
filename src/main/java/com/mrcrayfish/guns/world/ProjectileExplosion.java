@@ -5,6 +5,7 @@ import com.mojang.datafixers.util.Pair;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
+import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -276,8 +277,19 @@ public class ProjectileExplosion extends Explosion
 
         if (this.causesFire) {
             for(BlockPos blockpos2 : this.toBlow) {
-                if (this.random.nextInt(3) == 0 && this.world.getBlockState(blockpos2).isAir() && this.world.getBlockState(blockpos2.below()).isSolidRender(this.world, blockpos2.below())) {
-                    this.world.setBlockAndUpdate(blockpos2, BaseFireBlock.getState(this.world, blockpos2));
+                if (this.world.getBlockState(blockpos2).isAir()) {
+                    boolean canPlaceFire = false;
+                    for (Direction direction : Direction.values()) {
+                        BlockPos neighborPos = blockpos2.relative(direction);
+                        BlockState neighborState = this.world.getBlockState(neighborPos);
+                        if (neighborState.isSolidRender(this.world, neighborPos)) {
+                            canPlaceFire = true;
+                            break;
+                        }
+                    }
+                    if (canPlaceFire) {
+                        this.world.setBlockAndUpdate(blockpos2, BaseFireBlock.getState(this.world, blockpos2));
+                    }
                 }
             }
         }

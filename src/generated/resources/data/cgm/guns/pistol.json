@@ -7,14 +7,14 @@
     "spawnCasings": true,
     "emitLight": true,
 
-    "adsSpeed": 1.0,
-    "recoilAdsReduction": 0.25,
-    "spreadAdsReduction": 0.25,
+    "adsSpeed": 1.1,
+    "recoilAdsReduction": 0.35,
+    "spreadAdsReduction": 0.35,
 
     "recoilAngle": 2.0,
     "recoilKick": 0.2,
     "recoilDurationOffset": 0.0,
-    "spread": 3.5,
+    "spread": 3.0,
     "restingSpread": 0.5,
 
     "maxAmmo": 17,

@@ -33,6 +33,10 @@ public class DynamicCrosshair extends Crosshair
     private float fireBloom;
     private float prevFireBloom;
 
+    private float smoothPenaltyDisplay = 0.0F;
+    private float prevSmoothPenaltyDisplay = 0.0F;
+    private boolean lastPenaltyState = false;
+
     public DynamicCrosshair()
     {
         super(new ResourceLocation(Reference.MOD_ID, "dynamic"));
@@ -46,8 +50,26 @@ public class DynamicCrosshair extends Crosshair
         this.prevFireBloom = this.fireBloom;
         if (this.fireBloom > 0)
         {
-        	float i = (float) Config.COMMON.spreadThreshold.get()/50;
-        	this.fireBloom -= Math.min(3F/(Math.max(i,1)), this.fireBloom);
+            float i = (float) Config.COMMON.spreadThreshold.get()/50;
+            this.fireBloom -= Math.min(3F/(Math.max(i,1)), this.fireBloom);
+        }
+        this.prevSmoothPenaltyDisplay = this.smoothPenaltyDisplay;
+
+        Minecraft mc = Minecraft.getInstance();
+        if (mc.player != null) {
+            /* Check for sprint/airborne */
+            boolean currentPenaltyState = Config.COMMON.doSpreadStartInaccuracy.get() && (mc.player.isSprinting() || !mc.player.isOnGround());
+            /* Change between penalty and no penalty states */
+            if (currentPenaltyState != lastPenaltyState) {
+                lastPenaltyState = currentPenaltyState;
+            }
+            float targetPenalty = currentPenaltyState ? 1.0F : 0.0F;
+            float change = 1.0F / 5F; /* 5 ticks for interpolation to correlate to visual change in GunRenderingHandler */
+            if (this.smoothPenaltyDisplay < targetPenalty) {
+                this.smoothPenaltyDisplay = Math.min(this.smoothPenaltyDisplay + change, targetPenalty);
+            } else if (this.smoothPenaltyDisplay > targetPenalty) {
+                this.smoothPenaltyDisplay = Math.max(this.smoothPenaltyDisplay - change, targetPenalty);
+            }
         }
     }
 
@@ -62,66 +84,97 @@ public class DynamicCrosshair extends Crosshair
     @Override
     public void render(Minecraft mc, PoseStack stack, int windowWidth, int windowHeight, float partialTicks)
     {
-        float alpha = 1.0F;// - (float) AimingHandler.get().getNormalisedAdsProgress();
+        float alpha = 1.0F;
         float size1 = 7F;
         float size2 = 1F;
         float spread = 0F;
-    	float scaleMultiplier = (float) (Config.CLIENT.dynamicCrosshairReactivity.get()*1F);
-    	boolean renderDot = false;
-        if (mc.player != null)
+        float scaleMultiplier = (float) (Config.CLIENT.dynamicCrosshairReactivity.get()*1F);
+        boolean renderDot = false;
+
+        SpreadTracker spreadTracker = null;
+        if (mc.player != null) {
+            spreadTracker = SpreadTracker.get(mc.player);
+        }
+
+        if (mc.player != null && spreadTracker != null)
         {
-        	ItemStack heldItem = mc.player.getMainHandItem();
+            ItemStack heldItem = mc.player.getMainHandItem();
             if((heldItem.getItem() instanceof GunItem gunItem))
             {
-            	GunItem gun = (GunItem) heldItem.getItem();
-            	Gun modifiedGun = gun.getModifiedGun(heldItem);
-            	float aiming = (float) AimingHandler.get().getNormalisedAdsProgress();
+                GunItem gun = (GunItem) heldItem.getItem();
+                Gun modifiedGun = gun.getModifiedGun(heldItem);
+                float aiming = (float) AimingHandler.get().getNormalisedAdsProgress();
                 float sprintTransition = GunRenderingHandler.get().getSprintTransition(Minecraft.getInstance().getFrameTime());
-                float spreadCount = (SpreadTracker.get(mc.player).getNextSpread(gun,aiming));
-            	float spreadModifier = ((spreadCount+(1F/Math.max(Config.COMMON.maxCount.get(),1F)))*Math.min(Mth.lerp(partialTicks, this.prevFireBloom, this.fireBloom),1F));
-            	spreadModifier = (float) (Mth.lerp(sprintTransition*0.5, spreadModifier, 1.0F));
-            	float baseSpread = GunCompositeStatHelper.getCompositeSpread(heldItem, modifiedGun);
-            	float minSpread = GunCompositeStatHelper.getCompositeMinSpread(heldItem, modifiedGun);
-            	minSpread = (modifiedGun.getGeneral().getRestingSpread() > 0F ? minSpread : (modifiedGun.getGeneral().isAlwaysSpread() ? baseSpread : 0));
-            	float aimingSpreadMultiplier = (float) (Mth.lerp(aiming, 1.0F, 1.0F - modifiedGun.getGeneral().getSpreadAdsReduction()));
-            	spread = Math.max(Mth.lerp(spreadModifier,minSpread,baseSpread)*(aimingSpreadMultiplier),0F);
-            	
-            	DotRenderMode dotRenderMode = Config.CLIENT.dynamicCrosshairDotMode.get();
-            	renderDot = (dotRenderMode == DotRenderMode.ALWAYS)
-            	|| (dotRenderMode == DotRenderMode.AT_MIN_SPREAD && (SpreadTracker.get(mc.player).getNextSpread(gun,aiming)*spreadModifier <= 0 && spread<=Config.CLIENT.dynamicCrosshairDotThreshold.get()))
-    			|| (dotRenderMode == DotRenderMode.THRESHOLD && spread <= Config.CLIENT.dynamicCrosshairDotThreshold.get())
-    			&& (!Config.CLIENT.onlyRenderDotWhileAiming.get() || aiming > 0.9F);
+                float currentSpread = spreadTracker.getSpread(mc.player, gun);
+                float nextSpreadIncrement = (Config.COMMON.doSpreadPenalties.get() ? 1F + aiming : 1F) / (float) Config.COMMON.maxCount.get();
+
+                /* Calculate spreadModifier based on true current spread */
+                float spreadModifier = (currentSpread + nextSpreadIncrement) * Math.min(Mth.lerp(partialTicks, this.prevFireBloom, this.fireBloom), 1F);
+                float baseSpread = GunCompositeStatHelper.getCompositeSpread(heldItem, modifiedGun);
+                float minSpread = GunCompositeStatHelper.getCompositeMinSpread(heldItem, modifiedGun);
+                minSpread = (modifiedGun.getGeneral().getRestingSpread() > 0F ? minSpread : (modifiedGun.getGeneral().isAlwaysSpread() ? baseSpread : 0));
+                float smoothPenaltyDisplay = Mth.lerp(partialTicks, this.prevSmoothPenaltyDisplay, this.smoothPenaltyDisplay);
+                boolean alwaysSpread = modifiedGun.getGeneral().isAlwaysSpread();
+                float visualMinSpread;
+                if (alwaysSpread) {
+                    /* If alwaysSpread is true, then all visual penalty changes are disabled */
+                    visualMinSpread = minSpread;
+                } else {
+                    /* Increase spread to 50% of base spread */
+                    float penaltyMinSpread = baseSpread * 0.5F;
+                    float currentPenaltyMinSpread = penaltyMinSpread * smoothPenaltyDisplay;
+
+                    /* Visual spread is always between 50% and 100% */
+                    visualMinSpread = Math.min(minSpread + currentPenaltyMinSpread, baseSpread);
+                }
+                float aimingSpreadMultiplier = (Mth.lerp(aiming, 1.0F, 1.0F - modifiedGun.getGeneral().getSpreadAdsReduction()));
+                spread = Math.max(Mth.lerp(spreadModifier, visualMinSpread, baseSpread) * aimingSpreadMultiplier, 0F);
+                DotRenderMode dotRenderMode = Config.CLIENT.dynamicCrosshairDotMode.get();
+                float normalizedCurrentSpread = spreadTracker.getSpread(mc.player, gun);
+                boolean penaltyActive = Config.COMMON.doSpreadStartInaccuracy.get() && (mc.player.isSprinting() || !mc.player.isOnGround());
+                boolean isAtMinSpread;
+
+                if (penaltyActive && !alwaysSpread) {
+                    /* Dot disappears immediately to better convey that the spread change is instant */
+                    isAtMinSpread = false;
+                } else {
+                    isAtMinSpread = (normalizedCurrentSpread == 0.0f && spread <= Config.CLIENT.dynamicCrosshairDotThreshold.get());
+                }
+
+                renderDot = (dotRenderMode == DotRenderMode.ALWAYS)
+                        || (dotRenderMode == DotRenderMode.AT_MIN_SPREAD && isAtMinSpread)
+                        || (dotRenderMode == DotRenderMode.THRESHOLD && spread <= Config.CLIENT.dynamicCrosshairDotThreshold.get())
+                        && (!Config.CLIENT.onlyRenderDotWhileAiming.get() || aiming > 0.9F);
             }
         }
-        
-        float baseScale = 1F + (Mth.lerp(partialTicks, this.prevScale, this.scale)*scaleMultiplier);
-        float scale = (float) (baseScale + (spread*(2F*Config.CLIENT.dynamicCrosshairSpreadMultiplier.get())));
-        float scaleSize = (scale/6F)+1.15F;
-        float crosshairBaseTightness = (float) (0.8-(Config.CLIENT.dynamicCrosshairBaseSpread.get()/2));
-        float finalSpreadTranslate = (float) ( (Mth.lerp(0.95,scaleSize-1,Math.log(scaleSize)))*(2.8F) );
-        //float rawSpreadTranslation = (scaleSize-1)*(3.0F);
-        //float finalSpreadTranslate = (float) (Mth.lerp(0.0,rawSpreadTranslation,Math.log(rawSpreadTranslation+1)-1));
-        
-        double windowCenteredX = Math.round((windowWidth) / 2F)-0.5;
-        double windowCenteredY = Math.round((windowHeight) / 2F)-0.5;
+
+        float baseScale = 1F + (Mth.lerp(partialTicks, this.prevScale, this.scale) * scaleMultiplier);
+        float scale = (float) (baseScale + (spread * (2F * Config.CLIENT.dynamicCrosshairSpreadMultiplier.get())));
+        float scaleSize = (scale / 6F) + 1.15F;
+        float crosshairBaseTightness = (float) (0.8 - (Config.CLIENT.dynamicCrosshairBaseSpread.get() / 2));
+        float finalSpreadTranslate = (float) ( (Mth.lerp(0.95, scaleSize - 1, Math.log(scaleSize))) * (2.8F) );
+
+        double windowCenteredX = Math.round((windowWidth) / 2F) - 0.5;
+        double windowCenteredY = Math.round((windowHeight) / 2F) - 0.5;
 
         boolean blend = Config.CLIENT.blendCrosshair.get();
         RenderSystem.enableBlend();
-        if (blend)
-        RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        if (blend) {
+            RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        }
         BufferBuilder buffer = Tesselator.getInstance().getBuilder();
 
         // Left
         stack.pushPose();
         {
-        	Matrix4f matrix = stack.last().pose();
+            Matrix4f matrix = stack.last().pose();
             RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR_H);
-            
+
             stack.translate(windowCenteredX, windowCenteredY, 0);
             stack.scale(scaleSize, 1, 1);
-            stack.translate((-size1 / 2F) - (finalSpreadTranslate) + crosshairBaseTightness -0.0F, -size2 / 2F, 0);
+            stack.translate((-size1 / 2F) - finalSpreadTranslate + crosshairBaseTightness - 0.0F, -size2 / 2F, 0);
 
             float sizeX = size1;
             float sizeY = size2;
@@ -137,14 +190,14 @@ public class DynamicCrosshair extends Crosshair
         // Right
         stack.pushPose();
         {
-        	Matrix4f matrix = stack.last().pose();
+            Matrix4f matrix = stack.last().pose();
             RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR_H);
 
             stack.translate(windowCenteredX, windowCenteredY, 0);
             stack.scale(scaleSize, 1, 1);
-            stack.translate((-size1 / 2F) + (finalSpreadTranslate) - crosshairBaseTightness, -size2 / 2F, 0);
+            stack.translate((-size1 / 2F) + finalSpreadTranslate - crosshairBaseTightness, -size2 / 2F, 0);
 
             float sizeX = size1;
             float sizeY = size2;
@@ -160,15 +213,15 @@ public class DynamicCrosshair extends Crosshair
         // Top
         stack.pushPose();
         {
-        	Matrix4f matrix = stack.last().pose();
+            Matrix4f matrix = stack.last().pose();
             RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR_V);
 
             stack.translate(windowCenteredX, windowCenteredY, 0);
             stack.scale(1, scaleSize, 1);
-            stack.translate(-size2 / 2F, (-size1 / 2F) - (finalSpreadTranslate) + crosshairBaseTightness, 0);
-            
+            stack.translate(-size2 / 2F, (-size1 / 2F) - finalSpreadTranslate + crosshairBaseTightness, 0);
+
             float sizeX = size2;
             float sizeY = size1;
             buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
@@ -183,14 +236,14 @@ public class DynamicCrosshair extends Crosshair
         // Bottom
         stack.pushPose();
         {
-        	Matrix4f matrix = stack.last().pose();
+            Matrix4f matrix = stack.last().pose();
             RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
             RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
             RenderSystem.setShaderTexture(0, DYNAMIC_CROSSHAIR_V);
 
             stack.translate(windowCenteredX, windowCenteredY, 0);
             stack.scale(1, scaleSize, 1);
-            stack.translate(-size2 / 2F -0.0F, (-size1 / 2F) + (finalSpreadTranslate) - crosshairBaseTightness, 0);
+            stack.translate(-size2 / 2F - 0.0F, (-size1 / 2F) + finalSpreadTranslate - crosshairBaseTightness, 0);
 
             float sizeX = size2;
             float sizeY = size1;
@@ -202,27 +255,27 @@ public class DynamicCrosshair extends Crosshair
             BufferUploader.drawWithShader(buffer.end());
         }
         stack.popPose();
-        
-        // Center Dot (will be configurable)
+
+        // Dot
         if (renderDot)
         {
-        stack.pushPose();
-        {
-        	int dotSize = 9;
-            RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
-            RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
-            RenderSystem.setShaderTexture(0, DOT_CROSSHAIR);
-            Matrix4f matrix = stack.last().pose();
-            stack.translate(windowCenteredX, windowCenteredY, 0);
-            stack.translate(-dotSize / 2F, -dotSize / 2F, 0);
-            buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
-            buffer.vertex(matrix, 0, dotSize, 0).uv(0, 1).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, dotSize, dotSize, 0).uv(1, 1).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, dotSize, 0, 0).uv(1, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            buffer.vertex(matrix, 0, 0, 0).uv(0, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
-            BufferUploader.drawWithShader(buffer.end());
-        }
-        stack.popPose();
+            stack.pushPose();
+            {
+                int dotSize = 9;
+                RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
+                RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
+                RenderSystem.setShaderTexture(0, DOT_CROSSHAIR);
+                Matrix4f matrix = stack.last().pose();
+                stack.translate(windowCenteredX, windowCenteredY, 0);
+                stack.translate(-dotSize / 2F, -dotSize / 2F, 0);
+                buffer.begin(VertexFormat.Mode.QUADS, DefaultVertexFormat.POSITION_TEX_COLOR);
+                buffer.vertex(matrix, 0, dotSize, 0).uv(0, 1).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
+                buffer.vertex(matrix, dotSize, dotSize, 0).uv(1, 1).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
+                buffer.vertex(matrix, dotSize, 0, 0).uv(1, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
+                buffer.vertex(matrix, 0, 0, 0).uv(0, 0).color(1.0F, 1.0F, 1.0F, alpha).endVertex();
+                BufferUploader.drawWithShader(buffer.end());
+            }
+            stack.popPose();
         }
 
         if (blend) {

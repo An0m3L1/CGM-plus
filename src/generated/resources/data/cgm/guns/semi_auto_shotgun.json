@@ -32,8 +32,7 @@
     "attachments": {
       "scope": {},
       "underBarrel": {},
-      "stock": {},
-      "tactical": {}
+      "stock": {}
     },
     "zoom": {"fovModifier": 0.75}
   },

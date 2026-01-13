@@ -32,61 +32,82 @@ public class SpreadTracker
         Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.computeIfAbsent(item, gun -> Pair.of(new MutableLong(-1), new MutableInt()));
         MutableLong lastFire = entry.getLeft();
         MutableInt spreadCount = entry.getRight();
-        int spreadNegativeModifier = (int) Math.floor((float) Config.COMMON.maxCount.get() * 0.5F);
-        int spreadPositiveModifier = (int) Math.floor((float) Config.COMMON.maxCount.get() * 0.75F);
-        if(lastFire.getValue() != -1)
-        {
-            long deltaTime = System.currentTimeMillis() - lastFire.getValue();
-            if(deltaTime < Config.COMMON.spreadThreshold.get())
-            {
-                if(spreadCount.getValue() < Config.COMMON.maxCount.get())
-                {
-                    spreadCount.increment();
 
-                    /* Increases the spread count quicker if the player is not aiming down sight - can be disabled in the config */
-                    if(spreadCount.getValue() < Config.COMMON.maxCount.get() && !ModSyncedDataKeys.AIMING.getValue(player) && (Config.COMMON.doSpreadHipFirePenalty.get()))
-                    {
-                        spreadCount.increment();
+        if(lastFire.getValue() != -1) {
+            long deltaTime = System.currentTimeMillis() - lastFire.getValue();
+            int currentCount = spreadCount.getValue();
+            int maxCount = Config.COMMON.maxCount.get();
+
+            /* Spread is at least 50% while sprinting/midair */
+            int penaltyMinCount = Math.round(maxCount * 0.5F);
+            boolean penaltyActive = Config.COMMON.doSpreadStartInaccuracy.get() && (player.isSprinting() || !player.isOnGround());
+            int minCount = penaltyActive ? penaltyMinCount : 0;
+
+            if (deltaTime < Config.COMMON.spreadThreshold.get()) {
+                if (currentCount < maxCount) {
+                    /* Increase spread after each shot */
+                    int addCount = 1;
+
+                    /* Increase spread more if:
+                     * 1. Player is not ADS
+                     * 2. Player is sprinting/airborne */
+                    if (Config.COMMON.doSpreadPenalties.get()) {
+                        if(!ModSyncedDataKeys.AIMING.getValue(player)) addCount++;
+                        if(player.isSprinting() || !player.isOnGround()) addCount++;
                     }
+
+                    int newCount = Math.min(currentCount + addCount, maxCount);
+                    /* Check if spread is no lower than minCount */
+                    spreadCount.setValue(Math.max(newCount, minCount));
+                } else if (currentCount < minCount) {
+                    /* If current spread is lower than minimum, raise it */
+                    spreadCount.setValue(minCount);
                 }
-            }
-            else
-            {
-            	spreadCount.setValue(0);
-            }
-    		/* Spread is always at least ~50% when sprinting or being suspended in air */
-        	if(player.isSprinting() || !player.isOnGround()) {
-                if (spreadCount.getValue() < spreadNegativeModifier) {
-                    spreadCount.setValue(spreadNegativeModifier);
-                }
-            }
-            /* Spread is always no more than ~75% when crouching or crawling */
-            if((player.isCrouching() || player.isVisuallyCrawling()) && player.isOnGround()) {
-                if (spreadCount.getValue() > spreadPositiveModifier) {
-                    spreadCount.setValue(spreadPositiveModifier);
-                }
+            } else {
+                /* Reset to minimum count */
+                spreadCount.setValue(minCount);
             }
         }
         lastFire.setValue(System.currentTimeMillis());
     }
 
-    public float getNextSpread(GunItem item, float aim)
+    public float getNextSpread(Player player, GunItem item, float aim)
     {
-    	Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.get(item);
-        if(entry != null)
-        {
-            float nextSpread = (Config.COMMON.doSpreadHipFirePenalty.get() ? 1F+aim : 1F);
-        	return ((float) entry.getRight().getValue()+nextSpread) / (float) Config.COMMON.maxCount.get();
+        Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.get(item);
+        if(entry != null) {
+            int currentCount = entry.getRight().getValue();
+            int maxCount = Config.COMMON.maxCount.get();
+
+            int penaltyMinCount = Math.round(maxCount * 0.5F);
+            boolean penaltyActive = Config.COMMON.doSpreadStartInaccuracy.get() && (player.isSprinting() || !player.isOnGround());
+            int minCount = penaltyActive ? penaltyMinCount : 0;
+
+            currentCount = Math.max(currentCount, minCount);
+
+            float nextSpread = (Config.COMMON.doSpreadPenalties.get() ? 1F + aim : 1F);
+
+            float nextCount = Math.min(currentCount + nextSpread, maxCount);
+            nextCount = Math.max(nextCount, minCount);
+
+            return nextCount / (float) maxCount;
         }
         return 0F;
     }
 
-    public float getSpread(GunItem item)
+    public float getSpread(Player player, GunItem item)
     {
         Pair<MutableLong, MutableInt> entry = SPREAD_TRACKER_MAP.get(item);
-        if(entry != null)
-        {
-            return (float) entry.getRight().getValue() / (float) Config.COMMON.maxCount.get();
+        if(entry != null) {
+            int currentCount = entry.getRight().getValue();
+            int maxCount = Config.COMMON.maxCount.get();
+
+            int penaltyMinCount = Math.round(maxCount * 0.5F);
+            boolean penaltyActive = Config.COMMON.doSpreadStartInaccuracy.get() && (player.isSprinting() || !player.isOnGround());
+            int minCount = penaltyActive ? penaltyMinCount : 0;
+
+            currentCount = Math.max(currentCount, minCount);
+
+            return (float) currentCount / (float) maxCount;
         }
         return 0F;
     }
@@ -100,8 +121,7 @@ public class SpreadTracker
     public static void onPlayerDisconnect(PlayerEvent.PlayerLoggedOutEvent event)
     {
         MinecraftServer server = event.getEntity().getServer();
-        if(server != null)
-        {
+        if(server != null) {
             server.execute(() -> TRACKER_MAP.remove(event.getEntity()));
         }
     }

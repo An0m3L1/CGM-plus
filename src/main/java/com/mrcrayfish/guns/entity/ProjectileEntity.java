@@ -186,7 +186,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         if(shooter instanceof Player)
         {
-            float initialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread(item),minSpread,gunSpread);
+            float initialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread((Player) shooter, item),minSpread,gunSpread);
             if(!this.general.isAlwaysSpread() || minSpread > 0)
             {
                 gunSpread = initialGunSpread;

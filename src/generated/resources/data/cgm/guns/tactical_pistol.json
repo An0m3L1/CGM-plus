@@ -3,7 +3,7 @@
   "general": {
     "gripType": "cgm:two_handed_pistol",
     "auto": false,
-    "rate": 3 ,
+    "rate": 3,
     "spawnCasings": true,
     "emitLight": true,
 
@@ -15,7 +15,7 @@
     "recoilKick": 0.25,
     "recoilDurationOffset": 0.0,
     "spread": 4.5,
-    "restingSpread": 0.25,
+    "restingSpread": 0.1,
 
     "maxAmmo": 12,
     "lightMagAmmo": 10,
@@ -23,8 +23,8 @@
 
     "useMagReload": true,
     "magReloadTime": 40,
-    "lightMagReloadTimeModifier": 0.85,
-    "extendedMagReloadTimeModifier": 1.15,
+    "lightMagReloadTimeModifier": 0.9,
+    "extendedMagReloadTimeModifier": 1.1,
 
     "reloadStartDelay": 0,
     "reloadInterruptDelay": 5,

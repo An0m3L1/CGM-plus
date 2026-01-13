@@ -1,12 +1,11 @@
 Assault Rifles:
-    Famas (___ Rifle)
-    AUG (___ Rifle)
-    AK-12 (___ Rifle)
-    AK-74 (___ Rifle)
-    Scar-H (___ Rifle)
+    Famas (Compact Rifle)
+    AUG (Tactical Compact Rifle)
+    AK-103 (Heavy Rifle)
+    AK-74 (Heavy Combat Rifle)
+    Scar-H (Heavy Assault Rifle)
 Pistols:
     Five-Seven (Sidearm Pistol)
-    Glock-17 (Pistol)
     Beretta M9 (Combat Pistol)
     Desert Eagle (Heavy Pistol)
 Revolvers:
@@ -20,7 +19,7 @@ SMG:
     Mac-10 (Compact SMG)
     Tommy Gun (Drum SMG)
     Kriss Vector (Tactical SMG)
-Rifles:
+Sniper Rifles:
     SVD
     G3
     VSS

@@ -1,12 +1,10 @@
 Add melee class system
     - Blunt: applies slow and stunned effect, extra knockback
     - Sharp: applies bleed effect (can be removed with healing items)
+        (bleeding entities automatically attract nearby hostile mobs)
     - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
-Add more attachment slots to existing guns
-    - Tactical Pistol: tactical
-    - Semi-Auto Shotgun: tactical
 Add and overhaul animations
     - Prone shooting
     - Swimming (raise head)
@@ -20,9 +18,6 @@ Overhaul items (models, textures, stats)
     - Minigun
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Overhaul pipe grenades to make them bouncy
+Overhaul fragile block breaking to not remove the projectile after destroying a block
 
 Optimize textures
-
-Improve dynamic crosshair logic
-    - Reduce size when crouching
-    - Increase size when jumping

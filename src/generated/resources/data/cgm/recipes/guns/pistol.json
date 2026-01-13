@@ -1,0 +1,28 @@
+{
+  "type": "cgm:workbench",
+  "materials": [
+    {
+      "count": 4,
+      "item": "cgm:sturdy_mechanism"
+    },
+    {
+      "count": 4,
+      "tag": "forge:rods/steel"
+    },
+    {
+      "count": 12,
+      "tag": "forge:plates/steel"
+    },
+    {
+      "count": 8,
+      "item": "cgm:plastic"
+    },
+    {
+      "count": 4,
+      "item": "cgm:rubber"
+    }
+  ],
+  "result": {
+    "item": "cgm:pistol"
+  }
+}

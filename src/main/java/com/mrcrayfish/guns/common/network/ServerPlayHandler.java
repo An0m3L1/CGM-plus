@@ -109,7 +109,7 @@ public class ServerPlayHandler
                     ModSyncedDataKeys.RELOADING.setValue(player, false);
                 }
 
-                if((!modifiedGun.getGeneral().isAlwaysSpread() && modifiedGun.getGeneral().getSpread() > 0.0F) || modifiedGun.getGeneral().getRestingSpread() > 0F)
+                if((!modifiedGun.getGeneral().getAlwaysSpread() && modifiedGun.getGeneral().getSpread() > 0.0F) || modifiedGun.getGeneral().getRestingSpread() > 0F)
                 {
                     SpreadTracker.get(player).update(player, item);
                 }

@@ -187,7 +187,7 @@ public class GunItem extends Item implements IColored, IMeta
             float minSpread;
             spread = GunCompositeStatHelper.getCompositeSpread(stack, modifiedGun);
             minSpread = GunCompositeStatHelper.getCompositeMinSpread(stack, modifiedGun);
-            boolean isAlwaysSpread = (minSpread<=0 && modifiedGun.getGeneral().isAlwaysSpread());
+            boolean isAlwaysSpread = (minSpread<=0 && modifiedGun.getGeneral().getAlwaysSpread());
             minSpread = (minSpread<=0 ? (isAlwaysSpread ? spread : 0) : minSpread);
             if ((minSpread!=spread) && ((minSpread>0) || (!isAlwaysSpread)))
             {

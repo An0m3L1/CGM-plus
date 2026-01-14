@@ -186,17 +186,25 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         if(shooter instanceof Player)
         {
-            float initialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread((Player) shooter, item),minSpread,gunSpread);
-            if(!this.general.isAlwaysSpread() || minSpread > 0)
+            float initialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread((Player) shooter, item), minSpread, gunSpread);
+            if(!this.general.getAlwaysSpread() || minSpread > 0)
             {
                 gunSpread = initialGunSpread;
             }
 
             if(ModSyncedDataKeys.AIMING.getValue((Player) shooter))
             {
-                float aimingGunSpread = gunSpread * (1-(this.general.getSpreadAdsReduction()));
                 float aimPosition = (float) Mth.clamp(ServerAimTracker.getAimingTicks((Player) shooter)/(5/GunCompositeStatHelper.getCompositeAimDownSightSpeed(weapon)),0,1);
-                gunSpread = Mth.lerp(aimPosition,initialGunSpread,aimingGunSpread);
+
+                if (modifiedGun.getGeneral().getUseSniperSpread()) {
+                    /* For sniper spread reduce only the minSpread value */
+                    float aimingMinSpread = minSpread * (1.0F - this.general.getSpreadAdsReduction());
+                    float aimingInitialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread((Player) shooter, item), aimingMinSpread, gunSpread);
+                    gunSpread = Mth.lerp(aimPosition, initialGunSpread, aimingInitialGunSpread);
+                } else {
+                    float aimingGunSpread = gunSpread * (1.0F - this.general.getSpreadAdsReduction());
+                    gunSpread = Mth.lerp(aimPosition, initialGunSpread, aimingGunSpread);
+                }
             }
         }
 
@@ -204,17 +212,17 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         // This fix was figured out by unze2unze4 and implemented by Poly into their CGM Refined fork.
         // Big thanks to both of them for this fix!
         gunSpread = Math.min(gunSpread, 170F) * 0.5F * Mth.DEG_TO_RAD;
-        
+
         Vec3 vecForwards = this.getVectorFromRotation(shooter.getXRot(), shooter.getYRot());
         Vec3 vecUpwards = this.getVectorFromRotation(shooter.getXRot() + 90F, shooter.getYRot());
         Vec3 vecSideways = vecForwards.cross(vecUpwards);
-        
+
         float theta = random.nextFloat() * 2F * (float) Math.PI;
         float r = Mth.sqrt(random.nextFloat()) * (float) Math.tan(gunSpread);
-        
+
         float a1 = Mth.cos(theta) * r;
         float a2 = Mth.sin(theta) * r;
-        
+
         return vecForwards.add(vecSideways.scale(a1)).add(vecUpwards.scale(a2)).normalize();
     }
 

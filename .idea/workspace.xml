@@ -4,32 +4,20 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Pistol update.&#10;&#10;Finished pistol.&#10;Balance changes.&#10;Increased durability across the board.&#10;Improved spread calculation and penalties.">
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/recipes/guns/pistol.json" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Spread update.&#10;&#10;Optimized spread code.&#10;Added useSniperSpread: if true, then spreadAdsReduction only affects the restingSpread (this way when you're sprinting/jumping, the penalty still functions).">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/guns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/guns.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/items/gun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/items/gun.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/DynamicCrosshair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/DynamicCrosshair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/SpreadTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/SpreadTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/pistol.cgmmeta" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/item/pistol.cgmmeta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/ext_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/ext_mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/light_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/light_mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/slide.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/pistol/slide.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/fire.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/fire.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/mag_in.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/mag_in.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/mag_out.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/mag_out.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/silenced_fire.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/silenced_fire.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/slide_back.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/slide_back.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/slide_forward.ogg" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/sounds/item/pistol/slide_forward.ogg" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/pistol.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/pistol.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunModifierHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunModifierHelper.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -552,7 +540,15 @@
       <option name="project" value="LOCAL" />
       <updated>1767709344176</updated>
     </task>
-    <option name="localTasksCounter" value="44" />
+    <task id="LOCAL-00044" summary="Pistol and spread update.&#10;&#10;Finished pistol.&#10;Balance changes.&#10;Increased durability across the board.&#10;Added spread penalties to sprinting and jumping.&#10;Added minimal spread penalty while sprinting and jumping.&#10;Dynamic crosshair now shows spread much more accurately.">
+      <option name="closed" value="true" />
+      <created>1768345968912</created>
+      <option name="number" value="00044" />
+      <option name="presentableId" value="LOCAL-00044" />
+      <option name="project" value="LOCAL" />
+      <updated>1768345968912</updated>
+    </task>
+    <option name="localTasksCounter" value="45" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -571,7 +567,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Small fixes." />
     <MESSAGE value="Animation update.&#10;&#10;Added draw animations.&#10;Aiming FOV tweaks.&#10;Small fixes." />
     <MESSAGE value="Animation update.&#10;&#10;Renamed some poses.&#10;One-handed pose now has smoother transitions for sprinting.&#10;Off-hand fix for pistol poses.&#10;More sprinting restrictions.&#10;Grenades are now thrown with half velocity if crouching." />
     <MESSAGE value="Sound update.&#10;&#10;Updated SFX for:&#10;- Tactical Pistol&#10;- Automatic Pistol&#10;- Assault Rifle&#10;Small pistol pose fix." />
@@ -596,7 +591,8 @@
     <MESSAGE value="Mechanics update.&#10;&#10;Crouching midair no longer reduces spread.&#10;Added explosion radius tooltip to grenades.&#10;Changed all diameter tooltips to display radius instead.&#10;Balancing regarding explosion radius." />
     <MESSAGE value="Tweaks.&#10;&#10;Reduced fire sound distance config value.&#10;Reduced minimal grenade speed to produce bounce sounds.&#10;Touched up the modular stock textures.&#10;Overhauled the slide on automatic pistol.&#10;Reloading now stops and restricts sprinting.&#10;The gun is no longer raised when trying to shoot with a broken and loaded gun.&#10;Recoil adjustments.&#10;Removed several Util classes." />
     <MESSAGE value="Pistol update.&#10;&#10;Added Pistol (WIP).&#10;Improved fire setting logic - now explosions can ignite sides of blocks and create fire more consistently.&#10;Tweaked molotov light sound.&#10;Improved slide movement on all models." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pistol update.&#10;&#10;Added Pistol (WIP).&#10;Improved fire setting logic - now explosions can ignite sides of blocks and create fire more consistently.&#10;Tweaked molotov light sound.&#10;Improved slide movement on all models." />
+    <MESSAGE value="Pistol and spread update.&#10;&#10;Finished pistol.&#10;Balance changes.&#10;Increased durability across the board.&#10;Added spread penalties to sprinting and jumping.&#10;Added minimal spread penalty while sprinting and jumping.&#10;Dynamic crosshair now shows spread much more accurately." />
+    <option name="LAST_COMMIT_MESSAGE" value="Pistol and spread update.&#10;&#10;Finished pistol.&#10;Balance changes.&#10;Increased durability across the board.&#10;Added spread penalties to sprinting and jumping.&#10;Added minimal spread penalty while sprinting and jumping.&#10;Dynamic crosshair now shows spread much more accurately." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

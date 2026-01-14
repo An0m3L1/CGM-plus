@@ -8,7 +8,6 @@ import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.client.DotRenderMode;
 import com.mrcrayfish.guns.client.handler.AimingHandler;
-import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.common.SpreadTracker;
 import com.mrcrayfish.guns.item.GunItem;
@@ -58,7 +57,7 @@ public class DynamicCrosshair extends Crosshair
         Minecraft mc = Minecraft.getInstance();
         if (mc.player != null) {
             /* Check for sprint/airborne */
-            boolean currentPenaltyState = Config.COMMON.doSpreadStartInaccuracy.get() && (mc.player.isSprinting() || !mc.player.isOnGround());
+            boolean currentPenaltyState = Config.COMMON.doSpreadPenalties.get() && (mc.player.isSprinting() || !mc.player.isOnGround());
             /* Change between penalty and no penalty states */
             if (currentPenaltyState != lastPenaltyState) {
                 lastPenaltyState = currentPenaltyState;
@@ -81,6 +80,35 @@ public class DynamicCrosshair extends Crosshair
         this.fireBloom = 3.0F;
     }
 
+    private float calculateSpread(SpreadTracker spreadTracker, ItemStack heldItem, GunItem gunItem, Gun modifiedGun,
+                                  float aiming, float currentSpread, float partialTicks)
+    {
+        float nextSpreadIncrement = (Config.COMMON.doSpreadPenalties.get() ? 1F + aiming : 1F) / (float) Config.COMMON.maxCount.get();
+        float spreadModifier = (currentSpread + nextSpreadIncrement) * Math.min(Mth.lerp(partialTicks, this.prevFireBloom, this.fireBloom), 1F);
+
+        float baseSpread = GunCompositeStatHelper.getCompositeSpread(heldItem, modifiedGun);
+        float minSpread = GunCompositeStatHelper.getCompositeMinSpread(heldItem, modifiedGun);
+        minSpread = (modifiedGun.getGeneral().getRestingSpread() > 0F ? minSpread : (modifiedGun.getGeneral().getAlwaysSpread() ? baseSpread : 0));
+
+        float smoothPenaltyDisplay = Mth.lerp(partialTicks, this.prevSmoothPenaltyDisplay, this.smoothPenaltyDisplay);
+        boolean alwaysSpread = modifiedGun.getGeneral().getAlwaysSpread();
+
+        float visualMinSpread;
+        if (alwaysSpread)
+        {
+            visualMinSpread = minSpread;
+        }
+        else
+        {
+            float penaltyMinSpread = baseSpread * 0.5F;
+            float currentPenaltyMinSpread = penaltyMinSpread * smoothPenaltyDisplay;
+            visualMinSpread = Math.min(minSpread + currentPenaltyMinSpread, baseSpread);
+        }
+
+        float aimingSpreadMultiplier = Mth.lerp(aiming, 1.0F, 1.0F - modifiedGun.getGeneral().getSpreadAdsReduction());
+        return Math.max(Mth.lerp(spreadModifier, visualMinSpread, baseSpread) * aimingSpreadMultiplier, 0F);
+    }
+
     @Override
     public void render(Minecraft mc, PoseStack stack, int windowWidth, int windowHeight, float partialTicks)
     {
@@ -88,57 +116,31 @@ public class DynamicCrosshair extends Crosshair
         float size1 = 7F;
         float size2 = 1F;
         float spread = 0F;
-        float scaleMultiplier = (float) (Config.CLIENT.dynamicCrosshairReactivity.get()*1F);
         boolean renderDot = false;
 
-        SpreadTracker spreadTracker = null;
-        if (mc.player != null) {
-            spreadTracker = SpreadTracker.get(mc.player);
-        }
+        SpreadTracker spreadTracker = mc.player != null ? SpreadTracker.get(mc.player) : null;
 
         if (mc.player != null && spreadTracker != null)
         {
             ItemStack heldItem = mc.player.getMainHandItem();
-            if((heldItem.getItem() instanceof GunItem gunItem))
+            if (heldItem.getItem() instanceof GunItem gunItem)
             {
-                GunItem gun = (GunItem) heldItem.getItem();
-                Gun modifiedGun = gun.getModifiedGun(heldItem);
+                Gun modifiedGun = gunItem.getModifiedGun(heldItem);
                 float aiming = (float) AimingHandler.get().getNormalisedAdsProgress();
-                float sprintTransition = GunRenderingHandler.get().getSprintTransition(Minecraft.getInstance().getFrameTime());
-                float currentSpread = spreadTracker.getSpread(mc.player, gun);
-                float nextSpreadIncrement = (Config.COMMON.doSpreadPenalties.get() ? 1F + aiming : 1F) / (float) Config.COMMON.maxCount.get();
+                float currentSpread = spreadTracker.getSpread(mc.player, gunItem);
 
-                /* Calculate spreadModifier based on true current spread */
-                float spreadModifier = (currentSpread + nextSpreadIncrement) * Math.min(Mth.lerp(partialTicks, this.prevFireBloom, this.fireBloom), 1F);
-                float baseSpread = GunCompositeStatHelper.getCompositeSpread(heldItem, modifiedGun);
-                float minSpread = GunCompositeStatHelper.getCompositeMinSpread(heldItem, modifiedGun);
-                minSpread = (modifiedGun.getGeneral().getRestingSpread() > 0F ? minSpread : (modifiedGun.getGeneral().isAlwaysSpread() ? baseSpread : 0));
-                float smoothPenaltyDisplay = Mth.lerp(partialTicks, this.prevSmoothPenaltyDisplay, this.smoothPenaltyDisplay);
-                boolean alwaysSpread = modifiedGun.getGeneral().isAlwaysSpread();
-                float visualMinSpread;
-                if (alwaysSpread) {
-                    /* If alwaysSpread is true, then all visual penalty changes are disabled */
-                    visualMinSpread = minSpread;
-                } else {
-                    /* Increase spread to 50% of base spread */
-                    float penaltyMinSpread = baseSpread * 0.5F;
-                    float currentPenaltyMinSpread = penaltyMinSpread * smoothPenaltyDisplay;
+                spread = calculateSpread(spreadTracker, heldItem, gunItem, modifiedGun, aiming, currentSpread, partialTicks);
 
-                    /* Visual spread is always between 50% and 100% */
-                    visualMinSpread = Math.min(minSpread + currentPenaltyMinSpread, baseSpread);
-                }
-                float aimingSpreadMultiplier = (Mth.lerp(aiming, 1.0F, 1.0F - modifiedGun.getGeneral().getSpreadAdsReduction()));
-                spread = Math.max(Mth.lerp(spreadModifier, visualMinSpread, baseSpread) * aimingSpreadMultiplier, 0F);
                 DotRenderMode dotRenderMode = Config.CLIENT.dynamicCrosshairDotMode.get();
-                float normalizedCurrentSpread = spreadTracker.getSpread(mc.player, gun);
-                boolean penaltyActive = Config.COMMON.doSpreadStartInaccuracy.get() && (mc.player.isSprinting() || !mc.player.isOnGround());
+                boolean penaltyActive = Config.COMMON.doSpreadPenalties.get() && (mc.player.isSprinting() || !mc.player.isOnGround());
+                boolean alwaysSpread = modifiedGun.getGeneral().getAlwaysSpread();
                 boolean isAtMinSpread;
 
                 if (penaltyActive && !alwaysSpread) {
                     /* Dot disappears immediately to better convey that the spread change is instant */
                     isAtMinSpread = false;
                 } else {
-                    isAtMinSpread = (normalizedCurrentSpread == 0.0f && spread <= Config.CLIENT.dynamicCrosshairDotThreshold.get());
+                    isAtMinSpread = (currentSpread == 0.0f && spread <= Config.CLIENT.dynamicCrosshairDotThreshold.get());
                 }
 
                 renderDot = (dotRenderMode == DotRenderMode.ALWAYS)
@@ -148,19 +150,24 @@ public class DynamicCrosshair extends Crosshair
             }
         }
 
+        float scaleMultiplier = (float) (Config.CLIENT.dynamicCrosshairReactivity.get() * 1F);
         float baseScale = 1F + (Mth.lerp(partialTicks, this.prevScale, this.scale) * scaleMultiplier);
         float scale = (float) (baseScale + (spread * (2F * Config.CLIENT.dynamicCrosshairSpreadMultiplier.get())));
         float scaleSize = (scale / 6F) + 1.15F;
         float crosshairBaseTightness = (float) (0.8 - (Config.CLIENT.dynamicCrosshairBaseSpread.get() / 2));
-        float finalSpreadTranslate = (float) ( (Mth.lerp(0.95, scaleSize - 1, Math.log(scaleSize))) * (2.8F) );
+        float finalSpreadTranslate = (float) ((Mth.lerp(0.95, scaleSize - 1, Math.log(scaleSize))) * (2.8F));
 
         double windowCenteredX = Math.round((windowWidth) / 2F) - 0.5;
         double windowCenteredY = Math.round((windowHeight) / 2F) - 0.5;
 
         boolean blend = Config.CLIENT.blendCrosshair.get();
         RenderSystem.enableBlend();
-        if (blend) {
-            RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);
+        if (blend)
+        {
+            RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR,
+                    GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR,
+                    GlStateManager.SourceFactor.ONE,
+                    GlStateManager.DestFactor.ZERO);
         }
         BufferBuilder buffer = Tesselator.getInstance().getBuilder();
 
@@ -278,7 +285,8 @@ public class DynamicCrosshair extends Crosshair
             stack.popPose();
         }
 
-        if (blend) {
+        if (blend)
+        {
             RenderSystem.defaultBlendFunc();
         }
     }

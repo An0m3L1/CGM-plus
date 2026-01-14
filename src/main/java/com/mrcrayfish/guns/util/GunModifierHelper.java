@@ -73,7 +73,7 @@ public class GunModifierHelper
             IAttachment.Type attachType = getType(IAttachment.Type.values()[i]);
             for(IGunModifier modifier : modifiers)
             {
-            	if (!modifiedGun.getGeneral().usesShotgunSpread())
+            	if (!modifiedGun.getGeneral().getUseShotgunSpread())
             	spread = modifier.modifyProjectileSpread(spread);
             	else
             	spread = Mth.lerp((attachType == IAttachment.Type.BARREL ? 0.8F : 0.2F),spread,modifier.modifyProjectileSpread(spread));
@@ -328,7 +328,7 @@ public class GunModifierHelper
         int minRate = getRampUpMinRate(maxRate);
         int newRate = baseRate;
 
-        if(modifiedGun.getGeneral().hasDoRampUp())
+        if(modifiedGun.getGeneral().getDoRampUp())
         {
             int rampUpShot = ModSyncedDataKeys.RAMPUPSHOT.getValue(player);
             float rampFactor = (float) (Math.log((float) rampUpShot+1)/Math.log((float) getRampUpMaxShots(modifiedGun)));

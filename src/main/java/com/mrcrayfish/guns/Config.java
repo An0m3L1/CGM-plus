@@ -177,7 +177,6 @@ public class Config
         /* Gun properties */
         public final ForgeConfigSpec.IntValue spreadThreshold;
         public final ForgeConfigSpec.IntValue maxCount;
-        public final ForgeConfigSpec.BooleanValue doSpreadStartInaccuracy;
         public final ForgeConfigSpec.BooleanValue doSpreadPenalties;
         public final ForgeConfigSpec.DoubleValue criticalDamageMultiplier;
         public final ForgeConfigSpec.BooleanValue enableHeadShots;
@@ -259,7 +258,6 @@ public class Config
                 this.knockbackStrength = builder.comment("Sets the strength of knockback when hit. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value.").defineInRange("knockbackStrength", 0.1, 0.0, 1.0);
                 this.spreadThreshold = builder.comment("The amount of time in milliseconds (1/50th of a tick) before projectile spread resets to its resting value. The value indicates a reasonable amount of time before a weapon is considered stable again.").defineInRange("spreadThreshold", 350, 0, 1000);
                 this.maxCount = builder.comment("The amount of times a player has to shoot within the spread threshold before the maximum amount of spread is applied. Setting the value higher means it will take longer for the spread to be applied.").defineInRange("maxCount", 9, 1, Integer.MAX_VALUE);
-                this.doSpreadStartInaccuracy = builder.comment("When enabled, spread is at least 50% of max value when sprinting or jumping").define("doSpreadStartInaccuracy", true);
                 this.doSpreadPenalties = builder.comment("When enabled, spread increases faster when not aiming, sprinting and jumping").define("doSpreadPenalties", true);
                 this.enableDynamicLights = builder.comment("If true, guns, explosions and certain projectiles will produce light. Requires dynamic lights reforged. Works best with 'Realtime' setting.").define("enableDynamicLights", true);
                 this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision.").define("ignoreLeaves", true);

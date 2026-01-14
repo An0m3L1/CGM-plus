@@ -16,6 +16,7 @@
     "recoilDurationOffset": 0.5,
     "spread": 24.0,
     "restingSpread": 8.0,
+    "useSniperSpread": true,
 
     "maxAmmo": 5,
 

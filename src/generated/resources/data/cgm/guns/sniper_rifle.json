@@ -14,8 +14,9 @@
     "recoilAngle": 7.5,
     "recoilKick": 1.5,
     "recoilDurationOffset": 0.5,
-    "spread": 12.0,
-    "restingSpread": 4.0,
+    "spread": 18.0,
+    "restingSpread": 6.0,
+    "useSniperSpread": true,
 
     "maxAmmo": 8,
     "lightMagAmmo": 6,

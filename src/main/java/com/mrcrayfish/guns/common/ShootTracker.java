@@ -8,7 +8,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.context.UseOnContext;
-
 import org.apache.commons.lang3.tuple.Pair;
 
 import java.util.Map;
@@ -58,7 +57,7 @@ public class ShootTracker
         rate = GunModifierHelper.getRampUpRate(player, weapon, rate);
 
         //To implement Ramp Up (enchantment) again, uncomment the code block and remove code below this comment
-        if (modifiedGun.getGeneral().hasDoRampUp())
+        if (modifiedGun.getGeneral().getDoRampUp())
             rate=Math.max(rate-1, 1);
         /*
         if (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.RAMP_UP.get(), weapon) > 0 || modifiedGun.getGeneral().hasDoRampUp())

@@ -219,6 +219,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Optional
         private boolean useShotgunSpread = false;
         @Optional
+        private boolean useSniperSpread = false;
+        @Optional
         private double adsSpeed = 1;
         @Optional
         private boolean doRampUp = false;
@@ -276,6 +278,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             tag.putFloat("RestingSpread", this.restingSpread);
             tag.putFloat("SpreadAdsReduction", this.spreadAdsReduction);
             tag.putBoolean("UseShotgunSpread", this.useShotgunSpread);
+            tag.putBoolean("UseSniperSpread", this.useSniperSpread);
             tag.putDouble("ADSSpeed", this.adsSpeed);
             tag.putBoolean("DoRampUp", this.doRampUp);
             tag.putInt("RampUpShotsNeeded", this.rampUpShotsNeeded);
@@ -464,6 +467,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 this.useShotgunSpread = tag.getBoolean("UseShotgunSpread");
             }
+            if(tag.contains("UseSniperSpread", Tag.TAG_ANY_NUMERIC))
+            {
+                this.useSniperSpread = tag.getBoolean("UseSniperSpread");
+            }
             if(tag.contains("ADSSpeed", Tag.TAG_ANY_NUMERIC))
             {
                 this.adsSpeed = tag.getDouble("ADSSpeed");
@@ -560,6 +567,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(this.restingSpread != 0.0F) object.addProperty("restingSpread", this.restingSpread);
             if(this.spreadAdsReduction != 0.5F) object.addProperty("spreadAdsReduction", this.spread);
             if(this.useShotgunSpread) object.addProperty("useShotgunSpread", true);
+            if(this.useSniperSpread) object.addProperty("useSniperSpread", true);
             if(this.adsSpeed != 1) object.addProperty("adsSpeed", this.adsSpeed);
             if(this.doRampUp) object.addProperty("doRampUp", false);
             if(this.rampUpShotsNeeded != 8) object.addProperty("rampUpShotsNeeded", this.rampUpShotsNeeded);
@@ -617,6 +625,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             general.restingSpread = this.restingSpread;
             general.spreadAdsReduction = this.spreadAdsReduction;
             general.useShotgunSpread = this.useShotgunSpread;
+            general.useSniperSpread = this.useSniperSpread;
             general.adsSpeed = this.adsSpeed;
             general.doRampUp = this.doRampUp;
             general.rampUpShotsNeeded = this.rampUpShotsNeeded;
@@ -987,7 +996,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         /**
          * @return If this weapon should always spread its projectiles according to {@link #getSpread()}
          */
-        public boolean isAlwaysSpread()
+        public boolean getAlwaysSpread()
         {
             return this.alwaysSpread;
         }
@@ -1020,9 +1029,17 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         /**
          * @return If enabled, spread reduction from non-barrel attachments will be heavily reduced.
          */
-        public boolean usesShotgunSpread()
+        public boolean getUseShotgunSpread()
         {
             return this.useShotgunSpread;
+        }
+
+        /**
+         * @return If enabled, spread reduction from ADS will only affect resting spread.
+         */
+        public boolean getUseSniperSpread()
+        {
+            return this.useSniperSpread;
         }
 
         /**
@@ -1036,7 +1053,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         /**
          * @return Whether the gun has the Ramp Up effect.
          */
-        public boolean hasDoRampUp()
+        public boolean getDoRampUp()
         {
             return this.doRampUp;
         }
@@ -4105,7 +4122,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     public static boolean hasRampUp(ItemStack gunStack)
     {
         Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
-        return modifiedGun.getGeneral().hasDoRampUp();
+        return modifiedGun.getGeneral().getDoRampUp();
     }
 
     public static boolean isAmmo(ItemStack stack, ResourceLocation id)
@@ -4734,6 +4751,12 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public Builder setUseShotgunSpread(boolean useShotgunSpread)
         {
             this.gun.general.useShotgunSpread = useShotgunSpread;
+            return this;
+        }
+
+        public Builder setUseSniperSpread(boolean useSniperSpread)
+        {
+            this.gun.general.useSniperSpread = useSniperSpread;
             return this;
         }
 

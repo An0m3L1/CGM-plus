@@ -4,20 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Spread update.&#10;&#10;Optimized spread code.&#10;Added useSniperSpread: if true, then spreadAdsReduction only affects the restingSpread (this way when you're sprinting/jumping, the penalty still functions).">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Spread update.&#10;&#10;Fixed min spread changes with useSniperSpread not affecting the gun stats description.&#10;The crosshair no longer renders for useSniperSpread guns with a corresponding config.&#10;Changed pistol sights color to white.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/DynamicCrosshair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/DynamicCrosshair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/SpreadTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/SpreadTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunModifierHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/util/GunModifierHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/pistol.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/pistol.png" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -548,7 +541,23 @@
       <option name="project" value="LOCAL" />
       <updated>1768345968912</updated>
     </task>
-    <option name="localTasksCounter" value="45" />
+    <task id="LOCAL-00045" summary="Spread update.&#10;&#10;Optimized spread code.&#10;Added useSniperSpread: if true, then spreadAdsReduction only affects the restingSpread (this way when you're sprinting/jumping, the penalty is still applied).">
+      <option name="closed" value="true" />
+      <created>1768410769234</created>
+      <option name="number" value="00045" />
+      <option name="presentableId" value="LOCAL-00045" />
+      <option name="project" value="LOCAL" />
+      <updated>1768410769234</updated>
+    </task>
+    <task id="LOCAL-00046" summary="Spread update.&#10;&#10;Fixed min spread changes with useSniperSpread not affecting the gun stats description.&#10;The crosshair no longer renders for useSniperSpread guns with a corresponding config.&#10;Changed">
+      <option name="closed" value="true" />
+      <created>1768585251608</created>
+      <option name="number" value="00046" />
+      <option name="presentableId" value="LOCAL-00046" />
+      <option name="project" value="LOCAL" />
+      <updated>1768585251608</updated>
+    </task>
+    <option name="localTasksCounter" value="47" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -567,9 +576,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Animation update.&#10;&#10;Added draw animations.&#10;Aiming FOV tweaks.&#10;Small fixes." />
-    <MESSAGE value="Animation update.&#10;&#10;Renamed some poses.&#10;One-handed pose now has smoother transitions for sprinting.&#10;Off-hand fix for pistol poses.&#10;More sprinting restrictions.&#10;Grenades are now thrown with half velocity if crouching." />
-    <MESSAGE value="Sound update.&#10;&#10;Updated SFX for:&#10;- Tactical Pistol&#10;- Automatic Pistol&#10;- Assault Rifle&#10;Small pistol pose fix." />
     <MESSAGE value="Reduced low durability sound volume." />
     <MESSAGE value="Attachment update.&#10;&#10;Added muzzle break.&#10;Added compensator.&#10;Slightly refreshed barrel models.&#10;Reordered attachment modifiers." />
     <MESSAGE value="Attachment update.&#10;&#10;Added muzzle break.&#10;Added compensator.&#10;Slightly refreshed barrel models." />
@@ -592,7 +598,10 @@
     <MESSAGE value="Tweaks.&#10;&#10;Reduced fire sound distance config value.&#10;Reduced minimal grenade speed to produce bounce sounds.&#10;Touched up the modular stock textures.&#10;Overhauled the slide on automatic pistol.&#10;Reloading now stops and restricts sprinting.&#10;The gun is no longer raised when trying to shoot with a broken and loaded gun.&#10;Recoil adjustments.&#10;Removed several Util classes." />
     <MESSAGE value="Pistol update.&#10;&#10;Added Pistol (WIP).&#10;Improved fire setting logic - now explosions can ignite sides of blocks and create fire more consistently.&#10;Tweaked molotov light sound.&#10;Improved slide movement on all models." />
     <MESSAGE value="Pistol and spread update.&#10;&#10;Finished pistol.&#10;Balance changes.&#10;Increased durability across the board.&#10;Added spread penalties to sprinting and jumping.&#10;Added minimal spread penalty while sprinting and jumping.&#10;Dynamic crosshair now shows spread much more accurately." />
-    <option name="LAST_COMMIT_MESSAGE" value="Pistol and spread update.&#10;&#10;Finished pistol.&#10;Balance changes.&#10;Increased durability across the board.&#10;Added spread penalties to sprinting and jumping.&#10;Added minimal spread penalty while sprinting and jumping.&#10;Dynamic crosshair now shows spread much more accurately." />
+    <MESSAGE value="Spread update.&#10;&#10;Optimized spread code.&#10;Added useSniperSpread: if true, then spreadAdsReduction only affects the restingSpread (this way when you're sprinting/jumping, the penalty is still applied)." />
+    <MESSAGE value="Spread update.&#10;&#10;Fixed min spread changes with useSniperSpread not affecting the gun stats description.&#10;The crosshair no longer renders for useSniperSpread guns with a corresponding config.&#10;Changed" />
+    <MESSAGE value="Spread update.&#10;&#10;Fixed min spread changes with useSniperSpread not affecting the gun stats description.&#10;The crosshair no longer renders for useSniperSpread guns with a corresponding config.&#10;Changed pistol sights color to white." />
+    <option name="LAST_COMMIT_MESSAGE" value="Spread update.&#10;&#10;Fixed min spread changes with useSniperSpread not affecting the gun stats description.&#10;The crosshair no longer renders for useSniperSpread guns with a corresponding config.&#10;Changed pistol sights color to white." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

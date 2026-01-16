@@ -23,6 +23,7 @@ public class Config
         public final ForgeConfigSpec.BooleanValue oldAnimations;
         public final ForgeConfigSpec.ConfigValue<String> crosshair;
         public final ForgeConfigSpec.BooleanValue blendCrosshair;
+        public final ForgeConfigSpec.BooleanValue disableCrosshairForSnipers;
         public final ForgeConfigSpec.DoubleValue dynamicCrosshairBaseSpread;
         public final ForgeConfigSpec.DoubleValue dynamicCrosshairSpreadMultiplier;
         public final ForgeConfigSpec.DoubleValue dynamicCrosshairReactivity;
@@ -79,6 +80,7 @@ public class Config
                 this.dynamicCrosshairDotMode = builder.comment("The rendering mode used for the Dynamic Crosshair's center dot. At Min Spread will only render the dot when gun spread is stable.").defineEnum("dynamicCrosshairDotMode", DotRenderMode.ALWAYS);
                 this.onlyRenderDotWhileAiming = builder.comment("If true, the Dynamic Crosshair's center dot will only render while aiming. Obeys dynamicCrosshairDotMode, and has no effect when mode is set to Never.").define("onlyRenderDotWhileAiming", true);
                 this.dynamicCrosshairDotThreshold = builder.comment("The threshold of spread (including modifiers) below which the Dynamic Crosshair's center dot is rendered. Affects the At Min Spread and Threshold modes only.").defineInRange("dynamicCrosshairDotThreshold", 0.8, 0, 90);
+                this.disableCrosshairForSnipers = builder.comment("If enabled, guns with sniper spreading enabled don't render the crosshair.").define("disableCrosshairForSnipers", true);
                 this.blendCrosshair = builder.comment("If enabled, blends all custom crosshairs to match the behavior of the default crosshair.").define("blendCrosshair", true);
             }builder.pop();
                 builder.push("weapon_sway");{

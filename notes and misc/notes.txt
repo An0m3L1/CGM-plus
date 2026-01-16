@@ -11,8 +11,6 @@ Add and overhaul animations
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
-Add gun property sniperSpread
-    - Overhaul spread description to account for sniperSpread
 
 Overhaul items (models, textures, stats)
     - Grenade Launcher

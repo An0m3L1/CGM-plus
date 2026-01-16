@@ -201,9 +201,19 @@ public class GunItem extends Item implements IColored, IMeta
         	// ADS Spread
             float adsSpread = spread * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
             float adsMinSpread = minSpread * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
-            if (adsSpread!=spread && modifiedGun.getModules().getZoom() != null)
+            boolean checkSpread;
+
+            /* We bypass the check for difference in spread and adsMinSpread to correctly show that ADS reduces only the resting spread */
+            boolean useSniperSpread = modifiedGun.getGeneral().getUseSniperSpread();
+            if(useSniperSpread) {
+                adsSpread = spread;
+                checkSpread = true;
+            }
+            else
+                checkSpread = adsSpread != spread;
+
+            if(checkSpread && modifiedGun.getModules().getZoom() != null)
             {
-            	//tooltip.add(Component.translatable("info.cgm.ads_spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpread) + "°").withStyle(ChatFormatting.WHITE)));
             	if ((adsMinSpread!=adsSpread) && ((adsMinSpread>0) || (!isAlwaysSpread)))
                 {
                     tooltip.add(Component.translatable("info.cgm.ads_spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsMinSpread) + "°-" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpread) + "°").withStyle(ChatFormatting.WHITE)));

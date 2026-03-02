@@ -32,7 +32,7 @@
     "protectionBypass": 0.5,
 
     "breakFragile": true,
-    "maxPierceCount": 4,
+    "maxPierceCount": 3,
     "pierceDamagePenalty": 0.25,
     "pierceDamageMaxPenalty": 0.75,
     "waterDamagePenalty": 0.25,

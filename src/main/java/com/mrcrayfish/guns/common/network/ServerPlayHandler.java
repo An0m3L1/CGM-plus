@@ -406,7 +406,7 @@ public class ServerPlayHandler
 	                    return;
 	                }
 	                
-	                if (!player.isCreative() || !partial)
+	                if (!player.isCreative())
 	                {
 		                int maxStackSize = item.getMaxStackSize();
 		                int stacks = count / maxStackSize;

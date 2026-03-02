@@ -139,7 +139,6 @@ public class Config
         /* Fragile blocks breaking */
         public final ForgeConfigSpec.BooleanValue enableFragileBreaking;
         public final ForgeConfigSpec.BooleanValue fragileBlockDrops;
-        public final ForgeConfigSpec.DoubleValue fragileBaseBreakChance;
 
         /* Explosives and grenades */
         public final ForgeConfigSpec.BooleanValue explosionGriefing;
@@ -195,7 +194,6 @@ public class Config
             builder.push("fragile_blocks_breaking");{
                 this.enableFragileBreaking = builder.comment("If enabled, projectiles will destroy fragile blocks.").define("enableFragileBreaking", true);
                 this.fragileBlockDrops = builder.comment("If enabled, fragile blocks will drop when broken.").define("fragileBlockDrops", false);
-                this.fragileBaseBreakChance = builder.comment("The base chance that a fragile block is broken when hit by a bullet. The hardness of a block will scale this value; the harder the block, the lower the final calculated chance will be.").defineInRange("fragileBlockBreakChance", 1.0, 0.0, 1.0);
             }builder.pop();
             builder.push("explosives_and_grenades");{
                 builder.push("rocket");{

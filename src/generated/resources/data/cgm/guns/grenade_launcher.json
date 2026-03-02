@@ -26,9 +26,9 @@
     "gravity": true,
     "visible": true,
     "gravityStrength": 1.25,
-    "maxPierceCount": 1,
+    "maxPierceCount": 0,
     "item": "cgm:pipe_grenade",
-    "waterDamagePenalty": 0.5
+    "breakFragile": false
   },
   "sounds": {
     "cock": "cgm:item.grenade_launcher.cock",

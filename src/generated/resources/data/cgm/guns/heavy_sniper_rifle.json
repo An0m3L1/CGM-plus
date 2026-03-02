@@ -23,7 +23,7 @@
     "useMagReload": true,
     "magReloadTime": 65,
 
-    "drawTime": 15,
+    "drawTime": 16,
     "reloadStartDelay": 0,
     "reloadInterruptDelay": 10,
     "reloadEndDelay": 1,
@@ -48,9 +48,9 @@
     "protectionBypass": 0.75,
 
     "breakFragile": true,
-    "maxPierceCount": 9,
+    "maxPierceCount": 5,
     "pierceDamagePenalty": 0.1,
-    "pierceDamageMaxPenalty": 0.9,
+    "pierceDamageMaxPenalty": 0.5,
     "waterDamagePenalty": 0.25
   },
   "sounds": {

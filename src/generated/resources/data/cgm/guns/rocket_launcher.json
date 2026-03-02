@@ -25,9 +25,9 @@
     "protectionBypass": 0.1,
     "gravity": false,
     "visible": true,
-    "maxPierceCount": 1,
+    "maxPierceCount": 0,
     "item": "cgm:rocket",
-    "waterDamagePenalty": 0.5
+    "breakFragile": false
   },
   "sounds": {
     "fire": "cgm:item.rocket_launcher.fire",

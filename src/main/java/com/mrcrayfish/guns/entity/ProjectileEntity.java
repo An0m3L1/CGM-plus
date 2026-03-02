@@ -97,7 +97,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     private ItemStack weapon = ItemStack.EMPTY;
     private ItemStack item = ItemStack.EMPTY;
     protected float additionalDamage = 0.0F;
-    protected int pierceCount = 0;
+    protected int pierceCounter = 0;
+    protected int maxPierceCount;
     protected float pierceDamageFraction = 1.0F;
     protected EntityDimensions entitySize;
     protected double modifiedGravity;
@@ -110,6 +111,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     public float waterDamagePenalty;
     public int explosionLightValue = 12;
     public int explosionLightLife = 6;
+    protected int ticksToSkip = 0;
+    protected Set<UUID> hitEntities = new HashSet<>();
 
     public ProjectileEntity(EntityType<? extends Entity> entityType, Level worldIn)
     {
@@ -124,6 +127,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.modifiedGun = modifiedGun;
         this.general = modifiedGun.getGeneral();
         this.projectile = modifiedGun.getProjectile();
+        this.maxPierceCount = this.projectile.getMaxPierceCount();
         this.entitySize = new EntityDimensions(this.projectile.getSize(), this.projectile.getSize(), false);
         this.modifiedGravity = modifiedGun.getProjectile().isGravity() ? GunModifierHelper.getModifiedProjectileGravity(weapon, -0.04 * modifiedGun.getProjectile().getGravity()) : 0.0;
         this.life = GunModifierHelper.getModifiedProjectileLife(weapon, this.projectile.getLife());
@@ -289,6 +293,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 AABB range = new AABB(startVec.x-5, startVec.y-5, startVec.z-5, startVec.x+5, startVec.y+5, startVec.z+5);
                 List<Player> players = this.level.getEntitiesOfClass(Player.class, range);
+
+                /* Remove shooter from the playlist */
+                if (this.shooter instanceof Player) {
+                    players.removeIf(player -> player.equals(this.shooter));
+                }
+
                 float volume = 0.5F + this.level.getRandom().nextFloat() * 0.4F;
                 boolean isShotgun = general.getProjectileAmount() > 1;
                 if (!players.isEmpty() && this.tickCount > 3 && soundTime < this.tickCount - 3)
@@ -308,8 +318,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 endVec = result.getLocation();
             }
             List<EntityResult> hitEntities = null;
-            int maxPierceCount = (projectile.getMaxPierceCount()-1);
-            if(maxPierceCount == 0)
+            boolean skipMovement = false;
+            if (this.maxPierceCount == 0)
             {
                 EntityResult entityResult = this.findEntityOnPath(startVec, endVec);
                 if(entityResult != null)
@@ -336,27 +346,49 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     }
                     if(result != null)
                     {
-                        this.onHit(result, startVec, endVec);
+                        if (this.onHit(result, startVec, endVec))
+                        {
+                            skipMovement = true;
+                            break;
+                        }
                     }
                 }
             }
             else
             {
-                this.onHit(result, startVec, endVec);
+                if (this.onHit(result, startVec, endVec))
+                {
+                    skipMovement = true;
+                }
+            }
+
+            if (!skipMovement)
+            {
+                double nextPosX = this.getX() + this.getDeltaMovement().x();
+                double nextPosY = this.getY() + this.getDeltaMovement().y();
+                double nextPosZ = this.getZ() + this.getDeltaMovement().z();
+                this.setPos(nextPosX, nextPosY, nextPosZ);
+            }
+            else
+            {
+                this.ticksToSkip++;
             }
         }
-
-        double nextPosX = this.getX() + this.getDeltaMovement().x();
-        double nextPosY = this.getY() + this.getDeltaMovement().y();
-        double nextPosZ = this.getZ() + this.getDeltaMovement().z();
-        this.setPos(nextPosX, nextPosY, nextPosZ);
+        else
+        {
+            double nextPosX = this.getX() + this.getDeltaMovement().x();
+            double nextPosY = this.getY() + this.getDeltaMovement().y();
+            double nextPosZ = this.getZ() + this.getDeltaMovement().z();
+            this.setPos(nextPosX, nextPosY, nextPosZ);
+        }
 
         if(this.projectile.isGravity())
         {
             this.setDeltaMovement(this.getDeltaMovement().add(0, this.modifiedGravity, 0));
         }
 
-        if(this.tickCount >= this.life)
+        int effectiveTickCount = this.tickCount - this.ticksToSkip;
+        if(effectiveTickCount >= this.life)
         {
             if(this.isAlive())
             {
@@ -394,7 +426,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         {
             boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
             boolean isImmune = Config.COMMON.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
-            if(!entity.equals(this.shooter) && !isImmune)
+            if(!entity.equals(this.shooter) && !isImmune && !this.hitEntities.contains(entity.getUUID()))
             {
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
                 if(result == null || isDead)
@@ -420,17 +452,18 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         List<Entity> entities = this.level.getEntities(this, this.getBoundingBox().expandTowards(this.getDeltaMovement()).inflate(1.0+this.projectile.getSize()), PROJECTILE_TARGETS);
         for(Entity entity : entities)
         {
-        	boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
+            boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
             boolean isImmune = Config.COMMON.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
+            if(this.hitEntities.contains(entity.getUUID())) continue;
             if(!entity.equals(this.shooter) && !isImmune)
             {
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
                 if(result == null || isDead)
                     continue;
-    			hitEntities.add(result);
+                hitEntities.add(result);
             }
         }
-		hitEntities.sort(new HitComparator());
+        hitEntities.sort(new HitComparator());
         return hitEntities;
     }
 
@@ -493,123 +526,171 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         return new EntityResult(entity, startVec, hitPos, headshot);
     }
 
-    private void onHit(HitResult result, Vec3 startVec, Vec3 endVec)
+    /**
+     * Called when the projectile hits something.
+     * @param result The hit result
+     * @param startVec The start position of the ray trace
+     * @param endVec The end position of the ray trace (may be updated to hit location)
+     * @return true if the movement in this tick should be skipped (e.g., after destroying a fragile block)
+     */
+    private boolean onHit(HitResult result, Vec3 startVec, Vec3 endVec)
     {
         if(MinecraftForge.EVENT_BUS.post(new GunProjectileHitEvent(result, this)))
         {
-            return;
+            return false;
         }
 
         if(result instanceof BlockHitResult blockHitResult)
         {
             if(blockHitResult.getType() == HitResult.Type.MISS)
             {
-                return;
+                return false;
             }
 
             Vec3 hitVec = result.getLocation();
             BlockPos pos = blockHitResult.getBlockPos();
             BlockState state = this.level.getBlockState(pos);
             Block block = state.getBlock();
-            boolean wasFragileDestroyed = false;
+            boolean canDestroy = false;
 
-            if(Config.COMMON.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE))
+            // Check if the block can be destroyed (fragile and conditions met)
+            if (Config.COMMON.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE))
             {
-                float destroySpeed = state.getDestroySpeed(this.level, pos);
-                if(destroySpeed >= 0)
+                if (this.modifiedGun != null && this.modifiedGun.getProjectile().isBreakFragile())
                 {
-                    float chance = Config.COMMON.fragileBaseBreakChance.get().floatValue() / (destroySpeed + 1);
-                    if(this.random.nextFloat() < chance)
-                    {
-                        this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
-                        wasFragileDestroyed = true;
-                    }
+                    canDestroy = true;
                 }
             }
 
-            if(!state.getMaterial().isReplaceable() && !state.is(ModTags.Blocks.FRAGILE) || (state.is(ModTags.Blocks.FRAGILE) && !wasFragileDestroyed))
-            {
-                this.remove(RemovalReason.KILLED);
-            }
-
-            if(block instanceof IDamageable)
+            // Always call these handlers regardless of destruction
+            if (block instanceof IDamageable)
             {
                 ((IDamageable) block).onBlockDamaged(this.level, state, pos, this, this.getDamage(), (int) Math.ceil(this.getDamage() / 2.0) + 1);
             }
 
             this.onHitBlock(state, pos, blockHitResult.getDirection(), hitVec.x, hitVec.y, hitVec.z);
 
-            if(block instanceof TargetBlock targetBlock)
+            if (block instanceof TargetBlock targetBlock)
             {
                 int power = updateTargetBlock(targetBlock, this.level, state, blockHitResult, this);
-                if(this.shooter instanceof ServerPlayer serverPlayer)
+                if (this.shooter instanceof ServerPlayer serverPlayer)
                 {
                     serverPlayer.awardStat(Stats.TARGET_HIT);
                     CriteriaTriggers.TARGET_BLOCK_HIT.trigger(serverPlayer, this, blockHitResult.getLocation(), power);
                 }
             }
 
-            if(block instanceof BellBlock bell)
+            if (block instanceof BellBlock bell)
             {
                 bell.attemptToRing(this.level, pos, blockHitResult.getDirection());
             }
-            return;
+
+            if (canDestroy)
+            {
+                // Destroy the block (always, even if it's the last one)
+                this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
+
+                // Apply pierce logic identical to entities
+                if (this.maxPierceCount >= 0 && this.pierceCounter >= this.maxPierceCount)
+                {
+                    // This is the last pierce: destroy block, then remove projectile without increasing count
+                    this.remove(RemovalReason.KILLED);
+                    this.deadProjectile = true;
+                    return false;
+                }
+                else
+                {
+                    // Not the last pierce (or infinite): increase count and apply damage penalty
+                    this.pierceCounter++;
+                    // ========== ИЗМЕНЕНО: применяем штраф только если пробитие ограничено ==========
+                    if (this.maxPierceCount != -1)
+                    {
+                        this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
+                        this.pierceDamageFraction = Mth.clamp(this.pierceDamageFraction, 1F - this.modifiedGun.getProjectile().getPierceDamageMaxPenalty(), 1.0F);
+                    }
+                    // Move projectile to hit position to avoid being stuck inside the destroyed block
+                    this.setPos(hitVec.x, hitVec.y, hitVec.z);
+                    // Skip further movement this tick to prevent immediate collision with next block
+                    return true;
+                }
+            }
+            else
+            {
+                // Block cannot be destroyed. Destroy projectile if it hit a solid block
+                if (!state.getMaterial().isReplaceable())
+                {
+                    this.remove(RemovalReason.KILLED);
+                    this.deadProjectile = true;
+                }
+                return false;
+            }
         }
 
         if(result instanceof ExtendedEntityRayTraceResult entityHitResult)
         {
             if(this.deadProjectile)
             {
-                return;
-            }
-            
-            Entity entity = entityHitResult.getEntity();
-            boolean isImmune = Config.COMMON.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
-            if(entity.getId() == this.shooterId || isImmune)
-            {
-                return;
+                return false;
             }
 
-            if(this.shooter instanceof Player player)
+            Entity entity = entityHitResult.getEntity();
+            boolean isImmune = Config.COMMON.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
+            if (entity.getId() == this.shooterId || isImmune)
             {
-                if(entity.hasIndirectPassenger(player))
+                return false;
+            }
+
+            if (this.shooter instanceof Player player)
+            {
+                if (entity.hasIndirectPassenger(player))
                 {
-                    return;
+                    return false;
                 }
             }
 
             boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
-            this.onHitEntity(entity, result.getLocation(), startVec, endVec, entityHitResult.isHeadshot());
+            if (!isDead)
+            {
+                this.onHitEntity(entity, result.getLocation(), startVec, endVec, entityHitResult.isHeadshot());
+                this.hitEntities.add(entity.getUUID());
+            }
 
-        	if (!isDead)
-        	{
-                int maxPierceCount = (projectile.getMaxPierceCount()-1);
-        		if(maxPierceCount == 0)
-            	{
-                	this.remove(RemovalReason.KILLED);
-        			this.deadProjectile = true;
-            	}
-            	else
-            	{
-            		if (this.pierceCount>=maxPierceCount && maxPierceCount>=0)
-            		{
-            			this.remove(RemovalReason.KILLED);
-            			this.deadProjectile = true;
-            		}
-            		else
-            		{
-            			this.pierceCount++;
-            			this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
-            			this.pierceDamageFraction = Mth.clamp(pierceDamageFraction, 1F-this.modifiedGun.getProjectile().getPierceDamageMaxPenalty(), 1.0F);
-            		}
-            	}
-        	}
-            entity.invulnerableTime = 0;
+            boolean shouldRemove = false;
+            if (this.maxPierceCount >= 0)
+            {
+                if (this.pierceCounter >= this.maxPierceCount)
+                {
+                    shouldRemove = true;
+                }
+                else
+                {
+                    this.pierceCounter++;
+                    this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
+                    this.pierceDamageFraction = Mth.clamp(this.pierceDamageFraction, 1F - this.modifiedGun.getProjectile().getPierceDamageMaxPenalty(), 1.0F);
+                }
+            }
+
+            if (shouldRemove)
+            {
+                this.remove(RemovalReason.KILLED);
+                this.deadProjectile = true;
+                entity.invulnerableTime = 0;
+                return false;
+            }
+            else
+            {
+                Vec3 hitVec = result.getLocation();
+                this.setPos(hitVec.x, hitVec.y, hitVec.z);
+                entity.invulnerableTime = 0;
+                return true;
+            }
         }
+
+        return false;
     }
 
     @SuppressWarnings("deprecation")
-	protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
+    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
         float damage = this.getDamage();
         float newDamage = this.getCriticalDamage(this.weapon, this.random, damage);
@@ -628,43 +709,44 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         if(headshot && modifiedGun != null)
         {
             if (this.modifiedGun.getProjectile().getHeadshotMultiplierOverride()!=0)
-            	damage *= this.modifiedGun.getProjectile().getHeadshotMultiplierOverride();
+                damage *= this.modifiedGun.getProjectile().getHeadshotMultiplierOverride();
             else
             {
-            	double hm = Config.COMMON.headShotDamageMultiplier.get();
-            	float headshotMultiplier = (float) Math.max(hm,this.modifiedGun.getProjectile().getHeadshotMultiplierMin());
-            	damage *= headshotMultiplier+this.modifiedGun.getProjectile().getHeadshotMultiplierBonus();
+                double hm = Config.COMMON.headShotDamageMultiplier.get();
+                float headshotMultiplier = (float) Math.max(hm,this.modifiedGun.getProjectile().getHeadshotMultiplierMin());
+                damage *= headshotMultiplier+this.modifiedGun.getProjectile().getHeadshotMultiplierBonus();
             }
-            
+
             if (this.modifiedGun.getProjectile().getHeadshotExtraDamage()>0)
-            	damage += this.modifiedGun.getProjectile().getHeadshotExtraDamage();
+                damage += this.modifiedGun.getProjectile().getHeadshotExtraDamage();
         }
-        
+
         damage *= this.pierceDamageFraction;
+
+        if (entity.isUnderWater())
+            damage *= waterDamagePenalty;
 
         DamageSource source = new DamageSourceProjectile("bullet", this, shooter, weapon).setProjectile();
         float bypassDamage = 0;
         if (entity instanceof LivingEntity)
         {
-        	damage = getArmorReducedDamage(this, (LivingEntity) entity, damage);
-        	bypassDamage = getProtectionBypassDamage(this, (LivingEntity) entity, damage, source);
+            damage = getArmorReducedDamage(this, (LivingEntity) entity, damage);
+            bypassDamage = getProtectionBypassDamage(this, (LivingEntity) entity, damage, source);
         }
 
         boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
         DamageSource bypassSource = source.bypassArmor();
         entity.hurt(bypassSource, damage+bypassDamage);
-        
+
         // Since we're bypassing armor, we have to add logic to damage the armor's durability
         // And since we're doing that, let's make headshots damage only the helmet, and by a larger amount.
         if (entity instanceof Player player)
         {
             if (headshot)
-        	// The damage input gets divided by 4, hence why we're multiplying the durability damage value.
-            player.getInventory().hurtArmor(source, 4*4, Inventory.HELMET_SLOT_ONLY);
-        	else
-            {
+                // The damage input gets divided by 4, hence why we're multiplying the durability damage value.
+                player.getInventory().hurtArmor(source, 4*4, Inventory.HELMET_SLOT_ONLY);
+            else
                 player.getInventory().hurtArmor(source, 1, Inventory.ALL_ARMOR_SLOTS);
-            }
         }
 
         boolean isEnderman = (entity instanceof EnderMan || entity.getType() == EntityType.ENDERMAN);
@@ -693,6 +775,19 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.general.deserializeNBT(compound.getCompound("General"));
         this.modifiedGravity = compound.getDouble("ModifiedGravity");
         this.life = compound.getInt("MaxLife");
+        this.pierceCounter = compound.getInt("PierceCount");
+        this.pierceDamageFraction = compound.getFloat("PierceDamageFraction");
+        this.maxPierceCount = this.projectile.getMaxPierceCount() - 1;
+        this.ticksToSkip = compound.getInt("TicksToSkip");
+        this.hitEntities.clear();
+        if (compound.contains("HitEntities", Tag.TAG_COMPOUND))
+        {
+            CompoundTag hitList = compound.getCompound("HitEntities");
+            for (int i = 0; hitList.contains("hit_" + i); i++)
+            {
+                this.hitEntities.add(hitList.getUUID("hit_" + i));
+            }
+        }
     }
 
     @Override
@@ -702,6 +797,17 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         compound.put("General", this.general.serializeNBT());
         compound.putDouble("ModifiedGravity", this.modifiedGravity);
         compound.putInt("MaxLife", this.life);
+        compound.putInt("PierceCount", this.pierceCounter);
+        compound.putFloat("PierceDamageFraction", this.pierceDamageFraction);
+        compound.putInt("TicksToSkip", this.ticksToSkip);
+        CompoundTag hitList = new CompoundTag();
+        int i = 0;
+        for (UUID uuid : this.hitEntities)
+        {
+            hitList.putUUID("hit_" + i, uuid);
+            i++;
+        }
+        compound.put("HitEntities", hitList);
     }
 
     @Override
@@ -713,6 +819,14 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         writeItemStackToBufIgnoreTag(buffer, this.item);
         buffer.writeDouble(this.modifiedGravity);
         buffer.writeVarInt(this.life);
+        buffer.writeVarInt(this.pierceCounter);
+        buffer.writeFloat(this.pierceDamageFraction);
+        buffer.writeVarInt(this.ticksToSkip);
+        buffer.writeVarInt(this.hitEntities.size());
+        for (UUID uuid : this.hitEntities)
+        {
+            buffer.writeUUID(uuid);
+        }
     }
 
     @Override
@@ -726,7 +840,17 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.item = readItemStackFromBufIgnoreTag(buffer);
         this.modifiedGravity = buffer.readDouble();
         this.life = buffer.readVarInt();
+        this.pierceCounter = buffer.readVarInt();
+        this.pierceDamageFraction = buffer.readFloat();
+        this.maxPierceCount = this.projectile.getMaxPierceCount() - 1;
         this.entitySize = new EntityDimensions(this.projectile.getSize(), this.projectile.getSize(), false);
+        this.ticksToSkip = buffer.readVarInt();
+        int hitCount = buffer.readVarInt();
+        this.hitEntities.clear();
+        for (int i = 0; i < hitCount; i++)
+        {
+            this.hitEntities.add(buffer.readUUID());
+        }
     }
 
     public void updateHeading()
@@ -772,24 +896,22 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     {
         float initialDamage = (this.projectile.getDamage() + this.additionalDamage);
         float maxRangeDamageMultiplier = this.projectile.getMaxRangeDamageMultiplier();
+        int effectiveTickCount = this.tickCount - this.ticksToSkip;
         if(this.projectile.isDamageReduceOverLife() && maxRangeDamageMultiplier < 1)
         {
-            float modifier = ((float) this.projectile.getLife() - (float) (this.tickCount - 1)) / (float) this.projectile.getLife();
+            float modifier = ((float) this.projectile.getLife() - (float) (effectiveTickCount - 1)) / (float) this.projectile.getLife();
             float finalModifier = Mth.lerp(modifier, maxRangeDamageMultiplier, 1);
             initialDamage *= Math.min(finalModifier, 1);
         }
         else
         if(maxRangeDamageMultiplier > 1)
         {
-            float modifier = ((float) this.projectile.getLife() - (float) (this.tickCount - 1)) / (float) this.projectile.getLife();
+            float modifier = ((float) this.projectile.getLife() - (float) (effectiveTickCount - 1)) / (float) this.projectile.getLife();
             float finalModifier = Mth.lerp(modifier, 1, maxRangeDamageMultiplier);
             initialDamage *= Math.max(finalModifier, 1);
         }
         float damage = initialDamage / this.general.getProjectileAmount();
         damage = GunModifierHelper.getModifiedDamage(this.weapon, this.modifiedGun, damage);
-
-        if(this.isInWater())
-            damage *= waterDamagePenalty;
 
         return Math.max(0F, damage);
     }
@@ -970,8 +1092,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                             isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() :
                                     20F;
 
-            // If the explosion doesn't come from a gun, its damage is halved (for example, grenades)
-            if(entity.isInWater() && !hasGunProjectile)
+            if(entity.isInWater())
                 damage *= 0.5F;
 
             mode = griefing && Config.COMMON.explosionGriefing.get()

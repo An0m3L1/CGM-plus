@@ -6,8 +6,7 @@ Add melee class system
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
 Add and overhaul animations
-    - Prone shooting
-    - Swimming (raise head)
+    - Prone/Swimming
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
@@ -17,9 +16,10 @@ Overhaul items (models, textures, stats)
     - Rocket Launcher
     - Minigun
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Overhaul pipe grenades to make them bouncy
+Change automatic pistol pose to two handed short (rapid smg)
+Update automatic pistol reload animation (rapid smg)
+Add a movement slow to heavy weapons (minigun, rocket launcher)
+Add a modifier for draw time to attachments and make it correspond to the draw animation
+Add a downside to thumb grip (draw time?)
 Overhaul fragile block breaking to not remove the projectile after destroying a block
-Overhaul horizontal recoil so it starts sooner
-Overhaul ADS time to make it lower
-
 Optimize textures

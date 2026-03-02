@@ -154,16 +154,8 @@
 			}
 		},
 		"draw": {
-			"animationSpeed": 1.3,
+			"animationSpeed": 1.0,
 			"frames": 18,
-			"sounds": {
-				"count": 1,
-				"0": {
-					"id": "cgm:item.foley.rifle3_draw",
-					"volume": 0.8,
-					"playAt": 2.0
-				}
-			},
 			"viewModel": {
 				"0": {
 					"translation": [-5, -9, -0.5],

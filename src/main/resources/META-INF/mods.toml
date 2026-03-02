@@ -39,19 +39,19 @@ Heavily modified, overhauled and expanded version of zaeonNineZeros CGM Expander
     side="BOTH"
 [[dependencies.cgm]]
     modId="createdieselgenerators"
-    mandatory=true
+    mandatory=false
     versionRange="[1.19.2-1.2,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.cgm]]
     modId="farmersdelight"
-    mandatory=true
+    mandatory=false
     versionRange="[1.2,)"
     ordering="NONE"
     side="BOTH"
 [[dependencies.cgm]]
     modId="sulfurpotassiummod"
-    mandatory=true
+    mandatory=false
     versionRange="[2.3.4,)"
     ordering="NONE"
     side="BOTH"

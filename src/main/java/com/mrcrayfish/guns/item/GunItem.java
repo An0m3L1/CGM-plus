@@ -165,6 +165,10 @@ public class GunItem extends Item implements IColored, IMeta
                 tooltip.add(Component.translatable("info.cgm.ads_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsTime)).withStyle(ChatFormatting.GRAY));
             }
 
+            // Draw time (0.5 s by default)
+            float drawTime = (float)modifiedGun.getGeneral().getDrawTime() / 20;
+            tooltip.add(Component.translatable("info.cgm.draw_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(drawTime)).withStyle(ChatFormatting.GRAY));
+
             // Fire Rate
             float rate;
             rate = Math.round(20 / ((float)GunCompositeStatHelper.getCompositeBaseRate(stack, modifiedGun)) * 60);

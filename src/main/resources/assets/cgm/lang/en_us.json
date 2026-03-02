@@ -140,6 +140,7 @@
     "info.cgm.energy": "Energy Capacity: %s",
     "info.cgm.rate": "Fire Rate: %s rpm",
     "info.cgm.ads_time": "ADS Time: %s sec.",
+    "info.cgm.draw_time": "Draw Time: %s sec.",
     "info.cgm.recoil": "Recoil: %s",
     "info.cgm.ads_recoil": "ADS Recoil: %s",
     "info.cgm.spread": "Spread: %s",

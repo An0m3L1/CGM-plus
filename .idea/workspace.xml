@@ -4,13 +4,84 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Spread update.&#10;&#10;Fixed min spread changes with useSniperSpread not affecting the gun stats description.&#10;The crosshair no longer renders for useSniperSpread guns with a corresponding config.&#10;Changed pistol sights color to white.">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Draw update.&#10;&#10;Configured drawTime for all guns.&#10;Removed redundant code in draw animations.&#10;Updated tactical pistol hammer model.&#10;Updated test world.&#10;Temporarily removed the Thumb Grip.&#10;Removed mandatory dependencies.">
+      <change afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-3.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-3.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes and misc/Test World/poi/r.1.-4.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes and misc/Test World/poi/r.2.-4.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-5.mca" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-5.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM-1/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/DIM-1/data/raids.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/data/raids_end.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/DIM1/data/raids_end.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/advancements/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/advancements/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/raids.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/data/raids.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.-1.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.-1.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.0.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.0.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/level.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/level.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/level.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/level.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-3.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-4.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-3.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-4.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-3.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-4.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.0.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-3.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-4.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-3.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-4.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-1.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-2.mca" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/cgm-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/cgm-server.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/stats/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Test World/stats/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/content.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/content.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/DynamicCrosshair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/DynamicCrosshair.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/pistol.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/pistol.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/automatic_pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/automatic_pistol.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/pistol.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/semi_auto_shotgun.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/semi_auto_shotgun.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_pistol.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_pistol/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/tactical_pistol/base.json" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -60,7 +131,7 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="CurrentFile" />
+    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
@@ -92,7 +163,7 @@
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/src/generated/resources/data/cgm/recipes/guns&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/notes and misc&quot;,
     &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
     &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
     &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
@@ -101,11 +172,11 @@
 }</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\guns" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets\cgm\models\special" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\item" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\sounds\item" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special" />
@@ -557,7 +628,15 @@
       <option name="project" value="LOCAL" />
       <updated>1768585251608</updated>
     </task>
-    <option name="localTasksCounter" value="47" />
+    <task id="LOCAL-00047" summary="Spread update.&#10;&#10;Fixed min spread changes with useSniperSpread not affecting the gun stats description.&#10;The crosshair no longer renders for useSniperSpread guns with a corresponding config.&#10;Changed pistol sights color to white.">
+      <option name="closed" value="true" />
+      <created>1768605131059</created>
+      <option name="number" value="00047" />
+      <option name="presentableId" value="LOCAL-00047" />
+      <option name="project" value="LOCAL" />
+      <updated>1768605131059</updated>
+    </task>
+    <option name="localTasksCounter" value="48" />
     <servers />
   </component>
   <component name="UnknownFeatures">

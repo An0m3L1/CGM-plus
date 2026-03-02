@@ -153,7 +153,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Optional
         private boolean infiniteAmmo = false;
         @Optional
-        private int drawTime = 8;
+        private int drawTime = 10;
         @Optional
         private int reloadAmount = 1;
         @Optional

@@ -23,6 +23,8 @@
 
     "reloadAmount": 1,
     "reloadRate": 10,
+
+    "drawTime": 10,
     "reloadStartDelay": 6,
     "reloadInterruptDelay": 9,
     "reloadEndDelay": 9,

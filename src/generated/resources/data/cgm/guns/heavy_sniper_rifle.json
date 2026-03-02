@@ -23,6 +23,7 @@
     "useMagReload": true,
     "magReloadTime": 65,
 
+    "drawTime": 15,
     "reloadStartDelay": 0,
     "reloadInterruptDelay": 10,
     "reloadEndDelay": 1,

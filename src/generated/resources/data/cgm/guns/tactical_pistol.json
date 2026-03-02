@@ -26,6 +26,7 @@
     "lightMagReloadTimeModifier": 0.9,
     "extendedMagReloadTimeModifier": 1.1,
 
+    "drawTime": 8,
     "reloadStartDelay": 0,
     "reloadInterruptDelay": 5,
     "reloadEndDelay": 1,

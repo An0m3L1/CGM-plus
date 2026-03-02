@@ -155,7 +155,7 @@ public class ModItems
     public static final RegistryObject<Item> MODULAR_STOCK = REGISTER.register("modular_stock", () -> new StockItem(Stock.create(GunModifiers.MODULAR_STOCK), new Item.Properties()));
 
     /* Grips */
-    public static final RegistryObject<Item> THUMB_GRIP = REGISTER.register("thumb_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.THUMB_GRIP), new Item.Properties()));
+    //public static final RegistryObject<Item> THUMB_GRIP = REGISTER.register("thumb_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.THUMB_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> HORIZONTAL_GRIP = REGISTER.register("horizontal_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.HORIZONTAL_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> ANGLED_GRIP = REGISTER.register("angled_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.ANGLED_GRIP), new Item.Properties()));
     public static final RegistryObject<Item> VERTICAL_GRIP = REGISTER.register("vertical_grip", () -> new UnderBarrelItem(UnderBarrel.create(GunModifiers.VERTICAL_GRIP), new Item.Properties()));

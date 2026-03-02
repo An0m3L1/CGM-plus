@@ -3,7 +3,7 @@ Armor:
     - Vest and elbow pads
     - Belt and knee pads
     - Boots
-Accessories:
+Accessories: (check modern mayhem mod)
     - NV goggles (gives night vision with a green filter)
     - Gas mask (gives immunity to smoke effect)
     - Ballistic goggles (gives resistance to blind effect)
@@ -20,7 +20,6 @@ Melee:
     - Throwable: cleaver, tomahawk, shuriken
     - Basic: sword, longsword, fire axe
 Throwables:
-    - Flare
     - Mine
     - C4
     - Dynamite stick

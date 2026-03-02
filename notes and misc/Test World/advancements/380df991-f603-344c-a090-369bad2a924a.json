@@ -102,6 +102,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/lime_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "create:recipes/create.base/crafting/kinetics/gearshift": {
     "criteria": {
       "has_item": "2025-01-11 14:37:32 +0300"
@@ -135,6 +141,12 @@
   "create:recipes/create.base/crafting/kinetics/brass_hand": {
     "criteria": {
       "has_item": "2025-01-27 20:19:34 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/yellow_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -234,6 +246,12 @@
     },
     "done": true
   },
+  "minecraft:end/elytra": {
+    "criteria": {
+      "elytra": "2025-12-02 20:04:30 +0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/building_blocks/chiseled_stone_bricks_stone_from_stonecutting": {
     "criteria": {
       "has_stone": "2025-01-10 00:50:18 +0300"
@@ -273,6 +291,12 @@
   "create:recipes/create.palettes/industrial_iron_block_from_ingots_iron_stonecutting": {
     "criteria": {
       "has_ingots_iron": "2025-01-12 21:19:38 +0300"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/misc/iron_nugget_from_blasting_knife": {
+    "criteria": {
+      "has_iron_knife": "2025-12-04 23:43:10 +0300"
     },
     "done": true
   },
@@ -468,6 +492,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/light_gray_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "farmersdelight:recipes/farmersdelight/cooking/vegetable_noodles": {
     "criteria": {
       "has_any_ingredient": "2025-02-01 11:17:55 +0300"
@@ -495,6 +525,12 @@
   "create:recipes/create.base/crafting/kinetics/mechanical_mixer": {
     "criteria": {
       "has_item": "2025-01-11 14:37:32 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/pink_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -606,6 +642,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/sandstone": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/decorations/lime_stained_glass_pane_from_glass_pane": {
     "criteria": {
       "has_lime_dye": "2024-05-23 13:41:51 +0300"
@@ -699,6 +741,12 @@
   "farmersdelight:recipes/farmersdelight/cooking/tomato_sauce": {
     "criteria": {
       "has_tomato": "2025-02-27 22:55:24 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/white_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -965,6 +1013,12 @@
   "minecraft:recipes/food/baked_potato_from_campfire_cooking": {
     "criteria": {
       "has_potato": "2025-01-10 22:52:42 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/orange_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -1262,6 +1316,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/gray_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/building_blocks/bookshelf": {
     "criteria": {
       "has_book": "2025-01-27 20:20:04 +0300"
@@ -1319,6 +1379,12 @@
   "minecraft:recipes/combat/iron_boots": {
     "criteria": {
       "has_iron_ingot": "2024-05-27 01:54:37 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/black_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -1454,6 +1520,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/red_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/misc/iron_nugget_from_blasting": {
     "criteria": {
       "has_iron_chestplate": "2024-05-05 02:07:50 +0300"
@@ -1510,6 +1582,7 @@
   },
   "minecraft:adventure/adventuring_time": {
     "criteria": {
+      "minecraft:old_growth_pine_taiga": "2025-12-02 20:05:05 +0300",
       "minecraft:taiga": "2025-05-05 02:01:58 +0300",
       "minecraft:frozen_river": "2024-05-17 00:44:44 +0300",
       "minecraft:river": "2024-05-28 12:13:41 +0300",
@@ -1517,6 +1590,8 @@
       "minecraft:snowy_taiga": "2024-05-17 04:13:37 +0300",
       "minecraft:dripstone_caves": "2024-05-02 22:36:25 +0300",
       "minecraft:forest": "2024-05-21 19:01:44 +0300",
+      "minecraft:lush_caves": "2025-12-02 20:05:37 +0300",
+      "minecraft:old_growth_spruce_taiga": "2025-12-02 20:05:28 +0300",
       "minecraft:deep_dark": "2024-05-30 23:58:51 +0300",
       "minecraft:meadow": "2024-05-21 19:01:51 +0300",
       "minecraft:plains": "2024-05-21 19:00:45 +0300"
@@ -1961,6 +2036,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/magenta_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "create:recipes/create.palettes/horizontal_framed_glass_from_glass_colorless_stonecutting": {
     "criteria": {
       "has_glass_colorless": "2025-01-22 21:42:20 +0300"
@@ -2060,6 +2141,12 @@
   "minecraft:recipes/building_blocks/stone_slab_from_stone_stonecutting": {
     "criteria": {
       "has_stone": "2025-01-10 00:50:18 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/brown_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -2393,6 +2480,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/light_blue_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "backpacked:recipes/backpacked/dark_oak_backpack_shelf": {
     "criteria": {
       "has_stick": "2025-01-13 23:39:52 +0300"
@@ -2408,6 +2501,12 @@
   "minecraft:recipes/building_blocks/hay_block": {
     "criteria": {
       "has_wheat": "2025-03-01 20:43:25 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/glass": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -2462,6 +2561,12 @@
   "minecraft:nether/get_wither_skull": {
     "criteria": {
       "wither_skull": "2025-06-03 23:07:34 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/purple_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -2663,6 +2768,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/green_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/tools/iron_shovel": {
     "criteria": {
       "has_iron_ingot": "2024-06-07 15:07:25 +0300"
@@ -2672,6 +2783,12 @@
   "create:shifting_gears": {
     "criteria": {
       "0": "2025-01-20 20:36:43 +0300"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/misc/iron_nugget_from_smelting_knife": {
+    "criteria": {
+      "has_iron_knife": "2025-12-04 23:43:10 +0300"
     },
     "done": true
   },
@@ -2933,6 +3050,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/decorations/snow": {
+    "criteria": {
+      "has_snowball": "2025-11-29 20:35:02 +0300"
+    },
+    "done": true
+  },
   "minecraft:recipes/transportation/oak_boat": {
     "criteria": {
       "in_water": "2024-05-28 12:24:59 +0300"
@@ -2966,6 +3089,12 @@
   "minecraft:recipes/decorations/blue_bed_from_white_bed": {
     "criteria": {
       "has_bed": "2025-01-27 22:55:24 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/cyan_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -3199,6 +3328,12 @@
   "farmersdelight:main/get_fd_seed": {
     "criteria": {
       "cabbage_seeds": "2025-02-01 00:43:58 +0300"
+    },
+    "done": true
+  },
+  "minecraft:recipes/building_blocks/blue_concrete_powder": {
+    "criteria": {
+      "has_sand": "2025-11-30 01:35:43 +0300"
     },
     "done": true
   },
@@ -3532,6 +3667,12 @@
     },
     "done": true
   },
+  "minecraft:recipes/building_blocks/snow_block": {
+    "criteria": {
+      "has_snowball": "2025-11-29 20:35:02 +0300"
+    },
+    "done": true
+  },
   "create:recipes/create.base/crafting/kinetics/smart_chute": {
     "criteria": {
       "has_item": "2025-01-17 04:36:42 +0300"
@@ -3661,6 +3802,12 @@
   "farmersdelight:recipes/misc/pumpkin_seeds_from_slice": {
     "criteria": {
       "has_pumpkin_slice": "2025-02-21 22:08:06 +0300"
+    },
+    "done": true
+  },
+  "farmersdelight:recipes/farmersdelight/rope_from_safety_net": {
+    "criteria": {
+      "has_safety_net": "2025-12-13 14:33:05 +0300"
     },
     "done": true
   },

@@ -140,6 +140,7 @@
     "info.cgm.energy": "Запас энергии: %s",
     "info.cgm.rate": "Скорость стрельбы: %s выс./мин.",
     "info.cgm.ads_time": "Время прицеливания: %s сек.",
+    "info.cgm.draw_time": "Время экипировки: %s сек.",
     "info.cgm.recoil": "Отдача: %s",
     "info.cgm.ads_recoil": "Отдача при прицеливании: %s",
     "info.cgm.spread": "Разброс: %s",

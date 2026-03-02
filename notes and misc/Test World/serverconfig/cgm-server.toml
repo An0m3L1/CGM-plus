@@ -24,7 +24,7 @@ cooldownThreshold = 100
 [sounds]
 	#The maximum distance weapons can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
-	gunShotMaxDistance = 128.0
+	gunShotMaxDistance = 96.0
 	#The maximum distance rocket explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
 	rocketExplosionMaxDistance = 128.0
@@ -55,4 +55,10 @@ cooldownThreshold = 100
 	#The maximum distance impact grenade explosions can be heard by players.
 	#Range: 0.0 ~ 1.7976931348623157E308
 	impactGrenadeExplosionMaxDistance = 96.0
+	#The maximum distance incendiary grenade extinguished explosions can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	incendiaryGrenadeExtinguishMaxDistance = 32.0
+	#The maximum distance molotov bottle breaking can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	molotovBreakMaxDistance = 32.0
 

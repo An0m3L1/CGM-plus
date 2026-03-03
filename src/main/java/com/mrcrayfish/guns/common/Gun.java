@@ -1260,14 +1260,12 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         @Optional
         private boolean visible;
         @Optional
-        private boolean breakFragile;
+        private boolean breakFragile = false;
         private float damage;
         @Optional
         private float maxRangeDamageMultiplier = 0;
         @Optional
         private int maxPierceCount = 0;
-        @Optional
-        private int collateralMaxPierce = 4;
         @Optional
         private float pierceDamagePenalty = 0.2F;
         @Optional
@@ -1286,6 +1284,8 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         private float armorBypass = 0;
         @Optional
         private float protectionBypass = 0.5F;
+        @Optional
+        private float explosionRadius;
         
         private float size;
         private double speed;
@@ -1316,7 +1316,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             tag.putFloat("Damage", this.damage);
             tag.putFloat("MaxRangeDamageMultiplier", this.maxRangeDamageMultiplier);
             tag.putInt("MaxPierceCount", this.maxPierceCount);
-            tag.putInt("CollateralMaxPierce", this.collateralMaxPierce);
             tag.putFloat("PierceDamagePenalty", this.pierceDamagePenalty);
             tag.putFloat("PierceDamageMaxPenalty", this.pierceDamageMaxPenalty);
             tag.putFloat("WaterDamagePenalty", this.waterDamagePenalty);
@@ -1326,6 +1325,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             tag.putFloat("HeadshotMultiplierOverride", this.headshotMultiplierOverride);
             tag.putFloat("ArmorBypass", this.armorBypass);
             tag.putFloat("ProtectionBypass", this.protectionBypass);
+            tag.putFloat("ExplosionRadius", this.explosionRadius);
             tag.putFloat("Size", this.size);
             tag.putDouble("Speed", this.speed);
             tag.putInt("Life", this.life);
@@ -1373,10 +1373,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             {
                 this.maxPierceCount = tag.getInt("MaxPierceCount");
             }
-            if(tag.contains("CollateralMaxPierce", Tag.TAG_ANY_NUMERIC))
-            {
-                this.collateralMaxPierce = tag.getInt("CollateralMaxPierce");
-            }
             if(tag.contains("PierceDamagePenalty", Tag.TAG_ANY_NUMERIC))
             {
                 this.pierceDamagePenalty = tag.getFloat("PierceDamagePenalty");
@@ -1412,6 +1408,10 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             if(tag.contains("ProtectionBypass", Tag.TAG_ANY_NUMERIC))
             {
                 this.protectionBypass = tag.getFloat("ProtectionBypass");
+            }
+            if(tag.contains("ExplosionRadius", Tag.TAG_ANY_NUMERIC))
+            {
+                this.explosionRadius = tag.getFloat("ExplosionRadius");
             }
             if(tag.contains("Size", Tag.TAG_ANY_NUMERIC))
             {
@@ -1452,7 +1452,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             Preconditions.checkArgument(this.damage >= 0.0F, "Damage must be more than or equal to zero");
             Preconditions.checkArgument(this.maxRangeDamageMultiplier >= 0.0F, "Damage Multiplier at Max Range must be more than or equal to zero");
             Preconditions.checkArgument(this.maxPierceCount >= 0 || this.maxPierceCount==-1, "Maximum pierce count may only be positive or -1; set to -1 to enable infinite piercing");
-            Preconditions.checkArgument(this.collateralMaxPierce >= 0 || this.collateralMaxPierce==-1, "Maximum pierce count may only be positive or -1; set to -1 to enable infinite piercing");
             Preconditions.checkArgument(this.pierceDamagePenalty >= 0.0F && this.pierceDamagePenalty < 0.9F, "Pierce damage penalty must be between 0.0 and 0.9");
             Preconditions.checkArgument(this.pierceDamageMaxPenalty >= 0.0F && this.pierceDamageMaxPenalty < 0.9F, "Pierce damage maximum penalty must be between 0.0 and 0.9");
             Preconditions.checkArgument(this.waterDamagePenalty >= 0.0F && this.waterDamagePenalty <= 1.0F, "Water damage penalty must be between 0.0 and 1.0");
@@ -1466,6 +1465,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             Preconditions.checkArgument(this.headshotMultiplierOverride >= 0.0F, "Headshot multiplier override cannot be negative - set to zero to disable it");
             Preconditions.checkArgument(this.armorBypass >= 0.0F && this.armorBypass <= 1.0F, "Armor bypass multiplier must be between 0.0 and 1.0");
             Preconditions.checkArgument(this.protectionBypass >= 0.0F && this.protectionBypass <= 1.0F, "Protection bypass multiplier must be between 0.0 and 1.0");
+            Preconditions.checkArgument(this.explosionRadius > 0.0F, "Explosion radius must be higher than 0.0");
             JsonObject object = new JsonObject();
             object.addProperty("item", this.item.toString());
             if(projectileItem!=null) object.addProperty("projectileItem", this.projectileItem.toString());
@@ -1475,7 +1475,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             object.addProperty("damage", this.damage);
             if(this.maxRangeDamageMultiplier != 0.0F) object.addProperty("maxRangeDamageMultiplier", this.maxRangeDamageMultiplier);
             if(this.maxPierceCount != 0) object.addProperty("maxPierceCount", this.maxPierceCount);
-            if(this.collateralMaxPierce != 5) object.addProperty("collateralMaxPierce", this.collateralMaxPierce);
             if(this.pierceDamagePenalty != 0.2) object.addProperty("pierceDamagePenalty", this.pierceDamagePenalty);
             if(this.pierceDamageMaxPenalty != 0.8) object.addProperty("pierceDamageMaxPenalty", this.pierceDamageMaxPenalty);
             if(this.waterDamagePenalty != 0.5F) object.addProperty("waterDamagePenalty", this.waterDamagePenalty);
@@ -1505,7 +1504,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             projectile.damage = this.damage;
             projectile.maxRangeDamageMultiplier = this.maxRangeDamageMultiplier;
             projectile.maxPierceCount = this.maxPierceCount;
-            projectile.collateralMaxPierce = this.collateralMaxPierce;
             projectile.pierceDamagePenalty = this.pierceDamagePenalty;
             projectile.pierceDamageMaxPenalty = this.pierceDamageMaxPenalty;
             projectile.waterDamagePenalty = this.waterDamagePenalty;
@@ -1515,6 +1513,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
             projectile.headshotMultiplierOverride = this.headshotMultiplierOverride;
             projectile.armorBypass = this.armorBypass;
             projectile.protectionBypass = this.protectionBypass;
+            projectile.explosionRadius = this.explosionRadius;
             projectile.size = this.size;
             projectile.speed = this.speed;
             projectile.life = this.life;
@@ -1623,24 +1622,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         }
 
         /**
-         * @return The maximum number of entities the projectile can pierce with the collateral enchantment.
-         * If this is less than maxPierceCount, then maxPierceCount is returned instead.
-         * If either is -1, then -1 is returned to indicate infinite piercing.
-         */
-        public int getCollateralMaxPierce()
-        {
-            int pierceMin = Math.min(this.maxPierceCount, this.collateralMaxPierce);
-            int pierceMax = Math.max(this.maxPierceCount, this.collateralMaxPierce);
-
-            if (this.maxPierceCount == -1 || this.collateralMaxPierce == -1)
-            {
-                return pierceMin;
-            }
-
-        	return Math.max(pierceMax,0);
-        }
-
-        /**
          * @return The penalty to damage that applies with each entity pierced.
          * This penalty applies subtractively, reducing the damage by the same amount every hit.
          * Setting pierceDamagePenalty therefore disables the penalty.
@@ -1697,6 +1678,14 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
         public float getProtectionBypass()
         {
             return this.protectionBypass;
+        }
+
+        /**
+         * @return How big should the explosion produced by this projectile be.
+         */
+        public float getExplosionRadius()
+        {
+            return this.explosionRadius;
         }
 
         /**

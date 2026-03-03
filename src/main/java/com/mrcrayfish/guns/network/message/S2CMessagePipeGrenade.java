@@ -8,14 +8,16 @@ import net.minecraft.network.FriendlyByteBuf;
 public class S2CMessagePipeGrenade extends PlayMessage<S2CMessagePipeGrenade>
 {
     private double x, y, z;
+    private float explosionRadius;
 
     public S2CMessagePipeGrenade() {}
 
-    public S2CMessagePipeGrenade(double x, double y, double z)
+    public S2CMessagePipeGrenade(double x, double y, double z, float explosionRadius)
     {
         this.z = z;
         this.y = y;
         this.x = x;
+        this.explosionRadius = explosionRadius;
     }
 
     @Override
@@ -24,6 +26,7 @@ public class S2CMessagePipeGrenade extends PlayMessage<S2CMessagePipeGrenade>
         buffer.writeDouble(message.x);
         buffer.writeDouble(message.y);
         buffer.writeDouble(message.z);
+        buffer.writeFloat(message.explosionRadius);
     }
 
     @Override
@@ -32,7 +35,8 @@ public class S2CMessagePipeGrenade extends PlayMessage<S2CMessagePipeGrenade>
         double x = buffer.readDouble();
         double y = buffer.readDouble();
         double z = buffer.readDouble();
-        return new S2CMessagePipeGrenade(x, y, z);
+        float explosionRadius = buffer.readFloat();
+        return new S2CMessagePipeGrenade(x, y, z, explosionRadius);
     }
 
     @Override
@@ -55,5 +59,10 @@ public class S2CMessagePipeGrenade extends PlayMessage<S2CMessagePipeGrenade>
     public double getZ()
     {
         return z;
+    }
+
+    public float getExplosionRadius()
+    {
+        return explosionRadius;
     }
 }

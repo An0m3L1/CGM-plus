@@ -95,13 +95,15 @@ public class GunItem extends Item implements IColored, IMeta
         float adsSpreadDegrees = spreadDegrees * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
         float adsMinSpreadDegrees = minSpreadDegrees * (1-(modifiedGun.getGeneral().getSpreadAdsReduction()));
         boolean useSniperSpread = modifiedGun.getGeneral().getUseSniperSpread();
+        float explosionRadius = modifiedGun.getProjectile().getExplosionRadius();
 
         /* Broken check */
         if(isBroken)
             tooltip.add(Component.translatable("info.cgm.broken").withStyle(ChatFormatting.DARK_RED));
 
+        /* Full stats list */
         if (Screen.hasControlDown()) {
-        	tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+            //tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
             /* Additional Damage */ {
                 if(tagCompound != null) {
                     if(tagCompound.contains("AdditionalDamage", Tag.TAG_ANY_NUMERIC))
@@ -146,8 +148,9 @@ public class GunItem extends Item implements IColored, IMeta
             /* Ammo Capacity */ {
                 if(tagCompound != null) {
                     if(Gun.hasInfiniteAmmo(stack)) {
-                        if(!Gun.usesEnergy(stack))
+                        if(!Gun.usesEnergy(stack)) {
                             tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.LIGHT_PURPLE + "∞" + "/" + "∞").withStyle(ChatFormatting.GRAY));
+                        }
                     }
                     else {
                         int ammoCount = tagCompound.getInt("AmmoCount");
@@ -165,27 +168,31 @@ public class GunItem extends Item implements IColored, IMeta
                 }
             }
             /* Armor and protection piercing */ {
-            tooltip.add(Component.translatable("info.cgm.armor_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(armorPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.protection_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(protectionPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
-        }
+                tooltip.add(Component.translatable("info.cgm.armor_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(armorPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("info.cgm.protection_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(protectionPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
+            }
             /* Pierce count */ {
-            if (maxPierceCount > 0) {
-                tooltip.add(Component.translatable("info.cgm.pierce_count", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxPierceCount)).withStyle(ChatFormatting.GRAY));
+                if (maxPierceCount > 0) {
+                    tooltip.add(Component.translatable("info.cgm.pierce_count", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxPierceCount)).withStyle(ChatFormatting.GRAY));
+                }
+                if (maxPierceCount == -1) {
+                    tooltip.add(Component.translatable("info.cgm.pierce_count", ChatFormatting.LIGHT_PURPLE + "∞").withStyle(ChatFormatting.GRAY));
+                }
             }
-            if (maxPierceCount == -1) {
-                tooltip.add(Component.translatable("info.cgm.pierce_count", ChatFormatting.LIGHT_PURPLE + "∞").withStyle(ChatFormatting.GRAY));
+            /* Explosion radius */ {
+                if(explosionRadius > 0.0F)
+                    tooltip.add(Component.translatable("info.cgm.explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
             }
-        }
             tooltip.add(Component.translatable("info.cgm.line").withStyle(ChatFormatting.DARK_GRAY));
             /* Reload Time */ {
-            if(modifiedGun.getGeneral().usesMagReload()) {
-                reloadTimeSeconds = (float) GunCompositeStatHelper.getMagReloadSpeed(stack, false) / 20;
+                if(modifiedGun.getGeneral().usesMagReload()) {
+                    reloadTimeSeconds = (float) GunCompositeStatHelper.getMagReloadSpeed(stack, false) / 20;
+                }
+                else {
+                    reloadTimeSeconds = (float) GunCompositeStatHelper.getReloadInterval(stack, false) / 20;
+                }
+                tooltip.add(Component.translatable("info.cgm.reload_rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(reloadTimeSeconds)).withStyle(ChatFormatting.GRAY));
             }
-            else {
-                reloadTimeSeconds = (float) GunCompositeStatHelper.getReloadInterval(stack, false) / 20;
-            }
-            tooltip.add(Component.translatable("info.cgm.reload_rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(reloadTimeSeconds)).withStyle(ChatFormatting.GRAY));
-        }
             /* ADS Time */ {
                 if(modifiedGun.getModules().getZoom() != null) {
                     tooltip.add(Component.translatable("info.cgm.ads_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsTimeSeconds)).withStyle(ChatFormatting.GRAY));
@@ -207,7 +214,7 @@ public class GunItem extends Item implements IColored, IMeta
                 if ((minSpreadDegrees!=spreadDegrees) && ((minSpreadDegrees>0) || (!isAlwaysSpread))) {
                     tooltip.add(Component.translatable("info.cgm.spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(minSpreadDegrees) + "°-" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
                 }
-                else {
+                else if(spreadDegrees != 0){
                     tooltip.add(Component.translatable("info.cgm.spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
                 }
             }
@@ -231,52 +238,54 @@ public class GunItem extends Item implements IColored, IMeta
                 }
             }
         }
+        /* Basic stats */
         else {
             /* Additional Damage */ {
-            if(tagCompound != null) {
-                if(tagCompound.contains("AdditionalDamage", Tag.TAG_ANY_NUMERIC))
-                {
-                    float additionalDamage = tagCompound.getFloat("AdditionalDamage");
-                    additionalDamage += GunModifierHelper.getAdditionalDamage(stack);
+                if(tagCompound != null) {
+                    if(tagCompound.contains("AdditionalDamage", Tag.TAG_ANY_NUMERIC))
+                    {
+                        float additionalDamage = tagCompound.getFloat("AdditionalDamage");
+                        additionalDamage += GunModifierHelper.getAdditionalDamage(stack);
 
-                    if(additionalDamage > 0) {
-                        additionalDamageText = ChatFormatting.GREEN + " +" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage);
-                    }
-                    else if(additionalDamage < 0) {
-                        additionalDamageText = ChatFormatting.RED + " " + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage);
+                        if(additionalDamage > 0) {
+                            additionalDamageText = ChatFormatting.GREEN + " +" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage);
+                        }
+                        else if(additionalDamage < 0) {
+                            additionalDamageText = ChatFormatting.RED + " " + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage);
+                        }
                     }
                 }
             }
-        }
             /* Damage */ {
                 tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
             }
             /* Ammo Type */ {
-            if(ammoType != null && !Gun.usesEnergy(stack)) {
-                tooltip.add(Component.translatable("info.cgm.ammo_type", Component.translatable(ammoType.getDescriptionId()).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
-            }
-        }
-            /* Ammo Capacity */ {
-            if(tagCompound != null) {
-                if(Gun.hasInfiniteAmmo(stack)) {
-                    if(!Gun.usesEnergy(stack))
-                        tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.LIGHT_PURPLE + "∞" + "/" + "∞").withStyle(ChatFormatting.GRAY));
+                if(ammoType != null && !Gun.usesEnergy(stack)) {
+                    tooltip.add(Component.translatable("info.cgm.ammo_type", Component.translatable(ammoType.getDescriptionId()).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
                 }
-                else {
-                    int ammoCount = tagCompound.getInt("AmmoCount");
-                    if(ammoCount == 0) {
-                        tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.RED.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+            }
+            /* Ammo Capacity */ {
+                if(tagCompound != null) {
+                    if(Gun.hasInfiniteAmmo(stack)) {
+                        if(!Gun.usesEnergy(stack)) {
+                            tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.LIGHT_PURPLE + "∞" + "/" + "∞").withStyle(ChatFormatting.GRAY));
+                        }
                     }
                     else {
-                        tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.WHITE.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+                        int ammoCount = tagCompound.getInt("AmmoCount");
+                        if(ammoCount == 0) {
+                            tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.RED.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+                        }
+                        else {
+                            tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.WHITE.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+                        }
+                    }
+                    if(Gun.usesEnergy(stack)) {
+                        int energy = tagCompound.getInt("Energy");
+                        tooltip.add(Component.translatable("info.cgm.energy", ChatFormatting.WHITE.toString() + energy + "/" + modifiedGun.getGeneral().getEnergyCapacity()).withStyle(ChatFormatting.AQUA));
                     }
                 }
-                if(Gun.usesEnergy(stack)) {
-                    int energy = tagCompound.getInt("Energy");
-                    tooltip.add(Component.translatable("info.cgm.energy", ChatFormatting.WHITE.toString() + energy + "/" + modifiedGun.getGeneral().getEnergyCapacity()).withStyle(ChatFormatting.AQUA));
-                }
             }
-        }
         	tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
         }
     }

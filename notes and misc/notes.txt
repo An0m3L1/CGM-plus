@@ -20,10 +20,6 @@ Add a movement slow to heavy weapons (minigun, rocket launcher)
 Add a modifier for draw time to attachments and make it correspond to the draw animation
 Add a modifier to pierce count
 Add a downside to thumb grip (draw time?)
-Add purple tint to ammo counter in HUD
-Add item icon to ammo type tooltip
-Return ammo type item icon to HUD for infinite ammo weapons
-Add radius of explosion stat to explosive guns
 Overhaul fragile system
     - Fragile blocks (flower pots, lamps, etc.) - destroyed after being hit and don't decrease damage
     - Penetrable blocks (planks, doors, etc.) - pierced, but not destroyed. only 1 penetrable block can be pierced. if gun has "breakPenetrable" stat,

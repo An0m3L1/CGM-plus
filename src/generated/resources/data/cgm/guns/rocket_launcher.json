@@ -27,7 +27,9 @@
     "visible": true,
     "maxPierceCount": 0,
     "item": "cgm:rocket",
-    "breakFragile": false
+    "breakFragile": false,
+    "waterDamagePenalty": 0.5,
+    "explosionRadius": 3.0
   },
   "sounds": {
     "fire": "cgm:item.rocket_launcher.fire",

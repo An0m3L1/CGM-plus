@@ -1,7 +1,6 @@
 package com.mrcrayfish.guns.entity.projectile;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
-import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.entity.LightSourceEntity;
 import com.mrcrayfish.guns.entity.ProjectileEntity;
@@ -24,9 +23,6 @@ import net.minecraft.world.phys.Vec3;
  */
 public class PipeGrenadeEntity extends ProjectileEntity
 {
-    protected float radius = Config.COMMON.pipeGrenadeExplosionRadius.get().floatValue();
-    protected boolean griefing = Config.COMMON.pipeGrenadeExplosionGriefing.get();
-
     public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
     {
         super(entityType, world);
@@ -63,13 +59,20 @@ public class PipeGrenadeEntity extends ProjectileEntity
 
     private void explode()
     {
-        createCustomExplosion(this, radius, griefing);
+        float radius;
+        /* If this projectile has assigned explosion radius, use it. Otherwise, use 2.5F */
+        if(this.getProjectile() != null)
+            radius = this.getProjectile().getExplosionRadius();
+        else
+            radius = 2.5F;
+
+        createCustomExplosion(this, radius, true);
         if(this.level.isClientSide)
         {
             return;
         }
         LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), explosionLightValue, explosionLightLife);
         level.addFreshEntity(light);
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ()));
+        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ(), radius));
     }
 }

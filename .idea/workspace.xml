@@ -5,26 +5,24 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Draw update.&#10;&#10;Configured drawTime for all guns.&#10;Removed redundant code in draw animations.&#10;Updated sniper draw animations.&#10;Updated tactical pistol hammer model.&#10;Updated test world.&#10;Temporarily removed the Thumb Grip.&#10;Removed mandatory dependencies.">
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/mini_gun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/mini_gun.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessagePipeGrenade.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessagePipeGrenade.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessageRocket.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessageRocket.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -76,10 +74,9 @@
   <component name="ProblemsViewState">
     <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: 3
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 0
+}]]></component>
   <component name="ProjectId" id="2xfUWcuvER24MtUmPxai3K4kWF4" />
   <component name="ProjectLevelVcsManager">
     <ConfirmationsSetting value="2" id="Add" />
@@ -106,20 +103,20 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/notes and misc",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/saves",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.keymap"
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\guns" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets\cgm\models\special" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\item" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special" />
@@ -159,8 +156,11 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
     <configuration name="CGM-plus [runClient]" type="GradleRunConfiguration" factoryName="Gradle" nameIsGenerated="true">
@@ -181,14 +181,24 @@
       </ExternalSystemSettings>
       <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
       <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
       <DebugAllEnabled>false</DebugAllEnabled>
       <RunAsTest>false</RunAsTest>
+      <GradleProfilingDisabled>false</GradleProfilingDisabled>
+      <GradleCoverageDisabled>false</GradleCoverageDisabled>
       <method v="2" />
     </configuration>
     <list>
       <item itemvalue="Gradle.CGM-plus [build]" />
       <item itemvalue="Gradle.CGM-plus [runClient]" />
     </list>
+  </component>
+  <component name="SharedIndexes">
+    <attachedChunks>
+      <set>
+        <option value="bundled-jdk-30f59d01ecdd-2fc7cc6b9a17-intellij.indexing.shared.core-IU-253.31033.145" />
+      </set>
+    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="SvnConfiguration">

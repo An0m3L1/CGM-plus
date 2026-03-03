@@ -943,7 +943,7 @@ public class GunRenderingHandler
 
             // Ammo Item Icon
             Item ammoItem = ForgeRegistries.ITEMS.getValue(gun.getProjectile().getItem());
-            if(ammoItem != null && (!Gun.hasInfiniteAmmo(heldItem) || gun.getProjectile().getProjectileOverride()==null))
+            if(ammoItem != null && !Gun.usesEnergy(heldItem))
             {
                 ItemStack ammoStack = new ItemStack(ammoItem, 1);
                 ItemRenderer itemRenderer = mc.getItemRenderer();
@@ -989,7 +989,7 @@ public class GunRenderingHandler
             int currentAmmo = tagCompound.getInt("AmmoCount");
             MutableComponent ammoCountValue = (Component.literal(currentAmmo + " / " + GunCompositeStatHelper.getAmmoCapacity(heldItem, gun)).withStyle(ChatFormatting.BOLD));
             if (Gun.hasInfiniteAmmo(heldItem))
-                ammoCountValue = (Component.literal("∞ / ∞").withStyle(ChatFormatting.BOLD));
+                ammoCountValue = (Component.literal("∞ / ∞").withStyle(ChatFormatting.BOLD).withStyle(ChatFormatting.LIGHT_PURPLE));
             GuiComponent.drawString(poseStack, mc.font, ammoCountValue, ammoPosX, ammoPosY, (currentAmmo>0 || Gun.hasInfiniteAmmo(heldItem) ? 0xFFFFFF : 0xFF5555));
             if (ModSyncedDataKeys.RELOADING.getValue(player))
                 GuiComponent.drawString(poseStack, mc.font, "Reloading...", ammoPosX, ammoPosY-10, 0xFFFF55);

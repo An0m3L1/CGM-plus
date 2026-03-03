@@ -245,7 +245,11 @@ public class ShootingHandler
             	if(heldItem.getItem() instanceof GunItem gunItem)
                 {
                 	Gun modifiedGun = gunItem.getModifiedGun(heldItem);
-                	if (modifiedGun.getFireModes().usesFireModes() && (!ModSyncedDataKeys.SHOOTING.getValue(player) && !ModSyncedDataKeys.RELOADING.getValue(player) && ModSyncedDataKeys.BURSTCOUNT.getValue(player)<=0))
+                	if (modifiedGun.getFireModes().usesFireModes()
+                            && (!ModSyncedDataKeys.SHOOTING.getValue(player)
+                            && !ModSyncedDataKeys.RELOADING.getValue(player)
+                            && ModSyncedDataKeys.BURSTCOUNT.getValue(player)<=0)
+                            && ModSyncedDataKeys.SWITCHTIME.getValue(player) == 0)
                 	{
                     	CompoundTag tag = heldItem.getOrCreateTag();
                         //Gun.FireModes fireModes = modifiedGun.getFireModes();

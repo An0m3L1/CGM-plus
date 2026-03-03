@@ -26,9 +26,6 @@ import net.minecraft.world.phys.Vec3;
  */
 public class RocketEntity extends ProjectileEntity
 {
-    protected float radius = Config.COMMON.rocketExplosionRadius.get().floatValue();
-    protected boolean griefing = Config.COMMON.rocketExplosionGriefing.get();
-
     public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
     {
         super(entityType, worldIn);
@@ -69,13 +66,20 @@ public class RocketEntity extends ProjectileEntity
 
     private void explode()
     {
-        createCustomExplosion(this, radius, griefing);
+        float radius;
+        /* If this projectile has assigned explosion radius, use it. Otherwise, use 3.0F */
+        if(this.getProjectile() != null)
+            radius = this.getProjectile().getExplosionRadius();
+        else
+            radius = 3.0F;
+
+        createCustomExplosion(this, radius, true);
         if(this.level.isClientSide)
         {
             return;
         }
         LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), explosionLightValue, explosionLightLife);
         level.addFreshEntity(light);
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ()));
+        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ(), radius));
     }
 }

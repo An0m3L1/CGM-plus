@@ -197,7 +197,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.rocketExplosionRadius.get().floatValue() * 2.0F;
+        float size = message.getExplosionRadius() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -230,7 +230,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.pipeGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = message.getExplosionRadius() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();

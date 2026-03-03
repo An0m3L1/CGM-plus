@@ -145,6 +145,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         double posZ = shooter.zOld + (shooter.getZ() - shooter.zOld) / 2.0;
         this.setPos(posX, posY, posZ);
 
+        /* Render projectile model */
         Item ammo = ForgeRegistries.ITEMS.getValue(this.projectile.getItem());
         if(ammo != null)
         {
@@ -275,6 +276,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
 
         Vec3 vec3 = this.getDeltaMovement();
+
+        /* Spawn bubbles in water */
         if (this.isInWater()) {
             for(int j = 0; j < 4; ++j) {
                 this.level.addParticle(ParticleTypes.BUBBLE, this.getX() - vec3.x * 0.1D, this.getY() - vec3.y * 0.1D, this.getZ() - vec3.z * 0.1D, vec3.x, vec3.y, vec3.z);
@@ -319,6 +322,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
             List<EntityResult> hitEntities = null;
             boolean skipMovement = false;
+
+            /* Destroy projectile after hitting the first entity if piercing is disabled */
             if (this.maxPierceCount == 0)
             {
                 EntityResult entityResult = this.findEntityOnPath(startVec, endVec);
@@ -327,6 +332,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     hitEntities = Collections.singletonList(entityResult);
                 }
             }
+            /* Find all entities that will be affected by the projectile */
             else
             {
                 hitEntities = this.findEntitiesOnPath(startVec, endVec);
@@ -338,7 +344,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     result = new ExtendedEntityRayTraceResult(entityResult);
                     if(((EntityHitResult) result).getEntity() instanceof Player player)
                     {
-
+                        /* Check if we hit ourselves or an another player that is immune to our attacks */
                         if(this.shooter instanceof Player && !((Player) this.shooter).canHarmPlayer(player))
                         {
                             result = null;
@@ -346,6 +352,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     }
                     if(result != null)
                     {
+                        /* Freeze projectile movement for 1 tick after hitting an entity for proper piercing calculations */
                         if (this.onHit(result, startVec, endVec))
                         {
                             skipMovement = true;
@@ -602,7 +609,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 {
                     // Not the last pierce (or infinite): increase count and apply damage penalty
                     this.pierceCounter++;
-                    // ========== ИЗМЕНЕНО: применяем штраф только если пробитие ограничено ==========
                     if (this.maxPierceCount != -1)
                     {
                         this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
@@ -1092,8 +1098,18 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                             isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() :
                                     20F;
 
+            /* Use defined value for guns, halve damage for all other explosions (like grenades) */
             if(entity.isInWater())
-                damage *= 0.5F;
+                if (hasGunProjectile)
+                    damage *= ((ProjectileEntity) entity).getProjectile().getWaterDamagePenalty();
+                else
+                    damage *= 0.5F;
+
+            /* Ignore griefing and radius set by the projectile itself if it's set in gun stats */
+            if(hasGunProjectile) {
+                griefing = ((ProjectileEntity) entity).getProjectile().isBreakFragile();
+                radius = ((ProjectileEntity) entity).getProjectile().getExplosionRadius();
+            }
 
             mode = griefing && Config.COMMON.explosionGriefing.get()
                     ? Explosion.BlockInteraction.BREAK

@@ -592,42 +592,69 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 bell.attemptToRing(this.level, pos, blockHitResult.getDirection());
             }
 
-            if (canDestroy)
+            System.out.println("Hit block at " + pos + ", canDestroy=" + canDestroy + ", block=" + state.getBlock());
+            if (!canDestroy)
             {
-                // Destroy the block (always, even if it's the last one)
-                this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
-
-                // Apply pierce logic identical to entities
-                if (this.maxPierceCount >= 0 && this.pierceCounter >= this.maxPierceCount)
-                {
-                    // This is the last pierce: destroy block, then remove projectile without increasing count
-                    this.remove(RemovalReason.KILLED);
-                    this.deadProjectile = true;
-                    return false;
-                }
-                else
-                {
-                    // Not the last pierce (or infinite): increase count and apply damage penalty
-                    this.pierceCounter++;
-                    if (this.maxPierceCount != -1)
-                    {
-                        this.pierceDamageFraction -= this.modifiedGun.getProjectile().getPierceDamagePenalty();
-                        this.pierceDamageFraction = Mth.clamp(this.pierceDamageFraction, 1F - this.modifiedGun.getProjectile().getPierceDamageMaxPenalty(), 1.0F);
-                    }
-                    // Move projectile to hit position to avoid being stuck inside the destroyed block
-                    this.setPos(hitVec.x, hitVec.y, hitVec.z);
-                    // Skip further movement this tick to prevent immediate collision with next block
-                    return true;
-                }
-            }
-            else
-            {
-                // Block cannot be destroyed. Destroy projectile if it hit a solid block
+                // Блок не хрупкий — уничтожаем снаряд, если блок твёрдый
                 if (!state.getMaterial().isReplaceable())
                 {
                     this.remove(RemovalReason.KILLED);
                     this.deadProjectile = true;
                 }
+                return false;
+            }
+
+            // --- Логика разрушения для хрупких блоков ---
+            float hardness = state.getDestroySpeed(this.level, pos);
+            int pierceNeeded = Math.max(1, (int) Math.ceil(hardness));
+            int currentDamage = BlockDamageManager.getDamage(this.level, pos);
+            int neededToDestroy = pierceNeeded - currentDamage;
+
+            // Определяем, сколько пробитий осталось
+            int pierceRemaining;
+            boolean isInfinite = this.maxPierceCount == -1;
+
+            if (isInfinite)
+            {
+                pierceRemaining = Integer.MAX_VALUE;
+            }
+            else
+            {
+                pierceRemaining = this.maxPierceCount - this.pierceCounter;
+            }
+            System.out.println("  hardness=" + hardness + ", pierceNeeded=" + pierceNeeded + ", currentDamage=" + currentDamage + ", pierceRemaining=" + pierceRemaining + ", isInfinite=" + isInfinite);
+            if (pierceRemaining >= neededToDestroy)
+            {
+                // Хватает для разрушения
+                this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
+                BlockDamageManager.removeDamage(this.level, pos);
+
+                if (!isInfinite)
+                {
+                    this.pierceCounter += neededToDestroy;
+                    float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
+                    float maxPenalty = this.modifiedGun.getProjectile().getPierceDamageMaxPenalty();
+                    this.pierceDamageFraction -= neededToDestroy * penalty;
+                    this.pierceDamageFraction = Mth.clamp(this.pierceDamageFraction, 1F - maxPenalty, 1.0F);
+                }
+                this.setPos(hitVec.x, hitVec.y, hitVec.z);
+                return true; // пропускаем движение в этом тике (снаряд продолжает полёт)
+            }
+            else
+            {
+                // Не хватает для разрушения
+                if (pierceRemaining <= 0)
+                {
+                    // Совсем нет пробитий – уничтожаем снаряд без повреждений
+                    this.remove(RemovalReason.KILLED);
+                    this.deadProjectile = true;
+                    return false;
+                }
+                int newDamage = currentDamage + pierceRemaining;
+                int stage = (int) (10 * newDamage / (float) pierceNeeded);
+                BlockDamageManager.setDamage(this.level, pos, newDamage, pierceNeeded, stage);
+                this.remove(RemovalReason.KILLED);
+                this.deadProjectile = true;
                 return false;
             }
         }
@@ -1062,6 +1089,81 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
 
             return p_217300_2_.apply(context);
+        }
+    }
+
+    public static class BlockDamageManager
+    {
+        private static final Map<Level, Map<BlockPos, BlockDamageData>> DAMAGE = new WeakHashMap<>();
+
+        public static void tick(Level level)
+        {
+            cleanup(level);
+        }
+
+        public static int getDamage(Level level, BlockPos pos)
+        {
+            cleanup(level);
+            Map<BlockPos, BlockDamageData> map = DAMAGE.get(level);
+            if (map == null) return 0;
+            BlockDamageData data = map.get(pos);
+            if (data == null) return 0;
+            // Проверяем, не изменился ли блок
+            BlockState currentState = level.getBlockState(pos);
+            if (!currentState.equals(data.state)) {
+                map.remove(pos);
+                level.destroyBlockProgress(getBreakerId(pos), pos, -1);
+                return 0;
+            }
+            return data.damage;
+        }
+
+        public static void setDamage(Level level, BlockPos pos, int damage, int maxDamage, int stage)
+        {
+            cleanup(level);
+            Map<BlockPos, BlockDamageData> map = DAMAGE.computeIfAbsent(level, k -> new HashMap<>());
+            BlockDamageData data = map.computeIfAbsent(pos, k -> new BlockDamageData());
+            data.damage = damage;
+            data.lastHitTime = level.getGameTime();
+            data.state = level.getBlockState(pos); // запоминаем текущее состояние
+            level.destroyBlockProgress(getBreakerId(pos), pos, stage);
+        }
+
+        public static void removeDamage(Level level, BlockPos pos)
+        {
+            Map<BlockPos, BlockDamageData> map = DAMAGE.get(level);
+            if (map != null) {
+                map.remove(pos);
+            }
+            level.destroyBlockProgress(getBreakerId(pos), pos, -1);
+        }
+
+        private static void cleanup(Level level)
+        {
+            Map<BlockPos, BlockDamageData> map = DAMAGE.get(level);
+            if (map == null) return;
+            long now = level.getGameTime();
+            map.entrySet().removeIf(entry -> {
+                BlockDamageData data = entry.getValue();
+                if (now - data.lastHitTime > 60)
+                {
+                    level.destroyBlockProgress(getBreakerId(entry.getKey()), entry.getKey(), -1);
+                    return true;
+                }
+                return false;
+            });
+        }
+
+        private static int getBreakerId(BlockPos pos)
+        {
+            return -Objects.hash(pos);
+        }
+
+        private static class BlockDamageData
+        {
+            int damage = 0;
+            long lastHitTime = 0;
+            BlockState state = null;
         }
     }
 

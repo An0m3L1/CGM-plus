@@ -118,7 +118,6 @@
     "death.attack.cgm.bullet.annihilated": "%1$s was shot by %2$s",
     "death.attack.cgm.bullet.decimated": "%1$s WAS PWNED BY %2$s",
     "info.cgm.broken": "Broken!",
-    "info.cgm.line": "———",
     "info.cgm.reloading": "Reloading...",
     "info.cgm.stats": "Stats:",
     "info.cgm.stats_help": "Hold Ctrl to view Stats",

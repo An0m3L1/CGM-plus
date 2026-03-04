@@ -53,7 +53,7 @@
     "protectionBypass": 0.25,
 
     "breakFragile": true,
-    "maxPierceCount": 0,
+    "maxPierceCount": 1,
     "pierceDamagePenalty": 0.75,
     "pierceDamageMaxPenalty": 0.75,
     "waterDamagePenalty": 0.75

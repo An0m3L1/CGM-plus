@@ -118,7 +118,6 @@
     "death.attack.cgm.bullet.annihilated": "%1$s был застрелен %2$s",
     "death.attack.cgm.bullet.decimated": "%1$s ПРИЛЕТЕЛО ЧЕТКО В ЖБАН ОТ %2$s",
     "info.cgm.broken": "Сломано!",
-    "info.cgm.line": "———",
     "info.cgm.reloading": "Перезарядка...",
     "info.cgm.stats": "Характеристики:",
     "info.cgm.stats_help": "Зажми Ctrl для характеристик",

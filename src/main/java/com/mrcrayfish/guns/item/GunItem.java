@@ -71,6 +71,7 @@ public class GunItem extends Item implements IColored, IMeta
     {
         Gun modifiedGun = this.getModifiedGun(stack);
         String additionalDamageText = "";
+        String separator = "———";
         CompoundTag tagCompound = stack.getTag();
 
         /* Weapon stats */
@@ -139,7 +140,7 @@ public class GunItem extends Item implements IColored, IMeta
             /* Fire Rate */ {
                 tooltip.add(Component.translatable("info.cgm.rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireRateRPM)).withStyle(ChatFormatting.GRAY));
             }
-            tooltip.add(Component.translatable("info.cgm.line").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Component.literal(separator).withStyle(ChatFormatting.DARK_GRAY));
             /* Ammo Type */ {
                 if(ammoType != null && !Gun.usesEnergy(stack)) {
                     tooltip.add(Component.translatable("info.cgm.ammo_type", Component.translatable(ammoType.getDescriptionId()).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
@@ -183,7 +184,7 @@ public class GunItem extends Item implements IColored, IMeta
                 if(explosionRadius > 0.0F)
                     tooltip.add(Component.translatable("info.cgm.explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
             }
-            tooltip.add(Component.translatable("info.cgm.line").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Component.literal(separator).withStyle(ChatFormatting.DARK_GRAY));
             /* Reload Time */ {
                 if(modifiedGun.getGeneral().usesMagReload()) {
                     reloadTimeSeconds = (float) GunCompositeStatHelper.getMagReloadSpeed(stack, false) / 20;
@@ -201,7 +202,7 @@ public class GunItem extends Item implements IColored, IMeta
             /* Draw time */ {
                 tooltip.add(Component.translatable("info.cgm.draw_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(drawTimeSeconds)).withStyle(ChatFormatting.GRAY));
             }
-            tooltip.add(Component.translatable("info.cgm.line").withStyle(ChatFormatting.DARK_GRAY));
+            tooltip.add(Component.literal(separator).withStyle(ChatFormatting.DARK_GRAY));
             /* Recoil */ {
                 tooltip.add(Component.translatable("info.cgm.recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoilDegrees) + "°").withStyle(ChatFormatting.WHITE)));
             }
@@ -214,7 +215,7 @@ public class GunItem extends Item implements IColored, IMeta
                 if ((minSpreadDegrees!=spreadDegrees) && ((minSpreadDegrees>0) || (!isAlwaysSpread))) {
                     tooltip.add(Component.translatable("info.cgm.spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(minSpreadDegrees) + "°-" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
                 }
-                else if(spreadDegrees != 0){
+                else{
                     tooltip.add(Component.translatable("info.cgm.spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
                 }
             }

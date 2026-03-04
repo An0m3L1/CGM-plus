@@ -2,6 +2,7 @@
   "values":
   [
     "#minecraft:planks",
+    "#minecraft:logs",
     "#minecraft:wooden_doors",
     "#minecraft:wooden_trapdoors",
     "#minecraft:wooden_slabs",
@@ -25,7 +26,6 @@
     "#minecraft:candles",
     "#minecraft:ice",
     "#minecraft:flower_pots",
-    "#minecraft:banners",
     "minecraft:lily_pad",
     "minecraft:cocoa",
     "minecraft:end_rod",

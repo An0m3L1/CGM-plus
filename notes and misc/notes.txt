@@ -20,6 +20,8 @@ Add a movement slow to heavy weapons (minigun, rocket launcher)
 Add a modifier for draw time to attachments and make it correspond to the draw animation
 Add a modifier to pierce count
 Add a downside to thumb grip (draw time?)
-Polish block breaking system
 Add debug lines and functions
+Improve compatibility with dynamic trees (trees shot down by projectiles or destroyed by explosions shouldn't immediately disappear)
+    - Check DestroyType in FallingTreeEntity
+Finish fragile.json
 Optimize textures

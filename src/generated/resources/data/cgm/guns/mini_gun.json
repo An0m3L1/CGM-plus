@@ -7,10 +7,10 @@
     "spawnCasings": true,
     "emitLight": true,
 
-    "recoilAngle": 0.1,
-    "recoilKick": 0.1,
+    "recoilAngle": 2.0,
+    "recoilKick": 0.2,
     "recoilDurationOffset": 0.0,
-    "spread": 4.0,
+    "spread": 6.0,
     "spreadAdsReduction": 0.0,
     "restingSpread": 1.0,
 
@@ -20,24 +20,22 @@
     "reloadRate": 90
   },
   "projectile": {
+    "item": "cgm:medium_bullet",
     "damage": 6.0,
-    "damageReduceOverLife": true,
+    "headshotMultiplierOverride": 2.0,
+
     "size": 0.1,
     "speed": 20.0,
-    "life": 7,
-
-    "headshotMultiplierOverride": 1.5,
+    "life": 20,
 
     "armorBypass": 0.5,
     "protectionBypass": 0.5,
 
     "breakFragile": true,
     "maxPierceCount": 3,
-    "pierceDamagePenalty": 0.25,
-    "pierceDamageMaxPenalty": 0.75,
-    "waterDamagePenalty": 0.25,
-
-    "item": "cgm:medium_bullet"
+    "pierceDamagePenalty": 0.33,
+    "pierceDamageMaxPenalty": 0.5,
+    "waterDamagePenalty": 0.5
   },
   "sounds": {
     "fire": "cgm:item.mini_gun.fire",

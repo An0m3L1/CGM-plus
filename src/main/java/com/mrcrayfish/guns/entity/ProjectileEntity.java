@@ -1239,6 +1239,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         if (mode == Explosion.BlockInteraction.NONE && !fire) {
             for (BlockPos pos : fragileBlocks) {
                 world.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
+                BlockDamageManager.removeDamage(world, pos);
             }
         }
 
@@ -1253,6 +1254,11 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
             if (mode == Explosion.BlockInteraction.NONE) {
                 explosion.clearToBlow();
+            }
+            else {
+                for (BlockPos pos : explosion.getToBlow()) {
+                    BlockDamageManager.removeDamage(world, pos);
+                }
             }
 
             // Send explosion packet to nearby players

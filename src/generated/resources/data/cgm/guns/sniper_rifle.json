@@ -56,9 +56,9 @@
     "protectionBypass": 0.75,
 
     "breakFragile": true,
-    "maxPierceCount": 4,
-    "pierceDamagePenalty": 0.2,
-    "pierceDamageMaxPenalty": 0.8,
+    "maxPierceCount": 8,
+    "pierceDamagePenalty": 0.0625,
+    "pierceDamageMaxPenalty": 0.5,
     "waterDamagePenalty": 0.25
   },
   "sounds": {

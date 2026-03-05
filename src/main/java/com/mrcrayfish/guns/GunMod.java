@@ -55,6 +55,7 @@ public class GunMod
     public static boolean playerReviveLoaded = false;
     public static boolean shoulderSurfingLoaded = false;
     public static boolean dynamicLightsLoaded = false;
+    public static boolean dynamicTreesLoaded = false;
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
 
     public static final CreativeModeTab GUNS = new CreativeModeTab(Reference.MOD_ID) {
@@ -121,6 +122,7 @@ public class GunMod
         playerReviveLoaded = ModList.get().isLoaded("playerrevive");
         shoulderSurfingLoaded = ModList.get().isLoaded("shouldersurfing");
         dynamicLightsLoaded = ModList.get().isLoaded("dynamiclightsreforged");
+        dynamicTreesLoaded = ModList.get().isLoaded("dynamictrees");
     }
 
     private void onCommonSetup(FMLCommonSetupEvent event)

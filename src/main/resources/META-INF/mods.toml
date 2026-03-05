@@ -79,6 +79,12 @@ Heavily modified, overhauled and expanded version of zaeonNineZeros CGM Expander
     versionRange="[1.19.2_v1.4.0,)"
     ordering="AFTER"
     side="BOTH"
+[[dependencies.cgm]]
+    modId="dynamictrees"
+    mandatory=false
+    versionRange="[1.19.2-1.2.0,)"
+    ordering="AFTER"
+    side="BOTH"
 
 [modproperties.cgm]
     catalogueImageIcon="cgm_icon.png"

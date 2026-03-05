@@ -179,7 +179,6 @@ public class Config
         public final ForgeConfigSpec.BooleanValue enableHeadShots;
         public final ForgeConfigSpec.BooleanValue enableDynamicLights;
         public final ForgeConfigSpec.DoubleValue headShotDamageMultiplier;
-        public final ForgeConfigSpec.BooleanValue ignoreLeaves;
         public final ForgeConfigSpec.DoubleValue projectileTrackingRange;
         public final ForgeConfigSpec.BooleanValue enableDurability;
         public final ForgeConfigSpec.BooleanValue enableKnockback;
@@ -248,7 +247,6 @@ public class Config
                 this.maxCount = builder.comment("The amount of times a player has to shoot within the spread threshold before the maximum amount of spread is applied. Setting the value higher means it will take longer for the spread to be applied.").defineInRange("maxCount", 9, 1, Integer.MAX_VALUE);
                 this.doSpreadPenalties = builder.comment("When enabled, spread increases faster when not aiming, sprinting and jumping").define("doSpreadPenalties", true);
                 this.enableDynamicLights = builder.comment("If true, guns, explosions and certain projectiles will produce light. Requires dynamic lights reforged. Works best with 'Realtime' setting.").define("enableDynamicLights", true);
-                this.ignoreLeaves = builder.comment("If true, projectiles will ignore leaves when checking for collision.").define("ignoreLeaves", true);
                 this.projectileTrackingRange = builder.comment("The distance players need to be within to be able to track new projectiles trails. Higher values means you can see projectiles from that start from further away.").defineInRange("projectileTrackingRange", 256.0, 1, Double.MAX_VALUE);
                 this.enableDurability = builder.comment("If true, guns will decrease in durability and break.").define("enableDurability", true);
             }builder.pop();

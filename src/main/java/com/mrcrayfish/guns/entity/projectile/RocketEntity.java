@@ -13,6 +13,7 @@ import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -26,29 +27,23 @@ import net.minecraft.world.phys.Vec3;
  */
 public class RocketEntity extends ProjectileEntity
 {
-    public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn)
-    {
+    public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn) {
         super(entityType, worldIn);
         if(GunMod.dynamicLightsLoaded && Config.COMMON.enableDynamicLights.get())
             DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> 7);
     }
 
-    public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
-    {
+    public RocketEntity(EntityType<? extends ProjectileEntity> entityType, Level worldIn, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun) {
         super(entityType, worldIn, shooter, weapon, item, modifiedGun);
     }
 
     @Override
-    protected void onProjectileTick()
-    {
-        if (this.level.isClientSide)
-        {
-            for (int i = 5; i > 0; i--)
-            {
+    protected void onProjectileTick() {
+        if (this.level.isClientSide) {
+            for (int i = 5; i > 0; i--) {
                 this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, this.getX() - (this.getDeltaMovement().x() / i), this.getY() - (this.getDeltaMovement().y() / i), this.getZ() - (this.getDeltaMovement().z() / i), 0, 0, 0);
             }
-            if (this.level.random.nextInt(2) == 0)
-            {
+            if (this.level.random.nextInt(2) == 0) {
                 this.level.addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
                 this.level.addParticle(ParticleTypes.FLAME, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
             }
@@ -56,16 +51,24 @@ public class RocketEntity extends ProjectileEntity
     }
 
     @Override
-    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {explode();}
+    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {
+        explode();
+    }
 
     @Override
-    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {explode();}
+    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {
+        if (state.is(BlockTags.LEAVES))
+            this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
+        else
+            explode();
+    }
 
     @Override
-    public void onExpired() {explode();}
+    public void onExpired() {
+        explode();
+    }
 
-    private void explode()
-    {
+    private void explode() {
         float radius;
         /* If this projectile has assigned explosion radius, use it. Otherwise, use 3.0F */
         if(this.getProjectile() != null)
@@ -75,9 +78,8 @@ public class RocketEntity extends ProjectileEntity
 
         createCustomExplosion(this, radius, true);
         if(this.level.isClientSide)
-        {
             return;
-        }
+
         LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), explosionLightValue, explosionLightLife);
         level.addFreshEntity(light);
         PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessageRocket(this.getX(), this.getY(), this.getZ(), radius));

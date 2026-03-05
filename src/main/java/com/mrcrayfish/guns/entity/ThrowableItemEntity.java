@@ -9,6 +9,7 @@ import net.minecraft.network.protocol.Packet;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
@@ -116,11 +117,16 @@ public abstract class ThrowableItemEntity extends ThrowableProjectile implements
         {
             case BLOCK:
                 BlockHitResult blockResult = (BlockHitResult) result;
+                BlockPos resultPos = blockResult.getBlockPos();
+                BlockState state = this.level.getBlockState(resultPos);
+                ResourceLocation sound = state.getBlock().getSoundType(state, this.level, resultPos, this).getStepSound().getLocation();
+
+                /* Ignore leaves when checking for collisions */
+                if(state.is(BlockTags.LEAVES))
+                    break;
+
                 if(this.shouldBounce)
                 {
-                    BlockPos resultPos = blockResult.getBlockPos();
-                    BlockState state = this.level.getBlockState(resultPos);
-                    ResourceLocation sound = state.getBlock().getSoundType(state, this.level, resultPos, this).getStepSound().getLocation();
                     if (bounceSound != null && useCustomBounceSound)
                         sound = bounceSound.getLocation();
 

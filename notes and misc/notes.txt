@@ -15,6 +15,7 @@ Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
+
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Add a movement slow to heavy weapons (minigun, rocket launcher)
 Add a modifier for draw time to attachments and make it correspond to the draw animation
@@ -23,6 +24,7 @@ Add a downside to thumb grip (draw time?)
 Add debug lines and functions
 Complete fragile.json
 Improve hardness calculation logic
+Combine dynamic tree and fragile block destruction as much as possible
 Optimize textures
 Test dependency mod versions to figure out the lowest version where everything works correctly
-Clean up code after adding compatibility with DynamicTrees
+Remove redundant dependencies

@@ -48,6 +48,7 @@ import net.minecraft.server.level.ServerLevel;
 import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
+import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.CombatRules;
@@ -66,7 +67,6 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.LevelAccessor;
 import net.minecraft.world.level.block.BellBlock;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.LeavesBlock;
 import net.minecraft.world.level.block.TargetBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.level.material.FluidState;
@@ -93,7 +93,7 @@ import static com.mrcrayfish.guns.init.ModTags.Entities.HIT_RESISTANT;
 public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnData
 {
     private static final Predicate<Entity> PROJECTILE_TARGETS = input -> input != null && input.isPickable() && !input.isSpectator();
-    private static final Predicate<BlockState> IGNORE_LEAVES = input -> input != null && Config.COMMON.ignoreLeaves.get() && input.getBlock() instanceof LeavesBlock;
+    private static final Predicate<BlockState> IGNORE_NONE = state -> false;
     private static final Method updateRedstoneOutputMethod = ObfuscationReflectionHelper.findMethod(TargetBlock.class, "m_57391_", LevelAccessor.class, BlockState.class, BlockHitResult.class, Entity.class);
 
     protected int shooterId;
@@ -295,7 +295,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         {
             Vec3 startVec = this.position();
             Vec3 endVec = startVec.add(this.getDeltaMovement());
-            HitResult result = rayTraceBlocks(this.level, new ClipContext(startVec, endVec, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_LEAVES);
+            HitResult result = rayTraceBlocks(this.level, new ClipContext(startVec, endVec, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_NONE);
 
             /* Projectile flyby sound */
             boolean isBullet = this instanceof BulletEntity;
@@ -351,7 +351,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     result = new ExtendedEntityRayTraceResult(entityResult);
                     if(((EntityHitResult) result).getEntity() instanceof Player player)
                     {
-                        /* Check if we hit ourselves or an another player that is immune to our attacks */
+                        /* Check if we hit ourselves or a player that is immune to our attacks */
                         if(this.shooter instanceof Player && !((Player) this.shooter).canHarmPlayer(player))
                         {
                             result = null;
@@ -401,6 +401,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             this.setDeltaMovement(this.getDeltaMovement().add(0, this.modifiedGravity, 0));
         }
 
+        /* Take into account skipped ticks, so our projectiles don't fly shorter distances due to piercing */
         int effectiveTickCount = this.tickCount - this.ticksToSkip;
         if(effectiveTickCount >= this.life)
         {
@@ -472,6 +473,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             if(!entity.equals(this.shooter) && !isImmune)
             {
                 EntityResult result = this.getHitResult(entity, startVec, endVec);
+                /* Ignore dead enemies so they don't eat up our piercing power */
                 if(result == null || isDead)
                     continue;
                 hitEntities.add(result);
@@ -498,8 +500,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         Vec3 grownHitPos = boundingBox.inflate(Config.COMMON.growBoundingBoxAmount.get(), 0, Config.COMMON.growBoundingBoxAmount.get()).clip(startVec, endVec).orElse(null);
         if(hitPos == null && grownHitPos != null)
         {
-            HitResult raytraceresult = rayTraceBlocks(this.level, new ClipContext(startVec, grownHitPos, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_LEAVES);
-            if(raytraceresult.getType() == HitResult.Type.BLOCK)
+            HitResult raytraceresult = rayTraceBlocks(this.level, new ClipContext(startVec, grownHitPos, ClipContext.Block.COLLIDER, ClipContext.Fluid.NONE, this), IGNORE_NONE);            if(raytraceresult.getType() == HitResult.Type.BLOCK)
             {
                 return null;
             }
@@ -588,7 +589,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 bell.attemptToRing(this.level, pos, blockHitResult.getDirection());
             }
 
-            // ----- Обработка деревьев DynamicTrees (с тегом fragile) -----
+            /* Handle dynamic trees logic */
             if (GunMod.dynamicTreesLoaded && state.is(ModTags.Blocks.FRAGILE) && TreeHelper.isTreePart(state)) {
                 float hardness = state.getDestroySpeed(this.level, pos);
                 int pierceNeeded = Math.max(1, (int) Math.ceil(hardness * 0.5F));
@@ -604,9 +605,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 }
 
                 if (pierceRemaining >= neededToDestroy) {
-                    // Полное разрушение блока -> вызываем падение дерева
                     if (handleDynamicTreeHit(pos, blockHitResult.getDirection(), FallingTreeEntity.DestroyType.HARVEST)) {
-                        // Обновляем параметры пробития, как при разрушении обычного хрупкого блока
                         if (!isInfinite) {
                             this.pierceCounter += neededToDestroy;
                             float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
@@ -616,15 +615,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                         }
                         BlockDamageManager.removeDamage(this.level, pos);
                         this.setPos(hitVec.x, hitVec.y, hitVec.z);
-                        return true; // снаряд продолжает движение
-                    } else {
-                        // Если падение не удалось (редкий случай), уничтожаем снаряд
+                        return true;
+                    }
+                    else {
                         this.remove(RemovalReason.KILLED);
                         this.deadProjectile = true;
                         return false;
                     }
-                } else {
-                    // Недостаточно пробитий для разрушения блока
+                }
+                else {
                     if (pierceRemaining <= 0) {
                         this.remove(RemovalReason.KILLED);
                         this.deadProjectile = true;
@@ -639,6 +638,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 }
             }
 
+            /* Destroy leaves for free */
+            if (Config.COMMON.enableFragileBreaking.get() && state.is(BlockTags.LEAVES)) {
+                this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
+                BlockDamageManager.removeDamage(this.level, pos);
+                this.setPos(hitVec.x, hitVec.y, hitVec.z);
+                return true;
+            }
+
+            /* Check if we should perform fragile logic */
             boolean canDestroy = false;
             if (Config.COMMON.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE)) {
                 if (this.modifiedGun != null && this.modifiedGun.getProjectile().isBreakFragile()) {
@@ -647,16 +655,13 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
 
             if (!canDestroy) {
-                // Блок не хрупкий — уничтожаем снаряд, если блок твёрдый
-                if (!state.getMaterial().isReplaceable())
-                {
+                if (!state.getMaterial().isReplaceable()) {
                     this.remove(RemovalReason.KILLED);
                     this.deadProjectile = true;
                 }
                 return false;
             }
 
-            // --- Логика разрушения для хрупких блоков ---
             float hardness = state.getDestroySpeed(this.level, pos);
             int pierceNeeded = Math.max(1, (int) Math.ceil(hardness));
             int currentDamage = BlockDamageManager.getDamage(this.level, pos);
@@ -665,22 +670,18 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             int pierceRemaining;
             boolean isInfinite = this.maxPierceCount == -1;
 
-            if (isInfinite)
-            {
+            if (isInfinite) {
                 pierceRemaining = Integer.MAX_VALUE;
             }
-            else
-            {
+            else {
                 pierceRemaining = this.maxPierceCount - this.pierceCounter;
             }
 
             if (pierceRemaining >= neededToDestroy) {
-                // Хватает для разрушения
                 this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
                 BlockDamageManager.removeDamage(this.level, pos);
 
-                if (!isInfinite)
-                {
+                if (!isInfinite) {
                     this.pierceCounter += neededToDestroy;
                     float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
                     float maxPenalty = this.modifiedGun.getProjectile().getPierceDamageMaxPenalty();
@@ -688,14 +689,10 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     this.pierceDamageFraction = Mth.clamp(this.pierceDamageFraction, 1F - maxPenalty, 1.0F);
                 }
                 this.setPos(hitVec.x, hitVec.y, hitVec.z);
-                return true; // пропускаем движение в этом тике (снаряд продолжает полёт)
+                return true;
             }
-            else
-            {
-                // Не хватает для разрушения
-                if (pierceRemaining <= 0)
-                {
-                    // Совсем нет пробитий – уничтожаем снаряд без повреждений
+            else {
+                if (pierceRemaining <= 0) {
                     this.remove(RemovalReason.KILLED);
                     this.deadProjectile = true;
                     return false;
@@ -711,20 +708,17 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         if(result instanceof ExtendedEntityRayTraceResult entityHitResult)
         {
-            if(this.deadProjectile)
-            {
+            if(this.deadProjectile) {
                 return false;
             }
 
             Entity entity = entityHitResult.getEntity();
             boolean isImmune = Config.COMMON.enableImmuneEntities.get() && entity.getType().is(HIT_IMMUNE);
-            if (entity.getId() == this.shooterId || isImmune)
-            {
+            if (entity.getId() == this.shooterId || isImmune) {
                 return false;
             }
 
-            if (this.shooter instanceof Player player)
-            {
+            if (this.shooter instanceof Player player) {
                 if (entity.hasIndirectPassenger(player))
                 {
                     return false;
@@ -732,8 +726,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
 
             boolean isDead = (entity instanceof LivingEntity && ((LivingEntity) entity).isDeadOrDying());
-            if (!isDead)
-            {
+            if (!isDead) {
                 this.onHitEntity(entity, result.getLocation(), startVec, endVec, entityHitResult.isHeadshot());
                 this.hitEntities.add(entity.getUUID());
             }
@@ -1168,7 +1161,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         BranchDestructionData destructionData = branch.destroyBranchFromNode(world, hitPos, face, false, this.shooter);
         if (destructionData.getNumBranches() == 0) return false;
 
-        // Очищаем данные о повреждениях для всех удалённых блоков
         for (BlockPos pos : destructionData.getPositions(BranchDestructionData.PosType.BRANCHES)) {
             BlockDamageManager.removeDamage(world, pos);
         }
@@ -1316,26 +1308,22 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         explosion.explode();
         explosion.finalizeExplosion(true);
 
-        // ===== ОБРАБОТКА ДЕРЕВЬЕВ ПРИ ВЗРЫВЕ =====
         if (GunMod.dynamicTreesLoaded && !fire) {
             Iterator<BlockPos> iterator = explosion.getToBlow().iterator();
             while (iterator.hasNext()) {
                 BlockPos pos = iterator.next();
                 BlockState state = world.getBlockState(pos);
                 if (TreeHelper.isTreePart(state)) {
-                    // Определяем, можно ли разрушать это дерево взрывом
                     boolean canDamageTree = Config.COMMON.explosionGriefing.get() ||
                             (Config.COMMON.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE));
 
                     if (!canDamageTree) {
-                        // Если нельзя разрушать, удаляем позицию из списка, чтобы блок не пострадал от взрыва
                         iterator.remove();
                         continue;
                     }
 
                     BranchBlock branch = TreeHelper.getBranch(state);
                     if (branch != null) {
-                        // Вычисляем направление падения (от центра взрыва)
                         Vec3 explosionCenter = new Vec3(entity.getX(), entity.getY(), entity.getZ());
                         Vec3 blockCenter = new Vec3(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                         Direction fallDir = Direction.getNearest(
@@ -1348,7 +1336,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
                         BranchDestructionData destructionData = branch.destroyBranchFromNode(world, pos, fallDir, false, shooter);
                         if (destructionData.getNumBranches() > 0) {
-                            // Очищаем данные о повреждениях для всех удалённых блоков
                             for (BlockPos p : destructionData.getPositions(BranchDestructionData.PosType.BRANCHES)) {
                                 BlockDamageManager.removeDamage(world, p);
                             }
@@ -1358,10 +1345,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
                             List<ItemStack> woodDropList = new ArrayList<>(destructionData.species.getBranchesDrops(world, destructionData.woodVolume));
 
-                            // Создаём падающую сущность с типом BLAST
                             FallingTreeEntity.dropTree(world, destructionData, woodDropList, FallingTreeEntity.DestroyType.BLAST);
                         }
-                        iterator.remove(); // Убираем обработанную позицию из списка взрыва
+                        iterator.remove();
                     }
                 }
             }
@@ -1371,7 +1357,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         if (!fire) {
             for (BlockPos pos : explosion.getToBlow()) {
                 BlockState state = world.getBlockState(pos);
-                if (state.is(ModTags.Blocks.FRAGILE)) {
+                if (state.is(ModTags.Blocks.FRAGILE) || state.is(BlockTags.LEAVES)) {
                     fragileBlocks.add(pos);
                 }
             }
@@ -1436,20 +1422,16 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         Species species = rooty.getSpecies(rootState, world, rootPos);
         if (species == Species.NULL_SPECIES) return false;
 
-        // Находим первую ветку над корнем (обычно это ствол)
         BlockPos branchPos = rootPos.above();
         BlockState branchState = world.getBlockState(branchPos);
         BranchBlock branch = TreeHelper.getBranch(branchState);
         if (branch == null) return false;
 
-        // Разрушаем дерево, начиная с найденной ветки
         BranchDestructionData destructionData = branch.destroyBranchFromNode(world, branchPos, fallDir, false, shooter);
         if (destructionData.getNumBranches() == 0) return false;
 
-        // Собираем дроп
         List<ItemStack> woodDropList = new ArrayList<>(destructionData.species.getBranchesDrops(world, destructionData.woodVolume));
 
-        // Создаём падающую сущность
         FallingTreeEntity.dropTree(world, destructionData, woodDropList, destroyType);
         return true;
     }

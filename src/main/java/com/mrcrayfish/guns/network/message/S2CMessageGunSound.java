@@ -10,7 +10,7 @@ import net.minecraft.sounds.SoundSource;
 /**
  * Author: MrCrayfish
  */
-public class S2CMessageGunshotOrReload extends PlayMessage<S2CMessageGunshotOrReload>
+public class S2CMessageGunSound extends PlayMessage<S2CMessageGunSound>
 {
     private ResourceLocation id;
     private SoundSource category;
@@ -23,9 +23,9 @@ public class S2CMessageGunshotOrReload extends PlayMessage<S2CMessageGunshotOrRe
     private boolean muzzle;
     private boolean reload;
 
-    public S2CMessageGunshotOrReload() {}
+    public S2CMessageGunSound() {}
 
-    public S2CMessageGunshotOrReload(ResourceLocation id, SoundSource category, float x, float y, float z, float volume, float pitch, int shooterId, boolean muzzle, boolean reload)
+    public S2CMessageGunSound(ResourceLocation id, SoundSource category, float x, float y, float z, float volume, float pitch, int shooterId, boolean muzzle, boolean reload)
     {
         this.id = id;
         this.category = category;
@@ -40,7 +40,7 @@ public class S2CMessageGunshotOrReload extends PlayMessage<S2CMessageGunshotOrRe
     }
 
     @Override
-    public void encode(S2CMessageGunshotOrReload message, FriendlyByteBuf buffer)
+    public void encode(S2CMessageGunSound message, FriendlyByteBuf buffer)
     {
         buffer.writeResourceLocation(message.id);
         buffer.writeEnum(message.category);
@@ -55,7 +55,7 @@ public class S2CMessageGunshotOrReload extends PlayMessage<S2CMessageGunshotOrRe
     }
 
     @Override
-    public S2CMessageGunshotOrReload decode(FriendlyByteBuf buffer)
+    public S2CMessageGunSound decode(FriendlyByteBuf buffer)
     {
         ResourceLocation id = buffer.readResourceLocation();
         SoundSource category = buffer.readEnum(SoundSource.class);
@@ -67,13 +67,13 @@ public class S2CMessageGunshotOrReload extends PlayMessage<S2CMessageGunshotOrRe
         int shooterId = buffer.readInt();
         boolean muzzle = buffer.readBoolean();
         boolean reload = buffer.readBoolean();
-        return new S2CMessageGunshotOrReload(id, category, x, y, z, volume, pitch, shooterId, muzzle, reload);
+        return new S2CMessageGunSound(id, category, x, y, z, volume, pitch, shooterId, muzzle, reload);
     }
 
     @Override
-    public void handle(S2CMessageGunshotOrReload message, MessageContext context)
+    public void handle(S2CMessageGunSound message, MessageContext context)
     {
-        context.execute(() -> ClientPlayHandler.handleMessageGunshotOrReload(message));
+        context.execute(() -> ClientPlayHandler.handleMessageGunSound(message));
         context.setHandled(true);
     }
 

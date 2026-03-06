@@ -4,22 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Compat update.&#10;&#10;Dynamic trees are now correctly destroyed by projectiles and explosions.">
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Clean up.&#10;&#10;Code clean up.&#10;Added debug config.&#10;Renamed gunshotOrReload sound to gunSound for clarity.">
       <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/fragile.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/fragile.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/AnimationLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/AnimationLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/audio/DistancedSound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/audio/DistancedSound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/audio/StunRingingSound.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/audio/StunRingingSound.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/GunReloadAnimationHelper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/GunReloadAnimationHelper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ReloadTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ReloadTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/SwitchGunTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/SwitchGunTracker.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableItemEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ThrowableItemEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/PacketHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/PacketHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessageGunshotOrReload.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessageGunSound.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -69,7 +72,7 @@
     <setting file="file://$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" root0="SKIP_INSPECTION" />
   </component>
   <component name="ProblemsViewState">
-    <option name="selectedTabId" value="DEPENDENCY_CHECKER_PROBLEMS_TAB" />
+    <option name="selectedTabId" value="CurrentFile" />
   </component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 0
@@ -92,7 +95,9 @@
     &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
     &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
     &quot;JavaClassFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;false&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Build sync orphan modules&quot;: &quot;Modules no longer referenced by external system&quot;,
     &quot;Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;Sources download failed&quot;,
+    &quot;Notification.DoNotAsk-Build sync orphan modules&quot;: &quot;true&quot;,
     &quot;Notification.DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
@@ -127,8 +132,8 @@
       <recent name="com.mrcrayfish.guns.init" />
     </key>
     <key name="CopyClassDialog.RECENTS_KEY">
-      <recent name="com.mrcrayfish.guns.client.render.gun.model" />
       <recent name="com.mrcrayfish.guns.network.message" />
+      <recent name="com.mrcrayfish.guns.client.render.gun.model" />
       <recent name="com.mrcrayfish.guns.client.audio" />
       <recent name="com.mrcrayfish.guns.client.handler" />
       <recent name="com.mrcrayfish.guns.client.util" />

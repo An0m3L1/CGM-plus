@@ -8,7 +8,7 @@ import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageForceSetReserveAmmo;
-import com.mrcrayfish.guns.network.message.S2CMessageGunshotOrReload;
+import com.mrcrayfish.guns.network.message.S2CMessageGunSound;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
@@ -192,7 +192,7 @@ public class ReloadTracker
             double soundX = player.getX();
             double soundY = player.getY() + 1.0;
             double soundZ = player.getZ();
-            S2CMessageGunshotOrReload message = new S2CMessageGunshotOrReload(reloadSound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
+            S2CMessageGunSound message = new S2CMessageGunSound(reloadSound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
             PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, soundX, soundY, soundZ, radius), message);
         }
     }
@@ -371,7 +371,7 @@ public class ReloadTracker
             double soundY = player.getY() + player.getEyeHeight();
             double soundZ = player.getZ();
             double radius = Config.SERVER.reloadSoundDistance.get();
-            S2CMessageGunshotOrReload messageSound = new S2CMessageGunshotOrReload(sound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
+            S2CMessageGunSound messageSound = new S2CMessageGunSound(sound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
             PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, soundX, soundY, soundZ, radius), messageSound);
         }
     }

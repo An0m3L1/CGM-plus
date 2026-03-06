@@ -43,7 +43,7 @@ public class ClientPlayHandler
     private static final Map<Long, List<Vec3>> projectileHitsPerTick = new HashMap<>();
     private static long lastProcessedTick = -1;
 
-    public static void handleMessageGunshotOrReload(S2CMessageGunshotOrReload message)
+    public static void handleMessageGunSound(S2CMessageGunSound message)
     {
         Minecraft mc = Minecraft.getInstance();
         SoundManager soundManager = mc.getSoundManager();
@@ -61,7 +61,7 @@ public class ClientPlayHandler
         }
         else
         {
-            soundManager.play(DistancedSound.gunshotOrReload(message.getId(), SoundSource.PLAYERS, message.getX(), message.getY(), message.getZ(), message.getVolume(), message.getPitch(), message.isReload(), mc.level.getRandom()));
+            soundManager.play(DistancedSound.gunSound(message.getId(), SoundSource.PLAYERS, message.getX(), message.getY(), message.getZ(), message.getVolume(), message.getPitch(), message.isReload(), mc.level.getRandom()));
         }
     }
 

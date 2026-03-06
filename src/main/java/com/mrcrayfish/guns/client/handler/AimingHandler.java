@@ -26,7 +26,6 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.EntityBlock;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.BlockHitResult;
@@ -75,7 +74,9 @@ public class AimingHandler
     public void onPlayerTick(TickEvent.PlayerTickEvent event)
     {
         if(event.phase != TickEvent.Phase.START)
+        {
             return;
+        }
 
         Player player = event.player;
         AimTracker tracker = getAimTracker(player);
@@ -147,6 +148,8 @@ public class AimingHandler
                 PacketHandler.getPlayChannel().sendToServer(new C2SMessageAim(true));
                 this.aiming = true;
             }
+
+            /* Go from third to first person while aiming with a high enough zoom */
             if (Config.CLIENT.forceFirstPersonOnZoomedAim.get() && getNormalisedAdsProgress()>=0.2 && getNormalisedAdsProgress()<=0.95)
             {
             	if (!this.doTempFirstPerson && modifiedGun!=null)
@@ -337,7 +340,13 @@ public class AimingHandler
                 BlockState state = mc.level.getBlockState(result.getBlockPos());
                 Block block = state.getBlock();
                 // Forge should add a tag for intractable blocks so modders can know which blocks can be interacted with :)
-                return block instanceof EntityBlock || block == Blocks.CRAFTING_TABLE || block == ModBlocks.GUN_WORKBENCH.get() || state.is(BlockTags.DOORS) || state.is(BlockTags.TRAPDOORS) || state.is(Tags.Blocks.CHESTS) || state.is(Tags.Blocks.FENCE_GATES);
+                return block instanceof EntityBlock
+                        //|| block == Blocks.CRAFTING_TABLE
+                        || block == ModBlocks.GUN_WORKBENCH.get()
+                        || state.is(BlockTags.DOORS)
+                        || state.is(BlockTags.TRAPDOORS)
+                        || state.is(Tags.Blocks.CHESTS)
+                        || state.is(Tags.Blocks.FENCE_GATES);
             }
             else if(mc.hitResult instanceof EntityHitResult result)
             {

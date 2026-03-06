@@ -30,7 +30,7 @@ public class DistancedSound extends AbstractSoundInstance
         }
     }
 
-    public static DistancedSound gunshotOrReload(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, boolean reload, RandomSource source) {
+    public static DistancedSound gunSound(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, boolean reload, RandomSource source) {
         Supplier<Number> distanceSupplier = reload ?
                 Config.SERVER.reloadSoundDistance::get :
                 Config.SERVER.gunShotSoundDistance::get;

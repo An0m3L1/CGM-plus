@@ -37,8 +37,6 @@ public class StunRingingSound extends AbstractTickableSoundInstance
                 return;
             }
         }
-
-        //Stops playing the sound
         this.stop();
     }
 }

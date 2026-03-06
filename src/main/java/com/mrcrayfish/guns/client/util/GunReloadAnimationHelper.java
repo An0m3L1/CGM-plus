@@ -3,14 +3,7 @@ package com.mrcrayfish.guns.client.util;
 import com.mrcrayfish.framework.api.serialize.DataObject;
 import com.mrcrayfish.framework.api.serialize.DataString;
 import com.mrcrayfish.framework.api.serialize.DataType;
-import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.cache.ObjectCache;
-import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
-
 import net.minecraft.resources.ResourceLocation;
-import net.minecraft.util.Mth;
-import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.phys.Vec3;
 
 /**
  * Helper class for reload animations using the Common Animation System.

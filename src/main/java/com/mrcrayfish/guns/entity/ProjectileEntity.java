@@ -639,7 +639,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
 
             /* Destroy leaves for free */
-            if (Config.COMMON.enableFragileBreaking.get() && state.is(BlockTags.LEAVES)) {
+            if (Config.COMMON.fragileGriefing.get() && state.is(BlockTags.LEAVES)) {
                 this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
                 BlockDamageManager.removeDamage(this.level, pos);
                 this.setPos(hitVec.x, hitVec.y, hitVec.z);
@@ -648,7 +648,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
             /* Check if we should perform fragile logic */
             boolean canDestroy = false;
-            if (Config.COMMON.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE)) {
+            if (Config.COMMON.fragileGriefing.get() && state.is(ModTags.Blocks.FRAGILE)) {
                 if (this.modifiedGun != null && this.modifiedGun.getProjectile().isBreakFragile()) {
                     canDestroy = true;
                 }
@@ -1315,7 +1315,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 BlockState state = world.getBlockState(pos);
                 if (TreeHelper.isTreePart(state)) {
                     boolean canDamageTree = Config.COMMON.explosionGriefing.get() ||
-                            (Config.COMMON.enableFragileBreaking.get() && state.is(ModTags.Blocks.FRAGILE));
+                            (Config.COMMON.fragileGriefing.get() && state.is(ModTags.Blocks.FRAGILE));
 
                     if (!canDamageTree) {
                         iterator.remove();

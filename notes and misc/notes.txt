@@ -33,8 +33,6 @@ Make hemp crops 2 blocks tall
 Add a specific break and place sound for repair kit
 Improve repair logic for guns (repairing is done in any crafting menu, takes only 1 repair kit for full repair)
 Return dying weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
-Overhaul configs
-Check if all gun statistics are properly recorded (use, kill, etc)
 If player is aiming, disable right click interaction with blocks (only if already aiming, gone through the whole transition)
 Add potion effects
     - Focused: obtained through energy drinks, adrenaline shots, etc. Increases reload, ADS and draw speed of guns

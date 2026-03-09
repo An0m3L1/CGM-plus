@@ -29,9 +29,9 @@ public class SmokeGrenadeItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double damage = Config.COMMON.smokeGrenadeDamage.get();
-        double smokeDuration = Config.COMMON.smokeGrenadeCloudDuration.get();
-        double smokeRadius = Config.COMMON.smokeGrenadeCloudRadius.get();
+        double damage = Config.SERVER.smokeGrenadeDamage.get();
+        double smokeDuration = Config.SERVER.smokeGrenadeCloudDuration.get();
+        double smokeRadius = Config.SERVER.smokeGrenadeCloudRadius.get();
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {

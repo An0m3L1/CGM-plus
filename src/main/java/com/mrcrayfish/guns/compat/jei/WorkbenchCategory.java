@@ -1,4 +1,4 @@
-package com.mrcrayfish.guns.jei;
+package com.mrcrayfish.guns.compat.jei;
 
 import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -135,21 +135,26 @@ public class WorkbenchCategory implements IRecipeCategory<WorkbenchRecipe>
 
         for(int i = 0; i < recipe.getMaterials().size(); i++)
         {
-            poseStack.translate(0.0D, 0.0D, Minecraft.getInstance().getItemRenderer().blitOffset + 200.0F);
+            poseStack.pushPose();
+            poseStack.translate(0.0D, 0.0D, +192.0D);
             String materialCount = recipe.getMaterials().get(i).getCount() + "";
-			int stringX = (((i % 8) * 18 + 1) + 19 - 2 - Minecraft.getInstance().font.width(materialCount));
-        	if (recipe.getMaterials().get(i).getCount()>1)
-        	GuiComponent.drawString(poseStack, Minecraft.getInstance().font, recipe.getMaterials().get(i).getCount() + "", stringX, 97 + (i / 8) * 18, 0xFFFFFFFF);
+            int stringX = (((i % 8) * 18 + 1) + 19 - 2 - Minecraft.getInstance().font.width(materialCount));
+            if (recipe.getMaterials().get(i).getCount() > 1)
+            {
+                GuiComponent.drawString(poseStack, Minecraft.getInstance().font, materialCount, stringX, 97 + (i / 8) * 18, 0xFFFFFFFF);
+            }
+            poseStack.popPose();
         }
 
         PoseStack stack = RenderSystem.getModelViewStack();
         stack.pushPose();
         {
             stack.mulPoseMatrix(poseStack.last().pose());
-            stack.translate(81, 40, 64);
+            stack.translate(81, 40, -512);
             stack.scale(40F, 40F, 40F);
             stack.mulPose(Vector3f.XP.rotationDegrees(-5F));
             float partialTicks = Minecraft.getInstance().getFrameTime();
+            assert Minecraft.getInstance().player != null;
             stack.mulPose(Vector3f.YP.rotationDegrees(Minecraft.getInstance().player.tickCount + partialTicks));
             stack.scale(-1, -1, -1);
             RenderSystem.applyModelViewMatrix();

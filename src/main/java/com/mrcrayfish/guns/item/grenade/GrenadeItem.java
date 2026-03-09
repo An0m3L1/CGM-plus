@@ -1,13 +1,17 @@
 package com.mrcrayfish.guns.item.grenade;
 
+import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.init.ModSounds;
-import com.mrcrayfish.guns.item.AmmoItem;
+import com.mrcrayfish.guns.item.IGrenade;
+import com.mrcrayfish.guns.network.PacketHandler;
+import com.mrcrayfish.guns.network.message.S2CMessageSound;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
 import net.minecraft.network.chat.Component;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.sounds.SoundSource;
 import net.minecraft.stats.Stats;
@@ -15,6 +19,7 @@ import net.minecraft.world.InteractionHand;
 import net.minecraft.world.InteractionResultHolder;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
@@ -24,7 +29,7 @@ import org.jetbrains.annotations.NotNull;
 import javax.annotation.Nullable;
 import java.util.List;
 
-public class GrenadeItem extends AmmoItem
+public class GrenadeItem extends Item implements IGrenade
 {
     public int maxCookTime;
     public SoundEvent throwSound;
@@ -41,8 +46,8 @@ public class GrenadeItem extends AmmoItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double damage = Config.COMMON.handGrenadeExplosionDamage.get();
-        double explosionRadius = (Config.COMMON.handGrenadeExplosionRadius.get());
+        double damage = Config.SERVER.grenadeExplosionDamage.get();
+        double explosionRadius = (Config.SERVER.grenadeExplosionRadius.get());
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {
@@ -73,8 +78,18 @@ public class GrenadeItem extends AmmoItem
     public void onUsingTick(ItemStack stack, LivingEntity player, int count)
     {
         int duration = this.getUseDuration(stack) - count;
-        if(duration == 9)
-            player.level.playLocalSound(player.getX(), player.getY(), player.getZ(), pinSound, SoundSource.PLAYERS, 1.0F, 1.0F, false);
+
+        if (duration == 9 && !player.level.isClientSide)
+        {
+            ResourceLocation soundId = this.pinSound.getLocation();
+            float posX = (float)player.getX();
+            float posY = (float)player.getY() + player.getEyeHeight();
+            float posZ = (float)player.getZ();
+            double radius = Config.SERVER.grenadePinSoundDistance.get();
+
+            S2CMessageSound messageSound = new S2CMessageSound(soundId, SoundSource.PLAYERS, posX, posY, posZ, 1.0F, 1.0F, player.getId(), false, false);
+            PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
+        }
     }
 
     @Override
@@ -139,9 +154,27 @@ public class GrenadeItem extends AmmoItem
 
     protected void onThrown(Level world, ThrowableGrenadeEntity entity)
     {
-        // Generic throw sound
-        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), ModSounds.THROW.get(), SoundSource.PLAYERS, 0.5F, 1.0F);
-        // Grenade specific throw sound
-        world.playSound(null, entity.getX(), entity.getY(), entity.getZ(), throwSound, SoundSource.PLAYERS, 1.0F, 1.0F);
+        if (!world.isClientSide)
+        {
+            int shooterId = entity.getOwner() != null ? entity.getOwner().getId() : -1;
+            float posX = (float)entity.getX();
+            float posY = (float)entity.getY();
+            float posZ = (float)entity.getZ();
+            double radius = Config.SERVER.grenadeThrowSoundDistance.get();
+
+            // Generic throw sound
+            ResourceLocation throwSoundId = ModSounds.THROW.getId();
+            if (throwSoundId != null)
+            {
+                S2CMessageSound throwMessageSound = new S2CMessageSound(throwSoundId, SoundSource.PLAYERS, posX, posY, posZ, 0.5F, 1.0F, shooterId, false, false);
+                PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(world, posX, posY, posZ, radius), throwMessageSound);
+            }
+
+            // Grenade specific throw sound
+            ResourceLocation grenadeThrowSoundId = this.throwSound.getLocation();
+
+            S2CMessageSound grenadeThrowMessageSound = new S2CMessageSound(grenadeThrowSoundId, SoundSource.PLAYERS, posX, posY, posZ, 1.0F, 1.0F, shooterId, false, false);
+            PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(world, posX, posY, posZ, radius), grenadeThrowMessageSound);
+        }
     }
 }

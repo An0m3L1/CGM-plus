@@ -633,18 +633,15 @@ public class GunRenderingHandler
 
     private void applyAimingTransforms(PoseStack poseStack, ItemStack heldItem, Gun modifiedGun, float x, float y, float z, int offset)
     {
-        if(!Config.CLIENT.oldAnimations.get())
-        {
-            poseStack.translate(x * offset, y, z);
-            poseStack.translate(0, -0.25, 0.25);
-            float aiming = (float) Math.sin(Math.toRadians(AimingHandler.get().getNormalisedAdsProgress() * 180F));
-            aiming = PropertyHelper.getSightAnimations(heldItem, modifiedGun).getAimTransformCurve().apply(aiming);
-            poseStack.mulPose(Vector3f.ZP.rotationDegrees(aiming * 10F * offset));
-            poseStack.mulPose(Vector3f.XP.rotationDegrees(aiming * 5F));
-            poseStack.mulPose(Vector3f.YP.rotationDegrees(aiming * 5F * offset));
-            poseStack.translate(0, 0.25, -0.25);
-            poseStack.translate(-x * offset, -y, -z);
-        }
+        poseStack.translate(x * offset, y, z);
+        poseStack.translate(0, -0.25, 0.25);
+        float aiming = (float) Math.sin(Math.toRadians(AimingHandler.get().getNormalisedAdsProgress() * 180F));
+        aiming = PropertyHelper.getSightAnimations(heldItem, modifiedGun).getAimTransformCurve().apply(aiming);
+        poseStack.mulPose(Vector3f.ZP.rotationDegrees(aiming * 10F * offset));
+        poseStack.mulPose(Vector3f.XP.rotationDegrees(aiming * 5F));
+        poseStack.mulPose(Vector3f.YP.rotationDegrees(aiming * 5F * offset));
+        poseStack.translate(0, 0.25, -0.25);
+        poseStack.translate(-x * offset, -y, -z);
     }
 
     private void applySwayTransforms(PoseStack poseStack, Gun modifiedGun, LocalPlayer player, float x, float y, float z, float partialTicks)

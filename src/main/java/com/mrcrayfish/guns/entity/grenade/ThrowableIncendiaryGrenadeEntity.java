@@ -20,8 +20,8 @@ import net.minecraft.world.phys.Vec3;
  */
 public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
 {
-    protected float radius = Config.COMMON.incendiaryGrenadeExplosionRadius.get().floatValue();
-    protected int fireDuration = Config.COMMON.incendiaryGrenadeFireDuration.get();
+    protected float radius = Config.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue();
+    protected int fireDuration = Config.SERVER.incendiaryGrenadeFireDuration.get();
 
     public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
     {

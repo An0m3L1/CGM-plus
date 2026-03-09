@@ -82,7 +82,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
                 LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageStunGrenade(this.getX(), y, this.getZ()));
 
         // Calculate bounds of area where potentially effected players may be
-        double diameter = Math.max(Config.COMMON.stunCriteria.radius.get(), Config.COMMON.blindCriteria.radius.get()) * 2 + 1;
+        double diameter = Math.max(Config.SERVER.stunCriteria.radius.get(), Config.SERVER.blindCriteria.radius.get()) * 2 + 1;
         int minX = Mth.floor(this.getX() - diameter);
         int maxX = Mth.floor(this.getX() + diameter);
         int minY = Mth.floor(y - diameter);
@@ -107,11 +107,11 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
             double angle = Math.toDegrees(Math.acos(entity.getViewVector(1.0F).dot(directionGrenade.normalize())));
 
             // Apply effects as determined by their criteria
-            if(this.calculateAndApplyEffect(ModEffects.STUNNED.get(), Config.COMMON.stunCriteria, entity, grenade, eyes, distance, angle) && Config.COMMON.panicMobs.get())
+            if(this.calculateAndApplyEffect(ModEffects.STUNNED.get(), Config.SERVER.stunCriteria, entity, grenade, eyes, distance, angle) && Config.COMMON.panicMobs.get())
             {
                 entity.setLastHurtByMob(entity);
             }
-            if(this.calculateAndApplyEffect(ModEffects.BLINDED.get(), Config.COMMON.blindCriteria, entity, grenade, eyes, distance, angle) && Config.COMMON.blindMobs.get() && entity instanceof Mob)
+            if(this.calculateAndApplyEffect(ModEffects.BLINDED.get(), Config.SERVER.blindCriteria, entity, grenade, eyes, distance, angle) && Config.COMMON.blindMobs.get() && entity instanceof Mob)
             {
                 ((Mob) entity).setTarget(null);
             }

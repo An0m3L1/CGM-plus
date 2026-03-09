@@ -1,4 +1,4 @@
-package com.mrcrayfish.guns.jei;
+package com.mrcrayfish.guns.compat.jei;
 
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipe;

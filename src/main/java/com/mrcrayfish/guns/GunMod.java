@@ -58,13 +58,12 @@ public class GunMod
     public static boolean dynamicTreesLoaded = false;
     public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
 
-    public static final CreativeModeTab GUNS = new CreativeModeTab(Reference.MOD_ID) {
+    public static final CreativeModeTab GUNS = new CreativeModeTab(Reference.MOD_ID)
+    {
         @Override
         public @NotNull ItemStack makeIcon()
         {
-            ItemStack icon = new ItemStack(ModItems.AUTOMATIC_PISTOL.get());
-            icon.getOrCreateTag().putInt("AmmoCount", ModItems.AUTOMATIC_PISTOL.get().getGun().getGeneral().getMaxAmmo());
-            return icon;
+            return new ItemStack(ModItems.GUN_ICON.get());
         }
 
         @Override
@@ -74,7 +73,8 @@ public class GunMod
             CustomGunManager.fill(items);
         }
     };
-    public static final CreativeModeTab MATERIALS = new CreativeModeTab(Reference.MATERIALS) {
+    public static final CreativeModeTab MATERIALS = new CreativeModeTab(Reference.MATERIALS)
+    {
         @Override
         public @NotNull ItemStack makeIcon()
         {

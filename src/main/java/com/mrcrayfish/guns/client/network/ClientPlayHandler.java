@@ -43,7 +43,7 @@ public class ClientPlayHandler
     private static final Map<Long, List<Vec3>> projectileHitsPerTick = new HashMap<>();
     private static long lastProcessedTick = -1;
 
-    public static void handleMessageGunSound(S2CMessageGunSound message)
+    public static void handleMessageSound(S2CMessageSound message)
     {
         Minecraft mc = Minecraft.getInstance();
         SoundManager soundManager = mc.getSoundManager();
@@ -131,7 +131,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.handGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.grenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -164,7 +164,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.impactGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -263,7 +263,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -309,7 +309,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.COMMON.molotovExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.molotovExplosionRadius.get().floatValue() * 2.0F;
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -386,7 +386,7 @@ public class ClientPlayHandler
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
-        double diameter = Config.COMMON.smokeGrenadeCloudRadius.get() * 2F;
+        double diameter = Config.SERVER.smokeGrenadeCloudRadius.get() * 2F;
         double vel = 0.004;
         int amount = (int) (diameter * 15);
 
@@ -453,7 +453,7 @@ public class ClientPlayHandler
                 }
             }
 
-            if (!hasNearbyHit && distance <= Config.CLIENT.impactSoundDistance.get()) {
+            if (!hasNearbyHit && distance <= Config.SERVER.projectileImpactSoundDistance.get()) {
                 world.playLocalSound(message.getX(), message.getY(), message.getZ(), state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, 2.0F, false);
             }
             currentTickHits.add(currentHit);

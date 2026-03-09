@@ -93,7 +93,7 @@ public class CrosshairHandler
     @Nullable
     public Crosshair getCurrentCrosshair()
     {
-        if(this.currentCrosshair == null && this.registeredCrosshairs.size() > 0)
+        if(this.currentCrosshair == null && !this.registeredCrosshairs.isEmpty())
         {
             ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.crosshair.get());
             this.currentCrosshair = id != null ? this.idToCrosshair.getOrDefault(id, Crosshair.DEFAULT) : Crosshair.DEFAULT;

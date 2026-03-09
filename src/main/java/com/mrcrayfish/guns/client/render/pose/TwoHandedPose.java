@@ -2,7 +2,6 @@ package com.mrcrayfish.guns.client.render.pose;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.client.handler.ReloadHandler;
 import com.mrcrayfish.guns.client.util.GunAnimationHelper;
 import com.mrcrayfish.guns.client.util.GunLegacyAnimationHelper;
@@ -62,67 +61,23 @@ public class TwoHandedPose extends WeaponPose
     @OnlyIn(Dist.CLIENT)
     public void applyPlayerModelRotation(Player player, ModelPart rightArm, ModelPart leftArm, ModelPart head, InteractionHand hand, float aimProgress)
     {
-        if(Config.CLIENT.oldAnimations.get())
-        {
-            Minecraft mc = Minecraft.getInstance();
-            boolean right = mc.options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
-            ModelPart mainArm = right ? rightArm : leftArm;
-            ModelPart secondaryArm = right ? leftArm : rightArm;
-            mainArm.xRot = head.xRot;
-            mainArm.yRot = head.yRot;
-            mainArm.zRot = head.zRot;
-            secondaryArm.xRot = head.xRot;
-            secondaryArm.yRot = head.yRot;
-            secondaryArm.zRot = head.zRot;
-            mainArm.xRot = (float) Math.toRadians(-55F + aimProgress * -30F);
-            mainArm.yRot = (float) Math.toRadians((-45F + aimProgress * -20F) * (right ? 1F : -1F));
-            secondaryArm.xRot = (float) Math.toRadians(-42F + aimProgress * -48F);
-            secondaryArm.yRot = (float) Math.toRadians((-15F + aimProgress * 5F) * (right ? 1F : -1F));
-        }
-        else
-        {
-            super.applyPlayerModelRotation(player, rightArm, leftArm, head, hand, aimProgress);
-            float angle = this.getPlayerPitch(player);
-            head.xRot = (float) Math.toRadians(angle > 0.0 ? angle * 70F : angle * 90F);
-        }
+        super.applyPlayerModelRotation(player, rightArm, leftArm, head, hand, aimProgress);
+        float angle = this.getPlayerPitch(player);
+        head.xRot = (float) Math.toRadians(angle > 0.0 ? angle * 70F : angle * 90F);
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void applyPlayerPreRender(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(Config.CLIENT.oldAnimations.get())
-        {
-            boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
-            player.yBodyRotO = player.yRotO + (right ? 25F : -25F) + aimProgress * (right ? 20F : -20F);
-            player.yBodyRot = player.getYRot() + (right ? 25F : -25F) + aimProgress * (right ? 20F : -20F);
-        }
-        else
-        {
-            super.applyPlayerPreRender(player, hand, aimProgress, poseStack, buffer);
-        }
+        super.applyPlayerPreRender(player, hand, aimProgress, poseStack, buffer);
     }
 
     @Override
     @OnlyIn(Dist.CLIENT)
     public void applyHeldItemTransforms(Player player, InteractionHand hand, float aimProgress, PoseStack poseStack, MultiBufferSource buffer)
     {
-        if(Config.CLIENT.oldAnimations.get())
-        {
-            if(hand == InteractionHand.MAIN_HAND)
-            {
-                boolean right = Minecraft.getInstance().options.mainHand().get() == HumanoidArm.RIGHT ? hand == InteractionHand.MAIN_HAND : hand == InteractionHand.OFF_HAND;
-                poseStack.translate(0, 0, 0.05);
-                float invertRealProgress = 1.0F - aimProgress;
-                poseStack.mulPose(Vector3f.ZP.rotationDegrees((25F * invertRealProgress) * (right ? 1F : -1F)));
-                poseStack.mulPose(Vector3f.YP.rotationDegrees((30F * invertRealProgress + aimProgress * -20F) * (right ? 1F : -1F)));
-                poseStack.mulPose(Vector3f.XP.rotationDegrees(25F * invertRealProgress + aimProgress * 5F));
-            }
-        }
-        else
-        {
-            super.applyHeldItemTransforms(player, hand, aimProgress, poseStack, buffer);
-        }
+        super.applyHeldItemTransforms(player, hand, aimProgress, poseStack, buffer);
     }
 
     @Override
@@ -137,6 +92,7 @@ public class TwoHandedPose extends WeaponPose
         float handScale = 1/(handDiv==0 ? 1 : handDiv);
         poseStack.translate(translateX * side, 0, 0);
 
+        assert Minecraft.getInstance().player != null;
         boolean slim = Minecraft.getInstance().player.getModelName().equals("slim");
         float armWidth = slim ? 3.0F : 4.0F;
         
@@ -155,7 +111,7 @@ public class TwoHandedPose extends WeaponPose
         	
         	Vec3 translations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "forwardHand");
             Vec3 rotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "forwardHand");
-        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks)=="fire")
+        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks).equals("fire"))
         	{
         		translations = GunLegacyAnimationHelper.getHandTranslation(stack, false, cooldown);
         	}
@@ -192,7 +148,7 @@ public class TwoHandedPose extends WeaponPose
         	
         	Vec3 translations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "rearHand");
             Vec3 rotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "rearHand");
-        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks)=="fire")
+        	if(!GunAnimationHelper.hasAnimation("fire", stack) && GunAnimationHelper.getSmartAnimationType(stack, player, partialTicks).equals("fire"))
         	{
         		translations = GunLegacyAnimationHelper.getHandTranslation(stack, true, cooldown);
         	}

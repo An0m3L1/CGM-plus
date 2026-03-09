@@ -60,6 +60,10 @@ public class UnobtainableItem extends Item
             if(entityLiving instanceof Player)
             {
                 ((Player) entityLiving).awardStat(Stats.ITEM_USED.get(this));
+                if (!((Player) entityLiving).isCreative())
+                {
+                    entityLiving.kill();
+                }
             }
         }
         worldIn.playSound(null, entityLiving.getX(), entityLiving.getY(), entityLiving.getZ(), ModSounds.PARTY_HORN.get(), SoundSource.PLAYERS, 1.0F, 1.0F);

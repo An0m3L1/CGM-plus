@@ -35,8 +35,8 @@ public class ImpactGrenadeItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double damage = Config.COMMON.impactGrenadeExplosionDamage.get();
-        double explosionRadius = (Config.COMMON.impactGrenadeExplosionRadius.get());
+        double damage = Config.SERVER.impactGrenadeExplosionDamage.get();
+        double explosionRadius = (Config.SERVER.impactGrenadeExplosionRadius.get());
         if(Screen.hasControlDown())
         {
             tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));

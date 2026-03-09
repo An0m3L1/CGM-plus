@@ -34,6 +34,7 @@
     "item.cgm.hemp": "Конопля",
     "block.cgm.hemp_crop": "Куст конопли",
 
+    "item.cgm.gun_icon": "Иконка оружия",
     "item.cgm.tactical_pistol": "Тактический пистолет",
     "item.cgm.pistol": "Пистолет",
     "item.cgm.semi_auto_shotgun": "Полу-автоматический дробовик",
@@ -204,7 +205,8 @@
     "gui.cgm.workbench.show_remaining": "Показать оставшиеся",
     "gui.cgm.workbench.tab.weapons": "Оружие",
     "gui.cgm.workbench.tab.attachments": "Аксессуары",
-    "gui.cgm.workbench.tab.ammo": "Боеприпасы и Гранаты",
+    "gui.cgm.workbench.tab.ammo": "Боеприпасы",
+    "gui.cgm.workbench.tab.grenade": "Гранаты",
     "gui.cgm.workbench.tab.misc": "Прочее",
     "container.cgm.workbench": "Оружейный верстак",
     "container.cgm.attachments": "Аксессуары",

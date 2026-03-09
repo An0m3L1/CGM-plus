@@ -17,6 +17,7 @@ import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.IAmmo;
 import com.mrcrayfish.guns.item.IColored;
+import com.mrcrayfish.guns.item.IGrenade;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.C2SMessageCraft;
@@ -45,7 +46,6 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 import java.util.stream.Stream;
 
 /**
@@ -86,6 +86,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
         List<WorkbenchRecipe> weapons = new ArrayList<>();
         List<WorkbenchRecipe> attachments = new ArrayList<>();
         List<WorkbenchRecipe> ammo = new ArrayList<>();
+        List<WorkbenchRecipe> grenade = new ArrayList<>();
         List<WorkbenchRecipe> misc = new ArrayList<>();
 
         for(WorkbenchRecipe recipe : recipes)
@@ -103,6 +104,10 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
             {
                 ammo.add(recipe);
             }
+            else if(output.getItem() instanceof IGrenade)
+            {
+                grenade.add(recipe);
+            }
             else
             {
                 misc.add(recipe);
@@ -111,8 +116,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 
         if(!weapons.isEmpty())
         {
-            ItemStack icon = new ItemStack(ModItems.AUTOMATIC_PISTOL.get());
-            icon.getOrCreateTag().putInt("AmmoCount", ModItems.AUTOMATIC_PISTOL.get().getGun().getGeneral().getMaxAmmo());
+            ItemStack icon = new ItemStack(ModItems.GUN_ICON.get());
             this.tabs.add(new Tab(icon, "weapons", weapons));
         }
 
@@ -126,9 +130,13 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
             this.tabs.add(new Tab(new ItemStack(ModItems.MEDIUM_BULLET.get()), "ammo", ammo));
         }
 
+        if(!grenade.isEmpty())
+        {
+            this.tabs.add(new Tab(new ItemStack(ModItems.GRENADE.get()), "grenade", grenade));
+        }
+
         if(!misc.isEmpty())
         {
-            //this.tabs.add(new Tab(new ItemStack(ModItems.GUN_REPAIR_KIT.get()), "misc", misc));
             this.tabs.add(new Tab(new ItemStack(ModBlocks.GUN_REPAIR_KIT.get()), "misc", misc));
         }
 
@@ -148,7 +156,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
         Objects.requireNonNull(id);
         for(GunItem gunItem : NetworkGunManager.getClientRegisteredGuns())
         {
-            if(id.equals(gunItem.getModifiedGun(stack).getProjectile().getItem()))
+            if(id.equals(gunItem.getModifiedGun(stack).getProjectile().getItem()) && !(stack.getItem() instanceof IGrenade))
             {
                 return true;
             }
@@ -270,6 +278,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
             {
                 this.currentTab = this.tabs.get(i);
                 this.loadItem(this.currentTab.getCurrentIndex());
+                assert this.minecraft != null;
                 this.minecraft.getSoundManager().play(SimpleSoundInstance.forUI(SoundEvents.UI_BUTTON_CLICK, 1.0F));
                 return true;
             }
@@ -424,8 +433,10 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
             modelViewStack.translate(startX + 88, startY + 60, 100);
             modelViewStack.scale(50F, -50F, 50F);
             modelViewStack.mulPose(Vector3f.XP.rotationDegrees(5F));
+            assert Minecraft.getInstance().player != null;
             modelViewStack.mulPose(Vector3f.YP.rotationDegrees(Minecraft.getInstance().player.tickCount + partialTicks));
             RenderSystem.applyModelViewMatrix();
+            assert this.minecraft != null;
             MultiBufferSource.BufferSource buffer = this.minecraft.renderBuffers().bufferSource();
             Minecraft.getInstance().getItemRenderer().render(currentItem, ItemTransforms.TransformType.FIXED, false, poseStack, buffer, 15728880, OverlayTexture.NO_OVERLAY, RenderUtil.getModel(currentItem));
             buffer.endBatch();
@@ -479,7 +490,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
     private List<MaterialItem> getMaterials()
     {
         List<MaterialItem> materials = NonNullList.withSize(6, MaterialItem.EMPTY);
-        List<MaterialItem> filteredMaterials = this.materials.stream().filter(materialItem -> this.checkBoxMaterials.isToggled() ? !materialItem.isEnabled() : materialItem != MaterialItem.EMPTY).collect(Collectors.toList());
+        List<MaterialItem> filteredMaterials = this.materials.stream().filter(materialItem -> this.checkBoxMaterials.isToggled() ? !materialItem.isEnabled() : materialItem != MaterialItem.EMPTY).toList();
         for(int i = 0; i < filteredMaterials.size() && i < materials.size(); i++)
         {
             materials.set(i, filteredMaterials.get(i));
@@ -540,6 +551,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 
         public void updateEnabledState()
         {
+            assert Minecraft.getInstance().player != null;
             this.enabled = InventoryUtil.hasWorkstationIngredient(Minecraft.getInstance().player, this.ingredient);
         }
 

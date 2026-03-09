@@ -40,7 +40,7 @@ public class DistancedSound extends AbstractSoundInstance
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.grenadeBounceSoundDistance::get);
     }
     public static DistancedSound grenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
-        return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.handGrenadeExplosionSoundDistance::get);
+        return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.grenadeExplosionSoundDistance::get);
     }
     public static DistancedSound impactGrenadeExplosion(ResourceLocation soundIn, SoundSource categoryIn, float x, float y, float z, float volume, float pitch, RandomSource source) {
         return new DistancedSound(soundIn, categoryIn, x, y, z, volume, pitch, source, Config.SERVER.impactGrenadeExplosionSoundDistance::get);

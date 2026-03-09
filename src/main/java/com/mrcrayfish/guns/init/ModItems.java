@@ -25,6 +25,9 @@ public class ModItems
 {
     public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
 
+    /* This is a combat rifle model with a stock equipped, used as an icon for tabs */
+    public static final RegistryObject<UnobtainableItem> GUN_ICON = REGISTER.register("gun_icon", () -> new UnobtainableItem((new Item.Properties())));
+
     /* When specifying durability, calculate it like this:
     * (count * mag) + 1
     * count = amount of magazines the gun can fire
@@ -106,7 +109,7 @@ public class ModItems
             ModSounds.GRENADE_THROW.get(),
             ModSounds.GRENADE_PIN.get()));
     public static final RegistryObject<Item> IMPACT_GRENADE = REGISTER.register("impact_grenade", () -> new ImpactGrenadeItem(new Item.Properties(),
-            20 * 10,
+            20 * 300,
             ModSounds.GRENADE_THROW.get(),
             ModSounds.GRENADE_PIN.get()));
     public static final RegistryObject<Item> STUN_GRENADE = REGISTER.register("stun_grenade", () -> new StunGrenadeItem(new Item.Properties(),
@@ -122,7 +125,7 @@ public class ModItems
             ModSounds.INCENDIARY_THROW.get(),
             ModSounds.INCENDIARY_PIN.get()));
     public static final RegistryObject<Item> MOLOTOV = REGISTER.register("molotov", () -> new MolotovItem(new Item.Properties(),
-            20 * 10,
+            20 * 300,
             ModSounds.MOLOTOV_THROW.get(),
             ModSounds.MOLOTOV_LIGHT.get()));
 

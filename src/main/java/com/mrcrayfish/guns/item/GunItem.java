@@ -104,7 +104,7 @@ public class GunItem extends Item implements IColored, IMeta
 
         /* Full stats list */
         if (Screen.hasControlDown()) {
-            //tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+            tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
             /* Additional Damage */ {
                 if(tagCompound != null) {
                     if(tagCompound.contains("AdditionalDamage", Tag.TAG_ANY_NUMERIC))

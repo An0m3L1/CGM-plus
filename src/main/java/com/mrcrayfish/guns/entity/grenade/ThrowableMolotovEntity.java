@@ -34,8 +34,8 @@ import net.minecraft.world.phys.Vec3;
  */
 public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
 {
-    protected float radius = Config.COMMON.molotovExplosionRadius.get().floatValue();
-    protected int fireDuration = Config.COMMON.molotovFireDuration.get();
+    protected float radius = Config.SERVER.molotovExplosionRadius.get().floatValue();
+    protected int fireDuration = Config.SERVER.molotovFireDuration.get();
     private int bounceCount = 1;
     private boolean wasInWater = false;
 

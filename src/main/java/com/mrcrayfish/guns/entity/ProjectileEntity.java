@@ -777,7 +777,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         if(isResistant)
         {
-            damage *= Config.COMMON.resistantDamageMultiplier.get();
+            damage *= Config.COMMON.resistantEntitiesDamageMultiplier.get();
             this.remove(RemovalReason.KILLED);
             this.deadProjectile = true;
         }
@@ -1278,8 +1278,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             boolean hasGunProjectile = isProjectile && ((ProjectileEntity) entity).getProjectile() != null;
 
             damage = hasGunProjectile ? ((ProjectileEntity) entity).getDamage() :
-                    isImpactGrenade ? Config.COMMON.impactGrenadeExplosionDamage.getDefault().floatValue() :
-                            isGrenade ? Config.COMMON.handGrenadeExplosionDamage.getDefault().floatValue() :
+                    isImpactGrenade ? Config.SERVER.impactGrenadeExplosionDamage.getDefault().floatValue() :
+                            isGrenade ? Config.SERVER.grenadeExplosionDamage.getDefault().floatValue() :
                                     20F;
 
             /* Use defined value for guns, halve damage for all other explosions (like grenades) */

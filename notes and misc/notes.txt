@@ -10,12 +10,13 @@ Add and overhaul animations
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouch curio items
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
-
+Add custom backpacks
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-
+Add explosion knockback back to explosives
+Make some explosives stun you like Stun grenades
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Add a movement slow to heavy weapons (minigun, rocket launcher)
 Add a modifier for draw time to attachments and make it correspond to the draw animation
@@ -32,5 +33,8 @@ Make hemp crops 2 blocks tall
 Add a specific break and place sound for repair kit
 Improve repair logic for guns (repairing is done in any crafting menu, takes only 1 repair kit for full repair)
 Return dying weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
-Add comments throughout all code
 Overhaul configs
+Check if all gun statistics are properly recorded (use, kill, etc)
+If player is aiming, disable right click interaction with blocks (only if already aiming, gone through the whole transition)
+Add potion effects
+    - Focused: obtained through energy drinks, adrenaline shots, etc. Increases reload, ADS and draw speed of guns

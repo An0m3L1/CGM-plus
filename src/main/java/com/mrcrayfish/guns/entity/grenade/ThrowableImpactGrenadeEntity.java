@@ -18,8 +18,8 @@ import net.minecraft.world.level.Level;
  */
 public class ThrowableImpactGrenadeEntity extends ThrowableGrenadeEntity
 {
-    protected float radius = Config.COMMON.impactGrenadeExplosionRadius.get().floatValue();
-    protected boolean griefing = Config.COMMON.impactGrenadeExplosionGriefing.get();
+    protected float radius = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue();
+    protected boolean griefing = Config.SERVER.impactGrenadeExplosionGriefing.get();
 
     public ThrowableImpactGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
     {

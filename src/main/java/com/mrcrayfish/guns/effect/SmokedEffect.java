@@ -19,7 +19,7 @@ public class SmokedEffect extends IncurableEffect
 
     public void applyEffectTick(LivingEntity entity, int amplifier)
     {
-        double damage = Config.COMMON.smokeGrenadeDamage.get();
+        double damage = Config.SERVER.smokeGrenadeDamage.get();
         if (!entity.getCommandSenderWorld().isClientSide && entity.hasEffect(ModEffects.SMOKED.get()))
         {
             if(entity.getHealth() > 1.0F)

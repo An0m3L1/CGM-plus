@@ -29,10 +29,10 @@ public class StunGrenadeItem extends GrenadeItem
     @Override
     public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
     {
-        double blindRadius = (Config.COMMON.blindCriteria.radius.get());
-        float maxBlindDuration = (float) (Config.COMMON.blindCriteria.durationMax.get());
-        double stunRadius = (Config.COMMON.stunCriteria.radius.get());
-        float maxStunDuration = (float) (Config.COMMON.stunCriteria.durationMax.get());
+        double blindRadius = (Config.SERVER.blindCriteria.radius.get());
+        float maxBlindDuration = (float) (Config.SERVER.blindCriteria.durationMax.get());
+        double stunRadius = (Config.SERVER.stunCriteria.radius.get());
+        float maxStunDuration = (float) (Config.SERVER.stunCriteria.durationMax.get());
         float cookTime = (float) maxCookTime / 20;
         if(Screen.hasControlDown())
         {

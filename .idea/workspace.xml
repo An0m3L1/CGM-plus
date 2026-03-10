@@ -4,9 +4,14 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="UI Update.&#10;&#10;Fixed JEI recipe window.&#10;Moved grenades to a separate recipe category.&#10;Moved all grenade configs to the server side.&#10;Updated creative category and workbench icon for guns.&#10;Changed some configs.&#10;Removed old animations.&#10;Improved grenade throw and pin sound playback logic.&#10;Improved tech crosshair.">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Small tweaks.&#10;&#10;Returned explosion knockback functionality.&#10;Updated localization files.">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -90,7 +95,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/resourcepacks/WIP Resources",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/saves",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -99,9 +104,9 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\recipes\guns" />
     </key>
@@ -611,7 +616,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Sniper rifle update.&#10;&#10;Modified ammo stack sizes.&#10;Modified rifles' stats.&#10;Overhauled grenade model.&#10;Started working on sniper rifle model.&#10;Added WIP resources and updated test world." />
     <MESSAGE value="Sniper rifle update.&#10;&#10;Overhauled sniper rifle.&#10;Modified ammo stack sizes.&#10;Buffed gun durability.&#10;Modified some gun stats.&#10;Overhauled grenade model.&#10;Added WIP resources and updated test world.&#10;Fixed fire switch sound not used by default." />
     <MESSAGE value="Grenade sounds.&#10;&#10;Added bounce sounds to all grenades.&#10;Added custom pinpull sounds to all grenades.&#10;Added custom throwing sounds to all grenades.&#10;Slightly tweaked sniper rifle model.&#10;Removed WIP Resources." />
     <MESSAGE value="Sound update.&#10;&#10;Updated some sounds." />
@@ -636,7 +640,8 @@
     <MESSAGE value="Draw update.&#10;&#10;Configured drawTime for all guns.&#10;Removed redundant code in draw animations.&#10;Updated sniper draw animations.&#10;Updated tactical pistol hammer model.&#10;Updated test world.&#10;Temporarily removed the Thumb Grip.&#10;Removed mandatory dependencies." />
     <MESSAGE value="Explosion update.&#10;&#10;Fixed waterDamagePenalty stat not working correctly for explosions.&#10;Removed collateralMaxPierce.&#10;Removed config for rockets and pipe grenades - values are now being read from gun data files.&#10;Added explosion radius stat.&#10;Brought back ammo item icon to infinite ammo guns.&#10;Added a purple tint to HUD ammo counter.&#10;Switching fire modes is now restricted while switching/drawing weapons.&#10;Code clean up." />
     <MESSAGE value="UI Update.&#10;&#10;Fixed JEI recipe window.&#10;Moved grenades to a separate recipe category.&#10;Moved all grenade configs to the server side.&#10;Updated creative category and workbench icon for guns.&#10;Changed some configs.&#10;Removed old animations.&#10;Improved grenade throw and pin sound playback logic.&#10;Improved tech crosshair." />
-    <option name="LAST_COMMIT_MESSAGE" value="UI Update.&#10;&#10;Fixed JEI recipe window.&#10;Moved grenades to a separate recipe category.&#10;Moved all grenade configs to the server side.&#10;Updated creative category and workbench icon for guns.&#10;Changed some configs.&#10;Removed old animations.&#10;Improved grenade throw and pin sound playback logic.&#10;Improved tech crosshair." />
+    <MESSAGE value="Small tweaks.&#10;&#10;Returned explosion knockback functionality.&#10;Updated localization files." />
+    <option name="LAST_COMMIT_MESSAGE" value="Small tweaks.&#10;&#10;Returned explosion knockback functionality.&#10;Updated localization files." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

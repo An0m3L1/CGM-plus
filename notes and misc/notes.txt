@@ -15,10 +15,7 @@ Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-Add explosion knockback back to explosives
-Make some explosives stun you like Stun grenades
 Overhaul item textures with changed recipes (change colors to correspond to new materials)
-Add a movement slow to heavy weapons (minigun, rocket launcher)
 Add a modifier for draw time to attachments and make it correspond to the draw animation
 Add a modifier to pierce count
 Add a downside to thumb grip (draw time?)
@@ -30,7 +27,6 @@ Optimize textures
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
 Make hemp crops 2 blocks tall
-Add a specific break and place sound for repair kit
 Improve repair logic for guns (repairing is done in any crafting menu, takes only 1 repair kit for full repair)
 Return dying weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
 If player is aiming, disable right click interaction with blocks (only if already aiming, gone through the whole transition)

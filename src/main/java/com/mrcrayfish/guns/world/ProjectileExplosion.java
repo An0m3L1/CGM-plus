@@ -14,10 +14,12 @@ import net.minecraft.util.Mth;
 import net.minecraft.util.RandomSource;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.enchantment.ProtectionEnchantment;
 import net.minecraft.world.level.ClipContext;
 import net.minecraft.world.level.Explosion;
 import net.minecraft.world.level.ExplosionDamageCalculator;
@@ -202,14 +204,12 @@ public class ProjectileExplosion extends Explosion
             entity.hurt(this.getDamageSource(), (float) damage);
 
             //Explosion knockback code
-            /*
             double blastDamage = rawDamage;
             if(entity instanceof LivingEntity)
             {
                 blastDamage = ProtectionEnchantment.getExplosionKnockbackAfterDampener((LivingEntity) entity, rawDamage);
             }
             entity.setDeltaMovement(entity.getDeltaMovement().add(deltaX * blastDamage, deltaY * blastDamage, deltaZ * blastDamage));
-            */
 
             if(entity instanceof Player player)
             {
@@ -259,9 +259,7 @@ public class ProjectileExplosion extends Explosion
                             }
 
                             blockstate.spawnAfterBreak(serverlevel, blockpos, ItemStack.EMPTY, flag1);
-                            blockstate.getDrops(lootcontext$builder).forEach((p_46074_) -> {
-                                addBlockDrops(objectarraylist, p_46074_, blockpos1);
-                            });
+                            blockstate.getDrops(lootcontext$builder).forEach((p_46074_) -> addBlockDrops(objectarraylist, p_46074_, blockpos1));
                         }
                     }
 

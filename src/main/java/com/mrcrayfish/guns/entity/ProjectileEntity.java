@@ -590,23 +590,30 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
 
             /* Handle dynamic trees logic */
-            if (GunMod.dynamicTreesLoaded && state.is(ModTags.Blocks.FRAGILE) && TreeHelper.isTreePart(state)) {
+            if (GunMod.dynamicTreesLoaded && state.is(ModTags.Blocks.FRAGILE) && TreeHelper.isTreePart(state))
+            {
                 float hardness = state.getDestroySpeed(this.level, pos);
-                int pierceNeeded = Math.max(1, (int) Math.ceil(hardness * 0.5F));
+                int pierceNeeded = Math.max(1, (int) Math.ceil(hardness * 0.35F));
                 int currentDamage = BlockDamageManager.getDamage(this.level, pos);
                 int neededToDestroy = pierceNeeded - currentDamage;
 
                 int pierceRemaining;
                 boolean isInfinite = this.maxPierceCount == -1;
-                if (isInfinite) {
+                if (isInfinite)
+                {
                     pierceRemaining = Integer.MAX_VALUE;
-                } else {
+                }
+                else
+                {
                     pierceRemaining = this.maxPierceCount - this.pierceCounter;
                 }
 
-                if (pierceRemaining >= neededToDestroy) {
-                    if (handleDynamicTreeHit(pos, blockHitResult.getDirection(), FallingTreeEntity.DestroyType.HARVEST)) {
-                        if (!isInfinite) {
+                if (pierceRemaining >= neededToDestroy)
+                {
+                    if (handleDynamicTreeHit(pos, blockHitResult.getDirection(), FallingTreeEntity.DestroyType.HARVEST))
+                    {
+                        if (!isInfinite)
+                        {
                             this.pierceCounter += neededToDestroy;
                             float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
                             float maxPenalty = this.modifiedGun.getProjectile().getPierceDamageMaxPenalty();
@@ -617,14 +624,17 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                         this.setPos(hitVec.x, hitVec.y, hitVec.z);
                         return true;
                     }
-                    else {
+                    else
+                    {
                         this.remove(RemovalReason.KILLED);
                         this.deadProjectile = true;
                         return false;
                     }
                 }
-                else {
-                    if (pierceRemaining <= 0) {
+                else
+                {
+                    if (pierceRemaining <= 0)
+                    {
                         this.remove(RemovalReason.KILLED);
                         this.deadProjectile = true;
                         return false;
@@ -1190,7 +1200,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             if (map == null) return 0;
             BlockDamageData data = map.get(pos);
             if (data == null) return 0;
-            // Проверяем, не изменился ли блок
             BlockState currentState = level.getBlockState(pos);
             if (!currentState.equals(data.state)) {
                 map.remove(pos);
@@ -1207,7 +1216,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             BlockDamageData data = map.computeIfAbsent(pos, k -> new BlockDamageData());
             data.damage = damage;
             data.lastHitTime = level.getGameTime();
-            data.state = level.getBlockState(pos); // запоминаем текущее состояние
+            data.state = level.getBlockState(pos);
             level.destroyBlockProgress(getBreakerId(pos), pos, stage);
         }
 
@@ -1330,7 +1339,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                                 blockCenter.x - explosionCenter.x,
                                 blockCenter.y - explosionCenter.y,
                                 blockCenter.z - explosionCenter.z
-                        ).getOpposite(); // ветка падает от взрыва
+                        ).getOpposite();
 
                         LivingEntity shooter = entity instanceof ProjectileEntity ? ((ProjectileEntity) entity).getShooter() : null;
 

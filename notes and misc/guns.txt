@@ -34,7 +34,7 @@ Shotguns:
     AA12
     Lever Action
 Other:
-    MiniGun <--
+    M134 MiniGun <--
     Milkor MGL <--
     M202A1 <--
     M249
@@ -42,7 +42,9 @@ Other:
     China Lake GL
     RPG-7
     Flare Gun
-    Railgun (very long reload for huge damage)
-    Pulse rifle (bursts of lasers)
-    Energy shotgun (shoots one explosive energy ball)
+    Railgun
+    Pulse rifle
+    Energy shotgun
+    Laser cannon
     Crossbow
+    Bow

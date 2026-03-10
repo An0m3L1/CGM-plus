@@ -200,7 +200,7 @@ public class ProjectileExplosion extends Explosion
 
             double blockDensity = getSeenPercent(explosionPos, entity);
             double rawDamage = (1.0D - strength) * blockDensity;
-            double damage = Math.min( ((rawDamage * rawDamage + rawDamage) / 2.0D)*(projectileDamage*10) + 1.0D, projectileDamage);
+            double damage = Math.min(((rawDamage * rawDamage + rawDamage) / 2.0D) * projectileDamage + 1.0D, projectileDamage);
             entity.hurt(this.getDamageSource(), (float) damage);
 
             //Explosion knockback code

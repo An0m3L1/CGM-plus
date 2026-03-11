@@ -113,6 +113,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
     protected int soundTime = 0;
     protected boolean deadProjectile = false;
     protected float pitch = 0.9F + level.random.nextFloat() * 0.2F;
+    protected boolean infinitePiercing = false;
     public float rotation;
     public float prevRotation;
     public float waterDamagePenalty;
@@ -139,6 +140,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.modifiedGravity = modifiedGun.getProjectile().isGravity() ? GunModifierHelper.getModifiedProjectileGravity(weapon, -0.04 * modifiedGun.getProjectile().getGravity()) : 0.0;
         this.life = GunModifierHelper.getModifiedProjectileLife(weapon, this.projectile.getLife());
         this.waterDamagePenalty = 1.0F - projectile.getWaterDamagePenalty();
+        this.infinitePiercing = this.maxPierceCount == -1;
 
         /* Get speed and set motion */
         Vec3 dir = this.getDirection(shooter, weapon, item, modifiedGun);
@@ -598,8 +600,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 int neededToDestroy = pierceNeeded - currentDamage;
 
                 int pierceRemaining;
-                boolean isInfinite = this.maxPierceCount == -1;
-                if (isInfinite)
+                if (infinitePiercing)
                 {
                     pierceRemaining = Integer.MAX_VALUE;
                 }
@@ -612,7 +613,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 {
                     if (handleDynamicTreeHit(pos, blockHitResult.getDirection(), FallingTreeEntity.DestroyType.HARVEST))
                     {
-                        if (!isInfinite)
+                        if (!infinitePiercing)
                         {
                             this.pierceCounter += neededToDestroy;
                             float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
@@ -678,9 +679,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             int neededToDestroy = pierceNeeded - currentDamage;
 
             int pierceRemaining;
-            boolean isInfinite = this.maxPierceCount == -1;
 
-            if (isInfinite) {
+            if (infinitePiercing) {
                 pierceRemaining = Integer.MAX_VALUE;
             }
             else {
@@ -691,7 +691,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
                 BlockDamageManager.removeDamage(this.level, pos);
 
-                if (!isInfinite) {
+                if (!infinitePiercing) {
                     this.pierceCounter += neededToDestroy;
                     float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
                     float maxPenalty = this.modifiedGun.getProjectile().getPierceDamageMaxPenalty();
@@ -1570,6 +1570,35 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         float bypassLevel = Mth.clamp(bullet.getProjectile().getProtectionBypass(),0,1);
         return (finalDamage-damage)*bypassLevel;
+    }
+
+    private int getRemainingPierces()
+    {
+        return infinitePiercing ? Integer.MAX_VALUE : maxPierceCount - pierceCounter;
+    }
+
+    private boolean consumePierces(int amount)
+    {
+        if (infinitePiercing)
+        {
+            return true;
+        }
+        int remaining = maxPierceCount - pierceCounter;
+        if (remaining >= amount)
+        {
+            pierceCounter += amount;
+            applyPiercePenalty(amount);
+            return true;
+        }
+        return false;
+    }
+
+    private void applyPiercePenalty(int pierced)
+    {
+        float penalty = modifiedGun.getProjectile().getPierceDamagePenalty();
+        float maxPenalty = modifiedGun.getProjectile().getPierceDamageMaxPenalty();
+        pierceDamageFraction -= pierced * penalty;
+        pierceDamageFraction = Mth.clamp(pierceDamageFraction, 1F - maxPenalty, 1.0F);
     }
 
     public static int updateTargetBlock(TargetBlock block, LevelAccessor accessor, BlockState state, BlockHitResult result, Entity entity)

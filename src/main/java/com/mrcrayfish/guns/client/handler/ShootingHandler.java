@@ -1,6 +1,5 @@
 package com.mrcrayfish.guns.client.handler;
 
-import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.KeyBinds;
 import com.mrcrayfish.guns.common.GripType;
@@ -25,7 +24,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemCooldowns;
 import net.minecraft.world.item.ItemStack;
-import net.minecraft.world.item.Items;
+import net.minecraft.world.item.ShieldItem;
 import net.minecraftforge.client.event.InputEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.TickEvent;
@@ -92,7 +91,7 @@ public class ShootingHandler
         if(PlayerReviveHelper.isBleeding(player))
             return;
 
-        if(Config.CLIENT.flipControls.get() ? event.isUseItem() : event.isAttack())
+        if(event.isAttack())
         {
             ItemStack heldItem = player.getMainHandItem();
             if(heldItem.getItem() instanceof GunItem gunItem)
@@ -101,35 +100,26 @@ public class ShootingHandler
                 event.setCanceled(true);
             }
         }
-        else 
+        else if(event.isUseItem())
         {
-        	if(Config.CLIENT.flipControls.get() ? event.isAttack() : event.isUseItem())
-	        {
-	            ItemStack heldItem = player.getMainHandItem();
-	            if(heldItem.getItem() instanceof GunItem gunItem)
-	            {
-	                if(event.getHand() == InteractionHand.OFF_HAND)
-	                {
-	                    // Allow shields to be used if weapon is one-handed
-	                    if(player.getOffhandItem().getItem() == Items.SHIELD)
-	                    {
-	                        Gun modifiedGun = gunItem.getModifiedGun(heldItem);
-	                        if(modifiedGun.getGeneral().getGripType() == GripType.ONE_HANDED_PISTOL || modifiedGun.getGeneral().getGripType() == GripType.TWO_HANDED_PISTOL)
-	                        {
-	                            return;
-	                        }
-	                    }
-	                    event.setCanceled(true);
-	                    event.setSwingHand(false);
-	                    return;
-	                }
-	                if(Config.CLIENT.flipControls.get() || AimingHandler.get().isZooming() && AimingHandler.get().isLookingAtInteractableBlock())
-	                {
-	                    event.setCanceled(true);
-	                    event.setSwingHand(false);
-	                }
-	            }
-	        }
+            ItemStack heldItem = player.getMainHandItem();
+            if(heldItem.getItem() instanceof GunItem gunItem)
+            {
+                if(event.getHand() == InteractionHand.OFF_HAND)
+                {
+                    /* Allow shields to be used if weapon is one-handed */
+                    if(player.getOffhandItem().getItem() instanceof ShieldItem)
+                    {
+                        Gun modifiedGun = gunItem.getModifiedGun(heldItem);
+                        if(modifiedGun.getGeneral().getGripType() == GripType.ONE_HANDED_PISTOL || modifiedGun.getGeneral().getGripType() == GripType.TWO_HANDED_PISTOL)
+                        {
+                            return;
+                        }
+                    }
+                    event.setCanceled(true);
+                    event.setSwingHand(false);
+                }
+            }
         }
     }
 
@@ -330,7 +320,7 @@ public class ShootingHandler
             }
         }
 
-        return player.getUseItem().getItem() != Items.SHIELD;
+        return !(player.getUseItem().getItem() instanceof ShieldItem);
     }
 
     private boolean isEmpty(Player player, ItemStack heldItem)
@@ -381,7 +371,7 @@ public class ShootingHandler
             }
         }
 
-        return player.getUseItem().getItem() != Items.SHIELD;
+        return !(player.getUseItem().getItem() instanceof ShieldItem);
     }
 
     public void fire(Player player, ItemStack heldItem)

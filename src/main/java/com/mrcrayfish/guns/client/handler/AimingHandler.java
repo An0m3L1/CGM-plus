@@ -10,7 +10,6 @@ import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.compat.PlayerReviveHelper;
 import com.mrcrayfish.guns.compat.ShoulderSurfingHelper;
 import com.mrcrayfish.guns.debug.Debug;
-import com.mrcrayfish.guns.init.ModBlocks;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
@@ -18,24 +17,16 @@ import com.mrcrayfish.guns.network.message.C2SMessageAim;
 import com.mrcrayfish.guns.util.GunModifierHelper;
 import net.minecraft.client.CameraType;
 import net.minecraft.client.Minecraft;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
 import net.minecraft.world.InteractionHand;
-import net.minecraft.world.entity.decoration.ItemFrame;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
-import net.minecraft.world.level.block.Block;
-import net.minecraft.world.level.block.Blocks;
-import net.minecraft.world.level.block.EntityBlock;
-import net.minecraft.world.level.block.state.BlockState;
-import net.minecraft.world.phys.BlockHitResult;
-import net.minecraft.world.phys.EntityHitResult;
 import net.minecraftforge.client.event.ClientPlayerNetworkEvent;
 import net.minecraftforge.client.event.RenderGuiOverlayEvent;
 import net.minecraftforge.client.event.ViewportEvent;
-import net.minecraftforge.common.Tags;
 import net.minecraftforge.event.TickEvent;
+import net.minecraftforge.event.entity.player.PlayerInteractEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 
 import javax.annotation.Nullable;
@@ -313,8 +304,10 @@ public class AimingHandler
         if(mc.player.getOffhandItem().getItem() == Items.SHIELD && (gun.getGeneral().getGripType() == GripType.ONE_HANDED_PISTOL || gun.getGeneral().getGripType() == GripType.TWO_HANDED_PISTOL))
             return false;
 
+        /*
         if(!this.localTracker.isAiming() && this.isLookingAtInteractableBlock())
             return false;
+        */
 
         if(ModSyncedDataKeys.RELOADING.getValue(mc.player) || ReloadHandler.get().getReloadTimer()!=0)
             return false;
@@ -331,6 +324,7 @@ public class AimingHandler
         return zooming;
     }
 
+    /*
     public boolean isLookingAtInteractableBlock()
     {
         Minecraft mc = Minecraft.getInstance();
@@ -355,6 +349,20 @@ public class AimingHandler
             }
         }
         return false;
+    }
+    */
+
+    @SubscribeEvent
+    public void onRightClickBlock(PlayerInteractEvent.RightClickBlock event)
+    {
+        Player player = event.getEntity();
+        if(player == null)
+            return;
+        /* If the player is already aiming, disable interaction with blocks */
+        if(getAimProgress(player,1.0F) >= 0.75F)
+        {
+            event.setCanceled(true);
+        }
     }
 
     public double getNormalisedAdsProgress()

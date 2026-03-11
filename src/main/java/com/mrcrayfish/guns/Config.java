@@ -16,10 +16,6 @@ public class Config
      */
     public static class Client
     {
-        /* Controls */
-        public final ForgeConfigSpec.DoubleValue aimDownSightSensitivity;
-        public final ForgeConfigSpec.BooleanValue flipControls;
-
         /* Crosshair */
         public final ForgeConfigSpec.ConfigValue<String> crosshair;
         public final ForgeConfigSpec.DoubleValue dynamicCrosshairBaseSpread;
@@ -44,6 +40,7 @@ public class Config
         public final ForgeConfigSpec.BooleanValue restrictCameraRollToWeapons;
         public final ForgeConfigSpec.BooleanValue forceFirstPersonOnZoomedAim;
         public final ForgeConfigSpec.DoubleValue firstPersonAimZoomThreshold;
+        public final ForgeConfigSpec.DoubleValue aimDownSightSensitivity;
 
         /* HUD */
         public final ForgeConfigSpec.BooleanValue displayAmmoCount;
@@ -72,12 +69,6 @@ public class Config
 
         public Client(ForgeConfigSpec.Builder builder)
         {
-            builder.push("controls");
-            {
-                this.aimDownSightSensitivity = builder.comment("Mouse sensitivity will be multiplied by this value when ADS. If set to 1.0, mouse sensitivity won't be affected by ADS.").defineInRange("aimDownSightSensitivity", 1.0, 0.0, 1.0);
-                this.flipControls = builder.comment("If enabled, switches the shoot and aim controls of weapons (right click to shoot, left click to aim). Due to technical reasons, you won't be able to use offhand items if you enable this setting (for example, using shields with pistols).").define("flipControls", false);
-            }
-            builder.pop();
             builder.push("crosshair");
             {
                 this.crosshair = builder.comment("A custom crosshair to use for weapons. Available options: arrow, better_default, box, circle, dot, dynamic, filled_circle, hit_marker, line, round, smiley, square, t, tech.").define("crosshair", "cgm:dynamic");
@@ -107,6 +98,7 @@ public class Config
                 this.restrictCameraRollToWeapons = builder.comment("When enabled, the Camera Roll Effect is only applied when holding a weapon.").define("restrictCameraRollToWeapons", true);
                 this.forceFirstPersonOnZoomedAim = builder.comment("When enabled, temporarily switches the camera to first person while aiming. Aim zoom must be above firstPersonAimZoomThreshold, and only applies to third person rear camera modes.").define("forceFirstPersonOnZoomedAim", true);
                 this.firstPersonAimZoomThreshold = builder.comment("The zoom threshold at which the camera switches to first person while aiming. Requires forceFirstPersonOnZoomedAim to be set to true.").defineInRange("firstPersonAimZoomThreshold", 0.25, 0.0, 1.0);
+                this.aimDownSightSensitivity = builder.comment("Mouse sensitivity will be multiplied by this value when ADS. If set to 1.0, mouse sensitivity won't be affected by ADS.").defineInRange("aimDownSightSensitivity", 1.0, 0.0, 1.0);
             }
             builder.pop();
             builder.push("hud");

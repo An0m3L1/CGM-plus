@@ -21,13 +21,18 @@ Add a modifier to pierce count
 Add a downside to thumb grip (draw time?)
 Add debug lines and functions
 Complete fragile.json
-Improve hardness calculation logic
+Improve hardness calculation logic (choose one)
+    - Separate fragile and penetrable blocks. Fragile blocks are broken for free, penetrable blocks consume penetration power (current behavior).
+    - Add levels of penetration (light, medium, high). Penetration level and count are separate, with each block requiring a proper penetration power to break it.
+      Count tells us how much of these blocks we can break.
 Combine dynamic tree and fragile block destruction as much as possible
 Optimize textures
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
 Make hemp crops 2 blocks tall
-Improve repair logic for guns (repairing is done in any crafting menu, takes only 1 repair kit for full repair)
+Improve repair logic for guns (repairing is done in any crafting menu, takes 2 repair kits for full repair)
 Return dying weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
+Improve explosion effects
+Fix explosion damage being inconsistent (revert a change?)
 Add potion effects
     - Focused: obtained through energy drinks, adrenaline shots, etc. Increases reload, ADS and draw speed of guns

@@ -267,6 +267,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         return this.modifiedGravity;
     }
 
+    /* TODO: Optimize method */
     @Override
     public void tick()
     {
@@ -527,6 +528,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         return new EntityResult(entity, startVec, hitPos, headshot);
     }
 
+    /* TODO: Optimize method */
     /**
      * Called when the projectile hits something.
      * @param result The hit result
@@ -755,7 +757,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         return false;
     }
 
-    @SuppressWarnings("deprecation")
+    /* TODO: Optimize method */
     protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
     {
         float damage = this.getDamage();
@@ -1128,6 +1130,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
+    /* TODO: Optimize method */
     private boolean handleDynamicTreeHit(BlockPos hitPos, Direction face, FallingTreeEntity.DestroyType destroyType)
     {
         if (!GunMod.dynamicTreesLoaded)
@@ -1175,7 +1178,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         return true;
     }
 
-    /** Used for showing cracks on blocks hit by projectiles.*/
+    /** Used for applying damage to blocks by projectiles. */
     public static class BlockDamageManager
     {
         private static final Map<Level, Map<BlockPos, BlockDamageData>> DAMAGE = new WeakHashMap<>();
@@ -1257,6 +1260,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
+    /* TODO: Optimize method */
     /**
      * Creates an explosion with customizable parameters. Don't use outside this class.
      *
@@ -1293,7 +1297,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             /* Use defined value for guns, halve damage for all other explosions (like grenades) */
             if(entity.isInWater())
                 if (hasGunProjectile)
-                    damage *= ((ProjectileEntity) entity).getProjectile().getWaterDamagePenalty();
+                    damage *= (1.0F - ((ProjectileEntity) entity).getProjectile().getWaterDamagePenalty());
                 else
                     damage *= 0.5F;
 
@@ -1412,6 +1416,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 for (BlockPos pos : explosion.getToBlow())
                 {
+                    /* Clear block damage from exploded blocks */
                     BlockDamageManager.removeDamage(world, pos);
                 }
             }

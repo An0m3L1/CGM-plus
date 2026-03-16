@@ -169,15 +169,15 @@ public class GunItem extends Item implements IColored, IMeta
                 }
             }
             /* Armor and protection piercing */ {
-                tooltip.add(Component.translatable("info.cgm.armor_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(armorPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
-                tooltip.add(Component.translatable("info.cgm.protection_pierce", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(protectionPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("info.cgm.armor_penetration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(armorPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
+                tooltip.add(Component.translatable("info.cgm.protection_penetration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(protectionPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
             }
             /* Pierce count */ {
                 if (maxPierceCount > 0) {
-                    tooltip.add(Component.translatable("info.cgm.pierce_count", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxPierceCount)).withStyle(ChatFormatting.GRAY));
+                    tooltip.add(Component.translatable("info.cgm.penetration_power", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxPierceCount)).withStyle(ChatFormatting.GRAY));
                 }
                 if (maxPierceCount == -1) {
-                    tooltip.add(Component.translatable("info.cgm.pierce_count", ChatFormatting.LIGHT_PURPLE + "∞").withStyle(ChatFormatting.GRAY));
+                    tooltip.add(Component.translatable("info.cgm.penetration_power", ChatFormatting.LIGHT_PURPLE + "∞").withStyle(ChatFormatting.GRAY));
                 }
             }
             /* Explosion radius */ {

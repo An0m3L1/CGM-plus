@@ -165,16 +165,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 {
                     ItemStack model = ItemStack.of(weapon.getTag().getCompound("Model"));
                     if(model.getTag() != null && model.getTag().contains("CustomModelData"))
-                    {
                         customModelData = model.getTag().getInt("CustomModelData");
-                    }
                 }
             }
             ItemStack ammoStack = new ItemStack(ammo);
             if(customModelData != -1)
-            {
                 ammoStack.getOrCreateTag().putInt("CustomModelData", customModelData);
-            }
             this.item = ammoStack;
         }
     }
@@ -193,29 +189,30 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         float gunSpread = GunCompositeStatHelper.getCompositeSpread(weapon, modifiedGun);
         float minSpread = GunCompositeStatHelper.getCompositeMinSpread(weapon, modifiedGun);
 
+        /* For 0 spread we skip all the calculations and just shoot where the shooter looks. */
         if(gunSpread == 0F)
-        {
             return this.getVectorFromRotation(shooter.getXRot(), shooter.getYRot());
-        }
 
         if(shooter instanceof Player)
         {
             float initialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread((Player) shooter, item), minSpread, gunSpread);
+
             if(!this.general.getAlwaysSpread() || minSpread > 0)
-            {
                 gunSpread = initialGunSpread;
-            }
 
             if(ModSyncedDataKeys.AIMING.getValue((Player) shooter))
             {
                 float aimPosition = (float) Mth.clamp(ServerAimTracker.getAimingTicks((Player) shooter)/(5/GunCompositeStatHelper.getCompositeAimDownSightSpeed(weapon)),0,1);
 
-                if (modifiedGun.getGeneral().getUseSniperSpread()) {
+                if (modifiedGun.getGeneral().getUseSniperSpread())
+                {
                     /* For sniper spread reduce only the minSpread value */
                     float aimingMinSpread = minSpread * (1.0F - this.general.getSpreadAdsReduction());
                     float aimingInitialGunSpread = Mth.lerp(SpreadTracker.get((Player) shooter).getSpread((Player) shooter, item), aimingMinSpread, gunSpread);
                     gunSpread = Mth.lerp(aimPosition, initialGunSpread, aimingInitialGunSpread);
-                } else {
+                }
+                else
+                {
                     float aimingGunSpread = gunSpread * (1.0F - this.general.getSpreadAdsReduction());
                     gunSpread = Mth.lerp(aimPosition, initialGunSpread, aimingGunSpread);
                 }
@@ -280,15 +277,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         this.prevRotation = this.rotation;
         double speed = this.getDeltaMovement().length();
         if (speed > 0.1)
-        {
             this.rotation += speed * 50;
-        }
 
         Vec3 vec3 = this.getDeltaMovement();
 
         /* Spawn bubbles in water */
-        if (this.isInWater()) {
-            for(int j = 0; j < 4; ++j) {
+        if (this.isInWater())
+        {
+            for(int j = 0; j < 4; ++j)
+            {
                 this.level.addParticle(ParticleTypes.BUBBLE, this.getX() - vec3.x * 0.1D, this.getY() - vec3.y * 0.1D, this.getZ() - vec3.z * 0.1D, vec3.x, vec3.y, vec3.z);
             }
         }
@@ -306,29 +303,25 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 AABB range = new AABB(startVec.x-5, startVec.y-5, startVec.z-5, startVec.x+5, startVec.y+5, startVec.z+5);
                 List<Player> players = this.level.getEntitiesOfClass(Player.class, range);
 
-                /* Remove shooter from the playlist */
-                if (this.shooter instanceof Player) {
+                /* Remove shooter from the playlist. */
+                if (this.shooter instanceof Player)
                     players.removeIf(player -> player.equals(this.shooter));
-                }
 
                 float volume = 0.5F + this.level.getRandom().nextFloat() * 0.4F;
-                boolean isShotgun = general.getProjectileAmount() > 1;
+                boolean isMultishot = general.getProjectileAmount() > 1;
                 if (!players.isEmpty() && this.tickCount > 3 && soundTime < this.tickCount - 3)
                 {
                     /* Divide volume by projectile amount to avoid deafening players irl. */
-                    if(isShotgun)
-                    {
+                    if(isMultishot)
                         volume = volume / general.getProjectileAmount();
-                    }
                     this.level.playSound(null, startVec.x,startVec.y,startVec.z, ModSounds.FLYBY.get(), SoundSource.NEUTRAL, volume, 0.8F + this.level.getRandom().nextFloat() * 0.4F);
                     this.soundTime = this.tickCount;
                 }
             }
 
             if(result.getType() != HitResult.Type.MISS)
-            {
                 endVec = result.getLocation();
-            }
+
             List<EntityResult> hitEntities = null;
             boolean skipMovement = false;
 
@@ -337,15 +330,12 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             {
                 EntityResult entityResult = this.findEntityOnPath(startVec, endVec);
                 if(entityResult != null)
-                {
                     hitEntities = Collections.singletonList(entityResult);
-                }
             }
             /* Find all entities that will be affected by the projectile */
             else
-            {
                 hitEntities = this.findEntitiesOnPath(startVec, endVec);
-            }
+
             if(hitEntities != null && !hitEntities.isEmpty())
             {
                 for(EntityResult entityResult : hitEntities)
@@ -355,27 +345,21 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     {
                         /* Check if we hit ourselves or a player that is immune to our attacks */
                         if(this.shooter instanceof Player && !((Player) this.shooter).canHarmPlayer(player))
-                        {
                             result = null;
-                        }
                     }
                     if(result != null)
                     {
                         /* Freeze projectile movement for 1 tick after hitting an entity for proper piercing calculations */
                         if (this.onHit(result, startVec, endVec))
-                        {
                             skipMovement = true;
                             break;
-                        }
                     }
                 }
             }
             else
             {
                 if (this.onHit(result, startVec, endVec))
-                {
                     skipMovement = true;
-                }
             }
 
             if (!skipMovement)
@@ -591,34 +575,34 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 bell.attemptToRing(this.level, pos, blockHitResult.getDirection());
             }
 
+            float blockHardness = state.getDestroySpeed(this.level, pos);
+            boolean isTree = GunMod.dynamicTreesLoaded && TreeHelper.isTreePart(state);
+            /* Make trees take less hits to destroy due to their high hardness */
+            if(isTree)
+                blockHardness *= 0.25F;
+            int pierceToDestroy = Math.max(1, (int) Math.ceil(blockHardness));
+            int currentBlockDamage = BlockDamageManager.getDamage(this.level, pos);
+            int neededPierce = pierceToDestroy - currentBlockDamage;
+            int pierceRemaining;
+
             /* Handle dynamic trees logic */
-            if (GunMod.dynamicTreesLoaded && state.is(ModTags.Blocks.FRAGILE) && TreeHelper.isTreePart(state))
+            if (isTree && state.is(ModTags.Blocks.FRAGILE))
             {
-                float hardness = state.getDestroySpeed(this.level, pos);
-                int pierceNeeded = Math.max(1, (int) Math.ceil(hardness * 0.35F));
-                int currentDamage = BlockDamageManager.getDamage(this.level, pos);
-                int neededToDestroy = pierceNeeded - currentDamage;
-
-                int pierceRemaining;
                 if (infinitePiercing)
-                {
                     pierceRemaining = Integer.MAX_VALUE;
-                }
                 else
-                {
                     pierceRemaining = this.maxPierceCount - this.pierceCounter;
-                }
 
-                if (pierceRemaining >= neededToDestroy)
+                if (pierceRemaining >= neededPierce)
                 {
                     if (handleDynamicTreeHit(pos, blockHitResult.getDirection(), FallingTreeEntity.DestroyType.HARVEST))
                     {
                         if (!infinitePiercing)
                         {
-                            this.pierceCounter += neededToDestroy;
+                            this.pierceCounter += neededPierce;
                             float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
                             float maxPenalty = this.modifiedGun.getProjectile().getPierceDamageMaxPenalty();
-                            this.pierceDamageFraction -= neededToDestroy * penalty;
+                            this.pierceDamageFraction -= neededPierce * penalty;
                             this.pierceDamageFraction = Mth.clamp(this.pierceDamageFraction, 1F - maxPenalty, 1.0F);
                         }
                         BlockDamageManager.removeDamage(this.level, pos);
@@ -640,9 +624,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                         this.deadProjectile = true;
                         return false;
                     }
-                    int newDamage = currentDamage + pierceRemaining;
-                    int stage = (int) (10 * newDamage / (float) pierceNeeded);
-                    BlockDamageManager.setDamage(this.level, pos, newDamage, pierceNeeded, stage);
+                    int newDamage = currentBlockDamage + pierceRemaining;
+                    int stage = (int) (10 * newDamage / (float) pierceToDestroy);
+                    BlockDamageManager.setDamage(this.level, pos, newDamage, pierceToDestroy, stage);
                     this.remove(RemovalReason.KILLED);
                     this.deadProjectile = true;
                     return false;
@@ -650,7 +634,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             }
 
             /* Destroy leaves for free */
-            if (Config.COMMON.fragileGriefing.get() && state.is(BlockTags.LEAVES)) {
+            if (Config.COMMON.fragileGriefing.get() && state.is(BlockTags.LEAVES))
+            {
                 this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
                 BlockDamageManager.removeDamage(this.level, pos);
                 this.setPos(hitVec.x, hitVec.y, hitVec.z);
@@ -659,8 +644,10 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
             /* Check if we should perform fragile logic */
             boolean canDestroy = false;
-            if (Config.COMMON.fragileGriefing.get() && state.is(ModTags.Blocks.FRAGILE)) {
-                if (this.modifiedGun != null && this.modifiedGun.getProjectile().isBreakFragile()) {
+            if (Config.COMMON.fragileGriefing.get() && state.is(ModTags.Blocks.FRAGILE))
+            {
+                if (this.modifiedGun != null && this.modifiedGun.getProjectile().isBreakFragile())
+                {
                     canDestroy = true;
                 }
             }
@@ -673,13 +660,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 return false;
             }
 
-            float hardness = state.getDestroySpeed(this.level, pos);
-            int pierceNeeded = Math.max(1, (int) Math.ceil(hardness));
-            int currentDamage = BlockDamageManager.getDamage(this.level, pos);
-            int neededToDestroy = pierceNeeded - currentDamage;
-
-            int pierceRemaining;
-
             if (infinitePiercing) {
                 pierceRemaining = Integer.MAX_VALUE;
             }
@@ -687,15 +667,15 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                 pierceRemaining = this.maxPierceCount - this.pierceCounter;
             }
 
-            if (pierceRemaining >= neededToDestroy) {
+            if (pierceRemaining >= neededPierce) {
                 this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
                 BlockDamageManager.removeDamage(this.level, pos);
 
                 if (!infinitePiercing) {
-                    this.pierceCounter += neededToDestroy;
+                    this.pierceCounter += neededPierce;
                     float penalty = this.modifiedGun.getProjectile().getPierceDamagePenalty();
                     float maxPenalty = this.modifiedGun.getProjectile().getPierceDamageMaxPenalty();
-                    this.pierceDamageFraction -= neededToDestroy * penalty;
+                    this.pierceDamageFraction -= neededPierce * penalty;
                     this.pierceDamageFraction = Mth.clamp(this.pierceDamageFraction, 1F - maxPenalty, 1.0F);
                 }
                 this.setPos(hitVec.x, hitVec.y, hitVec.z);
@@ -707,9 +687,9 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     this.deadProjectile = true;
                     return false;
                 }
-                int newDamage = currentDamage + pierceRemaining;
-                int stage = (int) (10 * newDamage / (float) pierceNeeded);
-                BlockDamageManager.setDamage(this.level, pos, newDamage, pierceNeeded, stage);
+                int newDamage = currentBlockDamage + pierceRemaining;
+                int stage = (int) (10 * newDamage / (float) pierceToDestroy);
+                BlockDamageManager.setDamage(this.level, pos, newDamage, pierceToDestroy, stage);
                 this.remove(RemovalReason.KILLED);
                 this.deadProjectile = true;
                 return false;
@@ -824,26 +804,27 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         DamageSource bypassSource = source.bypassArmor();
         entity.hurt(bypassSource, damage+bypassDamage);
 
-        // Since we're bypassing armor, we have to add logic to damage the armor's durability
-        // And since we're doing that, let's make headshots damage only the helmet, and by a larger amount.
+        /* Since we're bypassing armor, we have to add logic to damage armor durability. Headshots damage only helmets. */
         if (entity instanceof Player player)
         {
             if (headshot)
-                // The damage input gets divided by 4, hence why we're multiplying the durability damage value.
+                /* The damage input gets divided by 4, hence why we're multiplying the durability damage value. */
                 player.getInventory().hurtArmor(source, 4*4, Inventory.HELMET_SLOT_ONLY);
             else
                 player.getInventory().hurtArmor(source, 1, Inventory.ALL_ARMOR_SLOTS);
         }
 
+        /* Endermen do get hit by projectiles, but since they immediately teleport away, we won't show any hit effects for them. */
         boolean isEnderman = (entity instanceof EnderMan || entity.getType() == EntityType.ENDERMAN);
-        if (!isImmune && this.shooter instanceof Player && !isDead && !isEnderman)
-        {
-            int hitType = critical ? S2CMessageProjectileHitEntity.HitType.CRITICAL : headshot ? S2CMessageProjectileHitEntity.HitType.HEADSHOT : S2CMessageProjectileHitEntity.HitType.NORMAL;
-            PacketHandler.getPlayChannel().sendToPlayer(() -> (ServerPlayer) this.shooter, new S2CMessageProjectileHitEntity(hitVec.x, hitVec.y, hitVec.z, hitType, entity instanceof Player));
-        }
+
         if (!isImmune && !isDead && !isEnderman)
         {
             PacketHandler.getPlayChannel().sendToTracking(() -> entity, new S2CMessageBlood(hitVec.x, hitVec.y, hitVec.z, entity instanceof LivingEntity, headshot));
+            if(this.shooter instanceof Player)
+            {
+                int hitType = critical ? S2CMessageProjectileHitEntity.HitType.CRITICAL : headshot ? S2CMessageProjectileHitEntity.HitType.HEADSHOT : S2CMessageProjectileHitEntity.HitType.NORMAL;
+                PacketHandler.getPlayChannel().sendToPlayer(() -> (ServerPlayer) this.shooter, new S2CMessageProjectileHitEntity(hitVec.x, hitVec.y, hitVec.z, hitType, entity instanceof Player));
+            }
         }
     }
 
@@ -1049,7 +1030,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
      */
     private static BlockHitResult rayTraceBlocks(Level world, ClipContext context, Predicate<BlockState> ignorePredicate)
     {
-        return performRayTrace(context, (rayTraceContext, blockPos) -> {
+        return performRayTrace(context, (rayTraceContext, blockPos) ->
+        {
             BlockState blockState = world.getBlockState(blockPos);
             if(ignorePredicate.test(blockState)) return null;
             FluidState fluidState = world.getFluidState(blockPos);
@@ -1062,7 +1044,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
             double blockDistance = blockResult == null ? Double.MAX_VALUE : rayTraceContext.getFrom().distanceToSqr(blockResult.getLocation());
             double fluidDistance = fluidResult == null ? Double.MAX_VALUE : rayTraceContext.getFrom().distanceToSqr(fluidResult.getLocation());
             return blockDistance <= fluidDistance ? blockResult : fluidResult;
-        }, (rayTraceContext) -> {
+        }, (rayTraceContext) ->
+        {
             Vec3 Vector3d = rayTraceContext.getFrom().subtract(rayTraceContext.getTo());
             return BlockHitResult.miss(rayTraceContext.getTo(), Direction.getNearest(Vector3d.x, Vector3d.y, Vector3d.z), new BlockPos(rayTraceContext.getTo()));
         });
@@ -1145,36 +1128,44 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
     }
 
-    private boolean handleDynamicTreeHit(BlockPos hitPos, Direction face, FallingTreeEntity.DestroyType destroyType) {
-        if (!GunMod.dynamicTreesLoaded) return false;
+    private boolean handleDynamicTreeHit(BlockPos hitPos, Direction face, FallingTreeEntity.DestroyType destroyType)
+    {
+        if (!GunMod.dynamicTreesLoaded)
+            return false;
 
         Level world = this.level;
         BlockState hitState = world.getBlockState(hitPos);
 
-        if (!TreeHelper.isTreePart(hitState) || !hitState.is(ModTags.Blocks.FRAGILE)) {
+        if (!TreeHelper.isTreePart(hitState) || !hitState.is(ModTags.Blocks.FRAGILE))
             return false;
-        }
 
         BlockPos rootPos = TreeHelper.findRootNode(world, hitPos);
-        if (rootPos == BlockPos.ZERO) return false;
+        if (rootPos == BlockPos.ZERO)
+            return false;
 
         BlockState rootState = world.getBlockState(rootPos);
         RootyBlock rooty = TreeHelper.getRooty(rootState);
-        if (rooty == null) return false;
+        if (rooty == null)
+            return false;
 
         Species species = rooty.getSpecies(rootState, world, rootPos);
-        if (species == Species.NULL_SPECIES) return false;
+        if (species == Species.NULL_SPECIES)
+            return false;
 
         BranchBlock branch = TreeHelper.getBranch(hitState);
-        if (branch == null) return false;
+        if (branch == null)
+            return false;
 
         BranchDestructionData destructionData = branch.destroyBranchFromNode(world, hitPos, face, false, this.shooter);
-        if (destructionData.getNumBranches() == 0) return false;
+        if (destructionData.getNumBranches() == 0)
+            return false;
 
-        for (BlockPos pos : destructionData.getPositions(BranchDestructionData.PosType.BRANCHES)) {
+        for (BlockPos pos : destructionData.getPositions(BranchDestructionData.PosType.BRANCHES))
+        {
             BlockDamageManager.removeDamage(world, pos);
         }
-        for (BlockPos pos : destructionData.getPositions(BranchDestructionData.PosType.LEAVES)) {
+        for (BlockPos pos : destructionData.getPositions(BranchDestructionData.PosType.LEAVES))
+        {
             BlockDamageManager.removeDamage(world, pos);
         }
 
@@ -1184,6 +1175,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         return true;
     }
 
+    /** Used for showing cracks on blocks hit by projectiles.*/
     public static class BlockDamageManager
     {
         private static final Map<Level, Map<BlockPos, BlockDamageData>> DAMAGE = new WeakHashMap<>();
@@ -1197,11 +1189,14 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         {
             cleanup(level);
             Map<BlockPos, BlockDamageData> map = DAMAGE.get(level);
-            if (map == null) return 0;
+            if (map == null)
+                return 0;
             BlockDamageData data = map.get(pos);
-            if (data == null) return 0;
+            if (data == null)
+                return 0;
             BlockState currentState = level.getBlockState(pos);
-            if (!currentState.equals(data.state)) {
+            if (!currentState.equals(data.state))
+            {
                 map.remove(pos);
                 level.destroyBlockProgress(getBreakerId(pos), pos, -1);
                 return 0;
@@ -1223,7 +1218,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         public static void removeDamage(Level level, BlockPos pos)
         {
             Map<BlockPos, BlockDamageData> map = DAMAGE.get(level);
-            if (map != null) {
+            if (map != null)
+            {
                 map.remove(pos);
             }
             level.destroyBlockProgress(getBreakerId(pos), pos, -1);
@@ -1232,11 +1228,14 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         private static void cleanup(Level level)
         {
             Map<BlockPos, BlockDamageData> map = DAMAGE.get(level);
-            if (map == null) return;
-            long now = level.getGameTime();
-            map.entrySet().removeIf(entry -> {
+            if (map == null)
+                return;
+            long currentTime = level.getGameTime();
+            map.entrySet().removeIf(entry ->
+            {
                 BlockDamageData data = entry.getValue();
-                if (now - data.lastHitTime > 60)
+                /* After 3 seconds clean up any block damage from projectiles */
+                if (currentTime - data.lastHitTime > 60)
                 {
                     level.destroyBlockProgress(getBreakerId(entry.getKey()), entry.getKey(), -1);
                     return true;
@@ -1299,7 +1298,8 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                     damage *= 0.5F;
 
             /* Ignore griefing and radius set by the projectile itself if it's set in gun stats */
-            if(hasGunProjectile) {
+            if(hasGunProjectile)
+            {
                 griefing = ((ProjectileEntity) entity).getProjectile().isBreakFragile();
                 radius = ((ProjectileEntity) entity).getProjectile().getExplosionRadius();
             }
@@ -1317,22 +1317,27 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         explosion.explode();
         explosion.finalizeExplosion(true);
 
-        if (GunMod.dynamicTreesLoaded && !fire) {
+        if (GunMod.dynamicTreesLoaded && !fire)
+        {
             Iterator<BlockPos> iterator = explosion.getToBlow().iterator();
-            while (iterator.hasNext()) {
+            while (iterator.hasNext())
+            {
                 BlockPos pos = iterator.next();
                 BlockState state = world.getBlockState(pos);
-                if (TreeHelper.isTreePart(state)) {
+                if (TreeHelper.isTreePart(state))
+                {
                     boolean canDamageTree = Config.COMMON.explosionGriefing.get() ||
                             (Config.COMMON.fragileGriefing.get() && state.is(ModTags.Blocks.FRAGILE));
 
-                    if (!canDamageTree) {
+                    if (!canDamageTree)
+                    {
                         iterator.remove();
                         continue;
                     }
 
                     BranchBlock branch = TreeHelper.getBranch(state);
-                    if (branch != null) {
+                    if (branch != null)
+                    {
                         Vec3 explosionCenter = new Vec3(entity.getX(), entity.getY(), entity.getZ());
                         Vec3 blockCenter = new Vec3(pos.getX() + 0.5, pos.getY() + 0.5, pos.getZ() + 0.5);
                         Direction fallDir = Direction.getNearest(
@@ -1344,11 +1349,14 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
                         LivingEntity shooter = entity instanceof ProjectileEntity ? ((ProjectileEntity) entity).getShooter() : null;
 
                         BranchDestructionData destructionData = branch.destroyBranchFromNode(world, pos, fallDir, false, shooter);
-                        if (destructionData.getNumBranches() > 0) {
-                            for (BlockPos p : destructionData.getPositions(BranchDestructionData.PosType.BRANCHES)) {
+                        if (destructionData.getNumBranches() > 0)
+                        {
+                            for (BlockPos p : destructionData.getPositions(BranchDestructionData.PosType.BRANCHES))
+                            {
                                 BlockDamageManager.removeDamage(world, p);
                             }
-                            for (BlockPos p : destructionData.getPositions(BranchDestructionData.PosType.LEAVES)) {
+                            for (BlockPos p : destructionData.getPositions(BranchDestructionData.PosType.LEAVES))
+                            {
                                 BlockDamageManager.removeDamage(world, p);
                             }
 
@@ -1363,43 +1371,56 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
         }
 
         List<BlockPos> fragileBlocks = new ArrayList<>();
-        if (!fire) {
-            for (BlockPos pos : explosion.getToBlow()) {
+        if (!fire)
+        {
+            for (BlockPos pos : explosion.getToBlow())
+            {
                 BlockState state = world.getBlockState(pos);
-                if (state.is(ModTags.Blocks.FRAGILE) || state.is(BlockTags.LEAVES)) {
+                if (state.is(ModTags.Blocks.FRAGILE) || state.is(BlockTags.LEAVES))
+                {
                     fragileBlocks.add(pos);
                 }
             }
         }
 
-        if (mode == Explosion.BlockInteraction.NONE && !fire) {
-            for (BlockPos pos : fragileBlocks) {
+        if (mode == Explosion.BlockInteraction.NONE && !fire)
+        {
+            for (BlockPos pos : fragileBlocks)
+            {
                 world.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
                 BlockDamageManager.removeDamage(world, pos);
             }
         }
 
-        if (!fire && !noFX) {
+        if (!fire && !noFX)
+        {
             // Handle block explosion effects
-            explosion.getToBlow().forEach(pos -> {
-                if (world.getBlockState(pos).getBlock() instanceof IExplosionDamageable) {
+            explosion.getToBlow().forEach(pos ->
+            {
+                if (world.getBlockState(pos).getBlock() instanceof IExplosionDamageable)
+                {
                     ((IExplosionDamageable) world.getBlockState(pos).getBlock())
                             .onProjectileExploded(world, world.getBlockState(pos), pos, entity);
                 }
             });
 
-            if (mode == Explosion.BlockInteraction.NONE) {
+            if (mode == Explosion.BlockInteraction.NONE)
+            {
                 explosion.clearToBlow();
             }
-            else {
-                for (BlockPos pos : explosion.getToBlow()) {
+            else
+            {
+                for (BlockPos pos : explosion.getToBlow())
+                {
                     BlockDamageManager.removeDamage(world, pos);
                 }
             }
 
             // Send explosion packet to nearby players
-            for (ServerPlayer player : ((ServerLevel) world).players()) {
-                if (player.distanceToSqr(entity.getX(), entity.getY(), entity.getZ()) < 4096) {
+            for (ServerPlayer player : ((ServerLevel) world).players())
+            {
+                if (player.distanceToSqr(entity.getX(), entity.getY(), entity.getZ()) < 4096)
+                {
                     player.connection.send(new ClientboundExplodePacket(
                             entity.getX(), entity.getY(), entity.getZ(), radius,
                             explosion.getToBlow(), explosion.getHitPlayers().get(player)));
@@ -1419,30 +1440,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
     public static void createFireExplosion(Entity entity, float radius, boolean griefing) {
         createExplosionInternal(entity, radius, griefing, true, true);
-    }
-
-    private static boolean handleDynamicTreeExplosion(Level world, BlockPos rootPos, Direction fallDir, Entity source, FallingTreeEntity.DestroyType destroyType) {
-        LivingEntity shooter = source instanceof ProjectileEntity ? ((ProjectileEntity) source).getShooter() : null;
-
-        BlockState rootState = world.getBlockState(rootPos);
-        RootyBlock rooty = TreeHelper.getRooty(rootState);
-        if (rooty == null) return false;
-
-        Species species = rooty.getSpecies(rootState, world, rootPos);
-        if (species == Species.NULL_SPECIES) return false;
-
-        BlockPos branchPos = rootPos.above();
-        BlockState branchState = world.getBlockState(branchPos);
-        BranchBlock branch = TreeHelper.getBranch(branchState);
-        if (branch == null) return false;
-
-        BranchDestructionData destructionData = branch.destroyBranchFromNode(world, branchPos, fallDir, false, shooter);
-        if (destructionData.getNumBranches() == 0) return false;
-
-        List<ItemStack> woodDropList = new ArrayList<>(destructionData.species.getBranchesDrops(world, destructionData.woodVolume));
-
-        FallingTreeEntity.dropTree(world, destructionData, woodDropList, destroyType);
-        return true;
     }
 
     /**
@@ -1570,35 +1567,6 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 
         float bypassLevel = Mth.clamp(bullet.getProjectile().getProtectionBypass(),0,1);
         return (finalDamage-damage)*bypassLevel;
-    }
-
-    private int getRemainingPierces()
-    {
-        return infinitePiercing ? Integer.MAX_VALUE : maxPierceCount - pierceCounter;
-    }
-
-    private boolean consumePierces(int amount)
-    {
-        if (infinitePiercing)
-        {
-            return true;
-        }
-        int remaining = maxPierceCount - pierceCounter;
-        if (remaining >= amount)
-        {
-            pierceCounter += amount;
-            applyPiercePenalty(amount);
-            return true;
-        }
-        return false;
-    }
-
-    private void applyPiercePenalty(int pierced)
-    {
-        float penalty = modifiedGun.getProjectile().getPierceDamagePenalty();
-        float maxPenalty = modifiedGun.getProjectile().getPierceDamageMaxPenalty();
-        pierceDamageFraction -= pierced * penalty;
-        pierceDamageFraction = Mth.clamp(pierceDamageFraction, 1F - maxPenalty, 1.0F);
     }
 
     public static int updateTargetBlock(TargetBlock block, LevelAccessor accessor, BlockState state, BlockHitResult result, Entity entity)

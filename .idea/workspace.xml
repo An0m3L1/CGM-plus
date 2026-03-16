@@ -4,14 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Small tweaks.&#10;&#10;Returned explosion knockback functionality.&#10;Updated localization files.">
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Aiming update.&#10;&#10;Improved aiming logic - when a player is aiming using blocks is disabled.&#10;Improved shield using logic.&#10;Removed flipControls config, as it conflicted with using offhand items.&#10;Preparing for ProjectileEntity optimisations.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,33 +70,33 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [build].executor": "Run",
-    "Gradle.CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [runClient --warning-mode'none'].executor": "Run",
-    "Gradle.CGM-plus [runClient].executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "JavaClassFindUsagesOptions.isSearchForTextOccurrences": "false",
-    "Notification.DisplayName-DoNotAsk-Build sync orphan modules": "Modules no longer referenced by external system",
-    "Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed": "Sources download failed",
-    "Notification.DoNotAsk-Build sync orphan modules": "true",
-    "Notification.DoNotAsk-gradle.notifications.sources.download.failed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/saves",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient --warning-mode'none'].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;JavaClassFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;false&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Build sync orphan modules&quot;: &quot;Modules no longer referenced by external system&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;Sources download failed&quot;,
+    &quot;Notification.DoNotAsk-Build sync orphan modules&quot;: &quot;true&quot;,
+    &quot;Notification.DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/saves&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
@@ -204,14 +199,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748328657724</updated>
-    </task>
-    <task id="LOCAL-00002" summary="test">
-      <option name="closed" value="true" />
-      <created>1748381276271</created>
-      <option name="number" value="00002" />
-      <option name="presentableId" value="LOCAL-00002" />
-      <option name="project" value="LOCAL" />
-      <updated>1748381276271</updated>
     </task>
     <task id="LOCAL-00003" summary="Fixed ticking entity issue. Tweaked fire grenade sounds. Changed rocket and pipe grenade sounds. Cleaned up some code.">
       <option name="closed" value="true" />
@@ -597,7 +584,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773086788600</updated>
     </task>
-    <option name="localTasksCounter" value="51" />
+    <task id="LOCAL-00051" summary="Aiming update.&#10;&#10;Improved aiming logic - when a player is aiming using blocks is disabled.&#10;Improved shield using logic.&#10;Removed flipControls config, as it conflicted with using offhand items.&#10;Preparing for ProjectileEntity optimisations.">
+      <option name="closed" value="true" />
+      <created>1773240884298</created>
+      <option name="number" value="00051" />
+      <option name="presentableId" value="LOCAL-00051" />
+      <option name="project" value="LOCAL" />
+      <updated>1773240884298</updated>
+    </task>
+    <option name="localTasksCounter" value="52" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -616,7 +611,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Sniper rifle update.&#10;&#10;Overhauled sniper rifle.&#10;Modified ammo stack sizes.&#10;Buffed gun durability.&#10;Modified some gun stats.&#10;Overhauled grenade model.&#10;Added WIP resources and updated test world.&#10;Fixed fire switch sound not used by default." />
     <MESSAGE value="Grenade sounds.&#10;&#10;Added bounce sounds to all grenades.&#10;Added custom pinpull sounds to all grenades.&#10;Added custom throwing sounds to all grenades.&#10;Slightly tweaked sniper rifle model.&#10;Removed WIP Resources." />
     <MESSAGE value="Sound update.&#10;&#10;Updated some sounds." />
     <MESSAGE value="Recoil update.&#10;&#10;Reworked recoil mechanics.&#10;Updated some sounds.&#10;Reduced the time to play pin sound." />
@@ -641,7 +635,8 @@
     <MESSAGE value="Explosion update.&#10;&#10;Fixed waterDamagePenalty stat not working correctly for explosions.&#10;Removed collateralMaxPierce.&#10;Removed config for rockets and pipe grenades - values are now being read from gun data files.&#10;Added explosion radius stat.&#10;Brought back ammo item icon to infinite ammo guns.&#10;Added a purple tint to HUD ammo counter.&#10;Switching fire modes is now restricted while switching/drawing weapons.&#10;Code clean up." />
     <MESSAGE value="UI Update.&#10;&#10;Fixed JEI recipe window.&#10;Moved grenades to a separate recipe category.&#10;Moved all grenade configs to the server side.&#10;Updated creative category and workbench icon for guns.&#10;Changed some configs.&#10;Removed old animations.&#10;Improved grenade throw and pin sound playback logic.&#10;Improved tech crosshair." />
     <MESSAGE value="Small tweaks.&#10;&#10;Returned explosion knockback functionality.&#10;Updated localization files." />
-    <option name="LAST_COMMIT_MESSAGE" value="Small tweaks.&#10;&#10;Returned explosion knockback functionality.&#10;Updated localization files." />
+    <MESSAGE value="Aiming update.&#10;&#10;Improved aiming logic - when a player is aiming using blocks is disabled.&#10;Improved shield using logic.&#10;Removed flipControls config, as it conflicted with using offhand items.&#10;Preparing for ProjectileEntity optimisations." />
+    <option name="LAST_COMMIT_MESSAGE" value="Aiming update.&#10;&#10;Improved aiming logic - when a player is aiming using blocks is disabled.&#10;Improved shield using logic.&#10;Removed flipControls config, as it conflicted with using offhand items.&#10;Preparing for ProjectileEntity optimisations." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

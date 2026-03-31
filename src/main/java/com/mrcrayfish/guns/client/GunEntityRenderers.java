@@ -24,7 +24,6 @@ public class GunEntityRenderers
         event.registerEntityRenderer(ModEntities.HEAVY_BULLET.get(), BulletRenderer::new);
         event.registerEntityRenderer(ModEntities.BUCKSHOT_SHELL.get(), BulletRenderer::new);
 
-        event.registerEntityRenderer(ModEntities.GRENADE.get(), GrenadeRenderer::new);
         event.registerEntityRenderer(ModEntities.PIPE_GRENADE.get(), PipeGrenadeRenderer::new);
         event.registerEntityRenderer(ModEntities.ROCKET.get(), RocketRenderer::new);
         event.registerEntityRenderer(ModEntities.THROWABLE_GRENADE.get(), ThrowableGrenadeRenderer::new);

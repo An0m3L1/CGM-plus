@@ -1,0 +1,21 @@
+{
+  "values":
+  [
+    "#minecraft:planks",
+    "#minecraft:logs",
+    "#minecraft:wooden_slabs",
+    "#minecraft:wooden_stairs",
+    "createdieselgenerators:chip_wood_beam",
+
+    "minecraft:bookshelf",
+    "minecraft:crafting_table",
+    "minecraft:loom",
+    "minecraft:composter",
+    "minecraft:cartography_table",
+    "minecraft:smithing_table",
+    "minecraft:fletching_table",
+    "minecraft:beehive",
+    "minecraft:note_block",
+    "minecraft:jukebox"
+  ]
+}

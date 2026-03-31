@@ -19,7 +19,7 @@ public class BlockTagGen extends BlockTagsProvider
     @Override
     protected void addTags()
     {
-        this.tag(ModTags.Blocks.FRAGILE)
+        this.tag(ModTags.Blocks.HARDNESS_NONE)
                 /* Wooden */
                 .addTag(BlockTags.PLANKS)
                 .addTag(BlockTags.WOODEN_DOORS)

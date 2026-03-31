@@ -14,7 +14,6 @@ import com.mrcrayfish.guns.datagen.EntityTagGen;
 import com.mrcrayfish.guns.datagen.GunGen;
 import com.mrcrayfish.guns.datagen.ItemTagGen;
 import com.mrcrayfish.guns.entity.projectile.BulletEntity;
-import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
 import com.mrcrayfish.guns.entity.projectile.PipeGrenadeEntity;
 import com.mrcrayfish.guns.entity.projectile.RocketEntity;
 import com.mrcrayfish.guns.init.*;
@@ -150,7 +149,6 @@ public class GunMod
             ProjectileManager.getInstance().registerFactory(ModItems.BUCKSHOT_SHELL.get(), (worldIn, entity, weapon, item, modifiedGun) ->
                     BulletEntity.createBuckshot(ModEntities.BUCKSHOT_SHELL.get(), worldIn, entity, weapon, item, modifiedGun));
 
-            ProjectileManager.getInstance().registerFactory(ModItems.GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new GrenadeEntity(ModEntities.GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
             ProjectileManager.getInstance().registerFactory(ModItems.PIPE_GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PipeGrenadeEntity(ModEntities.PIPE_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
             ProjectileManager.getInstance().registerFactory(ModItems.ROCKET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new RocketEntity(ModEntities.ROCKET.get(), worldIn, entity, weapon, item, modifiedGun));
 
@@ -166,7 +164,6 @@ public class GunMod
         event.enqueueWork(() -> {
             ClientHandler.setup();
 
-            // Регистрация универсального рендерера для всех типов пуль
             EntityRenderers.register(ModEntities.LIGHT_BULLET.get(), BulletRenderer::new);
             EntityRenderers.register(ModEntities.MEDIUM_BULLET.get(), BulletRenderer::new);
             EntityRenderers.register(ModEntities.HEAVY_BULLET.get(), BulletRenderer::new);

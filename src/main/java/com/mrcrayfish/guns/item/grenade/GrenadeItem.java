@@ -24,6 +24,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.TooltipFlag;
 import net.minecraft.world.item.UseAnim;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
@@ -37,7 +38,7 @@ public class GrenadeItem extends Item implements IGrenade
 
     public GrenadeItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
     {
-        super(properties.stacksTo(16).tab(GunMod.GUNS));
+        super(properties.stacksTo(8).tab(GunMod.GUNS));
         this.maxCookTime = maxCookTime;
         this.throwSound = throwSound;
         this.pinSound = pinSound;
@@ -136,6 +137,7 @@ public class GrenadeItem extends Item implements IGrenade
                 this.onThrown(worldIn, grenade);
                 if(entityLiving instanceof Player)
                 {
+                    worldIn.gameEvent(GameEvent.ITEM_INTERACT_FINISH, entityLiving.blockPosition(), GameEvent.Context.of(entityLiving));
                     ((Player) entityLiving).awardStat(Stats.ITEM_USED.get(this));
                 }
             }

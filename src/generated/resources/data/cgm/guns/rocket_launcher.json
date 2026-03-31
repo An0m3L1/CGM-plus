@@ -27,7 +27,7 @@
     "visible": true,
     "maxPierceCount": 0,
     "item": "cgm:rocket",
-    "breakFragile": false,
+    "griefing": true,
     "waterDamagePenalty": 0.5,
     "explosionRadius": 3.0
   },

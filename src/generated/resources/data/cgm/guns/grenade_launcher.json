@@ -28,7 +28,7 @@
     "gravityStrength": 1.25,
     "maxPierceCount": 0,
     "item": "cgm:pipe_grenade",
-    "breakFragile": false,
+    "griefing": true,
     "waterDamagePenalty": 0.5,
     "explosionRadius": 2.5
   },

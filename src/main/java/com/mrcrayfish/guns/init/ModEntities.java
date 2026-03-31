@@ -5,7 +5,6 @@ import com.mrcrayfish.guns.entity.LightSourceEntity;
 import com.mrcrayfish.guns.entity.ProjectileEntity;
 import com.mrcrayfish.guns.entity.grenade.*;
 import com.mrcrayfish.guns.entity.projectile.BulletEntity;
-import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
 import com.mrcrayfish.guns.entity.projectile.PipeGrenadeEntity;
 import com.mrcrayfish.guns.entity.projectile.RocketEntity;
 import net.minecraft.world.entity.Entity;
@@ -26,7 +25,6 @@ public class ModEntities
     public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, Reference.MOD_ID);
 
     public static final RegistryObject<EntityType<ProjectileEntity>> PROJECTILE = registerProjectile("projectile", ProjectileEntity::new);
-    public static final RegistryObject<EntityType<GrenadeEntity>> GRENADE = registerBasic("grenade", GrenadeEntity::new);
     public static final RegistryObject<EntityType<PipeGrenadeEntity>> PIPE_GRENADE = registerBasic("pipe_grenade", PipeGrenadeEntity::new);
     public static final RegistryObject<EntityType<RocketEntity>> ROCKET = registerBasic("rocket", RocketEntity::new);
     public static final RegistryObject<EntityType<ThrowableGrenadeEntity>> THROWABLE_GRENADE = registerBasic("throwable_grenade", ThrowableGrenadeEntity::new);

@@ -76,7 +76,7 @@ public class GunGen extends GunProvider
                         .setArmorBypass(0.5F)
                         .setProtectionBypass(0.5F)
 
-                        .setBreakFragile(true)
+                        .setGriefing(true)
                         .setMaxPierceCount(5)
                         .setPierceDamagePenalty(0.25F)
                         .setPierceDamageMaxPenalty(0.75F)
@@ -146,7 +146,7 @@ public class GunGen extends GunProvider
                         .setArmorBypass(0.5F)
                         .setProtectionBypass(0.5F)
 
-                        .setBreakFragile(true)
+                        .setGriefing(true)
                         .setMaxPierceCount(5)
                         .setPierceDamagePenalty(0.25F)
                         .setPierceDamageMaxPenalty(0.75F)
@@ -219,7 +219,7 @@ public class GunGen extends GunProvider
                         .setArmorBypass(0.5F)
                         .setProtectionBypass(0.5F)
 
-                        .setBreakFragile(true)
+                        .setGriefing(true)
                         .setMaxPierceCount(5)
                         .setPierceDamagePenalty(0.25F)
                         .setPierceDamageMaxPenalty(0.75F)
@@ -276,7 +276,7 @@ public class GunGen extends GunProvider
                         .setArmorBypass(1.0F)
                         .setProtectionBypass(0.75F)
 
-                        .setBreakFragile(true)
+                        .setGriefing(true)
                         .setMaxPierceCount(20)
                         .setPierceDamagePenalty(0.25F)
                         .setPierceDamageMaxPenalty(0.75F)
@@ -367,7 +367,7 @@ public class GunGen extends GunProvider
                         .setArmorBypass(0.25F)
                         .setProtectionBypass(0.25F)
 
-                        .setBreakFragile(true)
+                        .setGriefing(true)
                         .setMaxPierceCount(3)
                         .setPierceDamagePenalty(0.25F)
                         .setPierceDamageMaxPenalty(0.75F)
@@ -445,7 +445,7 @@ public class GunGen extends GunProvider
                         .setArmorBypass(0.5F)
                         .setProtectionBypass(0.25F)
 
-                        .setBreakFragile(true)
+                        .setGriefing(true)
                         .setMaxPierceCount(4)
                         .setPierceDamagePenalty(0.25F)
                         .setPierceDamageMaxPenalty(0.75F)
@@ -515,7 +515,7 @@ public class GunGen extends GunProvider
                         .setArmorBypass(0.25F)
                         .setProtectionBypass(0.25F)
 
-                        .setBreakFragile(true)
+                        .setGriefing(true)
                         .setMaxPierceCount(2)
                         .setPierceDamagePenalty(0.5F)
                         .setPierceDamageMaxPenalty(0.5F)

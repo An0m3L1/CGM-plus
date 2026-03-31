@@ -60,10 +60,10 @@
     "armorBypass": 0.5,
     "protectionBypass": 0.5,
 
-    "breakFragile": true,
+    "griefing": true,
     "maxPierceCount": 3,
     "pierceDamagePenalty": 0.33,
-    "pierceDamageMaxPenalty": 0.5,
+    "pierceDamageMaxPenalty": 0.66,
     "waterDamagePenalty": 0.5
   },
   "sounds": {

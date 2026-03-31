@@ -5,13 +5,13 @@ import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.entity.LightSourceEntity;
 import com.mrcrayfish.guns.entity.ProjectileEntity;
+import com.mrcrayfish.guns.init.ModTags;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
 import com.mrcrayfish.guns.network.message.S2CMessagePipeGrenade;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
-import net.minecraft.tags.BlockTags;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -25,48 +25,71 @@ import net.minecraft.world.phys.Vec3;
  */
 public class PipeGrenadeEntity extends ProjectileEntity
 {
-    public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world) {
+    public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
+    {
         super(entityType, world);
     }
 
-    public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun) {
+    public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
+    {
         super(entityType, world, shooter, weapon, item, modifiedGun);
     }
 
     @Override
-    protected void onProjectileTick() {
-        if (this.level.isClientSide) {
+    protected void onProjectileTick()
+    {
+        if (this.level.isClientSide)
+        {
             this.level.addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
         }
     }
 
     @Override
-    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot) {
+    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
+    {
         explode();
     }
 
     @Override
-    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z) {
-        if (state.is(BlockTags.LEAVES))
-            this.level.destroyBlock(pos, Config.COMMON.fragileBlockDrops.get());
+    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
+    {
+        /* If the projectile hit a fragile block, check if projectile griefing is enabled globally, for the projectile itself and explosion griefing is disabled.
+        * We check for explosion griefing so the projectile doesn't just disappear */
+        if (this.getProjectile() != null && state.is(ModTags.Blocks.HARDNESS_NONE))
+        {
+            if(!Config.COMMON.universalExplosionGriefing.get() && Config.COMMON.projectileGriefing.get() && this.getProjectile().isGriefing())
+            {
+                this.level.destroyBlock(pos, Config.COMMON.projectileGriefingBlockDrops.get());
+            }
+            else
+            {
+                explode();
+            }
+        }
         else
+        {
             explode();
+        }
     }
 
     @Override
-    public void onExpired() {
+    public void onExpired()
+    {
         explode();
     }
 
-    private void explode() {
-        float radius;
-        /* If this projectile has assigned explosion radius, use it. Otherwise, use 2.5F */
-        if(this.getProjectile() != null)
-            radius = this.getProjectile().getExplosionRadius();
-        else
-            radius = 2.5F;
+    private void explode()
+    {
+        float radius = 2.5F;
+        boolean griefing = true;
 
-        createCustomExplosion(this, radius, true);
+        if(this.getProjectile() != null)
+        {
+            radius = this.getProjectile().getExplosionRadius();
+            griefing = this.getProjectile().isGriefing();
+        }
+
+        createExplosion(this, radius, griefing);
         if(this.level.isClientSide)
             return;
 

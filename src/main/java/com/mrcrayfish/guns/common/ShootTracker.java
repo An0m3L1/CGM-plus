@@ -56,13 +56,9 @@ public class ShootTracker
         rate = GunModifierHelper.getModifiedRate(weapon, rate);
         rate = GunModifierHelper.getRampUpRate(player, weapon, rate);
 
-        //To implement Ramp Up (enchantment) again, uncomment the code block and remove code below this comment
         if (modifiedGun.getGeneral().getDoRampUp())
             rate=Math.max(rate-1, 1);
-        /*
-        if (EnchantmentHelper.getItemEnchantmentLevel(ModEnchantments.RAMP_UP.get(), weapon) > 0 || modifiedGun.getGeneral().hasDoRampUp())
-        	rate=Math.max(rate-1, 1);
-        */
+
         this.cooldownMap.put(item, Pair.of(Util.getMillis(), rate * 50));
     }
 

@@ -1,0 +1,12 @@
+
+[sounds]
+	#The maximum distance smoke grenade explosions can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	smokeGrenadeExplosionMaxDistance = 48.0
+	#The maximum distance incendiary grenade explosions can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	incendiaryGrenadeExplosionMaxDistance = 48.0
+	#The maximum distance molotov explosions can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	molotovExplosionMaxDistance = 48.0
+

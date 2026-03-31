@@ -141,9 +141,12 @@ public class Config
     public static class Common
     {
         /* Griefing */
-        public final ForgeConfigSpec.BooleanValue fragileGriefing;
-        public final ForgeConfigSpec.BooleanValue fragileBlockDrops;
-        public final ForgeConfigSpec.BooleanValue explosionGriefing;
+        public final ForgeConfigSpec.BooleanValue projectileGriefing;
+        public final ForgeConfigSpec.BooleanValue projectileGriefingBlockDrops;
+        public final ForgeConfigSpec.BooleanValue universalExplosionGriefing;
+        public final ForgeConfigSpec.IntValue hardnessLowValue;
+        public final ForgeConfigSpec.IntValue hardnessMediumValue;
+        public final ForgeConfigSpec.IntValue hardnessHighValue;
 
         /* Entities */
         public final ForgeConfigSpec.BooleanValue scareMobs;
@@ -178,9 +181,16 @@ public class Config
         {
             builder.push("griefing");
             {
-                this.explosionGriefing = builder.comment("If enabled, explosions will destroy blocks. Doesn't affect Incendiary and Molotov Grenades.").define("explosionGriefing", false);
-                this.fragileGriefing = builder.comment("If enabled, projectiles and explosions will destroy fragile blocks. This doesn't require explosion griefing to be enabled.").define("fragileGriefing", true);
-                this.fragileBlockDrops = builder.comment("If enabled, fragile blocks will drop when broken.").define("fragileBlockDrops", false);
+                builder.push("block_hardness_values");
+                {
+                    this.hardnessLowValue = builder.comment("The amount of penetration power required to break low hardness blocks. (Wooden doors/trapdoors, hay bales, etc.)").defineInRange("hardnessLowValue", 1, 1, Integer.MAX_VALUE);
+                    this.hardnessMediumValue = builder.comment("The amount of penetration power required to break medium hardness blocks. (Metal doors/trapdoors, planks, logs, etc.)").defineInRange("hardnessMediumValue", 3, 1, Integer.MAX_VALUE);
+                    this.hardnessHighValue = builder.comment("The amount of penetration power required to break high hardness blocks. (Bricks, walls, etc.)").defineInRange("hardnessHighValue", 5, 1, Integer.MAX_VALUE);
+                }
+                builder.pop();
+                this.universalExplosionGriefing = builder.comment("If enabled, explosions will destroy all blocks.").define("universalExplosionGriefing", false);
+                this.projectileGriefing = builder.comment("If enabled, projectiles and explosions will destroy fragile and destructible blocks. This doesn't require explosion griefing to be enabled.").define("projectileGriefing", true);
+                this.projectileGriefingBlockDrops = builder.comment("If enabled, fragile and destructible blocks will drop when broken.").define("projectileGriefingBlockDrops", false);
             }
             builder.pop();
             builder.push("entities");
@@ -275,7 +285,7 @@ public class Config
                 {
                     this.grenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
                     this.grenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
-                    this.grenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks. Requires explosion griefing to be true.").define("handGrenadeExplosionGriefing", false);
+                    this.grenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks.").define("handGrenadeExplosionGriefing", true);
                     this.grenadeExplosionSoundDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("grenadeExplosionSoundDistance", 96, 0, Double.MAX_VALUE);
                 }
                 builder.pop();
@@ -283,7 +293,7 @@ public class Config
                 {
                     this.impactGrenadeExplosionRadius = builder.comment("Radius of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionRadius", 1.75, 0.0, Double.MAX_VALUE);
                     this.impactGrenadeExplosionDamage = builder.comment("Damage of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionDamage", 12.0, 0.0, Double.MAX_VALUE);
-                    this.impactGrenadeExplosionGriefing = builder.comment("If enabled, Impact Grenades will destroy blocks. Requires explosion griefing to be true.").define("impactGrenadeExplosionGriefing", false);
+                    this.impactGrenadeExplosionGriefing = builder.comment("If enabled, Impact Grenades will destroy blocks.").define("impactGrenadeExplosionGriefing", true);
                     this.impactGrenadeExplosionSoundDistance = builder.comment("The maximum distance impact grenade explosions can be heard by players.").defineInRange("impactGrenadeExplosionSoundDistance", 96, 0, Double.MAX_VALUE);
                 }
                 builder.pop();

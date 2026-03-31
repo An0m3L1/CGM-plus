@@ -5,34 +5,38 @@ Add melee class system
     - Throwable: can be thrown on a cooldown
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
+Add folding and moving targets
 Add and overhaul animations
     - Prone/Swimming
     - Smooth third person sprint animation for one-handed weapons
 Add ammo pouch curio items
-    - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun)
+    - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun) (quiver from quark?)
 Add custom backpacks
 Overhaul items (models, textures, stats)
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
-Overhaul item textures with changed recipes (change colors to correspond to new materials)
 Add a modifier for draw time to attachments and make it correspond to the draw animation
 Add a modifier to pierce count
 Add a downside to thumb grip (draw time?)
 Add debug lines and functions
-Complete fragile.json
-Improve hardness calculation logic (choose one)
-    - Separate fragile and penetrable blocks. Fragile blocks are broken for free, penetrable blocks consume penetration power (current behavior).
-    - Add levels of penetration (light, medium, high). Penetration level and count are separate, with each block requiring a proper penetration power to break it.
-      Count tells us how much of these blocks we can break.
-Combine dynamic tree and fragile block destruction as much as possible
 Optimize textures
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
 Make hemp crops 2 blocks tall
 Improve repair logic for guns (repairing is done in any crafting menu, takes 2 repair kits for full repair)
-Return dying weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
-Improve explosion effects
-Fix explosion damage being inconsistent (revert a change?)
+Return coloring weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
+Improve explosion VFX
+Invert automatic pistol bolt movement (make it open bolt)
+Shooting guns in creative should still consume loaded ammo
+
+Add multiple levels of destructible blocks
+    - AP0 (glass, lanterns, wool, plants, small rocks)
+    - AP1 (wooden doors, wooden trapdoors, fences, fence gates, furniture)
+    - AP2 (planks, logs, iron doors, iron trapdoors, iron bars)
+    - AP3 (stone bricks, walls)
+
 Add potion effects
     - Focused: obtained through energy drinks, adrenaline shots, etc. Increases reload, ADS and draw speed of guns
+
+Check cgm expander for sprint code changes

@@ -47,6 +47,7 @@ import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
+import net.minecraft.world.level.gameevent.GameEvent;
 import net.minecraft.world.phys.AABB;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.network.NetworkHooks;
@@ -133,6 +134,10 @@ public class ServerPlayHandler
                     world.addFreshEntity(projectileEntity);
                     spawnedProjectiles[i] = projectileEntity;
                     projectileEntity.tick();
+                }
+                if (spawnedProjectiles.length > 0 && !GunModifierHelper.isSilencedFire(heldItem))
+                {
+                    world.gameEvent(GameEvent.PROJECTILE_SHOOT, player.blockPosition(), GameEvent.Context.of(spawnedProjectiles[0]));
                 }
                 if(!projectileProps.isVisible())
                 {

@@ -2,10 +2,10 @@ package com.mrcrayfish.guns.world;
 
 import com.google.common.collect.Sets;
 import com.mojang.datafixers.util.Pair;
+import com.mrcrayfish.guns.entity.ProjectileEntity;
 import it.unimi.dsi.fastutil.objects.ObjectArrayList;
 import net.minecraft.Util;
 import net.minecraft.core.BlockPos;
-import net.minecraft.core.Direction;
 import net.minecraft.core.particles.ParticleTypes;
 import net.minecraft.server.level.ServerLevel;
 import net.minecraft.sounds.SoundEvents;
@@ -200,7 +200,7 @@ public class ProjectileExplosion extends Explosion
 
             double blockDensity = getSeenPercent(explosionPos, entity);
             double rawDamage = (1.0D - strength) * blockDensity;
-            double damage = Math.min(((rawDamage * rawDamage + rawDamage) / 2.0D) * projectileDamage + 1.0D, projectileDamage);
+            double damage = Math.min(((rawDamage * rawDamage + rawDamage) / 2.0D) * (projectileDamage * 3) + 1.0D, projectileDamage);
             entity.hurt(this.getDamageSource(), (float) damage);
 
             //Explosion knockback code
@@ -223,38 +223,50 @@ public class ProjectileExplosion extends Explosion
 
     // Copied from Explosion.class
     @Override
-    public void finalizeExplosion(boolean p_46076_) {
-        if (this.world.isClientSide) {
+    public void finalizeExplosion(boolean spawnParticles)
+    {
+        if (this.world.isClientSide)
+        {
             this.world.playLocalSound(this.x, this.y, this.z, SoundEvents.GENERIC_EXPLODE, SoundSource.BLOCKS, 4.0F, (1.0F + (this.world.random.nextFloat() - this.world.random.nextFloat()) * 0.2F) * 0.7F, false);
         }
 
         boolean flag = this.mode != Explosion.BlockInteraction.NONE;
-        if (p_46076_) {
-            if (!(this.size < 2.0F) && flag) {
+        if (spawnParticles)
+        {
+            if (!(this.size < 2.0F) && flag)
+            {
                 this.world.addParticle(ParticleTypes.EXPLOSION_EMITTER, this.x, this.y, this.z, 1.0D, 0.0D, 0.0D);
-            } else {
+            }
+            else
+            {
                 this.world.addParticle(ParticleTypes.EXPLOSION, this.x, this.y, this.z, 1.0D, 0.0D, 0.0D);
             }
         }
 
-        if (flag) {
+        if (flag)
+        {
             ObjectArrayList<Pair<ItemStack, BlockPos>> objectarraylist = new ObjectArrayList<>();
             boolean flag1 = this.getSourceMob() instanceof Player;
             Util.shuffle(this.toBlow, this.world.random);
 
-            for(BlockPos blockpos : this.toBlow) {
+            for(BlockPos blockpos : this.toBlow)
+            {
                 BlockState blockstate = this.world.getBlockState(blockpos);
                 Block block = blockstate.getBlock();
-                if (!blockstate.isAir()) {
+                if (!blockstate.isAir())
+                {
                     BlockPos blockpos1 = blockpos.immutable();
                     this.world.getProfiler().push("explosion_blocks");
-                    if (blockstate.canDropFromExplosion(this.world, blockpos, this)) {
+                    if (blockstate.canDropFromExplosion(this.world, blockpos, this))
+                    {
                         Level $$9 = this.world;
-                        if ($$9 instanceof ServerLevel) {
+                        if ($$9 instanceof ServerLevel)
+                        {
                             ServerLevel serverlevel = (ServerLevel)$$9;
                             BlockEntity blockentity = blockstate.hasBlockEntity() ? this.world.getBlockEntity(blockpos) : null;
                             LootContext.Builder lootcontext$builder = (new LootContext.Builder(serverlevel)).withRandom(this.world.random).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockentity).withOptionalParameter(LootContextParams.THIS_ENTITY, this.exploder);
-                            if (this.mode == Explosion.BlockInteraction.DESTROY) {
+                            if (this.mode == Explosion.BlockInteraction.DESTROY)
+                            {
                                 lootcontext$builder.withParameter(LootContextParams.EXPLOSION_RADIUS, this.size);
                             }
 
@@ -264,30 +276,25 @@ public class ProjectileExplosion extends Explosion
                     }
 
                     blockstate.onBlockExploded(this.world, blockpos, this);
+                    ProjectileEntity.BlockDamageManager.removeDamage(this.world, blockpos);
                     this.world.getProfiler().pop();
                 }
             }
 
-            for(Pair<ItemStack, BlockPos> pair : objectarraylist) {
+            for(Pair<ItemStack, BlockPos> pair : objectarraylist)
+            {
                 Block.popResource(this.world, pair.getSecond(), pair.getFirst());
             }
         }
 
-        if (this.causesFire) {
-            for(BlockPos blockpos2 : this.toBlow) {
-                if (this.world.getBlockState(blockpos2).isAir()) {
-                    boolean canPlaceFire = false;
-                    for (Direction direction : Direction.values()) {
-                        BlockPos neighborPos = blockpos2.relative(direction);
-                        BlockState neighborState = this.world.getBlockState(neighborPos);
-                        if (neighborState.isSolidRender(this.world, neighborPos)) {
-                            canPlaceFire = true;
-                            break;
-                        }
-                    }
-                    if (canPlaceFire) {
-                        this.world.setBlockAndUpdate(blockpos2, BaseFireBlock.getState(this.world, blockpos2));
-                    }
+        if (this.causesFire)
+        {
+            for(BlockPos blockpos2 : this.toBlow)
+            {
+                if (this.world.getBlockState(blockpos2).isAir())
+                {
+                    BlockState fireState = BaseFireBlock.getState(this.world, blockpos2);
+                    this.world.setBlockAndUpdate(blockpos2, fireState);
                 }
             }
         }

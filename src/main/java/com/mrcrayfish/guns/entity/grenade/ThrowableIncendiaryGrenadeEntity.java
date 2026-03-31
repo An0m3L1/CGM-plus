@@ -2,7 +2,6 @@ package com.mrcrayfish.guns.entity.grenade;
 
 import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModSounds;
@@ -14,6 +13,8 @@ import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
+
+import static com.mrcrayfish.guns.entity.ProjectileEntity.createFireExplosion;
 
 /**
  * Author: MrCrayfish
@@ -75,8 +76,8 @@ public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
             PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
                     LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageIncendiaryGrenade(this.getX(), y, this.getZ()));
             this.createLight(explosionLightValue, explosionLightLife);
-            GrenadeEntity.createFireExplosion(this, radius * 0.6F, false);
-            ThrowableGrenadeEntity.igniteEntities(level, center, radius * 1.1F, fireDuration);
+            createFireExplosion(this, radius * 0.6F, false);
+            igniteEntities(level, center, radius * 1.1F, fireDuration);
         }
         else
         {

@@ -1,0 +1,19 @@
+{
+  "values":
+  [
+    "#minecraft:wooden_doors",
+    "#minecraft:wooden_trapdoors",
+    "#forge:fence_gates/wooden",
+    "#forge:fences/wooden",
+
+    "#minecraft:beds",
+    "#minecraft:campfires",
+    "minecraft:lectern",
+    "farmersdelight:cutting_board",
+
+    "minecraft:wet_sponge",
+    "minecraft:packed_ice",
+    "minecraft:slime_block",
+    "minecraft:honey_block"
+  ]
+}

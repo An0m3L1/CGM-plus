@@ -1,0 +1,159 @@
+#Forces all attachments to be dyeable regardless if this has an effect on the model. This is useful if your server uses custom models for attachments and the models have dyeable elements.
+forceDyeableAttachments = false
+#The maximum amount of cooldown time remaining before the server will accept another shoot packet from a client. This allows for a little slack since the server may be lagging.
+#Range: 75 ~ 1000
+cooldownThreshold = 100
+
+[grenades]
+
+	[grenades.grenade]
+		#Radius of a Grenade explosion.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		handGrenadeExplosionRadius = 2.5
+		#Damage of a Grenade explosion.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		handGrenadeExplosionDamage = 15.0
+		#If enabled, Grenades will destroy blocks.
+		handGrenadeExplosionGriefing = true
+		#The maximum distance grenade explosions can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		grenadeExplosionSoundDistance = 96.0
+
+	[grenades.impact_grenade]
+		#Radius of a Impact Grenade explosion.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		impactGrenadeExplosionRadius = 1.75
+		#Damage of a Impact Grenade explosion.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		impactGrenadeExplosionDamage = 12.0
+		#If enabled, Impact Grenades will destroy blocks.
+		impactGrenadeExplosionGriefing = true
+		#The maximum distance impact grenade explosions can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		impactGrenadeExplosionSoundDistance = 96.0
+
+	[grenades.smoke_grenade]
+		#Radius of a Smoke Grenade cloud. Use cautiously when setting high, might cause lag.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		smokeGrenadeCloudRadius = 2.5
+		#Damage per second inside a Smoke Grenade cloud.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		smokeGrenadeDamage = 1.0
+		#Duration of a Smoke Grenade cloud in seconds.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		smokeGrenadeCloudDuration = 20.0
+		#The maximum distance smoke grenade explosions can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		smokeGrenadeExplosionSoundDistance = 48.0
+
+	[grenades.incendiary_grenade]
+		#Radius of a Incendiary Grenade explosion.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		incendiaryGrenadeExplosionRadius = 3.0
+		#Duration of fire forcefully set on entities by the Incendiary Grenade.
+		#Range: > 0
+		incendiaryGrenadeFireDuration = 15
+		#The maximum distance incendiary grenade explosions can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		incendiaryGrenadeExplosionSoundDistance = 64.0
+		#The maximum distance incendiary grenade extinguished explosions can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		incendiaryGrenadeExtinguishSoundDistance = 32.0
+
+	[grenades.molotov_cocktail]
+		#Radius of a Molotov Cocktail explosion.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		molotovExplosionRadius = 2.5
+		#Duration of fire forcefully set on entities by the Molotov Cocktail.
+		#Range: > 0
+		molotovFireDuration = 10
+		#The maximum distance Molotov explosions can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		molotovExplosionSoundDistance = 64.0
+		#The maximum distance Molotov bottle breaking can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		molotovBreakSoundDistance = 32.0
+
+	[grenades.stun_grenade]
+		#After the duration drops to this many ticks, the transparency of the overlay when blinded will gradually fade to 0 alpha.
+		#Range: 0 ~ 255
+		alphaOverlay = 255
+		#Transparency of the overlay when blinded will be this alpha value, before eventually fading to 0 alpha.
+		#Range: > 0
+		alphaFadeThreshold = 60
+		#Volume of most game sounds when deafened will play at this percent, before eventually fading back to 100%.
+		#Range: 0.0 ~ 1.0
+		soundPercentage = 0.1
+		#After the duration drops to this many ticks, the ringing volume will gradually fade to 0 and other sound volumes will fade back to %100.
+		#Range: > 0
+		soundFadeThreshold = 100
+		#Volume of the ringing sound when deafened will play at this volume, before eventually fading to 0.
+		#Range: 0.0 ~ 1.0
+		ringVolume = 0.75
+		#The maximum distance stun grenade explosions can be heard by players.
+		#Range: 0.0 ~ 1.7976931348623157E308
+		stunGrenadeExplosionSoundDistance = 96.0
+
+		[grenades.stun_grenade.blind]
+			#Radius of explosion effect.
+			#Range: 0.0 ~ 1.7976931348623157E308
+			radius = 32.0
+			#Maximum duration of the effect in seconds.
+			#Range: > 0
+			durationMax = 6
+			#Minimum duration of the effect in seconds.
+			#Range: > 0
+			durationMin = 1
+			#Angle between the looking direction and the explosion source must be no more than half this many degrees to have an effect.
+			#Range: 0.0 ~ 360.0
+			angleEffect = 180.0
+			#After duration is attenuated by distance, it will be further attenuated depending on the angle (in degrees) between the looking direction and the explosion source. This is done by multiplying it by 1 (no attenuation) if the angle is 0; and by this value if the angle is the maximum within the angle of effect.
+			#Range: 0.0 ~ 1.0
+			angleAttenuationMax = 0.75
+
+		[grenades.stun_grenade.stun]
+			#Radius of explosion effect.
+			#Range: 0.0 ~ 1.7976931348623157E308
+			radius = 32.0
+			#Maximum duration of the effect in seconds.
+			#Range: > 0
+			durationMax = 6
+			#Minimum duration of the effect in seconds.
+			#Range: > 0
+			durationMin = 1
+			#Angle between the looking direction and the explosion source must be no more than half this many degrees to have an effect.
+			#Range: 0.0 ~ 360.0
+			angleEffect = 360.0
+			#After duration is attenuated by distance, it will be further attenuated depending on the angle (in degrees) between the looking direction and the explosion source. This is done by multiplying it by 1 (no attenuation) if the angle is 0; and by this value if the angle is the maximum within the angle of effect.
+			#Range: 0.0 ~ 1.0
+			angleAttenuationMax = 0.75
+
+[sounds]
+	#The maximum distance weapons can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	gunShotSoundDistance = 96.0
+	#The maximum distance reloading can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	reloadSoundDistance = 16.0
+	#The maximum distance switching weapons can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	switchSoundDistance = 8.0
+	#The maximum distance throwing grenades can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	grenadeThrowSoundDistance = 8.0
+	#The maximum distance pulling pins from grenades can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	grenadePinSoundDistance = 8.0
+	#The maximum distance grenade bouncing can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	grenadeBounceSoundDistance = 24.0
+	#The maximum distance impact sounds from projectiles can be heard by players.
+	#Range: 0.0 ~ 32.0
+	impactSoundDistance = 16.0
+	#The maximum distance rocket explosions can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	rocketExplosionSoundDistance = 128.0
+	#The maximum distance pipe grenade explosions can be heard by players.
+	#Range: 0.0 ~ 1.7976931348623157E308
+	pipeGrenadeExplosionSoundDistance = 128.0
+

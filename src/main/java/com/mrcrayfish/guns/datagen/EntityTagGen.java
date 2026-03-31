@@ -18,10 +18,10 @@ public class EntityTagGen extends EntityTypeTagsProvider
     @Override
     protected void addTags()
     {
-        this.tag(ModTags.Entities.HIT_RESISTANT)
+        this.tag(ModTags.Entities.RESISTANT)
                 .addTag(Tags.EntityTypes.BOSSES)
                 .add(EntityType.WARDEN)
                 .add(EntityType.ELDER_GUARDIAN);
-        this.tag(ModTags.Entities.HIT_IMMUNE);
+        this.tag(ModTags.Entities.IMMUNE);
     }
 }

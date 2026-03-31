@@ -157,7 +157,7 @@ public class PouchItem extends BundleItem
     public int getMaxCount(ItemStack stack){
         int count = this.maxCount;
         if(itemType == ModTags.Items.GRENADE)
-            count = count / 4;
+            count = count / 8;
         return count;
     }
 

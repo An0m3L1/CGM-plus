@@ -4,7 +4,6 @@ import com.mrcrayfish.framework.api.network.LevelLocation;
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.entity.LightSourceEntity;
 import com.mrcrayfish.guns.entity.ThrowableItemEntity;
-import com.mrcrayfish.guns.entity.projectile.GrenadeEntity;
 import com.mrcrayfish.guns.init.ModEntities;
 import com.mrcrayfish.guns.init.ModItems;
 import com.mrcrayfish.guns.init.ModSounds;
@@ -20,6 +19,8 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+
+import static com.mrcrayfish.guns.entity.ProjectileEntity.createExplosion;
 
 /**
  * Author: MrCrayfish
@@ -86,7 +87,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
     @Override
     public void onDeath()
     {
-        GrenadeEntity.createCustomExplosion(this, radius, griefing);
+        createExplosion(this, radius, griefing);
         double y = this.getY() + this.getType().getDimensions().height * 0.5;
         if(this.level.isClientSide)
         {

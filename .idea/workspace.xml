@@ -4,18 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong.">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
-    </list>
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong." />
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -239,14 +228,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748328657724</updated>
-    </task>
-    <task id="LOCAL-00004" summary="Reduced sound distance values. Extended explosive projectile lives. Tweaked molotov model to be smaller. Tweaked third person shielding animations with pistols to correspond to first person. Fixed fire grenades radius tooltip. Renamed Deafen to Stun in configs. Added in-world light when shooting guns (code from Scorched Guns by ribs).">
-      <option name="closed" value="true" />
-      <created>1748783062062</created>
-      <option name="number" value="00004" />
-      <option name="presentableId" value="LOCAL-00004" />
-      <option name="project" value="LOCAL" />
-      <updated>1748783062062</updated>
     </task>
     <task id="LOCAL-00005" summary="Added projectile flyby sound. Removed PausedGameEvent. Optimized rotating projectiles code. Partial refactoring of sounds.">
       <option name="closed" value="true" />
@@ -632,7 +613,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773695502853</updated>
     </task>
-    <option name="localTasksCounter" value="53" />
+    <task id="LOCAL-00053" summary="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong.">
+      <option name="closed" value="true" />
+      <created>1775078070046</created>
+      <option name="number" value="00053" />
+      <option name="presentableId" value="LOCAL-00053" />
+      <option name="project" value="LOCAL" />
+      <updated>1775078070047</updated>
+    </task>
+    <option name="localTasksCounter" value="54" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -651,7 +640,6 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Recoil update.&#10;&#10;Reworked recoil mechanics.&#10;Updated some sounds.&#10;Reduced the time to play pin sound." />
     <MESSAGE value="Small fixes.&#10;&#10;Fixed client and server crash issues with explosions." />
     <MESSAGE value="Animation update and small fixes.&#10;&#10;Updated animations.&#10;Updated AR mag models to be longer.&#10;Added armor and protection piercing tooltips.&#10;Fixed clipping issues with gun workbench.&#10;Fixed tint values for automatic pistol.&#10;Updated sniper rifle recipe.&#10;Updated some sounds." />
     <MESSAGE value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Slight rebalance of ARs.&#10;Further tweaks to new animations." />
@@ -676,7 +664,8 @@
     <MESSAGE value="Aiming update.&#10;&#10;Improved aiming logic - when a player is aiming using blocks is disabled.&#10;Improved shield using logic.&#10;Removed flipControls config, as it conflicted with using offhand items.&#10;Preparing for ProjectileEntity optimisations." />
     <MESSAGE value="Small tweaks.&#10;&#10;Fixed some tooltips.&#10;Touched up some models." />
     <MESSAGE value="Projectile logic rewrite.&#10;&#10;Added a new Debug world and removed old Test world.&#10;Renamed entity tags.&#10;Reworked block breaking logic - now blocks are either fragile and free to destroy or destructible and take up penetration power. There are multiple ap levels to calculate block hardness assigned via tags.&#10;Optimized block breaking code in ProjectileEntity.java&#10;Improved explosion logic.&#10;Improved fire placing logic.&#10;Added a lot of comments to ProjectileEntity.java&#10;Removed GrenadeEntity.java&#10;Projectiles now ignite TNT on hit.&#10;Sculk sensors now react to gunfire, throwing grenades, projectile hits.&#10;Reduced grenade stack size to 8." />
-    <option name="LAST_COMMIT_MESSAGE" value="Projectile logic rewrite.&#10;&#10;Added a new Debug world and removed old Test world.&#10;Renamed entity tags.&#10;Reworked block breaking logic - now blocks are either fragile and free to destroy or destructible and take up penetration power. There are multiple ap levels to calculate block hardness assigned via tags.&#10;Optimized block breaking code in ProjectileEntity.java&#10;Improved explosion logic.&#10;Improved fire placing logic.&#10;Added a lot of comments to ProjectileEntity.java&#10;Removed GrenadeEntity.java&#10;Projectiles now ignite TNT on hit.&#10;Sculk sensors now react to gunfire, throwing grenades, projectile hits.&#10;Reduced grenade stack size to 8." />
+    <MESSAGE value="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong." />
+    <option name="LAST_COMMIT_MESSAGE" value="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
   </component>
 </project>

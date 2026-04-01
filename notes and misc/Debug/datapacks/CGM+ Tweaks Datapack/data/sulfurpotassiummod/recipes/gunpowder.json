@@ -1,0 +1,12 @@
+{
+  "type": "create:mixing",
+  "ingredients":
+  [
+    {"item": "sulfurpotassiummod:sulfur"},
+    {"item": "sulfurpotassiummod:potassium"},
+    {"item": "sulfurpotassiummod:potassium"},
+    {"item": "sulfurpotassiummod:potassium"},
+    {"tag": "minecraft:coals"}
+  ],
+  "results": [{"item": "minecraft:gunpowder"}]
+}

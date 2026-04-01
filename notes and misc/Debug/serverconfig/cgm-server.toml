@@ -9,7 +9,7 @@ cooldownThreshold = 100
 	[grenades.grenade]
 		#Radius of a Grenade explosion.
 		#Range: 0.0 ~ 1.7976931348623157E308
-		handGrenadeExplosionRadius = 2.5
+		handGrenadeExplosionRadius = 3.5
 		#Damage of a Grenade explosion.
 		#Range: 0.0 ~ 1.7976931348623157E308
 		handGrenadeExplosionDamage = 15.0
@@ -22,7 +22,7 @@ cooldownThreshold = 100
 	[grenades.impact_grenade]
 		#Radius of a Impact Grenade explosion.
 		#Range: 0.0 ~ 1.7976931348623157E308
-		impactGrenadeExplosionRadius = 1.75
+		impactGrenadeExplosionRadius = 2.5
 		#Damage of a Impact Grenade explosion.
 		#Range: 0.0 ~ 1.7976931348623157E308
 		impactGrenadeExplosionDamage = 12.0
@@ -97,7 +97,7 @@ cooldownThreshold = 100
 		[grenades.stun_grenade.blind]
 			#Radius of explosion effect.
 			#Range: 0.0 ~ 1.7976931348623157E308
-			radius = 32.0
+			radius = 16.0
 			#Maximum duration of the effect in seconds.
 			#Range: > 0
 			durationMax = 6
@@ -114,7 +114,7 @@ cooldownThreshold = 100
 		[grenades.stun_grenade.stun]
 			#Radius of explosion effect.
 			#Range: 0.0 ~ 1.7976931348623157E308
-			radius = 32.0
+			radius = 16.0
 			#Maximum duration of the effect in seconds.
 			#Range: > 0
 			durationMax = 6

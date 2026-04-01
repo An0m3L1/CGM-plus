@@ -30,7 +30,7 @@
     "item": "cgm:pipe_grenade",
     "griefing": true,
     "waterDamagePenalty": 0.5,
-    "explosionRadius": 2.5
+    "explosionRadius": 3.5
   },
   "sounds": {
     "cock": "cgm:item.grenade_launcher.cock",

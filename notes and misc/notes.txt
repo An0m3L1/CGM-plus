@@ -29,6 +29,8 @@ Return coloring weapons (if a weapon has a dye applied to it, change the texture
 Improve explosion VFX
 Invert automatic pistol bolt movement (make it open bolt)
 Shooting guns in creative should still consume loaded ammo
+Remove unrelated datapack tweaks from base mod
+Fix explosions dealing very low damage if radius is small and they explode directly on top of entities
 
 Add multiple levels of destructible blocks
     - AP0 (glass, lanterns, wool, plants, small rocks)

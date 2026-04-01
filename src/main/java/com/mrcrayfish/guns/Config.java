@@ -283,7 +283,7 @@ public class Config
             {
                 builder.push("grenade");
                 {
-                    this.grenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
+                    this.grenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 3.5, 0.0, Double.MAX_VALUE);
                     this.grenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
                     this.grenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks.").define("handGrenadeExplosionGriefing", true);
                     this.grenadeExplosionSoundDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("grenadeExplosionSoundDistance", 96, 0, Double.MAX_VALUE);
@@ -291,7 +291,7 @@ public class Config
                 builder.pop();
                 builder.push("impact_grenade");
                 {
-                    this.impactGrenadeExplosionRadius = builder.comment("Radius of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionRadius", 1.75, 0.0, Double.MAX_VALUE);
+                    this.impactGrenadeExplosionRadius = builder.comment("Radius of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
                     this.impactGrenadeExplosionDamage = builder.comment("Damage of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionDamage", 12.0, 0.0, Double.MAX_VALUE);
                     this.impactGrenadeExplosionGriefing = builder.comment("If enabled, Impact Grenades will destroy blocks.").define("impactGrenadeExplosionGriefing", true);
                     this.impactGrenadeExplosionSoundDistance = builder.comment("The maximum distance impact grenade explosions can be heard by players.").defineInRange("impactGrenadeExplosionSoundDistance", 96, 0, Double.MAX_VALUE);
@@ -325,12 +325,12 @@ public class Config
                 {
                     builder.push("blind");
                     {
-                        this.blindCriteria = new EffectCriteria(builder, 32, 6, 1, 180, 0.75);
+                        this.blindCriteria = new EffectCriteria(builder, 16, 6, 1, 180, 0.75);
                     }
                     builder.pop();
                     builder.push("stun");
                     {
-                        this.stunCriteria = new EffectCriteria(builder, 32, 6, 1, 360, 0.75);
+                        this.stunCriteria = new EffectCriteria(builder, 16, 6, 1, 360, 0.75);
                     }
                     builder.pop();
                     this.alphaOverlay = builder.comment("After the duration drops to this many ticks, the transparency of the overlay when blinded will gradually fade to 0 alpha.").defineInRange("alphaOverlay", 255, 0, 255);

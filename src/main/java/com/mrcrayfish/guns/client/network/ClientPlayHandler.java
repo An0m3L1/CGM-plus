@@ -131,7 +131,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.SERVER.grenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.grenadeExplosionRadius.get().floatValue();
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -164,7 +164,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue();
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -197,7 +197,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = message.getExplosionRadius() * 2.0F;
+        float size = message.getExplosionRadius();
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -230,7 +230,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = message.getExplosionRadius() * 2.0F;
+        float size = message.getExplosionRadius();
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -263,7 +263,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue();
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();
@@ -309,7 +309,7 @@ public class ClientPlayHandler
         SoundManager soundManager = mc.getSoundManager();
         ParticleEngine particleManager = mc.particleEngine;
         Level level = Objects.requireNonNull(mc.level);
-        float size = Config.SERVER.molotovExplosionRadius.get().floatValue() * 2.0F;
+        float size = Config.SERVER.molotovExplosionRadius.get().floatValue();
         double x = message.getX();
         double y = message.getY();
         double z = message.getZ();

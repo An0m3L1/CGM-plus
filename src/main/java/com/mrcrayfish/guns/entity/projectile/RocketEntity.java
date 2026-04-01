@@ -92,7 +92,7 @@ public class RocketEntity extends ProjectileEntity
 
     private void explode()
     {
-        float radius = 3.0F;
+        float radius = 5.0F;
         boolean griefing = true;
 
         if(this.getProjectile() != null)

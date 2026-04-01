@@ -4,233 +4,16 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Projectile logic rewrite.&#10;&#10;Added a new Debug world and removed old Test world.&#10;Renamed entity tags.&#10;Reworked block breaking logic - now blocks are either fragile and free to destroy or destructible and take up penetration power. There are multiple ap levels to calculate block hardness assigned via tags.&#10;Optimized block breaking code in ProjectileEntity.java&#10;Improved explosion logic.&#10;Improved fire placing logic.&#10;Added a lot of comments to ProjectileEntity.java&#10;Removed GrenadeEntity.java&#10;Projectiles now ignite TNT on hit.&#10;Sculk sensors now react to gunfire, throwing grenades, projectile hits.&#10;Reduced grenade stack size to 8.">
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/DIM-1/data/raids.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/DIM1/data/raids_end.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/advancements/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/advancements/380ec359-1ba0-4e24-8bc9-25835b90e4ea.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/data/raids.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/entities/r.-1.-1.mca" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/icon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/level.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/level.dat_old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/playerdata/380ec359-1ba0-4e24-8bc9-25835b90e4ea.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/playerdata/380ec359-1ba0-4e24-8bc9-25835b90e4ea.dat_old" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/grenadesadozen-server.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/stats/380df991-f603-344c-a090-369bad2a924a.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/stats/380ec359-1ba0-4e24-8bc9-25835b90e4ea.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/xaeromap.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/destructible.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/hardness_high.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/hardness_low.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/hardness_medium.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/hardness_none.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong.">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM-1/data/capabilities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/DIM-1/data/capabilities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM-1/data/raids.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/data/capabilities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/DIM1/data/capabilities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/data/raids_end.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/poi/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/poi/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-1.-3.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/poi/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-2.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/poi/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-2.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.0.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.1.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.1.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.2.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/DIM1/region/r.2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.0.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/advancements/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/config/collective/checked.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/capabilities.dat" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/data/capabilities.dat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/geckolib_ids.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/idcounts.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/map_0.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/map_1.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/map_2.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/map_3.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/map_4.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/raids.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/scoreboard.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/data/silence_s_defense_tower_mapvars.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/create/recipes/crafting/curiosities/cake.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/create/recipes/crafting/curiosities/cake.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/create/recipes/sequenced_assembly/precision_mechanism.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/create/recipes/sequenced_assembly/precision_mechanism.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/farmersdelight/recipes/bread_from_smelting.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/farmersdelight/recipes/bread_from_smelting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/farmersdelight/recipes/bread_from_smoking.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/farmersdelight/recipes/bread_from_smoking.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/farmersdelight/recipes/cooking/dumplings.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/farmersdelight/recipes/cooking/dumplings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/farmersdelight/recipes/cutting/tag_dough.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/farmersdelight/recipes/cutting/tag_dough.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/farmersdelight/recipes/wheat_dough_from_eggs.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/farmersdelight/recipes/wheat_dough_from_eggs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/farmersdelight/recipes/wheat_dough_from_water.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/farmersdelight/recipes/wheat_dough_from_water.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/minecraft/dimension/overworld.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/minecraft/dimension/overworld.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/sulfurpotassiummod/loot_tables/blocks/potassium_ore.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/sulfurpotassiummod/loot_tables/blocks/potassium_ore.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/data/sulfurpotassiummod/recipes/gunpowder.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/sulfurpotassiummod/recipes/gunpowder.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/datapacks/CGM+ Tweaks/pack.mcmeta" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/pack.mcmeta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.-1.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.-1.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.-2.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-2.-3.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.0.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.0.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.1.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/entities/r.2.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/icon.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/level.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/level.dat_old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/playerdata/380df991-f603-344c-a090-369bad2a924a.dat_old" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.0.-3.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-1.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.-1.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-1.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/entities/r.0.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-1.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.2.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.2.-3.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-2.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-2.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.-1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-2.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.2.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-3.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.-3.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.0.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/entities/r.-1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.0.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.0.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.0.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.0.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.0.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.-1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.1.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/entities/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.1.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.1.-3.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.1.-3.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.1.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.2.-1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.2.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.2.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.0.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.2.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.2.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.3.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.3.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.0.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/poi/r.3.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-1.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-1.-2.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-2.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-2.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.-2.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-3.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-3.-2.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.1.-1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-3.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-3.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-3.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-3.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-4.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-4.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-4.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-4.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-4.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.-4.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-4.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.0.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.0.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/poi/r.1.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.1.1.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.1.1.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.2.0.mca" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/region/r.2.0.mca" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.-5.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.3.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.4.-1.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.4.-2.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.4.-3.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.4.-4.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/region/r.4.0.mca" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/Repair_Kits_Server.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/artifacts-server.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/backpacked-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/backpacked-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/cgm-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/cgm-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/create-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/create-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/createdieselgenerators-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/createdieselgenerators-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/curios-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/curios-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/dynamictrees-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/dynamictrees-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/forge-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/forge-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/goprone-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/goprone-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/inventorysorter-server.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/jeg-server-1.toml.bak" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/jeg-server.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/jei-server.toml" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/serverconfig/jei-server.toml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/k_turrets-server.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/mantle-server.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/serverconfig/securitycraft-server.toml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/session.lock" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/session.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/stats/380df991-f603-344c-a090-369bad2a924a.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Test World/xaeromap.txt" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/heavy_sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/mini_gun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/mini_gun.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/pistol.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/semi_auto_shotgun.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/sniper_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_pistol.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/fragile.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/entity_types/hit_immune.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/entity_types/immune.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/entity_types/hit_resistant.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/entity_types/resistant.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/GunMod.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunEntityRenderers.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunEntityRenderers.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/GrenadeRenderer.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ShootTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/BlockTagGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/BlockTagGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/EntityTagGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/EntityTagGen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/GunGen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/datagen/GunGen.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableImpactGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableImpactGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableIncendiaryGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableIncendiaryGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/GrenadeEntity.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/PipeGrenadeEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/projectile/RocketEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModEntities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTags.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTags.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/PouchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/PouchItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
@@ -299,42 +82,42 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [build].executor": "Run",
-    "Gradle.CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [runClient --warning-mode'none'].executor": "Run",
-    "Gradle.CGM-plus [runClient].executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.Run Minecraft 2.executor": "Run",
-    "Gradle.Run Minecraft.executor": "Run",
-    "JavaClassFindUsagesOptions.isSearchForTextOccurrences": "false",
-    "Notification.DisplayName-DoNotAsk-Build sync orphan modules": "Modules no longer referenced by external system",
-    "Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed": "Sources download failed",
-    "Notification.DoNotAsk-Build sync orphan modules": "true",
-    "Notification.DoNotAsk-gradle.notifications.sources.download.failed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/notes and misc",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "settings.editor.selected.configurable": "preferences.pluginManager"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient --warning-mode'none'].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Run Minecraft 2.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Run Minecraft.executor&quot;: &quot;Run&quot;,
+    &quot;JavaClassFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;false&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Build sync orphan modules&quot;: &quot;Modules no longer referenced by external system&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;Sources download failed&quot;,
+    &quot;Notification.DoNotAsk-Build sync orphan modules&quot;: &quot;true&quot;,
+    &quot;Notification.DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/saves/Debug/datapacks&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves\Debug\datapacks" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\tags\blocks" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves\Debug" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special" />

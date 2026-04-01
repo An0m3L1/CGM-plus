@@ -80,7 +80,7 @@ public class PipeGrenadeEntity extends ProjectileEntity
 
     private void explode()
     {
-        float radius = 2.5F;
+        float radius = 4.0F;
         boolean griefing = true;
 
         if(this.getProjectile() != null)

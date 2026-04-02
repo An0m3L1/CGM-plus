@@ -24,13 +24,11 @@ Optimize textures
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
 Make hemp crops 2 blocks tall
-Improve repair logic for guns (repairing is done in any crafting menu, takes 2 repair kits for full repair)
+Improve repair logic for guns (how?)
 Return coloring weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
 Improve explosion VFX
 Invert automatic pistol bolt movement (make it open bolt)
-Shooting guns in creative should still consume loaded ammo
-Remove unrelated datapack tweaks from base mod
-Fix explosions dealing very low damage if radius is small and they explode directly on top of entities
+Add casing particles
 
 Add multiple levels of destructible blocks
     - AP0 (glass, lanterns, wool, plants, small rocks)
@@ -40,5 +38,9 @@ Add multiple levels of destructible blocks
 
 Add potion effects
     - Focused: obtained through energy drinks, adrenaline shots, etc. Increases reload, ADS and draw speed of guns
+
+Add configs
+    - Choose between hold or toggle mode for aiming
+    - Add ammo HUD position presets
 
 Check cgm expander for sprint code changes

@@ -2,7 +2,7 @@
   "display": {"flash": {"size": 2.0}},
   "general": {
     "gripType": "cgm:rocket_launcher",
-    "auto": true,
+    "auto": false,
     "rate": 16,
     "spawnCasings": false,
     "emitLight": true,

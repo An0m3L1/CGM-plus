@@ -948,39 +948,32 @@ public class GunRenderingHandler
             }
             
             // Fire mode display
-            if (gun.getFireModes().usesFireModes())
+            int currentFireMode = Gun.getFireMode(heldItem);
+            String fireModeString = (currentFireMode==0 ? "Semi" : (currentFireMode==1 ? "Auto" : (currentFireMode==2 ? "Burst" : "")));
+            MutableComponent fireSwitch = (Component.literal(""));
+            int fireSwitches = 0;
+            if (Gun.canDoSemiFire(heldItem))
             {
-                int currentFireMode = Gun.getFireMode(heldItem);
-                String fireModeString = (currentFireMode==0 ? "Semi" : (currentFireMode==1 ? "Auto" : (currentFireMode==2 ? "Burst" : "")));
-                //GuiComponent.drawString(poseStack, mc.font, fireModeDisplay, ammoPosX, ammoPosY+20, 0xFFFFFF);
-
-                MutableComponent fireSwitch = (Component.literal(""));
-                int fireSwitches = 0;
-                if (Gun.canDoSemiFire(heldItem))
-                {
-                    fireSwitch.append(Component.literal("'").withStyle(currentFireMode==0 ? ChatFormatting.WHITE : ChatFormatting.DARK_GRAY));
-                    fireSwitches++;
-                }
-                if (Gun.canDoAutoFire(heldItem))
-                {
-                    fireSwitch.append(Component.literal("'").withStyle(currentFireMode==1 ? ChatFormatting.WHITE : ChatFormatting.DARK_GRAY));
-                    fireSwitches++;
-                }
-                if (Gun.canDoBurstFire(heldItem))
-                {
-                    fireSwitch.append(Component.literal("'").withStyle(currentFireMode==2 ? ChatFormatting.WHITE : ChatFormatting.DARK_GRAY));
-                    fireSwitches++;
-                }
-
-                MutableComponent fireModeDisplay = (Component.literal(""));
-                if (fireSwitches>1)
-                    fireModeDisplay.append(fireSwitch.append(" "));
-                fireModeDisplay.append(Component.literal(fireModeString).withStyle(ChatFormatting.BOLD));
-
-                GuiComponent.drawString(poseStack, mc.font, fireModeDisplay, ammoPosX, ammoPosY+20, 0xFFFFFF);
-                //GuiComponent.drawCenteredString(poseStack, mc.font, fireSwitch, ammoPosX-6, ammoPosY+20, 0x555555);
-
+                fireSwitch.append(Component.literal("'").withStyle(currentFireMode==0 ? ChatFormatting.WHITE : ChatFormatting.DARK_GRAY));
+                fireSwitches++;
             }
+            if (Gun.canDoAutoFire(heldItem))
+            {
+                fireSwitch.append(Component.literal("'").withStyle(currentFireMode==1 ? ChatFormatting.WHITE : ChatFormatting.DARK_GRAY));
+                fireSwitches++;
+            }
+            if (Gun.canDoBurstFire(heldItem))
+            {
+                fireSwitch.append(Component.literal("'").withStyle(currentFireMode==2 ? ChatFormatting.WHITE : ChatFormatting.DARK_GRAY));
+                fireSwitches++;
+            }
+
+            MutableComponent fireModeDisplay = (Component.literal(""));
+            if (fireSwitches>1)
+                fireModeDisplay.append(fireSwitch.append(" "));
+            fireModeDisplay.append(Component.literal(fireModeString).withStyle(ChatFormatting.BOLD));
+
+            GuiComponent.drawString(poseStack, mc.font, fireModeDisplay, ammoPosX, ammoPosY+20, 0xFFFFFF);
 
             // Ammo counter
             int currentAmmo = tagCompound.getInt("AmmoCount");
@@ -999,9 +992,28 @@ public class GunRenderingHandler
                     this.fetchReserveAmmo(player, gun);
                     this.doUpdateAmmo = false;
                 }
-                String displayReserveAmmo = (!Gun.hasUnlimitedReloads(heldItem) ? "" + reserveAmmo: "∞");
+
+                String displayReserveAmmo = "" + reserveAmmo;
+                if(Gun.hasUnlimitedReloads(heldItem) || player.isCreative())
+                {
+                    displayReserveAmmo = "∞";
+                }
                 MutableComponent reserveAmmoValue = (Component.literal(displayReserveAmmo));
-                GuiComponent.drawString(poseStack, mc.font, reserveAmmoValue, ammoPosX+5, ammoPosY+10, (reserveAmmo<=0 && !Gun.hasUnlimitedReloads(heldItem) ? 0x555555 : 0xAAAAAA));
+
+                boolean infiniteReserveAmmo = Gun.hasUnlimitedReloads(heldItem) || player.isCreative();
+                boolean noReserveAmmo = !infiniteReserveAmmo && reserveAmmo<=0 && !Gun.hasUnlimitedReloads(heldItem);
+
+                int color = 0xAAAAAA; // White
+                if(infiniteReserveAmmo)
+                {
+                    color = 0xFF55FF; // Light purple
+                }
+                if(noReserveAmmo)
+                {
+                    color = 0x555555; // Gray
+                }
+
+                GuiComponent.drawString(poseStack, mc.font, reserveAmmoValue, ammoPosX+5, ammoPosY+10, color);
             }
 
             RenderSystem.disableBlend();

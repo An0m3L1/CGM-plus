@@ -32,12 +32,6 @@
     "reloadEndDelay": 1,
     "reloadAllowedCooldown": 0.0
   },
-  "fireModes": {
-    "useFireModes": true,
-    "hasSemiMode": true,
-    "hasAutoMode": true,
-    "hasBurstMode": false
-  },
   "modules": {
     "attachments": {
       "barrel": {"scale": 0.5},

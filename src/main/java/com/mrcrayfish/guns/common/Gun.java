@@ -4270,7 +4270,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
     public static boolean canDoSemiFire(ItemStack gunStack)
     {
         Gun modifiedGun = ((GunItem) gunStack.getItem()).getModifiedGun(gunStack);
-        return modifiedGun.getFireModes().hasSemiMode() || (!modifiedGun.getFireModes().hasAnyFireMode());
+        return modifiedGun.getFireModes().hasSemiMode() || (!modifiedGun.getFireModes().hasAnyFireMode() && !modifiedGun.getGeneral().isAuto() && !modifiedGun.getGeneral().hasBurstFire());
     }
 
     public static boolean canDoAutoFire(ItemStack gunStack)

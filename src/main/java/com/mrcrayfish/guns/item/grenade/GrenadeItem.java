@@ -128,7 +128,7 @@ public class GrenadeItem extends Item implements IGrenade
             {
                 if(!(entityLiving instanceof Player) || !((Player) entityLiving).isCreative())
                     stack.shrink(1);
-                float velocity = 1.25F;
+                float velocity = 1.15F;
                 if(entityLiving.isCrouching())
                     velocity *= 0.5f;
                 ThrowableGrenadeEntity grenade = this.create(worldIn, entityLiving, this.maxCookTime - duration);

@@ -283,16 +283,16 @@ public class Config
             {
                 builder.push("grenade");
                 {
-                    this.grenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("handGrenadeExplosionRadius", 3.5, 0.0, Double.MAX_VALUE);
-                    this.grenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("handGrenadeExplosionDamage", 15.0, 0.0, Double.MAX_VALUE);
-                    this.grenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks.").define("handGrenadeExplosionGriefing", true);
+                    this.grenadeExplosionRadius = builder.comment("Radius of a Grenade explosion.").defineInRange("grenadeExplosionRadius", 3.5, 0.0, Double.MAX_VALUE);
+                    this.grenadeExplosionDamage = builder.comment("Damage of a Grenade explosion.").defineInRange("grenadeExplosionDamage", 22.0, 0.0, Double.MAX_VALUE);
+                    this.grenadeExplosionGriefing = builder.comment("If enabled, Grenades will destroy blocks.").define("grenadeExplosionGriefing", true);
                     this.grenadeExplosionSoundDistance = builder.comment("The maximum distance grenade explosions can be heard by players.").defineInRange("grenadeExplosionSoundDistance", 96, 0, Double.MAX_VALUE);
                 }
                 builder.pop();
                 builder.push("impact_grenade");
                 {
                     this.impactGrenadeExplosionRadius = builder.comment("Radius of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionRadius", 2.5, 0.0, Double.MAX_VALUE);
-                    this.impactGrenadeExplosionDamage = builder.comment("Damage of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionDamage", 12.0, 0.0, Double.MAX_VALUE);
+                    this.impactGrenadeExplosionDamage = builder.comment("Damage of a Impact Grenade explosion.").defineInRange("impactGrenadeExplosionDamage", 22.0, 0.0, Double.MAX_VALUE);
                     this.impactGrenadeExplosionGriefing = builder.comment("If enabled, Impact Grenades will destroy blocks.").define("impactGrenadeExplosionGriefing", true);
                     this.impactGrenadeExplosionSoundDistance = builder.comment("The maximum distance impact grenade explosions can be heard by players.").defineInRange("impactGrenadeExplosionSoundDistance", 96, 0, Double.MAX_VALUE);
                 }

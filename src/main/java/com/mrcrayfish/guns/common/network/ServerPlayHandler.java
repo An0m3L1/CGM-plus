@@ -222,17 +222,14 @@ public class ServerPlayHandler
                 	}
                 }
 
-                if(!player.isCreative())
+                CompoundTag tag = heldItem.getOrCreateTag();
+                if(!Gun.hasInfiniteAmmo(heldItem))
                 {
-                    CompoundTag tag = heldItem.getOrCreateTag();
-                    if(!Gun.hasInfiniteAmmo(heldItem))
-                    {
-                        tag.putInt("AmmoCount", Math.max(0, tag.getInt("AmmoCount") - 1));
-                    }
-                    if (Gun.usesEnergy(heldItem))
-                    {
-                    	tag.putInt("Energy", Math.max(0, tag.getInt("Energy") - modifiedGun.getGeneral().getEnergyPerShot()));
-                    }
+                    tag.putInt("AmmoCount", Math.max(0, tag.getInt("AmmoCount") - 1));
+                }
+                if (Gun.usesEnergy(heldItem))
+                {
+                    tag.putInt("Energy", Math.max(0, tag.getInt("Energy") - modifiedGun.getGeneral().getEnergyPerShot()));
                 }
 
                 player.awardStat(Stats.ITEM_USED.get(item));

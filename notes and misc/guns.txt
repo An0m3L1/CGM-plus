@@ -36,11 +36,11 @@ Shotguns:
 Other:
     M134 MiniGun <--
     Milkor MGL <--
-    M202A1 <--
+    M202A1
     M249
     RPK
     China Lake GL
-    RPG-7
+    RPG-7 <--
     Flare Gun
     Railgun
     Pulse rifle

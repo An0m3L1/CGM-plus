@@ -16,7 +16,6 @@ import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.item.ItemEntity;
-import net.minecraft.world.entity.item.PrimedTnt;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.enchantment.ProtectionEnchantment;
@@ -162,10 +161,6 @@ public class ProjectileExplosion extends Explosion
             if(entity.ignoreExplosion())
                 continue;
 
-            double strength = Math.sqrt(entity.distanceToSqr(explosionPos)) / radius;
-            if(strength > 1.0D)
-                continue;
-
             Vec3 entityPos = entity.position();
             ClipContext context = new ClipContext(
                     explosionPos,
@@ -179,10 +174,19 @@ public class ProjectileExplosion extends Explosion
             if(result.getType() != HitResult.Type.MISS)
                 continue;
 
-            double deltaX = entity.getX() - this.x;
-            double deltaY = (entity instanceof PrimedTnt ? entity.getY() : entity.getEyeY()) - this.y;
-            double deltaZ = entity.getZ() - this.z;
+            // Get closest hitbox point to the explosion
+            AABB aabb = entity.getBoundingBox();
+            double closestX = Mth.clamp(this.x, aabb.minX, aabb.maxX);
+            double closestY = Mth.clamp(this.y, aabb.minY, aabb.maxY);
+            double closestZ = Mth.clamp(this.z, aabb.minZ, aabb.maxZ);
+            double deltaX = closestX - this.x;
+            double deltaY = closestY - this.y;
+            double deltaZ = closestZ - this.z;
             double distanceToExplosion = Math.sqrt(deltaX * deltaX + deltaY * deltaY + deltaZ * deltaZ);
+
+            // If entity is further from the explosion than it's radius - skip
+            if(distanceToExplosion > radius)
+                continue;
 
             if(distanceToExplosion != 0.0D)
             {
@@ -190,20 +194,13 @@ public class ProjectileExplosion extends Explosion
                 deltaY /= distanceToExplosion;
                 deltaZ /= distanceToExplosion;
             }
-            else
-            {
-                // Fixes an issue where explosion exactly on the player would cause no damage
-                deltaX = 0.0;
-                deltaY = 1.0;
-                deltaZ = 0.0;
-            }
 
             double blockDensity = getSeenPercent(explosionPos, entity);
-            double rawDamage = (1.0D - strength) * blockDensity;
-            double damage = Math.min(((rawDamage * rawDamage + rawDamage) / 2.0D) * (projectileDamage * 5) + 1.0D, projectileDamage);
+            double rawDamage = (1.0D - distanceToExplosion / radius) * blockDensity;
+            double damage = Math.min(((rawDamage * rawDamage + rawDamage) / 2.0D) * (projectileDamage * 3) + 1.0D, projectileDamage);
             entity.hurt(this.getDamageSource(), (float) damage);
 
-            //Explosion knockback code
+            // Apply knockback
             double blastDamage = rawDamage;
             if(entity instanceof LivingEntity)
             {

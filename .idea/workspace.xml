@@ -4,7 +4,48 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong." />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong.">
+      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/minecraft/tags/blocks/planks.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/minecraft/tags/blocks/wooden_slabs.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/minecraft/tags/blocks/wooden_stairs.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/create/recipes/sequenced_assembly/precision_mechanism.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/minecraft/dimension/overworld.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/sulfurpotassiummod/loot_tables/blocks/potassium_ore.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/CGM+ Tweaks Datapack/data/sulfurpotassiummod/recipes/gunpowder.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/guns.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/guns.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/assault_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/automatic_pistol.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/combat_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/grenade_launcher.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/rocket_launcher.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/guns/tactical_rifle.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/hardness_none.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/cgm/tags/blocks/hardness_none.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/create/recipes/crafting/curiosities/cake.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/farmersdelight/recipes/bread_from_smelting.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/farmersdelight/recipes/bread_from_smoking.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/farmersdelight/recipes/cooking/dumplings.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/farmersdelight/recipes/cutting/tag_dough.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/farmersdelight/recipes/wheat_dough_from_eggs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/farmersdelight/recipes/wheat_dough_from_water.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/glass.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/forge/tags/blocks/glass.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_iron_tool.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_iron_tool.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_stone_tool.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_stone_tool.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/planks.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/wooden_slabs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/wooden_stairs.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/KeyBinds.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/KeyBinds.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModBlocks.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModBlocks.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/grenade/GrenadeItem.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
+    </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -71,49 +112,49 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
-    &quot;Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [build].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [runClient --warning-mode'none'].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Run Minecraft 2.executor&quot;: &quot;Run&quot;,
-    &quot;Gradle.Run Minecraft.executor&quot;: &quot;Run&quot;,
-    &quot;JavaClassFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;false&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-Build sync orphan modules&quot;: &quot;Modules no longer referenced by external system&quot;,
-    &quot;Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;Sources download failed&quot;,
-    &quot;Notification.DoNotAsk-Build sync orphan modules&quot;: &quot;true&quot;,
-    &quot;Notification.DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/saves/Debug/datapacks&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
+    "Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor": "Run",
+    "Gradle.CGM-plus [build].executor": "Run",
+    "Gradle.CGM-plus [createMcpToSrg].executor": "Run",
+    "Gradle.CGM-plus [runClient --warning-mode'none'].executor": "Run",
+    "Gradle.CGM-plus [runClient].executor": "Run",
+    "Gradle.Download Sources.executor": "Run",
+    "Gradle.Run Minecraft 2.executor": "Run",
+    "Gradle.Run Minecraft.executor": "Run",
+    "JavaClassFindUsagesOptions.isSearchForTextOccurrences": "false",
+    "Notification.DisplayName-DoNotAsk-Build sync orphan modules": "Modules no longer referenced by external system",
+    "Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed": "Sources download failed",
+    "Notification.DoNotAsk-Build sync orphan modules": "true",
+    "Notification.DoNotAsk-gradle.notifications.sources.download.failed": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/notes and misc/Debug/datapacks",
+    "project.structure.last.edited": "Modules",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc\Debug\datapacks" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves\Debug\datapacks" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc\CGM+ Tweaks Datapack\data\minecraft\tags\blocks" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\generated\resources\data\cgm\tags\blocks" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\saves\Debug" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc\CGM+ Tweaks Datapack\data\minecraft\tags\blocks" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\special\semi_auto_shotgun" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\animations\old" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\models\item\unused" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm\textures\item\unused" />
     </key>
     <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
       <recent name="com.mrcrayfish.guns.client.handler" />

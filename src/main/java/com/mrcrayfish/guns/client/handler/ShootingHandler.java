@@ -331,7 +331,7 @@ public class ShootingHandler
         if(player.isSpectator())
             return false;
 
-        return (!Gun.hasAmmo(heldItem) || Gun.cantShoot(heldItem)) && !player.isCreative();
+        return !Gun.hasAmmo(heldItem) || Gun.cantShoot(heldItem);
     }
 
     private boolean isBroken(Player player, ItemStack heldItem)

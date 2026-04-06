@@ -1,92 +1,92 @@
-modLoader="javafml"
-loaderVersion="[39,)"
-license="GPL3"
+modLoader = "javafml"
+loaderVersion = "[39,)"
+license = "GPL3"
 
 [[mods]]
-modId="cgm"
-version="1.0a"
-displayName="CGM+"
-logoFile="cgm_banner.png"
-authors="An0m3L1"
-credits="MrCrayfish, zaeonNineZero"
-description='''
+modId = "cgm"
+version = "1.0a"
+displayName = "CGM+"
+logoFile = "cgm_banner.png"
+authors = "An0m3L1"
+credits = "MrCrayfish, zaeonNineZero"
+description = '''
 Heavily modified, overhauled and expanded version of zaeonNineZeros CGM Expander Fork.
 '''
 
 [[dependencies.cgm]]
-    modId="forge"
-    mandatory=true
-    versionRange="[43.2.3,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "forge"
+mandatory = true
+versionRange = "[43.2.3,)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="minecraft"
-    mandatory=true
-    versionRange="[1.19,1.20)"
-    ordering="NONE"
-    side="BOTH"
+modId = "minecraft"
+mandatory = true
+versionRange = "[1.19,1.20)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="framework"
-    mandatory=true
-    versionRange="[0.6.16,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "framework"
+mandatory = true
+versionRange = "[0.6.16,)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="create"
-    mandatory=true
-    versionRange="[0.5.1,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "create"
+mandatory = true
+versionRange = "[0.5.1,)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="createdieselgenerators"
-    mandatory=false
-    versionRange="[1.19.2-1.2,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "createdieselgenerators"
+mandatory = false
+versionRange = "[1.19.2-1.2,)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="farmersdelight"
-    mandatory=false
-    versionRange="[1.2,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "farmersdelight"
+mandatory = false
+versionRange = "[1.2,)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="sulfurpotassiummod"
-    mandatory=false
-    versionRange="[2.3.4,)"
-    ordering="NONE"
-    side="BOTH"
+modId = "sulfurpotassiummod"
+mandatory = false
+versionRange = "[2.3.4,)"
+ordering = "NONE"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="controllable"
-    mandatory=false
-    versionRange="[0.16.3,)"
-    ordering="AFTER"
-    side="CLIENT"
+modId = "controllable"
+mandatory = false
+versionRange = "[0.16.3,)"
+ordering = "AFTER"
+side = "CLIENT"
 [[dependencies.cgm]]
-    modId="backpacked"
-    mandatory=false
-    versionRange="[2.1.9,)"
-    ordering="AFTER"
-    side="CLIENT"
+modId = "backpacked"
+mandatory = false
+versionRange = "[2.1.9,)"
+ordering = "AFTER"
+side = "CLIENT"
 [[dependencies.cgm]]
-    modId="shouldersurfing"
-    mandatory=false
-    versionRange="[1.19.2-4.1.4,)"
-    ordering="AFTER"
-    side="CLIENT"
+modId = "shouldersurfing"
+mandatory = false
+versionRange = "[1.19.2-4.1.4,)"
+ordering = "AFTER"
+side = "CLIENT"
 [[dependencies.cgm]]
-    modId="dynamiclightsreforged"
-    mandatory=false
-    versionRange="[1.19.2_v1.4.0,)"
-    ordering="AFTER"
-    side="BOTH"
+modId = "dynamiclightsreforged"
+mandatory = false
+versionRange = "[1.19.2_v1.4.0,)"
+ordering = "AFTER"
+side = "BOTH"
 [[dependencies.cgm]]
-    modId="dynamictrees"
-    mandatory=false
-    versionRange="[1.19.2-1.2.0,)"
-    ordering="AFTER"
-    side="BOTH"
+modId = "dynamictrees"
+mandatory = false
+versionRange = "[1.19.2-1.2.0,)"
+ordering = "AFTER"
+side = "BOTH"
 
 [modproperties.cgm]
-    catalogueImageIcon="cgm_icon.png"
-    catalogueBackground="cgm_banner.png"
-    configuredBackground="minecraft:textures/block/gray_concrete.png"
+catalogueImageIcon = "cgm_icon.png"
+catalogueBackground = "cgm_banner.png"
+configuredBackground = "minecraft:textures/block/gray_concrete.png"

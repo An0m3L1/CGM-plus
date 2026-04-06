@@ -1,4 +1,4 @@
-Add melee class system
+Add melee class system:
     - Blunt: applies slow and stunned effect, extra knockback
     - Sharp: applies bleed effect (can be removed with healing items)
         (bleeding entities automatically attract nearby hostile mobs)
@@ -6,13 +6,14 @@ Add melee class system
 Add bandits, marauders, zombies
 Add automatic turrets (check scorched guns)
 Add folding and moving targets
-Add and overhaul animations
+Add and overhaul animations:
     - Prone/Swimming
     - Smooth third person sprint animation for one-handed weapons
-Add ammo pouch curio items
+    - Third person recoil animation
+Add ammo pouch curio items:
     - Make guns get ammo from pouches (findAmmo, getReserveAmmoCount in Gun) (quiver from quark?)
 Add custom backpacks
-Overhaul items (models, textures, stats)
+Overhaul items (models, textures, stats):
     - Grenade Launcher
     - Rocket Launcher
     - Minigun
@@ -23,28 +24,31 @@ Add debug lines and functions
 Optimize textures
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
+Make dependencies optional where applicable
 Make hemp crops 2 blocks tall
 Improve repair logic for guns (how?)
 Return coloring weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
 Improve explosion VFX
-Update reload animations
+Update reload logic and animations:
     - When ammo is empty, slides should lock back/forward
+    - If weapon is reloaded from a partially full state, loaded ammo should be maxAmmo+1 (i.e. 31/30)
     - Add reload empty animations to all applicable guns
-    - Update internals of automatic pistol
-Add casing particles
-Move reload subtitles to mag_in sound
-
-Add multiple levels of destructible blocks
+    - Update internals of automatic pistol (other guns?)
+Add casing particles (or integrate casings into the animation itself)
+Hide ammo HUD when reloading textures
+Clean up:
+    - Gun model files (use automatic pistol as template)
+    - Remove debug editor and all code related to it
+Add multiple levels of destructible blocks:
     - AP0 (glass, lanterns, wool, plants, small rocks)
     - AP1 (wooden doors, wooden trapdoors, fences, fence gates, furniture)
     - AP2 (planks, logs, iron doors, iron trapdoors, iron bars)
     - AP3 (stone bricks, walls)
-
-Add potion effects
+Add potion effects:
     - Focused: obtained through energy drinks, adrenaline shots, etc. Increases reload, ADS and draw speed of guns
-
-Add configs
+Add configs:
     - Choose between hold or toggle mode for aiming
     - Add ammo HUD position presets
+Fix remaining warnings
 
 Check cgm expander for sprint code changes

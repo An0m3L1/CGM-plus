@@ -1,15 +1,15 @@
 {
-  "type": "create:cutting",
-  "ingredients":
-  [
-    {"tag": "forge:ingots/iron"}
-  ],
-  "processingTime": 200,
-  "results":
-  [
-    {
-      "count": 2,
-      "item": "cgm:iron_rod"
-    }
-  ]
+	"type": "create:cutting",
+	"ingredients": [
+		{
+			"tag": "forge:ingots/iron"
+		}
+	],
+	"processingTime": 200,
+	"results": [
+		{
+			"count": 2,
+			"item": "cgm:iron_rod"
+		}
+	]
 }

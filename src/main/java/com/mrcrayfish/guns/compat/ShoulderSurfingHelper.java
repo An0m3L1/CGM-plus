@@ -1,142 +1,109 @@
 package com.mrcrayfish.guns.compat;
 
 import com.github.exopandora.shouldersurfing.api.model.Perspective;
-import com.github.exopandora.shouldersurfing.client.ShoulderSurfingImpl;
 import com.mrcrayfish.guns.GunMod;
-import net.minecraft.world.entity.player.Player;
 
-import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 
 /**
  * Author: MrCrayfish
  */
-@SuppressWarnings("unused")
 public class ShoulderSurfingHelper
 {
-    private static boolean disable1 = false;
-    private static boolean disable2 = false;
-    private static Method getShoulderInstance;
-    private static Method isShoulderSurfing;
-    private static Method changePerspective;
-
-    public static boolean isShoulderSurfing()
-    {
-        if(!GunMod.shoulderSurfingLoaded)
-            return false;
-        
-        if (!disable1)
-        try
-        {
-            init();
-            Object object = getShoulderInstance.invoke(null);
-            return (boolean) isShoulderSurfing.invoke(object);
-        }
-        catch(InvocationTargetException | IllegalAccessException | IllegalArgumentException | NullPointerException e)
-        {
-        	GunMod.LOGGER.error("Shoulder Surfing helper error with method isShoulderSurfing!");
-        	e.printStackTrace();
-            disable1 = true;
-        }
-        else
-        if (!disable2)
-        try
-        {
-            init();
-            Object object = getShoulderInstance.invoke(null);
-            return (boolean) isShoulderSurfing.invoke(object);
-        }
-        catch(InvocationTargetException | IllegalAccessException | IllegalArgumentException | NullPointerException e)
-        {
-        	GunMod.LOGGER.error("Shoulder Surfing helper error with method isShoulderSurfing!");
-        	e.printStackTrace();
-            disable2 = true;
-        }
-        return false;
-    }
-
-    public static void changePerspective(String perspective)
-    {
-        if(!GunMod.shoulderSurfingLoaded)
-            return;
-        
-        if (!disable1)
-        try
-        {
-            init();
-            Perspective pov = Perspective.SHOULDER_SURFING;
-            if (perspective.toUpperCase().equals("FIRST_PERSON")) pov = Perspective.FIRST_PERSON;
-            else if (perspective.toUpperCase().equals("THIRD_PERSON_BACK")) pov = Perspective.THIRD_PERSON_BACK;
-            else if (perspective.toUpperCase().equals("THIRD_PERSON_FRONT")) pov = Perspective.THIRD_PERSON_FRONT;
-            Object object = getShoulderInstance.invoke(null);
-            changePerspective.invoke(object, pov);
-        }
-        catch(InvocationTargetException | IllegalAccessException | NullPointerException e)
-        {
-        	GunMod.LOGGER.error("Shoulder Surfing helper error with method changePerspective!");
-        	e.printStackTrace();
-            disable1 = true;
-        }
-        else
-        if (!disable2)
-        try
-        {
-            init();
-            Perspective pov = Perspective.SHOULDER_SURFING;
-            if (perspective.toUpperCase().equals("FIRST_PERSON")) pov = Perspective.FIRST_PERSON;
-            else if (perspective.toUpperCase().equals("THIRD_PERSON_BACK")) pov = Perspective.THIRD_PERSON_BACK;
-            else if (perspective.toUpperCase().equals("THIRD_PERSON_FRONT")) pov = Perspective.THIRD_PERSON_FRONT;
-            Object object = getShoulderInstance.invoke(null);
-            changePerspective.invoke(object, pov);
-        }
-        catch(InvocationTargetException | IllegalAccessException | NullPointerException e)
-        {
-        	GunMod.LOGGER.error("Shoulder Surfing helper error with method changePerspective!");
-            e.printStackTrace();
-            disable2 = true;
-        }
-        return;
-    }
-
-    private static void init()
-    {
-        if(getShoulderInstance == null)
-        {
-            try
-            {
-                Class<?> shoulderSurfingImpl = Class.forName("com.github.exopandora.shouldersurfing.client.ShoulderSurfingImpl");
-                getShoulderInstance = shoulderSurfingImpl.getDeclaredMethod("getInstance");
-                isShoulderSurfing = shoulderSurfingImpl.getDeclaredMethod("isShoulderSurfing");
-                Class<?>[] pArg = new Class[1];
-                pArg[0] = Perspective.class;
-                changePerspective = shoulderSurfingImpl.getDeclaredMethod("changePerspective", pArg);
-                
-            }
-            catch(ClassNotFoundException | NoSuchMethodException | NullPointerException ignored)
-            {
-            	if (getShoulderInstance!=null)
-            	{
-            		GunMod.LOGGER.error("Shoulder Surfing helper failed to load!");
-            		ignored.printStackTrace();
-            	}
-            	disable1 = true;
-            }
-            if (disable1)
-            try
-            {
-                Class<?> shoulderInstance = Class.forName("com.github.exopandora.shouldersurfing.client.ShoulderInstance");
-                getShoulderInstance = shoulderInstance.getDeclaredMethod("getInstance");
-                isShoulderSurfing = shoulderInstance.getDeclaredMethod("doShoulderSurfing");
-                Class<?>[] pArg = new Class[1];
-                pArg[0] = Perspective.class;
-                changePerspective = shoulderInstance.getDeclaredMethod("changePerspective", pArg);
-            }
-            catch(ClassNotFoundException | NoSuchMethodException | NullPointerException ignored)
-            {
-            	disable2 = true;
-            }
-            if (disable1 && disable2)
-        	GunMod.LOGGER.info("Shoulder Surfing Reloaded is not installed, proceeding without helper.");
-        }
-    }
+	private static WorkingApi workingApi = null;
+	
+	private record ApiDescriptor(String className, String getInstanceMethod, String isShoulderSurfingMethod, String changePerspectiveMethod)
+	{
+	}
+	
+	private static final ApiDescriptor[] API_CANDIDATES = {
+			// Newer ShoulderSurfing Reloaded API
+			new ApiDescriptor("com.github.exopandora.shouldersurfing.client.ShoulderSurfingImpl", "getInstance", "isShoulderSurfing", "changePerspective"),
+			// Legacy API (ShoulderInstance)
+			new ApiDescriptor("com.github.exopandora.shouldersurfing.client.ShoulderInstance", "getInstance", "doShoulderSurfing", "changePerspective")};
+	
+	private record WorkingApi(Object instance, Method isShoulderSurfingMethod, Method changePerspectiveMethod)
+	{
+		boolean isShoulderSurfing()
+		{
+			try
+			{
+				return (boolean) isShoulderSurfingMethod.invoke(instance);
+			}
+			catch(Exception e)
+			{
+				GunMod.LOGGER.error("Failed to invoke isShoulderSurfing on working API", e);
+				return false;
+			}
+		}
+		
+		void changePerspective(Perspective perspective)
+		{
+			try
+			{
+				changePerspectiveMethod.invoke(instance, perspective);
+			}
+			catch(Exception e)
+			{
+				GunMod.LOGGER.error("Failed to invoke changePerspective on working API", e);
+			}
+		}
+	}
+	
+	static
+	{
+		// Try each API candidate once during class loading
+		for(ApiDescriptor candidate : API_CANDIDATES)
+		{
+			try
+			{
+				Class<?> clazz = Class.forName(candidate.className);
+				Method getInstance = clazz.getDeclaredMethod(candidate.getInstanceMethod);
+				Object instance = getInstance.invoke(null);
+				
+				Method isMethod = clazz.getDeclaredMethod(candidate.isShoulderSurfingMethod);
+				Method changeMethod = clazz.getDeclaredMethod(candidate.changePerspectiveMethod, Perspective.class);
+				
+				workingApi = new WorkingApi(instance, isMethod, changeMethod);
+				GunMod.LOGGER.info("ShoulderSurfing helper initialized with API: {}", candidate.className);
+				break;
+			}
+			catch(Exception e)
+			{
+				// Log at DEBUG level – expected when mod is not present or API version mismatched
+				GunMod.LOGGER.debug("Failed to load ShoulderSurfing API candidate {}: {}", candidate.className, e.getMessage());
+			}
+		}
+		
+		if(workingApi == null)
+		{
+			GunMod.LOGGER.info("ShoulderSurfing mod not detected – helper disabled");
+		}
+	}
+	
+	public static boolean isShoulderSurfing()
+	{
+		if(workingApi == null || !GunMod.shoulderSurfingLoaded)
+		{
+			return false;
+		}
+		return workingApi.isShoulderSurfing();
+	}
+	
+	public static void changePerspective(String perspective)
+	{
+		if(workingApi == null || !GunMod.shoulderSurfingLoaded)
+		{
+			return;
+		}
+		
+		Perspective target = switch(perspective.toUpperCase())
+		{
+			case "FIRST_PERSON" -> Perspective.FIRST_PERSON;
+			case "THIRD_PERSON_BACK" -> Perspective.THIRD_PERSON_BACK;
+			case "THIRD_PERSON_FRONT" -> Perspective.THIRD_PERSON_FRONT;
+			default -> Perspective.SHOULDER_SURFING;
+		};
+		workingApi.changePerspective(target);
+	}
 }

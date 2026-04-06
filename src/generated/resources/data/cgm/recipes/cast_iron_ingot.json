@@ -1,13 +1,17 @@
 {
-  "type": "create:compacting",
-  "heatRequirement": "heated",
-  "ingredients":
-  [
-    {"item": "create:crushed_raw_iron"},
-    {"tag": "minecraft:coals"}
-  ],
-  "results":
-  [
-    {"item": "cgm:cast_iron_ingot"}
-  ]
+	"type": "create:compacting",
+	"heatRequirement": "heated",
+	"ingredients": [
+		{
+			"item": "create:crushed_raw_iron"
+		},
+		{
+			"tag": "minecraft:coals"
+		}
+	],
+	"results": [
+		{
+			"item": "cgm:cast_iron_ingot"
+		}
+	]
 }

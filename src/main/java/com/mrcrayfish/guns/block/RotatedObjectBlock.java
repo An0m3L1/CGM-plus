@@ -14,29 +14,29 @@ import javax.annotation.Nullable;
  */
 public abstract class RotatedObjectBlock extends HorizontalDirectionalBlock
 {
-    public RotatedObjectBlock(Block.Properties properties)
-    {
-        super(properties);
-        this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH));
-    }
-
-    @Override
-    public boolean useShapeForLightOcclusion(BlockState state)
-    {
-        return true;
-    }
-
-    @Nullable
-    @Override
-    public BlockState getStateForPlacement(BlockPlaceContext context)
-    {
-        return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection());
-    }
-
-    @Override
-    protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
-    {
-        super.createBlockStateDefinition(builder);
-        builder.add(FACING);
-    }
+	public RotatedObjectBlock(Block.Properties properties)
+	{
+		super(properties);
+		this.registerDefaultState(this.getStateDefinition().any().setValue(FACING, Direction.NORTH));
+	}
+	
+	@Override
+	public boolean useShapeForLightOcclusion(BlockState state)
+	{
+		return true;
+	}
+	
+	@Nullable
+	@Override
+	public BlockState getStateForPlacement(BlockPlaceContext context)
+	{
+		return this.defaultBlockState().setValue(FACING, context.getHorizontalDirection());
+	}
+	
+	@Override
+	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
+	{
+		super.createBlockStateDefinition(builder);
+		builder.add(FACING);
+	}
 }

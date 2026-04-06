@@ -12,12 +12,12 @@ import com.mrcrayfish.guns.item.attachment.impl.create.Magazine;
  */
 public interface IMagazine extends IAttachment<Magazine>
 {
-    /**
-     * @return The type of this attachment
-     */
-    @Override
-    default Type getType()
-    {
-        return Type.MAGAZINE;
-    }
+	/**
+	 * @return The type of this attachment
+	 */
+	@Override
+	default Type getType()
+	{
+		return Type.MAGAZINE;
+	}
 }

@@ -1,14 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key":
-  {
-    "n": {"item": "cgm:gunpowder_pinch"}
-  },
-  "pattern":
-  [
-    "nnn",
-    "nnn",
-    "nnn"
-  ],
-  "result": {"item": "minecraft:gunpowder"}
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"n": {
+			"item": "cgm:gunpowder_pinch"
+		}
+	},
+	"pattern": [
+		"nnn",
+		"nnn",
+		"nnn"
+	],
+	"result": {
+		"item": "minecraft:gunpowder"
+	}
 }

@@ -15,81 +15,50 @@ import net.minecraftforge.registries.ForgeRegistries;
 /**
  * Author: MrCrayfish
  */
-public class BulletHoleData implements ParticleOptions
+public record BulletHoleData(Direction direction, BlockPos pos) implements ParticleOptions
 {
-    public static final Codec<BulletHoleData> CODEC = RecordCodecBuilder.create((builder) -> {
-        return builder.group(Codec.INT.fieldOf("dir").forGetter((data) -> {
-            return data.direction.ordinal();
-        }), Codec.LONG.fieldOf("pos").forGetter((p_239806_0_) -> {
-            return p_239806_0_.pos.asLong();
-        })).apply(builder, BulletHoleData::new);
-    });
-
-    public static final ParticleOptions.Deserializer<BulletHoleData> DESERIALIZER = new ParticleOptions.Deserializer<BulletHoleData>()
-    {
-        @Override
-        public BulletHoleData fromCommand(ParticleType<BulletHoleData> particleType, StringReader reader) throws CommandSyntaxException
-        {
-            reader.expect(' ');
-            int dir = reader.readInt();
-            reader.expect(' ');
-            long pos = reader.readLong();
-            return new BulletHoleData(dir, pos);
-        }
-
-        @Override
-        public BulletHoleData fromNetwork(ParticleType<BulletHoleData> particleType, FriendlyByteBuf buffer)
-        {
-            return new BulletHoleData(buffer.readInt(), buffer.readLong());
-        }
-    };
-
-    private final Direction direction;
-    private final BlockPos pos;
-
-    public BulletHoleData(int dir, long pos)
-    {
-        this.direction = Direction.values()[dir];
-        this.pos = BlockPos.of(pos);
-    }
-
-    public BulletHoleData(Direction dir, BlockPos pos)
-    {
-        this.direction = dir;
-        this.pos = pos;
-    }
-
-    public Direction getDirection()
-    {
-        return this.direction;
-    }
-
-    public BlockPos getPos()
-    {
-        return this.pos;
-    }
-
-    @Override
-    public ParticleType<?> getType()
-    {
-        return ModParticleTypes.BULLET_HOLE.get();
-    }
-
-    @Override
-    public void writeToNetwork(FriendlyByteBuf buffer)
-    {
-        buffer.writeEnum(this.direction);
-        buffer.writeBlockPos(this.pos);
-    }
-
-    @Override
-    public String writeToString()
-    {
-        return ForgeRegistries.PARTICLE_TYPES.getKey(this.getType()) + " " + this.direction.getName();
-    }
-
-    public static Codec<BulletHoleData> codec(ParticleType<BulletHoleData> type)
-    {
-        return CODEC;
-    }
+	public static final Codec<BulletHoleData> CODEC = RecordCodecBuilder.create((builder) -> builder.group(Codec.INT.fieldOf("dir").forGetter((data) -> data.direction.ordinal()), Codec.LONG.fieldOf("pos").forGetter((p_239806_0_) -> p_239806_0_.pos.asLong())).apply(builder, BulletHoleData::new));
+	
+	public static final Deserializer<BulletHoleData> DESERIALIZER = new Deserializer<>()
+	{
+		@Override
+		public BulletHoleData fromCommand(ParticleType<BulletHoleData> particleType, StringReader reader) throws CommandSyntaxException
+		{
+			reader.expect(' ');
+			int dir = reader.readInt();
+			reader.expect(' ');
+			long pos = reader.readLong();
+			return new BulletHoleData(dir, pos);
+		}
+		
+		@Override
+		public BulletHoleData fromNetwork(ParticleType<BulletHoleData> particleType, FriendlyByteBuf buffer)
+		{
+			return new BulletHoleData(buffer.readInt(), buffer.readLong());
+		}
+	};
+	
+	public BulletHoleData(int dir, long pos)
+	{
+		this(Direction.values()[dir], BlockPos.of(pos));
+	}
+	
+	@Override
+	public ParticleType<?> getType()
+	{
+		return ModParticleTypes.BULLET_HOLE.get();
+	}
+	
+	@Override
+	public void writeToNetwork(FriendlyByteBuf buffer)
+	{
+		buffer.writeEnum(this.direction);
+		buffer.writeBlockPos(this.pos);
+	}
+	
+	@Override
+	public String writeToString()
+	{
+		return ForgeRegistries.PARTICLE_TYPES.getKey(this.getType()) + " " + this.direction.getName();
+	}
 }

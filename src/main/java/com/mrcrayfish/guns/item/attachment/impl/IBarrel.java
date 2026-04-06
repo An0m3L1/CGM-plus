@@ -12,12 +12,12 @@ import com.mrcrayfish.guns.item.attachment.impl.create.Barrel;
  */
 public interface IBarrel extends IAttachment<Barrel>
 {
-    /**
-     * @return The type of this attachment
-     */
-    @Override
-    default Type getType()
-    {
-        return Type.BARREL;
-    }
+	/**
+	 * @return The type of this attachment
+	 */
+	@Override
+	default Type getType()
+	{
+		return Type.BARREL;
+	}
 }

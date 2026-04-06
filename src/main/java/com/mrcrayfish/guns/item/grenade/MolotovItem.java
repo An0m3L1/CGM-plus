@@ -20,38 +20,38 @@ import java.util.List;
  */
 public class MolotovItem extends GrenadeItem
 {
-    public MolotovItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
-    {
-        super(properties, maxCookTime, throwSound, pinSound);
-    }
-
-    @Override
-    public boolean canCook()
-    {
-        return false;
-    }
-
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
-    {
-        double fireRadius = Config.SERVER.molotovExplosionRadius.get();
-        int fireDuration = Config.SERVER.molotovFireDuration.get();
-        if(Screen.hasControlDown())
-        {
-            tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("info.cgm.fire_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireRadius)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.fire_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDuration)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.explodes_on_impact").withStyle(ChatFormatting.GRAY));
-        }
-        else
-        {
-            tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
-        }
-    }
-
-    @Override
-    public ThrowableMolotovEntity create(Level world, LivingEntity entity, int timeLeft)
-    {
-        return new ThrowableMolotovEntity(world, entity, timeLeft);
-    }
+	public MolotovItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
+	{
+		super(properties, maxCookTime, throwSound, pinSound);
+	}
+	
+	@Override
+	public boolean canCook()
+	{
+		return false;
+	}
+	
+	@Override
+	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	{
+		double fireRadius = Config.SERVER.molotovExplosionRadius.get();
+		int fireDuration = Config.SERVER.molotovFireDuration.get();
+		if(Screen.hasControlDown())
+		{
+			tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info.cgm.fire_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.fire_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDuration)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.explodes_on_impact").withStyle(ChatFormatting.GRAY));
+		}
+		else
+		{
+			tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+		}
+	}
+	
+	@Override
+	public ThrowableMolotovEntity create(Level world, LivingEntity entity, int timeLeft)
+	{
+		return new ThrowableMolotovEntity(world, entity, timeLeft);
+	}
 }

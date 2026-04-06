@@ -1,11 +1,13 @@
 {
-  "type": "create:pressing",
-  "ingredients":
-  [
-    {"item": "cgm:rubber"}
-  ],
-  "results":
-  [
-    {"item": "cgm:rubber_sheet"}
-  ]
+	"type": "create:pressing",
+	"ingredients": [
+		{
+			"item": "cgm:rubber"
+		}
+	],
+	"results": [
+		{
+			"item": "cgm:rubber_sheet"
+		}
+	]
 }

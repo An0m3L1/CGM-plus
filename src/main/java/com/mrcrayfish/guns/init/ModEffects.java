@@ -14,9 +14,9 @@ import net.minecraftforge.registries.RegistryObject;
  */
 public class ModEffects
 {
-    public static final DeferredRegister<MobEffect> REGISTER = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Reference.MOD_ID);
-
-    public static final RegistryObject<IncurableEffect> BLINDED = REGISTER.register("blinded", () -> new IncurableEffect(MobEffectCategory.HARMFUL, 0));
-    public static final RegistryObject<IncurableEffect> STUNNED = REGISTER.register("stunned", () -> new IncurableEffect(MobEffectCategory.HARMFUL, 0));
-    public static final RegistryObject<SmokedEffect> SMOKED = REGISTER.register("smoked", () -> new SmokedEffect(MobEffectCategory.HARMFUL, 0));
+	public static final DeferredRegister<MobEffect> REGISTER = DeferredRegister.create(ForgeRegistries.MOB_EFFECTS, Reference.MOD_ID);
+	
+	public static final RegistryObject<IncurableEffect> BLINDED = REGISTER.register("blinded", () -> new IncurableEffect(MobEffectCategory.HARMFUL, 0));
+	public static final RegistryObject<IncurableEffect> STUNNED = REGISTER.register("stunned", () -> new IncurableEffect(MobEffectCategory.HARMFUL, 0));
+	public static final RegistryObject<SmokedEffect> SMOKED = REGISTER.register("smoked", () -> new SmokedEffect(MobEffectCategory.HARMFUL, 0));
 }

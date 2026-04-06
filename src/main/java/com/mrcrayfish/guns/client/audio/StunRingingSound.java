@@ -12,31 +12,31 @@ import net.minecraft.world.entity.player.Player;
 
 public class StunRingingSound extends AbstractTickableSoundInstance
 {
-    public StunRingingSound()
-    {
-        super(ModSounds.STUN_GRENADE_RING.get(), SoundSource.MASTER, SoundInstance.createUnseededRandom());
-        this.looping = true;
-        this.attenuation = Attenuation.NONE;
-        this.tick();
-    }
-
-    @Override
-    public void tick()
-    {
-        Player player = Minecraft.getInstance().player;
-        if(player != null && player.isAlive())
-        {
-            MobEffectInstance effect = player.getEffect(ModEffects.STUNNED.get());
-            if(effect != null)
-            {
-                this.x = (float) player.getX();
-                this.y = (float) player.getY();
-                this.z = (float) player.getZ();
-                float percent = Math.min((effect.getDuration() / (float) Config.SERVER.soundFadeThreshold.get()), 1);
-                this.volume = (float) (percent * Config.SERVER.ringVolume.get());
-                return;
-            }
-        }
-        this.stop();
-    }
+	public StunRingingSound()
+	{
+		super(ModSounds.STUN_GRENADE_RING.get(), SoundSource.MASTER, SoundInstance.createUnseededRandom());
+		this.looping = true;
+		this.attenuation = Attenuation.NONE;
+		this.tick();
+	}
+	
+	@Override
+	public void tick()
+	{
+		Player player = Minecraft.getInstance().player;
+		if(player != null && player.isAlive())
+		{
+			MobEffectInstance effect = player.getEffect(ModEffects.STUNNED.get());
+			if(effect != null)
+			{
+				this.x = (float) player.getX();
+				this.y = (float) player.getY();
+				this.z = (float) player.getZ();
+				float percent = Math.min((effect.getDuration() / (float) Config.SERVER.soundFadeThreshold.get()), 1);
+				this.volume = (float) (percent * Config.SERVER.ringVolume.get());
+				return;
+			}
+		}
+		this.stop();
+	}
 }

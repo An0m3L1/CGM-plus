@@ -11,28 +11,32 @@ import net.minecraft.server.level.ServerPlayer;
  */
 public class C2SMessageAttachments extends PlayMessage<C2SMessageAttachments>
 {
-    public C2SMessageAttachments() {}
-
-    @Override
-    public void encode(C2SMessageAttachments message, FriendlyByteBuf buffer) {}
-
-    @Override
-    public C2SMessageAttachments decode(FriendlyByteBuf buffer)
-    {
-        return new C2SMessageAttachments();
-    }
-
-    @Override
-    public void handle(C2SMessageAttachments message, MessageContext context)
-    {
-        context.execute(() ->
-        {
-            ServerPlayer player = context.getPlayer();
-            if(player != null)
-            {
-                ServerPlayHandler.handleAttachments(player);
-            }
-        });
-        context.setHandled(true);
-    }
+	public C2SMessageAttachments()
+	{
+	}
+	
+	@Override
+	public void encode(C2SMessageAttachments message, FriendlyByteBuf buffer)
+	{
+	}
+	
+	@Override
+	public C2SMessageAttachments decode(FriendlyByteBuf buffer)
+	{
+		return new C2SMessageAttachments();
+	}
+	
+	@Override
+	public void handle(C2SMessageAttachments message, MessageContext context)
+	{
+		context.execute(() ->
+		{
+			ServerPlayer player = context.getPlayer();
+			if(player != null)
+			{
+				ServerPlayHandler.handleAttachments(player);
+			}
+		});
+		context.setHandled(true);
+	}
 }

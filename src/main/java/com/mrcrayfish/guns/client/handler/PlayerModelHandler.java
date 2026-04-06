@@ -15,32 +15,29 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
  */
 public class PlayerModelHandler
 {
-    @SubscribeEvent
-    public void onRenderPlayer(RenderPlayerEvent.Pre event)
-    {
-        Player player = event.getEntity();
-        ItemStack heldItem = player.getMainHandItem();
-        if(!heldItem.isEmpty() && heldItem.getItem() instanceof GunItem)
-        {
-            Gun gun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
-            gun.getGeneral().getGripType().getHeldAnimation().applyPlayerPreRender(player, InteractionHand.MAIN_HAND, AimingHandler.get().getAimProgress((Player) event.getEntity(), event.getPartialTick()), event.getPoseStack(), event.getMultiBufferSource());
-        }
-    }
-
-    @SubscribeEvent
-    public void onRenderPlayer(RenderPlayerEvent.Post event)
-    {
-        /* Makes sure the model part positions reset back to original definitions */
-        PlayerModel<AbstractClientPlayer> model = event.getRenderer().getModel();
-        boolean slim = ((AbstractClientPlayer) event.getEntity()).getModelName().equals("slim");
-        model.rightArm.x = -5.0F;
-        model.rightArm.y = slim ? 2.5F : 2.0F;
-        model.rightArm.z = 0.0F;
-        model.leftArm.x = 5.0F;
-        model.leftArm.y = slim ? 2.5F : 2.0F;
-        model.leftArm.z = 0.0F;
-        /*model.head.x = 5.0F;
-        model.leftArm.y = slim ? 2.5F : 2.0F;
-        model.leftArm.z = 0.0F;*/
-    }
+	@SubscribeEvent
+	public void onRenderPlayer(RenderPlayerEvent.Pre event)
+	{
+		Player player = event.getEntity();
+		ItemStack heldItem = player.getMainHandItem();
+		if(!heldItem.isEmpty() && heldItem.getItem() instanceof GunItem)
+		{
+			Gun gun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
+			gun.getGeneral().getGripType().heldAnimation().applyPlayerPreRender(player, InteractionHand.MAIN_HAND, AimingHandler.get().getAimProgress(event.getEntity(), event.getPartialTick()), event.getPoseStack(), event.getMultiBufferSource());
+		}
+	}
+	
+	@SubscribeEvent
+	public void onRenderPlayer(RenderPlayerEvent.Post event)
+	{
+		/* Makes sure the model part positions reset back to original definitions */
+		PlayerModel<AbstractClientPlayer> model = event.getRenderer().getModel();
+		boolean slim = ((AbstractClientPlayer) event.getEntity()).getModelName().equals("slim");
+		model.rightArm.x = -5.0F;
+		model.rightArm.y = slim ? 2.5F : 2.0F;
+		model.rightArm.z = 0.0F;
+		model.leftArm.x = 5.0F;
+		model.leftArm.y = slim ? 2.5F : 2.0F;
+		model.leftArm.z = 0.0F;
+	}
 }

@@ -1,7 +1,6 @@
 {
-  "values":
-  [
-    "cgm:cast_iron_block",
-    "cgm:steel_block"
-  ]
+	"values": [
+		"cgm:cast_iron_block",
+		"cgm:steel_block"
+	]
 }

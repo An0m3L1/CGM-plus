@@ -1,22 +1,38 @@
 {
-  "type": "create:compacting",
-  "ingredients":
-  [
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:nuggets/steel"},
-    {"tag": "forge:plates/copper"}
-  ],
-  "results":
-  [
-    {
-      "count": 8,
-      "item": "cgm:bullet"
-    }
-  ]
+	"type": "create:compacting",
+	"ingredients": [
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:nuggets/steel"
+		},
+		{
+			"tag": "forge:plates/copper"
+		}
+	],
+	"results": [
+		{
+			"count": 8,
+			"item": "cgm:bullet"
+		}
+	]
 }

@@ -1,24 +1,24 @@
 {
-  "type": "cgm:workbench",
-  "materials": [
-    {
-      "count": 1,
-      "item": "cgm:sturdy_mechanism"
-    },
-    {
-      "count": 2,
-      "tag": "forge:rods/steel"
-    },
-    {
-      "count": 8,
-      "tag": "forge:plates/plastic"
-    },
-    {
-      "count": 4,
-      "tag": "forge:plates/rubber"
-    }
-  ],
-  "result": {
-    "item": "cgm:solid_stock"
-  }
+	"type": "cgm:workbench",
+	"materials": [
+		{
+			"count": 1,
+			"item": "cgm:sturdy_mechanism"
+		},
+		{
+			"count": 2,
+			"tag": "forge:rods/steel"
+		},
+		{
+			"count": 8,
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"count": 4,
+			"tag": "forge:plates/rubber"
+		}
+	],
+	"result": {
+		"item": "cgm:solid_stock"
+	}
 }

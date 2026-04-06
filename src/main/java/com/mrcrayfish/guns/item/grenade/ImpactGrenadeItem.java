@@ -21,38 +21,38 @@ import java.util.List;
  */
 public class ImpactGrenadeItem extends GrenadeItem
 {
-    public ImpactGrenadeItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
-    {
-        super(properties, maxCookTime, throwSound, pinSound);
-    }
-
-    @Override
-    public boolean canCook()
-    {
-        return false;
-    }
-
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
-    {
-        double damage = Config.SERVER.impactGrenadeExplosionDamage.get();
-        double explosionRadius = (Config.SERVER.impactGrenadeExplosionRadius.get());
-        if(Screen.hasControlDown())
-        {
-            tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.explodes_on_impact").withStyle(ChatFormatting.GRAY));
-        }
-        else
-        {
-            tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
-        }
-    }
-
-    @Override
-    public ThrowableGrenadeEntity create(Level world, LivingEntity entity, int timeLeft)
-    {
-        return new ThrowableImpactGrenadeEntity(world, entity, timeLeft);
-    }
+	public ImpactGrenadeItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
+	{
+		super(properties, maxCookTime, throwSound, pinSound);
+	}
+	
+	@Override
+	public boolean canCook()
+	{
+		return false;
+	}
+	
+	@Override
+	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	{
+		double damage = Config.SERVER.impactGrenadeExplosionDamage.get();
+		double explosionRadius = (Config.SERVER.impactGrenadeExplosionRadius.get());
+		if(Screen.hasControlDown())
+		{
+			tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.explodes_on_impact").withStyle(ChatFormatting.GRAY));
+		}
+		else
+		{
+			tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+		}
+	}
+	
+	@Override
+	public ThrowableGrenadeEntity create(Level world, LivingEntity entity, int timeLeft)
+	{
+		return new ThrowableImpactGrenadeEntity(world, entity, timeLeft);
+	}
 }

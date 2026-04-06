@@ -7,25 +7,24 @@ import com.mojang.math.Vector3f;
  */
 public enum SwayType
 {
-    DIRECTIONAL(Vector3f.XN, Vector3f.YN),
-    DRAG(Vector3f.XP, Vector3f.YP);
-
-    Vector3f pitchRotation;
-    Vector3f yawRotation;
-
-    SwayType(Vector3f pitchRotation, Vector3f yawRotation)
-    {
-        this.pitchRotation = pitchRotation;
-        this.yawRotation = yawRotation;
-    }
-
-    public Vector3f getPitchRotation()
-    {
-        return this.pitchRotation;
-    }
-
-    public Vector3f getYawRotation()
-    {
-        return this.yawRotation;
-    }
+	DIRECTIONAL(Vector3f.XN, Vector3f.YN), DRAG(Vector3f.XP, Vector3f.YP);
+	
+	final Vector3f pitchRotation;
+	final Vector3f yawRotation;
+	
+	SwayType(Vector3f pitchRotation, Vector3f yawRotation)
+	{
+		this.pitchRotation = pitchRotation;
+		this.yawRotation = yawRotation;
+	}
+	
+	public Vector3f getPitchRotation()
+	{
+		return this.pitchRotation;
+	}
+	
+	public Vector3f getYawRotation()
+	{
+		return this.yawRotation;
+	}
 }

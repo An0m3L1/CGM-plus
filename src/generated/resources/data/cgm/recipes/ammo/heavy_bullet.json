@@ -1,13 +1,18 @@
 {
-  "type": "cgm:workbench",
-  "materials":
-  [
-    {"item": "cgm:brass_casing"},
-    {"item": "cgm:bullet"},
-    {
-      "count": 6,
-      "item": "cgm:gunpowder_pinch"
-    }
-  ],
-  "result": {"item": "cgm:heavy_bullet"}
+	"type": "cgm:workbench",
+	"materials": [
+		{
+			"item": "cgm:brass_casing"
+		},
+		{
+			"item": "cgm:bullet"
+		},
+		{
+			"count": 6,
+			"item": "cgm:gunpowder_pinch"
+		}
+	],
+	"result": {
+		"item": "cgm:heavy_bullet"
+	}
 }

@@ -21,37 +21,37 @@ import java.util.List;
  */
 public class StunGrenadeItem extends GrenadeItem
 {
-    public StunGrenadeItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
-    {
-        super(properties, maxCookTime, throwSound, pinSound);
-    }
-
-    @Override
-    public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
-    {
-        double blindRadius = (Config.SERVER.blindCriteria.radius.get());
-        float maxBlindDuration = (float) (Config.SERVER.blindCriteria.durationMax.get());
-        double stunRadius = (Config.SERVER.stunCriteria.radius.get());
-        float maxStunDuration = (float) (Config.SERVER.stunCriteria.durationMax.get());
-        float cookTime = (float) maxCookTime / 20;
-        if(Screen.hasControlDown())
-        {
-            tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
-            tooltip.add(Component.translatable("info.cgm.blind_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(blindRadius)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.blind", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxBlindDuration)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.stun_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(stunRadius)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.stun", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxStunDuration)).withStyle(ChatFormatting.GRAY));
-            tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
-        }
-        else
-        {
-            tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
-        }
-    }
-
-    @Override
-    public ThrowableGrenadeEntity create(Level world, LivingEntity entity, int timeLeft)
-    {
-        return new ThrowableStunGrenadeEntity(world, entity, timeLeft);
-    }
+	public StunGrenadeItem(Properties properties, int maxCookTime, SoundEvent throwSound, SoundEvent pinSound)
+	{
+		super(properties, maxCookTime, throwSound, pinSound);
+	}
+	
+	@Override
+	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	{
+		double blindRadius = (Config.SERVER.blindCriteria.radius.get());
+		float maxBlindDuration = (float) (Config.SERVER.blindCriteria.durationMax.get());
+		double stunRadius = (Config.SERVER.stunCriteria.radius.get());
+		float maxStunDuration = (float) (Config.SERVER.stunCriteria.durationMax.get());
+		float cookTime = (float) maxCookTime / 20;
+		if(Screen.hasControlDown())
+		{
+			tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info.cgm.blind_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(blindRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.blind", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxBlindDuration)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.stun_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(stunRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.stun", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxStunDuration)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
+		}
+		else
+		{
+			tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+		}
+	}
+	
+	@Override
+	public ThrowableGrenadeEntity create(Level world, LivingEntity entity, int timeLeft)
+	{
+		return new ThrowableStunGrenadeEntity(world, entity, timeLeft);
+	}
 }

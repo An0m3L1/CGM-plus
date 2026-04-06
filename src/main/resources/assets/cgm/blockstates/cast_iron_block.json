@@ -1,5 +1,7 @@
 {
-    "variants": {
-        "": { "model":  "cgm:block/cast_iron_block"}
-    }
+	"variants": {
+		"": {
+			"model": "cgm:block/cast_iron_block"
+		}
+	}
 }

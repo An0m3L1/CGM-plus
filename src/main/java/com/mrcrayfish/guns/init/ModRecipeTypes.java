@@ -13,19 +13,19 @@ import net.minecraftforge.registries.RegistryObject;
  */
 public class ModRecipeTypes
 {
-    public static final DeferredRegister<RecipeType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, Reference.MOD_ID);
-
-    public static final RegistryObject<RecipeType<WorkbenchRecipe>> WORKBENCH = create("workbench");
-
-    private static <T extends Recipe<?>> RegistryObject<RecipeType<T>> create(String name)
-    {
-        return REGISTER.register(name, () -> new RecipeType<>()
-        {
-            @Override
-            public String toString()
-            {
-                return name;
-            }
-        });
-    }
+	public static final DeferredRegister<RecipeType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, Reference.MOD_ID);
+	
+	public static final RegistryObject<RecipeType<WorkbenchRecipe>> WORKBENCH = create("workbench");
+	
+	private static <T extends Recipe<?>> RegistryObject<RecipeType<T>> create(String name)
+	{
+		return REGISTER.register(name, () -> new RecipeType<>()
+		{
+			@Override
+			public String toString()
+			{
+				return name;
+			}
+		});
+	}
 }

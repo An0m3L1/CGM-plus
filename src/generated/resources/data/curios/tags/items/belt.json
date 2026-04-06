@@ -1,7 +1,6 @@
 {
-  "values":
-  [
-    "cgm:ammo_pouch",
-    "cgm:grenade_pouch"
-  ]
+	"values": [
+		"cgm:ammo_pouch",
+		"cgm:grenade_pouch"
+	]
 }

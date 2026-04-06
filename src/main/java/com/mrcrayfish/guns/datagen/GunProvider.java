@@ -22,47 +22,47 @@ import java.util.Map;
  */
 public abstract class GunProvider implements DataProvider
 {
-    private static final Logger LOGGER = LogManager.getLogger();
-    private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
-
-    private final DataGenerator generator;
-    private final Map<ResourceLocation, Gun> gunMap = new HashMap<>();
-
-    protected GunProvider(DataGenerator generator)
-    {
-        this.generator = generator;
-    }
-
-    protected abstract void registerGuns();
-
-    protected final void addGun(ResourceLocation id, Gun gun)
-    {
-        this.gunMap.put(id, gun);
-    }
-
-    @Override
-    public void run(CachedOutput cache)
-    {
-        this.gunMap.clear();
-        this.registerGuns();
-        this.gunMap.forEach((id, gun) ->
-        {
-            Path path = this.generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/guns/" + id.getPath() + ".json");
-            try
-            {
-                JsonObject object = gun.toJsonObject();
-                DataProvider.saveStable(cache, object, path);
-            }
-            catch(IOException e)
-            {
-                LOGGER.error("Couldn't save trades to {}", path, e);
-            }
-        });
-    }
-
-    @Override
-    public String getName()
-    {
-        return "Guns: " + Reference.MOD_ID;
-    }
+	private static final Logger LOGGER = LogManager.getLogger();
+	private static final Gson GSON = (new GsonBuilder()).setPrettyPrinting().create();
+	
+	private final DataGenerator generator;
+	private final Map<ResourceLocation, Gun> gunMap = new HashMap<>();
+	
+	protected GunProvider(DataGenerator generator)
+	{
+		this.generator = generator;
+	}
+	
+	protected abstract void registerGuns();
+	
+	protected final void addGun(ResourceLocation id, Gun gun)
+	{
+		this.gunMap.put(id, gun);
+	}
+	
+	@Override
+	public void run(CachedOutput cache)
+	{
+		this.gunMap.clear();
+		this.registerGuns();
+		this.gunMap.forEach((id, gun) ->
+		{
+			Path path = this.generator.getOutputFolder().resolve("data/" + id.getNamespace() + "/guns/" + id.getPath() + ".json");
+			try
+			{
+				JsonObject object = gun.toJsonObject();
+				DataProvider.saveStable(cache, object, path);
+			}
+			catch(IOException e)
+			{
+				LOGGER.error("Couldn't save trades to {}", path, e);
+			}
+		});
+	}
+	
+	@Override
+	public String getName()
+	{
+		return "Guns: " + Reference.MOD_ID;
+	}
 }

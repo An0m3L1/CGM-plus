@@ -12,12 +12,12 @@ import com.mrcrayfish.guns.item.attachment.impl.create.Tactical;
  */
 public interface ITactical extends IAttachment<Tactical>
 {
-    /**
-     * @return The type of this attachment
-     */
-    @Override
-    default Type getType()
-    {
-        return Type.TACTICAL;
-    }
+	/**
+	 * @return The type of this attachment
+	 */
+	@Override
+	default Type getType()
+	{
+		return Type.TACTICAL;
+	}
 }

@@ -10,5 +10,5 @@ import javax.annotation.Nullable;
  */
 public record AmmoContext(ItemStack stack, @Nullable Container container)
 {
-    public static final AmmoContext NONE = new AmmoContext(ItemStack.EMPTY, null);
+	public static final AmmoContext NONE = new AmmoContext(ItemStack.EMPTY, null);
 }

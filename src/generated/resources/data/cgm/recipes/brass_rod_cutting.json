@@ -1,15 +1,15 @@
 {
-  "type": "create:cutting",
-  "ingredients":
-  [
-    {"tag": "forge:ingots/brass"}
-  ],
-  "processingTime": 200,
-  "results":
-  [
-    {
-      "count": 2,
-      "item": "cgm:brass_rod"
-    }
-  ]
+	"type": "create:cutting",
+	"ingredients": [
+		{
+			"tag": "forge:ingots/brass"
+		}
+	],
+	"processingTime": 200,
+	"results": [
+		{
+			"count": 2,
+			"item": "cgm:brass_rod"
+		}
+	]
 }

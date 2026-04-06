@@ -10,20 +10,20 @@ import net.minecraft.world.item.ItemStack;
  */
 public class AttachmentItem extends Item implements IMeta
 {
-    public AttachmentItem(Properties properties)
-    {
-        super(properties.stacksTo(1).tab(GunMod.GUNS));
-    }
-
-    @Override
-    public boolean isFoil(ItemStack stack)
-    {
-        return false;
-    }
-
-    @Override
-    public boolean isEnchantable(ItemStack stack)
-    {
-        return false;
-    }
+	public AttachmentItem(Properties properties)
+	{
+		super(properties.stacksTo(1).tab(GunMod.GUNS));
+	}
+	
+	@Override
+	public boolean isFoil(ItemStack stack)
+	{
+		return false;
+	}
+	
+	@Override
+	public boolean isEnchantable(ItemStack stack)
+	{
+		return false;
+	}
 }

@@ -12,12 +12,12 @@ import com.mrcrayfish.guns.item.attachment.impl.create.Scope;
  */
 public interface IScope extends IAttachment<Scope>
 {
-    /**
-     * @return The type of this attachment
-     */
-    @Override
-    default Type getType()
-    {
-        return Type.SCOPE;
-    }
+	/**
+	 * @return The type of this attachment
+	 */
+	@Override
+	default Type getType()
+	{
+		return Type.SCOPE;
+	}
 }

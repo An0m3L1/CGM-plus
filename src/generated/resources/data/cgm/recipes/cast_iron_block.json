@@ -1,13 +1,16 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key": {
-    "I": {"tag": "forge:ingots/cast_iron"}
-  },
-  "pattern":
-  [
-    "III",
-    "III",
-    "III"
-  ],
-  "result": {"item": "cgm:cast_iron_block"}
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"I": {
+			"tag": "forge:ingots/cast_iron"
+		}
+	},
+	"pattern": [
+		"III",
+		"III",
+		"III"
+	],
+	"result": {
+		"item": "cgm:cast_iron_block"
+	}
 }

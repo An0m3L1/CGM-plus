@@ -26,109 +26,115 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
 {
-    public ThrowableSmokeGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
-    {
-        super(entityType, world);
-        bounceSound = ModSounds.SMOKE_BOUNCE.get();
-        useCustomBounceSound = true;
-    }
-
-    public ThrowableSmokeGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
-    {
-        super(entityType, world, player);
-        this.setItem(new ItemStack(ModItems.SMOKE_GRENADE_NO_PIN.get()));
-        bounceSound = ModSounds.SMOKE_BOUNCE.get();
-        useCustomBounceSound = true;
-    }
-
-    public ThrowableSmokeGrenadeEntity(Level world, LivingEntity player, int timeLeft)
-    {
-        super(ModEntities.THROWABLE_SMOKE_GRENADE.get(), world, player);
-        this.setItem(new ItemStack(ModItems.SMOKE_GRENADE_NO_PIN.get()));
-        this.setMaxLife(timeLeft);
-        bounceSound = ModSounds.SMOKE_BOUNCE.get();
-        useCustomBounceSound = true;
-    }
-
-    @Override
-    public void tick()
-    {
-        super.tick();
-        this.prevRotation = this.rotation;
-        double speed = this.getDeltaMovement().length();
-        if (speed > 0.1)
-        {
-            this.rotation += (speed * 50);
-        }
-        if (this.level.isClientSide)
-        {
-            this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, this.getX(), this.getY() + 0.25, this.getZ(), (Math.random()-0.5) * 0.1, 0.1, (Math.random()-0.5) * 0.1);
-        }
-    }
-
-    @Override
-    protected void onHit(HitResult result)
-    {
-        if (result.getType() == HitResult.Type.BLOCK && !this.level.isClientSide)
-        {
-            double radius = Config.SERVER.smokeGrenadeCloudRadius.get() * 1.75;
-            if (radius > 0)
-            {
-                BlockPos grenadePos = new BlockPos(this.getX(), this.getY(), this.getZ());
-                int radiusInt = (int) Math.ceil(radius);
-                boolean foundFire = false;
-
-                for (int x = -radiusInt; x <= radiusInt; x++)
-                {
-                    for (int z = -radiusInt; z <= radiusInt; z++)
-                    {
-                        double distanceSq = x * x + z * z;
-                        if (distanceSq <= radius * radius)
-                        {
-                            for (int y = -2; y <= 2; y++)
-                            {
-                                BlockPos checkPos = grenadePos.offset(x, y, z);
-                                if (this.level.getBlockState(checkPos).is(BlockTags.FIRE))
-                                {
-                                    foundFire = true;
-                                    break;
-                                }
-                            }
-                            if (foundFire) break;
-                        }
-                    }
-                    if (foundFire) break;
-                }
-
-                if (foundFire)
-                {
-                    this.remove(Entity.RemovalReason.KILLED);
-                    this.onDeath();
-                    return;
-                }
-            }
-        }
-        super.onHit(result);
-    }
-
-    @Override
-    public void onDeath()
-    {
-        double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        double radius = Config.SERVER.smokeGrenadeCloudRadius.get();
-        double duration = ((Config.SERVER.smokeGrenadeCloudDuration.get() - 3) * 20);
-        @NotNull SimpleParticleType particle = ModParticleTypes.SMOKE_EFFECT.get();
-        if(!this.level.isClientSide)
-        {
-            SmokeCloud cloudLow = new SmokeCloud(this.level, this.getX(), this.getY()-0.5, this.getZ(), particle, (float) radius, (int) duration);
-            this.level.addFreshEntity(cloudLow);
-
-            SmokeCloud cloudMid = new SmokeCloud(this.level, this.getX(), this.getY()+0.5, this.getZ(), particle, (float) radius, (int) duration);
-            this.level.addFreshEntity(cloudMid);
-
-            SmokeCloud cloudHigh = new SmokeCloud(this.level, this.getX(), this.getY()+1.5, this.getZ(), particle, (float) radius, (int) duration);
-            this.level.addFreshEntity(cloudHigh);
-        }
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageSmokeGrenade(this.getX(), y, this.getZ()));
-    }
+	public ThrowableSmokeGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
+	{
+		super(entityType, world);
+		bounceSound = ModSounds.SMOKE_BOUNCE.get();
+		useCustomBounceSound = true;
+	}
+	
+	public ThrowableSmokeGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world, LivingEntity player)
+	{
+		super(entityType, world, player);
+		this.setItem(new ItemStack(ModItems.SMOKE_GRENADE_NO_PIN.get()));
+		bounceSound = ModSounds.SMOKE_BOUNCE.get();
+		useCustomBounceSound = true;
+	}
+	
+	public ThrowableSmokeGrenadeEntity(Level world, LivingEntity player, int timeLeft)
+	{
+		super(ModEntities.THROWABLE_SMOKE_GRENADE.get(), world, player);
+		this.setItem(new ItemStack(ModItems.SMOKE_GRENADE_NO_PIN.get()));
+		this.setMaxLife(timeLeft);
+		bounceSound = ModSounds.SMOKE_BOUNCE.get();
+		useCustomBounceSound = true;
+	}
+	
+	@Override
+	public void tick()
+	{
+		super.tick();
+		this.prevRotation = this.rotation;
+		double speed = this.getDeltaMovement().length();
+		if(speed > 0.1)
+		{
+			this.rotation += (speed * 50);
+		}
+		if(this.level.isClientSide)
+		{
+			this.level.addParticle(ParticleTypes.CAMPFIRE_COSY_SMOKE, true, this.getX(), this.getY() + 0.25, this.getZ(), (Math.random() - 0.5) * 0.1, 0.1, (Math.random() - 0.5) * 0.1);
+		}
+	}
+	
+	@Override
+	protected void onHit(HitResult result)
+	{
+		if(result.getType() == HitResult.Type.BLOCK && !this.level.isClientSide)
+		{
+			double radius = Config.SERVER.smokeGrenadeCloudRadius.get() * 1.75;
+			if(radius > 0)
+			{
+				BlockPos grenadePos = new BlockPos(this.getX(), this.getY(), this.getZ());
+				int radiusInt = (int) Math.ceil(radius);
+				boolean foundFire = false;
+				
+				for(int x = -radiusInt; x <= radiusInt; x++)
+				{
+					for(int z = -radiusInt; z <= radiusInt; z++)
+					{
+						double distanceSq = x * x + z * z;
+						if(distanceSq <= radius * radius)
+						{
+							for(int y = -2; y <= 2; y++)
+							{
+								BlockPos checkPos = grenadePos.offset(x, y, z);
+								if(this.level.getBlockState(checkPos).is(BlockTags.FIRE))
+								{
+									foundFire = true;
+									break;
+								}
+							}
+							if(foundFire)
+							{
+								break;
+							}
+						}
+					}
+					if(foundFire)
+					{
+						break;
+					}
+				}
+				
+				if(foundFire)
+				{
+					this.remove(Entity.RemovalReason.KILLED);
+					this.onDeath();
+					return;
+				}
+			}
+		}
+		super.onHit(result);
+	}
+	
+	@Override
+	public void onDeath()
+	{
+		double y = this.getY() + this.getType().getDimensions().height * 0.5;
+		double radius = Config.SERVER.smokeGrenadeCloudRadius.get();
+		double duration = ((Config.SERVER.smokeGrenadeCloudDuration.get() - 3) * 20);
+		@NotNull SimpleParticleType particle = ModParticleTypes.SMOKE_EFFECT.get();
+		if(!this.level.isClientSide)
+		{
+			SmokeCloud cloudLow = new SmokeCloud(this.level, this.getX(), this.getY() - 0.5, this.getZ(), particle, (float) radius, (int) duration);
+			this.level.addFreshEntity(cloudLow);
+			
+			SmokeCloud cloudMid = new SmokeCloud(this.level, this.getX(), this.getY() + 0.5, this.getZ(), particle, (float) radius, (int) duration);
+			this.level.addFreshEntity(cloudMid);
+			
+			SmokeCloud cloudHigh = new SmokeCloud(this.level, this.getX(), this.getY() + 1.5, this.getZ(), particle, (float) radius, (int) duration);
+			this.level.addFreshEntity(cloudHigh);
+		}
+		PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageSmokeGrenade(this.getX(), y, this.getZ()));
+	}
 }

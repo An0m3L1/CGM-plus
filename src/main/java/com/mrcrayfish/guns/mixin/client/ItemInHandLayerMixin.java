@@ -30,52 +30,52 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ItemInHandLayer.class)
 public class ItemInHandLayerMixin
 {
-    @SuppressWarnings({"ConstantConditions"})
-    @Inject(method = "renderArmWithItem", at = @At(value = "HEAD"), cancellable = true)
-    private void renderArmWithItemHead(LivingEntity entity, ItemStack stack, ItemTransforms.TransformType display, HumanoidArm arm, PoseStack poseStack, MultiBufferSource source, int light, CallbackInfo ci)
-    {
-        if(entity.getType() == EntityType.PLAYER)
-        {
-            InteractionHand hand = Minecraft.getInstance().options.mainHand().get() == arm ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
-            if(hand == InteractionHand.OFF_HAND)
-            {
-                if(stack.getItem() instanceof GunItem)
-                {
-                    ci.cancel();
-                    return;
-                }
-
-                if(entity.getMainHandItem().getItem() instanceof GunItem gunItem)
-                {
-                    Gun modifiedGun = gunItem.getModifiedGun(entity.getMainHandItem());
-                    if(!modifiedGun.getGeneral().getGripType().getHeldAnimation().canRenderOffhandItem() || ReloadHandler.get().getReloadTimer()>0)
-                    {
-                        ci.cancel();
-                        return;
-                    }
-                }
-            }
-            if(stack.getItem() instanceof GunItem gunItem)
-            {
-                ci.cancel();
-                PlayerItemInHandLayer<?, ?> layer = (PlayerItemInHandLayer<?, ?>) (Object) this;
-                mrCrayfishGunMod$renderArmWithGun(layer, (Player) entity, stack, gunItem, display, hand, arm, poseStack, source, light, Minecraft.getInstance().getFrameTime());
-            }
-        }
-    }
-
-    @Unique
-    private static void mrCrayfishGunMod$renderArmWithGun(PlayerItemInHandLayer<?, ?> layer, Player player, ItemStack stack, GunItem item, ItemTransforms.TransformType display, InteractionHand hand, HumanoidArm arm, PoseStack poseStack, MultiBufferSource source, int light, float deltaTicks)
-    {
-        poseStack.pushPose();
-        layer.getParentModel().translateToHand(arm, poseStack);
-        poseStack.mulPose(Vector3f.XP.rotationDegrees(-90F));
-        poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
-        poseStack.translate(((float) (arm == HumanoidArm.LEFT ? -1 : 1) / 16F), 0.125, -0.625);
-        GunRenderingHandler.get().applyWeaponScale(stack, poseStack);
-        Gun gun = item.getModifiedGun(stack);
-        gun.getGeneral().getGripType().getHeldAnimation().applyHeldItemTransforms(player, hand, AimingHandler.get().getAimProgress(player, deltaTicks), poseStack, source);
-        GunRenderingHandler.get().renderWeapon(player, stack, display, poseStack, source, light, deltaTicks);
-        poseStack.popPose();
-    }
+	@SuppressWarnings({"ConstantConditions"})
+	@Inject(method = "renderArmWithItem", at = @At(value = "HEAD"), cancellable = true)
+	private void renderArmWithItemHead(LivingEntity entity, ItemStack stack, ItemTransforms.TransformType display, HumanoidArm arm, PoseStack poseStack, MultiBufferSource source, int light, CallbackInfo ci)
+	{
+		if(entity.getType() == EntityType.PLAYER)
+		{
+			InteractionHand hand = Minecraft.getInstance().options.mainHand().get() == arm ? InteractionHand.MAIN_HAND : InteractionHand.OFF_HAND;
+			if(hand == InteractionHand.OFF_HAND)
+			{
+				if(stack.getItem() instanceof GunItem)
+				{
+					ci.cancel();
+					return;
+				}
+				
+				if(entity.getMainHandItem().getItem() instanceof GunItem gunItem)
+				{
+					Gun modifiedGun = gunItem.getModifiedGun(entity.getMainHandItem());
+					if(modifiedGun.getGeneral().getGripType().heldAnimation().cantRenderOffhandItem() || ReloadHandler.get().getReloadTimer() > 0)
+					{
+						ci.cancel();
+						return;
+					}
+				}
+			}
+			if(stack.getItem() instanceof GunItem gunItem)
+			{
+				ci.cancel();
+				PlayerItemInHandLayer<?, ?> layer = (PlayerItemInHandLayer<?, ?>) (Object) this;
+				mrCrayfishGunMod$renderArmWithGun(layer, (Player) entity, stack, gunItem, display, hand, arm, poseStack, source, light, Minecraft.getInstance().getFrameTime());
+			}
+		}
+	}
+	
+	@Unique
+	private static void mrCrayfishGunMod$renderArmWithGun(PlayerItemInHandLayer<?, ?> layer, Player player, ItemStack stack, GunItem item, ItemTransforms.TransformType display, InteractionHand hand, HumanoidArm arm, PoseStack poseStack, MultiBufferSource source, int light, float deltaTicks)
+	{
+		poseStack.pushPose();
+		layer.getParentModel().translateToHand(arm, poseStack);
+		poseStack.mulPose(Vector3f.XP.rotationDegrees(-90F));
+		poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
+		poseStack.translate(((float) (arm == HumanoidArm.LEFT ? -1 : 1) / 16F), 0.125, -0.625);
+		GunRenderingHandler.get().applyWeaponScale(stack, poseStack);
+		Gun gun = item.getModifiedGun(stack);
+		gun.getGeneral().getGripType().heldAnimation().applyHeldItemTransforms(player, hand, AimingHandler.get().getAimProgress(player, deltaTicks), poseStack, source);
+		GunRenderingHandler.get().renderWeapon(player, stack, display, poseStack, source, light, deltaTicks);
+		poseStack.popPose();
+	}
 }

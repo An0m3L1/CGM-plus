@@ -10,18 +10,15 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class EntityTagGen extends EntityTypeTagsProvider
 {
-    public EntityTagGen(DataGenerator generator, ExistingFileHelper existingFileHelper)
-    {
-        super(generator, Reference.MOD_ID, existingFileHelper);
-    }
-
-    @Override
-    protected void addTags()
-    {
-        this.tag(ModTags.Entities.RESISTANT)
-                .addTag(Tags.EntityTypes.BOSSES)
-                .add(EntityType.WARDEN)
-                .add(EntityType.ELDER_GUARDIAN);
-        this.tag(ModTags.Entities.IMMUNE);
-    }
+	public EntityTagGen(DataGenerator generator, ExistingFileHelper existingFileHelper)
+	{
+		super(generator, Reference.MOD_ID, existingFileHelper);
+	}
+	
+	@Override
+	protected void addTags()
+	{
+		this.tag(ModTags.Entities.RESISTANT).addTag(Tags.EntityTypes.BOSSES).add(EntityType.WARDEN).add(EntityType.ELDER_GUARDIAN);
+		this.tag(ModTags.Entities.IMMUNE);
+	}
 }

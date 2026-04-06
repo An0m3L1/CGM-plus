@@ -1,38 +1,42 @@
 {
-  "display": {"flash": {"size": 2.0}},
-  "general": {
-    "gripType": "cgm:rocket_launcher",
-    "auto": false,
-    "rate": 16,
-    "spawnCasings": false,
-    "emitLight": true,
-
-    "recoilAngle": 8.0,
-    "recoilKick": 2.0,
-    "recoilDurationOffset": 0.1,
-    "spread": 0.0,
-
-    "maxAmmo": 1,
-    "reloadRate": 18
-  },
-  "projectile": {
-    "damage": 40.0,
-    "headshotMultiplierOverride": 1.0,
-    "size": 0.2,
-    "speed": 4.0,
-    "life": 100,
-    "armorBypass": 1.0,
-    "protectionBypass": 0.1,
-    "gravity": false,
-    "visible": true,
-    "maxPierceCount": 0,
-    "item": "cgm:rocket",
-    "griefing": true,
-    "waterDamagePenalty": 0.5,
-    "explosionRadius": 5.0
-  },
-  "sounds": {
-    "fire": "cgm:item.rocket_launcher.fire",
-    "reload": "cgm:item.rocket_launcher.reload"
-  }
+	"display": {
+		"flash": {
+			"size": 2.0
+		}
+	},
+	"general": {
+		"gripType": "cgm:rocket_launcher",
+		"auto": false,
+		"rate": 16,
+		"spawnCasings": false,
+		"emitLight": true,
+		
+		"recoilAngle": 8.0,
+		"recoilKick": 2.0,
+		"recoilDurationOffset": 0.1,
+		"spread": 0.0,
+		
+		"maxAmmo": 1,
+		"reloadRate": 18
+	},
+	"projectile": {
+		"damage": 40.0,
+		"headshotMultiplierOverride": 1.0,
+		"size": 0.2,
+		"speed": 4.0,
+		"life": 100,
+		"armorBypass": 1.0,
+		"protectionBypass": 0.1,
+		"gravity": false,
+		"visible": true,
+		"maxPierceCount": 0,
+		"item": "cgm:rocket",
+		"griefing": true,
+		"waterDamagePenalty": 0.5,
+		"explosionRadius": 5.0
+	},
+	"sounds": {
+		"fire": "cgm:item.rocket_launcher.fire",
+		"reload": "cgm:item.rocket_launcher.reload"
+	}
 }

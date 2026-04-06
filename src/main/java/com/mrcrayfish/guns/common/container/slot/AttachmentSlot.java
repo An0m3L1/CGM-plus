@@ -19,72 +19,72 @@ import org.jetbrains.annotations.NotNull;
  */
 public class AttachmentSlot extends Slot
 {
-    private AttachmentContainer container;
-    private ItemStack weapon;
-    private IAttachment.Type type;
-    private Player player;
-
-    public AttachmentSlot(AttachmentContainer container, Container weaponInventory, ItemStack weapon, IAttachment.Type type, Player player, int index, int x, int y)
-    {
-        super(weaponInventory, index, x, y);
-        this.container = container;
-        this.weapon = weapon;
-        this.type = type;
-        this.player = player;
-    }
-
-    public IAttachment.Type getType()
-    {
-        return this.type;
-    }
-
-    @Override
-    public boolean isActive()
-    {
-        if(!(this.weapon.getItem() instanceof GunItem))
-        {
-            return false;
-        }
-        GunItem item = (GunItem) this.weapon.getItem();
-        Gun modifiedGun = item.getModifiedGun(this.weapon);
-        return modifiedGun.canAttachType(this.type);
-    }
-
-    @Override
-    public boolean mayPlace(@NotNull ItemStack stack)
-    {
-        if(!(this.weapon.getItem() instanceof GunItem))
-        {
-            return false;
-        }
-        GunItem item = (GunItem) this.weapon.getItem();
-        Gun modifiedGun = item.getModifiedGun(this.weapon);
-        if (!(stack.getItem() instanceof IAttachment attachment))
-        {
-            return false;
-        }
-        return attachment.getType() == this.type && modifiedGun.canAttachType(this.type) && attachment.canAttachTo(this.weapon);
-    }
-
-    @Override
-    public void setChanged()
-    {
-        if(this.container.isLoaded())
-        {
-            this.player.level.playSound(null, this.player.getX(), this.player.getY() + 1.0, this.player.getZ(), ModSounds.ATTACHMENT.get(), SoundSource.PLAYERS, 0.5F, this.hasItem() ? 1.0F : 0.75F);
-        }
-    }
-
-    @Override
-    public int getMaxStackSize()
-    {
-        return 1;
-    }
-
-    @Override
-    public boolean mayPickup(@NotNull Player player)
-    {
-        ItemStack itemstack = this.getItem();
-        return (itemstack.isEmpty() || player.isCreative() || !EnchantmentHelper.hasBindingCurse(itemstack)) && super.mayPickup(player) && (getType() != IAttachment.Type.MAGAZINE || !ModSyncedDataKeys.RELOADING.getValue(player));
-    }
+	private final AttachmentContainer container;
+	private final ItemStack weapon;
+	private final IAttachment.Type type;
+	private final Player player;
+	
+	public AttachmentSlot(AttachmentContainer container, Container weaponInventory, ItemStack weapon, IAttachment.Type type, Player player, int index, int x, int y)
+	{
+		super(weaponInventory, index, x, y);
+		this.container = container;
+		this.weapon = weapon;
+		this.type = type;
+		this.player = player;
+	}
+	
+	public IAttachment.Type getType()
+	{
+		return this.type;
+	}
+	
+	@Override
+	public boolean isActive()
+	{
+		if(!(this.weapon.getItem() instanceof GunItem))
+		{
+			return false;
+		}
+		GunItem item = (GunItem) this.weapon.getItem();
+		Gun modifiedGun = item.getModifiedGun(this.weapon);
+		return modifiedGun.canAttachType(this.type);
+	}
+	
+	@Override
+	public boolean mayPlace(@NotNull ItemStack stack)
+	{
+		if(!(this.weapon.getItem() instanceof GunItem))
+		{
+			return false;
+		}
+		GunItem item = (GunItem) this.weapon.getItem();
+		Gun modifiedGun = item.getModifiedGun(this.weapon);
+		if(!(stack.getItem() instanceof IAttachment attachment))
+		{
+			return false;
+		}
+		return attachment.getType() == this.type && modifiedGun.canAttachType(this.type) && attachment.canAttachTo(this.weapon);
+	}
+	
+	@Override
+	public void setChanged()
+	{
+		if(this.container.isLoaded())
+		{
+			this.player.level.playSound(null, this.player.getX(), this.player.getY() + 1.0, this.player.getZ(), ModSounds.ATTACHMENT.get(), SoundSource.PLAYERS, 0.5F, this.hasItem() ? 1.0F : 0.75F);
+		}
+	}
+	
+	@Override
+	public int getMaxStackSize()
+	{
+		return 1;
+	}
+	
+	@Override
+	public boolean mayPickup(@NotNull Player player)
+	{
+		ItemStack itemstack = this.getItem();
+		return (itemstack.isEmpty() || player.isCreative() || !EnchantmentHelper.hasBindingCurse(itemstack)) && super.mayPickup(player) && (getType() != IAttachment.Type.MAGAZINE || !ModSyncedDataKeys.RELOADING.getValue(player));
+	}
 }

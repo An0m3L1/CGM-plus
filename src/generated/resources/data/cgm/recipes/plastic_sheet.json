@@ -1,11 +1,13 @@
 {
-  "type": "create:pressing",
-  "ingredients":
-  [
-    {"item": "cgm:plastic"}
-  ],
-  "results":
-  [
-    {"item": "cgm:plastic_sheet"}
-  ]
+	"type": "create:pressing",
+	"ingredients": [
+		{
+			"item": "cgm:plastic"
+		}
+	],
+	"results": [
+		{
+			"item": "cgm:plastic_sheet"
+		}
+	]
 }

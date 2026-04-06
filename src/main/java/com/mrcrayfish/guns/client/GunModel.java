@@ -16,71 +16,71 @@ import java.util.List;
 
 /**
  * A wrapper for baked model to prevent custom rendering handling.
- *
+ * <p>
  * Author: MrCrayfish
  */
 public class GunModel implements BakedModel
 {
-    private static final GunModel INSTANCE = new GunModel();
-
-    private BakedModel model;
-
-    public void setModel(BakedModel model)
-    {
-        this.model = model;
-    }
-
-    @Override
-    public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction direction, RandomSource random)
-    {
-        return this.model.getQuads(state, direction, random);
-    }
-
-    @Override
-    public boolean useAmbientOcclusion()
-    {
-        return this.model.useAmbientOcclusion();
-    }
-
-    @Override
-    public boolean isGui3d()
-    {
-        return this.model.isGui3d();
-    }
-
-    @Override
-    public boolean usesBlockLight()
-    {
-        return this.model.usesBlockLight();
-    }
-
-    @Override
-    public boolean isCustomRenderer()
-    {
-        return false;
-    }
-
-    @Override
-    public TextureAtlasSprite getParticleIcon()
-    {
-        return this.model.getParticleIcon();
-    }
-
-    @Override
-    public ItemOverrides getOverrides()
-    {
-        return this.model.getOverrides();
-    }
-
-    public static BakedModel wrap(BakedModel model)
-    {
-        INSTANCE.setModel(model);
-        return INSTANCE;
-    }
-
-    @Override
-    public List<RenderType> getRenderTypes(ItemStack itemStack, boolean fabulous)
-    {
-        return List.of(RenderType.entityTranslucent(InventoryMenu.BLOCK_ATLAS));
-    }
+	private static final GunModel INSTANCE = new GunModel();
+	
+	private BakedModel model;
+	
+	public void setModel(BakedModel model)
+	{
+		this.model = model;
+	}
+	
+	@Override
+	public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction direction, RandomSource random)
+	{
+		return this.model.getQuads(state, direction, random);
+	}
+	
+	@Override
+	public boolean useAmbientOcclusion()
+	{
+		return this.model.useAmbientOcclusion();
+	}
+	
+	@Override
+	public boolean isGui3d()
+	{
+		return this.model.isGui3d();
+	}
+	
+	@Override
+	public boolean usesBlockLight()
+	{
+		return this.model.usesBlockLight();
+	}
+	
+	@Override
+	public boolean isCustomRenderer()
+	{
+		return false;
+	}
+	
+	@Override
+	public TextureAtlasSprite getParticleIcon()
+	{
+		return this.model.getParticleIcon();
+	}
+	
+	@Override
+	public ItemOverrides getOverrides()
+	{
+		return this.model.getOverrides();
+	}
+	
+	public static BakedModel wrap(BakedModel model)
+	{
+		INSTANCE.setModel(model);
+		return INSTANCE;
+	}
+	
+	@Override
+	public List<RenderType> getRenderTypes(ItemStack itemStack, boolean fabulous)
+	{
+		return List.of(RenderType.entityTranslucent(InventoryMenu.BLOCK_ATLAS));
+	}
 }

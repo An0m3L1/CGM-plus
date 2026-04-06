@@ -20,10 +20,10 @@ cooldownThreshold = 100
 		grenadeExplosionSoundDistance = 96.0
 
 	[grenades.impact_grenade]
-		#Radius of a Impact Grenade explosion.
+    #Radius of an Impact Grenade explosion.
 		#Range: 0.0 ~ 1.7976931348623157E308
 		impactGrenadeExplosionRadius = 2.5
-		#Damage of a Impact Grenade explosion.
+    #Damage of an Impact Grenade explosion.
 		#Range: 0.0 ~ 1.7976931348623157E308
 		impactGrenadeExplosionDamage = 12.0
 		#If enabled, Impact Grenades will destroy blocks.
@@ -47,7 +47,7 @@ cooldownThreshold = 100
 		smokeGrenadeExplosionSoundDistance = 48.0
 
 	[grenades.incendiary_grenade]
-		#Radius of a Incendiary Grenade explosion.
+    #Radius of an Incendiary Grenade explosion.
 		#Range: 0.0 ~ 1.7976931348623157E308
 		incendiaryGrenadeExplosionRadius = 3.0
 		#Duration of fire forcefully set on entities by the Incendiary Grenade.

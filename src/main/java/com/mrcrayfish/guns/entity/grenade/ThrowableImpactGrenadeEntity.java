@@ -19,40 +19,39 @@ import static com.mrcrayfish.guns.entity.ProjectileEntity.createExplosion;
  */
 public class ThrowableImpactGrenadeEntity extends ThrowableGrenadeEntity
 {
-    protected float radius = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue();
-    protected boolean griefing = Config.SERVER.impactGrenadeExplosionGriefing.get();
-
-    public ThrowableImpactGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
-    {
-        super(entityType, worldIn);
-    }
-
-    public ThrowableImpactGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level world, LivingEntity entity)
-    {
-        super(entityType, world, entity);
-        this.setItem(new ItemStack(ModItems.IMPACT_GRENADE_NO_PIN.get()));
-        this.setShouldBounce(false);
-    }
-
-    public ThrowableImpactGrenadeEntity(Level world, LivingEntity entity, int timeLeft)
-    {
-        super(ModEntities.THROWABLE_IMPACT_GRENADE.get(), world, entity);
-        this.setItem(new ItemStack(ModItems.IMPACT_GRENADE_NO_PIN.get()));
-        this.setMaxLife(200);
-        this.setShouldBounce(false);
-    }
-
-    @Override
-    public void onDeath()
-    {
-        createExplosion(this, radius, griefing);
-        double y = this.getY() + this.getType().getDimensions().height * 0.5;
-        if(this.level.isClientSide)
-        {
-            return;
-        }
-        this.createLight(explosionLightValue, explosionLightLife);
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() ->
-                LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageImpactGrenade(this.getX(), y, this.getZ()));
-    }
+	protected final float radius = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue();
+	protected final boolean griefing = Config.SERVER.impactGrenadeExplosionGriefing.get();
+	
+	public ThrowableImpactGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
+	{
+		super(entityType, worldIn);
+	}
+	
+	public ThrowableImpactGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level world, LivingEntity entity)
+	{
+		super(entityType, world, entity);
+		this.setItem(new ItemStack(ModItems.IMPACT_GRENADE_NO_PIN.get()));
+		this.setShouldBounce(false);
+	}
+	
+	public ThrowableImpactGrenadeEntity(Level world, LivingEntity entity, int timeLeft)
+	{
+		super(ModEntities.THROWABLE_IMPACT_GRENADE.get(), world, entity);
+		this.setItem(new ItemStack(ModItems.IMPACT_GRENADE_NO_PIN.get()));
+		this.setMaxLife(200);
+		this.setShouldBounce(false);
+	}
+	
+	@Override
+	public void onDeath()
+	{
+		createExplosion(this, radius, griefing);
+		double y = this.getY() + this.getType().getDimensions().height * 0.5;
+		if(this.level.isClientSide)
+		{
+			return;
+		}
+		this.createLight(explosionLightValue, explosionLightLife);
+		PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageImpactGrenade(this.getX(), y, this.getZ()));
+	}
 }

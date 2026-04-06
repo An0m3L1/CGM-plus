@@ -17,16 +17,16 @@ import java.util.function.Supplier;
  */
 public class SimpleModel implements IOverrideModel
 {
-    protected final Supplier<BakedModel> modelSupplier;
-
-    public SimpleModel(Supplier<BakedModel> modelSupplier)
-    {
-        this.modelSupplier = modelSupplier;
-    }
-
-    @Override
-    public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
-    {
-        RenderUtil.renderModel(this.modelSupplier.get(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
-    }
+	protected final Supplier<BakedModel> modelSupplier;
+	
+	public SimpleModel(Supplier<BakedModel> modelSupplier)
+	{
+		this.modelSupplier = modelSupplier;
+	}
+	
+	@Override
+	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
+	{
+		RenderUtil.renderModel(this.modelSupplier.get(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+	}
 }

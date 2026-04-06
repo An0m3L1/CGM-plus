@@ -1,14 +1,18 @@
 {
-  "type": "minecraft:crafting_shaped",
-  "key":
-  {
-    "s": {"tag": "forge:string"},
-    "c": {"item": "farmersdelight:canvas"}
-  },
-  "pattern":
-  [
-    "cs",
-    "sc"
-  ],
-  "result": {"item": "cgm:cloth"}
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"s": {
+			"tag": "forge:string"
+		},
+		"c": {
+			"item": "farmersdelight:canvas"
+		}
+	},
+	"pattern": [
+		"cs",
+		"sc"
+	],
+	"result": {
+		"item": "cgm:cloth"
+	}
 }

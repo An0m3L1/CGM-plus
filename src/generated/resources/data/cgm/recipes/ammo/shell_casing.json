@@ -1,23 +1,41 @@
 {
-  "type": "create:compacting",
-  "ingredients":
-  [
-    {"tag": "forge:dyes/red"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/plastic"},
-    {"tag": "forge:plates/brass"}
-  ],
-  "results":
-  [
-    {
-      "count": 8,
-      "item": "cgm:shell_casing"
-    }
-  ]
+	"type": "create:compacting",
+	"ingredients": [
+		{
+			"tag": "forge:dyes/red"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/brass"
+		}
+	],
+	"results": [
+		{
+			"count": 8,
+			"item": "cgm:shell_casing"
+		}
+	]
 }

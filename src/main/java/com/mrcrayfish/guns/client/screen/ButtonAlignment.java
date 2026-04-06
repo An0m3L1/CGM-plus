@@ -5,5 +5,5 @@ package com.mrcrayfish.guns.client.screen;
  */
 public enum ButtonAlignment
 {
-    LEFT, RIGHT
+	LEFT, RIGHT
 }

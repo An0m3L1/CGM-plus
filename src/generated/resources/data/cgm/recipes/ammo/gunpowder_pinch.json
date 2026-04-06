@@ -1,12 +1,12 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients":
-  [
-    {"tag": "forge:gunpowder"}
-  ],
-  "result":
-  {
-    "count": 9,
-    "item": "cgm:gunpowder_pinch"
-  }
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"tag": "forge:gunpowder"
+		}
+	],
+	"result": {
+		"count": 9,
+		"item": "cgm:gunpowder_pinch"
+	}
 }

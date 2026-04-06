@@ -1,12 +1,12 @@
 {
-  "type": "minecraft:crafting_shapeless",
-  "ingredients":
-  [
-    {"tag": "forge:ingots/steel"}
-  ],
-  "result":
-  {
-    "count": 9,
-    "item": "cgm:steel_nugget"
-  }
+	"type": "minecraft:crafting_shapeless",
+	"ingredients": [
+		{
+			"tag": "forge:ingots/steel"
+		}
+	],
+	"result": {
+		"count": 9,
+		"item": "cgm:steel_nugget"
+	}
 }

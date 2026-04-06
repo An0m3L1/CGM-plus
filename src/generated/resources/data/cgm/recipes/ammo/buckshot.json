@@ -1,15 +1,15 @@
 {
-  "type": "create:cutting",
-  "ingredients":
-  [
-    {"tag": "forge:rods/steel"}
-  ],
-  "processingTime": 200,
-  "results":
-  [
-    {
-      "count": 8,
-      "item": "cgm:buckshot"
-    }
-  ]
+	"type": "create:cutting",
+	"ingredients": [
+		{
+			"tag": "forge:rods/steel"
+		}
+	],
+	"processingTime": 200,
+	"results": [
+		{
+			"count": 8,
+			"item": "cgm:buckshot"
+		}
+	]
 }

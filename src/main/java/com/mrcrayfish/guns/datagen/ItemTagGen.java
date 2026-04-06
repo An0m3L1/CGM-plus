@@ -8,13 +8,13 @@ import net.minecraftforge.common.data.ExistingFileHelper;
 
 public class ItemTagGen extends ItemTagsProvider
 {
-    public ItemTagGen(DataGenerator generator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper)
-    {
-        super(generator, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
-    }
-
-    @Override
-    protected void addTags()
-    {
-    }
+	public ItemTagGen(DataGenerator generator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper)
+	{
+		super(generator, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
+	}
+	
+	@Override
+	protected void addTags()
+	{
+	}
 }

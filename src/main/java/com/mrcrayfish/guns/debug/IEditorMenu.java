@@ -11,7 +11,7 @@ import java.util.function.Supplier;
  */
 public interface IEditorMenu
 {
-    Component getEditorLabel();
-
-    void getEditorWidgets(List<Pair<Component, Supplier<IDebugWidget>>> widgets);
+	Component getEditorLabel();
+	
+	void getEditorWidgets(List<Pair<Component, Supplier<IDebugWidget>>> widgets);
 }

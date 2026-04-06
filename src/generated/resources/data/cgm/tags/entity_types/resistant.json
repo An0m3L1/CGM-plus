@@ -1,8 +1,7 @@
 {
-  "values":
-  [
-    "#forge:bosses",
-    "minecraft:warden",
-    "minecraft:elder_guardian"
-  ]
+	"values": [
+		"#forge:bosses",
+		"minecraft:warden",
+		"minecraft:elder_guardian"
+	]
 }

@@ -12,12 +12,12 @@ import com.mrcrayfish.guns.item.attachment.impl.create.Stock;
  */
 public interface IStock extends IAttachment<Stock>
 {
-    /**
-     * @return The type of this attachment
-     */
-    @Override
-    default Type getType()
-    {
-        return Type.STOCK;
-    }
+	/**
+	 * @return The type of this attachment
+	 */
+	@Override
+	default Type getType()
+	{
+		return Type.STOCK;
+	}
 }

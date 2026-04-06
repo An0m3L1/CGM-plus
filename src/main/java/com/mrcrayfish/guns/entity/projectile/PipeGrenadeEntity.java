@@ -25,76 +25,78 @@ import net.minecraft.world.phys.Vec3;
  */
 public class PipeGrenadeEntity extends ProjectileEntity
 {
-    public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
-    {
-        super(entityType, world);
-    }
-
-    public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
-    {
-        super(entityType, world, shooter, weapon, item, modifiedGun);
-    }
-
-    @Override
-    protected void onProjectileTick()
-    {
-        if (this.level.isClientSide)
-        {
-            this.level.addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
-        }
-    }
-
-    @Override
-    protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
-    {
-        explode();
-    }
-
-    @Override
-    protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
-    {
-        /* If the projectile hit a fragile block, check if projectile griefing is enabled globally, for the projectile itself and explosion griefing is disabled.
-        * We check for explosion griefing so the projectile doesn't just disappear */
-        if (this.getProjectile() != null && state.is(ModTags.Blocks.HARDNESS_NONE))
-        {
-            if(!Config.COMMON.universalExplosionGriefing.get() && Config.COMMON.projectileGriefing.get() && this.getProjectile().isGriefing())
-            {
-                this.level.destroyBlock(pos, Config.COMMON.projectileGriefingBlockDrops.get());
-            }
-            else
-            {
-                explode();
-            }
-        }
-        else
-        {
-            explode();
-        }
-    }
-
-    @Override
-    public void onExpired()
-    {
-        explode();
-    }
-
-    private void explode()
-    {
-        float radius = 4.0F;
-        boolean griefing = true;
-
-        if(this.getProjectile() != null)
-        {
-            radius = this.getProjectile().getExplosionRadius();
-            griefing = this.getProjectile().isGriefing();
-        }
-
-        createExplosion(this, radius, griefing);
-        if(this.level.isClientSide)
-            return;
-
-        LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), explosionLightValue, explosionLightLife);
-        level.addFreshEntity(light);
-        PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ(), radius));
-    }
+	public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world)
+	{
+		super(entityType, world);
+	}
+	
+	public PipeGrenadeEntity(EntityType<? extends ProjectileEntity> entityType, Level world, LivingEntity shooter, ItemStack weapon, GunItem item, Gun modifiedGun)
+	{
+		super(entityType, world, shooter, weapon, item, modifiedGun);
+	}
+	
+	@Override
+	protected void onProjectileTick()
+	{
+		if(this.level.isClientSide)
+		{
+			this.level.addParticle(ParticleTypes.SMOKE, true, this.getX(), this.getY(), this.getZ(), 0, 0, 0);
+		}
+	}
+	
+	@Override
+	protected void onHitEntity(Entity entity, Vec3 hitVec, Vec3 startVec, Vec3 endVec, boolean headshot)
+	{
+		explode();
+	}
+	
+	@Override
+	protected void onHitBlock(BlockState state, BlockPos pos, Direction face, double x, double y, double z)
+	{
+		/* If the projectile hit a fragile block, check if projectile griefing is enabled globally, for the projectile itself and explosion griefing is disabled.
+		 * We check for explosion griefing so the projectile doesn't just disappear */
+		if(this.getProjectile() != null && state.is(ModTags.Blocks.HARDNESS_NONE))
+		{
+			if(!Config.COMMON.universalExplosionGriefing.get() && Config.COMMON.projectileGriefing.get() && this.getProjectile().isGriefing())
+			{
+				this.level.destroyBlock(pos, Config.COMMON.projectileGriefingBlockDrops.get());
+			}
+			else
+			{
+				explode();
+			}
+		}
+		else
+		{
+			explode();
+		}
+	}
+	
+	@Override
+	public void onExpired()
+	{
+		explode();
+	}
+	
+	private void explode()
+	{
+		float radius = 4.0F;
+		boolean griefing = true;
+		
+		if(this.getProjectile() != null)
+		{
+			radius = this.getProjectile().getExplosionRadius();
+			griefing = this.getProjectile().isGriefing();
+		}
+		
+		createExplosion(this, radius, griefing);
+		if(this.level.isClientSide)
+		{
+			return;
+		}
+		
+		LightSourceEntity light = new LightSourceEntity(level, this.getX(), this.getY(), this.getZ(), explosionLightValue, explosionLightLife);
+		level.addFreshEntity(light);
+		PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), this.getY(), this.getZ(), 256), new S2CMessagePipeGrenade(this.getX(), this.getY(), this.getZ(), radius));
+	}
 }

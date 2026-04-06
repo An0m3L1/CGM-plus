@@ -69,6 +69,7 @@ public enum SpecialModels
 
     AUTOMATIC_PISTOL_BASE("automatic_pistol/base"),
     AUTOMATIC_PISTOL_SLIDE("automatic_pistol/slide"),
+    AUTOMATIC_PISTOL_SLIDE_EMPTY("automatic_pistol/slide_empty"),
     AUTOMATIC_PISTOL_MAG("automatic_pistol/mag"),
     AUTOMATIC_PISTOL_SIGHTS("automatic_pistol/sights"),
     AUTOMATIC_PISTOL_SCOPE_MOUNT("automatic_pistol/scope_mount"),

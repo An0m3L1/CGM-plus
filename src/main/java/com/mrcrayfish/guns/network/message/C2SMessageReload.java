@@ -44,7 +44,7 @@ public class C2SMessageReload extends PlayMessage<C2SMessageReload>
             ServerPlayer player = context.getPlayer();
             if(player != null && !player.isSpectator())
             {
-                ModSyncedDataKeys.RELOADING.setValue(player, message.reload); // This has to be set in order to verify the packet is sent if the event is cancelled
+                ModSyncedDataKeys.RELOADING.setValue(player, message.reload); // This has to be set in order to verify the packet is sent if the event is canceled
                 if(!message.reload)
                 {
                     if (ModSyncedDataKeys.SWITCHTIME.getValue(player)<=0)

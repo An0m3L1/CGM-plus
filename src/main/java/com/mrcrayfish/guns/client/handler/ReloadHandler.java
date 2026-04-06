@@ -186,8 +186,6 @@ public class ReloadHandler
             }
             else
             {
-            	//ItemStack stack = player.getMainHandItem();
-            	//GunRenderingHandler.get().getReloadDeltaTime(stack);
             	if (fromInput)
             	reloadFinish = false;
                     
@@ -206,7 +204,7 @@ public class ReloadHandler
     
     public boolean getReloading(Player player)
     {
-    	return (ModSyncedDataKeys.RELOADING.getValue(player));
+    	return ModSyncedDataKeys.RELOADING.getValue(player);
     }
 
     private void updateReloadDelay(Player player)

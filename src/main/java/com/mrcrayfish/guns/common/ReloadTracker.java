@@ -44,6 +44,7 @@ public class ReloadTracker
     private final int reloadEndDelay;
     private final boolean doMagReload;
     private final boolean reloadFromEmpty;
+    private boolean magReloadAmmoLoaded;
     private int delayedStartTick;
     private int cycleStartTick;
     private int reserveAmmo = 0;
@@ -66,16 +67,17 @@ public class ReloadTracker
         this.reloadFromEmpty = (!Gun.hasAmmo(stack));
         else
         this.reloadFromEmpty = false;
-        	
+        this.magReloadAmmoLoaded = false;
+
         this.gun = ((GunItem) stack.getItem()).getModifiedGun(stack);
         if (reloadFromEmpty)
         this.reloadStartDelay = Math.max(gun.getGeneral().getReloadEmptyStartDelay(),0);
         else
         this.reloadStartDelay = Math.max(gun.getGeneral().getReloadStartDelay(),0);
         if (reloadFromEmpty)
-        this.reloadEndDelay = Math.max(gun.getGeneral().getReloadEmptyEndDelay(),1);
+        this.reloadEndDelay = Math.max(gun.getGeneral().getReloadEmptyEndDelay(),0);
         else
-        this.reloadEndDelay = Math.max(gun.getGeneral().getReloadEndDelay(),1);
+        this.reloadEndDelay = Math.max(gun.getGeneral().getReloadEndDelay(),0);
     }
 
     /**
@@ -178,9 +180,12 @@ public class ReloadTracker
             C2SMessageForceSetReserveAmmo message = new C2SMessageForceSetReserveAmmo(ammoAfterLoad);
             PacketHandler.getPlayChannel().sendToPlayer(() -> (ServerPlayer) player, message);
         });
-        
-        this.resetSoundStates = true;
-        this.resetAnimationSounds();
+
+        if (!doMagReload)
+        {
+            this.resetSoundStates = true;
+            this.resetAnimationSounds();
+        }
 
         ResourceLocation reloadSound = this.gun.getSounds().getReload();
     	
@@ -257,6 +262,11 @@ public class ReloadTracker
             		{
             			playReloadSound(player, "reloadLate");
             			tracker.reloadLateState=true;
+                        if (tracker.doMagReload && !tracker.magReloadAmmoLoaded)
+                        {
+                            tracker.increaseAmmo(player);
+                            tracker.magReloadAmmoLoaded = true;
+                        }
             		}
             	}
             	if (!tracker.reloadClipOutState)
@@ -294,7 +304,7 @@ public class ReloadTracker
             	tracker.resetSoundStates = false;
             }
             
-            if(tracker.canReload(player))
+            if(tracker.canReload(player) && !tracker.doMagReload)
                 tracker.increaseAmmo(player);
             
             if(tracker.reloadCycleEnd(player))

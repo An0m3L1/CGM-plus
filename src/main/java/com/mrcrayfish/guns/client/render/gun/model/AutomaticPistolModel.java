@@ -4,16 +4,20 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.GunModel;
 import com.mrcrayfish.guns.client.SpecialModels;
+import com.mrcrayfish.guns.client.handler.ReloadHandler;
 import com.mrcrayfish.guns.client.render.gun.IOverrideModel;
 import com.mrcrayfish.guns.client.util.GunAnimationHelper;
 import com.mrcrayfish.guns.client.util.RenderUtil;
 import com.mrcrayfish.guns.common.Gun;
+import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
+import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.client.resources.model.BakedModel;
+import net.minecraft.nbt.CompoundTag;
 import net.minecraft.world.entity.LivingEntity;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.ItemCooldowns;
@@ -21,21 +25,22 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.phys.Vec3;
 
 import javax.annotation.Nullable;
+import java.util.HashMap;
+import java.util.Map;
+import java.util.UUID;
 
 /**
  * Author: MrCrayfish
  * Modified by zaeonNineZero
- * Attachment detection logic based off of code from Mo' Guns by Bomb787 and AlanorMiga (MigaMi)
  */
 public class AutomaticPistolModel implements IOverrideModel
 {
     private boolean disableAnimations = false;
 
-    @Override
-    // This class renders a multi-part model that supports animations and removeable parts.
-    // We'll render the non-moving/static parts first, then render the animated parts.
+    private static final Map<UUID, Boolean> PREV_USE_EMPTY_SLIDE = new HashMap<>();
+    private static final Map<UUID, Integer> SLIDE_TRANSITION = new HashMap<>();
 
-    // We start by declaring our render function that will handle rendering the core baked model (which is a non-moving part).
+    @Override
     public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
     {
         // Render the item's BakedModel, which will serve as the core of our custom model.
@@ -46,7 +51,6 @@ public class AutomaticPistolModel implements IOverrideModel
         // We have to grab the gun's scope attachment slot and check whether it is empty or not.
         // If the isEmpty function returns false, then we render the attachment rail.
         ItemStack scopeStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
-
         if(scopeStack.isEmpty())
         {
             RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
@@ -59,11 +63,10 @@ public class AutomaticPistolModel implements IOverrideModel
         // Special animated segment for compat with the CGM Expanded fork.
         // First, some variables for animation building
         boolean isPlayer = entity != null && entity.equals(Minecraft.getInstance().player);
-        boolean isFirstPerson = (transformType.firstPerson());
+        boolean isFirstPerson = transformType.firstPerson();
         boolean correctContext = (transformType.firstPerson() || transformType == ItemTransforms.TransformType.THIRD_PERSON_RIGHT_HAND || transformType == ItemTransforms.TransformType.THIRD_PERSON_LEFT_HAND);
 
         Vec3 slideTranslations = Vec3.ZERO;
-
         Vec3 magTranslations = Vec3.ZERO;
         Vec3 magRotations = Vec3.ZERO;
         Vec3 magRotOffset = Vec3.ZERO;
@@ -73,7 +76,6 @@ public class AutomaticPistolModel implements IOverrideModel
             try {
                 Player player = (Player) entity;
                 slideTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "slide");
-
                 magTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "magazine");
                 magRotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "magazine");
                 magRotOffset = GunAnimationHelper.getSmartAnimationRotOffset(stack, player, partialTicks, "magazine");
@@ -91,9 +93,32 @@ public class AutomaticPistolModel implements IOverrideModel
         // Fire animation is done the old way, and added onto the existing animation.
         GunItem gunStack = (GunItem) stack.getItem();
         Gun gun = gunStack.getModifiedGun(stack);
+        CompoundTag tag = stack.getTag();
+
+        int ammoCount;
+        int ammoCapacity;
+        boolean ammoIsEmpty = false;
+        boolean isFull = false;
+        if (tag != null)
+        {
+            ammoCount = tag.getInt("AmmoCount");
+            ammoIsEmpty = ammoCount <= 0;
+            ammoCapacity = GunCompositeStatHelper.getAmmoCapacity(stack);
+            isFull = ammoCount >= ammoCapacity;
+        }
+
+        boolean reloading = isPlayer && ModSyncedDataKeys.RELOADING.getValue((Player) entity);
+        boolean reloadFromEmpty = false;
+        if (isPlayer)
+        {
+            reloadFromEmpty = ReloadHandler.get().isReloadFromEmpty();
+        }
+
+        boolean useEmptySlide = ammoIsEmpty || (reloadFromEmpty && reloading && isFull);
+
         if(isPlayer && correctContext)
         {
-            float cooldownDivider = 1.0F*Math.max((float) gun.getGeneral().getRate()/3F,1);
+            float cooldownDivider = Math.max((float) gun.getGeneral().getRate()/3F,1);
             float cooldownOffset1 = cooldownDivider - 1.0F;
             float intensity = 1.0F +1;
 
@@ -106,14 +131,36 @@ public class AutomaticPistolModel implements IOverrideModel
             float cooldown_c = Math.min(Math.max((-cooldown_a*intensity)+intensity,0),1);
             float cooldown_d = Math.min(cooldown_b,cooldown_c);
 
-            slideTranslations = slideTranslations.add(0, 0, cooldown_d * 2);
+            slideTranslations = slideTranslations.add(0, 0, -(cooldown_d * 1.5));
         }
 
         // Pistol slide. This animated part kicks backward on firing, then moves back to its resting position.
         poseStack.pushPose();
         // Apply transformations to this part.
         if(isPlayer)
-            poseStack.translate(0, 0, slideTranslations.z * 0.0625);
+        {
+            double slideZ = slideTranslations.z;
+            UUID id = entity.getUUID();
+            boolean prevEmpty = PREV_USE_EMPTY_SLIDE.getOrDefault(id, false);
+
+            if (prevEmpty && !useEmptySlide)
+            {
+                SLIDE_TRANSITION.put(id, 20);
+            }
+            PREV_USE_EMPTY_SLIDE.put(id, useEmptySlide);
+
+            int transition = SLIDE_TRANSITION.getOrDefault(id, 0);
+            if (transition > 0)
+            {
+                slideZ = 0.0;
+                SLIDE_TRANSITION.put(id, transition - 1);
+            }
+            else if(useEmptySlide)
+            {
+                slideZ = slideZ - 1.5;
+            }
+            poseStack.translate(0, 0, slideZ * 0.0625);
+        }
         // Render the transformed model.
         RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.
@@ -142,7 +189,7 @@ public class AutomaticPistolModel implements IOverrideModel
                     magModel = SpecialModels.AUTOMATIC_PISTOL_EXT_MAG;
             }
         }
-        catch(Error ignored) {} catch(Exception ignored) {}
+        catch(Error | Exception ignored) {}
 
         RenderUtil.renderModel(magModel.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
         // Pop pose to compile everything in the render matrix.

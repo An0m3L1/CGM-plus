@@ -5,7 +5,6 @@ import com.mrcrayfish.guns.client.GunModel;
 import com.mrcrayfish.guns.client.SpecialModels;
 import com.mrcrayfish.guns.client.render.gun.IOverrideModel;
 import com.mrcrayfish.guns.client.util.RenderUtil;
-import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.util.GunCompositeStatHelper;
 import net.minecraft.client.Minecraft;
@@ -37,20 +36,16 @@ public class MiniGunModel implements IOverrideModel
         Rotations rotations = this.rotationMap.get(player);
         rotations.prevRotation = rotations.rotation;
 
-        boolean shooting = ModSyncedDataKeys.SHOOTING.getValue(player);
         ItemStack heldItem = player.getMainHandItem();
+        boolean shooting = ModSyncedDataKeys.SHOOTING.getValue(player);
+        boolean reloading = ModSyncedDataKeys.RELOADING.getValue(player);
+
         int fireRate = GunCompositeStatHelper.getCompositeRate(heldItem, player);
         float maxSpinRate = Mth.clamp(90F/(float) fireRate,10F,85F);
-        if(!Gun.hasAmmo(heldItem) && Gun.cantShoot(heldItem) && !player.isCreative())
-        {
-            shooting = false;
-        }
 
-        if(shooting)
+        if(shooting && !reloading)
         {
         	rotationSpeed=maxSpinRate;
-            //if (rotationSpeed<maxSpinRate)
-        	//rotationSpeed+=Math.min(maxSpinRate-rotationSpeed,Math.max(maxSpinRate/5F,20F-rotationSpeed));
         }
         else
         {

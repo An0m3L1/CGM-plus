@@ -2,7 +2,7 @@
   "display": {},
   "general": {
     "gripType": "cgm:two_handed",
-    "auto": true,
+    "auto": false,
     "rate": 12,
     "spawnCasings": false,
     "emitLight": false,

@@ -131,29 +131,33 @@ public class AutomaticPistolModel implements IOverrideModel
 		if(isPlayer)
 		{
 			double slideZ = slideTranslations.z;
-			UUID id = entity.getUUID();
-			boolean prevEmpty = PREV_USE_EMPTY_SLIDE.getOrDefault(id, false);
-
-            /* Lock slide movement for 1 second after lockSlideForward switches from true to false.
-            This prevents slide jitter when transitioning from reload animation to base state */
-			if(prevEmpty && !lockSlideForward)
-			{
-				SLIDE_TRANSITION.put(id, 20);
-			}
-			PREV_USE_EMPTY_SLIDE.put(id, lockSlideForward);
 			
-			int transition = SLIDE_TRANSITION.getOrDefault(id, 0);
-			if(transition > 0)
+			if(correctContext)
 			{
-				// Locking the slide
-				slideZ = 0.0;
-				SLIDE_TRANSITION.put(id, transition - 1);
+				UUID id = entity.getUUID();
+				boolean prevEmpty = PREV_USE_EMPTY_SLIDE.getOrDefault(id, false);
+				/* Lock slide movement for 1 second after lockSlideForward switches from true to false.
+                This prevents slide jitter when transitioning from reload animation to base state */
+				if(prevEmpty && !lockSlideForward)
+				{
+					SLIDE_TRANSITION.put(id, 20);
+				}
+				PREV_USE_EMPTY_SLIDE.put(id, lockSlideForward);
+				
+				int transition = SLIDE_TRANSITION.getOrDefault(id, 0);
+				if(transition > 0)
+				{
+					// Lock the slide
+					slideZ = 0.0;
+					SLIDE_TRANSITION.put(id, transition - 1);
+				}
+				// Move slide 1.5 pixels forward
+				else if(lockSlideForward)
+				{
+					slideZ = slideZ - 1.5;
+				}
 			}
-			// Move slide 1.5 pixels forward
-			else if(lockSlideForward)
-			{
-				slideZ = slideZ - 1.5;
-			}
+			
 			poseStack.translate(0, 0, slideZ * 0.0625);
 		}
 		RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);

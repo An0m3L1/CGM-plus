@@ -47,7 +47,7 @@ public class PouchItem extends BundleItem
 	}
 	
 	@Override
-	public boolean overrideStackedOnOther(ItemStack stack, Slot slot, ClickAction action, Player player)
+	public boolean overrideStackedOnOther(ItemStack stack, @NotNull Slot slot, @NotNull ClickAction action, @NotNull Player player)
 	{
 		if(stack.getCount() == 1 && action == ClickAction.SECONDARY)
 		{
@@ -76,7 +76,7 @@ public class PouchItem extends BundleItem
 	}
 	
 	@Override
-	public boolean overrideOtherStackedOnMe(ItemStack stack, ItemStack otherStack, Slot slot, ClickAction action, Player player, SlotAccess slotAccess)
+	public boolean overrideOtherStackedOnMe(ItemStack stack, @NotNull ItemStack otherStack, @NotNull Slot slot, @NotNull ClickAction action, @NotNull Player player, @NotNull SlotAccess slotAccess)
 	{
 		if(stack.getCount() != 1)
 		{
@@ -120,7 +120,7 @@ public class PouchItem extends BundleItem
 	}
 	
 	@Override
-	public int getBarColor(ItemStack stack)
+	public int getBarColor(@NotNull ItemStack stack)
 	{
 		return Objects.requireNonNull(ChatFormatting.YELLOW.getColor());
 	}
@@ -221,7 +221,7 @@ public class PouchItem extends BundleItem
 	}
 	
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag isAdvanced)
+	public void appendHoverText(@NotNull ItemStack stack, @NotNull Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag isAdvanced)
 	{
 		tooltip.add(Component.translatable("item.minecraft.bundle.fullness", getContentWeight(stack), getMaxCount(stack)).withStyle(ChatFormatting.GRAY));
 	}

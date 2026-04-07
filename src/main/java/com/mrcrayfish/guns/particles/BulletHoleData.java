@@ -11,6 +11,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -22,7 +23,7 @@ public record BulletHoleData(Direction direction, BlockPos pos) implements Parti
 	public static final Deserializer<BulletHoleData> DESERIALIZER = new Deserializer<>()
 	{
 		@Override
-		public BulletHoleData fromCommand(ParticleType<BulletHoleData> particleType, StringReader reader) throws CommandSyntaxException
+		public @NotNull BulletHoleData fromCommand(@NotNull ParticleType<BulletHoleData> particleType, StringReader reader) throws CommandSyntaxException
 		{
 			reader.expect(' ');
 			int dir = reader.readInt();
@@ -32,7 +33,7 @@ public record BulletHoleData(Direction direction, BlockPos pos) implements Parti
 		}
 		
 		@Override
-		public BulletHoleData fromNetwork(ParticleType<BulletHoleData> particleType, FriendlyByteBuf buffer)
+		public @NotNull BulletHoleData fromNetwork(@NotNull ParticleType<BulletHoleData> particleType, FriendlyByteBuf buffer)
 		{
 			return new BulletHoleData(buffer.readInt(), buffer.readLong());
 		}
@@ -44,7 +45,7 @@ public record BulletHoleData(Direction direction, BlockPos pos) implements Parti
 	}
 	
 	@Override
-	public ParticleType<?> getType()
+	public @NotNull ParticleType<?> getType()
 	{
 		return ModParticleTypes.BULLET_HOLE.get();
 	}
@@ -57,7 +58,7 @@ public record BulletHoleData(Direction direction, BlockPos pos) implements Parti
 	}
 	
 	@Override
-	public String writeToString()
+	public @NotNull String writeToString()
 	{
 		return ForgeRegistries.PARTICLE_TYPES.getKey(this.getType()) + " " + this.direction.getName();
 	}

@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 public class ProjectileRenderer extends EntityRenderer<ProjectileEntity>
@@ -21,15 +22,15 @@ public class ProjectileRenderer extends EntityRenderer<ProjectileEntity>
 	}
 	
 	@Override
-	public @Nullable ResourceLocation getTextureLocation(ProjectileEntity entity)
+	public @Nullable ResourceLocation getTextureLocation(@NotNull ProjectileEntity entity)
 	{
 		return null;
 	}
 	
 	@Override
-	public void render(ProjectileEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light)
+	public void render(ProjectileEntity entity, float entityYaw, float partialTicks, @NotNull PoseStack poseStack, @NotNull MultiBufferSource renderTypeBuffer, int light)
 	{
-		if(!entity.getProjectile().isVisible() || entity.tickCount <= 1)
+		if(entity.getProjectile().isInvisible() || entity.tickCount <= 1)
 		{
 			return;
 		}

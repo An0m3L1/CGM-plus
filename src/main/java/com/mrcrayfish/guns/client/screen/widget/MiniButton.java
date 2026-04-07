@@ -6,6 +6,7 @@ import net.minecraft.client.gui.components.Button;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.network.chat.CommonComponents;
 import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
 
 public class MiniButton extends Button
 {
@@ -26,7 +27,7 @@ public class MiniButton extends Button
 	}
 	
 	@Override
-	public void renderButton(PoseStack matrixStack, int mouseX, int mouseY, float partialTick)
+	public void renderButton(@NotNull PoseStack matrixStack, int mouseX, int mouseY, float partialTick)
 	{
 		RenderSystem.setShader(GameRenderer::getPositionTexShader);
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);

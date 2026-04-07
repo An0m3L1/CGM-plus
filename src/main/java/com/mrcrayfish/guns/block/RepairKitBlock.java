@@ -15,6 +15,7 @@ import net.minecraft.world.level.material.FluidState;
 import net.minecraft.world.level.material.Fluids;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.*;
 
@@ -44,7 +45,7 @@ public class RepairKitBlock extends RotatedObjectBlock implements SimpleWaterlog
 		return shape;
 	}
 	
-	public BlockState updateShape(BlockState state, Direction direction, BlockState neighbourState, LevelAccessor world, BlockPos pos, BlockPos neighbourPos)
+	public @NotNull BlockState updateShape(BlockState state, @NotNull Direction direction, @NotNull BlockState neighbourState, @NotNull LevelAccessor world, @NotNull BlockPos pos, @NotNull BlockPos neighbourPos)
 	{
 		if(state.getValue(BlockStateProperties.WATERLOGGED))
 		{
@@ -61,18 +62,18 @@ public class RepairKitBlock extends RotatedObjectBlock implements SimpleWaterlog
 	}
 	
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context)
+	public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter reader, @NotNull BlockPos pos, @NotNull CollisionContext context)
 	{
 		return this.getShape(state);
 	}
 	
 	@Override
-	public VoxelShape getOcclusionShape(BlockState state, BlockGetter reader, BlockPos pos)
+	public @NotNull VoxelShape getOcclusionShape(@NotNull BlockState state, @NotNull BlockGetter reader, @NotNull BlockPos pos)
 	{
 		return this.getShape(state);
 	}
 	
-	public FluidState getFluidState(BlockState state)
+	public @NotNull FluidState getFluidState(BlockState state)
 	{
 		return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : Fluids.EMPTY.defaultFluidState();
 	}

@@ -59,7 +59,7 @@ public class MiniGunModel implements IOverrideModel
 		
 		if(rotationSpeed > 0F)
 		{
-			rotations.rotation += rotationSpeed;
+			rotations.rotation += (int) rotationSpeed;
 		}
 	}
 	

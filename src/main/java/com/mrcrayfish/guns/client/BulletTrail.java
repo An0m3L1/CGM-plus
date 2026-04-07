@@ -31,10 +31,9 @@ public class BulletTrail
 	private final double gravity;
 	private final int shooterId;
 	private WeakReference<Entity> shooter;
-	private final boolean enchanted;
 	private final ParticleOptions particleData;
 	
-	public BulletTrail(int entityId, Vec3 position, Vec3 motion, ItemStack item, int trailColor, double trailMultiplier, int maxAge, double gravity, int shooterId, boolean enchanted, ParticleOptions particleData)
+	public BulletTrail(int entityId, Vec3 position, Vec3 motion, ItemStack item, int trailColor, double trailMultiplier, int maxAge, double gravity, int shooterId, ParticleOptions particleData)
 	{
 		this.entityId = entityId;
 		this.position = position;
@@ -45,7 +44,6 @@ public class BulletTrail
 		this.maxAge = maxAge;
 		this.gravity = gravity;
 		this.shooterId = shooterId;
-		this.enchanted = enchanted;
 		this.particleData = particleData;
 		this.updateYawPitch();
 	}

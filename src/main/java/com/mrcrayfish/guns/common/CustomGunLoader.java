@@ -17,6 +17,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.event.AddReloadListenerEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.io.InvalidObjectException;
@@ -49,7 +50,7 @@ public class CustomGunLoader extends SimpleJsonResourceReloadListener
 	}
 	
 	@Override
-	protected void apply(Map<ResourceLocation, JsonElement> objects, ResourceManager manager, ProfilerFiller profiler)
+	protected void apply(Map<ResourceLocation, JsonElement> objects, @NotNull ResourceManager manager, @NotNull ProfilerFiller profiler)
 	{
 		ImmutableMap.Builder<ResourceLocation, CustomGun> builder = ImmutableMap.builder();
 		objects.forEach((resourceLocation, object) ->

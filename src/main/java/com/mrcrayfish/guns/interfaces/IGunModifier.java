@@ -10,6 +10,7 @@ import com.mrcrayfish.guns.item.attachment.impl.create.Barrel;
  * <p>
  * Author: MrCrayfish
  */
+@SuppressWarnings("SameReturnValue")
 public interface IGunModifier
 {
 	/**

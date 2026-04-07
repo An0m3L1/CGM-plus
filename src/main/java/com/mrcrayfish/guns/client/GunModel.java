@@ -10,6 +10,7 @@ import net.minecraft.util.RandomSource;
 import net.minecraft.world.inventory.InventoryMenu;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -31,7 +32,7 @@ public class GunModel implements BakedModel
 	}
 	
 	@Override
-	public List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction direction, RandomSource random)
+	public @NotNull List<BakedQuad> getQuads(@Nullable BlockState state, @Nullable Direction direction, @NotNull RandomSource random)
 	{
 		return this.model.getQuads(state, direction, random);
 	}
@@ -61,13 +62,13 @@ public class GunModel implements BakedModel
 	}
 	
 	@Override
-	public TextureAtlasSprite getParticleIcon()
+	public @NotNull TextureAtlasSprite getParticleIcon()
 	{
 		return this.model.getParticleIcon();
 	}
 	
 	@Override
-	public ItemOverrides getOverrides()
+	public @NotNull ItemOverrides getOverrides()
 	{
 		return this.model.getOverrides();
 	}
@@ -79,7 +80,7 @@ public class GunModel implements BakedModel
 	}
 	
 	@Override
-	public List<RenderType> getRenderTypes(ItemStack itemStack, boolean fabulous)
+	public @NotNull List<RenderType> getRenderTypes(@NotNull ItemStack itemStack, boolean fabulous)
 	{
 		return List.of(RenderType.entityTranslucent(InventoryMenu.BLOCK_ATLAS));
 	}

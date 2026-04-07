@@ -12,6 +12,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -54,13 +55,13 @@ public class WorkbenchRecipe implements Recipe<WorkbenchBlockEntity>
 	}
 	
 	@Override
-	public boolean matches(WorkbenchBlockEntity inv, Level worldIn)
+	public boolean matches(@NotNull WorkbenchBlockEntity inv, @NotNull Level worldIn)
 	{
 		return false;
 	}
 	
 	@Override
-	public ItemStack assemble(WorkbenchBlockEntity inv)
+	public @NotNull ItemStack assemble(@NotNull WorkbenchBlockEntity inv)
 	{
 		return ItemStack.EMPTY;
 	}
@@ -72,25 +73,25 @@ public class WorkbenchRecipe implements Recipe<WorkbenchBlockEntity>
 	}
 	
 	@Override
-	public ItemStack getResultItem()
+	public @NotNull ItemStack getResultItem()
 	{
 		return this.item.copy();
 	}
 	
 	@Override
-	public ResourceLocation getId()
+	public @NotNull ResourceLocation getId()
 	{
 		return this.id;
 	}
 	
 	@Override
-	public RecipeSerializer<?> getSerializer()
+	public @NotNull RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipeSerializers.WORKBENCH.get();
 	}
 	
 	@Override
-	public net.minecraft.world.item.crafting.RecipeType<?> getType()
+	public net.minecraft.world.item.crafting.@NotNull RecipeType<?> getType()
 	{
 		return ModRecipeTypes.WORKBENCH.get();
 	}

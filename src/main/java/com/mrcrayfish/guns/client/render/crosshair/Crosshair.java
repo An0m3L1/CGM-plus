@@ -20,7 +20,7 @@ public abstract class Crosshair implements IResourceLocation
 		CrosshairHandler.get().register(DEFAULT);
 	}
 	
-	private ResourceLocation id;
+	private final ResourceLocation id;
 	
 	/**
 	 * The default constructor for crosshairs

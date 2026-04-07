@@ -10,6 +10,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -32,7 +33,7 @@ public class WorkbenchContainer extends AbstractContainerMenu
 		this.addSlot(new Slot(workbench, 0, 174, 18)
 		{
 			@Override
-			public boolean mayPlace(ItemStack stack)
+			public boolean mayPlace(@NotNull ItemStack stack)
 			{
 				return stack.getItem() instanceof DyeItem;
 			}
@@ -59,13 +60,13 @@ public class WorkbenchContainer extends AbstractContainerMenu
 	}
 	
 	@Override
-	public boolean stillValid(Player playerIn)
+	public boolean stillValid(@NotNull Player playerIn)
 	{
 		return workbench.stillValid(playerIn);
 	}
 	
 	@Override
-	public ItemStack quickMoveStack(Player playerIn, int index)
+	public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index)
 	{
 		ItemStack stack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(index);

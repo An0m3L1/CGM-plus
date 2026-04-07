@@ -19,6 +19,7 @@ import net.minecraftforge.client.event.sound.PlaySoundEvent;
 import net.minecraftforge.event.TickEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.util.ObfuscationReflectionHelper;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.lang.reflect.Field;
@@ -213,26 +214,26 @@ public class SoundHandler
 		}
 		
 		@Override
-		public ResourceLocation getLocation()
+		public @NotNull ResourceLocation getLocation()
 		{
 			return this.parent.getLocation();
 		}
 		
 		@Override
 		@Nullable
-		public WeighedSoundEvents resolve(net.minecraft.client.sounds.SoundManager handler)
+		public WeighedSoundEvents resolve(net.minecraft.client.sounds.@NotNull SoundManager handler)
 		{
 			return this.parent.resolve(handler);
 		}
 		
 		@Override
-		public Sound getSound()
+		public @NotNull Sound getSound()
 		{
 			return this.parent.getSound();
 		}
 		
 		@Override
-		public SoundSource getSource()
+		public @NotNull SoundSource getSource()
 		{
 			return this.parent.getSource();
 		}
@@ -280,7 +281,7 @@ public class SoundHandler
 		}
 		
 		@Override
-		public SoundInstance.Attenuation getAttenuation()
+		public SoundInstance.@NotNull Attenuation getAttenuation()
 		{
 			return parent.getAttenuation();
 		}

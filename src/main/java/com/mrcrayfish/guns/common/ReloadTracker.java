@@ -47,7 +47,6 @@ public class ReloadTracker
 	private boolean magReloadAmmoLoaded;
 	private int delayedStartTick;
 	private int cycleStartTick;
-	private final int reserveAmmo = 0;
 	private boolean reloadEarlyState;
 	private boolean reloadMidState;
 	private boolean reloadLateState;
@@ -93,16 +92,16 @@ public class ReloadTracker
 	}
 	
 	/**
-	 * Tests if the current item the player is holding is the same as the one being reloaded
+	 * Tests if the current item the player is holding is not the same as the one being reloaded
 	 *
 	 * @param player
 	 * 		the player to check
 	 *
-	 * @return True if it's the same weapon and slot
+	 * @return True if it's not the same weapon and slot
 	 */
-	private boolean isSameWeapon(Player player)
+	private boolean isNotSameWeapon(Player player)
 	{
-		return !this.stack.isEmpty() && player.getInventory().selected == this.slot && player.getInventory().getSelected() == this.stack;
+		return this.stack.isEmpty() || player.getInventory().selected != this.slot || player.getInventory().getSelected() != this.stack;
 	}
 	
 	private boolean isWeaponFull()
@@ -153,14 +152,14 @@ public class ReloadTracker
 		int itemsLoaded = 0;
 		int maxAmmo = GunCompositeStatHelper.getAmmoCapacity(this.stack, this.gun);
 		int ammoPerItem = this.gun.getGeneral().getAmmoPerItem();
-		int trueReloadAmount = (doMagReload ? maxAmmo : this.gun.getGeneral().getReloadAmount());
+		int trueReloadAmount = doMagReload ? maxAmmo : this.gun.getGeneral().getReloadAmount();
 		while(ammoLoaded < trueReloadAmount && attempts < 64 && !endReload)
 		{
 			attempts++;
-			ItemStack ammo = context.stack();
-			if(!ammo.isEmpty())
+			ItemStack reserveAmmo = context.stack();
+			if(!reserveAmmo.isEmpty())
 			{
-				int amount = Math.min(ammo.getCount(), trueReloadAmount);
+				int amount = Math.min(reserveAmmo.getCount(), trueReloadAmount);
 				CompoundTag tag = this.stack.getTag();
 				if(tag != null)
 				{
@@ -176,7 +175,7 @@ public class ReloadTracker
 						endReload = true;
 					}
 				}
-				ammo.shrink((int) Math.ceil((double) amount / ammoPerItem));
+				reserveAmmo.shrink((int) Math.ceil((double) amount / ammoPerItem));
 				
 				// Trigger that the container changed
 				Container container = context.container();
@@ -236,7 +235,16 @@ public class ReloadTracker
 				RELOAD_TRACKER_MAP.put(player, new ReloadTracker(player));
 			}
 			ReloadTracker tracker = RELOAD_TRACKER_MAP.get(player);
-			if(!tracker.isSameWeapon(player) || tracker.hasNoAmmo(player))
+			boolean shouldInterrupt;
+			if(tracker.doMagReload)
+			{
+				shouldInterrupt = tracker.isNotSameWeapon(player);
+			}
+			else
+			{
+				shouldInterrupt = tracker.isNotSameWeapon(player) || tracker.hasNoAmmo(player);
+			}
+			if(shouldInterrupt)
 			{
 				RELOAD_TRACKER_MAP.remove(player);
 				ModSyncedDataKeys.RELOADING.setValue(player, false);
@@ -340,7 +348,16 @@ public class ReloadTracker
 			if(tracker.reloadCycleEnd(player))
 			{
 				final Gun gun = tracker.gun;
-				if(tracker.isWeaponFull() || tracker.hasNoAmmo(player) || tracker.doMagReload)
+				boolean shouldFinish;
+				if(tracker.doMagReload)
+				{
+					shouldFinish = true;
+				}
+				else
+				{
+					shouldFinish = tracker.isWeaponFull() || tracker.hasNoAmmo(player);
+				}
+				if(shouldFinish)
 				{
 					final Player finalPlayer = player;
 					ModSyncedDataKeys.RELOADING.setValue(finalPlayer, false);
@@ -477,11 +494,6 @@ public class ReloadTracker
 		this.reloadLateState = false;
 		this.reloadClipOutState = false;
 		this.reloadClipInState = false;
-	}
-	
-	public int getReserveAmmo()
-	{
-		return reserveAmmo;
 	}
 	
 	@SubscribeEvent

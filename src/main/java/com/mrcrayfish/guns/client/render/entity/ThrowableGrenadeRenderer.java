@@ -11,6 +11,7 @@ import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.client.renderer.texture.OverlayTexture;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.Pose;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
@@ -26,13 +27,13 @@ public class ThrowableGrenadeRenderer extends EntityRenderer<ThrowableGrenadeEnt
 	
 	@Nullable
 	@Override
-	public ResourceLocation getTextureLocation(ThrowableGrenadeEntity entity)
+	public ResourceLocation getTextureLocation(@NotNull ThrowableGrenadeEntity entity)
 	{
 		return null;
 	}
 	
 	@Override
-	public void render(ThrowableGrenadeEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light)
+	public void render(ThrowableGrenadeEntity entity, float entityYaw, float partialTicks, PoseStack poseStack, @NotNull MultiBufferSource renderTypeBuffer, int light)
 	{
 		poseStack.pushPose();
 		

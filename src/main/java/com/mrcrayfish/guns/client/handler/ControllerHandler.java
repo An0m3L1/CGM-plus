@@ -129,12 +129,11 @@ public class ControllerHandler
 		if(player != null)
 		{
 			ItemStack heldItem = player.getMainHandItem();
-			if(heldItem.getItem() instanceof GunItem)
+			if(heldItem.getItem() instanceof GunItem gunItem)
 			{
 				event.getActions().put(GunButtonBindings.AIM, new Action(Component.translatable("cgm.action.aim"), Action.Side.RIGHT));
 				event.getActions().put(GunButtonBindings.SHOOT, new Action(Component.translatable("cgm.action.shoot"), Action.Side.RIGHT));
 				
-				GunItem gunItem = (GunItem) heldItem.getItem();
 				Gun modifiedGun = gunItem.getModifiedGun(heldItem);
 				CompoundTag tag = heldItem.getTag();
 				if(tag != null && tag.getInt("AmmoCount") < GunCompositeStatHelper.getAmmoCapacity(heldItem, modifiedGun))
@@ -222,9 +221,8 @@ public class ControllerHandler
 	public void onGatherNavigationPoints(GatherNavigationPointsEvent event)
 	{
 		Minecraft mc = Minecraft.getInstance();
-		if(mc.screen instanceof WorkbenchScreen)
+		if(mc.screen instanceof WorkbenchScreen workbench)
 		{
-			WorkbenchScreen workbench = (WorkbenchScreen) mc.screen;
 			int startX = workbench.getGuiLeft();
 			int startY = workbench.getGuiTop();
 			

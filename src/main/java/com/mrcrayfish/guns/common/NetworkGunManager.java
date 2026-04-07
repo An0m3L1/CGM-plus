@@ -27,6 +27,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.registries.ForgeRegistries;
 import org.apache.commons.lang3.Validate;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.io.*;
@@ -57,7 +58,7 @@ public class NetworkGunManager extends SimplePreparableReloadListener<Map<GunIte
 	private Map<ResourceLocation, Gun> registeredGuns = new HashMap<>();
 	
 	@Override
-	protected Map<GunItem, Gun> prepare(ResourceManager manager, ProfilerFiller profiler)
+	protected @NotNull Map<GunItem, Gun> prepare(@NotNull ResourceManager manager, @NotNull ProfilerFiller profiler)
 	{
 		Map<GunItem, Gun> map = new HashMap<>();
 		ForgeRegistries.ITEMS.getValues().stream().filter(item -> item instanceof GunItem).forEach(item ->
@@ -127,7 +128,7 @@ public class NetworkGunManager extends SimplePreparableReloadListener<Map<GunIte
 	}
 	
 	@Override
-	protected void apply(Map<GunItem, Gun> objects, ResourceManager resourceManager, ProfilerFiller profiler)
+	protected void apply(Map<GunItem, Gun> objects, @NotNull ResourceManager resourceManager, @NotNull ProfilerFiller profiler)
 	{
 		ImmutableMap.Builder<ResourceLocation, Gun> builder = ImmutableMap.builder();
 		objects.forEach((item, gun) ->

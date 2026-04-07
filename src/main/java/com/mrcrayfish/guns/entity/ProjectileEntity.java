@@ -287,7 +287,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 		double speed = this.getDeltaMovement().length();
 		if(speed > 0.1)
 		{
-			this.rotation += speed * 50;
+			this.rotation += (float) (speed * 50);
 		}
 		
 		// Spawn bubbles in water

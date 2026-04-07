@@ -118,11 +118,10 @@ public class ClientPlayHandler
 			int life = message.getLife();
 			double gravity = message.getGravity();
 			int shooterId = message.getShooterId();
-			boolean enchanted = message.isEnchanted();
 			ParticleOptions data = message.getParticleData();
 			for(int i = 0; i < message.getCount(); i++)
 			{
-				BulletTrailRenderingHandler.get().add(new BulletTrail(entityIds[i], positions[i], motions[i], item, trailColor, trailLengthMultiplier, life, gravity, shooterId, enchanted, data));
+				BulletTrailRenderingHandler.get().add(new BulletTrail(entityIds[i], positions[i], motions[i], item, trailColor, trailLengthMultiplier, life, gravity, shooterId, data));
 			}
 		}
 	}

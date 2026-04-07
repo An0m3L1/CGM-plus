@@ -96,11 +96,10 @@ public class TwoHandedPose extends WeaponPose
 		boolean slim = Minecraft.getInstance().player.getModelName().equals("slim");
 		float armWidth = slim ? 3.0F : 4.0F;
 		
-		if(!(stack.getItem() instanceof GunItem))
+		if(!(stack.getItem() instanceof GunItem gunStack))
 		{
 			return;
 		}
-		GunItem gunStack = (GunItem) stack.getItem();
 		Gun gun = gunStack.getModifiedGun(stack);
 		
 		ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();

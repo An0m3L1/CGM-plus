@@ -35,6 +35,7 @@ import net.minecraft.world.phys.AABB;
 import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.HitResult;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.List;
@@ -257,9 +258,8 @@ public class ProjectileExplosion extends Explosion
 					if(blockstate.canDropFromExplosion(this.world, blockpos, this))
 					{
 						Level $$9 = this.world;
-						if($$9 instanceof ServerLevel)
+						if($$9 instanceof ServerLevel serverlevel)
 						{
-							ServerLevel serverlevel = (ServerLevel) $$9;
 							BlockEntity blockentity = blockstate.hasBlockEntity() ? this.world.getBlockEntity(blockpos) : null;
 							LootContext.Builder lootcontext$builder = (new LootContext.Builder(serverlevel)).withRandom(this.world.random).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockentity).withOptionalParameter(LootContextParams.THIS_ENTITY, this.exploder);
 							if(this.mode == Explosion.BlockInteraction.DESTROY)
@@ -326,7 +326,7 @@ public class ProjectileExplosion extends Explosion
 		this.toBlow.clear();
 	}
 	
-	public List<BlockPos> getToBlow()
+	public @NotNull List<BlockPos> getToBlow()
 	{
 		return this.toBlow;
 	}

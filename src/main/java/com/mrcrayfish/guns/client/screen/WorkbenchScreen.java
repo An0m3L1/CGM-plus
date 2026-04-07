@@ -40,6 +40,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.opengl.GL11;
 
 import java.awt.*;
@@ -310,7 +311,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 	}
 	
 	@Override
-	public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks)
+	public void render(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTicks)
 	{
 		this.renderBackground(poseStack);
 		super.render(poseStack, mouseX, mouseY, partialTicks);
@@ -350,7 +351,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 	}
 	
 	@Override
-	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY)
+	protected void renderLabels(@NotNull PoseStack poseStack, int mouseX, int mouseY)
 	{
 		int offset = this.tabs.isEmpty() ? 0 : 28;
 		this.font.draw(poseStack, this.title, (float) this.titleLabelX, (float) this.titleLabelY - 28 + offset, 4210752);
@@ -358,7 +359,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 	}
 	
 	@Override
-	protected void renderBg(PoseStack poseStack, float partialTicks, int mouseX, int mouseY)
+	protected void renderBg(@NotNull PoseStack poseStack, float partialTicks, int mouseX, int mouseY)
 	{
 		/* Fixes partial ticks to use percentage from 0 to 1 */
 		partialTicks = Minecraft.getInstance().getFrameTime();

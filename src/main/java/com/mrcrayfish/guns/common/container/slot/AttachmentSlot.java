@@ -41,11 +41,10 @@ public class AttachmentSlot extends Slot
 	@Override
 	public boolean isActive()
 	{
-		if(!(this.weapon.getItem() instanceof GunItem))
+		if(!(this.weapon.getItem() instanceof GunItem item))
 		{
 			return false;
 		}
-		GunItem item = (GunItem) this.weapon.getItem();
 		Gun modifiedGun = item.getModifiedGun(this.weapon);
 		return modifiedGun.canAttachType(this.type);
 	}
@@ -53,11 +52,10 @@ public class AttachmentSlot extends Slot
 	@Override
 	public boolean mayPlace(@NotNull ItemStack stack)
 	{
-		if(!(this.weapon.getItem() instanceof GunItem))
+		if(!(this.weapon.getItem() instanceof GunItem item))
 		{
 			return false;
 		}
-		GunItem item = (GunItem) this.weapon.getItem();
 		Gun modifiedGun = item.getModifiedGun(this.weapon);
 		if(!(stack.getItem() instanceof IAttachment attachment))
 		{

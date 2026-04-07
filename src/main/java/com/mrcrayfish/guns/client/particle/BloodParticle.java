@@ -12,6 +12,7 @@ import net.minecraft.util.Mth;
 import net.minecraft.world.phys.Vec3;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -29,7 +30,7 @@ public class BloodParticle extends TextureSheetParticle
 	}
 	
 	@Override
-	public ParticleRenderType getRenderType()
+	public @NotNull ParticleRenderType getRenderType()
 	{
 		return ParticleRenderType.PARTICLE_SHEET_OPAQUE;
 	}
@@ -47,7 +48,7 @@ public class BloodParticle extends TextureSheetParticle
 	}
 	
 	@Override
-	public void render(VertexConsumer buffer, Camera renderInfo, float partialTicks)
+	public void render(@NotNull VertexConsumer buffer, Camera renderInfo, float partialTicks)
 	{
 		Vec3 projectedView = renderInfo.getPosition();
 		float x = (float) (Mth.lerp(partialTicks, this.xo, this.x) - projectedView.x());
@@ -56,7 +57,7 @@ public class BloodParticle extends TextureSheetParticle
 		
 		if(this.onGround)
 		{
-			y += 0.01;
+			y += 0.01F;
 		}
 		
 		Quaternion rotation = Direction.NORTH.getRotation();
@@ -106,7 +107,7 @@ public class BloodParticle extends TextureSheetParticle
 			this.spriteSet = spriteSet;
 		}
 		
-		public Particle createParticle(SimpleParticleType typeIn, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
+		public Particle createParticle(@NotNull SimpleParticleType typeIn, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
 		{
 			BloodParticle particle = new BloodParticle(worldIn, x, y, z);
 			particle.pickSprite(this.spriteSet);

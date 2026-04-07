@@ -19,6 +19,7 @@ import net.minecraft.world.level.Level;
 import net.minecraft.world.level.block.Blocks;
 import net.minecraft.world.level.block.state.BlockState;
 import net.minecraft.world.phys.Vec3;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -67,7 +68,7 @@ public class BulletHoleParticle extends TextureSheetParticle
 	}
 	
 	@Override
-	protected void setSprite(TextureAtlasSprite sprite)
+	protected void setSprite(@NotNull TextureAtlasSprite sprite)
 	{
 		super.setSprite(sprite);
 		this.uOffset = this.random.nextInt(16);
@@ -122,7 +123,7 @@ public class BulletHoleParticle extends TextureSheetParticle
 	}
 	
 	@Override
-	public void render(VertexConsumer buffer, Camera renderInfo, float partialTicks)
+	public void render(@NotNull VertexConsumer buffer, Camera renderInfo, float partialTicks)
 	{
 		Vec3 view = renderInfo.getPosition();
 		float particleX = (float) (Mth.lerp(partialTicks, this.xo, this.x) - view.x());
@@ -153,7 +154,7 @@ public class BulletHoleParticle extends TextureSheetParticle
 	}
 	
 	@Override
-	public ParticleRenderType getRenderType()
+	public @NotNull ParticleRenderType getRenderType()
 	{
 		return ParticleRenderType.TERRAIN_SHEET;
 	}

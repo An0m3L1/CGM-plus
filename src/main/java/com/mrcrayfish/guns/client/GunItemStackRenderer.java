@@ -7,6 +7,7 @@ import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.block.model.ItemTransforms;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -19,7 +20,7 @@ public class GunItemStackRenderer extends BlockEntityWithoutLevelRenderer
 	}
 	
 	@Override
-	public void renderByItem(ItemStack stack, ItemTransforms.TransformType transform, PoseStack poseStack, MultiBufferSource source, int light, int overlay)
+	public void renderByItem(@NotNull ItemStack stack, ItemTransforms.@NotNull TransformType transform, PoseStack poseStack, @NotNull MultiBufferSource source, int light, int overlay)
 	{
 		// Hack to remove transforms created by ItemRenderer#render
 		poseStack.popPose();

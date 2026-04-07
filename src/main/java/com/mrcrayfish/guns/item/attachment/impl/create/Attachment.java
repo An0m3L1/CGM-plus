@@ -56,9 +56,8 @@ public abstract class Attachment
 	public static void addInformationEvent(ItemTooltipEvent event)
 	{
 		ItemStack stack = event.getItemStack();
-		if(stack.getItem() instanceof IAttachment<?>)
+		if(stack.getItem() instanceof IAttachment<?> attachment)
 		{
-			IAttachment<?> attachment = (IAttachment<?>) stack.getItem();
 			List<Component> perks = attachment.getProperties().getPerks();
 			if(perks != null && !perks.isEmpty())
 			{

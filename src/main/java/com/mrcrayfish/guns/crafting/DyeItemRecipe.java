@@ -10,6 +10,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.CustomRecipe;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -25,7 +26,7 @@ public class DyeItemRecipe extends CustomRecipe
 	}
 	
 	@Override
-	public boolean matches(CraftingContainer inventory, Level worldIn)
+	public boolean matches(CraftingContainer inventory, @NotNull Level worldIn)
 	{
 		ItemStack item = ItemStack.EMPTY;
 		List<ItemStack> dyes = new ArrayList<>();
@@ -58,7 +59,7 @@ public class DyeItemRecipe extends CustomRecipe
 	}
 	
 	@Override
-	public ItemStack assemble(CraftingContainer inventory)
+	public @NotNull ItemStack assemble(CraftingContainer inventory)
 	{
 		ItemStack item = ItemStack.EMPTY;
 		List<DyeItem> dyes = new ArrayList<>();
@@ -97,13 +98,13 @@ public class DyeItemRecipe extends CustomRecipe
 	}
 	
 	@Override
-	public RecipeSerializer<?> getSerializer()
+	public @NotNull RecipeSerializer<?> getSerializer()
 	{
 		return ModRecipeSerializers.DYE_ITEM.get();
 	}
 	
 	@Override
-	public NonNullList<ItemStack> getRemainingItems(CraftingContainer inventory)
+	public @NotNull NonNullList<ItemStack> getRemainingItems(CraftingContainer inventory)
 	{
 		NonNullList<ItemStack> remainingItems = NonNullList.withSize(inventory.getContainerSize(), ItemStack.EMPTY);
 		for(int i = 0; i < remainingItems.size(); ++i)

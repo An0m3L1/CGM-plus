@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.IIngredientSerializer;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -49,7 +50,7 @@ public class WorkbenchIngredient extends Ingredient
 	}
 	
 	@Override
-	public IIngredientSerializer<? extends Ingredient> getSerializer()
+	public @NotNull IIngredientSerializer<? extends Ingredient> getSerializer()
 	{
 		return Serializer.INSTANCE;
 	}
@@ -62,7 +63,7 @@ public class WorkbenchIngredient extends Ingredient
 	}
 	
 	@Override
-	public JsonElement toJson()
+	public @NotNull JsonElement toJson()
 	{
 		JsonObject object = this.itemList.serialize();
 		object.addProperty("count", this.count);
@@ -94,7 +95,7 @@ public class WorkbenchIngredient extends Ingredient
 		public static final WorkbenchIngredient.Serializer INSTANCE = new WorkbenchIngredient.Serializer();
 		
 		@Override
-		public WorkbenchIngredient parse(FriendlyByteBuf buffer)
+		public @NotNull WorkbenchIngredient parse(FriendlyByteBuf buffer)
 		{
 			int itemCount = buffer.readVarInt();
 			int count = buffer.readVarInt();
@@ -103,7 +104,7 @@ public class WorkbenchIngredient extends Ingredient
 		}
 		
 		@Override
-		public WorkbenchIngredient parse(JsonObject object)
+		public @NotNull WorkbenchIngredient parse(@NotNull JsonObject object)
 		{
 			return WorkbenchIngredient.fromJson(object);
 		}
@@ -135,13 +136,13 @@ public class WorkbenchIngredient extends Ingredient
 		}
 		
 		@Override
-		public Collection<ItemStack> getItems()
+		public @NotNull Collection<ItemStack> getItems()
 		{
 			return Collections.emptyList();
 		}
 		
 		@Override
-		public JsonObject serialize()
+		public @NotNull JsonObject serialize()
 		{
 			JsonObject object = new JsonObject();
 			object.addProperty("item", this.id.toString());

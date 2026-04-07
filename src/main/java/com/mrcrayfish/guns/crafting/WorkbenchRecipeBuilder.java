@@ -16,6 +16,7 @@ import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.level.ItemLike;
 import net.minecraftforge.common.crafting.CraftingHelper;
 import net.minecraftforge.common.crafting.conditions.ICondition;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -121,7 +122,7 @@ public class WorkbenchRecipeBuilder
 		}
 		
 		@Override
-		public void serializeRecipeData(JsonObject json)
+		public void serializeRecipeData(@NotNull JsonObject json)
 		{
 			JsonArray conditions = new JsonArray();
 			this.conditions.forEach(condition -> conditions.add(CraftingHelper.serialize(condition)));
@@ -144,13 +145,13 @@ public class WorkbenchRecipeBuilder
 		}
 		
 		@Override
-		public ResourceLocation getId()
+		public @NotNull ResourceLocation getId()
 		{
 			return this.id;
 		}
 		
 		@Override
-		public RecipeSerializer<?> getType()
+		public @NotNull RecipeSerializer<?> getType()
 		{
 			return ModRecipeSerializers.WORKBENCH.get();
 		}

@@ -1,16 +1,6 @@
 package com.mrcrayfish.guns.item.attachment.impl.create;
 
-import com.mrcrayfish.guns.debug.IDebugWidget;
-import com.mrcrayfish.guns.debug.IEditorMenu;
-import com.mrcrayfish.guns.debug.client.screen.widget.DebugSlider;
 import com.mrcrayfish.guns.interfaces.IGunModifier;
-import net.minecraft.network.chat.Component;
-import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.fml.DistExecutor;
-import org.apache.commons.lang3.tuple.Pair;
-
-import java.util.List;
-import java.util.function.Supplier;
 
 /**
  * An attachment class related to scopes. Scopes need to at least specify the additional zoom (or fov)
@@ -19,7 +9,7 @@ import java.util.function.Supplier;
  * <p>
  * Author: MrCrayfish
  */
-public class Scope extends Attachment implements IEditorMenu
+public class Scope extends Attachment
 {
 	protected float aimFovModifier;
 	protected float additionalZoom;
@@ -141,24 +131,6 @@ public class Scope extends Attachment implements IEditorMenu
 	public double getViewFinderDistance()
 	{
 		return this.viewFinderDist;
-	}
-	
-	@Override
-	public Component getEditorLabel()
-	{
-		return Component.literal("Scope");
-	}
-	
-	@Override
-	public void getEditorWidgets(List<Pair<Component, Supplier<IDebugWidget>>> widgets)
-	{
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-		{
-			widgets.add(Pair.of(Component.literal("Aim FOV Modifier"), () -> new DebugSlider(0.0, 1.0, this.aimFovModifier, 0.05, 3, value -> this.aimFovModifier = value.floatValue())));
-			widgets.add(Pair.of(Component.literal("Zoom (Legacy)"), () -> new DebugSlider(0.0, 0.5, this.additionalZoom, 0.05, 3, value -> this.additionalZoom = value.floatValue())));
-			widgets.add(Pair.of(Component.literal("Reticle Offset"), () -> new DebugSlider(0.0, 4.0, this.reticleOffset, 0.025, 4, value -> this.reticleOffset = value)));
-			widgets.add(Pair.of(Component.literal("View Finder Distance"), () -> new DebugSlider(0.0, 5.0, this.viewFinderDist, 0.05, 3, value -> this.viewFinderDist = value)));
-		});
 	}
 	
 	public Scope copy()

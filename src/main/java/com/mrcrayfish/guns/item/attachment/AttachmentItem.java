@@ -4,6 +4,7 @@ import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.item.IMeta;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -16,13 +17,13 @@ public class AttachmentItem extends Item implements IMeta
 	}
 	
 	@Override
-	public boolean isFoil(ItemStack stack)
+	public boolean isFoil(@NotNull ItemStack stack)
 	{
 		return false;
 	}
 	
 	@Override
-	public boolean isEnchantable(ItemStack stack)
+	public boolean isEnchantable(@NotNull ItemStack stack)
 	{
 		return false;
 	}

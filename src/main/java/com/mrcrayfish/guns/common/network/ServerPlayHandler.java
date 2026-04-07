@@ -144,7 +144,7 @@ public class ServerPlayHandler
 				{
 					world.gameEvent(GameEvent.PROJECTILE_SHOOT, player.blockPosition(), GameEvent.Context.of(spawnedProjectiles[0]));
 				}
-				if(!projectileProps.isVisible())
+				if(projectileProps.isInvisible())
 				{
 					double spawnX = player.getX();
 					double spawnY = player.getY() + 1.0;

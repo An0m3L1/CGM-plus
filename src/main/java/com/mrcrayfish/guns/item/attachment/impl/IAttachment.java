@@ -10,6 +10,7 @@ import javax.annotation.Nullable;
  * <p>
  * Author: MrCrayfish
  */
+@SuppressWarnings("SameReturnValue")
 public interface IAttachment<T extends Attachment>
 {
 	/**

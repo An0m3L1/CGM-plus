@@ -76,7 +76,7 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
 		double speed = this.getDeltaMovement().length();
 		if(speed > 0.1)
 		{
-			this.rotation += speed * 50;
+			this.rotation += (float) (speed * 50);
 		}
 		if(this.level.isClientSide)
 		{

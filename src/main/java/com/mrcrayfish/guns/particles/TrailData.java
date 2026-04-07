@@ -9,6 +9,7 @@ import net.minecraft.core.particles.ParticleOptions;
 import net.minecraft.core.particles.ParticleType;
 import net.minecraft.network.FriendlyByteBuf;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -20,21 +21,21 @@ public record TrailData(boolean enchanted) implements ParticleOptions
 	public static final Deserializer<TrailData> DESERIALIZER = new Deserializer<>()
 	{
 		@Override
-		public TrailData fromCommand(ParticleType<TrailData> particleType, StringReader reader) throws CommandSyntaxException
+		public @NotNull TrailData fromCommand(@NotNull ParticleType<TrailData> particleType, StringReader reader) throws CommandSyntaxException
 		{
 			reader.expect(' ');
 			return new TrailData(reader.readBoolean());
 		}
 		
 		@Override
-		public TrailData fromNetwork(ParticleType<TrailData> particleType, FriendlyByteBuf buffer)
+		public @NotNull TrailData fromNetwork(@NotNull ParticleType<TrailData> particleType, FriendlyByteBuf buffer)
 		{
 			return new TrailData(buffer.readBoolean());
 		}
 	};
 	
 	@Override
-	public ParticleType<?> getType()
+	public @NotNull ParticleType<?> getType()
 	{
 		return ModParticleTypes.TRAIL.get();
 	}
@@ -46,7 +47,7 @@ public record TrailData(boolean enchanted) implements ParticleOptions
 	}
 	
 	@Override
-	public String writeToString()
+	public @NotNull String writeToString()
 	{
 		return ForgeRegistries.PARTICLE_TYPES.getKey(this.getType()) + " " + this.enchanted;
 	}

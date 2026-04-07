@@ -28,7 +28,6 @@ public class S2CMessageBulletTrail extends PlayMessage<S2CMessageBulletTrail>
 	private int life;
 	private double gravity;
 	private int shooterId;
-	private boolean enchanted;
 	private ParticleOptions particleData;
 	
 	public S2CMessageBulletTrail()
@@ -48,8 +47,7 @@ public class S2CMessageBulletTrail extends PlayMessage<S2CMessageBulletTrail>
 			this.entityIds[i] = projectile.getId();
 		}
 		this.item = spawnedProjectiles[0].getItem();
-		this.enchanted = spawnedProjectiles[0].getWeapon().isEnchanted();
-		this.trailColor = this.enchanted ? 0x9C71FF : projectileProps.getTrailColor();
+		this.trailColor = projectileProps.getTrailColor();
 		this.trailLengthMultiplier = projectileProps.getTrailLengthMultiplier();
 		this.life = projectileProps.getLife();
 		this.gravity = spawnedProjectiles[0].getModifiedGravity(); //It's possible that projectiles have different gravity
@@ -57,7 +55,7 @@ public class S2CMessageBulletTrail extends PlayMessage<S2CMessageBulletTrail>
 		this.particleData = particleData;
 	}
 	
-	public S2CMessageBulletTrail(int[] entityIds, Vec3[] positions, Vec3[] motions, ItemStack item, int trailColor, double trailLengthMultiplier, int life, double gravity, int shooterId, boolean enchanted, ParticleOptions particleData)
+	public S2CMessageBulletTrail(int[] entityIds, Vec3[] positions, Vec3[] motions, ItemStack item, int trailColor, double trailLengthMultiplier, int life, double gravity, int shooterId, ParticleOptions particleData)
 	{
 		this.entityIds = entityIds;
 		this.positions = positions;
@@ -68,7 +66,6 @@ public class S2CMessageBulletTrail extends PlayMessage<S2CMessageBulletTrail>
 		this.life = life;
 		this.gravity = gravity;
 		this.shooterId = shooterId;
-		this.enchanted = enchanted;
 		this.particleData = particleData;
 	}
 	
@@ -88,7 +85,6 @@ public class S2CMessageBulletTrail extends PlayMessage<S2CMessageBulletTrail>
 		buffer.writeInt(message.life);
 		buffer.writeDouble(message.gravity);
 		buffer.writeInt(message.shooterId);
-		buffer.writeBoolean(message.enchanted);
 		buffer.writeInt(Registry.PARTICLE_TYPE.getId(message.particleData.getType()));
 		message.particleData.writeToNetwork(buffer);
 	}
@@ -112,14 +108,13 @@ public class S2CMessageBulletTrail extends PlayMessage<S2CMessageBulletTrail>
 		int life = buffer.readInt();
 		double gravity = buffer.readDouble();
 		int shooterId = buffer.readInt();
-		boolean enchanted = buffer.readBoolean();
 		ParticleType<?> type = Registry.PARTICLE_TYPE.byId(buffer.readInt());
 		if(type == null)
 		{
 			type = ParticleTypes.CRIT;
 		}
 		ParticleOptions particleData = this.readParticle(buffer, type);
-		return new S2CMessageBulletTrail(entityIds, positions, motions, item, trailColor, trailLengthMultiplier, life, gravity, shooterId, enchanted, particleData);
+		return new S2CMessageBulletTrail(entityIds, positions, motions, item, trailColor, trailLengthMultiplier, life, gravity, shooterId, particleData);
 	}
 	
 	@Override
@@ -182,11 +177,6 @@ public class S2CMessageBulletTrail extends PlayMessage<S2CMessageBulletTrail>
 	public int getShooterId()
 	{
 		return this.shooterId;
-	}
-	
-	public boolean isEnchanted()
-	{
-		return this.enchanted;
 	}
 	
 	public ParticleOptions getParticleData()

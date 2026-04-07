@@ -87,6 +87,7 @@ public class GunEventBus
 	{
 		if(!player.getAbilities().instabuild && stack.isDamageableItem() && (stack.getDamageValue() <= (stack.getMaxDamage() - 1)))
 		{
+			//noinspection DataFlowIssue
 			stack.hurtAndBreak(1, player, null);
 		}
 	}

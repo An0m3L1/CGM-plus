@@ -10,6 +10,7 @@ import net.minecraft.world.level.ChunkPos;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.List;
 
@@ -25,12 +26,11 @@ public class SyncedBlockEntity extends BlockEntity
 		this.setChanged();
 		if(this.level != null && !this.level.isClientSide)
 		{
-			if(this.level instanceof ServerLevel)
+			if(this.level instanceof ServerLevel server)
 			{
 				ClientboundBlockEntityDataPacket packet = this.getUpdatePacket();
 				if(packet != null)
 				{
-					ServerLevel server = (ServerLevel) this.level;
 					List<ServerPlayer> players = server.getChunkSource().chunkMap.getPlayers(new ChunkPos(this.worldPosition), false);
 					players.forEach(player -> player.connection.send(packet));
 				}
@@ -39,7 +39,7 @@ public class SyncedBlockEntity extends BlockEntity
 	}
 	
 	@Override
-	public CompoundTag getUpdateTag()
+	public @NotNull CompoundTag getUpdateTag()
 	{
 		return this.saveWithFullMetadata();
 	}

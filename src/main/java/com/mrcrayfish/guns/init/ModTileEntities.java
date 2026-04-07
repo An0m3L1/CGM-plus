@@ -22,6 +22,7 @@ public class ModTileEntities
 	
 	private static <T extends BlockEntity> RegistryObject<BlockEntityType<T>> register(String id, BlockEntityType.BlockEntitySupplier<T> factoryIn, Supplier<Block[]> validBlocksSupplier)
 	{
+		//noinspection DataFlowIssue
 		return REGISTER.register(id, () -> BlockEntityType.Builder.of(factoryIn, validBlocksSupplier.get()).build(null));
 	}
 }

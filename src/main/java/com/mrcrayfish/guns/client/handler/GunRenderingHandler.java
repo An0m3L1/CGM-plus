@@ -92,9 +92,6 @@ public class GunRenderingHandler
 	private boolean setNewViewportFOV = true;
 	
 	private int lastFireTick = -1;
-	private int csRecoilTime = 13;
-	private double shotCountScaled = 0;
-	private int csRecoilMaxShots = 15;
 	
 	private int sprintTransition;
 	private int prevSprintTransition;
@@ -142,31 +139,26 @@ public class GunRenderingHandler
 		return this.renderingWeapon;
 	}
 	
-	@Nullable
 	public float getSprintTransition(float partialTicks)
 	{
 		return (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
 	}
 	
-	@Nullable
 	public float getHitMarkerProgress(float partialTicks)
 	{
 		return ((this.prevHitMarkerTime + (this.hitMarkerTime - this.prevHitMarkerTime) * partialTicks) / (float) hitMarkerMaxTime);
 	}
 	
-	@Nullable
 	public boolean isRenderingHitMarker()
 	{
 		return playingHitMarker;
 	}
 	
-	@Nullable
 	public boolean getHitMarkerCrit()
 	{
 		return hitMarkerCrit;
 	}
 	
-	@Nullable
 	public int getSprintCooldown()
 	{
 		return sprintCooldown;
@@ -614,7 +606,7 @@ public class GunRenderingHandler
 			poseStack.translate(-(Mth.sin(distanceWalked * (float) Math.PI) * bobbing * 0.5F), Math.abs(Mth.cos(distanceWalked * (float) Math.PI) * bobbing), 0.0D);
 			
 			/* Slows down the bob by half */
-			bobbing *= player.isSprinting() ? 8.0 : 4.0;
+			bobbing *= (float) (player.isSprinting() ? 8.0 : 4.0);
 			bobbing *= Config.CLIENT.bobbingIntensity.get();
 			
 			/* The new controlled bobbing */
@@ -660,13 +652,13 @@ public class GunRenderingHandler
 			float bobPitch = Mth.rotLerp(partialTicks, player.xBobO, player.xBob);
 			float headPitch = Mth.rotLerp(partialTicks, player.xRotO, player.getXRot());
 			float swayPitch = headPitch - bobPitch;
-			swayPitch *= 1.0 - 0.5 * AimingHandler.get().getNormalisedAdsProgress();
+			swayPitch *= (float) (1.0 - 0.5 * AimingHandler.get().getNormalisedAdsProgress());
 			poseStack.mulPose(Config.CLIENT.swayType.get().getPitchRotation().rotationDegrees(swayPitch * Config.CLIENT.swaySensitivity.get().floatValue()));
 			
 			float bobYaw = Mth.rotLerp(partialTicks, player.yBobO, player.yBob);
 			float headYaw = Mth.rotLerp(partialTicks, player.yHeadRotO, player.yHeadRot);
 			float swayYaw = headYaw - bobYaw;
-			swayYaw *= 1.0 - 0.5 * AimingHandler.get().getNormalisedAdsProgress();
+			swayYaw *= (float) (1.0 - 0.5 * AimingHandler.get().getNormalisedAdsProgress());
 			poseStack.mulPose(Config.CLIENT.swayType.get().getYawRotation().rotationDegrees(swayYaw * Config.CLIENT.swaySensitivity.get().floatValue()));
 			
 			poseStack.translate(-x, -y, -z);
@@ -1042,7 +1034,7 @@ public class GunRenderingHandler
 	
 	public void renderWeapon(@Nullable LivingEntity entity, ItemStack stack, ItemTransforms.TransformType transformType, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, float partialTicks)
 	{
-		if(stack.getItem() instanceof GunItem)
+		if(stack.getItem() instanceof GunItem gunStack)
 		{
 			poseStack.pushPose();
 			
@@ -1063,7 +1055,6 @@ public class GunRenderingHandler
 			if(entity != null && entity.equals(mc.player) && correctContext)
 			{
 				Player player = (Player) entity;
-				GunItem gunStack = (GunItem) stack.getItem();
 				Gun modifiedGun = gunStack.getModifiedGun(stack);
 				
 				double zoomFactor = (1 - Gun.getFovModifier(stack, modifiedGun)) * AimingHandler.get().getNormalisedAdsProgress();
@@ -1493,12 +1484,11 @@ public class GunRenderingHandler
 	
 	private float getAimProgress(ItemStack heldItem)
 	{
-		if(!(heldItem.getItem() instanceof GunItem))
+		if(!(heldItem.getItem() instanceof GunItem gunItem))
 		{
 			return 0;
 		}
 		
-		GunItem gunItem = (GunItem) heldItem.getItem();
 		Gun modifiedGun = gunItem.getModifiedGun(heldItem);
 		
 		float aiming = (float) (AimingHandler.get().getNormalisedAdsProgress());
@@ -1526,8 +1516,8 @@ public class GunRenderingHandler
 		this.immersiveRoll = Mth.lerp(speed, this.immersiveRoll, targetAngle);
 		
 		float deltaY = (float) Mth.clamp((mc.player.yo - mc.player.getY()), -1.0, 1.0);
-		deltaY *= 1.0 - AimingHandler.get().getNormalisedAdsProgress();
-		deltaY *= 1.0 - (Mth.abs(mc.player.getXRot()) / 90.0F);
+		deltaY *= (float) (1.0 - AimingHandler.get().getNormalisedAdsProgress());
+		deltaY *= (float) (1.0 - (Mth.abs(mc.player.getXRot()) / 90.0F));
 		this.fallSway = Mth.approach(this.fallSway, deltaY * 60F * Config.CLIENT.swaySensitivity.get().floatValue(), 10.0F);
 		
 		float intensity = mc.player.isSprinting() ? 0.75F : 1.0F;

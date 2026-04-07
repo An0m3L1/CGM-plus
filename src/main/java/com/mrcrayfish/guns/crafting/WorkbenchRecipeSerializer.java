@@ -11,6 +11,7 @@ import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.item.crafting.Ingredient;
 import net.minecraft.world.item.crafting.RecipeSerializer;
 import net.minecraft.world.item.crafting.ShapedRecipe;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.ArrayList;
@@ -22,7 +23,7 @@ import java.util.List;
 public class WorkbenchRecipeSerializer implements RecipeSerializer<WorkbenchRecipe>
 {
 	@Override
-	public WorkbenchRecipe fromJson(ResourceLocation recipeId, JsonObject parent)
+	public @NotNull WorkbenchRecipe fromJson(@NotNull ResourceLocation recipeId, @NotNull JsonObject parent)
 	{
 		ImmutableList.Builder<WorkbenchIngredient> builder = ImmutableList.builder();
 		JsonArray input = GsonHelper.getAsJsonArray(parent, "materials");
@@ -55,7 +56,7 @@ public class WorkbenchRecipeSerializer implements RecipeSerializer<WorkbenchReci
 	
 	@Nullable
 	@Override
-	public WorkbenchRecipe fromNetwork(ResourceLocation recipeId, FriendlyByteBuf buffer)
+	public WorkbenchRecipe fromNetwork(@NotNull ResourceLocation recipeId, FriendlyByteBuf buffer)
 	{
 		ItemStack result = buffer.readItem();
 		ImmutableList.Builder<WorkbenchIngredient> builder = ImmutableList.builder();

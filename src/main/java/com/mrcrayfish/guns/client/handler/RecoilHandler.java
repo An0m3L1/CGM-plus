@@ -84,7 +84,7 @@ public class RecoilHandler
 		GunItem gunItem = (GunItem) heldItem.getItem();
 		Gun modifiedGun = gunItem.getModifiedGun(heldItem);
 		float recoilModifier = 1.0F - GunModifierHelper.getRecoilModifier(heldItem);
-		recoilModifier *= this.getAdsRecoilReduction(modifiedGun);
+		recoilModifier *= (float) this.getAdsRecoilReduction(modifiedGun);
 		this.cameraRecoil = modifiedGun.getGeneral().getRecoilAngle() * recoilModifier;
 		this.gunRecoilRandom = random.nextFloat();
 		this.gunVRecoilRandom = random.nextFloat();
@@ -209,12 +209,11 @@ public class RecoilHandler
 		}
 		
 		ItemStack heldItem = event.getItemStack();
-		if(!(heldItem.getItem() instanceof GunItem))
+		if(!(heldItem.getItem() instanceof GunItem gunItem))
 		{
 			return;
 		}
 		
-		GunItem gunItem = (GunItem) heldItem.getItem();
 		Gun modifiedGun = gunItem.getModifiedGun(heldItem);
 		assert Minecraft.getInstance().player != null;
 		ItemCooldowns tracker = Minecraft.getInstance().player.getCooldowns();

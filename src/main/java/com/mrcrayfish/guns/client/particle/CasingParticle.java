@@ -51,7 +51,7 @@ public class CasingParticle extends TextureSheetParticle
 			this.sprite = pSprites;
 		}
 		
-		public Particle createParticle(SimpleParticleType pType, ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed)
+		public Particle createParticle(@NotNull SimpleParticleType pType, @NotNull ClientLevel pLevel, double pX, double pY, double pZ, double pXSpeed, double pYSpeed, double pZSpeed)
 		{
 			CasingParticle casingParticle = new CasingParticle(pLevel, pX, pY, pZ);
 			casingParticle.setSpriteFromAge(this.sprite);

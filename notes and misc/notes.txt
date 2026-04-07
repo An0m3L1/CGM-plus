@@ -23,7 +23,7 @@ Update reload logic and animations:
 Hide ammo HUD when reloading textures
 Clean up:
     - Gun model files (use automatic pistol as template)
-    - Remove debug editor and all code related to it
+    - Reorganize project files
 Complete hardness tag lists:
     - None (glass, lanterns, wool, plants, small rocks)
     - Low (wooden doors, wooden trapdoors, fences, fence gates, furniture)

@@ -32,6 +32,7 @@ import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.client.ConfigScreenHandler;
 import net.minecraftforge.fml.ModList;
+import org.jetbrains.annotations.NotNull;
 import org.lwjgl.glfw.GLFW;
 import org.lwjgl.opengl.GL11;
 
@@ -116,7 +117,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 	}
 	
 	@Override
-	public void render(PoseStack poseStack, int mouseX, int mouseY, float partialTicks)
+	public void render(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTicks)
 	{
 		this.renderBackground(poseStack);
 		super.render(poseStack, mouseX, mouseY, partialTicks);
@@ -157,7 +158,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 	}
 	
 	@Override
-	protected void renderLabels(PoseStack poseStack, int mouseX, int mouseY)
+	protected void renderLabels(@NotNull PoseStack poseStack, int mouseX, int mouseY)
 	{
 		Minecraft minecraft = Minecraft.getInstance();
 		this.font.draw(poseStack, this.title, (float) this.titleLabelX, (float) this.titleLabelY, 4210752);
@@ -206,7 +207,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 	}
 	
 	@Override
-	protected void renderBg(PoseStack poseStack, float partialTicks, int mouseX, int mouseY)
+	protected void renderBg(@NotNull PoseStack poseStack, float partialTicks, int mouseX, int mouseY)
 	{
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, GUI_TEXTURES);
@@ -341,14 +342,14 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 			if(this.mouseGrabbedButton == 0 && button == GLFW.GLFW_MOUSE_BUTTON_LEFT)
 			{
 				this.mouseGrabbed = false;
-				this.windowX += (mouseX - this.mouseClickedX - 1);
-				this.windowY += (mouseY - this.mouseClickedY);
+				this.windowX += (int) (mouseX - this.mouseClickedX - 1);
+				this.windowY += (int) (mouseY - this.mouseClickedY);
 			}
 			else if(mouseGrabbedButton == 1 && button == GLFW.GLFW_MOUSE_BUTTON_RIGHT)
 			{
 				this.mouseGrabbed = false;
-				this.windowRotationX += (mouseX - this.mouseClickedX);
-				this.windowRotationY -= (mouseY - this.mouseClickedY);
+				this.windowRotationX += (float) (mouseX - this.mouseClickedX);
+				this.windowRotationY -= (float) (mouseY - this.mouseClickedY);
 			}
 		}
 		return super.mouseReleased(mouseX, mouseY, button);

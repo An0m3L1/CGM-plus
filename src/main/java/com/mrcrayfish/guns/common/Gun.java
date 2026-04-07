@@ -6,45 +6,29 @@ import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.annotation.Ignored;
 import com.mrcrayfish.guns.annotation.Optional;
-import com.mrcrayfish.guns.client.ClientHandler;
 import com.mrcrayfish.guns.compat.BackpackHelper;
-import com.mrcrayfish.guns.debug.Debug;
-import com.mrcrayfish.guns.debug.IDebugWidget;
-import com.mrcrayfish.guns.debug.IEditorMenu;
-import com.mrcrayfish.guns.debug.client.screen.widget.DebugButton;
-import com.mrcrayfish.guns.debug.client.screen.widget.DebugSlider;
-import com.mrcrayfish.guns.debug.client.screen.widget.DebugToggle;
 import com.mrcrayfish.guns.init.ModSounds;
 import com.mrcrayfish.guns.item.GunItem;
-import com.mrcrayfish.guns.item.PouchItem;
 import com.mrcrayfish.guns.item.attachment.ScopeItem;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import com.mrcrayfish.guns.item.attachment.impl.create.Scope;
 import com.mrcrayfish.guns.util.SuperBuilder;
-import net.minecraft.client.Minecraft;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.Tag;
-import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.sounds.SoundEvent;
 import net.minecraft.util.Mth;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
-import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.util.INBTSerializable;
-import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.registries.ForgeRegistries;
-import org.apache.commons.lang3.tuple.Pair;
 
 import javax.annotation.Nullable;
-import java.util.List;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
-import java.util.function.Supplier;
 
-@SuppressWarnings("ALL")
-public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
+public class Gun implements INBTSerializable<CompoundTag>
 {
 	protected General general = new General();
 	protected FireModes fireModes = new FireModes();
@@ -105,28 +89,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 	public Modules getModules()
 	{
 		return this.modules;
-	}
-	
-	@Override
-	public Component getEditorLabel()
-	{
-		return Component.literal("Gun");
-	}
-	
-	@Override
-	public void getEditorWidgets(List<Pair<Component, Supplier<IDebugWidget>>> widgets)
-	{
-		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-		{
-			ItemStack heldItem = Objects.requireNonNull(Minecraft.getInstance().player).getMainHandItem();
-			ItemStack scope = Gun.getScopeStack(heldItem);
-			if(scope.getItem() instanceof ScopeItem scopeItem)
-			{
-				widgets.add(Pair.of(scope.getItem().getName(scope), () -> new DebugButton(Component.literal("Edit"), btn -> Minecraft.getInstance().setScreen(ClientHandler.createEditorScreen(Debug.getScope(scopeItem))))));
-			}
-			
-			widgets.add(Pair.of(this.modules.getEditorLabel(), () -> new DebugButton(Component.literal(">"), btn -> Minecraft.getInstance().setScreen(ClientHandler.createEditorScreen(this.modules)))));
-		});
 	}
 	
 	public static class General implements INBTSerializable<CompoundTag>
@@ -541,7 +503,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 				object.addProperty("burstCooldown", this.burstCooldown);
 			}
 			object.addProperty("gripType", this.gripType.id().toString());
-			if(this.overrideClientGripType != false)
+			if(this.overrideClientGripType)
 			{
 				object.addProperty("overrideClientGripType", this.overrideClientGripType);
 			}
@@ -1774,11 +1736,11 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 		}
 		
 		/**
-		 * @return If this projectile should be visible when rendering
+		 * @return If this projectile should be invisible when rendering
 		 */
-		public boolean isVisible()
+		public boolean isInvisible()
 		{
-			return this.visible;
+			return !this.visible;
 		}
 		
 		/**
@@ -2745,7 +2707,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 		 * Setting this to zero will play the sound immediately.
 		 * Setting this to less than zero disables it.
 		 */
-		@Nullable
 		public int getWeaponSelectDelay()
 		{
 			return this.weaponSelectDelay;
@@ -3505,7 +3466,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 		}
 	}
 	
-	public static class Modules implements INBTSerializable<CompoundTag>, IEditorMenu
+	public static class Modules implements INBTSerializable<CompoundTag>
 	{
 		private transient Zoom cachedZoom;
 		
@@ -3525,49 +3486,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 			return this.attachments;
 		}
 		
-		@Override
-		public Component getEditorLabel()
-		{
-			return Component.literal("Modules");
-		}
-		
-		@Override
-		public void getEditorWidgets(List<Pair<Component, Supplier<IDebugWidget>>> widgets)
-		{
-			DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
-			{
-				widgets.add(Pair.of(Component.literal("Enabled Iron Sights"), () -> new DebugToggle(this.zoom != null, val ->
-				{
-					if(val)
-					{
-						if(this.cachedZoom != null)
-						{
-							this.zoom = this.cachedZoom;
-						}
-						else
-						{
-							this.zoom = new Zoom();
-							this.cachedZoom = this.zoom;
-						}
-					}
-					else
-					{
-						this.cachedZoom = this.zoom;
-						this.zoom = null;
-					}
-				})));
-				
-				widgets.add(Pair.of(Component.literal("Adjust Iron Sights"), () -> new DebugButton(Component.literal(">"), btn ->
-				{
-					if(btn.active && this.zoom != null)
-					{
-						Minecraft.getInstance().setScreen(ClientHandler.createEditorScreen(this.zoom));
-					}
-				}, () -> this.zoom != null)));
-			});
-		}
-		
-		public static class Zoom extends Positioned implements IEditorMenu
+		public static class Zoom extends Positioned
 		{
 			@Optional
 			private float fovModifier;
@@ -3605,18 +3524,6 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 				zoom.yOffset = this.yOffset;
 				zoom.zOffset = this.zOffset;
 				return zoom;
-			}
-			
-			@Override
-			public Component getEditorLabel()
-			{
-				return Component.literal("Zoom");
-			}
-			
-			@Override
-			public void getEditorWidgets(List<Pair<Component, Supplier<IDebugWidget>>> widgets)
-			{
-				DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> widgets.add(Pair.of(Component.literal("FOV Modifier"), () -> new DebugSlider(0.0, 1.0, this.fovModifier, 0.01, 3, val -> this.fovModifier = val.floatValue()))));
 			}
 			
 			public float getFovModifier()
@@ -4347,6 +4254,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 		}
 		
 		// Check ammo pouches in the player's inventory
+		/*
 		for(ItemStack itemStack : player.getInventory().items)
 		{
 			if(itemStack.getItem() instanceof PouchItem pouch)
@@ -4361,6 +4269,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 				}
 			}
 		}
+		*/
 		
 		AtomicReference<AmmoContext> ammoContextRef = new AtomicReference<>(AmmoContext.NONE);
 
@@ -4769,7 +4678,7 @@ public class Gun implements INBTSerializable<CompoundTag>, IEditorMenu
 		
 		if(soundObject == null)
 		{
-			GunMod.LOGGER.info("getReloadSoundGroup with conditions <magReload = " + magReload + ", emptyReload = " + emptyReload + "> returned null!!");
+			GunMod.LOGGER.info("getReloadSoundGroup with conditions <magReload = {}, emptyReload = {}> returned null!!", magReload, emptyReload);
 			soundObject = defaultSoundObject;
 		}
 		

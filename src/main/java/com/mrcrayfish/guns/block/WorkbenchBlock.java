@@ -25,6 +25,7 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.VoxelShape;
 import net.minecraftforge.network.NetworkHooks;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.*;
@@ -60,7 +61,7 @@ public class WorkbenchBlock extends RotatedObjectBlock implements EntityBlock
 		return shape;
 	}
 	
-	public BlockState updateShape(BlockState state, Direction direction, BlockState neighbourState, LevelAccessor world, BlockPos pos, BlockPos neighbourPos)
+	public @NotNull BlockState updateShape(BlockState state, @NotNull Direction direction, @NotNull BlockState neighbourState, @NotNull LevelAccessor world, @NotNull BlockPos pos, @NotNull BlockPos neighbourPos)
 	{
 		if(state.getValue(BlockStateProperties.WATERLOGGED))
 		{
@@ -77,24 +78,24 @@ public class WorkbenchBlock extends RotatedObjectBlock implements EntityBlock
 	}
 	
 	@Override
-	public VoxelShape getShape(BlockState state, BlockGetter reader, BlockPos pos, CollisionContext context)
+	public @NotNull VoxelShape getShape(@NotNull BlockState state, @NotNull BlockGetter reader, @NotNull BlockPos pos, @NotNull CollisionContext context)
 	{
 		return this.getShape(state);
 	}
 	
 	@Override
-	public VoxelShape getOcclusionShape(BlockState state, BlockGetter reader, BlockPos pos)
+	public @NotNull VoxelShape getOcclusionShape(@NotNull BlockState state, @NotNull BlockGetter reader, @NotNull BlockPos pos)
 	{
 		return this.getShape(state);
 	}
 	
-	public FluidState getFluidState(BlockState state)
+	public @NotNull FluidState getFluidState(BlockState state)
 	{
 		return state.getValue(BlockStateProperties.WATERLOGGED) ? Fluids.WATER.getSource(false) : Fluids.EMPTY.defaultFluidState();
 	}
 	
 	@Override
-	public InteractionResult use(BlockState state, Level world, BlockPos pos, Player playerEntity, InteractionHand hand, BlockHitResult result)
+	public @NotNull InteractionResult use(@NotNull BlockState state, Level world, @NotNull BlockPos pos, @NotNull Player playerEntity, @NotNull InteractionHand hand, @NotNull BlockHitResult result)
 	{
 		if(!world.isClientSide())
 		{
@@ -109,7 +110,7 @@ public class WorkbenchBlock extends RotatedObjectBlock implements EntityBlock
 	
 	@Nullable
 	@Override
-	public BlockEntity newBlockEntity(BlockPos pos, BlockState state)
+	public BlockEntity newBlockEntity(@NotNull BlockPos pos, @NotNull BlockState state)
 	{
 		return new WorkbenchBlockEntity(pos, state);
 	}

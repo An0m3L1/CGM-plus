@@ -9,6 +9,7 @@ import net.minecraft.core.particles.SimpleParticleType;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -20,7 +21,7 @@ public class ModParticleTypes
 	public static final RegistryObject<ParticleType<BulletHoleData>> BULLET_HOLE = REGISTER.register("bullet_hole", () -> new ParticleType<>(false, BulletHoleData.DESERIALIZER)
 	{
 		@Override
-		public Codec<BulletHoleData> codec()
+		public @NotNull Codec<BulletHoleData> codec()
 		{
 			return BulletHoleData.CODEC;
 		}
@@ -36,7 +37,7 @@ public class ModParticleTypes
 	public static final RegistryObject<ParticleType<TrailData>> TRAIL = REGISTER.register("trail", () -> new ParticleType<>(false, TrailData.DESERIALIZER)
 	{
 		@Override
-		public Codec<TrailData> codec()
+		public @NotNull Codec<TrailData> codec()
 		{
 			return TrailData.CODEC;
 		}

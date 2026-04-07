@@ -14,6 +14,7 @@ import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.block.state.BlockState;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 import java.util.Objects;
@@ -37,20 +38,20 @@ public class WorkbenchBlockEntity extends SyncedBlockEntity implements IStorageB
 	}
 	
 	@Override
-	protected void saveAdditional(CompoundTag tag)
+	protected void saveAdditional(@NotNull CompoundTag tag)
 	{
 		ContainerHelper.saveAllItems(tag, this.inventory);
 	}
 	
 	@Override
-	public void load(CompoundTag tag)
+	public void load(@NotNull CompoundTag tag)
 	{
 		super.load(tag);
 		ContainerHelper.loadAllItems(tag, this.inventory);
 	}
 	
 	@Override
-	public boolean canPlaceItem(int index, ItemStack stack)
+	public boolean canPlaceItem(int index, @NotNull ItemStack stack)
 	{
 		return index != 0 || (stack.getItem() instanceof DyeItem && this.inventory.get(index).getCount() < 1);
 	}
@@ -62,14 +63,14 @@ public class WorkbenchBlockEntity extends SyncedBlockEntity implements IStorageB
 	}
 	
 	@Override
-	public Component getDisplayName()
+	public @NotNull Component getDisplayName()
 	{
 		return Component.translatable("container.cgm.workbench");
 	}
 	
 	@Nullable
 	@Override
-	public AbstractContainerMenu createMenu(int windowId, Inventory playerInventory, Player playerEntity)
+	public AbstractContainerMenu createMenu(int windowId, @NotNull Inventory playerInventory, @NotNull Player playerEntity)
 	{
 		return new WorkbenchContainer(windowId, playerInventory, this);
 	}

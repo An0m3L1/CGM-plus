@@ -9,6 +9,7 @@ import net.minecraft.network.chat.Component;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -36,7 +37,7 @@ public class CheckBox extends AbstractWidget
 	}
 	
 	@Override
-	public void renderButton(PoseStack poseStack, int mouseX, int mouseY, float partialTicks)
+	public void renderButton(@NotNull PoseStack poseStack, int mouseX, int mouseY, float partialTicks)
 	{
 		RenderSystem.setShaderColor(1.0F, 1.0F, 1.0F, 1.0F);
 		RenderSystem.setShaderTexture(0, GUI);
@@ -55,7 +56,7 @@ public class CheckBox extends AbstractWidget
 	}
 	
 	@Override
-	public void updateNarration(NarrationElementOutput output)
+	public void updateNarration(@NotNull NarrationElementOutput output)
 	{
 		this.defaultButtonNarrationText(output);
 	}

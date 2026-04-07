@@ -6,6 +6,7 @@ import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.api.distmarker.OnlyIn;
+import org.jetbrains.annotations.NotNull;
 
 import javax.annotation.Nullable;
 
@@ -27,7 +28,7 @@ public class TrailParticle extends BaseAshSmokeParticle
 	}
 	
 	@Override
-	public ParticleRenderType getRenderType()
+	public @NotNull ParticleRenderType getRenderType()
 	{
 		return ParticleRenderType.PARTICLE_SHEET_LIT;
 	}
@@ -49,7 +50,7 @@ public class TrailParticle extends BaseAshSmokeParticle
 		
 		@Nullable
 		@Override
-		public Particle createParticle(TrailData data, ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
+		public Particle createParticle(@NotNull TrailData data, @NotNull ClientLevel worldIn, double x, double y, double z, double xSpeed, double ySpeed, double zSpeed)
 		{
 			float red = 0.99609F;
 			float green = 0.91796F;

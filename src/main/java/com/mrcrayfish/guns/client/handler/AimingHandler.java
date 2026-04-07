@@ -9,7 +9,6 @@ import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.compat.PlayerReviveHelper;
 import com.mrcrayfish.guns.compat.ShoulderSurfingHelper;
-import com.mrcrayfish.guns.debug.Debug;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.network.PacketHandler;
@@ -302,11 +301,6 @@ public class AimingHandler
 		if(mc.options.keySprint.isDown() && mc.player.isSprinting())
 		{
 			return false;
-		}
-		
-		if(Debug.isForceAim())
-		{
-			return true;
 		}
 		
 		if(mc.screen != null)

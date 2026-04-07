@@ -50,7 +50,6 @@ public class ShootingHandler
 	}
 	
 	private boolean shooting;
-	private int lastShotTick = -1;
 	private int weaponSwitchTick = -1;
 	private boolean doEmptyClick;
 	
@@ -93,7 +92,6 @@ public class ShootingHandler
 		Player player = mc.player;
 		if(player == null || player.isDeadOrDying())
 		{
-			lastShotTick = -1;
 			weaponSwitchTick = -1;
 			return;
 		}

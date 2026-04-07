@@ -34,6 +34,7 @@ import net.minecraft.world.item.DyeItem;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.ItemStack;
 import net.minecraftforge.registries.ForgeRegistries;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -68,31 +69,31 @@ public class WorkbenchCategory implements IRecipeCategory<WorkbenchRecipe>
 	}
 	
 	@Override
-	public RecipeType<WorkbenchRecipe> getRecipeType()
+	public @NotNull RecipeType<WorkbenchRecipe> getRecipeType()
 	{
 		return GunModPlugin.WORKBENCH;
 	}
 	
 	@Override
-	public Component getTitle()
+	public @NotNull Component getTitle()
 	{
 		return this.title;
 	}
 	
 	@Override
-	public IDrawable getBackground()
+	public @NotNull IDrawable getBackground()
 	{
 		return this.background;
 	}
 	
 	@Override
-	public IDrawable getIcon()
+	public @NotNull IDrawable getIcon()
 	{
 		return this.icon;
 	}
 	
 	@Override
-	public void setRecipe(IRecipeLayoutBuilder builder, WorkbenchRecipe recipe, IFocusGroup focuses)
+	public void setRecipe(@NotNull IRecipeLayoutBuilder builder, WorkbenchRecipe recipe, @NotNull IFocusGroup focuses)
 	{
 		ItemStack output = recipe.getItem();
 		if(IColored.isDyeable(output))
@@ -107,7 +108,7 @@ public class WorkbenchCategory implements IRecipeCategory<WorkbenchRecipe>
 	}
 	
 	@Override
-	public void draw(WorkbenchRecipe recipe, IRecipeSlotsView recipeSlotsView, PoseStack poseStack, double mouseX, double mouseY)
+	public void draw(WorkbenchRecipe recipe, @NotNull IRecipeSlotsView recipeSlotsView, @NotNull PoseStack poseStack, double mouseX, double mouseY)
 	{
 		this.window.draw(poseStack, 0, 0);
 		this.inventory.draw(poseStack, 0, this.window.getHeight() + 2 + 11 + 2);

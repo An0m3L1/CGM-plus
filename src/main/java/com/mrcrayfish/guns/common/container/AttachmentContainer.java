@@ -12,6 +12,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.inventory.AbstractContainerMenu;
 import net.minecraft.world.inventory.Slot;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 /**
  * Author: MrCrayfish
@@ -74,7 +75,7 @@ public class AttachmentContainer extends AbstractContainerMenu
 				this.addSlot(new Slot(playerInventory, i, 16 + i * 18, 160)
 				{
 					@Override
-					public boolean mayPickup(Player playerIn)
+					public boolean mayPickup(@NotNull Player playerIn)
 					{
 						return false;
 					}
@@ -93,13 +94,13 @@ public class AttachmentContainer extends AbstractContainerMenu
 	}
 	
 	@Override
-	public boolean stillValid(Player playerIn)
+	public boolean stillValid(@NotNull Player playerIn)
 	{
 		return true;
 	}
 	
 	@Override
-	public void slotsChanged(Container inventoryIn)
+	public void slotsChanged(@NotNull Container inventoryIn)
 	{
 		CompoundTag attachments = new CompoundTag();
 		
@@ -108,7 +109,7 @@ public class AttachmentContainer extends AbstractContainerMenu
 			ItemStack attachment = this.getSlot(i).getItem();
 			if(attachment.getItem() instanceof IAttachment)
 			{
-				attachments.put(((IAttachment) attachment.getItem()).getType().getTagKey(), attachment.save(new CompoundTag()));
+				attachments.put(((IAttachment<?>) attachment.getItem()).getType().getTagKey(), attachment.save(new CompoundTag()));
 			}
 		}
 		
@@ -118,7 +119,7 @@ public class AttachmentContainer extends AbstractContainerMenu
 	}
 	
 	@Override
-	public ItemStack quickMoveStack(Player playerIn, int index)
+	public @NotNull ItemStack quickMoveStack(@NotNull Player playerIn, int index)
 	{
 		ItemStack copyStack = ItemStack.EMPTY;
 		Slot slot = this.slots.get(index);

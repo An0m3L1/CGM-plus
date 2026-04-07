@@ -15,6 +15,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
 
 import java.util.Objects;
 
@@ -27,7 +28,7 @@ public class GunModPlugin implements IModPlugin
 	public static final RecipeType<WorkbenchRecipe> WORKBENCH = RecipeType.create(Reference.MOD_ID, "workbench", WorkbenchRecipe.class);
 	
 	@Override
-	public ResourceLocation getPluginUid()
+	public @NotNull ResourceLocation getPluginUid()
 	{
 		return new ResourceLocation(Reference.MOD_ID, "crafting");
 	}

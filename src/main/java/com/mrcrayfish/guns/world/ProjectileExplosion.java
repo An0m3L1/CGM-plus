@@ -257,8 +257,7 @@ public class ProjectileExplosion extends Explosion
 					this.world.getProfiler().push("explosion_blocks");
 					if(blockstate.canDropFromExplosion(this.world, blockpos, this))
 					{
-						Level $$9 = this.world;
-						if($$9 instanceof ServerLevel serverlevel)
+						if(this.world instanceof ServerLevel serverlevel)
 						{
 							BlockEntity blockentity = blockstate.hasBlockEntity() ? this.world.getBlockEntity(blockpos) : null;
 							LootContext.Builder lootcontext$builder = (new LootContext.Builder(serverlevel)).withRandom(this.world.random).withParameter(LootContextParams.ORIGIN, Vec3.atCenterOf(blockpos)).withParameter(LootContextParams.TOOL, ItemStack.EMPTY).withOptionalParameter(LootContextParams.BLOCK_ENTITY, blockentity).withOptionalParameter(LootContextParams.THIS_ENTITY, this.exploder);
@@ -296,8 +295,6 @@ public class ProjectileExplosion extends Explosion
 			}
 		}
 	}
-	
-	// The following methods were copied from Explosion.class unchanged.
 	
 	private static void addBlockDrops(ObjectArrayList<Pair<ItemStack, BlockPos>> p_46068_, ItemStack p_46069_, BlockPos p_46070_)
 	{

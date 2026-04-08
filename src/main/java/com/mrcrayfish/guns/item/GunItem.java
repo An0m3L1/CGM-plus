@@ -61,13 +61,17 @@ public class GunItem extends Item implements IColored, IMeta
 	
 	@Nullable
 	@Override
-	public ICapabilityProvider initCapabilities(ItemStack stack, @Nullable CompoundTag nbt)
+	public ICapabilityProvider initCapabilities(ItemStack stack,
+	                                            @Nullable
+	                                            CompoundTag nbt)
 	{
 		return new GunEnergyStorage(stack);
 	}
 	
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	public void appendHoverText(@NotNull ItemStack stack,
+	                            @Nullable
+	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
 		Gun modifiedGun = this.getModifiedGun(stack);
 		String additionalDamageText = "";
@@ -548,7 +552,11 @@ public class GunItem extends Item implements IColored, IMeta
 		
 		@Nonnull
 		@Override
-		public <T> LazyOptional<T> getCapability(@Nonnull Capability<T> cap, @Nullable Direction side)
+		public <T> LazyOptional<T> getCapability(
+				@Nonnull
+				Capability<T> cap,
+				@Nullable
+				Direction side)
 		{
 			return CapabilityEnergy.ENERGY.orEmpty(cap, user);
 		}

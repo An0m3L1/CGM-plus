@@ -27,17 +27,19 @@ import net.minecraft.world.phys.Vec3;
 import javax.annotation.Nullable;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.UUID;
 
 /** Author: An0m3L1 */
 public class AutomaticPistolModel implements IOverrideModel
 {
+	final Minecraft mc = Minecraft.getInstance();
 	private boolean disableAnimations = false;
-	private static final Map<UUID, Boolean> PREV_USE_EMPTY_SLIDE = new HashMap<>();
-	private static final Map<UUID, Integer> SLIDE_TRANSITION = new HashMap<>();
+	private static final Map<Player, Boolean> PREV_BOLT_LOCKED = new HashMap<>();
+	private static final Map<Player, Integer> BOLT_LOCK_TIMER = new HashMap<>();
 	
 	@Override
-	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
+	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent,
+	                   @Nullable
+	                   LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
 	{
 		// Render the base model
 		BakedModel base = SpecialModels.AUTOMATIC_PISTOL_BASE.getModel();
@@ -45,13 +47,9 @@ public class AutomaticPistolModel implements IOverrideModel
 		
 		// Render the top rail model that appears when a scope is attached
 		ItemStack scopeStack = Gun.getAttachment(IAttachment.Type.SCOPE, stack);
-		if(scopeStack.isEmpty())
+		if(!scopeStack.isEmpty())
 		{
-			RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SIGHTS.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
-		}
-		else
-		{
-			RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SCOPE_MOUNT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+			RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SCOPE_RAIL.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
 		}
 		
 		// Variables for animations
@@ -75,12 +73,12 @@ public class AutomaticPistolModel implements IOverrideModel
 		boolean reloading = isPlayer && ModSyncedDataKeys.RELOADING.getValue((Player) entity);
 		boolean reloadFromEmpty = isPlayer && ReloadHandler.get().isReloadFromEmpty();
 
-        /* Lock the slide forward if:
+        /* Lock the bolt forward if:
             1. Gun has run out of ammo
             2. Gun is already loaded, but still playing the reload animation (to properly play animations) */
-		boolean lockSlideForward = ammoIsEmpty || (reloadFromEmpty && reloading && ammoIsFull);
+		boolean lockBoltForward = ammoIsEmpty || (reloadFromEmpty && reloading && ammoIsFull);
 		
-		Vec3 slideTranslations = Vec3.ZERO;
+		Vec3 boltTranslations = Vec3.ZERO;
 		Vec3 magTranslations = Vec3.ZERO;
 		Vec3 magRotations = Vec3.ZERO;
 		Vec3 magRotOffset = Vec3.ZERO;
@@ -90,7 +88,7 @@ public class AutomaticPistolModel implements IOverrideModel
 			try
 			{
 				Player player = (Player) entity;
-				slideTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "slide");
+				boltTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "bolt");
 				magTranslations = GunAnimationHelper.getSmartAnimationTrans(stack, player, partialTicks, "magazine");
 				magRotations = GunAnimationHelper.getSmartAnimationRot(stack, player, partialTicks, "magazine");
 				magRotOffset = GunAnimationHelper.getSmartAnimationRotOffset(stack, player, partialTicks, "magazine");
@@ -107,7 +105,7 @@ public class AutomaticPistolModel implements IOverrideModel
 			}
 		}
 		
-		// Fire animation for slide is rendered both first and third person
+		// Fire animation for bolt is rendered both first and third person
 		if(isPlayer && correctContext)
 		{
 			float cooldownDivider = Math.max((float) gun.getGeneral().getRate() / 3F, 1);
@@ -123,44 +121,49 @@ public class AutomaticPistolModel implements IOverrideModel
 			float cooldown_c = Math.min(Math.max((-cooldown_a * intensity) + intensity, 0), 1);
 			float cooldown_d = Math.min(cooldown_b, cooldown_c);
 			
-			slideTranslations = slideTranslations.add(0, 0, -(cooldown_d * 1.5));
+			boltTranslations = boltTranslations.add(0, 0, -(cooldown_d * 2));
 		}
 		
-		// Render the slide model that moves back and forth when firing and is locked forward when gun is emptied
+		// Render the bolt model that moves back and forth when firing and is locked forward when gun is emptied
 		poseStack.pushPose();
 		if(isPlayer)
 		{
-			double slideZ = slideTranslations.z;
-			
-			if(correctContext)
+			double boltZ = boltTranslations.z;
+			// Special check to render item in workbench as empty
+			if(transformType.equals(ItemTransforms.TransformType.FIXED))
 			{
-				UUID id = entity.getUUID();
-				boolean prevEmpty = PREV_USE_EMPTY_SLIDE.getOrDefault(id, false);
-				/* Lock slide movement for 1 second after lockSlideForward switches from true to false.
-                This prevents slide jitter when transitioning from reload animation to base state */
-				if(prevEmpty && !lockSlideForward)
+				boltZ = boltZ - 2;
+			}
+			else
+			{
+				Player player = (Player) entity;
+				boolean prevEmpty = PREV_BOLT_LOCKED.getOrDefault(player, false);
+			
+				/* Lock bolt movement for 1 second after lockBoltForward switches from true to false.
+                This prevents bolt jitter when transitioning from reload animation to base state */
+				if(prevEmpty && !lockBoltForward)
 				{
-					SLIDE_TRANSITION.put(id, 20);
+					BOLT_LOCK_TIMER.put(player, 20);
 				}
-				PREV_USE_EMPTY_SLIDE.put(id, lockSlideForward);
+				PREV_BOLT_LOCKED.put(player, lockBoltForward);
 				
-				int transition = SLIDE_TRANSITION.getOrDefault(id, 0);
+				int transition = BOLT_LOCK_TIMER.getOrDefault(entity, 0);
 				if(transition > 0)
 				{
-					// Lock the slide
-					slideZ = 0.0;
-					SLIDE_TRANSITION.put(id, transition - 1);
+					// Lock the bolt
+					boltZ = 0.0;
+					BOLT_LOCK_TIMER.put(player, transition - 1);
 				}
-				// Move slide 1.5 pixels forward
-				else if(lockSlideForward)
+				// Move bolt 2 pixels forward
+				else if(lockBoltForward)
 				{
-					slideZ = slideZ - 1.5;
+					boltZ = boltZ - 2;
 				}
 			}
 			
-			poseStack.translate(0, 0, slideZ * 0.0625);
+			poseStack.translate(0, 0, boltZ * 0.0625);
 		}
-		RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_SLIDE.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
+		RenderUtil.renderModel(SpecialModels.AUTOMATIC_PISTOL_BOLT.getModel(), transformType, null, stack, parent, poseStack, buffer, light, overlay);
 		poseStack.popPose();
 		
 		// Render the magazine model

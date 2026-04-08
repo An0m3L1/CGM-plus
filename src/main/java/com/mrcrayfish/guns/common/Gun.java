@@ -28,6 +28,7 @@ import javax.annotation.Nullable;
 import java.util.Objects;
 import java.util.concurrent.atomic.AtomicReference;
 
+@SuppressWarnings("ConstantValue")
 public class Gun implements INBTSerializable<CompoundTag>
 {
 	protected General general = new General();
@@ -91,6 +92,7 @@ public class Gun implements INBTSerializable<CompoundTag>
 		return this.modules;
 	}
 	
+	@SuppressWarnings("ConstantValue")
 	public static class General implements INBTSerializable<CompoundTag>
 	{
 		@Optional
@@ -1188,6 +1190,7 @@ public class Gun implements INBTSerializable<CompoundTag>
 		}
 	}
 	
+	@SuppressWarnings("ConstantValue")
 	public static class FireModes implements INBTSerializable<CompoundTag>
 	{
 		@Optional
@@ -1371,6 +1374,7 @@ public class Gun implements INBTSerializable<CompoundTag>
 		}
 	}
 	
+	@SuppressWarnings("ConstantValue")
 	public static class Projectile implements INBTSerializable<CompoundTag>
 	{
 		private ResourceLocation item = new ResourceLocation(Reference.MOD_ID, "basic_ammo");

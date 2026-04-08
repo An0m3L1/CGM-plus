@@ -4,23 +4,28 @@ Add and overhaul animations:
     - Prone/Swimming
     - Smooth third person sprint animation for one-handed weapons
     - Third person recoil animation
-Overhaul items (models, textures, stats):
-    - Grenade Launcher
-    - Rocket Launcher
-    - Minigun
-Optimize textures
+    - Third person reload animation
+Overhaul items:
+    - Assault/Tactical/Combat Rifle (overhaul internals)
+    - Heavy Sniper Rifle (overhaul internals)
+    - Sniper Rifle (overhaul internals)
+    - Tactical Pistol/Pistol (add locking slide and overhaul internals)
+    - Automatic Pistol (finish texturing)
+    - Semi Auto Shotgun (overhaul internals)
+    - Grenade Launcher (full overhaul)
+    - Rocket Launcher (full overhaul)
+    - Minigun (full overhaul)
+Optimize textures for all gun models
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
 Make dependencies optional where applicable
-Improve repair logic for guns (how?)
+Overhaul repair kit recipe
 Return coloring weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
 Improve explosion VFX
 Update reload logic and animations:
     - When ammo is empty, slides should lock back/forward
     - If weapon is reloaded from a partially full state, loaded ammo should be maxAmmo+1 (i.e. 31/30)
     - Add reload empty animations to all applicable guns
-    - Update internals of automatic pistol (other guns?)
-Hide ammo HUD when reloading textures
 Clean up:
     - Gun model files (use automatic pistol as template)
     - Reorganize project files
@@ -29,8 +34,6 @@ Complete hardness tag lists:
     - Low (wooden doors, wooden trapdoors, fences, fence gates, furniture)
     - Medium (planks, logs, iron doors, iron trapdoors, iron bars)
     - High (stone bricks, walls)
-Fix remaining warnings
-Check cgm expander for sprint code changes
 
 New Content
 

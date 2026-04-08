@@ -4,96 +4,50 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="---&#10;&#10;Removed debug functions.">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Automatic Pistol update.&#10;&#10;Overhauled automatic pistol internals (WIP).&#10;Further code clean up.&#10;Ammo HUD is now hidden when any overlays are rendered.&#10;Changed two-handed weapon sprint animation.">
+      <change afterPath="$PROJECT_DIR$/.run/Build Mod.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Run Minecraft 2.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Run Minecraft.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/bolt.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/scope_rail.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Default.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/HempCropBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/HempCropBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/RepairKitBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/RepairKitBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/RotatedObjectBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/RotatedObjectBlock.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/WorkbenchBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/WorkbenchBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/SyncedBlockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/SyncedBlockEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/WorkbenchBlockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/WorkbenchBlockEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/inventory/IStorageBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/inventory/IStorageBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/BulletTrail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/BulletTrail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ClientHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/ClientHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunItemStackRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunItemStackRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/GunModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/AimingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ControllerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ControllerHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerModelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerModelHandler.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/RecoilHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/RecoilHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/ShootingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/SoundHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/SoundHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/network/ClientPlayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/BloodParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/BloodParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/BulletHoleParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/BulletHoleParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/CasingParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/CasingParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/SmokeCloudParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/SmokeCloudParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/SmokeEffectParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/SmokeEffectParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/TrailParticle.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/particle/TrailParticle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/Crosshair.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/crosshair/Crosshair.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/BulletRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/BulletRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/LightSourceRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/LightSourceRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/PipeGrenadeRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/PipeGrenadeRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/ProjectileRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/ProjectileRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/RocketRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/RocketRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/ThrowableGrenadeRenderer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/entity/ThrowableGrenadeRenderer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/MiniGunModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/MiniGunModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/TwoHandedPose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/TwoHandedPose.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/TwoHandedShortPose.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/pose/TwoHandedShortPose.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/AttachmentScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/AttachmentScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/CheckBox.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/CheckBox.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AutomaticPistolModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AutomaticPistolModel.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/WorkbenchScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/WorkbenchScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/widget/MiniButton.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/widget/MiniButton.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/Easings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/util/Easings.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/BurstTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/BurstTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/CustomGunLoader.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/CustomGunLoader.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/NetworkGunManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/NetworkGunManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ReloadTracker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/ReloadTracker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/container/AttachmentContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/container/AttachmentContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/container/WorkbenchContainer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/container/WorkbenchContainer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/container/slot/AttachmentSlot.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/container/slot/AttachmentSlot.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/network/ServerPlayHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/properties/SightAnimation.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/properties/SightAnimation.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/compat/jei/GunModPlugin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/compat/jei/GunModPlugin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/compat/jei/WorkbenchCategory.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/compat/jei/WorkbenchCategory.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/DyeItemRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/DyeItemRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchIngredient.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchIngredient.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchRecipe.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchRecipe.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchRecipeBuilder.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchRecipeBuilder.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchRecipeSerializer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/crafting/WorkbenchRecipeSerializer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/Debug.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/IDebugWidget.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/IEditorMenu.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/client/screen/EditorScreen.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/client/screen/widget/DebugButton.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/client/screen/widget/DebugEnum.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/client/screen/widget/DebugSlider.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/debug/client/screen/widget/DebugToggle.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/ProjectileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableIncendiaryGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableIncendiaryGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableMolotovEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableSmokeGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableSmokeGrenadeEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableStunGrenadeEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/entity/grenade/ThrowableStunGrenadeEntity.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModParticleTypes.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModParticleTypes.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTileEntities.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModTileEntities.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/interfaces/IGunModifier.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/interfaces/IGunModifier.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/PouchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/PouchItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/UnobtainableItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/UnobtainableItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/AttachmentItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/AttachmentItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/impl/IAttachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/impl/IAttachment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/impl/create/Attachment.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/impl/create/Attachment.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/impl/create/Scope.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/attachment/impl/create/Scope.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessageBulletTrail.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/network/message/S2CMessageBulletTrail.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/particles/BulletHoleData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/particles/BulletHoleData.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/particles/TrailData.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/particles/TrailData.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/ItemInHandLayerMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/ItemInHandLayerMixin.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/PlayerModelMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/PlayerModelMixin.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/automatic_pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/automatic_pistol.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/pistol.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/semi_auto_shotgun.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/semi_auto_shotgun.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_pistol.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/base.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/ext_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/ext_mag.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/light_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/light_mag.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/mag.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/scope_mount.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/sights.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/slide.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/automatic_pistol.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/automatic_pistol.png" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -197,7 +151,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/notes and misc",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/resourcepacks/WIP Resources",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
@@ -207,11 +161,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources" />
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\src\main\resources\assets\cgm" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets\cgm\models\special" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\run\resourcepacks\WIP Resources\assets\cgm\animations" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc\Debug\datapacks" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc\CGM+ Tweaks Datapack\data\minecraft\tags\blocks" />
@@ -233,81 +187,6 @@
     </key>
   </component>
   <component name="RunManager" selected="Gradle.Run Minecraft">
-    <configuration name="Build Mod" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="build" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <GradleProfilingDisabled>false</GradleProfilingDisabled>
-      <GradleCoverageDisabled>false</GradleCoverageDisabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Run Minecraft 2" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--warning-mode='none' --build-cache --configuration-cache" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="runClient" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <GradleProfilingDisabled>false</GradleProfilingDisabled>
-      <GradleCoverageDisabled>false</GradleCoverageDisabled>
-      <method v="2" />
-    </configuration>
-    <configuration name="Run Minecraft" type="GradleRunConfiguration" factoryName="Gradle">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="--warning-mode='none' --build-cache --configuration-cache" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value="runClient" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>true</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <ExternalSystemDebugDisabled>false</ExternalSystemDebugDisabled>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>false</RunAsTest>
-      <GradleProfilingDisabled>false</GradleProfilingDisabled>
-      <GradleCoverageDisabled>false</GradleCoverageDisabled>
-      <method v="2" />
-    </configuration>
     <list>
       <item itemvalue="Gradle.Build Mod" />
       <item itemvalue="Gradle.Run Minecraft" />
@@ -747,7 +626,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT_PROFILE" value="Project Default" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Slight rebalance of ARs.&#10;Further tweaks to new animations." />
     <MESSAGE value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Various balance changes.&#10;Further tweaks to new animations." />
     <MESSAGE value="Model and sound update.&#10;&#10;Added thumb grip.&#10;Added an easter egg for unobtainable items.&#10;Renamed some models for clarity.&#10;Overhauled assault rifle barrel covers.&#10;Overhauled sniper rifle extended mag model.&#10;Added generic throw sound to all grenades.&#10;Rewrote code related to throw sounds.&#10;Added scope mount to tactical pistol.&#10;Added stock mount to semi auto shotgun." />
     <MESSAGE value="Small tweaks and fixes.&#10;&#10;Tweaked headshot tooltip to not show for identical damage to base damage.&#10;Registered weapon select sound.&#10;Added default weapon select sound to Gun.java.&#10;Added missing weapon select sound to guns.&#10;Added repair kit item class to show a custom tooltip.&#10;Updated test world.&#10;Updated icons for the mod and WIP resource pack.&#10;Slightly reduced horizontal recoil.&#10;Changed molotov recipe to use gasoline instead of ethanol." />
@@ -772,7 +650,8 @@
     <MESSAGE value="---&#10;&#10;Cleanup after code rewrite.&#10;Optimized destructible griefing logic for explosions.&#10;Reduced stun grenade radius of effect.&#10;Fixed explosion radius calculations being wrong." />
     <MESSAGE value="Explosion and QOL update.&#10;&#10;Explosion damage is now more consistent vertically and when hitting entities directly.&#10;Increased explosion damage reduction with distance.&#10;Slightly reduced grenade throw velocity.&#10;Guns now consume ammo, can't be fired when empty and show infinite reserve ammo when in creative.&#10;Guns now display their fire mode even if they don't have multiple modes.&#10;Changed default attachments screen keybind.&#10;Rebalanced explosion damage and radius.&#10;Tweaked tags." />
     <MESSAGE value="Major code reformat and clean up.&#10;&#10;Major code clean up.&#10;Moved some subtitles around.&#10;Reformatted all project code to a unified style guide." />
-    <option name="LAST_COMMIT_MESSAGE" value="Major code reformat and clean up.&#10;&#10;Major code clean up.&#10;Moved some subtitles around.&#10;Reformatted all project code to a unified style guide." />
+    <MESSAGE value="Automatic Pistol update.&#10;&#10;Overhauled automatic pistol internals (WIP).&#10;Further code clean up.&#10;Ammo HUD is now hidden when any overlays are rendered.&#10;Changed two-handed weapon sprint animation." />
+    <option name="LAST_COMMIT_MESSAGE" value="Automatic Pistol update.&#10;&#10;Overhauled automatic pistol internals (WIP).&#10;Further code clean up.&#10;Ammo HUD is now hidden when any overlays are rendered.&#10;Changed two-handed weapon sprint animation." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

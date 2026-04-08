@@ -57,7 +57,7 @@ public class WorkbenchBlockEntity extends SyncedBlockEntity implements IStorageB
 	}
 	
 	@Override
-	public boolean stillValid(Player player)
+	public boolean stillValid(@NotNull Player player)
 	{
 		return Objects.requireNonNull(this.level).getBlockEntity(this.worldPosition) == this && player.distanceToSqr(this.worldPosition.getX() + 0.5, this.worldPosition.getY() + 0.5, this.worldPosition.getZ() + 0.5) <= 64.0;
 	}

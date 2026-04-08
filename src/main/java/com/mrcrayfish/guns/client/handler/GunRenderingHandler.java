@@ -306,7 +306,7 @@ public class GunRenderingHandler
 		if(heldItem.getItem() instanceof GunItem)
 		{
 			Gun modifiedGun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
-			down = (modifiedGun.getGeneral().getGripType().heldAnimation().cantRenderOffhandItem() || ModSyncedDataKeys.RELOADING.getValue(mc.player));
+			down = (modifiedGun.getGeneral().getGripType().getHeldAnimation().cantRenderOffhandItem() || ModSyncedDataKeys.RELOADING.getValue(mc.player));
 		}
 		
 		float direction = down ? -1.0F : 1.0F;
@@ -436,7 +436,7 @@ public class GunRenderingHandler
 			if(player != null && player.getMainHandItem().getItem() instanceof GunItem)
 			{
 				Gun modifiedGun = ((GunItem) player.getMainHandItem().getItem()).getModifiedGun(player.getMainHandItem());
-				if(modifiedGun.getGeneral().getGripType().heldAnimation().cantRenderOffhandItem())
+				if(modifiedGun.getGeneral().getGripType().getHeldAnimation().cantRenderOffhandItem())
 				{
 					return;
 				}
@@ -580,7 +580,7 @@ public class GunRenderingHandler
 		
 		/* Renders the first persons arms from the grip type of the weapon */
 		poseStack.pushPose();
-		PropertyHelper.getGripType(heldItem, modifiedGun).heldAnimation().renderFirstPersonArms(mc.player, hand, heldItem, poseStack, event.getMultiBufferSource(), packedLight, event.getPartialTick());
+		PropertyHelper.getGripType(heldItem, modifiedGun).getHeldAnimation().renderFirstPersonArms(mc.player, hand, heldItem, poseStack, event.getMultiBufferSource(), packedLight, event.getPartialTick());
 		//modifiedGun.getGeneral().getGripType().getHeldAnimation().renderFirstPersonArms(mc.player, hand, heldItem, poseStack, event.getMultiBufferSource(), packedLight, event.getPartialTick());
 		poseStack.popPose();
 		
@@ -644,7 +644,7 @@ public class GunRenderingHandler
 		{
 			poseStack.translate(x, y, z);
 			
-			double zOffset = modifiedGun.getGeneral().getGripType().heldAnimation().getFallSwayZOffset();
+			double zOffset = modifiedGun.getGeneral().getGripType().getHeldAnimation().getFallSwayZOffset();
 			poseStack.translate(0, -0.25, zOffset);
 			poseStack.mulPose(Vector3f.XP.rotationDegrees(Mth.lerp(partialTicks, this.prevFallSway, this.fallSway)));
 			poseStack.translate(0, 0.25, -zOffset);
@@ -667,26 +667,24 @@ public class GunRenderingHandler
 	
 	private void applySprintingTransforms(Gun modifiedGun, ItemStack item, HumanoidArm hand, PoseStack poseStack, float partialTicks)
 	{
-		if(Config.CLIENT.sprintAnimation.get() && modifiedGun.getGeneral().getGripType().heldAnimation().canApplySprintingAnimation())
+		GripType pose = PropertyHelper.getGripType(item, modifiedGun);
+		if(Config.CLIENT.sprintAnimation.get() && pose.getHeldAnimation().canApplySprintingAnimation())
 		{
-			GripType pose = PropertyHelper.getGripType(item, modifiedGun);
+			float transition = (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
+			transition = (float) Math.sin((transition * Math.PI) / 2);
+			transition = (float) (transition * (1 - AimingHandler.get().getNormalisedAdsProgress()));
+			
 			if(pose == GripType.ONE_HANDED_PISTOL || pose == GripType.TWO_HANDED_PISTOL)
 			{
-				float transition = (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
-				transition = (float) Math.sin((transition * Math.PI) / 2);
-				transition = (float) (transition * (1 - AimingHandler.get().getNormalisedAdsProgress()));
 				poseStack.translate(0, 0.35 * transition, -0.1 * transition);
 				poseStack.mulPose(Vector3f.XP.rotationDegrees(45F * transition));
 			}
 			else
 			{
 				float leftHanded = hand == HumanoidArm.LEFT ? -1 : 1;
-				float transition = (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
-				transition = (float) Math.sin((transition * Math.PI) / 2);
-				transition = (float) (transition * (1 - AimingHandler.get().getNormalisedAdsProgress()));
-				poseStack.translate(-0.25 * leftHanded * transition, -0.1 * transition, 0);
+				poseStack.translate(-0.35 * leftHanded * transition, -0.1 * transition, (0.25 * 0.125) * transition);
 				poseStack.mulPose(Vector3f.YP.rotationDegrees(45F * leftHanded * transition));
-				poseStack.mulPose(Vector3f.XP.rotationDegrees(-25F * transition));
+				poseStack.mulPose(Vector3f.XP.rotationDegrees(-20F * transition));
 			}
 		}
 	}
@@ -725,9 +723,8 @@ public class GunRenderingHandler
 	
 	private void applyRecoilTransforms(PoseStack poseStack, LocalPlayer player, ItemStack item, Gun modifiedGun, float partialTicks)
 	{
-		//
-		
-		// Custom recoil animations
+		// TODO: Add third person shooting/recoil animation
+		// Custom recoil animation
 		if(GunAnimationHelper.hasAnimation("recoil", item))
 		{
 			float aiming = getAimProgress(item);
@@ -903,13 +900,14 @@ public class GunRenderingHandler
 			return;
 		}
 		
-		Player player = mc.player;
-		Gun gun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
-		CompoundTag tagCompound = heldItem.getTag();
-		if(mc.screen != null)
+		if(mc.getOverlay() != null || mc.screen != null)
 		{
 			return;
 		}
+		
+		Player player = mc.player;
+		Gun gun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
+		CompoundTag tagCompound = heldItem.getTag();
 		if(tagCompound != null)
 		{
 			Window window = mc.getWindow();

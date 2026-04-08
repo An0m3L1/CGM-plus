@@ -74,7 +74,7 @@ public class GunEventBus
 				level.addFreshEntity(light);
 			}
 			
-			// Casing particle eject (WIP)
+			// TODO: Casing particle eject
             /*
             if (gun.getGeneral().shouldSpawnCasings() && (tag.getInt("AmmoCount") >= 1 || player.getAbilities().instabuild)) {
                 ejectCasing(level, player);

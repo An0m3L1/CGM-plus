@@ -1,6 +1,5 @@
 package com.mrcrayfish.guns.item;
 
-import com.mrcrayfish.guns.init.ModTags;
 import net.minecraft.ChatFormatting;
 import net.minecraft.nbt.CompoundTag;
 import net.minecraft.nbt.ListTag;
@@ -182,14 +181,9 @@ public class PouchItem extends BundleItem
 		return getContents(stack).mapToInt((ItemStack) -> getWeight(ItemStack) * ItemStack.getCount()).sum();
 	}
 	
-	public int getMaxCount(ItemStack stack)
+	public int getMaxContentCount(ItemStack stack)
 	{
-		int count = this.maxCount;
-		if(itemType == ModTags.Items.GRENADE)
-		{
-			count = count / 8;
-		}
-		return count;
+		return this.maxCount / stack.getMaxStackSize();
 	}
 	
 	private static Optional<ItemStack> removeOne(ItemStack stack)
@@ -223,7 +217,7 @@ public class PouchItem extends BundleItem
 	@Override
 	public void appendHoverText(@NotNull ItemStack stack, @NotNull Level level, @NotNull List<Component> tooltip, @NotNull TooltipFlag isAdvanced)
 	{
-		tooltip.add(Component.translatable("item.minecraft.bundle.fullness", getContentWeight(stack), getMaxCount(stack)).withStyle(ChatFormatting.GRAY));
+		tooltip.add(Component.translatable("item.minecraft.bundle.fullness", getContentWeight(stack), getMaxContentCount(stack)).withStyle(ChatFormatting.GRAY));
 	}
 	
 	private void playRemoveOneSound(Entity entity)

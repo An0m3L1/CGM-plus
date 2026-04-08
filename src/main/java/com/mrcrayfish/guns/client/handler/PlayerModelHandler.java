@@ -23,7 +23,7 @@ public class PlayerModelHandler
 		if(!heldItem.isEmpty() && heldItem.getItem() instanceof GunItem)
 		{
 			Gun gun = ((GunItem) heldItem.getItem()).getModifiedGun(heldItem);
-			gun.getGeneral().getGripType().heldAnimation().applyPlayerPreRender(player, InteractionHand.MAIN_HAND, AimingHandler.get().getAimProgress(event.getEntity(), event.getPartialTick()), event.getPoseStack(), event.getMultiBufferSource());
+			gun.getGeneral().getGripType().getHeldAnimation().applyPlayerPreRender(player, InteractionHand.MAIN_HAND, AimingHandler.get().getAimProgress(event.getEntity(), event.getPartialTick()), event.getPoseStack(), event.getMultiBufferSource());
 		}
 	}
 	

@@ -35,30 +35,30 @@ public class ModItems
 	 * mag = magazine capacity */
 	
 	/* Assault Rifles */
-	public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle", () -> new GunItem(new Item.Properties().stacksTo(1).durability((64 * 30) + 1)));
-	public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle", () -> new GunItem(new Item.Properties().stacksTo(1).durability((64 * 30) + 1)));
-	public static final RegistryObject<GunItem> COMBAT_RIFLE = REGISTER.register("combat_rifle", () -> new GunItem(new Item.Properties().stacksTo(1).durability((64 * 30) + 1)));
+	public static final RegistryObject<GunItem> ASSAULT_RIFLE = REGISTER.register("assault_rifle", () -> new GunItem(new Item.Properties().durability((64 * 30) + 1)));
+	public static final RegistryObject<GunItem> TACTICAL_RIFLE = REGISTER.register("tactical_rifle", () -> new GunItem(new Item.Properties().durability((64 * 30) + 1)));
+	public static final RegistryObject<GunItem> COMBAT_RIFLE = REGISTER.register("combat_rifle", () -> new GunItem(new Item.Properties().durability((64 * 30) + 1)));
 	
 	/* Sniper Rifles */
-	public static final RegistryObject<GunItem> SNIPER_RIFLE = REGISTER.register("sniper_rifle", () -> new GunItem(new Item.Properties().stacksTo(1).durability((96 * 8) + 1)));
-	public static final RegistryObject<GunItem> HEAVY_SNIPER_RIFLE = REGISTER.register("heavy_sniper_rifle", () -> new GunItem(new Item.Properties().stacksTo(1).durability((96 * 5) + 1)));
+	public static final RegistryObject<GunItem> SNIPER_RIFLE = REGISTER.register("sniper_rifle", () -> new GunItem(new Item.Properties().durability((96 * 8) + 1)));
+	public static final RegistryObject<GunItem> HEAVY_SNIPER_RIFLE = REGISTER.register("heavy_sniper_rifle", () -> new GunItem(new Item.Properties().durability((96 * 5) + 1)));
 	
 	/* Shotguns */
-	public static final RegistryObject<GunItem> SEMI_AUTO_SHOTGUN = REGISTER.register("semi_auto_shotgun", () -> new GunItem(new Item.Properties().stacksTo(1).durability((96 * 7) + 1)));
+	public static final RegistryObject<GunItem> SEMI_AUTO_SHOTGUN = REGISTER.register("semi_auto_shotgun", () -> new GunItem(new Item.Properties().durability((96 * 7) + 1)));
 	
 	/* Machine Guns */
-	public static final RegistryObject<GunItem> MINI_GUN = REGISTER.register("mini_gun", () -> new GunItem(new Item.Properties().stacksTo(1).durability((16 * 200) + 1)));
+	public static final RegistryObject<GunItem> MINI_GUN = REGISTER.register("mini_gun", () -> new GunItem(new Item.Properties().durability((16 * 200) + 1)));
 	
 	/* Submachine Guns */
 	
 	/* Pistols */
-	public static final RegistryObject<GunItem> PISTOL = REGISTER.register("pistol", () -> new GunItem(new Item.Properties().stacksTo(1).durability((96 * 17) + 1)));
-	public static final RegistryObject<GunItem> TACTICAL_PISTOL = REGISTER.register("tactical_pistol", () -> new GunItem(new Item.Properties().stacksTo(1).durability((96 * 12) + 1)));
-	public static final RegistryObject<GunItem> AUTOMATIC_PISTOL = REGISTER.register("automatic_pistol", () -> new GunItem(new Item.Properties().stacksTo(1).durability((64 * 32) + 1)));
+	public static final RegistryObject<GunItem> PISTOL = REGISTER.register("pistol", () -> new GunItem(new Item.Properties().durability((96 * 17) + 1)));
+	public static final RegistryObject<GunItem> TACTICAL_PISTOL = REGISTER.register("tactical_pistol", () -> new GunItem(new Item.Properties().durability((96 * 12) + 1)));
+	public static final RegistryObject<GunItem> AUTOMATIC_PISTOL = REGISTER.register("automatic_pistol", () -> new GunItem(new Item.Properties().durability((64 * 32) + 1)));
 	
 	/* Explosives */
-	public static final RegistryObject<GunItem> GRENADE_LAUNCHER = REGISTER.register("grenade_launcher", () -> new GunItem(new Item.Properties().stacksTo(1).durability((64 * 6) + 1)));
-	public static final RegistryObject<GunItem> ROCKET_LAUNCHER = REGISTER.register("rocket_launcher", () -> new GunItem(new Item.Properties().stacksTo(1).durability((256 * 1) + 1)));
+	public static final RegistryObject<GunItem> GRENADE_LAUNCHER = REGISTER.register("grenade_launcher", () -> new GunItem(new Item.Properties().durability((64 * 6) + 1)));
+	public static final RegistryObject<GunItem> ROCKET_LAUNCHER = REGISTER.register("rocket_launcher", () -> new GunItem(new Item.Properties().durability((256 * 1) + 1)));
 	
 	/* Ammo */
 	public static final RegistryObject<Item> LIGHT_BULLET = REGISTER.register("light_bullet", () -> new AmmoItem(new Item.Properties().stacksTo(64)));

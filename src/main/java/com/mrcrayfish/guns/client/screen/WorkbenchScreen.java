@@ -117,8 +117,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 		
 		if(!weapons.isEmpty())
 		{
-			ItemStack icon = new ItemStack(ModItems.GUN_ICON.get());
-			this.tabs.add(new Tab(icon, "weapons", weapons));
+			this.tabs.add(new Tab(new ItemStack(ModItems.GUN_ICON.get()), "weapons", weapons));
 		}
 		
 		if(!attachments.isEmpty())

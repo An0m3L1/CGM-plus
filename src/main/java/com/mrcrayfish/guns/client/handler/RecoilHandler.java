@@ -47,8 +47,6 @@ public class RecoilHandler
 	private float currentCameraVRecoil;
 	private float prevCameraVRecoil;
 	private float lastShotVRecoil;
-	private float vRecoilPushForce;
-	//private float lastVRecoilPushForce;
 	
 	private float currentCameraHRecoil;
 	private float prevCameraHRecoil;
@@ -56,11 +54,8 @@ public class RecoilHandler
 	private float hRecoilPushForce;
 	private float lastHRecoilPushForce;
 	
-	private final float maxRecoilScaling = 20;
 	private int lastFireTick = -1;
 	private double recoilBuildup = 0;
-	private final float recoilVarianceFraction = 1.0F;
-	private final float maxRecoilVariance = 3.0F;
 	
 	private RecoilHandler()
 	{
@@ -152,12 +147,15 @@ public class RecoilHandler
 			
 			float prevVRecoil = lastShotVRecoil - Math.min(lastShotVRecoil * 0.2F, 0.1F);
 			float stackedVRecoil = cameraRecoil + lastShotVRecoil;
+			float maxRecoilScaling = 20;
 			float targetVRecoil = cameraRecoil != 0 ? Mth.lerp(Easings.EASE_OUT_QUAD.apply((stackedVRecoil / cameraRecoil) / maxRecoilScaling), 0, cameraRecoil * (maxRecoilScaling / 2.1F)) : cameraRecoil;
 			
+			float maxRecoilVariance = 3.0F;
+			float recoilVarianceFraction = 1.0F;
 			float recoilVariance = Mth.clamp(cameraRecoil * recoilVarianceFraction, -maxRecoilVariance, maxRecoilVariance);
 			
 			float vRecoilRandom = Mth.clamp(1F - (gunVRecoilRandom * 2.0F), -1, 1);
-			vRecoilPushForce = Mth.clamp(((Math.min(Easings.EASE_IN_QUAD.apply((float) recoilBuildup), 1) * vRecoilRandom) * 0.3F), -recoilVariance / 4F, recoilVariance / 4F);
+			float vRecoilPushForce = Mth.clamp(((Math.min(Easings.EASE_IN_QUAD.apply((float) recoilBuildup), 1) * vRecoilRandom) * 0.3F), -recoilVariance / 4F, recoilVariance / 4F);
 			targetVRecoil += Mth.clamp(vRecoilPushForce, -recoilVariance, recoilVariance);
 			
 			float hRecoilRandom = Mth.clamp(1F - (gunRecoilRandom * 2.0F), -1, 1);

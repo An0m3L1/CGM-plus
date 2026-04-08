@@ -55,7 +55,7 @@ public class RepairKitBlock extends RotatedObjectBlock implements SimpleWaterlog
 	}
 	
 	@Override
-	protected void createBlockStateDefinition(StateDefinition.Builder<Block, BlockState> builder)
+	protected void createBlockStateDefinition(StateDefinition.@NotNull Builder<Block, BlockState> builder)
 	{
 		super.createBlockStateDefinition(builder);
 		builder.add(BlockStateProperties.WATERLOGGED);

@@ -16,7 +16,7 @@ import java.util.Map;
 /**
  * Author: MrCrayfish
  */
-public record GripType(ResourceLocation id, IHeldAnimation heldAnimation)
+public record GripType(ResourceLocation id, IHeldAnimation getHeldAnimation)
 {
 	/**
 	 * A grip type designed for weapons that are held with only one hand, like a pistol
@@ -135,7 +135,7 @@ public record GripType(ResourceLocation id, IHeldAnimation heldAnimation)
 	 *
 	 * @param id
 	 * 		the id of the grip type
-	 * @param heldAnimation
+	 * @param getHeldAnimation
 	 * 		the animation functions to apply to the held weapon
 	 */
 	public GripType
@@ -155,8 +155,8 @@ public record GripType(ResourceLocation id, IHeldAnimation heldAnimation)
 	 * Gets the held animation get. Used for rendering
 	 */
 	@Override
-	public IHeldAnimation heldAnimation()
+	public IHeldAnimation getHeldAnimation()
 	{
-		return this.heldAnimation;
+		return this.getHeldAnimation;
 	}
 }

@@ -6,7 +6,7 @@ license = "GPL3"
 modId = "cgm"
 version = "1.0a"
 displayName = "CGM+"
-logoFile = "cgm_banner.png"
+logoFile = "icon.png"
 authors = "An0m3L1"
 credits = "MrCrayfish, zaeonNineZero"
 description = '''
@@ -87,6 +87,6 @@ ordering = "AFTER"
 side = "BOTH"
 
 [modproperties.cgm]
-catalogueImageIcon = "cgm_icon.png"
-catalogueBackground = "cgm_banner.png"
+catalogueImageIcon = "icon.png"
+catalogueBackground = "banner.png"
 configuredBackground = "minecraft:textures/block/gray_concrete.png"

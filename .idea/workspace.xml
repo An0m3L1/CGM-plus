@@ -4,50 +4,23 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Automatic Pistol update.&#10;&#10;Overhauled automatic pistol internals (WIP).&#10;Further code clean up.&#10;Ammo HUD is now hidden when any overlays are rendered.&#10;Changed two-handed weapon sprint animation.">
-      <change afterPath="$PROJECT_DIR$/.run/Build Mod.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/Run Minecraft 2.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.run/Run Minecraft.run.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/bolt.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/scope_rail.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/inspectionProfiles/Project_Default.xml" afterDir="false" />
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="---&#10;&#10;Updated run configuration.">
+      <change afterPath="$PROJECT_DIR$/.run/Build.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Client An0m3L1.run.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.run/Client Kanye.run.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/RepairKitBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/RepairKitBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/WorkbenchBlock.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/block/WorkbenchBlock.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/WorkbenchBlockEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/blockentity/WorkbenchBlockEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/SpecialModels.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/GunRenderingHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerModelHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/PlayerModelHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/RecoilHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/handler/RecoilHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AutomaticPistolModel.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/render/gun/model/AutomaticPistolModel.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/WorkbenchScreen.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/client/screen/WorkbenchScreen.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/GripType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/common/Gun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/event/GunEventBus.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/init/ModItems.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/GunItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/PouchItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/item/PouchItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/ItemInHandLayerMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/ItemInHandLayerMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/PlayerModelMixin.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/mixin/client/PlayerModelMixin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/mrcrayfish/guns/world/ProjectileExplosion.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/assault_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/automatic_pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/automatic_pistol.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/combat_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/heavy_sniper_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/pistol.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/semi_auto_shotgun.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/semi_auto_shotgun.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/sniper_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_pistol.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_pistol.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/animations/tactical_rifle.cgmanim" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/base.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/base.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/ext_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/ext_mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/light_mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/light_mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/mag.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/mag.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/scope_mount.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/sights.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/models/special/automatic_pistol/slide.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/automatic_pistol.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/cgm/textures/item/automatic_pistol.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Build Mod.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Run Minecraft 2.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.run/Run Minecraft.run.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/META-INF/mods.toml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cgm_banner.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/banner.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/cgm_icon.png" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/icon.png" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -75,6 +48,17 @@
               <path>
                 <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
                 <item name="CGM-plus" type="f1a62948:ProjectNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CGM-plus" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+              </path>
+              <path>
+                <item name="" type="6a2764b6:ExternalProjectsStructure$RootNode" />
+                <item name="CGM-plus" type="f1a62948:ProjectNode" />
+                <item name="Tasks" type="e4a08cd1:TasksNode" />
+                <item name="forgegradle runs" type="c8890929:TasksNode$1" />
               </path>
             </expand>
             <select />
@@ -134,9 +118,16 @@
     "Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor": "Run",
     "Gradle.CGM-plus [build].executor": "Run",
     "Gradle.CGM-plus [createMcpToSrg].executor": "Run",
+    "Gradle.CGM-plus [genIntellijRuns].executor": "Run",
+    "Gradle.CGM-plus [prepareRunClientKanye].executor": "Run",
     "Gradle.CGM-plus [runClient --warning-mode'none'].executor": "Run",
     "Gradle.CGM-plus [runClient].executor": "Run",
+    "Gradle.Client An0m3L1.executor": "Run",
+    "Gradle.Client Kanye.executor": "Run",
     "Gradle.Download Sources.executor": "Run",
+    "Gradle.Kanye West.executor": "Run",
+    "Gradle.Kanye.executor": "Run",
+    "Gradle.Run Kanye.executor": "Run",
     "Gradle.Run Minecraft 2.executor": "Run",
     "Gradle.Run Minecraft.executor": "Run",
     "JavaClassFindUsagesOptions.isSearchForTextOccurrences": "false",
@@ -148,15 +139,16 @@
     "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
     "RunOnceActivity.git.unshallow": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "deletionFromPopupRequiresConfirmation": "false",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/CGM-plus/run/resourcepacks/WIP Resources",
     "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
     "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "preferences.sourceCode.JAVA"
+    "settings.editor.selected.configurable": "configurable.group.appearance"
   }
 }]]></component>
   <component name="RecentsManager">
@@ -186,11 +178,11 @@
       <recent name="com.mrcrayfish.guns.client.handler" />
     </key>
   </component>
-  <component name="RunManager" selected="Gradle.Run Minecraft">
+  <component name="RunManager" selected="Gradle.Client An0m3L1">
     <list>
-      <item itemvalue="Gradle.Build Mod" />
-      <item itemvalue="Gradle.Run Minecraft" />
-      <item itemvalue="Gradle.Run Minecraft 2" />
+      <item itemvalue="Gradle.Client Kanye" />
+      <item itemvalue="Gradle.Client An0m3L1" />
+      <item itemvalue="Gradle.Build" />
     </list>
   </component>
   <component name="SharedIndexes">

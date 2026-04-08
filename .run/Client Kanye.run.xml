@@ -1,6 +1,12 @@
 <component name="ProjectRunConfigurationManager">
-    <configuration default="false" name="Run Minecraft" type="GradleRunConfiguration" factoryName="Gradle">
+    <configuration default="false" name="Client Kanye" type="GradleRunConfiguration" factoryName="Gradle">
         <ExternalSystemSettings>
+            <option name="env">
+                <map>
+                    <entry key="USERNAME" value="Kanye"/>
+                    <entry key="UUID" value="61e50c4c-3edd-4677-86e8-efe503d74a9e"/>
+                </map>
+            </option>
             <option name="executionName"/>
             <option name="externalProjectPath" value="$PROJECT_DIR$"/>
             <option name="externalSystemIdString" value="GRADLE"/>

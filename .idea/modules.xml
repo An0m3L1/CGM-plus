@@ -3,11 +3,9 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CGM-plus.iml" filepath="$PROJECT_DIR$/.idea/modules/CGM-plus.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CGM-plus.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CGM-plus.test.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/GitHub.CGM-plus.test.iml" filepath="$PROJECT_DIR$/.idea/modules/GitHub.CGM-plus.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.test~2.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.CGM-plus.test~2.iml" />
     </modules>
   </component>
 </project>

@@ -30,6 +30,8 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
+            arg "--username=${System.getenv('USERNAME') ?: 'Dev'}"
+            arg "--uuid=${System.getenv('UUID') ?: '00000000-0000-0000-0000-000000000000'}"
             mods {
                 cgm {
                     source sourceSets.main
@@ -42,20 +44,6 @@ minecraft {
             property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
             property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
             property 'forge.logging.console.level', 'debug'
-            arg '-mixin.config=cgm.mixins.json'
-            mods {
-                cgm {
-                    source sourceSets.main
-                }
-            }
-        }
-        data {
-            workingDirectory project.file('run')
-            property 'mixin.env.disableRefMap', 'true'
-            property 'mixin.env.refMapRemappingFile', "${projectDir}/build/createSrgToMcp/output.srg"
-            property 'forge.logging.markers', 'SCAN,REGISTRIES,REGISTRYDUMP'
-            property 'forge.logging.console.level', 'debug'
-            args '--mod', 'cgm', '--all', '--output', file('src/generated/resources/')
             arg '-mixin.config=cgm.mixins.json'
             mods {
                 cgm {
@@ -125,14 +113,14 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title": "CGM+",
-                "Specification-Vendor": "An0m3L1",
-                "Specification-Version": "1.0",
-                "Implementation-Title": "CGM+",
-                "Implementation-Version": project.version,
-                "Implementation-Vendor" : "An0m3L1",
+                "Specification-Title"     : "CGM+",
+                "Specification-Vendor"    : "An0m3L1",
+                "Specification-Version"   : "1.0",
+                "Implementation-Title"    : "CGM+",
+                "Implementation-Version"  : project.version,
+                "Implementation-Vendor"   : "An0m3L1",
                 "Implementation-Timestamp": new Date().format("yyyy-dd-MM'T'HH:mm:ssZ"),
-                "MixinConfigs": "cgm.mixins.json"
+                "MixinConfigs"            : "cgm.mixins.json"
         ])
     }
 }

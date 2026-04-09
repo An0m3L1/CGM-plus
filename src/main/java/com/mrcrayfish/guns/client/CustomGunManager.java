@@ -1,7 +1,7 @@
 package com.mrcrayfish.guns.client;
 
 import com.mrcrayfish.framework.api.data.login.ILoginData;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.common.CustomGun;
 import com.mrcrayfish.guns.common.CustomGunLoader;
 import com.mrcrayfish.guns.init.ModItems;
@@ -24,7 +24,7 @@ import java.util.Optional;
 /**
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID, value = Dist.CLIENT)
 public class CustomGunManager
 {
 	private static Map<ResourceLocation, CustomGun> customGunMap;

@@ -2,7 +2,6 @@ package com.mrcrayfish.guns.event;
 
 import com.mrcrayfish.guns.Config;
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.entity.LightSourceEntity;
@@ -26,7 +25,7 @@ import net.minecraftforge.fml.common.Mod;
 
 import static com.mrcrayfish.guns.common.GripType.*;
 
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID, bus = Mod.EventBusSubscriber.Bus.FORGE)
 public class GunEventBus
 {
 	@SubscribeEvent

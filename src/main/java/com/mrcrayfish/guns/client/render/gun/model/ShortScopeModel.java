@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix3f;
 import com.mojang.math.Matrix4f;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.GunModel;
 import com.mrcrayfish.guns.client.handler.AimingHandler;
 import com.mrcrayfish.guns.client.render.gun.IOverrideModel;
@@ -30,12 +30,14 @@ import javax.annotation.Nullable;
 @Deprecated(since = "1.3.0", forRemoval = true)
 public class ShortScopeModel implements IOverrideModel
 {
-	private static final ResourceLocation RED_DOT_RETICLE = new ResourceLocation(Reference.MOD_ID, "textures/effect/red_dot_reticle.png");
-	private static final ResourceLocation RED_DOT_RETICLE_GLOW = new ResourceLocation(Reference.MOD_ID, "textures/effect/red_dot_reticle_glow.png");
-	private static final ResourceLocation VIGNETTE = new ResourceLocation(Reference.MOD_ID, "textures/effect/scope_vignette.png");
+	private static final ResourceLocation RED_DOT_RETICLE = new ResourceLocation(GunMod.MOD_ID, "textures/effect/red_dot_reticle.png");
+	private static final ResourceLocation RED_DOT_RETICLE_GLOW = new ResourceLocation(GunMod.MOD_ID, "textures/effect/red_dot_reticle_glow.png");
+	private static final ResourceLocation VIGNETTE = new ResourceLocation(GunMod.MOD_ID, "textures/effect/scope_vignette.png");
 	
 	@Override
-	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, int overlay)
+	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent,
+	                   @Nullable
+	                   LivingEntity entity, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, int overlay)
 	{
 		if(OptifineHelper.isShadersEnabled())
 		{

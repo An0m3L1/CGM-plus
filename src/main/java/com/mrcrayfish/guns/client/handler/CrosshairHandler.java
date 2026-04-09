@@ -3,7 +3,7 @@ package com.mrcrayfish.guns.client.handler;
 import com.google.common.collect.ImmutableList;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.render.crosshair.*;
 import com.mrcrayfish.guns.compat.ShoulderSurfingHelper;
 import com.mrcrayfish.guns.event.GunFireEvent;
@@ -48,18 +48,18 @@ public class CrosshairHandler
 	
 	private CrosshairHandler()
 	{
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "better_default")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "circle")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "filled_circle"), false));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "square")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "round")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "arrow")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "dot")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "box")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "hit_marker")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "line")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "t")));
-		this.register(new TexturedCrosshair(new ResourceLocation(Reference.MOD_ID, "smiley")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "better_default")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "circle")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "filled_circle"), false));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "square")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "round")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "arrow")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "dot")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "box")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "hit_marker")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "line")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "t")));
+		this.register(new TexturedCrosshair(new ResourceLocation(GunMod.MOD_ID, "smiley")));
 		this.register(new TechCrosshair());
 		this.register(new DynamicCrosshair());
 	}
@@ -202,7 +202,7 @@ public class CrosshairHandler
 	public static void onConfigReload(ModConfigEvent.Reloading event)
 	{
 		ModConfig config = event.getConfig();
-		if(config.getType() == ModConfig.Type.CLIENT && config.getModId().equals(Reference.MOD_ID))
+		if(config.getType() == ModConfig.Type.CLIENT && config.getModId().equals(GunMod.MOD_ID))
 		{
 			ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.crosshair.get());
 			if(id != null)

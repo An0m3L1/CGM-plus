@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.common;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import net.minecraft.server.MinecraftServer;
 import net.minecraft.world.entity.player.Player;
@@ -16,7 +16,7 @@ import java.util.WeakHashMap;
  * Author: MrCrayfish
  */
 @SuppressWarnings("unused")
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID)
 public class ServerAimTracker
 {
 	private static final Map<Player, ServerAimTracker> AIM_TRACKER_MAP = new WeakHashMap<>();

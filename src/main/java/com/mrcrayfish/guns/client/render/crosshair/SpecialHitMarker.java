@@ -3,7 +3,7 @@ package com.mrcrayfish.guns.client.render.crosshair;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.handler.CrosshairHandler;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import net.minecraft.client.Minecraft;
@@ -17,12 +17,12 @@ import java.util.Objects;
  */
 public class SpecialHitMarker extends Crosshair
 {
-	private static final ResourceLocation NORMAL_HITMARKER = new ResourceLocation(Reference.MOD_ID, "textures/crosshair/special_hit_marker.png");
-	private static final ResourceLocation ALT_HITMARKER = new ResourceLocation(Reference.MOD_ID, "textures/crosshair/special_hit_marker2.png");
+	private static final ResourceLocation NORMAL_HITMARKER = new ResourceLocation(GunMod.MOD_ID, "textures/crosshair/special_hit_marker.png");
+	private static final ResourceLocation ALT_HITMARKER = new ResourceLocation(GunMod.MOD_ID, "textures/crosshair/special_hit_marker2.png");
 	
 	public SpecialHitMarker()
 	{
-		super(new ResourceLocation(Reference.MOD_ID, "special_hit_marker"));
+		super(new ResourceLocation(GunMod.MOD_ID, "special_hit_marker"));
 	}
 	
 	@Override

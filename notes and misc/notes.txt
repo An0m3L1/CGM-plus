@@ -22,6 +22,7 @@ Make dependencies optional where applicable
 Overhaul repair kit recipe
 Return coloring weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
 Improve explosion VFX
+Flashbangs should imprint the last seen environment with the white effect
 Update reload logic and animations:
     - When ammo is empty, slides should lock back/forward
     - If weapon is reloaded from a partially full state, loaded ammo should be maxAmmo+1 (i.e. 31/30)
@@ -34,6 +35,7 @@ Complete hardness tag lists:
     - Low (wooden doors, wooden trapdoors, fences, fence gates, furniture)
     - Medium (planks, logs, iron doors, iron trapdoors, iron bars)
     - High (stone bricks, walls)
+Fix mods.toml dependencies.cgm
 
 New Content
 

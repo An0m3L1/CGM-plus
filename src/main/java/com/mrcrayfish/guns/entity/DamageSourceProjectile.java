@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.entity;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.network.chat.Component;
 import net.minecraft.world.damagesource.IndirectEntityDamageSource;
 import net.minecraft.world.entity.Entity;
@@ -21,7 +21,9 @@ public class DamageSourceProjectile extends IndirectEntityDamageSource
 	
 	private final ItemStack weapon;
 	
-	public DamageSourceProjectile(String damageTypeIn, Entity source, @Nullable Entity indirectEntityIn, ItemStack weapon)
+	public DamageSourceProjectile(String damageTypeIn, Entity source,
+	                              @Nullable
+	                              Entity indirectEntityIn, ItemStack weapon)
 	{
 		super(damageTypeIn, source, indirectEntityIn);
 		this.weapon = weapon;
@@ -36,7 +38,7 @@ public class DamageSourceProjectile extends IndirectEntityDamageSource
 	public @NotNull Component getLocalizedDeathMessage(LivingEntity entityLivingBaseIn)
 	{
 		Component textComponent = this.getEntity() == null ? this.entity.getDisplayName() : this.getEntity().getDisplayName();
-		String deathKey = String.format("death.attack.%s.%s.%s", Reference.MOD_ID, this.msgId, DEATH_TYPES[RAND.nextInt(DEATH_TYPES.length)]);
+		String deathKey = String.format("death.attack.%s.%s.%s", GunMod.MOD_ID, this.msgId, DEATH_TYPES[RAND.nextInt(DEATH_TYPES.length)]);
 		return Component.translatable(deathKey, entityLivingBaseIn.getDisplayName(), textComponent);
 	}
 }

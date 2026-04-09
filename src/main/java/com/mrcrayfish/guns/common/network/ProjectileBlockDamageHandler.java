@@ -10,7 +10,7 @@ import net.minecraftforge.event.level.ExplosionEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 
-@Mod.EventBusSubscriber(modid = com.mrcrayfish.guns.Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = com.mrcrayfish.guns.GunMod.MOD_ID)
 public class ProjectileBlockDamageHandler
 {
 	

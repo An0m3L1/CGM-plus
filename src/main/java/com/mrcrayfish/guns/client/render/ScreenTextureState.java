@@ -3,7 +3,7 @@ package com.mrcrayfish.guns.client.render;
 import com.mojang.blaze3d.platform.TextureUtil;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.systems.RenderSystem;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.RenderStateShard;
 import net.minecraftforge.api.distmarker.Dist;
@@ -20,7 +20,7 @@ import static org.lwjgl.opengl.GL11.*;
  * <p>
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID, value = Dist.CLIENT)
 public class ScreenTextureState extends RenderStateShard.TexturingStateShard
 {
 	private static ScreenTextureState instance = null;

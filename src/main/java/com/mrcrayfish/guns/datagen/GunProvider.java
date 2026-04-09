@@ -3,7 +3,7 @@ package com.mrcrayfish.guns.datagen;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.common.Gun;
 import net.minecraft.data.CachedOutput;
 import net.minecraft.data.DataGenerator;
@@ -63,6 +63,6 @@ public abstract class GunProvider implements DataProvider
 	@Override
 	public String getName()
 	{
-		return "Guns: " + Reference.MOD_ID;
+		return "Guns: " + GunMod.MOD_ID;
 	}
 }

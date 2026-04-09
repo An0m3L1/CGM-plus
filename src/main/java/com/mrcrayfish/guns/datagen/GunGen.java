@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.datagen;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.common.GripType;
 import com.mrcrayfish.guns.common.Gun;
 import com.mrcrayfish.guns.init.ModItems;
@@ -23,7 +23,7 @@ public class GunGen extends GunProvider
 	{
 		/* Assault rifles */
 		
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "assault_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(true).setFireRate(2).setBurstCooldown(4)
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "assault_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(true).setFireRate(2).setBurstCooldown(4)
 				
 				.setAdsSpeed(0.85F).setRecoilAdsReduction(0.5F).setSpreadAdsReduction(0.5F)
 				
@@ -51,7 +51,7 @@ public class GunGen extends GunProvider
 				
 				.setReloadFrames(32).setReloadClipOut(ModSounds.ASSAULT_RIFLE_MAG_OUT.get()).setReloadClipOutThreshold(6).setReloadClipIn(ModSounds.ASSAULT_RIFLE_MAG_IN.get()).setReloadClipInThreshold(17).setReloadLate(ModSounds.ASSAULT_RIFLE_SLAP.get()).setReloadLateThreshold(27).build());
 		
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "combat_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(true).setFireRate(2).setBurstCooldown(4)
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "combat_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(true).setFireRate(2).setBurstCooldown(4)
 				
 				.setAdsSpeed(0.8F).setRecoilAdsReduction(0.6F).setSpreadAdsReduction(0.6F)
 				
@@ -79,7 +79,7 @@ public class GunGen extends GunProvider
 				
 				.setReloadFrames(32).setReloadClipOut(ModSounds.ASSAULT_RIFLE_MAG_OUT.get()).setReloadClipOutThreshold(6).setReloadClipIn(ModSounds.ASSAULT_RIFLE_MAG_IN.get()).setReloadClipInThreshold(17).setReloadLate(ModSounds.ASSAULT_RIFLE_SLAP.get()).setReloadLateThreshold(27).build());
 		
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "tactical_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(true).setFireRate(2).setBurstCooldown(4)
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "tactical_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(true).setFireRate(2).setBurstCooldown(4)
 				
 				.setAdsSpeed(0.9F).setRecoilAdsReduction(0.4F).setSpreadAdsReduction(0.4F)
 				
@@ -108,7 +108,7 @@ public class GunGen extends GunProvider
 				.setReloadFrames(32).setReloadClipOut(ModSounds.ASSAULT_RIFLE_MAG_OUT.get()).setReloadClipOutThreshold(6).setReloadClipIn(ModSounds.ASSAULT_RIFLE_MAG_IN.get()).setReloadClipInThreshold(17).setReloadLate(ModSounds.ASSAULT_RIFLE_SLAP.get()).setReloadLateThreshold(27).build());
 		
 		/* Sniper rifles */
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "heavy_sniper_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(false).setFireRate(29)
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "heavy_sniper_rifle"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(false).setFireRate(29)
 				
 				.setAdsSpeed(0.6F).setRecoilAdsReduction(0.25F).setSpreadAdsReduction(1.0F)
 				
@@ -133,10 +133,10 @@ public class GunGen extends GunProvider
 				.setReloadFrames(62).setReloadClipOut(ModSounds.HEAVY_SNIPER_RIFLE_MAG_OUT.get()).setReloadClipOutThreshold(11).setReloadClipIn(ModSounds.HEAVY_SNIPER_RIFLE_MAG_IN.get()).setReloadClipInThreshold(30).setReloadLate(ModSounds.HEAVY_SNIPER_RIFLE_COCK.get()).setReloadLateThreshold(42).setCockSound(ModSounds.HEAVY_SNIPER_RIFLE_COCK.get()).setCycleDelay(11).build());
 		
 		//TODO: Update datagen
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "sniper_rifle"), Gun.Builder.create().setFireRate(8).setGripType(GripType.TWO_HANDED).setMaxAmmo(10).setReloadAmount(2).setRecoilAngle(10.0F).setRecoilKick(0.5F).setRecoilAdsReduction(0.5F).setAlwaysSpread(true).setSpread(1.0F).setAmmo(ModItems.HEAVY_BULLET.get()).setDamage(15.0F).setProjectileAffectedByGravity(true).setProjectileSize(0.0625F).setProjectileSpeed(20.0F).setProjectileLife(30).setFireSound(ModSounds.SNIPER_RIFLE_FIRE.get()).setCockSound(ModSounds.SNIPER_RIFLE_COCK.get()).setSilencedFireSound(ModSounds.SNIPER_RIFLE_SILENCED_FIRE.get()).setMuzzleFlash(0.5, 0.0, 3.8365, -10.21).setZoom(Gun.Modules.Zoom.builder().setFovModifier(0.6F).setOffset(0.0, 4.6223, 6.0)).setScope(1.0F, 0.0, 4.3, 3.3).setBarrel(0.45F, 0.0, 3.8365, -10.2).setStock(1.0F, 0.0, 3.1294, 8.3).setUnderBarrel(1.0F, 0.0, 2.63, -0.5).build());
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "sniper_rifle"), Gun.Builder.create().setFireRate(8).setGripType(GripType.TWO_HANDED).setMaxAmmo(10).setReloadAmount(2).setRecoilAngle(10.0F).setRecoilKick(0.5F).setRecoilAdsReduction(0.5F).setAlwaysSpread(true).setSpread(1.0F).setAmmo(ModItems.HEAVY_BULLET.get()).setDamage(15.0F).setProjectileAffectedByGravity(true).setProjectileSize(0.0625F).setProjectileSpeed(20.0F).setProjectileLife(30).setFireSound(ModSounds.SNIPER_RIFLE_FIRE.get()).setCockSound(ModSounds.SNIPER_RIFLE_COCK.get()).setSilencedFireSound(ModSounds.SNIPER_RIFLE_SILENCED_FIRE.get()).setMuzzleFlash(0.5, 0.0, 3.8365, -10.21).setZoom(Gun.Modules.Zoom.builder().setFovModifier(0.6F).setOffset(0.0, 4.6223, 6.0)).setScope(1.0F, 0.0, 4.3, 3.3).setBarrel(0.45F, 0.0, 3.8365, -10.2).setStock(1.0F, 0.0, 3.1294, 8.3).setUnderBarrel(1.0F, 0.0, 2.63, -0.5).build());
 		
 		/* Shotguns */
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "semi_auto_shotgun"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(false).setFireRate(5)
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "semi_auto_shotgun"), Gun.Builder.create().setGripType(GripType.TWO_HANDED).setAuto(false).setFireRate(5)
 				
 				.setAdsSpeed(0.85F).setRecoilAdsReduction(0.35F).setSpreadAdsReduction(0.0F)
 				
@@ -160,12 +160,12 @@ public class GunGen extends GunProvider
 		
 		/* Machine guns */
 		//TODO: Update datagen
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "mini_gun"), Gun.Builder.create().setAuto(true).setFireRate(2).setGripType(GripType.MINI_GUN).setMaxAmmo(100).setReloadAmount(10).setRecoilAngle(1.0F).setAlwaysSpread(true).setSpread(7.0F).setAmmo(ModItems.LIGHT_BULLET.get()).setDamage(5.0F).setProjectileSize(0.2F).setProjectileSpeed(8.0F).setProjectileLife(30).setFireSound(ModSounds.MINI_GUN_FIRE.get()).setMuzzleFlash(0.5, 0.0, 2.7, -11.51).build());
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "mini_gun"), Gun.Builder.create().setAuto(true).setFireRate(2).setGripType(GripType.MINI_GUN).setMaxAmmo(100).setReloadAmount(10).setRecoilAngle(1.0F).setAlwaysSpread(true).setSpread(7.0F).setAmmo(ModItems.LIGHT_BULLET.get()).setDamage(5.0F).setProjectileSize(0.2F).setProjectileSpeed(8.0F).setProjectileLife(30).setFireSound(ModSounds.MINI_GUN_FIRE.get()).setMuzzleFlash(0.5, 0.0, 2.7, -11.51).build());
 		
 		/* Submachine guns */
 		
 		/* Pistols */
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "tactical_pistol"), Gun.Builder.create().setGripType(GripType.TWO_HANDED_PISTOL).setAuto(false).setFireRate(3)
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "tactical_pistol"), Gun.Builder.create().setGripType(GripType.TWO_HANDED_PISTOL).setAuto(false).setFireRate(3)
 				
 				.setAdsSpeed(1.0F).setRecoilAdsReduction(0.25F).setSpreadAdsReduction(0.25F)
 				
@@ -191,7 +191,7 @@ public class GunGen extends GunProvider
 				
 				.setReloadFrames(29).setReloadClipOut(ModSounds.TACTICAL_PISTOL_MAG_OUT.get()).setReloadClipOutThreshold(3.5F).setReloadClipIn(ModSounds.TACTICAL_PISTOL_MAG_IN.get()).setReloadClipInThreshold(13.1F).setReloadMid(ModSounds.TACTICAL_PISTOL_SLIDE_BACK.get()).setReloadMidThreshold(20.9F).setReloadLate(ModSounds.TACTICAL_PISTOL_SLIDE_FORWARD.get()).setReloadLateThreshold(23.5F).build());
 		
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "automatic_pistol"), Gun.Builder.create().setGripType(GripType.TWO_HANDED_PISTOL).setAuto(true).setFireRate(1)
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "automatic_pistol"), Gun.Builder.create().setGripType(GripType.TWO_HANDED_PISTOL).setAuto(true).setFireRate(1)
 				
 				.setAdsSpeed(1.0F).setRecoilAdsReduction(0.25F).setSpreadAdsReduction(0.25F)
 				
@@ -221,9 +221,9 @@ public class GunGen extends GunProvider
 		
 		/* Explosives */
 		//TODO: Update datagen
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "grenade_launcher"), Gun.Builder.create().setFireRate(20).setGripType(GripType.TWO_HANDED).setMaxAmmo(1).setRecoilAngle(5.0F).setRecoilKick(1.0F).setRecoilDurationOffset(0.25F).setAmmo(ModItems.GRENADE.get()).setDamage(15.0F).setProjectileVisible(true).setProjectileSize(0.2F).setProjectileSpeed(1.5F).setProjectileLife(50).setProjectileAffectedByGravity(true).setFireSound(ModSounds.GRENADE_LAUNCHER_FIRE.get()).setMuzzleFlash(0.75, 0.0, 3.5, -3.8).setZoom(Gun.Modules.Zoom.builder().setFovModifier(0.6F).setOffset(0.0, 5.7, 3.0)).setScope(1.0F, 0.0, 5.2, 2.7).setStock(1.0F, 0.0, 3.6, 8.2).build());
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "grenade_launcher"), Gun.Builder.create().setFireRate(20).setGripType(GripType.TWO_HANDED).setMaxAmmo(1).setRecoilAngle(5.0F).setRecoilKick(1.0F).setRecoilDurationOffset(0.25F).setAmmo(ModItems.GRENADE.get()).setDamage(15.0F).setProjectileVisible(true).setProjectileSize(0.2F).setProjectileSpeed(1.5F).setProjectileLife(50).setProjectileAffectedByGravity(true).setFireSound(ModSounds.GRENADE_LAUNCHER_FIRE.get()).setMuzzleFlash(0.75, 0.0, 3.5, -3.8).setZoom(Gun.Modules.Zoom.builder().setFovModifier(0.6F).setOffset(0.0, 5.7, 3.0)).setScope(1.0F, 0.0, 5.2, 2.7).setStock(1.0F, 0.0, 3.6, 8.2).build());
 		
 		//TODO: Update datagen
-		this.addGun(new ResourceLocation(Reference.MOD_ID, "rocket_launcher"), Gun.Builder.create().setFireRate(20).setGripType(GripType.TWO_HANDED).setMaxAmmo(1).setRecoilAngle(5.0F).setRecoilKick(1.0F).setRecoilDurationOffset(0.25F).setAmmo(ModItems.ROCKET.get()).setDamage(15.0F).setProjectileVisible(true).setProjectileSize(0.2F).setProjectileSpeed(1.5F).setProjectileLife(50).setProjectileAffectedByGravity(true).setFireSound(ModSounds.ROCKET_LAUNCHER_FIRE.get()).setMuzzleFlash(0.75, 0.0, 3.5, -3.8).setZoom(Gun.Modules.Zoom.builder().setFovModifier(0.6F).setOffset(0.0, 5.7, 3.0)).setScope(1.0F, 0.0, 5.2, 2.7).setStock(1.0F, 0.0, 3.6, 8.2).build());
+		this.addGun(new ResourceLocation(GunMod.MOD_ID, "rocket_launcher"), Gun.Builder.create().setFireRate(20).setGripType(GripType.TWO_HANDED).setMaxAmmo(1).setRecoilAngle(5.0F).setRecoilKick(1.0F).setRecoilDurationOffset(0.25F).setAmmo(ModItems.ROCKET.get()).setDamage(15.0F).setProjectileVisible(true).setProjectileSize(0.2F).setProjectileSpeed(1.5F).setProjectileLife(50).setProjectileAffectedByGravity(true).setFireSound(ModSounds.ROCKET_LAUNCHER_FIRE.get()).setMuzzleFlash(0.75, 0.0, 3.5, -3.8).setZoom(Gun.Modules.Zoom.builder().setFovModifier(0.6F).setOffset(0.0, 5.7, 3.0)).setScope(1.0F, 0.0, 5.2, 2.7).setStock(1.0F, 0.0, 3.6, 8.2).build());
 	}
 }

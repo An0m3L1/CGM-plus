@@ -1,7 +1,7 @@
 package com.mrcrayfish.guns.init;
 
 import com.mojang.serialization.Codec;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.particles.BulletHoleData;
 import com.mrcrayfish.guns.particles.TrailData;
 import net.minecraft.core.particles.ParticleType;
@@ -16,7 +16,7 @@ import org.jetbrains.annotations.NotNull;
  */
 public class ModParticleTypes
 {
-	public static final DeferredRegister<ParticleType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, Reference.MOD_ID);
+	public static final DeferredRegister<ParticleType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.PARTICLE_TYPES, GunMod.MOD_ID);
 	
 	public static final RegistryObject<ParticleType<BulletHoleData>> BULLET_HOLE = REGISTER.register("bullet_hole", () -> new ParticleType<>(false, BulletHoleData.DESERIALIZER)
 	{

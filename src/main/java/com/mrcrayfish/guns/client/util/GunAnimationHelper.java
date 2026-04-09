@@ -30,7 +30,7 @@ import net.minecraft.world.phys.Vec3;
  */
 public final class GunAnimationHelper
 {
-	public static final String ANIMATION_KEY = "cgm:animations";
+	public static final String ANIMATION_KEY = GunMod.MOD_ID + ":animations";
 	private static final boolean useLegacyLoader = true;
 	static boolean doMetaLoadMessage = true;
 	static boolean doHasAnimationMessage = true;

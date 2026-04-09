@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.compat.jei;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipe;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipes;
 import com.mrcrayfish.guns.init.ModBlocks;
@@ -25,12 +25,12 @@ import java.util.Objects;
 @JeiPlugin
 public class GunModPlugin implements IModPlugin
 {
-	public static final RecipeType<WorkbenchRecipe> WORKBENCH = RecipeType.create(Reference.MOD_ID, "workbench", WorkbenchRecipe.class);
+	public static final RecipeType<WorkbenchRecipe> WORKBENCH = RecipeType.create(GunMod.MOD_ID, "workbench", WorkbenchRecipe.class);
 	
 	@Override
 	public @NotNull ResourceLocation getPluginUid()
 	{
-		return new ResourceLocation(Reference.MOD_ID, "crafting");
+		return new ResourceLocation(GunMod.MOD_ID, "crafting");
 	}
 	
 	@Override

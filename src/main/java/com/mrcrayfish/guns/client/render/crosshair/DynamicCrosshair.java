@@ -5,7 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.DotRenderMode;
 import com.mrcrayfish.guns.client.handler.AimingHandler;
 import com.mrcrayfish.guns.common.Gun;
@@ -24,9 +24,9 @@ import net.minecraft.world.item.ItemStack;
 @SuppressWarnings("UnnecessaryLocalVariable")
 public class DynamicCrosshair extends Crosshair
 {
-	private static final ResourceLocation DYNAMIC_CROSSHAIR_H = new ResourceLocation(Reference.MOD_ID, "textures/crosshair/dynamic_horizontal.png");
-	private static final ResourceLocation DYNAMIC_CROSSHAIR_V = new ResourceLocation(Reference.MOD_ID, "textures/crosshair/dynamic_vertical.png");
-	private static final ResourceLocation DOT_CROSSHAIR = new ResourceLocation(Reference.MOD_ID, "textures/crosshair/dot.png");
+	private static final ResourceLocation DYNAMIC_CROSSHAIR_H = new ResourceLocation(GunMod.MOD_ID, "textures/crosshair/dynamic_horizontal.png");
+	private static final ResourceLocation DYNAMIC_CROSSHAIR_V = new ResourceLocation(GunMod.MOD_ID, "textures/crosshair/dynamic_vertical.png");
+	private static final ResourceLocation DOT_CROSSHAIR = new ResourceLocation(GunMod.MOD_ID, "textures/crosshair/dot.png");
 	
 	private float scale;
 	private float prevScale;
@@ -39,7 +39,7 @@ public class DynamicCrosshair extends Crosshair
 	
 	public DynamicCrosshair()
 	{
-		super(new ResourceLocation(Reference.MOD_ID, "dynamic"));
+		super(new ResourceLocation(GunMod.MOD_ID, "dynamic"));
 	}
 	
 	@Override

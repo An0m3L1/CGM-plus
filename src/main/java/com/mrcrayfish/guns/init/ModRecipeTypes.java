@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.init;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipe;
 import net.minecraft.world.item.crafting.Recipe;
 import net.minecraft.world.item.crafting.RecipeType;
@@ -13,7 +13,7 @@ import net.minecraftforge.registries.RegistryObject;
  */
 public class ModRecipeTypes
 {
-	public static final DeferredRegister<RecipeType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, Reference.MOD_ID);
+	public static final DeferredRegister<RecipeType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.RECIPE_TYPES, GunMod.MOD_ID);
 	
 	public static final RegistryObject<RecipeType<WorkbenchRecipe>> WORKBENCH = create("workbench");
 	

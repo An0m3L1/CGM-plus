@@ -5,7 +5,7 @@ import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.handler.GunRenderingHandler;
 import com.mrcrayfish.guns.client.screen.widget.MiniButton;
 import com.mrcrayfish.guns.client.util.RenderUtil;
@@ -357,7 +357,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 	
 	private void openConfigScreen()
 	{
-		ModList.get().getModContainerById(Reference.MOD_ID).ifPresent(container ->
+		ModList.get().getModContainerById(GunMod.MOD_ID).ifPresent(container ->
 		{
 			Screen screen = container.getCustomExtension(ConfigScreenHandler.ConfigScreenFactory.class).map(function -> function.screenFunction().apply(this.minecraft, null)).orElse(null);
 			if(screen != null)

@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.mrcrayfish.framework.api.data.login.ILoginData;
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.annotation.Validator;
 import com.mrcrayfish.guns.client.util.Easings;
 import com.mrcrayfish.guns.item.GunItem;
@@ -38,7 +37,7 @@ import java.util.*;
 /**
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID)
 public class NetworkGunManager extends SimplePreparableReloadListener<Map<GunItem, Gun>>
 {
 	private static final int FILE_TYPE_LENGTH_VALUE = ".json".length();
@@ -73,7 +72,7 @@ public class NetworkGunManager extends SimplePreparableReloadListener<Map<GunIte
 					{
 						return 0;
 					}
-					return r2.getNamespace().equals(Reference.MOD_ID) ? 1 : -1;
+					return r2.getNamespace().equals(GunMod.MOD_ID) ? 1 : -1;
 				});
 				resources.forEach(resourceLocation ->
 				{

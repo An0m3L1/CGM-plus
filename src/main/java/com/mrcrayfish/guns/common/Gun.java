@@ -3,7 +3,6 @@ package com.mrcrayfish.guns.common;
 import com.google.common.base.Preconditions;
 import com.google.gson.JsonObject;
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.annotation.Ignored;
 import com.mrcrayfish.guns.annotation.Optional;
 import com.mrcrayfish.guns.compat.BackpackHelper;
@@ -1377,7 +1376,7 @@ public class Gun implements INBTSerializable<CompoundTag>
 	@SuppressWarnings("ConstantValue")
 	public static class Projectile implements INBTSerializable<CompoundTag>
 	{
-		private ResourceLocation item = new ResourceLocation(Reference.MOD_ID, "basic_ammo");
+		private ResourceLocation item = new ResourceLocation(GunMod.MOD_ID, "basic_ammo");
 		@Optional
 		@Nullable
 		private ResourceLocation projectileItem;
@@ -2724,7 +2723,7 @@ public class Gun implements INBTSerializable<CompoundTag>
 		{
 			if(this.emptyClick == null)
 			{
-				return new ResourceLocation(Reference.MOD_ID, "item.empty_click");
+				return new ResourceLocation(GunMod.MOD_ID, "item.empty_click");
 			}
 			return this.emptyClick;
 		}
@@ -2737,7 +2736,7 @@ public class Gun implements INBTSerializable<CompoundTag>
 		{
 			if(this.fireSwitch == null)
 			{
-				return new ResourceLocation(Reference.MOD_ID, "item.fire_switch");
+				return new ResourceLocation(GunMod.MOD_ID, "item.fire_switch");
 			}
 			return this.fireSwitch;
 		}
@@ -4099,7 +4098,9 @@ public class Gun implements INBTSerializable<CompoundTag>
 		return gun;
 	}
 	
-	public boolean canAttachType(@Nullable IAttachment.Type type)
+	public boolean canAttachType(
+			@Nullable
+			IAttachment.Type type)
 	{
 		if(this.modules.attachments != null && type != null)
 		{

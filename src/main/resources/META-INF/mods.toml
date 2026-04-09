@@ -3,9 +3,9 @@ loaderVersion = "[39,)"
 license = "GPL3"
 
 [[mods]]
-modId = "cgm"
-version = "1.0a"
-displayName = "CGM+"
+modId = "${modId}"
+version = "${modVersion}"
+displayName = "${modName}"
 logoFile = "icon.png"
 authors = "An0m3L1"
 credits = "MrCrayfish, zaeonNineZero"

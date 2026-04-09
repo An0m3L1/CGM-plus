@@ -5,7 +5,6 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.JsonElement;
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.annotation.Validator;
 import net.minecraft.Util;
 import net.minecraft.network.FriendlyByteBuf;
@@ -28,7 +27,7 @@ import java.util.Objects;
 /**
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID)
 public class CustomGunLoader extends SimpleJsonResourceReloadListener
 {
 	private static final Gson GSON_INSTANCE = Util.make(() ->

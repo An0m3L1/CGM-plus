@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.client;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.resources.model.BakedModel;
 import net.minecraft.resources.ResourceLocation;
@@ -12,7 +12,7 @@ import net.minecraftforge.fml.common.Mod;
 /**
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID, value = Dist.CLIENT, bus = Mod.EventBusSubscriber.Bus.MOD)
 public enum SpecialModels
 {
 	ROCKET_LAUNCHER("z_gun/rocket_launcher"),
@@ -101,7 +101,7 @@ public enum SpecialModels
 	 */
 	SpecialModels(String modelName)
 	{
-		this.modelLocation = new ResourceLocation(Reference.MOD_ID, "special/" + modelName);
+		this.modelLocation = new ResourceLocation(GunMod.MOD_ID, "special/" + modelName);
 	}
 	
 	/**

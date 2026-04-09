@@ -45,9 +45,11 @@ import org.apache.logging.log4j.Logger;
 import org.jetbrains.annotations.NotNull;
 import top.theillusivec4.curios.api.SlotTypePreset;
 
-@Mod(Reference.MOD_ID)
+@Mod(GunMod.MOD_ID)
 public class GunMod
 {
+	public static final String MOD_ID = "cgm"; // Get in gradle.properties
+	
 	public static boolean debugging = false;
 	public static boolean controllableLoaded = false;
 	public static boolean backpackedLoaded = false;
@@ -55,9 +57,9 @@ public class GunMod
 	public static boolean shoulderSurfingLoaded = false;
 	public static boolean dynamicLightsLoaded = false;
 	public static boolean dynamicTreesLoaded = false;
-	public static final Logger LOGGER = LogManager.getLogger(Reference.MOD_ID);
+	public static final Logger LOGGER = LogManager.getLogger(GunMod.MOD_ID);
 	
-	public static final CreativeModeTab GUNS = new CreativeModeTab(Reference.MOD_ID)
+	public static final CreativeModeTab GUNS = new CreativeModeTab(GunMod.MOD_ID)
 	{
 		@Override
 		public @NotNull ItemStack makeIcon()
@@ -72,7 +74,7 @@ public class GunMod
 			CustomGunManager.fill(items);
 		}
 	};
-	public static final CreativeModeTab MATERIALS = new CreativeModeTab(Reference.MATERIALS)
+	public static final CreativeModeTab MATERIALS = new CreativeModeTab(GunMod.MOD_ID + "_materials")
 	{
 		@Override
 		public @NotNull ItemStack makeIcon()
@@ -137,9 +139,9 @@ public class GunMod
 			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.RELOADING);
 			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SHOOTING);
 			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SWITCHTIME);
-			FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "network_gun_manager"), NetworkGunManager.LoginData::new);
-			FrameworkAPI.registerLoginData(new ResourceLocation(Reference.MOD_ID, "custom_gun_manager"), CustomGunManager.LoginData::new);
-			CraftingHelper.register(new ResourceLocation(Reference.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);
+			FrameworkAPI.registerLoginData(new ResourceLocation(GunMod.MOD_ID, "network_gun_manager"), NetworkGunManager.LoginData::new);
+			FrameworkAPI.registerLoginData(new ResourceLocation(GunMod.MOD_ID, "custom_gun_manager"), CustomGunManager.LoginData::new);
+			CraftingHelper.register(new ResourceLocation(GunMod.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);
 			
 			ProjectileManager.getInstance().registerFactory(ModItems.LIGHT_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> BulletEntity.createLight(ModEntities.LIGHT_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
 			ProjectileManager.getInstance().registerFactory(ModItems.MEDIUM_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> BulletEntity.createMedium(ModEntities.MEDIUM_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));

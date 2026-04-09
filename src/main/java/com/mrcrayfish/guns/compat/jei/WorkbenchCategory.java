@@ -4,7 +4,7 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.util.RenderUtil;
 import com.mrcrayfish.guns.crafting.WorkbenchRecipe;
 import com.mrcrayfish.guns.init.ModBlocks;
@@ -44,10 +44,10 @@ import java.util.stream.Stream;
  */
 public class WorkbenchCategory implements IRecipeCategory<WorkbenchRecipe>
 {
-	public static final ResourceLocation ID = new ResourceLocation(Reference.MOD_ID, "workbench");
-	public static final ResourceLocation BACKGROUND = new ResourceLocation(Reference.MOD_ID, "textures/gui/gun_workbench.png");
-	public static final String TITLE_KEY = Reference.MOD_ID + ".category.workbench.title";
-	public static final String MATERIALS_KEY = Reference.MOD_ID + ".category.workbench.materials";
+	public static final ResourceLocation ID = new ResourceLocation(GunMod.MOD_ID, "workbench");
+	public static final ResourceLocation BACKGROUND = new ResourceLocation(GunMod.MOD_ID, "textures/gui/gun_workbench.png");
+	public static final String TITLE_KEY = GunMod.MOD_ID + ".category.workbench.title";
+	public static final String MATERIALS_KEY = GunMod.MOD_ID + ".category.workbench.materials";
 	
 	private final IDrawableStatic background;
 	private final IDrawableStatic window;

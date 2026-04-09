@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.datagen;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.init.ModTags;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.EntityTypeTagsProvider;
@@ -12,7 +12,7 @@ public class EntityTagGen extends EntityTypeTagsProvider
 {
 	public EntityTagGen(DataGenerator generator, ExistingFileHelper existingFileHelper)
 	{
-		super(generator, Reference.MOD_ID, existingFileHelper);
+		super(generator, GunMod.MOD_ID, existingFileHelper);
 	}
 	
 	@Override

@@ -1,7 +1,6 @@
 package com.mrcrayfish.guns.client;
 
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.client.handler.*;
 import com.mrcrayfish.guns.client.render.gun.ModelOverrides;
 import com.mrcrayfish.guns.client.render.gun.model.*;
@@ -44,7 +43,7 @@ import java.util.Objects;
 /**
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID, value = Dist.CLIENT)
 public class ClientHandler
 {
 	private static Field mouseOptionsField;

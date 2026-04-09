@@ -5,10 +5,17 @@ plugins {
     id 'org.parchmentmc.librarian.forgegradle' version '1.+'
     id 'org.spongepowered.mixin' version '0.7.+'
 }
+apply plugin: 'net.minecraftforge.gradle'
+apply plugin: 'org.parchmentmc.librarian.forgegradle'
+apply plugin: 'eclipse'
+apply plugin: 'maven-publish'
+apply plugin: 'org.spongepowered.mixin'
 
-archivesBaseName = "cgm-plus"
-version = "1.0"
+jarJar.enable()
+
 group = "com.mrcrayfish"
+archivesBaseName = modId // File name
+version = modVersion
 
 java.toolchain.languageVersion = JavaLanguageVersion.of(17)
 
@@ -22,7 +29,7 @@ mixin {
 }
 
 minecraft {
-    mappings channel: 'parchment', version: '2022.08.14-1.19.2'
+    mappings channel: 'parchment', version: '2022.11.27-1.19.2'
     runs {
         client {
             workingDirectory project.file('run')
@@ -54,6 +61,17 @@ minecraft {
     }
 }
 
+processResources {
+    filteringCharset = 'UTF-8'
+    filesMatching('META-INF/mods.toml') {
+        expand(
+                modId: modId,
+                modVersion: modVersion,
+                modName: modName
+        )
+    }
+}
+
 repositories {
     mavenLocal()
     maven {
@@ -66,7 +84,7 @@ repositories {
 }
 
 dependencies {
-    minecraft 'net.minecraftforge:forge:1.19.2-43.4.20'
+    minecraft 'net.minecraftforge:forge:1.19.2-43.5.2'
 
     implementation fg.deobf("curse.maven:embeddium-908741:5539178")
     implementation fg.deobf("curse.maven:magnesium-extras-558905:4632201")
@@ -110,19 +128,30 @@ dependencies {
     annotationProcessor 'org.spongepowered:mixin:0.8.5:processor'
 }
 
+afterEvaluate {
+    tasks.configureReobfTaskForReobfJar.mustRunAfter(tasks.compileJava)
+    tasks.configureReobfTaskForReobfJarJar.mustRunAfter(tasks.compileJava)
+}
+
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "CGM+",
+                "Specification-Title"     : archivesBaseName,
                 "Specification-Vendor"    : "An0m3L1",
-                "Specification-Version"   : "1.0",
-                "Implementation-Title"    : "CGM+",
-                "Implementation-Version"  : project.version,
+                "Specification-Version"   : "1",
+
+                "Implementation-Title"    : modName,
                 "Implementation-Vendor"   : "An0m3L1",
+                "Implementation-Version"  : modVersion,
                 "Implementation-Timestamp": new Date().format("yyyy-dd-MM'T'HH:mm:ssZ"),
                 "MixinConfigs"            : "cgm.mixins.json"
         ])
     }
+}
+
+java {
+    withSourcesJar()
+    withJavadocJar()
 }
 
 jar.finalizedBy('reobfJar')

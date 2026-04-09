@@ -2,23 +2,15 @@
 .gradle/
 bin/
 build/
-run/*
+run/
 
 # IDEs
 .settings/
 .classpath
 .project
-.idea
-
-# Launching
-runClient.launch
-runData.launch
-runGameTestServer.launch
-runServer.launch
+.idea/
 
 # Misc
-deprecated_builds/*
-SourceTree.lnk
 /notes and misc/CGM-E_Datapack/
 /notes and misc/CGM_AVE_Expanded/
 /notes and misc/CGM+ Tweaks Datapack/

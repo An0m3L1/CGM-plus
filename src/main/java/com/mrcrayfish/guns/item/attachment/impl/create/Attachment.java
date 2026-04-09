@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.item.attachment.impl.create;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.interfaces.IGunModifier;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import net.minecraft.ChatFormatting;
@@ -21,7 +21,7 @@ import java.util.List;
  * <p>
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID, value = Dist.CLIENT)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID, value = Dist.CLIENT)
 public abstract class Attachment
 {
 	protected final IGunModifier[] modifiers;

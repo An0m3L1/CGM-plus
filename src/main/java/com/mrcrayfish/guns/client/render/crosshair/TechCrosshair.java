@@ -6,7 +6,7 @@ import com.mojang.blaze3d.vertex.*;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GameRenderer;
 import net.minecraft.resources.ResourceLocation;
@@ -17,8 +17,8 @@ import net.minecraft.util.Mth;
  */
 public class TechCrosshair extends Crosshair
 {
-	private static final ResourceLocation TECH_CROSSHAIR = new ResourceLocation(Reference.MOD_ID, "textures/crosshair/tech.png");
-	private static final ResourceLocation DOT_CROSSHAIR = new ResourceLocation(Reference.MOD_ID, "textures/crosshair/dot.png");
+	private static final ResourceLocation TECH_CROSSHAIR = new ResourceLocation(GunMod.MOD_ID, "textures/crosshair/tech.png");
+	private static final ResourceLocation DOT_CROSSHAIR = new ResourceLocation(GunMod.MOD_ID, "textures/crosshair/dot.png");
 	
 	private float scale;
 	private float prevScale;
@@ -27,7 +27,7 @@ public class TechCrosshair extends Crosshair
 	
 	public TechCrosshair()
 	{
-		super(new ResourceLocation(Reference.MOD_ID, "tech"));
+		super(new ResourceLocation(GunMod.MOD_ID, "tech"));
 	}
 	
 	@Override

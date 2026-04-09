@@ -7,7 +7,7 @@ import com.mojang.blaze3d.vertex.VertexConsumer;
 import com.mojang.math.Matrix4f;
 import com.mojang.math.Vector3f;
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.GunModel;
 import com.mrcrayfish.guns.client.GunRenderType;
 import com.mrcrayfish.guns.client.render.gun.IOverrideModel;
@@ -80,8 +80,8 @@ public class GunRenderingHandler
 		return instance;
 	}
 	
-	public static final ResourceLocation MUZZLE_FLASH_TEXTURE = new ResourceLocation(Reference.MOD_ID, "textures/effect/muzzle_flash.png");
-	public static final ResourceLocation MUZZLE_FLASH_TEXTURE_1 = new ResourceLocation(Reference.MOD_ID, "textures/effect/muzzle_flash_1.png");
+	public static final ResourceLocation MUZZLE_FLASH_TEXTURE = new ResourceLocation(GunMod.MOD_ID, "textures/effect/muzzle_flash.png");
+	public static final ResourceLocation MUZZLE_FLASH_TEXTURE_1 = new ResourceLocation(GunMod.MOD_ID, "textures/effect/muzzle_flash_1.png");
 	
 	private final Random random = new Random();
 	private final Set<Integer> entityIdForMuzzleFlash = new HashSet<>();
@@ -1030,7 +1030,9 @@ public class GunRenderingHandler
 		}
 	}
 	
-	public void renderWeapon(@Nullable LivingEntity entity, ItemStack stack, ItemTransforms.TransformType transformType, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, float partialTicks)
+	public void renderWeapon(
+			@Nullable
+			LivingEntity entity, ItemStack stack, ItemTransforms.TransformType transformType, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, float partialTicks)
 	{
 		if(stack.getItem() instanceof GunItem gunStack)
 		{
@@ -1093,7 +1095,9 @@ public class GunRenderingHandler
 		}
 	}
 	
-	private void renderGun(@Nullable LivingEntity entity, ItemTransforms.TransformType transformType, ItemStack stack, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, float partialTicks)
+	private void renderGun(
+			@Nullable
+			LivingEntity entity, ItemTransforms.TransformType transformType, ItemStack stack, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, float partialTicks)
 	{
 		if(ModelOverrides.hasModel(stack))
 		{
@@ -1111,7 +1115,9 @@ public class GunRenderingHandler
 		}
 	}
 	
-	private void renderAttachments(@Nullable LivingEntity entity, ItemTransforms.TransformType transformType, ItemStack stack, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, float partialTicks)
+	private void renderAttachments(
+			@Nullable
+			LivingEntity entity, ItemTransforms.TransformType transformType, ItemStack stack, PoseStack poseStack, MultiBufferSource renderTypeBuffer, int light, float partialTicks)
 	{
 		if(stack.getItem() instanceof GunItem)
 		{
@@ -1206,7 +1212,9 @@ public class GunRenderingHandler
 		}
 	}
 	
-	private void renderMuzzleFlash(@Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, ItemStack weapon, ItemTransforms.TransformType transformType, float partialTicks)
+	private void renderMuzzleFlash(
+			@Nullable
+			LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, ItemStack weapon, ItemTransforms.TransformType transformType, float partialTicks)
 	{
 		Gun modifiedGun = ((GunItem) weapon.getItem()).getModifiedGun(weapon);
 		if(modifiedGun.getDisplay().getFlash() == null)

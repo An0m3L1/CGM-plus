@@ -1,7 +1,6 @@
 package com.mrcrayfish.guns.init;
 
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.block.HempCropBlock;
 import com.mrcrayfish.guns.block.RepairKitBlock;
 import com.mrcrayfish.guns.block.WorkbenchBlock;
@@ -24,7 +23,7 @@ import java.util.function.Supplier;
  */
 public class ModBlocks
 {
-	public static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, Reference.MOD_ID);
+	public static final DeferredRegister<Block> REGISTER = DeferredRegister.create(ForgeRegistries.BLOCKS, GunMod.MOD_ID);
 	
 	public static final RegistryObject<Block> GUN_WORKBENCH = registerBlock("gun_workbench", () -> new WorkbenchBlock(Block.Properties.of(Material.METAL).requiresCorrectToolForDrops().strength(5.0F)), GunMod.MATERIALS, 64);
 	public static final RegistryObject<Block> GUN_REPAIR_KIT = registerBlock("gun_repair_kit", () -> new RepairKitBlock(Block.Properties.of(Material.METAL).strength(0.1F)), GunMod.GUNS, 64);

@@ -1,7 +1,7 @@
 package com.mrcrayfish.guns.common;
 
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import net.minecraft.server.MinecraftServer;
@@ -20,7 +20,7 @@ import java.util.WeakHashMap;
 /**
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID)
 public class SpreadTracker
 {
 	private static final Map<Player, SpreadTracker> TRACKER_MAP = new WeakHashMap<>();

@@ -1,7 +1,6 @@
 package com.mrcrayfish.guns.init;
 
 import com.mrcrayfish.guns.GunMod;
-import com.mrcrayfish.guns.Reference;
 import com.mrcrayfish.guns.common.Attachments;
 import com.mrcrayfish.guns.common.GunModifiers;
 import com.mrcrayfish.guns.item.AmmoItem;
@@ -24,7 +23,7 @@ import net.minecraftforge.registries.RegistryObject;
 @SuppressWarnings("PointlessArithmeticExpression")
 public class ModItems
 {
-	public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, Reference.MOD_ID);
+	public static final DeferredRegister<Item> REGISTER = DeferredRegister.create(ForgeRegistries.ITEMS, GunMod.MOD_ID);
 	
 	/* This is a combat rifle model with a stock equipped, used as an icon for tabs */
 	public static final RegistryObject<UnobtainableItem> GUN_ICON = REGISTER.register("gun_icon", () -> new UnobtainableItem((new Item.Properties())));

@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.common;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.guns.item.GunItem;
 import com.mrcrayfish.guns.util.GunModifierHelper;
@@ -19,7 +19,7 @@ import java.util.WeakHashMap;
  * Author: MrCrayfish
  */
 @SuppressWarnings("unused")
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID)
 public class RampUpTracker
 {
 	private static final Map<Player, RampUpTracker> RAMPUP_TRACKER_MAP = new WeakHashMap<>();

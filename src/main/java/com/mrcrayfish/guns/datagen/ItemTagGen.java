@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.datagen;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.data.DataGenerator;
 import net.minecraft.data.tags.BlockTagsProvider;
 import net.minecraft.data.tags.ItemTagsProvider;
@@ -10,7 +10,7 @@ public class ItemTagGen extends ItemTagsProvider
 {
 	public ItemTagGen(DataGenerator generator, BlockTagsProvider blockTagsProvider, ExistingFileHelper existingFileHelper)
 	{
-		super(generator, blockTagsProvider, Reference.MOD_ID, existingFileHelper);
+		super(generator, blockTagsProvider, GunMod.MOD_ID, existingFileHelper);
 	}
 	
 	@Override

@@ -2,7 +2,7 @@ package com.mrcrayfish.guns.common;
 
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.render.IHeldAnimation;
 import com.mrcrayfish.guns.client.render.pose.*;
 import net.minecraft.resources.ResourceLocation;
@@ -21,32 +21,32 @@ public record GripType(ResourceLocation id, IHeldAnimation getHeldAnimation)
 	/**
 	 * A grip type designed for weapons that are held with only one hand, like a pistol
 	 */
-	public static final GripType ONE_HANDED_PISTOL = new GripType(new ResourceLocation(Reference.MOD_ID, "one_handed_pistol"), new OneHandedPistolPose());
+	public static final GripType ONE_HANDED_PISTOL = new GripType(new ResourceLocation(GunMod.MOD_ID, "one_handed_pistol"), new OneHandedPistolPose());
 	
 	/**
 	 * A two-handed grip type for one-handed weapons. Can be used in place of the ONE_HANDED grip type without any model changes
 	 */
-	public static final GripType TWO_HANDED_PISTOL = new GripType(new ResourceLocation(Reference.MOD_ID, "two_handed_pistol"), new TwoHandedPistolPose());
+	public static final GripType TWO_HANDED_PISTOL = new GripType(new ResourceLocation(GunMod.MOD_ID, "two_handed_pistol"), new TwoHandedPistolPose());
 	
 	/**
 	 * A grip type designed for weapons that are held with two hands, like an assault rifle
 	 */
-	public static final GripType TWO_HANDED = new GripType(new ResourceLocation(Reference.MOD_ID, "two_handed"), new TwoHandedPose());
+	public static final GripType TWO_HANDED = new GripType(new ResourceLocation(GunMod.MOD_ID, "two_handed"), new TwoHandedPose());
 	
 	/**
 	 * A grip type designed for short two-handed weapons like submachine guns
 	 */
-	public static final GripType TWO_HANDED_SHORT = new GripType(new ResourceLocation(Reference.MOD_ID, "two_handed_short"), new TwoHandedShortPose());
+	public static final GripType TWO_HANDED_SHORT = new GripType(new ResourceLocation(GunMod.MOD_ID, "two_handed_short"), new TwoHandedShortPose());
 	
 	/**
 	 * A custom grip type designed for the mini gun
 	 */
-	public static final GripType MINI_GUN = new GripType(new ResourceLocation(Reference.MOD_ID, "mini_gun"), new MiniGunPose());
+	public static final GripType MINI_GUN = new GripType(new ResourceLocation(GunMod.MOD_ID, "mini_gun"), new MiniGunPose());
 	
 	/**
 	 * A custom grip type designed for the Rocket launcher.
 	 */
-	public static final GripType ROCKET_LAUNCHER = new GripType(new ResourceLocation(Reference.MOD_ID, "rocket_launcher"), new RocketLauncherPose());
+	public static final GripType ROCKET_LAUNCHER = new GripType(new ResourceLocation(GunMod.MOD_ID, "rocket_launcher"), new RocketLauncherPose());
 	
 	/**
 	 * A common method to set up a transformation of the weapon onto the players' back.

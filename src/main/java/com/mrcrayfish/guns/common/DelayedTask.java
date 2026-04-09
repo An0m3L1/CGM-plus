@@ -1,6 +1,6 @@
 package com.mrcrayfish.guns.common;
 
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.server.MinecraftServer;
 import net.minecraftforge.common.util.LogicalSidedProvider;
 import net.minecraftforge.event.TickEvent;
@@ -20,7 +20,7 @@ import java.util.List;
  * <p>
  * Author: MrCrayfish
  */
-@Mod.EventBusSubscriber(modid = Reference.MOD_ID)
+@Mod.EventBusSubscriber(modid = GunMod.MOD_ID)
 public class DelayedTask
 {
 	private static final List<Impl> tasks = new ArrayList<>();

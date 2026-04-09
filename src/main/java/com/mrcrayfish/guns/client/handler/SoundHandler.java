@@ -1,7 +1,7 @@
 package com.mrcrayfish.guns.client.handler;
 
 import com.mrcrayfish.guns.Config;
-import com.mrcrayfish.guns.Reference;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.audio.StunRingingSound;
 import com.mrcrayfish.guns.init.ModEffects;
 import net.minecraft.client.Minecraft;
@@ -165,17 +165,17 @@ public class SoundHandler
 	
 	private boolean isStunGrenade(ResourceLocation loc)
 	{
-		return loc.toString().equals(Reference.MOD_ID + ":grenade_stun_explosion");
+		return loc.toString().equals(GunMod.MOD_ID + ":grenade_stun_explosion");
 	}
 	
 	private boolean isSmokeGrenade(ResourceLocation loc)
 	{
-		return loc.toString().equals(Reference.MOD_ID + ":grenade_smoke_explosion");
+		return loc.toString().equals(GunMod.MOD_ID + ":grenade_smoke_explosion");
 	}
 	
 	private boolean isIncendiaryGrenade(ResourceLocation loc)
 	{
-		return loc.toString().equals(Reference.MOD_ID + ":grenade_incendiary_explosion");
+		return loc.toString().equals(GunMod.MOD_ID + ":grenade_incendiary_explosion");
 	}
 	
 	private float getMutedVolume(float duration, float volumeBase)

@@ -32,7 +32,9 @@ public class PistolModel implements IOverrideModel
 	// We'll render the non-moving/static parts first, then render the animated parts.
 	
 	// We start by declaring our render function that will handle rendering the core baked model (which is a non-moving part).
-	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
+	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent,
+	                   @Nullable
+	                   LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
 	{
 		// Render the item's BakedModel, which will serve as the core of our custom model.
 		BakedModel bakedModel = SpecialModels.PISTOL_BASE.getModel();
@@ -71,7 +73,7 @@ public class PistolModel implements IOverrideModel
 			}
 			catch(Exception e)
 			{
-				GunMod.LOGGER.error("NZGE encountered an error trying to apply animations.");
+				GunMod.LOGGER.error(GunMod.MOD_ID + " encountered an error trying to apply animations.");
 				e.printStackTrace();
 				disableAnimations = true;
 			}

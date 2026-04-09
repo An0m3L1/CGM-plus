@@ -5,6 +5,7 @@ import com.mojang.blaze3d.platform.Lighting;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
 import com.mojang.math.Vector3f;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.blockentity.WorkbenchBlockEntity;
 import com.mrcrayfish.guns.client.util.RenderUtil;
 import com.mrcrayfish.guns.common.NetworkGunManager;
@@ -54,7 +55,7 @@ import java.util.stream.Stream;
  */
 public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 {
-	private static final ResourceLocation GUI_BASE = new ResourceLocation("cgm:textures/gui/gun_workbench.png");
+	private static final ResourceLocation GUI_BASE = new ResourceLocation(GunMod.MOD_ID + ":textures/gui/gun_workbench.png");
 	private static boolean showRemaining = false;
 	
 	private Tab currentTab;
@@ -196,7 +197,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 				this.loadItem(index + 1);
 			}
 		}));
-		this.btnCraft = this.addRenderableWidget(new Button(this.leftPos + 195, this.topPos + 16, 74, 20, Component.translatable("gui.cgm.workbench.assemble"), button ->
+		this.btnCraft = this.addRenderableWidget(new Button(this.leftPos + 195, this.topPos + 16, 74, 20, Component.translatable("gui." + GunMod.MOD_ID + ".workbench.assemble"), button ->
 		{
 			int index = this.currentTab.getCurrentIndex();
 			WorkbenchRecipe recipe = this.currentTab.getRecipes().get(index);
@@ -204,7 +205,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 			PacketHandler.getPlayChannel().sendToServer(new C2SMessageCraft(registryName, this.workbench.getBlockPos()));
 		}));
 		this.btnCraft.active = false;
-		this.checkBoxMaterials = this.addRenderableWidget(new CheckBox(this.leftPos + 172, this.topPos + 51, Component.translatable("gui.cgm.workbench.show_remaining")));
+		this.checkBoxMaterials = this.addRenderableWidget(new CheckBox(this.leftPos + 172, this.topPos + 51, Component.translatable("gui." + GunMod.MOD_ID + ".workbench.show_remaining")));
 		this.checkBoxMaterials.setToggled(WorkbenchScreen.showRemaining);
 		this.loadItem(this.currentTab.getCurrentIndex());
 	}
@@ -587,7 +588,7 @@ public class WorkbenchScreen extends AbstractContainerScreen<WorkbenchContainer>
 		
 		public String getTabKey()
 		{
-			return "gui.cgm.workbench.tab." + this.id;
+			return "gui." + GunMod.MOD_ID + ".workbench.tab." + this.id;
 		}
 		
 		public void setCurrentIndex(int currentIndex)

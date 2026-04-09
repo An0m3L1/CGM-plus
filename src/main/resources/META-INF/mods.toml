@@ -13,80 +13,80 @@ description = '''
 Heavily modified, overhauled and expanded version of zaeonNineZeros CGM Expander Fork.
 '''
 
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "forge"
 mandatory = true
 versionRange = "[43.2.3,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "minecraft"
 mandatory = true
 versionRange = "[1.19,1.20)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "framework"
 mandatory = true
 versionRange = "[0.6.16,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "create"
 mandatory = true
 versionRange = "[0.5.1,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "createdieselgenerators"
 mandatory = false
 versionRange = "[1.19.2-1.2,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "farmersdelight"
 mandatory = false
 versionRange = "[1.2,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "sulfurpotassiummod"
 mandatory = false
 versionRange = "[2.3.4,)"
 ordering = "NONE"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "controllable"
 mandatory = false
 versionRange = "[0.16.3,)"
 ordering = "AFTER"
 side = "CLIENT"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "backpacked"
 mandatory = false
 versionRange = "[2.1.9,)"
 ordering = "AFTER"
 side = "CLIENT"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "shouldersurfing"
 mandatory = false
 versionRange = "[1.19.2-4.1.4,)"
 ordering = "AFTER"
 side = "CLIENT"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "dynamiclightsreforged"
 mandatory = false
 versionRange = "[1.19.2_v1.4.0,)"
 ordering = "AFTER"
 side = "BOTH"
-[[dependencies.cgm]]
+[[dependencies."${modId}"]]
 modId = "dynamictrees"
 mandatory = false
 versionRange = "[1.19.2-1.2.0,)"
 ordering = "AFTER"
 side = "BOTH"
 
-[modproperties.cgm]
+[modproperties."${modId}"]
 catalogueImageIcon = "icon.png"
 catalogueBackground = "banner.png"
 configuredBackground = "minecraft:textures/block/gray_concrete.png"

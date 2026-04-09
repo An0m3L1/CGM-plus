@@ -31,28 +31,16 @@
 		},
 		{
 			"chance": 2.0,
+			"item": "create:crushed_raw_iron"
+		},
+		{
 			"item": "minecraft:iron_ingot"
 		},
 		{
-			"chance": 2.0,
-			"item": "create:precision_mechanism"
+			"item": "minecraft:compass"
 		}
 	],
 	"sequence": [
-		{
-			"type": "create:cutting",
-			"ingredients": [
-				{
-					"item": "cgm:incomplete_sturdy_mechanism"
-				}
-			],
-			"processingTime": 50,
-			"results": [
-				{
-					"item": "cgm:incomplete_sturdy_mechanism"
-				}
-			]
-		},
 		{
 			"type": "create:deploying",
 			"ingredients": [
@@ -93,19 +81,6 @@
 				},
 				{
 					"tag": "forge:nuggets/steel"
-				}
-			],
-			"results": [
-				{
-					"item": "cgm:incomplete_sturdy_mechanism"
-				}
-			]
-		},
-		{
-			"type": "create:pressing",
-			"ingredients": [
-				{
-					"item": "cgm:incomplete_sturdy_mechanism"
 				}
 			],
 			"results": [

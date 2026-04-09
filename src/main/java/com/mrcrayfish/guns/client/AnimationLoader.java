@@ -24,8 +24,6 @@ import java.util.List;
 public final class AnimationLoader implements IDataLoader<AnimationLoader.AnimResource>
 {
 	private static AnimationLoader instance;
-	private static final String EXTENSION = ".cgmanim";
-	//private static final Gson GSON = new GsonBuilder().create();
 	
 	public static AnimationLoader getInstance()
 	{
@@ -57,7 +55,7 @@ public final class AnimationLoader implements IDataLoader<AnimationLoader.AnimRe
 	{
 		List<AnimResource> resources = new ArrayList<>();
 		ResourceManager manager = Minecraft.getInstance().getResourceManager();
-		for(var resource : manager.listResources("animations", location -> location.getPath().endsWith(EXTENSION)).entrySet())
+		for(var resource : manager.listResources("animations", location -> location.getPath().endsWith(GunMod.ANIM_EXTENSION)).entrySet())
 		{
 			try(var input = resource.getValue().open())
 			{
@@ -110,7 +108,7 @@ public final class AnimationLoader implements IDataLoader<AnimationLoader.AnimRe
 	public static String convertToName(String arg)
 	{
 		String output = arg.replace("animations/", "");
-		output = output.replace(EXTENSION, "");
+		output = output.replace(GunMod.ANIM_EXTENSION, "");
 		return output;
 	}
 	

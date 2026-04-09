@@ -71,7 +71,7 @@ public class Config
 		{
 			builder.push("crosshair");
 			{
-				this.crosshair = builder.comment("A custom crosshair to use for weapons. Available options: arrow, better_default, box, circle, dot, dynamic, filled_circle, hit_marker, line, round, smiley, square, t, tech.").define("crosshair", "cgm:dynamic");
+				this.crosshair = builder.comment("A custom crosshair to use for weapons. Available options: arrow, better_default, box, circle, dot, dynamic, filled_circle, hit_marker, line, round, smiley, square, t, tech.").define("crosshair", GunMod.MOD_ID + ":dynamic");
 				this.dynamicCrosshairBaseSpread = builder.comment("Resting size of Dynamic Crosshair when spread is zero.").defineInRange("dynamicCrosshairBaseSpread", 1.0, 0, 5);
 				this.dynamicCrosshairSpreadMultiplier = builder.comment("Bloom factor of Dynamic Crosshair when spread increases.").defineInRange("dynamicCrosshairSpreadMultiplier", 1.0, 1.0, 1.5);
 				this.dynamicCrosshairReactivity = builder.comment("How reactive Dynamic Crosshair is to shooting.").defineInRange("dynamicCrosshairReactivity", 2.0, 0, 10);

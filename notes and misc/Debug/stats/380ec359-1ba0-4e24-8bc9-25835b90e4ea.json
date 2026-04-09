@@ -1,1 +1,11 @@
-{"stats":{"minecraft:used":{"cgm:rifle":2,"redundantguns:combat_pistol":6,"cgm:assault_rifle":16,"nzgmaddon:heavy_pistol":5},"minecraft:custom":{"minecraft:jump":3,"minecraft:time_since_rest":1696,"minecraft:leave_game":1,"minecraft:sprint_one_cm":418,"minecraft:play_time":1696,"minecraft:time_since_death":1696,"minecraft:walk_one_cm":2371,"minecraft:total_world_time":1739,"minecraft:fly_one_cm":2806}},"DataVersion":3120}
+{
+	"stats": {
+		"minecraft:custom": {
+			"minecraft:jump": 12, "minecraft:time_since_rest": 3086, "minecraft:crouch_one_cm": 31, "minecraft:leave_game": 2,
+			"minecraft:play_time": 3086, "minecraft:sprint_one_cm": 5371, "minecraft:walk_on_water_one_cm": 30,
+			"minecraft:time_since_death": 3086, "minecraft:walk_one_cm": 6034, "minecraft:sneak_time": 30,
+			"minecraft:total_world_time": 3605, "minecraft:walk_under_water_one_cm": 501, "minecraft:swim_one_cm": 197,
+			"minecraft:fly_one_cm": 12587
+		}, "minecraft:used": {"minecraft:light": 4, "minecraft:white_concrete": 1, "cgm:assault_rifle": 16}
+	}, "DataVersion": 3120
+}

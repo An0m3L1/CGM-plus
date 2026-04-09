@@ -1,9 +1,63 @@
 {
-  "minecraft:adventure/adventuring_time": {
-    "criteria": {
-      "minecraft:plains": "2026-03-31 12:06:31 +0300"
-    },
-    "done": false
-  },
-  "DataVersion": 3120
+	"minecraft:recipes/transportation/acacia_boat": {
+		"criteria": {
+			"in_water": "2026-04-09 22:35:29 +0300"
+		},
+		"done": true
+	},
+	"minecraft:recipes/transportation/oak_boat": {
+		"criteria": {
+			"in_water": "2026-04-09 22:35:29 +0300"
+		},
+		"done": true
+	},
+	"farmersdelight:main/root": {
+		"criteria": {
+			"seeds": "2026-04-09 22:34:17 +0300"
+		},
+		"done": true
+	},
+	"create:root": {
+		"criteria": {
+			"0": "2026-04-09 22:34:17 +0300"
+		},
+		"done": true
+	},
+	"minecraft:recipes/transportation/dark_oak_boat": {
+		"criteria": {
+			"in_water": "2026-04-09 22:35:29 +0300"
+		},
+		"done": true
+	},
+	"minecraft:recipes/transportation/birch_boat": {
+		"criteria": {
+			"in_water": "2026-04-09 22:35:29 +0300"
+		},
+		"done": true
+	},
+	"minecraft:recipes/transportation/jungle_boat": {
+		"criteria": {
+			"in_water": "2026-04-09 22:35:29 +0300"
+		},
+		"done": true
+	},
+	"minecraft:recipes/transportation/mangrove_boat": {
+		"criteria": {
+			"in_water": "2026-04-09 22:35:29 +0300"
+		},
+		"done": true
+	},
+	"minecraft:recipes/transportation/spruce_boat": {
+		"criteria": {
+			"in_water": "2026-04-09 22:35:29 +0300"
+		},
+		"done": true
+	},
+	"minecraft:adventure/adventuring_time": {
+		"criteria": {
+			"minecraft:plains": "2026-03-31 12:06:31 +0300"
+		},
+		"done": false
+	},
+	"DataVersion": 3120
 }

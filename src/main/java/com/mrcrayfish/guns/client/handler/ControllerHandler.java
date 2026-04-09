@@ -8,6 +8,7 @@ import com.mrcrayfish.controllable.event.ControllerEvent;
 import com.mrcrayfish.controllable.event.GatherActionsEvent;
 import com.mrcrayfish.controllable.event.GatherNavigationPointsEvent;
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.client.GunButtonBindings;
 import com.mrcrayfish.guns.client.screen.WorkbenchScreen;
 import com.mrcrayfish.guns.common.Gun;
@@ -131,20 +132,20 @@ public class ControllerHandler
 			ItemStack heldItem = player.getMainHandItem();
 			if(heldItem.getItem() instanceof GunItem gunItem)
 			{
-				event.getActions().put(GunButtonBindings.AIM, new Action(Component.translatable("cgm.action.aim"), Action.Side.RIGHT));
-				event.getActions().put(GunButtonBindings.SHOOT, new Action(Component.translatable("cgm.action.shoot"), Action.Side.RIGHT));
+				event.getActions().put(GunButtonBindings.AIM, new Action(Component.translatable(GunMod.MOD_ID + ".action.aim"), Action.Side.RIGHT));
+				event.getActions().put(GunButtonBindings.SHOOT, new Action(Component.translatable(GunMod.MOD_ID + ".action.shoot"), Action.Side.RIGHT));
 				
 				Gun modifiedGun = gunItem.getModifiedGun(heldItem);
 				CompoundTag tag = heldItem.getTag();
 				if(tag != null && tag.getInt("AmmoCount") < GunCompositeStatHelper.getAmmoCapacity(heldItem, modifiedGun))
 				{
-					event.getActions().put(GunButtonBindings.RELOAD, new Action(Component.translatable("cgm.action.reload"), Action.Side.LEFT));
+					event.getActions().put(GunButtonBindings.RELOAD, new Action(Component.translatable(GunMod.MOD_ID + ".action.reload"), Action.Side.LEFT));
 				}
 				
 				Scope scope = Gun.getScope(heldItem);
 				if(scope != null && scope.isStable() && AimingHandler.get().isAiming())
 				{
-					event.getActions().put(GunButtonBindings.STEADY_AIM, new Action(Component.translatable("cgm.action.steady_aim"), Action.Side.RIGHT));
+					event.getActions().put(GunButtonBindings.STEADY_AIM, new Action(Component.translatable(GunMod.MOD_ID + ".action.steady_aim"), Action.Side.RIGHT));
 				}
 			}
 		}

@@ -99,7 +99,7 @@ public class AutomaticPistolModel implements IOverrideModel
 			}
 			catch(Exception e)
 			{
-				GunMod.LOGGER.error("NZGE encountered an error trying to apply animations.");
+				GunMod.LOGGER.error(GunMod.MOD_ID + " encountered an error trying to apply animations.");
 				e.printStackTrace();
 				disableAnimations = true;
 			}

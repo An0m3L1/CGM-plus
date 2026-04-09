@@ -1,5 +1,6 @@
 package com.mrcrayfish.guns.blockentity;
 
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.blockentity.inventory.IStorageBlock;
 import com.mrcrayfish.guns.common.container.WorkbenchContainer;
 import com.mrcrayfish.guns.init.ModTileEntities;
@@ -65,7 +66,7 @@ public class WorkbenchBlockEntity extends SyncedBlockEntity implements IStorageB
 	@Override
 	public @NotNull Component getDisplayName()
 	{
-		return Component.translatable("container.cgm.workbench");
+		return Component.translatable("container." + GunMod.MOD_ID + ".workbench");
 	}
 	
 	@Nullable

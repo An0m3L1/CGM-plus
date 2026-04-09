@@ -46,8 +46,8 @@ import java.util.List;
  */
 public class AttachmentScreen extends AbstractContainerScreen<AttachmentContainer>
 {
-	private static final ResourceLocation GUI_TEXTURES = new ResourceLocation("cgm:textures/gui/attachments2.png");
-	private static final Component CONFIG_TOOLTIP = Component.translatable("cgm.button.config.tooltip");
+	private static final ResourceLocation GUI_TEXTURES = new ResourceLocation(GunMod.MOD_ID + ":textures/gui/attachments2.png");
+	private static final Component CONFIG_TOOLTIP = Component.translatable(GunMod.MOD_ID + ".button.config.tooltip");
 	
 	private final Inventory playerInventory;
 	private final Container weaponInventory;
@@ -135,15 +135,15 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 				IAttachment.Type type = IAttachment.Type.values()[i];
 				if(!this.menu.getSlot(i).isActive())
 				{
-					this.renderComponentTooltip(poseStack, Arrays.asList(Component.translatable("slot.cgm.attachment." + type.getTranslationKey()), Component.translatable("slot.cgm.attachment.not_applicable")), mouseX, mouseY);
+					this.renderComponentTooltip(poseStack, Arrays.asList(Component.translatable("slot." + GunMod.MOD_ID + ".attachment." + type.getTranslationKey()), Component.translatable("slot." + GunMod.MOD_ID + ".attachment.not_applicable")), mouseX, mouseY);
 				}
 				else if(this.menu.getSlot(i) instanceof AttachmentSlot slot && slot.getItem().isEmpty() && !this.isCompatible(this.menu.getCarried(), slot))
 				{
-					this.renderComponentTooltip(poseStack, List.of(Component.translatable("slot.cgm.attachment.incompatible").withStyle(ChatFormatting.YELLOW)), mouseX, mouseY);
+					this.renderComponentTooltip(poseStack, List.of(Component.translatable("slot." + GunMod.MOD_ID + ".attachment.incompatible").withStyle(ChatFormatting.YELLOW)), mouseX, mouseY);
 				}
 				else if(this.weaponInventory.getItem(i).isEmpty())
 				{
-					this.renderComponentTooltip(poseStack, Collections.singletonList(Component.translatable("slot.cgm.attachment." + type.getTranslationKey())), mouseX, mouseY);
+					this.renderComponentTooltip(poseStack, Collections.singletonList(Component.translatable("slot." + GunMod.MOD_ID + ".attachment." + type.getTranslationKey())), mouseX, mouseY);
 				}
 			}
 		}
@@ -201,7 +201,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 		{
 			poseStack.pushPose();
 			poseStack.scale(0.5F, 0.5F, 0.5F);
-			minecraft.font.draw(poseStack, I18n.get("container.cgm.attachments.window_help"), 56, 38, 0xFFFFFF);
+			minecraft.font.draw(poseStack, I18n.get("container." + GunMod.MOD_ID + ".attachments.window_help"), 56, 38, 0xFFFFFF);
 			poseStack.popPose();
 		}
 	}
@@ -368,8 +368,8 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 			else if(this.minecraft != null && this.minecraft.player != null)
 			{
 				MutableComponent modName = Component.literal("Configured");
-				modName.setStyle(modName.getStyle().withColor(ChatFormatting.YELLOW).withUnderlined(true).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable("cgm.chat.open_curseforge_page"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/configured")));
-				Component message = Component.translatable("cgm.chat.install_configured", modName);
+				modName.setStyle(modName.getStyle().withColor(ChatFormatting.YELLOW).withUnderlined(true).withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, Component.translatable(GunMod.MOD_ID + ".chat.open_curseforge_page"))).withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL, "https://www.curseforge.com/minecraft/mc-mods/configured")));
+				Component message = Component.translatable(GunMod.MOD_ID + ".chat.install_configured", modName);
 				this.minecraft.player.displayClientMessage(message, false);
 			}
 		});

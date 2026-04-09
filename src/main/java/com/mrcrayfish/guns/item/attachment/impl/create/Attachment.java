@@ -63,12 +63,12 @@ public abstract class Attachment
 			{
 				if(Screen.hasControlDown())
 				{
-					event.getToolTip().add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+					event.getToolTip().add(Component.translatable("info." + GunMod.MOD_ID + ".stats").withStyle(ChatFormatting.GOLD));
 					event.getToolTip().addAll(perks);
 				}
 				else
 				{
-					event.getToolTip().add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+					event.getToolTip().add(Component.translatable("info." + GunMod.MOD_ID + ".stats_help").withStyle(ChatFormatting.GOLD));
 				}
 				return;
 			}
@@ -95,8 +95,7 @@ public abstract class Attachment
 				perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput < thisInput;
 				float modifierValue = toPercent(thisOutput);
-				//perkDescription = (isPositive ? "perk.cgm.fire_volume.positive" : "perk.cgm.fire_volume.negative");
-				perkDescription = "perk.cgm.fire_volume";
+				perkDescription = "perk." + GunMod.MOD_ID + ".fire_volume";
 				
 				addPerk(perkType, isPositive, true, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -106,7 +105,7 @@ public abstract class Attachment
 			{
 				if(modifier.silencedFire())
 				{
-					addPerk(positivePerks, true, "perk.cgm.silenced.positive");
+					addPerk(positivePerks, true, "perk." + GunMod.MOD_ID + ".silenced.positive");
 					break;
 				}
 			}
@@ -125,7 +124,7 @@ public abstract class Attachment
 				perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput < thisInput;
 				float modifierValue = toPercent(thisOutput);
-				perkDescription = "perk.cgm.flash";
+				perkDescription = "perk." + GunMod.MOD_ID + ".flash";
 				
 				addPerk(perkType, isPositive, true, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -135,8 +134,8 @@ public abstract class Attachment
 			{
 				if(modifier.lightMag())
 				{
-					addPerk(positivePerks, false, "perk.cgm.mag");
-					addPerk(positivePerks, true, "perk.cgm.reload");
+					addPerk(positivePerks, false, "perk." + GunMod.MOD_ID + ".mag");
+					addPerk(positivePerks, true, "perk." + GunMod.MOD_ID + ".reload");
 					break;
 				}
 			}
@@ -146,8 +145,8 @@ public abstract class Attachment
 			{
 				if(modifier.extMag())
 				{
-					addPerk(positivePerks, true, "perk.cgm.mag");
-					addPerk(positivePerks, false, "perk.cgm.reload");
+					addPerk(positivePerks, true, "perk." + GunMod.MOD_ID + ".mag");
+					addPerk(positivePerks, false, "perk." + GunMod.MOD_ID + ".reload");
 					break;
 				}
 			}
@@ -164,7 +163,7 @@ public abstract class Attachment
 				perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput < thisInput;
 				float modifierValue = toPercent(thisOutput);
-				perkDescription = "perk.cgm.sound_radius";
+				perkDescription = "perk." + GunMod.MOD_ID + ".sound_radius";
 				
 				addPerk(perkType, isPositive, true, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -177,11 +176,11 @@ public abstract class Attachment
 			}
 			if(additionalDamage > 0.0F)
 			{
-				addPerk(positivePerks, true, "perk.cgm.additional_damage.positive", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage / 2.0));
+				addPerk(positivePerks, true, "perk." + GunMod.MOD_ID + ".additional_damage.positive", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage / 2.0));
 			}
 			else if(additionalDamage < 0.0F)
 			{
-				addPerk(negativePerks, false, "perk.cgm.additional_damage.negative", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage / 2.0));
+				addPerk(negativePerks, false, "perk." + GunMod.MOD_ID + ".additional_damage.negative", ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(additionalDamage / 2.0));
 			}
 			
 			/* Test for modified damage */
@@ -196,8 +195,8 @@ public abstract class Attachment
 				perkType = (thisOutput >= thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput > thisInput;
 				float modifierValue = toPercent(thisOutput);
-				//perkDescription = (isPositive ? "perk.cgm.modified_damage.positive" : "perk.cgm.modified_damage.negative");
-				perkDescription = "perk.cgm.modified_damage";
+				//perkDescription = (isPositive ? "perk."+GunMod.MOD_ID+".modified_damage.positive" : "perk."+GunMod.MOD_ID+".modified_damage.negative");
+				perkDescription = "perk." + GunMod.MOD_ID + ".modified_damage";
 				
 				addPerk(perkType, isPositive, false, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -214,8 +213,8 @@ public abstract class Attachment
 				perkType = (thisOutput >= thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput > thisInput;
 				float modifierValue = toPercent(thisOutput);
-				//perkDescription = (isPositive ? "perk.cgm.projectile_speed.positive" : "perk.cgm.projectile_speed.negative");
-				perkDescription = "perk.cgm.projectile_speed";
+				//perkDescription = (isPositive ? "perk."+GunMod.MOD_ID+".projectile_speed.positive" : "perk."+GunMod.MOD_ID+".projectile_speed.negative");
+				perkDescription = "perk." + GunMod.MOD_ID + ".projectile_speed";
 				
 				addPerk(perkType, isPositive, false, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -232,8 +231,8 @@ public abstract class Attachment
 				perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput < thisInput;
 				float modifierValue = toPercent(thisOutput);
-				//perkDescription = (isPositive ? "perk.cgm.projectile_spread.positive" : "perk.cgm.projectile_spread.negative");
-				perkDescription = "perk.cgm.projectile_spread";
+				//perkDescription = (isPositive ? "perk."+GunMod.MOD_ID+".projectile_spread.positive" : "perk."+GunMod.MOD_ID+".projectile_spread.negative");
+				perkDescription = "perk." + GunMod.MOD_ID + ".projectile_spread";
 				
 				addPerk(perkType, isPositive, true, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -252,8 +251,8 @@ public abstract class Attachment
 				perkType = (thisOutput >= thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput > thisInput;
 				float modifierValue = toPercent(thisOutput / 10F);
-				//perkDescription = (isPositive ? "perk.cgm.projectile_life.positive" : "perk.cgm.projectile_life.negative");
-				perkDescription = "perk.cgm.projectile_life";
+				//perkDescription = (isPositive ? "perk."+GunMod.MOD_ID+".projectile_life.positive" : "perk."+GunMod.MOD_ID+".projectile_life.negative");
+				perkDescription = "perk." + GunMod.MOD_ID + ".projectile_life";
 				
 				addPerk(perkType, isPositive, false, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -272,8 +271,8 @@ public abstract class Attachment
 				perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput < thisInput;
 				float modifierValue = toPercent(thisOutput);
-				//perkDescription = (isPositive ? "perk.cgm.recoil.positive" : "perk.cgm.recoil.negative");
-				perkDescription = "perk.cgm.recoil";
+				//perkDescription = (isPositive ? "perk."+GunMod.MOD_ID+".recoil.positive" : "perk."+GunMod.MOD_ID+".recoil.negative");
+				perkDescription = "perk." + GunMod.MOD_ID + ".recoil";
 				
 				addPerk(perkType, isPositive, true, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -290,7 +289,7 @@ public abstract class Attachment
 				perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput > thisInput;
 				float modifierValue = toPercent(thisOutput);
-				perkDescription = "perk.cgm.ads_time";
+				perkDescription = "perk." + GunMod.MOD_ID + ".ads_time";
 				
 				addPerk(perkType, isPositive, true, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -307,8 +306,8 @@ public abstract class Attachment
 				perkType = (thisOutput < thisInput ? positivePerks : negativePerks);
 				boolean isPositive = thisOutput < thisInput;
 				float modifierValue = toPercent(thisOutput);
-				//perkDescription = (isPositive ? "perk.cgm.rate.positive" : "perk.cgm.rate.negative");
-				perkDescription = "perk.cgm.rate";
+				//perkDescription = (isPositive ? "perk."+GunMod.MOD_ID+".rate.positive" : "perk."+GunMod.MOD_ID+".rate.negative");
+				perkDescription = "perk." + GunMod.MOD_ID + ".rate";
 				
 				addPerk(perkType, isPositive, true, (float) Math.round(modifierValue * 100) / 100, perkDescription);
 			}
@@ -317,7 +316,7 @@ public abstract class Attachment
 			attachment.getProperties().setPerks(positivePerks);
 			if(!positivePerks.isEmpty())
 			{
-				event.getToolTip().add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GRAY, ChatFormatting.BOLD));
+				event.getToolTip().add(Component.translatable("info." + GunMod.MOD_ID + ".stats").withStyle(ChatFormatting.GRAY, ChatFormatting.BOLD));
 				event.getToolTip().addAll(positivePerks);
 			}
 		}
@@ -330,12 +329,12 @@ public abstract class Attachment
 	
 	private static void addPerk(List<Component> components, boolean positive, String id, Object... params)
 	{
-		components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.GRAY)).withStyle(positive ? ChatFormatting.GREEN : ChatFormatting.RED));
+		components.add(Component.translatable(positive ? "perk." + GunMod.MOD_ID + ".entry.positive" : "perk." + GunMod.MOD_ID + ".entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.GRAY)).withStyle(positive ? ChatFormatting.GREEN : ChatFormatting.RED));
 	}
 	
 	private static void addPerk(List<Component> components, boolean positive, float value, String id, Object... params)
 	{
-		components.add(Component.translatable(positive ? "perk.cgm.entry.positive" : "perk.cgm.entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.GRAY).append(Component.literal(" (" + Math.abs(value) + "%)").withStyle(ChatFormatting.GRAY))).withStyle(positive ? ChatFormatting.DARK_AQUA : ChatFormatting.GOLD));
+		components.add(Component.translatable(positive ? "perk." + GunMod.MOD_ID + ".entry.positive" : "perk." + GunMod.MOD_ID + ".entry.negative", Component.translatable(id, params).withStyle(ChatFormatting.GRAY).append(Component.literal(" (" + Math.abs(value) + "%)").withStyle(ChatFormatting.GRAY))).withStyle(positive ? ChatFormatting.DARK_AQUA : ChatFormatting.GOLD));
 	}
 	
 	private static void addPerk(List<Component> components, boolean positive, boolean invert, float value, String id, Object... params)

@@ -32,7 +32,9 @@ public class TacticalRifleModel implements IOverrideModel
 	// We only need to render removable parts for this model, so we can skip the animation portion.
 	
 	// We start by declaring our render function that will handle rendering the core baked model (which is a non-moving part).
-	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
+	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent,
+	                   @Nullable
+	                   LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
 	{
 		// Render the item's BakedModel, which will serve as the core of our custom model.
 		BakedModel bakedModel = SpecialModels.TACTICAL_RIFLE_BASE.getModel();
@@ -83,7 +85,7 @@ public class TacticalRifleModel implements IOverrideModel
 			}
 			catch(Exception e)
 			{
-				GunMod.LOGGER.error("CGM Expanded encountered an error trying to apply animations (Should not happen!!)");
+				GunMod.LOGGER.error(GunMod.MOD_ID + "encountered an error trying to apply animations (Should not happen!!)");
 				e.printStackTrace();
 				disableAnimations = true;
 			}

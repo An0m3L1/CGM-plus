@@ -56,7 +56,7 @@ public final class AnimationMetaLoader implements IDataLoader<AnimationMetaLoade
 		ForgeRegistries.ITEMS.getValues().stream().filter(item -> item instanceof IMeta).forEach(item ->
 		{
 			ResourceLocation key = item.builtInRegistryHolder().key().location();
-			ResourceLocation location = new ResourceLocation(key.getNamespace(), "animations/" + key.getPath() + ".cgmanim");
+			ResourceLocation location = new ResourceLocation(key.getNamespace(), "animations/" + key.getPath() + GunMod.ANIM_EXTENSION);
 			resources.add(new AnimResource(key, location));
 		});
 		return resources;

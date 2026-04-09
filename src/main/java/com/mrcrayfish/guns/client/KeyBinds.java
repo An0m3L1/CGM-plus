@@ -1,5 +1,6 @@
 package com.mrcrayfish.guns.client;
 
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.client.KeyMapping;
 import net.minecraft.client.Minecraft;
 import net.minecraftforge.client.event.RegisterKeyMappingsEvent;
@@ -10,10 +11,10 @@ import org.lwjgl.glfw.GLFW;
  */
 public class KeyBinds
 {
-	public static final KeyMapping KEY_RELOAD = new KeyMapping("key.cgm.reload", GLFW.GLFW_KEY_R, "key.categories.cgm");
-	public static final KeyMapping KEY_UNLOAD = new KeyMapping("key.cgm.unload", GLFW.GLFW_KEY_U, "key.categories.cgm");
-	public static final KeyMapping KEY_ATTACHMENTS = new KeyMapping("key.cgm.attachments", GLFW.GLFW_KEY_G, "key.categories.cgm");
-	public static final KeyMapping KEY_FIRE_MODE = new KeyMapping("key.cgm.fire_mode", GLFW.GLFW_KEY_V, "key.categories.cgm");
+	public static final KeyMapping KEY_RELOAD = new KeyMapping("key." + GunMod.MOD_ID + ".reload", GLFW.GLFW_KEY_R, "key.categories." + GunMod.MOD_ID);
+	public static final KeyMapping KEY_UNLOAD = new KeyMapping("key." + GunMod.MOD_ID + ".unload", GLFW.GLFW_KEY_U, "key.categories." + GunMod.MOD_ID);
+	public static final KeyMapping KEY_ATTACHMENTS = new KeyMapping("key." + GunMod.MOD_ID + ".attachments", GLFW.GLFW_KEY_G, "key.categories." + GunMod.MOD_ID);
+	public static final KeyMapping KEY_FIRE_MODE = new KeyMapping("key." + GunMod.MOD_ID + ".fire_mode", GLFW.GLFW_KEY_V, "key.categories." + GunMod.MOD_ID);
 	
 	public static void registerKeyMappings(RegisterKeyMappingsEvent event)
 	{

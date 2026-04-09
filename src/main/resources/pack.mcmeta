@@ -1,6 +1,6 @@
 {
 	"pack": {
-		"description": "Resources for CGM+",
+		"description": "Resources for ${modName}",
 		"pack_format": 9
 	}
 }

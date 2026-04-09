@@ -48,7 +48,10 @@ import top.theillusivec4.curios.api.SlotTypePreset;
 @Mod(GunMod.MOD_ID)
 public class GunMod
 {
-	public static final String MOD_ID = "cgm"; // Get in gradle.properties
+	// Get modId in gradle.properties
+	public static final String MOD_ID = "cgm";
+	public static final String ANIM_EXTENSION = "." + GunMod.MOD_ID + "anim";
+	public static final String META_EXTENSION = "." + GunMod.MOD_ID + "meta";
 	
 	public static boolean debugging = false;
 	public static boolean controllableLoaded = false;

@@ -3,6 +3,7 @@ package com.mrcrayfish.guns.client.util;
 import com.mrcrayfish.framework.api.serialize.DataObject;
 import com.mrcrayfish.framework.api.serialize.DataString;
 import com.mrcrayfish.framework.api.serialize.DataType;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.resources.ResourceLocation;
 
 /**
@@ -10,7 +11,7 @@ import net.minecraft.resources.ResourceLocation;
  */
 public final class GunReloadAnimationHelper
 {
-	public static final String ANIMATION_KEY = "cgm:animations";
+	public static final String ANIMATION_KEY = GunMod.MOD_ID + ":animations";
 	
 	/* Property Helpers for Reload Animations */
 	// Easings

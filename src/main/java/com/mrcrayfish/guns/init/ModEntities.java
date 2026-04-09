@@ -34,11 +34,10 @@ public class ModEntities
 	public static final RegistryObject<EntityType<ThrowableIncendiaryGrenadeEntity>> THROWABLE_INCENDIARY_GRENADE = registerBasic("throwable_incendiary_grenade", ThrowableIncendiaryGrenadeEntity::new);
 	public static final RegistryObject<EntityType<ThrowableMolotovEntity>> THROWABLE_MOLOTOV = registerBasic("throwable_molotov", ThrowableMolotovEntity::new);
 	public static final RegistryObject<EntityType<LightSourceEntity>> LIGHT_SOURCE = registerLight("light_source", LightSourceEntity::new);
-	public static final RegistryObject<EntityType<BulletEntity>> LIGHT_BULLET = REGISTER.register("light_bullet", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("light_bullet"));
 	
+	public static final RegistryObject<EntityType<BulletEntity>> LIGHT_BULLET = REGISTER.register("light_bullet", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("light_bullet"));
 	public static final RegistryObject<EntityType<BulletEntity>> MEDIUM_BULLET = REGISTER.register("medium_bullet", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("medium_bullet"));
 	public static final RegistryObject<EntityType<BulletEntity>> HEAVY_BULLET = REGISTER.register("heavy_bullet", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("heavy_bullet"));
-	
 	public static final RegistryObject<EntityType<BulletEntity>> BUCKSHOT_SHELL = REGISTER.register("buckshot_shell", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("buckshot_shell"));
 	
 	private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, Level, T> function)

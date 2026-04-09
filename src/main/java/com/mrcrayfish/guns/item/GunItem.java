@@ -105,13 +105,13 @@ public class GunItem extends Item implements IColored, IMeta
 		/* Broken check */
 		if(isBroken)
 		{
-			tooltip.add(Component.translatable("info.cgm.broken").withStyle(ChatFormatting.DARK_RED));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".broken").withStyle(ChatFormatting.DARK_RED));
 		}
 		
 		/* Full stats list */
 		if(Screen.hasControlDown())
 		{
-			tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats").withStyle(ChatFormatting.GOLD));
 			/* Additional Damage */
 			{
 				if(tagCompound != null)
@@ -136,11 +136,11 @@ public class GunItem extends Item implements IColored, IMeta
 			{
 				if(projectileAmount >= 2)
 				{
-					tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + ChatFormatting.GRAY + " (" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage / projectileAmount) + "*" + projectileAmount + ")").withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + ChatFormatting.GRAY + " (" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage / projectileAmount) + "*" + projectileAmount + ")").withStyle(ChatFormatting.GRAY));
 				}
 				else
 				{
-					tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
 				}
 			}
 			/* Headshot damage */
@@ -149,24 +149,24 @@ public class GunItem extends Item implements IColored, IMeta
 				{
 					if(projectileAmount >= 2)
 					{
-						tooltip.add(Component.translatable("info.cgm.headshot_damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotDamage) + ChatFormatting.GRAY + " (" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotDamage / projectileAmount) + "*" + projectileAmount + ")").withStyle(ChatFormatting.GRAY));
+						tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".headshot_damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotDamage) + ChatFormatting.GRAY + " (" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotDamage / projectileAmount) + "*" + projectileAmount + ")").withStyle(ChatFormatting.GRAY));
 					}
 					else
 					{
-						tooltip.add(Component.translatable("info.cgm.headshot_damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotDamage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
+						tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".headshot_damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(headshotDamage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
 					}
 				}
 			}
 			/* Fire Rate */
 			{
-				tooltip.add(Component.translatable("info.cgm.rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireRateRPM)).withStyle(ChatFormatting.GRAY));
+				tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireRateRPM)).withStyle(ChatFormatting.GRAY));
 			}
 			tooltip.add(Component.literal(separator).withStyle(ChatFormatting.DARK_GRAY));
 			/* Ammo Type */
 			{
 				if(ammoType != null && !Gun.usesEnergy(stack))
 				{
-					tooltip.add(Component.translatable("info.cgm.ammo_type", Component.translatable(ammoType.getDescriptionId()).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo_type", Component.translatable(ammoType.getDescriptionId()).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
 				}
 			}
 			/* Ammo Capacity */
@@ -177,7 +177,7 @@ public class GunItem extends Item implements IColored, IMeta
 					{
 						if(!Gun.usesEnergy(stack))
 						{
-							tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.LIGHT_PURPLE + "∞" + "/" + "∞").withStyle(ChatFormatting.GRAY));
+							tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo", ChatFormatting.LIGHT_PURPLE + "∞" + "/" + "∞").withStyle(ChatFormatting.GRAY));
 						}
 					}
 					else
@@ -185,41 +185,41 @@ public class GunItem extends Item implements IColored, IMeta
 						int ammoCount = tagCompound.getInt("AmmoCount");
 						if(ammoCount == 0)
 						{
-							tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.RED.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+							tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo", ChatFormatting.RED.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
 						}
 						else
 						{
-							tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.WHITE.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+							tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo", ChatFormatting.WHITE.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
 						}
 					}
 					if(Gun.usesEnergy(stack))
 					{
 						int energy = tagCompound.getInt("Energy");
-						tooltip.add(Component.translatable("info.cgm.energy", ChatFormatting.WHITE.toString() + energy + "/" + modifiedGun.getGeneral().getEnergyCapacity()).withStyle(ChatFormatting.AQUA));
+						tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".energy", ChatFormatting.WHITE.toString() + energy + "/" + modifiedGun.getGeneral().getEnergyCapacity()).withStyle(ChatFormatting.AQUA));
 					}
 				}
 			}
 			/* Armor and protection piercing */
 			{
-				tooltip.add(Component.translatable("info.cgm.armor_penetration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(armorPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
-				tooltip.add(Component.translatable("info.cgm.protection_penetration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(protectionPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
+				tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".armor_penetration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(armorPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
+				tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".protection_penetration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(protectionPiercePercent) + "%").withStyle(ChatFormatting.GRAY));
 			}
 			/* Pierce count */
 			{
 				if(maxPierceCount > 0)
 				{
-					tooltip.add(Component.translatable("info.cgm.penetration_power", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxPierceCount)).withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".penetration_power", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxPierceCount)).withStyle(ChatFormatting.GRAY));
 				}
 				if(maxPierceCount == -1)
 				{
-					tooltip.add(Component.translatable("info.cgm.penetration_power", ChatFormatting.LIGHT_PURPLE + "∞").withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".penetration_power", ChatFormatting.LIGHT_PURPLE + "∞").withStyle(ChatFormatting.GRAY));
 				}
 			}
 			/* Explosion radius */
 			{
 				if(explosionRadius > 0.0F)
 				{
-					tooltip.add(Component.translatable("info.cgm.explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
 				}
 			}
 			tooltip.add(Component.literal(separator).withStyle(ChatFormatting.DARK_GRAY));
@@ -233,40 +233,40 @@ public class GunItem extends Item implements IColored, IMeta
 				{
 					reloadTimeSeconds = (float) GunCompositeStatHelper.getReloadInterval(stack, false) / 20;
 				}
-				tooltip.add(Component.translatable("info.cgm.reload_rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(reloadTimeSeconds)).withStyle(ChatFormatting.GRAY));
+				tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".reload_rate", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(reloadTimeSeconds)).withStyle(ChatFormatting.GRAY));
 			}
 			/* ADS Time */
 			{
 				if(modifiedGun.getModules().getZoom() != null)
 				{
-					tooltip.add(Component.translatable("info.cgm.ads_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsTimeSeconds)).withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ads_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsTimeSeconds)).withStyle(ChatFormatting.GRAY));
 				}
 			}
 			/* Draw time */
 			{
-				tooltip.add(Component.translatable("info.cgm.draw_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(drawTimeSeconds)).withStyle(ChatFormatting.GRAY));
+				tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".draw_time", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(drawTimeSeconds)).withStyle(ChatFormatting.GRAY));
 			}
 			tooltip.add(Component.literal(separator).withStyle(ChatFormatting.DARK_GRAY));
 			/* Recoil */
 			{
-				tooltip.add(Component.translatable("info.cgm.recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoilDegrees) + "°").withStyle(ChatFormatting.WHITE)));
+				tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(recoilDegrees) + "°").withStyle(ChatFormatting.WHITE)));
 			}
 			/* ADS Recoil */
 			{
 				if(adsRecoilDegrees != recoilDegrees && modifiedGun.getModules().getZoom() != null)
 				{
-					tooltip.add(Component.translatable("info.cgm.ads_recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsRecoilDegrees) + "°").withStyle(ChatFormatting.WHITE)));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ads_recoil").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsRecoilDegrees) + "°").withStyle(ChatFormatting.WHITE)));
 				}
 			}
 			/* Spread */
 			{
 				if((minSpreadDegrees != spreadDegrees) && ((minSpreadDegrees > 0) || (!isAlwaysSpread)))
 				{
-					tooltip.add(Component.translatable("info.cgm.spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(minSpreadDegrees) + "°-" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(minSpreadDegrees) + "°-" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
 				}
 				else
 				{
-					tooltip.add(Component.translatable("info.cgm.spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(spreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
 				}
 			}
 			/* ADS Spread */
@@ -286,11 +286,11 @@ public class GunItem extends Item implements IColored, IMeta
 				{
 					if((adsMinSpreadDegrees != adsSpreadDegrees) && ((adsMinSpreadDegrees > 0) || (!isAlwaysSpread)))
 					{
-						tooltip.add(Component.translatable("info.cgm.ads_spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsMinSpreadDegrees) + "°-" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
+						tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ads_spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsMinSpreadDegrees) + "°-" + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
 					}
 					else
 					{
-						tooltip.add(Component.translatable("info.cgm.ads_spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
+						tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ads_spread").withStyle(ChatFormatting.GRAY).append(Component.literal(ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(adsSpreadDegrees) + "°").withStyle(ChatFormatting.WHITE)));
 					}
 				}
 			}
@@ -320,13 +320,13 @@ public class GunItem extends Item implements IColored, IMeta
 			}
 			/* Damage */
 			{
-				tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
+				tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage) + additionalDamageText).withStyle(ChatFormatting.GRAY));
 			}
 			/* Ammo Type */
 			{
 				if(ammoType != null && !Gun.usesEnergy(stack))
 				{
-					tooltip.add(Component.translatable("info.cgm.ammo_type", Component.translatable(ammoType.getDescriptionId()).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
+					tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo_type", Component.translatable(ammoType.getDescriptionId()).withStyle(ChatFormatting.WHITE)).withStyle(ChatFormatting.GRAY));
 				}
 			}
 			/* Ammo Capacity */
@@ -337,7 +337,7 @@ public class GunItem extends Item implements IColored, IMeta
 					{
 						if(!Gun.usesEnergy(stack))
 						{
-							tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.LIGHT_PURPLE + "∞" + "/" + "∞").withStyle(ChatFormatting.GRAY));
+							tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo", ChatFormatting.LIGHT_PURPLE + "∞" + "/" + "∞").withStyle(ChatFormatting.GRAY));
 						}
 					}
 					else
@@ -345,21 +345,21 @@ public class GunItem extends Item implements IColored, IMeta
 						int ammoCount = tagCompound.getInt("AmmoCount");
 						if(ammoCount == 0)
 						{
-							tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.RED.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+							tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo", ChatFormatting.RED.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
 						}
 						else
 						{
-							tooltip.add(Component.translatable("info.cgm.ammo", ChatFormatting.WHITE.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
+							tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".ammo", ChatFormatting.WHITE.toString() + ammoCount + "/" + GunCompositeStatHelper.getAmmoCapacity(stack, modifiedGun)).withStyle(ChatFormatting.GRAY));
 						}
 					}
 					if(Gun.usesEnergy(stack))
 					{
 						int energy = tagCompound.getInt("Energy");
-						tooltip.add(Component.translatable("info.cgm.energy", ChatFormatting.WHITE.toString() + energy + "/" + modifiedGun.getGeneral().getEnergyCapacity()).withStyle(ChatFormatting.AQUA));
+						tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".energy", ChatFormatting.WHITE.toString() + energy + "/" + modifiedGun.getGeneral().getEnergyCapacity()).withStyle(ChatFormatting.AQUA));
 					}
 				}
 			}
-			tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats_help").withStyle(ChatFormatting.GOLD));
 		}
 	}
 	

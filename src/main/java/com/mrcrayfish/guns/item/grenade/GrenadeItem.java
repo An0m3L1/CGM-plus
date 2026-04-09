@@ -45,21 +45,23 @@ public class GrenadeItem extends Item implements IGrenade
 	}
 	
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	public void appendHoverText(@NotNull ItemStack stack,
+	                            @Nullable
+	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
 		double damage = Config.SERVER.grenadeExplosionDamage.get();
 		double explosionRadius = (Config.SERVER.grenadeExplosionRadius.get());
 		float cookTime = (float) maxCookTime / 20;
 		if(Screen.hasControlDown())
 		{
-			tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
-			tooltip.add(Component.translatable("info.cgm.damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".damage", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(damage)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".explosion_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(explosionRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
 		}
 		else
 		{
-			tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats_help").withStyle(ChatFormatting.GOLD));
 		}
 	}
 	

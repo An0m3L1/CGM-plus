@@ -28,7 +28,9 @@ public class SniperRifleModel implements IOverrideModel
 	private boolean disableAnimations = false;
 	
 	@Override
-	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent, @Nullable LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
+	public void render(float partialTicks, ItemTransforms.TransformType transformType, ItemStack stack, ItemStack parent,
+	                   @Nullable
+	                   LivingEntity entity, PoseStack poseStack, MultiBufferSource buffer, int light, int overlay)
 	{
 		BakedModel bakedModel = SpecialModels.SNIPER_RIFLE_BASE.getModel();
 		Minecraft.getInstance().getItemRenderer().render(stack, ItemTransforms.TransformType.NONE, false, poseStack, buffer, light, overlay, GunModel.wrap(bakedModel));
@@ -76,7 +78,7 @@ public class SniperRifleModel implements IOverrideModel
 			}
 			catch(Exception e)
 			{
-				GunMod.LOGGER.error("Redundant Guns encountered an error trying to apply animations.");
+				GunMod.LOGGER.error(GunMod.MOD_ID + " encountered an error trying to apply animations.");
 				e.printStackTrace();
 				disableAnimations = true;
 			}

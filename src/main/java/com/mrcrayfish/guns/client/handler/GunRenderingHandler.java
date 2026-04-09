@@ -926,7 +926,7 @@ public class GunRenderingHandler
 			}
 			if(heldItem.getDamageValue() == (heldItem.getMaxDamage() - 1))
 			{
-				GuiComponent.drawString(poseStack, mc.font, Component.translatable("info.cgm.broken"), ammoPosX, brokenPosY, 0xAA0000);
+				GuiComponent.drawString(poseStack, mc.font, Component.translatable("info." + GunMod.MOD_ID + ".broken"), ammoPosX, brokenPosY, 0xAA0000);
 			}
 			
 			// Ammo Item Icon

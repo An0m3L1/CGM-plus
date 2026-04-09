@@ -1,6 +1,7 @@
 package com.mrcrayfish.guns.item.grenade;
 
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.entity.grenade.ThrowableIncendiaryGrenadeEntity;
 import net.minecraft.ChatFormatting;
 import net.minecraft.client.gui.screens.Screen;
@@ -26,21 +27,23 @@ public class IncendiaryGrenadeItem extends GrenadeItem
 	}
 	
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	public void appendHoverText(@NotNull ItemStack stack,
+	                            @Nullable
+	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
 		double fireRadius = Config.SERVER.incendiaryGrenadeExplosionRadius.get();
 		int fireDuration = Config.SERVER.incendiaryGrenadeFireDuration.get();
 		float cookTime = (float) maxCookTime / 20;
 		if(Screen.hasControlDown())
 		{
-			tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
-			tooltip.add(Component.translatable("info.cgm.fire_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireRadius)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.fire_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDuration)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".fire_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".fire_duration", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(fireDuration)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
 		}
 		else
 		{
-			tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats_help").withStyle(ChatFormatting.GOLD));
 		}
 	}
 	

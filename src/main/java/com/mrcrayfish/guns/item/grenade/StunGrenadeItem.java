@@ -1,6 +1,7 @@
 package com.mrcrayfish.guns.item.grenade;
 
 import com.mrcrayfish.guns.Config;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.mrcrayfish.guns.entity.grenade.ThrowableStunGrenadeEntity;
 import net.minecraft.ChatFormatting;
@@ -27,7 +28,9 @@ public class StunGrenadeItem extends GrenadeItem
 	}
 	
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	public void appendHoverText(@NotNull ItemStack stack,
+	                            @Nullable
+	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
 		double blindRadius = (Config.SERVER.blindCriteria.radius.get());
 		float maxBlindDuration = (float) (Config.SERVER.blindCriteria.durationMax.get());
@@ -36,16 +39,16 @@ public class StunGrenadeItem extends GrenadeItem
 		float cookTime = (float) maxCookTime / 20;
 		if(Screen.hasControlDown())
 		{
-			tooltip.add(Component.translatable("info.cgm.stats").withStyle(ChatFormatting.GOLD));
-			tooltip.add(Component.translatable("info.cgm.blind_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(blindRadius)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.blind", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxBlindDuration)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.stun_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(stunRadius)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.stun", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxStunDuration)).withStyle(ChatFormatting.GRAY));
-			tooltip.add(Component.translatable("info.cgm.fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".blind_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(blindRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".blind", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxBlindDuration)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stun_radius", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(stunRadius)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stun", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(maxStunDuration)).withStyle(ChatFormatting.GRAY));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".fuse", ChatFormatting.WHITE + ItemStack.ATTRIBUTE_MODIFIER_FORMAT.format(cookTime)).withStyle(ChatFormatting.GRAY));
 		}
 		else
 		{
-			tooltip.add(Component.translatable("info.cgm.stats_help").withStyle(ChatFormatting.GOLD));
+			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats_help").withStyle(ChatFormatting.GOLD));
 		}
 	}
 	

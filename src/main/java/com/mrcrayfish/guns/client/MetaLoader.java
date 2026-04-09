@@ -3,6 +3,7 @@ package com.mrcrayfish.guns.client;
 import com.mrcrayfish.framework.api.serialize.DataObject;
 import com.mrcrayfish.framework.client.resources.IDataLoader;
 import com.mrcrayfish.framework.client.resources.IResourceSupplier;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.item.IMeta;
 import it.unimi.dsi.fastutil.objects.Object2ObjectMap;
 import it.unimi.dsi.fastutil.objects.Object2ObjectOpenCustomHashMap;
@@ -49,7 +50,7 @@ public final class MetaLoader implements IDataLoader<MetaLoader.ItemResource>
 		ForgeRegistries.ITEMS.getValues().stream().filter(item -> item instanceof IMeta).forEach(item ->
 		{
 			ResourceLocation key = item.builtInRegistryHolder().key().location();
-			ResourceLocation location = new ResourceLocation(key.getNamespace(), "models/item/" + key.getPath() + ".cgmmeta");
+			ResourceLocation location = new ResourceLocation(key.getNamespace(), "models/item/" + key.getPath() + GunMod.META_EXTENSION);
 			resources.add(new ItemResource(item, location));
 		});
 		return resources;

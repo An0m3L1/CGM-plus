@@ -41,7 +41,7 @@ public class SpecialHitMarker extends Crosshair
 		
 		RenderSystem.setShader(GameRenderer::getPositionTexColorShader);
 		RenderSystem.setShaderColor(1.0F, (!crit ? 1.0F : 0.25F), (!crit ? 1.0F : 0.25F), 1.0F - (hitMarkerProgress * 0.3F));
-		boolean useAltHitMarker = (Objects.equals(Objects.requireNonNull(CrosshairHandler.get().getCurrentCrosshair()).getIDString(), "cgm:hit_marker"));
+		boolean useAltHitMarker = (Objects.equals(Objects.requireNonNull(CrosshairHandler.get().getCurrentCrosshair()).getIDString(), GunMod.MOD_ID + ":hit_marker"));
 		ResourceLocation texture = (useAltHitMarker ? ALT_HITMARKER : NORMAL_HITMARKER);
 		RenderSystem.setShaderTexture(0, texture);
 		RenderSystem.enableBlend();

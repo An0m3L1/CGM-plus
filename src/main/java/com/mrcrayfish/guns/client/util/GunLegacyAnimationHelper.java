@@ -4,6 +4,7 @@ import com.mrcrayfish.framework.api.serialize.DataArray;
 import com.mrcrayfish.framework.api.serialize.DataNumber;
 import com.mrcrayfish.framework.api.serialize.DataObject;
 import com.mrcrayfish.framework.api.serialize.DataType;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment;
 import com.mrcrayfish.guns.item.attachment.impl.IAttachment.Type;
 import net.minecraft.world.item.ItemStack;
@@ -14,7 +15,7 @@ import net.minecraft.world.phys.Vec3;
  */
 public final class GunLegacyAnimationHelper
 {
-	public static final String WEAPON_KEY = "cgm:weapon";
+	public static final String WEAPON_KEY = GunMod.MOD_ID + ":weapon";
 	
 	public static float getAnimationValue(ItemStack weapon, float progress, String param)
 	{

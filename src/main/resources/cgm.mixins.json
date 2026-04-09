@@ -3,7 +3,7 @@
 	"package": "com.mrcrayfish.guns.mixin",
 	"compatibilityLevel": "JAVA_8",
 	"minVersion": "0.8",
-	"refmap": "cgm.refmap.json",
+	"refmap": "${modId}.refmap.json",
 	"plugin": "com.mrcrayfish.guns.mixin.MixinPlugin",
 	"mixins": [
 		"common.EndPortalBlockMixin",

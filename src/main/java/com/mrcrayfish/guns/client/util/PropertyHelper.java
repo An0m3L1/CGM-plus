@@ -2,6 +2,7 @@ package com.mrcrayfish.guns.client.util;
 
 import com.mrcrayfish.framework.api.client.FrameworkClientAPI;
 import com.mrcrayfish.framework.api.serialize.*;
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.cache.ObjectCache;
 import com.mrcrayfish.guns.client.MetaLoader;
 import com.mrcrayfish.guns.common.GripType;
@@ -30,10 +31,10 @@ import java.util.Optional;
 public final class PropertyHelper
 {
 	public static final String CACHE_KEY = "properties";
-	public static final String MODEL_KEY = "cgm:model";
-	public static final String WEAPON_KEY = "cgm:weapon";
-	public static final String SCOPE_KEY = "cgm:scope";
-	public static final String BARREL_KEY = "cgm:barrel";
+	public static final String MODEL_KEY = GunMod.MOD_ID + ":model";
+	public static final String WEAPON_KEY = GunMod.MOD_ID + ":weapon";
+	public static final String SCOPE_KEY = GunMod.MOD_ID + ":scope";
+	public static final String BARREL_KEY = GunMod.MOD_ID + ":barrel";
 	public static final Vec3 GUN_DEFAULT_ORIGIN = new Vec3(8.0, 0.0, 8.0);
 	public static final Vec3 ATTACHMENT_DEFAULT_ORIGIN = new Vec3(8.0, 8.0, 8.0);
 	public static final Vec3 DEFAULT_SCALE = new Vec3(1.0, 1.0, 1.0);

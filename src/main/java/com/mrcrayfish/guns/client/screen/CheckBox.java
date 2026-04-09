@@ -2,6 +2,7 @@ package com.mrcrayfish.guns.client.screen;
 
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.PoseStack;
+import com.mrcrayfish.guns.GunMod;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.components.AbstractWidget;
 import net.minecraft.client.gui.narration.NarrationElementOutput;
@@ -17,7 +18,7 @@ import org.jetbrains.annotations.NotNull;
 @OnlyIn(Dist.CLIENT)
 public class CheckBox extends AbstractWidget
 {
-	private static final ResourceLocation GUI = new ResourceLocation("cgm:textures/gui/components.png");
+	private static final ResourceLocation GUI = new ResourceLocation(GunMod.MOD_ID + ":textures/gui/components.png");
 	
 	private boolean toggled = false;
 	

@@ -30,12 +30,12 @@ Update reload logic and animations:
 Clean up:
     - Gun model files (use automatic pistol as template)
     - Reorganize project files
+    - Rename project and mod
 Complete hardness tag lists:
     - None (glass, lanterns, wool, plants, small rocks)
     - Low (wooden doors, wooden trapdoors, fences, fence gates, furniture)
     - Medium (planks, logs, iron doors, iron trapdoors, iron bars)
     - High (stone bricks, walls)
-Fix mods.toml dependencies.cgm
 
 New Content
 

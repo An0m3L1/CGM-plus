@@ -1,5 +1,6 @@
 package com.mrcrayfish.guns.item;
 
+import com.mrcrayfish.guns.GunMod;
 import com.mrcrayfish.guns.init.ModSounds;
 import net.minecraft.ChatFormatting;
 import net.minecraft.core.NonNullList;
@@ -25,9 +26,11 @@ public class UnobtainableItem extends Item
 	}
 	
 	@Override
-	public void appendHoverText(@NotNull ItemStack stack, @Nullable Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
+	public void appendHoverText(@NotNull ItemStack stack,
+	                            @Nullable
+	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
-		tooltip.add(Component.translatable("info.cgm.unobtainable").withStyle(ChatFormatting.LIGHT_PURPLE).withStyle(ChatFormatting.ITALIC));
+		tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".unobtainable").withStyle(ChatFormatting.LIGHT_PURPLE).withStyle(ChatFormatting.ITALIC));
 	}
 	
 	@Override

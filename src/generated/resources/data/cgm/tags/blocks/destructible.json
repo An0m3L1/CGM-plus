@@ -1,9 +1,0 @@
-{
-	"values": [
-		"#cgm:hardness_none",
-		"#cgm:hardness_low",
-		"#cgm:hardness_medium",
-		"#cgm:hardness_high",
-		"minecraft:tnt"
-	]
-}

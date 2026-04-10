@@ -1,0 +1,20 @@
+{
+	"variants": {
+		"facing=north": {
+			"model": "agm:block/gun_repair_kit",
+			"y": 0
+		},
+		"facing=east": {
+			"model": "agm:block/gun_repair_kit",
+			"y": 90
+		},
+		"facing=south": {
+			"model": "agm:block/gun_repair_kit",
+			"y": 180
+		},
+		"facing=west": {
+			"model": "agm:block/gun_repair_kit",
+			"y": 270
+		}
+	}
+}

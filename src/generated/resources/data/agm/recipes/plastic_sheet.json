@@ -1,0 +1,13 @@
+{
+	"type": "create:pressing",
+	"ingredients": [
+		{
+			"item": "agm:plastic"
+		}
+	],
+	"results": [
+		{
+			"item": "agm:plastic_sheet"
+		}
+	]
+}

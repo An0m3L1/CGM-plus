@@ -1,0 +1,16 @@
+{
+	"variants": {
+		"axis=x": {
+			"model": "agm:block/steel_block",
+			"x": 90,
+			"y": 90
+		},
+		"axis=y": {
+			"model": "agm:block/steel_block"
+		},
+		"axis=z": {
+			"model": "agm:block/steel_block",
+			"x": 90
+		}
+	}
+}

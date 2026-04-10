@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"n": {
+			"tag": "forge:nuggets/steel"
+		}
+	},
+	"pattern": [
+		"nnn",
+		"nnn",
+		"nnn"
+	],
+	"result": {
+		"item": "agm:steel_ingot"
+	}
+}

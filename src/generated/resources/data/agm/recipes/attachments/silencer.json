@@ -1,0 +1,20 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"count": 1,
+			"item": "agm:sturdy_mechanism"
+		},
+		{
+			"count": 2,
+			"tag": "forge:rods/steel"
+		},
+		{
+			"count": 4,
+			"tag": "forge:plates/plastic"
+		}
+	],
+	"result": {
+		"item": "agm:silencer"
+	}
+}

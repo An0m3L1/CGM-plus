@@ -1,0 +1,81 @@
+{
+	"type": "create:sequenced_assembly",
+	"ingredient": {
+		"tag": "forge:plates/steel"
+	},
+	"loops": 1,
+	"results": [
+		{
+			"item": "agm:incendiary_grenade"
+		}
+	],
+	"sequence": [
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"tag": "forge:plates/steel"
+				},
+				{
+					"item": "agm:plastic"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:incendiary_grenade"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"tag": "forge:plates/steel"
+				},
+				{
+					"tag": "forge:gunpowder"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:incendiary_grenade"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"tag": "forge:plates/steel"
+				},
+				{
+					"item": "sulfurpotassiummod:sulfur"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:incendiary_grenade"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"tag": "forge:plates/steel"
+				},
+				{
+					"item": "sulfurpotassiummod:sulfur"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:incendiary_grenade"
+				}
+			]
+		}
+	],
+	"transitionalItem": {
+		"item": "agm:steel_sheet"
+	}
+}

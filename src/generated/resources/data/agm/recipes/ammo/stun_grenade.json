@@ -1,0 +1,23 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"tag": "forge:plates/steel"
+		},
+		{
+			"count": 2,
+			"item": "sulfurpotassiummod:potassium"
+		},
+		{
+			"count": 2,
+			"tag": "forge:dusts/glowstone"
+		},
+		{
+			"count": 2,
+			"tag": "forge:gunpowder"
+		}
+	],
+	"result": {
+		"item": "agm:stun_grenade"
+	}
+}

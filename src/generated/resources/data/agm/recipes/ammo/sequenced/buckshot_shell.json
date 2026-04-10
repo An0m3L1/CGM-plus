@@ -1,0 +1,65 @@
+{
+	"type": "create:sequenced_assembly",
+	"ingredient": {
+		"item": "agm:shell_casing"
+	},
+	"loops": 1,
+	"results": [
+		{
+			"item": "agm:buckshot_shell"
+		}
+	],
+	"sequence": [
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:shell_casing"
+				},
+				{
+					"item": "agm:gunpowder_pinch"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:buckshot_shell"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:shell_casing"
+				},
+				{
+					"item": "agm:gunpowder_pinch"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:buckshot_shell"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:shell_casing"
+				},
+				{
+					"item": "agm:buckshot"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:buckshot_shell"
+				}
+			]
+		}
+	],
+	"transitionalItem": {
+		"item": "agm:shell_casing"
+	}
+}

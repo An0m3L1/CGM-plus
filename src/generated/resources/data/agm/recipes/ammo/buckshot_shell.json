@@ -1,0 +1,18 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"item": "agm:shell_casing"
+		},
+		{
+			"item": "agm:buckshot"
+		},
+		{
+			"count": 4,
+			"item": "agm:gunpowder_pinch"
+		}
+	],
+	"result": {
+		"item": "agm:buckshot_shell"
+	}
+}

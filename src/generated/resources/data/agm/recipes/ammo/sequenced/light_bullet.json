@@ -1,0 +1,49 @@
+{
+	"type": "create:sequenced_assembly",
+	"ingredient": {
+		"item": "agm:brass_casing"
+	},
+	"loops": 1,
+	"results": [
+		{
+			"item": "agm:light_bullet"
+		}
+	],
+	"sequence": [
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:brass_casing"
+				},
+				{
+					"item": "agm:gunpowder_pinch"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:light_bullet"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:brass_casing"
+				},
+				{
+					"item": "agm:bullet"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:light_bullet"
+				}
+			]
+		}
+	],
+	"transitionalItem": {
+		"item": "agm:brass_casing"
+	}
+}

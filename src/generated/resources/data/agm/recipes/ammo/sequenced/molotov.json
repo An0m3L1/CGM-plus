@@ -1,0 +1,51 @@
+{
+	"type": "create:sequenced_assembly",
+	"ingredient": {
+		"item": "minecraft:glass_bottle"
+	},
+	"loops": 1,
+	"results": [
+		{
+			"item": "agm:molotov"
+		}
+	],
+	"sequence": [
+		{
+			"type": "create:filling",
+			"ingredients": [
+				{
+					"item": "minecraft:glass_bottle"
+				},
+				{
+					"amount": 500,
+					"fluid": "createdieselgenerators:gasoline",
+					"nbt": {}
+				}
+			],
+			"results": [
+				{
+					"item": "agm:molotov"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "minecraft:glass_bottle"
+				},
+				{
+					"item": "agm:cloth"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:molotov"
+				}
+			]
+		}
+	],
+	"transitionalItem": {
+		"item": "minecraft:glass_bottle"
+	}
+}

@@ -1,0 +1,65 @@
+{
+	"type": "create:sequenced_assembly",
+	"ingredient": {
+		"tag": "forge:plates/steel"
+	},
+	"loops": 1,
+	"results": [
+		{
+			"item": "agm:stun_grenade"
+		}
+	],
+	"sequence": [
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"tag": "forge:plates/steel"
+				},
+				{
+					"tag": "forge:gunpowder"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:stun_grenade"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"tag": "forge:plates/steel"
+				},
+				{
+					"item": "sulfurpotassiummod:potassium"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:stun_grenade"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"tag": "forge:plates/steel"
+				},
+				{
+					"tag": "forge:dusts/glowstone"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:stun_grenade"
+				}
+			]
+		}
+	],
+	"transitionalItem": {
+		"item": "agm:steel_sheet"
+	}
+}

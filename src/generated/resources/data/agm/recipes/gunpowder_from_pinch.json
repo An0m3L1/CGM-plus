@@ -1,0 +1,16 @@
+{
+	"type": "minecraft:crafting_shaped",
+	"key": {
+		"n": {
+			"item": "agm:gunpowder_pinch"
+		}
+	},
+	"pattern": [
+		"nnn",
+		"nnn",
+		"nnn"
+	],
+	"result": {
+		"item": "minecraft:gunpowder"
+	}
+}

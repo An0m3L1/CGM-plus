@@ -1,0 +1,85 @@
+{
+	"display": {
+		"flash": {}
+	},
+	"general": {
+		"gripType": "agm:two_handed",
+		"auto": false,
+		"rate": 25,
+		"spawnCasings": false,
+		"emitLight": true,
+		
+		"adsSpeed": 0.75,
+		"recoilAdsReduction": 0.25,
+		"spreadAdsReduction": 1.0,
+		
+		"recoilAngle": 7.5,
+		"recoilKick": 1.5,
+		"recoilDurationOffset": 0.5,
+		"spread": 18.0,
+		"restingSpread": 6.0,
+		"useSniperSpread": true,
+		
+		"maxAmmo": 8,
+		"lightMagAmmo": 6,
+		"extendedMagAmmo": 10,
+		
+		"useMagReload": true,
+		"magReloadTime": 55,
+		"lightMagReloadTimeModifier": 0.9,
+		"extendedMagReloadTimeModifier": 1.1,
+		
+		"drawTime": 16,
+		"reloadStartDelay": 0,
+		"reloadInterruptDelay": 10,
+		"reloadEndDelay": 1,
+		"reloadAllowedCooldown": 0.0
+	},
+	"modules": {
+		"attachments": {
+			"barrel": {
+				"scale": 0.6
+			},
+			"scope": {},
+			"magazine": {},
+			"tactical": {}
+		},
+		"zoom": {
+			"fovModifier": 0.75
+		}
+	},
+	"projectile": {
+		"item": "agm:heavy_bullet",
+		"damage": 16.0,
+		"headshotMultiplierOverride": 1.0,
+		"headshotExtraDamage": 14.0,
+		
+		"size": 0.1,
+		"speed": 15.0,
+		"life": 30,
+		
+		"armorBypass": 1.0,
+		"protectionBypass": 0.75,
+		
+		"griefing": true,
+		"maxPierceCount": 4,
+		"pierceDamagePenalty": 0.125,
+		"pierceDamageMaxPenalty": 0.5,
+		"waterDamagePenalty": 0.25
+	},
+	"sounds": {
+		"fire": "agm:item.sniper_rifle.fire",
+		"silencedFire": "agm:item.sniper_rifle.silenced_fire",
+		"weaponSelect": "agm:item.draw",
+		
+		"reloadFrames": 62,
+		"reloadClipOut": "agm:item.sniper_rifle.mag_out",
+		"reloadClipOutThreshold": 11,
+		"reloadClipIn": "agm:item.sniper_rifle.mag_in",
+		"reloadClipInThreshold": 30,
+		"reloadLate": "agm:item.sniper_rifle.cock",
+		"reloadLateThreshold": 42,
+		"cock": "agm:item.sniper_rifle.cock",
+		"cycleDelay": 11
+	}
+}

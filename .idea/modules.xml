@@ -4,8 +4,6 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.test.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mrcrayfish.An0m3L1s-Gun-Mod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.An0m3L1s-Gun-Mod.main.iml" />
-      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.mrcrayfish.An0m3L1s-Gun-Mod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.mrcrayfish.An0m3L1s-Gun-Mod.test.iml" />
     </modules>
   </component>
 </project>

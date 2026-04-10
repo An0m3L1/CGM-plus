@@ -7,7 +7,7 @@ plugins {
 }
 
 // Setup basic variables
-group = "com.mrcrayfish"
+group = modGroup
 archivesBaseName = modId // File name
 version = modVersion
 
@@ -57,7 +57,7 @@ minecraft {
     }
 }
 
-// Change variables in mods.toml and mixins.json
+// Change variables in mod files
 processResources {
     filteringCharset = "UTF-8"
     filesMatching("META-INF/mods.toml") {
@@ -69,7 +69,8 @@ processResources {
     }
     filesMatching("${modId}.mixins.json") {
         expand(
-                modId: modId
+                modId: modId,
+                modGroup: modGroup
         )
     }
     filesMatching("pack.mcmeta") {

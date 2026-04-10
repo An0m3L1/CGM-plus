@@ -1,0 +1,10 @@
+{
+	"values": [
+		"agm:light_bullet",
+		"agm:medium_bullet",
+		"agm:heavy_bullet",
+		"agm:buckshot_shell",
+		"agm:rocket",
+		"agm:pipe_grenade"
+	]
+}

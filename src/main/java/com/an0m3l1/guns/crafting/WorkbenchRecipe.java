@@ -1,0 +1,127 @@
+package com.an0m3l1.guns.crafting;
+
+import com.an0m3l1.guns.blockentity.WorkbenchBlockEntity;
+import com.an0m3l1.guns.init.ModRecipeSerializers;
+import com.an0m3l1.guns.init.ModRecipeTypes;
+import com.an0m3l1.guns.util.InventoryUtil;
+import com.google.common.collect.ImmutableList;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.item.ItemEntity;
+import net.minecraft.world.entity.player.Player;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.item.crafting.Recipe;
+import net.minecraft.world.item.crafting.RecipeSerializer;
+import net.minecraft.world.level.Level;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.List;
+
+/**
+ * Author: MrCrayfish
+ */
+public class WorkbenchRecipe implements Recipe<WorkbenchBlockEntity>
+{
+	private final ResourceLocation id;
+	private final ItemStack item;
+	private final ImmutableList<WorkbenchIngredient> materials;
+	private final List<ItemStack> returnItems;
+	
+	public WorkbenchRecipe(ResourceLocation id, ItemStack item, ImmutableList<WorkbenchIngredient> materials, List<ItemStack> returnItems)
+	{
+		this.id = id;
+		this.item = item;
+		this.materials = materials;
+		this.returnItems = returnItems;
+	}
+	
+	public ItemStack getItem()
+	{
+		return this.item.copy();
+	}
+	
+	public ImmutableList<WorkbenchIngredient> getMaterials()
+	{
+		return this.materials;
+	}
+	
+	public WorkbenchIngredient getSpecificMaterial(int i)
+	{
+		return this.materials.get(i);
+	}
+	
+	public List<ItemStack> getReturnItems()
+	{
+		return this.returnItems;
+	}
+	
+	@Override
+	public boolean matches(@NotNull WorkbenchBlockEntity inv, @NotNull Level worldIn)
+	{
+		return false;
+	}
+	
+	@Override
+	public @NotNull ItemStack assemble(@NotNull WorkbenchBlockEntity inv)
+	{
+		return ItemStack.EMPTY;
+	}
+	
+	@Override
+	public boolean canCraftInDimensions(int width, int height)
+	{
+		return true;
+	}
+	
+	@Override
+	public @NotNull ItemStack getResultItem()
+	{
+		return this.item.copy();
+	}
+	
+	@Override
+	public @NotNull ResourceLocation getId()
+	{
+		return this.id;
+	}
+	
+	@Override
+	public @NotNull RecipeSerializer<?> getSerializer()
+	{
+		return ModRecipeSerializers.WORKBENCH.get();
+	}
+	
+	@Override
+	public net.minecraft.world.item.crafting.@NotNull RecipeType<?> getType()
+	{
+		return ModRecipeTypes.WORKBENCH.get();
+	}
+	
+	public boolean hasMaterials(Player player)
+	{
+		for(WorkbenchIngredient ingredient : this.getMaterials())
+		{
+			if(!InventoryUtil.hasWorkstationIngredient(player, ingredient))
+			{
+				return false;
+			}
+		}
+		return true;
+	}
+	
+	public void consumeMaterials(Player player)
+	{
+		for(WorkbenchIngredient ingredient : this.getMaterials())
+		{
+			InventoryUtil.removeWorkstationIngredient(player, ingredient);
+		}
+		
+		for(ItemStack returnItem : this.returnItems)
+		{
+			ItemStack returnItemCopy = returnItem.copy();
+			if(!player.getInventory().add(returnItemCopy))
+			{
+				player.level.addFreshEntity(new ItemEntity(player.level, player.getX(), player.getY(), player.getZ(), returnItemCopy));
+			}
+		}
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"variants": {
+		"age=0": {
+			"model": "agm:block/hemp/hemp_stage0"
+		},
+		"age=1": {
+			"model": "agm:block/hemp/hemp_stage1"
+		},
+		"age=2": {
+			"model": "agm:block/hemp/hemp_stage2"
+		},
+		"age=3": {
+			"model": "agm:block/hemp/hemp_stage3"
+		},
+		"age=4": {
+			"model": "agm:block/hemp/hemp_stage4"
+		},
+		"age=5": {
+			"model": "agm:block/hemp/hemp_stage5"
+		},
+		"age=6": {
+			"model": "agm:block/hemp/hemp_stage6"
+		},
+		"age=7": {
+			"model": "agm:block/hemp/hemp_stage7"
+		}
+	}
+}

@@ -1,0 +1,26 @@
+{
+	"type": "create:mixing",
+	"heatRequirement": "heated",
+	"ingredients": [
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "minecraft:coals"
+		},
+		{
+			"tag": "forge:slimeballs"
+		},
+		{
+			"amount": 250,
+			"fluid": "createdieselgenerators:crude_oil",
+			"nbt": {}
+		}
+	],
+	"results": [
+		{
+			"count": 1,
+			"item": "agm:plastic"
+		}
+	]
+}

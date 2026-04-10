@@ -1,0 +1,44 @@
+package com.an0m3l1.guns.entity;
+
+import com.an0m3l1.guns.GunMod;
+import net.minecraft.network.chat.Component;
+import net.minecraft.world.damagesource.IndirectEntityDamageSource;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.LivingEntity;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+
+import javax.annotation.Nullable;
+import java.util.Random;
+
+/**
+ * Author: MrCrayfish
+ */
+public class DamageSourceProjectile extends IndirectEntityDamageSource
+{
+	private static final String[] DEATH_TYPES = {"killed", "eliminated", "executed", "annihilated", "decimated"};
+	private static final Random RAND = new Random();
+	
+	private final ItemStack weapon;
+	
+	public DamageSourceProjectile(String damageTypeIn, Entity source,
+	                              @Nullable
+	                              Entity indirectEntityIn, ItemStack weapon)
+	{
+		super(damageTypeIn, source, indirectEntityIn);
+		this.weapon = weapon;
+	}
+	
+	public ItemStack getWeapon()
+	{
+		return weapon;
+	}
+	
+	@Override
+	public @NotNull Component getLocalizedDeathMessage(LivingEntity entityLivingBaseIn)
+	{
+		Component textComponent = this.getEntity() == null ? this.entity.getDisplayName() : this.getEntity().getDisplayName();
+		String deathKey = String.format("death.attack.%s.%s.%s", GunMod.MOD_ID, this.msgId, DEATH_TYPES[RAND.nextInt(DEATH_TYPES.length)]);
+		return Component.translatable(deathKey, entityLivingBaseIn.getDisplayName(), textComponent);
+	}
+}

@@ -1,0 +1,28 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"count": 4,
+			"item": "agm:sturdy_mechanism"
+		},
+		{
+			"count": 12,
+			"tag": "forge:rods/steel"
+		},
+		{
+			"count": 24,
+			"tag": "forge:plates/steel"
+		},
+		{
+			"count": 16,
+			"item": "agm:plastic"
+		},
+		{
+			"count": 8,
+			"item": "agm:rubber"
+		}
+	],
+	"result": {
+		"item": "agm:rocket_launcher"
+	}
+}

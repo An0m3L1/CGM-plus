@@ -1,0 +1,9 @@
+{
+	"values": [
+		"#agm:hardness_none",
+		"#agm:hardness_low",
+		"#agm:hardness_medium",
+		"#agm:hardness_high",
+		"minecraft:tnt"
+	]
+}

@@ -1,0 +1,518 @@
+package com.an0m3l1.guns.client.util;
+
+import com.an0m3l1.guns.GunMod;
+import com.an0m3l1.guns.cache.ObjectCache;
+import com.an0m3l1.guns.client.MetaLoader;
+import com.an0m3l1.guns.common.GripType;
+import com.an0m3l1.guns.common.Gun;
+import com.an0m3l1.guns.common.properties.SightAnimation;
+import com.an0m3l1.guns.item.IMeta;
+import com.an0m3l1.guns.item.attachment.impl.IAttachment;
+import com.an0m3l1.guns.item.attachment.impl.IBarrel;
+import com.an0m3l1.guns.item.attachment.impl.IScope;
+import com.an0m3l1.guns.item.attachment.impl.create.Scope;
+import com.mrcrayfish.framework.api.client.FrameworkClientAPI;
+import com.mrcrayfish.framework.api.serialize.*;
+import net.minecraft.nbt.CompoundTag;
+import net.minecraft.nbt.Tag;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.util.Mth;
+import net.minecraft.world.item.ItemStack;
+import net.minecraft.world.phys.Vec3;
+
+import java.util.Objects;
+import java.util.Optional;
+
+//TODO eventually convert to deserialized objects
+
+/**
+ * Author: MrCrayfish
+ */
+public final class PropertyHelper
+{
+	public static final String CACHE_KEY = "properties";
+	public static final String MODEL_KEY = GunMod.MOD_ID + ":model";
+	public static final String WEAPON_KEY = GunMod.MOD_ID + ":weapon";
+	public static final String SCOPE_KEY = GunMod.MOD_ID + ":scope";
+	public static final String BARREL_KEY = GunMod.MOD_ID + ":barrel";
+	public static final Vec3 GUN_DEFAULT_ORIGIN = new Vec3(8.0, 0.0, 8.0);
+	public static final Vec3 ATTACHMENT_DEFAULT_ORIGIN = new Vec3(8.0, 8.0, 8.0);
+	public static final Vec3 DEFAULT_SCALE = new Vec3(1.0, 1.0, 1.0);
+	public static final Vec3 RED = new Vec3(255.0, 0.0, 0.0);
+	
+	public static void resetCache()
+	{
+		ObjectCache.getInstance(CACHE_KEY).reset();
+	}
+	
+	private static DataObject getCustomData(ItemStack stack)
+	{
+		// First try to get data from attachment data
+		if(stack.getItem() instanceof IMeta)
+		{
+			return MetaLoader.getInstance().getData(stack.getItem());
+		}
+		// Otherwise try to get the data from the model
+		return FrameworkClientAPI.getOpenModelData(stack, null, null, 0);
+	}
+	
+	public static Vec3 getScopeCamera(ItemStack stack)
+	{
+		// Retrieve position from the model's data
+		DataObject customObject = PropertyHelper.getCustomData(stack);
+		if(customObject.has(SCOPE_KEY, DataType.OBJECT))
+		{
+			DataObject scopeObject = customObject.getDataObject(SCOPE_KEY);
+			assert scopeObject != null;
+			if(scopeObject.has("camera", DataType.ARRAY))
+			{
+				DataArray cameraArray = scopeObject.getDataArray("camera");
+				assert cameraArray != null;
+				return arrayToVec3(cameraArray, Vec3.ZERO);
+			}
+		}
+		
+		// Old method of getting the camera position
+		if(stack.getItem() instanceof IScope scope)
+		{
+			Scope properties = scope.getProperties();
+			return new Vec3(0, properties.getReticleOffset(), (properties.getViewFinderDistance()) * 16.0).add(ATTACHMENT_DEFAULT_ORIGIN); // 0.72 is magic number I decided to add long ago. Here for backwards compat.
+		}
+		
+		return ATTACHMENT_DEFAULT_ORIGIN;
+	}
+	
+	public static Vec3 getIronSightCamera(ItemStack stack, Gun modifiedGun, Vec3 gunOrigin)
+	{
+		// Retrieve position from the model's data
+		DataObject ironSightObject = getObjectByPath(stack, WEAPON_KEY, "ironSight");
+		if(ironSightObject.has("camera", DataType.ARRAY))
+		{
+			DataArray cameraArray = ironSightObject.getDataArray("camera");
+			assert cameraArray != null;
+			return arrayToVec3(cameraArray, Vec3.ZERO);
+		}
+		var zoom = modifiedGun.getModules().getZoom();
+		if(zoom != null)
+		{
+			double cameraX = 8 - modifiedGun.getModules().getZoom().getXOffset();
+			double cameraY = modifiedGun.getModules().getZoom().getYOffset();
+			double cameraZ = 8 - modifiedGun.getModules().getZoom().getZOffset();
+			return new Vec3(cameraX, cameraY, cameraZ);
+		}
+		return Vec3.ZERO;
+	}
+	
+	public static boolean isLegacyIronSight(ItemStack stack)
+	{
+		DataObject ironSightObject = getObjectByPath(stack, WEAPON_KEY, "ironSight");
+		return !ironSightObject.has("camera", DataType.ARRAY);
+	}
+	
+	public static Vec3 getModelOrigin(ItemStack stack, Vec3 defaultOrigin)
+	{
+		// Retrieve position from the model's data
+		DataObject customObject = PropertyHelper.getCustomData(stack);
+		if(customObject.has(MODEL_KEY, DataType.OBJECT))
+		{
+			DataObject modelObject = customObject.getDataObject(MODEL_KEY);
+			assert modelObject != null;
+			if(modelObject.has("origin", DataType.ARRAY))
+			{
+				DataArray originArray = modelObject.getDataArray("origin");
+				assert originArray != null;
+				return arrayToVec3(originArray, defaultOrigin);
+			}
+		}
+		return defaultOrigin;
+	}
+	
+	public static Vec3 getAttachmentPosition(ItemStack stack, Gun modifiedGun, IAttachment.Type type)
+	{
+		DataObject scopeObject = getObjectByPath(stack, WEAPON_KEY, "attachments", type.getSerializeKey());
+		if(scopeObject.has("translation", DataType.ARRAY))
+		{
+			DataArray translationArray = scopeObject.getDataArray("translation");
+			assert translationArray != null;
+			return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		Gun.ScaledPositioned positioned = modifiedGun.getAttachmentPosition(type);
+		if(positioned != null)
+		{
+			double displayX = positioned.getXOffset();
+			double displayY = positioned.getYOffset();
+			double displayZ = positioned.getZOffset();
+			return new Vec3(displayX, displayY, displayZ).add(GUN_DEFAULT_ORIGIN);
+		}
+		return Vec3.ZERO;
+	}
+	
+	public static Vec3 getAttachmentRotation(ItemStack stack, Gun modifiedGun, IAttachment.Type type)
+	{
+		DataObject scopeObject = getObjectByPath(stack, WEAPON_KEY, "attachments", type.getSerializeKey());
+		if(scopeObject.has("rotation", DataType.ARRAY))
+		{
+			DataArray rotationArray = scopeObject.getDataArray("rotation");
+			assert rotationArray != null;
+			return arrayToVec3(rotationArray, Vec3.ZERO);
+		}
+		return Vec3.ZERO;
+	}
+	
+	public static Vec3 getAttachmentScale(ItemStack weapon, Gun modifiedGun, IAttachment.Type type)
+	{
+		DataObject scopeObject = getObjectByPath(weapon, WEAPON_KEY, "attachments", type.getSerializeKey());
+		if(scopeObject.has("scale", DataType.ARRAY))
+		{
+			DataArray scaleArray = scopeObject.getDataArray("scale");
+			assert scaleArray != null;
+			return arrayToVec3(scaleArray, DEFAULT_SCALE);
+		}
+		Gun.ScaledPositioned positioned = modifiedGun.getAttachmentPosition(type);
+		if(positioned != null)
+		{
+			return new Vec3(positioned.getScale(), positioned.getScale(), positioned.getScale());
+		}
+		return DEFAULT_SCALE;
+	}
+	
+	public static boolean hasMuzzleFlash(ItemStack weapon, Gun modifiedGun)
+	{
+		DataObject weaponObject = getObjectByPath(weapon, WEAPON_KEY);
+		return weaponObject.has("muzzleFlash", DataType.OBJECT) || modifiedGun.getDisplay().getFlash() != null;
+	}
+	
+	public static Vec3 getMuzzleFlashPosition(ItemStack weapon, Gun modifiedGun)
+	{
+		// Try and get the animations from the scope
+		if(Gun.hasAttachmentEquipped(weapon, modifiedGun, IAttachment.Type.BARREL))
+		{
+			ItemStack barrelStack = Gun.getAttachment(IAttachment.Type.BARREL, weapon);
+			if(barrelStack.getItem() instanceof IBarrel)
+			{
+				DataObject barrelObject = getObjectByPath(barrelStack, BARREL_KEY);
+				if(barrelObject.has("muzzleFlash", DataType.OBJECT))
+				{
+					DataObject muzzleObject = barrelObject.getDataObject("muzzleFlash");
+					assert muzzleObject != null;
+					DataArray translationArray = muzzleObject.getDataArray("translation");
+					assert translationArray != null;
+					Vec3 muzzlePosition = arrayToVec3(translationArray, Vec3.ZERO);
+					Vec3 barrelOrigin = PropertyHelper.getModelOrigin(barrelStack, ATTACHMENT_DEFAULT_ORIGIN);
+					Vec3 barrelPosition = PropertyHelper.getAttachmentPosition(weapon, modifiedGun, IAttachment.Type.BARREL);
+					Vec3 barrelScale = PropertyHelper.getAttachmentScale(weapon, modifiedGun, IAttachment.Type.BARREL);
+					return muzzlePosition.subtract(barrelOrigin).multiply(barrelScale).add(barrelPosition);
+				}
+			}
+		}
+		
+		DataObject weaponObject = getObjectByPath(weapon, WEAPON_KEY);
+		if(weaponObject.has("muzzleFlash", DataType.OBJECT))
+		{
+			DataObject muzzleObject = weaponObject.getDataObject("muzzleFlash");
+			assert muzzleObject != null;
+			DataArray translationArray = muzzleObject.getDataArray("translation");
+			assert translationArray != null;
+			return arrayToVec3(translationArray, Vec3.ZERO);
+		}
+		
+		Gun.Positioned muzzleFlash = modifiedGun.getDisplay().getFlash();
+		if(muzzleFlash != null)
+		{
+			double displayX = muzzleFlash.getXOffset();
+			double displayY = muzzleFlash.getYOffset();
+			double displayZ = muzzleFlash.getZOffset();
+			return new Vec3(displayX, displayY, displayZ).add(GUN_DEFAULT_ORIGIN);
+		}
+		return Vec3.ZERO;
+	}
+	
+	public static int getMuzzleFlashType(ItemStack weapon, Gun modifiedGun)
+	{
+		DataObject weaponObject = getObjectByPath(weapon, WEAPON_KEY);
+		if(weaponObject.has("muzzleFlash", DataType.OBJECT))
+		{
+			DataObject muzzleObject = weaponObject.getDataObject("muzzleFlash");
+			assert muzzleObject != null;
+			if(muzzleObject.has("type", DataType.NUMBER))
+			{
+				return Objects.requireNonNull(muzzleObject.getDataNumber("type")).asInt();
+			}
+			return 0;
+		}
+		return 0;
+	}
+	
+	public static int getMuzzleFlashVariant(ItemStack weapon, Gun modifiedGun)
+	{
+		DataObject weaponObject = getObjectByPath(weapon, WEAPON_KEY);
+		if(weaponObject.has("muzzleFlash", DataType.OBJECT))
+		{
+			DataObject muzzleObject = weaponObject.getDataObject("muzzleFlash");
+			assert muzzleObject != null;
+			if(muzzleObject.has("variant", DataType.NUMBER))
+			{
+				return Objects.requireNonNull(muzzleObject.getDataNumber("variant")).asInt();
+			}
+			return 0;
+		}
+		return 0;
+	}
+	
+	public static Vec3 getMuzzleFlashScale(ItemStack weapon, Gun modifiedGun)
+	{
+		DataObject weaponObject = getObjectByPath(weapon, WEAPON_KEY);
+		if(weaponObject.has("muzzleFlash", DataType.OBJECT))
+		{
+			DataObject muzzleObject = weaponObject.getDataObject("muzzleFlash");
+			assert muzzleObject != null;
+			if(muzzleObject.has("scale", DataType.ARRAY))
+			{
+				DataArray scaleArray = muzzleObject.getDataArray("scale");
+				assert scaleArray != null;
+				return arrayToVec3(scaleArray, DEFAULT_SCALE);
+			}
+			return DEFAULT_SCALE;
+		}
+		Gun.Display.Flash muzzleFlash = modifiedGun.getDisplay().getFlash();
+		if(muzzleFlash != null)
+		{
+			double scale = muzzleFlash.getSize();
+			return new Vec3(scale, scale, 1.0);
+		}
+		return DEFAULT_SCALE;
+	}
+	
+	public static boolean isUsingBarrelMuzzleFlash(ItemStack barrel)
+	{
+		DataObject customObject = getObjectByPath(barrel, BARREL_KEY);
+		return customObject.has("muzzleFlash", DataType.OBJECT);
+	}
+	
+	public static int getReticleColor(ItemStack stack)
+	{
+		// Prioritize getting the reticle color from the ItemStack tag
+		CompoundTag tag = stack.getTag();
+		if(tag != null && tag.contains("ReticleColor", Tag.TAG_INT))
+		{
+			return tag.getInt("ReticleColor");
+		}
+		
+		// Attempt to get the color from the item's meta
+		boolean isScope = stack.getItem() instanceof IScope;
+		DataObject object = isScope ? getObjectByPath(stack, SCOPE_KEY) : getObjectByPath(stack, WEAPON_KEY, "ironSight");
+		if(object.has("reticleColor", DataType.NUMBER))
+		{
+			return Objects.requireNonNull(object.getDataNumber("reticleColor")).asInt();
+		}
+		else if(object.has("reticleColor", DataType.ARRAY))
+		{
+			DataArray array = object.getDataArray("reticleColor");
+			assert array != null;
+			Vec3 color = arrayToVec3(array, RED);
+			int a = 255;
+			int r = Mth.clamp((int) color.x, 0, 255);
+			int g = Mth.clamp((int) color.y, 0, 255);
+			int b = Mth.clamp((int) color.z, 0, 255);
+			return ((a & 0xFF) << 24) | ((r & 0xFF) << 16) | ((g & 0xFF) << 8) | ((b & 0xFF));
+		}
+		
+		// Default is red
+		return 0xFFFF0000;
+	}
+	
+	public static SightAnimation getSightAnimations(ItemStack weapon, Gun modifiedGun)
+	{
+		// Try and get the animations from the scope
+		if(Gun.hasAttachmentEquipped(weapon, modifiedGun, IAttachment.Type.SCOPE))
+		{
+			ItemStack scopeStack = Gun.getScopeStack(weapon);
+			if(scopeStack.getItem() instanceof IScope scope)
+			{
+				DataObject scopeObject = getObjectByPath(scopeStack, SCOPE_KEY);
+				if(scopeObject.get("sightAnimation") instanceof DataObject sightObject)
+				{
+					return objectToSightAnimation(sightObject);
+				}
+			}
+		}
+		
+		// Try and get the animations from the weapon
+		DataObject customObject = getObjectByPath(weapon, WEAPON_KEY, "ironSight");
+		if(customObject.get("sightAnimation") instanceof DataObject sightObject)
+		{
+			return objectToSightAnimation(sightObject);
+		}
+		
+		return SightAnimation.DEFAULT;
+	}
+	
+	public static double getViewportFov(ItemStack weapon, Gun modifiedGun)
+	{
+		// Get the viewport from the attached scope
+		if(Gun.hasAttachmentEquipped(weapon, modifiedGun, IAttachment.Type.SCOPE))
+		{
+			ItemStack scopeStack = Gun.getScopeStack(weapon);
+			DataObject customObject = getObjectByPath(scopeStack, SCOPE_KEY);
+			if(customObject.has("viewportFov", DataType.NUMBER))
+			{
+				return Mth.clamp(Objects.requireNonNull(customObject.getDataNumber("viewportFov")).asDouble(), 1.0, 100.0);
+			}
+		}
+		
+		// Otherwise get it from the weapon
+		DataObject customObject = getObjectByPath(weapon, WEAPON_KEY, "ironSight");
+		if(customObject.has("viewportFov", DataType.NUMBER))
+		{
+			return Mth.clamp(Objects.requireNonNull(customObject.getDataNumber("viewportFov")).asDouble(), 1.0, 100.0);
+		}
+		
+		// Return zero, which means current fov is used
+		return 0;
+	}
+	
+	public static Vec3 getViewmodelPosition(ItemStack weapon, Gun modifiedGun)
+	{
+		double scaleFactor = getHandPosScalar(weapon);
+		DataObject viewmodelObject = getObjectByPath(weapon, WEAPON_KEY, "viewmodel");
+		if(viewmodelObject.has("offset", DataType.ARRAY))
+		{
+			DataArray translationArray = viewmodelObject.getDataArray("offset");
+			if(translationArray != null)
+			{
+				return arrayToVec3(translationArray, Vec3.ZERO).scale(scaleFactor);
+			}
+		}
+		
+		return Vec3.ZERO;
+	}
+	
+	public static Vec3 getHandPosition(ItemStack weapon, Gun modifiedGun, boolean isRearHand)
+	{
+		double scaleFactor = getHandPosScalar(weapon);
+		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands", isRearHand ? "rear" : "forward");
+		if(handObject.has("offset", DataType.ARRAY))
+		{
+			DataArray translationArray = handObject.getDataArray("offset");
+			if(translationArray != null)
+			{
+				return arrayToVec3(translationArray, Vec3.ZERO).scale(scaleFactor);
+			}
+		}
+		if(isRearHand)
+		{
+			Gun.Display.RearHandPos handPos = modifiedGun.getDisplay().getRearHand();
+			if(handPos != null)
+			{
+				return new Vec3(handPos.getXOffset(), handPos.getYOffset(), handPos.getZOffset());
+			}
+		}
+		else
+		{
+			Gun.Display.ForwardHandPos handPos = modifiedGun.getDisplay().getForwardHand();
+			if(handPos != null)
+			{
+				return new Vec3(handPos.getXOffset(), handPos.getYOffset(), handPos.getZOffset());
+			}
+		}
+		
+		return Vec3.ZERO;
+	}
+	
+	public static GripType getGripType(ItemStack weapon, Gun modifiedGun)
+	{
+		// Gets the client-sided GripType of a gun for rendering purposes.
+		// Attempt to retrieve the GripType from the cgmmeta properties file
+		if(!modifiedGun.getGeneral().overrideClientGripType())
+		{
+			DataObject handObject = getObjectByPath(weapon, WEAPON_KEY);
+			if(handObject.has("renderGripType", DataType.STRING))
+			{
+				DataString gripTypeString = handObject.getDataString("renderGripType");
+				if(gripTypeString != null)
+				{
+					return GripType.getType(new ResourceLocation(gripTypeString.asString()));
+				}
+			}
+		}
+		// Fallback: retrieve the GripType from the gun's data
+		return modifiedGun.getGeneral().getGripType();
+	}
+	
+	public static double getHandPosScalar(ItemStack weapon)
+	{
+		DataObject handObject = getObjectByPath(weapon, WEAPON_KEY, "hands");
+		if(handObject.has("posScalar", DataType.NUMBER))
+		{
+			DataNumber animScalar = handObject.getDataNumber("posScalar");
+			assert animScalar != null;
+			return animScalar.asDouble() * 2.0;
+		}
+		
+		return 0.8 * 2.0;
+	}
+	
+	private static SightAnimation objectToSightAnimation(DataObject object)
+	{
+		ObjectCache cache = ObjectCache.getInstance(CACHE_KEY);
+		Optional<SightAnimation> cachedValue = cache.get(object.getId());
+		return cachedValue.orElseGet(() -> cache.store(object.getId(), () ->
+		{
+			SightAnimation.Builder builder = SightAnimation.builder();
+			getOptionalString(object, "viewportCurve").ifPresent(s -> builder.setViewportCurve(Easings.byName(s)));
+			getOptionalString(object, "sightCurve").ifPresent(s -> builder.setSightCurve(Easings.byName(s)));
+			getOptionalString(object, "fovCurve").ifPresent(s -> builder.setFovCurve(Easings.byName(s)));
+			getOptionalString(object, "aimTransformCurve").ifPresent(s -> builder.setAimTransformCurve(Easings.byName(s)));
+			return builder.build();
+		}));
+	}
+	
+	private static Optional<String> getOptionalString(DataObject src, String key)
+	{
+		if(src.has(key, DataType.STRING))
+		{
+			return Optional.ofNullable(Objects.requireNonNull(src.getDataString(key)).asString());
+		}
+		return Optional.empty();
+	}
+	
+	static DataObject getObjectByPath(ItemStack stack, String... path)
+	{
+		DataObject result = PropertyHelper.getCustomData(stack);
+		for(String key : path)
+		{
+			assert result != null;
+			if(result.has(key, DataType.OBJECT))
+			{
+				result = result.getDataObject(key);
+				continue;
+			}
+			return DataObject.EMPTY;
+		}
+		return result;
+	}
+	
+	static Vec3 arrayToVec3(DataArray array, Vec3 defaultValue)
+	{
+		// Ignore immediately if not correct length
+		if(array.length() != 3)
+		{
+			return defaultValue;
+		}
+		
+		// Return cached vector, otherwise convert array and cache the vector
+		ObjectCache cache = ObjectCache.getInstance(CACHE_KEY);
+		Optional<Vec3> cachedValue = cache.get(array.getId());
+		return cachedValue.orElseGet(() -> cache.store(array.getId(), () ->
+		{
+			if(array.values().stream().allMatch(entry -> entry.getType() == DataType.NUMBER))
+			{
+				double x = ((DataNumber) array.get(0)).asDouble();
+				double y = ((DataNumber) array.get(1)).asDouble();
+				double z = ((DataNumber) array.get(2)).asDouble();
+				return new Vec3(x, y, z);
+			}
+			return defaultValue;
+		}));
+	}
+}

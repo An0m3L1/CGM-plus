@@ -1,0 +1,42 @@
+package com.an0m3l1.guns.client;
+
+import com.an0m3l1.guns.client.handler.GunRenderingHandler;
+import com.mojang.blaze3d.vertex.PoseStack;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.BlockEntityWithoutLevelRenderer;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.world.item.ItemStack;
+import org.jetbrains.annotations.NotNull;
+
+/**
+ * Author: MrCrayfish
+ */
+public class GunItemStackRenderer extends BlockEntityWithoutLevelRenderer
+{
+	public GunItemStackRenderer()
+	{
+		super(Minecraft.getInstance().getBlockEntityRenderDispatcher(), Minecraft.getInstance().getEntityModels());
+	}
+	
+	@Override
+	public void renderByItem(@NotNull ItemStack stack, ItemTransforms.@NotNull TransformType transform, PoseStack poseStack, @NotNull MultiBufferSource source, int light, int overlay)
+	{
+		// Hack to remove transforms created by ItemRenderer#render
+		poseStack.popPose();
+		
+		poseStack.pushPose();
+		{
+			Minecraft mc = Minecraft.getInstance();
+			if(transform == ItemTransforms.TransformType.GROUND)
+			{
+				GunRenderingHandler.get().applyWeaponScale(stack, poseStack);
+			}
+			GunRenderingHandler.get().renderWeapon(mc.player, stack, transform, poseStack, source, light, Minecraft.getInstance().getDeltaFrameTime());
+		}
+		poseStack.popPose();
+		
+		// Push the stack again since we popped the pose prior
+		poseStack.pushPose();
+	}
+}

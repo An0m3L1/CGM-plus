@@ -1,0 +1,51 @@
+package com.an0m3l1.guns.client.render.entity;
+
+import com.an0m3l1.guns.entity.projectile.BulletEntity;
+import com.mojang.blaze3d.vertex.PoseStack;
+import com.mojang.math.Vector3f;
+import net.minecraft.client.Minecraft;
+import net.minecraft.client.renderer.MultiBufferSource;
+import net.minecraft.client.renderer.block.model.ItemTransforms;
+import net.minecraft.client.renderer.entity.EntityRenderer;
+import net.minecraft.client.renderer.entity.EntityRendererProvider;
+import net.minecraft.client.renderer.texture.OverlayTexture;
+import net.minecraft.resources.ResourceLocation;
+import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+
+public class BulletRenderer extends EntityRenderer<BulletEntity>
+{
+	public BulletRenderer(EntityRendererProvider.Context context)
+	{
+		super(context);
+	}
+	
+	@Override
+	public @Nullable ResourceLocation getTextureLocation(@NotNull BulletEntity entity)
+	{
+		return null;
+	}
+	
+	@Override
+	public void render(BulletEntity entity, float entityYaw, float partialTicks, @NotNull PoseStack poseStack, @NotNull MultiBufferSource renderTypeBuffer, int light)
+	{
+		if(entity.getProjectile().isInvisible() || entity.tickCount <= 1)
+		{
+			return;
+		}
+		
+		poseStack.pushPose();
+		poseStack.scale(0.35f, 0.35f, 0.35f);
+		
+		poseStack.mulPose(Vector3f.YP.rotationDegrees(180F));
+		poseStack.mulPose(Vector3f.YP.rotationDegrees(entityYaw));
+		
+		float rotation = entity.prevRotation + (entity.rotation - entity.prevRotation) * partialTicks;
+		poseStack.mulPose(Vector3f.XP.rotationDegrees(entity.getXRot() - 90));
+		poseStack.mulPose(Vector3f.YP.rotationDegrees(-rotation));
+		
+		Minecraft.getInstance().getItemRenderer().renderStatic(entity.getItem(), ItemTransforms.TransformType.NONE, 15728880, OverlayTexture.NO_OVERLAY, poseStack, renderTypeBuffer, 0);
+		poseStack.translate(0, -1, 0);
+		poseStack.popPose();
+	}
+}

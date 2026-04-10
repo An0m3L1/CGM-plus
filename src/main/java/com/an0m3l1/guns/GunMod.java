@@ -1,0 +1,198 @@
+package com.an0m3l1.guns;
+
+import com.an0m3l1.guns.client.*;
+import com.an0m3l1.guns.client.handler.CrosshairHandler;
+import com.an0m3l1.guns.client.render.entity.BulletRenderer;
+import com.an0m3l1.guns.common.BoundingBoxManager;
+import com.an0m3l1.guns.common.NetworkGunManager;
+import com.an0m3l1.guns.common.ProjectileManager;
+import com.an0m3l1.guns.crafting.WorkbenchIngredient;
+import com.an0m3l1.guns.datagen.BlockTagGen;
+import com.an0m3l1.guns.datagen.EntityTagGen;
+import com.an0m3l1.guns.datagen.GunGen;
+import com.an0m3l1.guns.datagen.ItemTagGen;
+import com.an0m3l1.guns.entity.projectile.BulletEntity;
+import com.an0m3l1.guns.entity.projectile.PipeGrenadeEntity;
+import com.an0m3l1.guns.entity.projectile.RocketEntity;
+import com.an0m3l1.guns.init.*;
+import com.an0m3l1.guns.network.PacketHandler;
+import com.mrcrayfish.framework.api.FrameworkAPI;
+import com.mrcrayfish.framework.api.client.FrameworkClientAPI;
+import net.minecraft.client.renderer.entity.EntityRenderers;
+import net.minecraft.core.NonNullList;
+import net.minecraft.data.DataGenerator;
+import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.item.CreativeModeTab;
+import net.minecraft.world.item.ItemStack;
+import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.common.MinecraftForge;
+import net.minecraftforge.common.crafting.CraftingHelper;
+import net.minecraftforge.common.data.ExistingFileHelper;
+import net.minecraftforge.data.event.GatherDataEvent;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.fml.DistExecutor;
+import net.minecraftforge.fml.InterModComms;
+import net.minecraftforge.fml.ModList;
+import net.minecraftforge.fml.ModLoadingContext;
+import net.minecraftforge.fml.common.Mod;
+import net.minecraftforge.fml.config.ModConfig;
+import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
+import net.minecraftforge.fml.event.lifecycle.InterModEnqueueEvent;
+import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
+import org.jetbrains.annotations.NotNull;
+import top.theillusivec4.curios.api.SlotTypePreset;
+
+@Mod(GunMod.MOD_ID)
+public class GunMod
+{
+	// Get modId in gradle.properties
+	public static final String MOD_ID = "agm";
+	// Extensions use old name for cross compatibility with 9-0 and MrCrayfish
+	public static final String ANIM_EXTENSION = ".cgmanim";
+	public static final String META_EXTENSION = ".cgmmeta";
+	
+	public static boolean controllableLoaded = false;
+	public static boolean backpackedLoaded = false;
+	public static boolean playerReviveLoaded = false;
+	public static boolean shoulderSurfingLoaded = false;
+	public static boolean dynamicLightsLoaded = false;
+	public static boolean dynamicTreesLoaded = false;
+	public static final Logger LOGGER = LogManager.getLogger(GunMod.MOD_ID);
+	
+	public static final CreativeModeTab GUNS = new CreativeModeTab(GunMod.MOD_ID)
+	{
+		@Override
+		public @NotNull ItemStack makeIcon()
+		{
+			return new ItemStack(ModItems.GUN_ICON.get());
+		}
+		
+		@Override
+		public void fillItemList(@NotNull NonNullList<ItemStack> items)
+		{
+			super.fillItemList(items);
+			CustomGunManager.fill(items);
+		}
+	};
+	public static final CreativeModeTab MATERIALS = new CreativeModeTab(GunMod.MOD_ID + "_materials")
+	{
+		@Override
+		public @NotNull ItemStack makeIcon()
+		{
+			return new ItemStack(ModItems.STURDY_MECHANISM.get());
+		}
+		
+		@Override
+		public void fillItemList(@NotNull NonNullList<ItemStack> items)
+		{
+			super.fillItemList(items);
+			CustomGunManager.fill(items);
+		}
+	};
+	
+	public GunMod()
+	{
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.clientSpec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.commonSpec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.serverSpec);
+		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
+		ModBlocks.REGISTER.register(bus);
+		ModContainers.REGISTER.register(bus);
+		ModEffects.REGISTER.register(bus);
+		ModEntities.REGISTER.register(bus);
+		ModItems.REGISTER.register(bus);
+		ModParticleTypes.REGISTER.register(bus);
+		ModRecipeSerializers.REGISTER.register(bus);
+		ModRecipeTypes.REGISTER.register(bus);
+		ModSounds.REGISTER.register(bus);
+		ModTileEntities.REGISTER.register(bus);
+		bus.addListener(this::onCommonSetup);
+		bus.addListener(this::onClientSetup);
+		bus.addListener(this::onGatherData);
+		bus.addListener(this::enqueueIMC);
+		DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () ->
+		{
+			FrameworkClientAPI.registerDataLoader(MetaLoader.getInstance());
+			FrameworkClientAPI.registerDataLoader(AnimationLoader.getInstance());
+			FrameworkClientAPI.registerDataLoader(AnimationMetaLoader.getInstance()); //Legacy Loader
+			bus.addListener(KeyBinds::registerKeyMappings);
+			bus.addListener(CrosshairHandler::onConfigReload);
+			bus.addListener(ClientHandler::onRegisterReloadListener);
+		});
+		controllableLoaded = ModList.get().isLoaded("controllable");
+		backpackedLoaded = ModList.get().isLoaded("backpacked");
+		playerReviveLoaded = ModList.get().isLoaded("playerrevive");
+		shoulderSurfingLoaded = ModList.get().isLoaded("shouldersurfing");
+		dynamicLightsLoaded = ModList.get().isLoaded("dynamiclightsreforged");
+		dynamicTreesLoaded = ModList.get().isLoaded("dynamictrees");
+	}
+	
+	private void onCommonSetup(FMLCommonSetupEvent event)
+	{
+		event.enqueueWork(() ->
+		{
+			PacketHandler.init();
+			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.AIMING);
+			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.BURSTCOUNT);
+			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.ONBURSTCOOLDOWN);
+			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.RAMPUPSHOT);
+			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.RELOADING);
+			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SHOOTING);
+			FrameworkAPI.registerSyncedDataKey(ModSyncedDataKeys.SWITCHTIME);
+			FrameworkAPI.registerLoginData(new ResourceLocation(GunMod.MOD_ID, "network_gun_manager"), NetworkGunManager.LoginData::new);
+			FrameworkAPI.registerLoginData(new ResourceLocation(GunMod.MOD_ID, "custom_gun_manager"), CustomGunManager.LoginData::new);
+			CraftingHelper.register(new ResourceLocation(GunMod.MOD_ID, "workbench_ingredient"), WorkbenchIngredient.Serializer.INSTANCE);
+			
+			ProjectileManager.getInstance().registerFactory(ModItems.LIGHT_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> BulletEntity.createLight(ModEntities.LIGHT_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
+			ProjectileManager.getInstance().registerFactory(ModItems.MEDIUM_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> BulletEntity.createMedium(ModEntities.MEDIUM_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
+			ProjectileManager.getInstance().registerFactory(ModItems.HEAVY_BULLET.get(), (worldIn, entity, weapon, item, modifiedGun) -> BulletEntity.createHeavy(ModEntities.HEAVY_BULLET.get(), worldIn, entity, weapon, item, modifiedGun));
+			ProjectileManager.getInstance().registerFactory(ModItems.BUCKSHOT_SHELL.get(), (worldIn, entity, weapon, item, modifiedGun) -> BulletEntity.createBuckshot(ModEntities.BUCKSHOT_SHELL.get(), worldIn, entity, weapon, item, modifiedGun));
+			
+			ProjectileManager.getInstance().registerFactory(ModItems.PIPE_GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PipeGrenadeEntity(ModEntities.PIPE_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
+			ProjectileManager.getInstance().registerFactory(ModItems.ROCKET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new RocketEntity(ModEntities.ROCKET.get(), worldIn, entity, weapon, item, modifiedGun));
+			
+			if(Config.COMMON.improvedHitboxes.get())
+			{
+				MinecraftForge.EVENT_BUS.register(new BoundingBoxManager());
+			}
+		});
+	}
+	
+	private void onClientSetup(FMLClientSetupEvent event)
+	{
+		event.enqueueWork(() ->
+		{
+			ClientHandler.setup();
+			
+			EntityRenderers.register(ModEntities.LIGHT_BULLET.get(), BulletRenderer::new);
+			EntityRenderers.register(ModEntities.MEDIUM_BULLET.get(), BulletRenderer::new);
+			EntityRenderers.register(ModEntities.HEAVY_BULLET.get(), BulletRenderer::new);
+			EntityRenderers.register(ModEntities.BUCKSHOT_SHELL.get(), BulletRenderer::new);
+		});
+	}
+	
+	private void onGatherData(GatherDataEvent event)
+	{
+		DataGenerator generator = event.getGenerator();
+		ExistingFileHelper existingFileHelper = event.getExistingFileHelper();
+		BlockTagGen blockTagGen = new BlockTagGen(generator, existingFileHelper);
+		generator.addProvider(event.includeServer(), blockTagGen);
+		generator.addProvider(event.includeServer(), new ItemTagGen(generator, blockTagGen, existingFileHelper));
+		generator.addProvider(event.includeServer(), new EntityTagGen(generator, existingFileHelper));
+		generator.addProvider(event.includeServer(), new GunGen(generator));
+	}
+	
+	public void enqueueIMC(InterModEnqueueEvent event)
+	{
+		SlotTypePreset[] types = new SlotTypePreset[]{SlotTypePreset.HEAD, SlotTypePreset.BODY};
+		for(SlotTypePreset type : types)
+		{
+			InterModComms.sendTo("curios", "register_type", () -> type.getMessageBuilder().build());
+		}
+		InterModComms.sendTo("curios", "register_type", () -> SlotTypePreset.HANDS.getMessageBuilder().size(2).build());
+		//InterModComms.sendTo("curios", "register_type", () -> SlotTypePreset.BELT.getMessageBuilder().size(2).build());
+	}
+}

@@ -1,0 +1,7 @@
+{
+	"variants": {
+		"": {
+			"model": "agm:block/cast_iron_block"
+		}
+	}
+}

@@ -1,0 +1,14 @@
+{
+	"type": "create:compacting",
+	"heatRequirement": "heated",
+	"ingredients": [
+		{
+			"tag": "forge:ingots/cast_iron"
+		}
+	],
+	"results": [
+		{
+			"item": "agm:steel_ingot"
+		}
+	]
+}

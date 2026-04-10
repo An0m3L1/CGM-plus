@@ -1,0 +1,22 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"item": "minecraft:glass_bottle"
+		},
+		{
+			"item": "agm:cloth"
+		},
+		{
+			"item": "createdieselgenerators:gasoline_bucket"
+		}
+	],
+	"result": {
+		"item": "agm:molotov"
+	},
+	"return_items": [
+		{
+			"item": "minecraft:bucket"
+		}
+	]
+}

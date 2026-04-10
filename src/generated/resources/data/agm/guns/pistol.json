@@ -1,0 +1,83 @@
+{
+	"display": {
+		"flash": {}
+	},
+	"general": {
+		"gripType": "agm:two_handed_pistol",
+		"auto": false,
+		"rate": 3,
+		"spawnCasings": true,
+		"emitLight": true,
+		
+		"adsSpeed": 1.1,
+		"recoilAdsReduction": 0.35,
+		"spreadAdsReduction": 0.35,
+		
+		"recoilAngle": 2.0,
+		"recoilKick": 0.2,
+		"recoilDurationOffset": 0.0,
+		"spread": 3.0,
+		"restingSpread": 0.5,
+		
+		"maxAmmo": 17,
+		"lightMagAmmo": 13,
+		"extendedMagAmmo": 40,
+		
+		"useMagReload": true,
+		"magReloadTime": 35,
+		"lightMagReloadTimeModifier": 0.85,
+		"extendedMagReloadTimeModifier": 1.15,
+		
+		"drawTime": 8,
+		"reloadStartDelay": 0,
+		"reloadInterruptDelay": 5,
+		"reloadEndDelay": 1,
+		"reloadAllowedCooldown": 0.0
+	},
+	"modules": {
+		"attachments": {
+			"barrel": {
+				"scale": 0.5
+			},
+			"magazine": {}
+		},
+		"zoom": {
+			"fovModifier": 0.75
+		}
+	},
+	"projectile": {
+		"item": "agm:light_bullet",
+		"damage": 4.0,
+		"damageReduceOverLife": true,
+		"maxRangeDamageMultiplier": 0.5,
+		"headshotMultiplierOverride": 2.0,
+		
+		"size": 0.1,
+		"speed": 20.0,
+		"life": 5,
+		
+		"armorBypass": 0.25,
+		"protectionBypass": 0.25,
+		
+		"griefing": true,
+		"maxPierceCount": 1,
+		"pierceDamagePenalty": 0.5,
+		"pierceDamageMaxPenalty": 0.5,
+		"waterDamagePenalty": 0.5
+	},
+	"sounds": {
+		"fire": "agm:item.pistol.fire",
+		"silencedFire": "agm:item.pistol.silenced_fire",
+		"weaponSelect": "agm:item.draw",
+		
+		"reloadFrames": 48,
+		"reloadEarly": "agm:item.pistol.slide_back",
+		"reloadEarlyThreshold": 0,
+		"reloadClipOut": "agm:item.pistol.mag_out",
+		"reloadClipOutThreshold": 7,
+		"reloadClipIn": "agm:item.pistol.mag_in",
+		"reloadClipInThreshold": 24,
+		"reloadLate": "agm:item.pistol.slide_forward",
+		"reloadLateThreshold": 37
+	}
+}

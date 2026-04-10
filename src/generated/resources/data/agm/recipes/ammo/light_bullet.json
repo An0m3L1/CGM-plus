@@ -1,0 +1,18 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"item": "agm:brass_casing"
+		},
+		{
+			"item": "agm:bullet"
+		},
+		{
+			"count": 2,
+			"item": "agm:gunpowder_pinch"
+		}
+	],
+	"result": {
+		"item": "agm:light_bullet"
+	}
+}

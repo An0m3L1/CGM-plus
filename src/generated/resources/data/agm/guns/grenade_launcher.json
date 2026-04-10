@@ -1,0 +1,40 @@
+{
+	"display": {},
+	"general": {
+		"gripType": "agm:two_handed",
+		"auto": false,
+		"rate": 12,
+		"spawnCasings": false,
+		"emitLight": false,
+		
+		"recoilAngle": 3.0,
+		"recoilKick": 0.5,
+		"recoilDurationOffset": 0.25,
+		"spread": 0.0,
+		
+		"maxAmmo": 6,
+		"reloadRate": 14
+	},
+	"projectile": {
+		"damage": 30.0,
+		"headshotMultiplierOverride": 1.0,
+		"size": 0.2,
+		"speed": 2.0,
+		"life": 100,
+		"armorBypass": 1.0,
+		"protectionBypass": 0.1,
+		"gravity": true,
+		"visible": true,
+		"gravityStrength": 1.35,
+		"maxPierceCount": 0,
+		"item": "agm:pipe_grenade",
+		"griefing": true,
+		"waterDamagePenalty": 0.5,
+		"explosionRadius": 3.5
+	},
+	"sounds": {
+		"cock": "agm:item.grenade_launcher.cock",
+		"fire": "agm:item.grenade_launcher.fire",
+		"reload": "agm:item.grenade_launcher.reload"
+	}
+}

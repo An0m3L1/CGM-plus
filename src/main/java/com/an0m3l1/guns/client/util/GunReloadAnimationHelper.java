@@ -1,0 +1,161 @@
+package com.an0m3l1.guns.client.util;
+
+import com.an0m3l1.guns.GunMod;
+import com.mrcrayfish.framework.api.serialize.DataObject;
+import com.mrcrayfish.framework.api.serialize.DataString;
+import com.mrcrayfish.framework.api.serialize.DataType;
+import net.minecraft.resources.ResourceLocation;
+
+/**
+ * Helper class for reload animations using the Common Animation System.
+ */
+public final class GunReloadAnimationHelper
+{
+	public static final String ANIMATION_KEY = GunMod.MOD_ID + ":animations";
+	
+	/* Property Helpers for Reload Animations */
+	// Easings
+	public static Easings getReloadStartEasing(ResourceLocation weapKey, String component)
+	{
+		DataObject frameObject = GunAnimationHelper.getObjectByPath(weapKey, ANIMATION_KEY, "reload", component);
+		if(frameObject.has("startEasing", DataType.STRING))
+		{
+			DataString easing = frameObject.getDataString("startEasing");
+			if(easing != null)
+			{
+				return (Easings.byName(easing.asString()));
+			}
+		}
+		else
+		{
+			frameObject = GunAnimationHelper.getObjectByPath(weapKey, ANIMATION_KEY, "reload", component, "0");
+		}
+		if(frameObject.has("easing", DataType.STRING))
+		{
+			DataString easing = frameObject.getDataString("easing");
+			if(easing != null)
+			{
+				return (Easings.byName(easing.asString()));
+			}
+		}
+		
+		return Easings.LINEAR;
+	}
+	
+	public static Easings getReloadStartEasing(ResourceLocation weapKey, String component, boolean easeRotationInstead)
+	{
+		DataObject frameObject = GunAnimationHelper.getObjectByPath(weapKey, ANIMATION_KEY, "reload", component);
+		if(frameObject != null && frameObject.has("startEasing", DataType.STRING))
+		{
+			DataString easing = frameObject.getDataString("startEasing");
+			if(easing != null)
+			{
+				return (Easings.byName(easing.asString()));
+			}
+		}
+		else
+		{
+			assert frameObject != null;
+			if(frameObject.has("startTransEasing", DataType.STRING) && !easeRotationInstead)
+			{
+				DataString easing = frameObject.getDataString("startTransEasing");
+				if(easing != null)
+				{
+					return (Easings.byName(easing.asString()));
+				}
+			}
+			else if(frameObject.has("startRotEasing", DataType.STRING) && easeRotationInstead)
+			{
+				DataString easing = frameObject.getDataString("startRotEasing");
+				if(easing != null)
+				{
+					return (Easings.byName(easing.asString()));
+				}
+			}
+			else
+			{
+				frameObject = GunAnimationHelper.getObjectByPath(weapKey, ANIMATION_KEY, "reload", component, "0");
+			}
+		}
+		if(frameObject != null && frameObject.has("easing", DataType.STRING))
+		{
+			DataString easing = frameObject.getDataString("easing");
+			if(easing != null)
+			{
+				return (Easings.byName(easing.asString()));
+			}
+		}
+		else
+		{
+			assert frameObject != null;
+			if(frameObject.has("transEasing", DataType.STRING) && !easeRotationInstead)
+			{
+				DataString easing = frameObject.getDataString("transEasing");
+				if(easing != null)
+				{
+					return (Easings.byName(easing.asString()));
+				}
+			}
+			else if(frameObject.has("rotEasing", DataType.STRING) && easeRotationInstead)
+			{
+				DataString easing = frameObject.getDataString("rotEasing");
+				if(easing != null)
+				{
+					return (Easings.byName(easing.asString()));
+				}
+			}
+		}
+		
+		return Easings.LINEAR;
+	}
+	
+	public static Easings getReloadEndEasing(ResourceLocation weapKey, String component)
+	{
+		DataObject frameObject = GunAnimationHelper.getObjectByPath(weapKey, ANIMATION_KEY, "reload", component);
+		if(frameObject != null && frameObject.has("endEasing", DataType.STRING))
+		{
+			DataString easing = frameObject.getDataString("endEasing");
+			if(easing != null)
+			{
+				return (Easings.byName(easing.asString()));
+			}
+		}
+		
+		return Easings.EASE_OUT_QUAD;
+	}
+	
+	public static Easings getReloadEndEasing(ResourceLocation weapKey, String component, boolean easeRotationInstead)
+	{
+		DataObject frameObject = GunAnimationHelper.getObjectByPath(weapKey, ANIMATION_KEY, "reload", component);
+		if(frameObject != null && frameObject.has("endEasing", DataType.STRING))
+		{
+			DataString easing = frameObject.getDataString("endEasing");
+			if(easing != null)
+			{
+				return (Easings.byName(easing.asString()));
+			}
+		}
+		else
+		{
+			assert frameObject != null;
+			if(frameObject.has("endTransEasing", DataType.STRING) && !easeRotationInstead)
+			{
+				DataString easing = frameObject.getDataString("endTransEasing");
+				if(easing != null)
+				{
+					return (Easings.byName(easing.asString()));
+				}
+			}
+			else if(frameObject.has("endRotEasing", DataType.STRING) && easeRotationInstead)
+			{
+				DataString easing = frameObject.getDataString("endRotEasing");
+				if(easing != null)
+				{
+					return (Easings.byName(easing.asString()));
+				}
+			}
+		}
+		
+		return Easings.EASE_OUT_QUAD;
+	}
+}

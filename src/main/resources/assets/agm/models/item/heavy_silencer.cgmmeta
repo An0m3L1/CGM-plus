@@ -1,0 +1,18 @@
+{
+	"agm:model": {
+		"origin": [
+			8.0,
+			8.0,
+			8.0
+		]
+	},
+	"agm:barrel": {
+		"muzzleFlash": {
+			"translation": [
+				8.0,
+				8.0,
+				-4.1
+			]
+		}
+	}
+}

@@ -6,7 +6,7 @@ license = "GPL3"
 modId = "${modId}"
 version = "${modVersion}"
 displayName = "${modName}"
-logoFile = "icon.png"
+logoFile = "banner.png"
 authors = "An0m3L1"
 credits = "MrCrayfish, zaeonNineZero"
 description = '''
@@ -22,7 +22,7 @@ side = "BOTH"
 [[dependencies."${modId}"]]
 modId = "minecraft"
 mandatory = true
-versionRange = "[1.19,1.20)"
+versionRange = "[1.19,1.19.2]"
 ordering = "NONE"
 side = "BOTH"
 [[dependencies."${modId}"]]

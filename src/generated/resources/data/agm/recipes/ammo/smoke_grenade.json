@@ -1,0 +1,22 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"tag": "forge:plates/steel"
+		},
+		{
+			"count": 2,
+			"item": "sulfurpotassiummod:sulfur"
+		},
+		{
+			"tag": "forge:dyes/gray"
+		},
+		{
+			"count": 2,
+			"tag": "forge:gunpowder"
+		}
+	],
+	"result": {
+		"item": "agm:smoke_grenade"
+	}
+}

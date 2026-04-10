@@ -1,0 +1,32 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"count": 1,
+			"item": "agm:sturdy_mechanism"
+		},
+		{
+			"count": 2,
+			"tag": "forge:rods/steel"
+		},
+		{
+			"count": 4,
+			"tag": "forge:plates/steel"
+		},
+		{
+			"count": 3,
+			"item": "agm:plastic"
+		},
+		{
+			"count": 2,
+			"item": "agm:rubber"
+		},
+		{
+			"count": 1,
+			"item": "agm:cloth"
+		}
+	],
+	"result": {
+		"item": "agm:gun_repair_kit"
+	}
+}

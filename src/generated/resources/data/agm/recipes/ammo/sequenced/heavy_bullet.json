@@ -1,0 +1,81 @@
+{
+	"type": "create:sequenced_assembly",
+	"ingredient": {
+		"item": "agm:brass_casing"
+	},
+	"loops": 1,
+	"results": [
+		{
+			"item": "agm:heavy_bullet"
+		}
+	],
+	"sequence": [
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:brass_casing"
+				},
+				{
+					"item": "agm:gunpowder_pinch"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:heavy_bullet"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:brass_casing"
+				},
+				{
+					"item": "agm:gunpowder_pinch"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:heavy_bullet"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:brass_casing"
+				},
+				{
+					"item": "agm:gunpowder_pinch"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:heavy_bullet"
+				}
+			]
+		},
+		{
+			"type": "create:deploying",
+			"ingredients": [
+				{
+					"item": "agm:brass_casing"
+				},
+				{
+					"item": "agm:bullet"
+				}
+			],
+			"results": [
+				{
+					"item": "agm:heavy_bullet"
+				}
+			]
+		}
+	],
+	"transitionalItem": {
+		"item": "agm:brass_casing"
+	}
+}

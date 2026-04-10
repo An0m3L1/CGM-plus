@@ -1,0 +1,41 @@
+{
+	"type": "create:compacting",
+	"ingredients": [
+		{
+			"tag": "forge:dyes/red"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/plastic"
+		},
+		{
+			"tag": "forge:plates/brass"
+		}
+	],
+	"results": [
+		{
+			"count": 8,
+			"item": "agm:shell_casing"
+		}
+	]
+}

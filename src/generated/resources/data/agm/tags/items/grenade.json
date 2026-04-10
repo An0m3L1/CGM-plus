@@ -1,0 +1,10 @@
+{
+	"values": [
+		"agm:grenade",
+		"agm:impact_grenade",
+		"agm:stun_grenade",
+		"agm:smoke_grenade",
+		"agm:incendiary_grenade",
+		"agm:molotov"
+	]
+}

@@ -1,0 +1,28 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"count": 4,
+			"item": "agm:sturdy_mechanism"
+		},
+		{
+			"count": 16,
+			"tag": "forge:rods/steel"
+		},
+		{
+			"count": 32,
+			"tag": "forge:plates/steel"
+		},
+		{
+			"count": 24,
+			"item": "agm:plastic"
+		},
+		{
+			"count": 12,
+			"item": "agm:rubber"
+		}
+	],
+	"result": {
+		"item": "agm:mini_gun"
+	}
+}

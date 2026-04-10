@@ -1,0 +1,28 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"count": 4,
+			"item": "agm:sturdy_mechanism"
+		},
+		{
+			"count": 8,
+			"tag": "forge:rods/steel"
+		},
+		{
+			"count": 16,
+			"tag": "forge:plates/steel"
+		},
+		{
+			"count": 12,
+			"item": "agm:plastic"
+		},
+		{
+			"count": 8,
+			"item": "agm:rubber"
+		}
+	],
+	"result": {
+		"item": "agm:combat_rifle"
+	}
+}

@@ -1,0 +1,619 @@
+{
+	"item.assault_rifle.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/assault_rifle/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.assault_rifle.silenced_fire": {
+		"subtitle": "subtitle.agm.fire.silenced",
+		"sounds": [
+			{
+				"name": "agm:item/assault_rifle/silenced_fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.assault_rifle.mag_out": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/assault_rifle/mag_out"
+			}
+		]
+	},
+	"item.assault_rifle.mag_in": {
+		"sounds": [
+			{
+				"name": "agm:item/assault_rifle/mag_in"
+			}
+		]
+	},
+	"item.assault_rifle.slap": {
+		"subtitle": "subtitle.agm.cock",
+		"sounds": [
+			{
+				"name": "agm:item/assault_rifle/slap"
+			}
+		]
+	},
+	
+	"item.heavy_sniper_rifle.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/heavy_sniper_rifle/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.heavy_sniper_rifle.mag_out": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/heavy_sniper_rifle/mag_out"
+			}
+		]
+	},
+	"item.heavy_sniper_rifle.mag_in": {
+		"sounds": [
+			{
+				"name": "agm:item/heavy_sniper_rifle/mag_in"
+			}
+		]
+	},
+	"item.heavy_sniper_rifle.cock": {
+		"subtitle": "subtitle.agm.cock",
+		"sounds": [
+			{
+				"name": "agm:item/heavy_sniper_rifle/cock"
+			}
+		]
+	},
+	
+	"item.sniper_rifle.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/sniper_rifle/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.sniper_rifle.silenced_fire": {
+		"subtitle": "subtitle.agm.fire.silenced",
+		"sounds": [
+			{
+				"name": "agm:item/sniper_rifle/silenced_fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.sniper_rifle.mag_out": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/sniper_rifle/mag_out"
+			}
+		]
+	},
+	"item.sniper_rifle.mag_in": {
+		"sounds": [
+			{
+				"name": "agm:item/sniper_rifle/mag_in"
+			}
+		]
+	},
+	"item.sniper_rifle.cock": {
+		"subtitle": "subtitle.agm.cock",
+		"sounds": [
+			{
+				"name": "agm:item/sniper_rifle/cock"
+			}
+		]
+	},
+	
+	"item.semi_auto_shotgun.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/semi_auto_shotgun/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.semi_auto_shotgun.reload": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/semi_auto_shotgun/reload"
+			}
+		]
+	},
+	
+	"item.mini_gun.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/mini_gun/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	
+	"item.pistol.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/pistol/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.pistol.silenced_fire": {
+		"subtitle": "subtitle.agm.fire.silenced",
+		"sounds": [
+			{
+				"name": "agm:item/pistol/silenced_fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.pistol.mag_out": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/pistol/mag_out"
+			}
+		]
+	},
+	"item.pistol.mag_in": {
+		"sounds": [
+			{
+				"name": "agm:item/pistol/mag_in"
+			}
+		]
+	},
+	"item.pistol.slide_back": {
+		"sounds": [
+			{
+				"name": "agm:item/pistol/slide_back"
+			}
+		]
+	},
+	"item.pistol.slide_forward": {
+		"subtitle": "subtitle.agm.cock",
+		"sounds": [
+			{
+				"name": "agm:item/pistol/slide_forward"
+			}
+		]
+	},
+	
+	"item.tactical_pistol.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/tactical_pistol/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.tactical_pistol.silenced_fire": {
+		"subtitle": "subtitle.agm.fire.silenced",
+		"sounds": [
+			{
+				"name": "agm:item/tactical_pistol/silenced_fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.tactical_pistol.mag_out": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/tactical_pistol/mag_out"
+			}
+		]
+	},
+	"item.tactical_pistol.mag_in": {
+		"sounds": [
+			{
+				"name": "agm:item/tactical_pistol/mag_in"
+			}
+		]
+	},
+	"item.tactical_pistol.slide_back": {
+		"sounds": [
+			{
+				"name": "agm:item/tactical_pistol/slide_back"
+			}
+		]
+	},
+	"item.tactical_pistol.slide_forward": {
+		"subtitle": "subtitle.agm.cock",
+		"sounds": [
+			{
+				"name": "agm:item/tactical_pistol/slide_forward"
+			}
+		]
+	},
+	
+	"item.automatic_pistol.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/automatic_pistol/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.automatic_pistol.silenced_fire": {
+		"subtitle": "subtitle.agm.fire.silenced",
+		"sounds": [
+			{
+				"name": "agm:item/automatic_pistol/silenced_fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.automatic_pistol.mag_out": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/automatic_pistol/mag_out"
+			}
+		]
+	},
+	"item.automatic_pistol.mag_in": {
+		"sounds": [
+			{
+				"name": "agm:item/automatic_pistol/mag_in"
+			}
+		]
+	},
+	"item.automatic_pistol.slide_back": {
+		"subtitle": "subtitle.agm.cock",
+		"sounds": [
+			{
+				"name": "agm:item/automatic_pistol/slide_back"
+			}
+		]
+	},
+	"item.automatic_pistol.slide_forward": {
+		"sounds": [
+			{
+				"name": "agm:item/automatic_pistol/slide_forward"
+			}
+		]
+	},
+	
+	"item.rocket_launcher.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/rocket_launcher/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.rocket_launcher.reload": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/rocket_launcher/reload"
+			}
+		]
+	},
+	
+	"item.grenade_launcher.fire": {
+		"subtitle": "subtitle.agm.fire",
+		"sounds": [
+			{
+				"name": "agm:item/grenade_launcher/fire",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade_launcher.reload": {
+		"subtitle": "subtitle.agm.reload",
+		"sounds": [
+			{
+				"name": "agm:item/grenade_launcher/reload"
+			}
+		]
+	},
+	"item.grenade_launcher.cock": {
+		"subtitle": "subtitle.agm.cock",
+		"sounds": [
+			{
+				"name": "agm:item/grenade_launcher/cock"
+			}
+		]
+	},
+	
+	"item.grenade.he_throw": {
+		"subtitle": "subtitle.agm.grenade.throw",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/he_throw",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.incendiary_throw": {
+		"subtitle": "subtitle.agm.grenade.throw",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/incendiary_throw",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.stun_throw": {
+		"subtitle": "subtitle.agm.grenade.throw",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/stun_throw",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.smoke_throw": {
+		"subtitle": "subtitle.agm.grenade.throw",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/smoke_throw",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.molotov_throw": {
+		"subtitle": "subtitle.agm.grenade.throw",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/molotov_throw",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.he_bounce": {
+		"subtitle": "subtitle.agm.grenade.bounce",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/he_bounce",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.incendiary_bounce": {
+		"subtitle": "subtitle.agm.grenade.bounce",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/incendiary_bounce",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.stun_bounce": {
+		"subtitle": "subtitle.agm.grenade.bounce",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/stun_bounce",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.smoke_bounce": {
+		"subtitle": "subtitle.agm.grenade.bounce",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/smoke_bounce",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.molotov_bounce": {
+		"subtitle": "subtitle.agm.grenade.bounce",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/molotov_bounce",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.he_pin": {
+		"subtitle": "subtitle.agm.grenade.pin",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/he_pin",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.incendiary_pin": {
+		"subtitle": "subtitle.agm.grenade.pin",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/incendiary_pin",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.stun_pin": {
+		"subtitle": "subtitle.agm.grenade.pin",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/stun_pin",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.smoke_pin": {
+		"subtitle": "subtitle.agm.grenade.pin",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/smoke_pin",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.grenade.molotov_light": {
+		"subtitle": "subtitle.agm.grenade.light",
+		"sounds": [
+			{
+				"name": "agm:item/grenade/molotov_light",
+				"volume": 0.5
+			}
+		]
+	},
+	
+	"entity.incendiary.extinguish": {
+		"subtitle": "subtitle.agm.incendiary.extinguish",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/incendiary_extinguish",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.molotov.break": {
+		"subtitle": "subtitle.agm.molotov.break",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/molotov_break",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.rocket.explosion": {
+		"subtitle": "subtitle.agm.rocket.explosion",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/rocket",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.pipe_grenade.explosion": {
+		"subtitle": "subtitle.agm.pipe_grenade.explosion",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/pipe_grenade",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.grenade.explosion": {
+		"subtitle": "subtitle.agm.grenade.explosion",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/grenade",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.incendiary_grenade.explosion": {
+		"subtitle": "subtitle.agm.incendiary.explosion",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/incendiary",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.molotov.explosion": {
+		"subtitle": "subtitle.agm.molotov.explosion",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/molotov",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.stun_grenade.explosion": {
+		"subtitle": "subtitle.agm.stun.explosion",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/stun",
+				"volume": 0.75
+			}
+		]
+	},
+	"entity.stun_grenade.ring": {
+		"subtitle": "subtitle.agm.stun.ring",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/stun_ring"
+			}
+		]
+	},
+	"entity.smoke_grenade.explosion": {
+		"subtitle": "subtitle.agm.smoke.explosion",
+		"sounds": [
+			{
+				"name": "agm:entity/explosion/smoke",
+				"volume": 0.75
+			}
+		]
+	},
+	
+	"ui.attach": {
+		"subtitle": "subtitle.agm.attach",
+		"sounds": [
+			"agm:ui/attach"
+		]
+	},
+	"item.empty_click": {
+		"subtitle": "subtitle.agm.empty",
+		"sounds": [
+			"agm:item/empty_click"
+		]
+	},
+	"item.fire_switch": {
+		"subtitle": "subtitle.agm.switch",
+		"sounds": [
+			"agm:item/fire_switch"
+		]
+	},
+	"item.low_durability": {
+		"sounds": [
+			"agm:item/low_durability"
+		]
+	},
+	"item.throw": {
+		"sounds": [
+			"agm:item/throw"
+		]
+	},
+	"item.draw": {
+		"sounds": [
+			{
+				"name": "agm:item/draw",
+				"volume": 0.5
+			}
+		]
+	},
+	"item.party_horn": {
+		"sounds": [
+			"agm:item/party_horn"
+		]
+	},
+	"entity.flyby": {
+		"subtitle": "subtitle.agm.flyby",
+		"sounds": [
+			"agm:entity/flyby/flyby1",
+			"agm:entity/flyby/flyby2",
+			"agm:entity/flyby/flyby3",
+			"agm:entity/flyby/flyby4",
+			"agm:entity/flyby/flyby5",
+			"agm:entity/flyby/flyby6",
+			"agm:entity/flyby/flyby7",
+			"agm:entity/flyby/flyby8",
+			"agm:entity/flyby/flyby9"
+		]
+	}
+}

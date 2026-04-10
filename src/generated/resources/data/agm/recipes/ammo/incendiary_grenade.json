@@ -1,0 +1,22 @@
+{
+	"type": "agm:workbench",
+	"materials": [
+		{
+			"tag": "forge:plates/steel"
+		},
+		{
+			"item": "agm:plastic"
+		},
+		{
+			"count": 4,
+			"item": "sulfurpotassiummod:sulfur"
+		},
+		{
+			"count": 2,
+			"tag": "forge:gunpowder"
+		}
+	],
+	"result": {
+		"item": "agm:incendiary_grenade"
+	}
+}

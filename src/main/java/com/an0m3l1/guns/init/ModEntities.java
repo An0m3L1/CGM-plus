@@ -1,0 +1,73 @@
+package com.an0m3l1.guns.init;
+
+import com.an0m3l1.guns.GunMod;
+import com.an0m3l1.guns.entity.LightSourceEntity;
+import com.an0m3l1.guns.entity.ProjectileEntity;
+import com.an0m3l1.guns.entity.grenade.*;
+import com.an0m3l1.guns.entity.projectile.BulletEntity;
+import com.an0m3l1.guns.entity.projectile.PipeGrenadeEntity;
+import com.an0m3l1.guns.entity.projectile.RocketEntity;
+import net.minecraft.world.entity.Entity;
+import net.minecraft.world.entity.EntityType;
+import net.minecraft.world.entity.MobCategory;
+import net.minecraft.world.level.Level;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+
+import java.util.function.BiFunction;
+
+/**
+ * Author: MrCrayfish
+ */
+public class ModEntities
+{
+	public static final DeferredRegister<EntityType<?>> REGISTER = DeferredRegister.create(ForgeRegistries.ENTITY_TYPES, GunMod.MOD_ID);
+	
+	public static final RegistryObject<EntityType<ProjectileEntity>> PROJECTILE = registerProjectile("projectile", ProjectileEntity::new);
+	public static final RegistryObject<EntityType<PipeGrenadeEntity>> PIPE_GRENADE = registerBasic("pipe_grenade", PipeGrenadeEntity::new);
+	public static final RegistryObject<EntityType<RocketEntity>> ROCKET = registerBasic("rocket", RocketEntity::new);
+	public static final RegistryObject<EntityType<ThrowableGrenadeEntity>> THROWABLE_GRENADE = registerBasic("throwable_grenade", ThrowableGrenadeEntity::new);
+	public static final RegistryObject<EntityType<ThrowableImpactGrenadeEntity>> THROWABLE_IMPACT_GRENADE = registerBasic("throwable_impact_grenade", ThrowableImpactGrenadeEntity::new);
+	public static final RegistryObject<EntityType<ThrowableStunGrenadeEntity>> THROWABLE_STUN_GRENADE = registerBasic("throwable_stun_grenade", ThrowableStunGrenadeEntity::new);
+	public static final RegistryObject<EntityType<ThrowableSmokeGrenadeEntity>> THROWABLE_SMOKE_GRENADE = registerBasic("throwable_smoke_grenade", ThrowableSmokeGrenadeEntity::new);
+	public static final RegistryObject<EntityType<ThrowableIncendiaryGrenadeEntity>> THROWABLE_INCENDIARY_GRENADE = registerBasic("throwable_incendiary_grenade", ThrowableIncendiaryGrenadeEntity::new);
+	public static final RegistryObject<EntityType<ThrowableMolotovEntity>> THROWABLE_MOLOTOV = registerBasic("throwable_molotov", ThrowableMolotovEntity::new);
+	public static final RegistryObject<EntityType<LightSourceEntity>> LIGHT_SOURCE = registerLight("light_source", LightSourceEntity::new);
+	
+	public static final RegistryObject<EntityType<BulletEntity>> LIGHT_BULLET = REGISTER.register("light_bullet", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("light_bullet"));
+	public static final RegistryObject<EntityType<BulletEntity>> MEDIUM_BULLET = REGISTER.register("medium_bullet", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("medium_bullet"));
+	public static final RegistryObject<EntityType<BulletEntity>> HEAVY_BULLET = REGISTER.register("heavy_bullet", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("heavy_bullet"));
+	public static final RegistryObject<EntityType<BulletEntity>> BUCKSHOT_SHELL = REGISTER.register("buckshot_shell", () -> EntityType.Builder.<BulletEntity>of(BulletEntity::new, MobCategory.MISC).sized(0.25F, 0.25F).build("buckshot_shell"));
+	
+	private static <T extends Entity> RegistryObject<EntityType<T>> registerBasic(String id, BiFunction<EntityType<T>, Level, T> function)
+	{
+		return REGISTER.register(id, () -> EntityType.Builder.of(function::apply, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(256).setUpdateInterval(1).noSummon().fireImmune().setShouldReceiveVelocityUpdates(true).build(id));
+	}
+	
+	/**
+	 * Entity registration that prevents the entity from being sent and tracked by clients. Projectiles
+	 * are rendered separately from Minecraft's entity rendering system and their logic is handled
+	 * exclusively by the server, why send them to the client. Projectiles also have very short time
+	 * in the world and are spawned many times a tick. There is no reason to send unnecessary packets
+	 * when it can be avoided to drastically improve the performance of the game.
+	 *
+	 * @param id
+	 * 		the id of the projectile
+	 * @param function
+	 * 		the factory to spawn the projectile for the server
+	 * @param <T>
+	 * 		an entity that is a projectile entity
+	 *
+	 * @return A registry object containing the new entity type
+	 */
+	private static <T extends ProjectileEntity> RegistryObject<EntityType<T>> registerProjectile(String id, BiFunction<EntityType<T>, Level, T> function)
+	{
+		return REGISTER.register(id, () -> EntityType.Builder.of(function::apply, MobCategory.MISC).sized(0.25F, 0.25F).setTrackingRange(0).noSummon().fireImmune().setShouldReceiveVelocityUpdates(false).setCustomClientFactory((spawnEntity, world) -> null).build(id));
+	}
+	
+	private static <T extends Entity> RegistryObject<EntityType<T>> registerLight(String id, BiFunction<EntityType<T>, Level, T> function)
+	{
+		return REGISTER.register(id, () -> EntityType.Builder.of(function::apply, MobCategory.MISC).sized(0.01F, 0.01F).setTrackingRange(256).setUpdateInterval(1).noSummon().fireImmune().build(id));
+	}
+}

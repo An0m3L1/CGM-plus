@@ -3,7 +3,7 @@ Fixes and Overhauls
 Add and overhaul animations:
     - Prone/Swimming
     - Smooth third person sprint animation for one-handed weapons
-    - Third person recoil animation
+    - Third person recoil animation (already present?)
     - Third person reload animation
 Overhaul items:
     - Assault/Tactical/Combat Rifle (overhaul internals)
@@ -15,7 +15,8 @@ Overhaul items:
     - Grenade Launcher (full overhaul)
     - Rocket Launcher (full overhaul)
     - Minigun (full overhaul)
-Optimize textures for all gun models
+Overhaul textures for all gun models
+Fix recoil not working in third person
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
 Make dependencies optional where applicable

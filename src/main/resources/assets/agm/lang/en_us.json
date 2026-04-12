@@ -108,7 +108,7 @@
 	"item.minecraft.lingering_potion.effect.stunning": "Lingering Potion of Stunning",
 	"item.minecraft.lingering_potion.effect.smoking": "Lingering Potion of Smoking",
 	"itemGroup.agm": "An0m3L1's Gun Mod Weapons",
-	"itemGroup.cgm_materials": "An0m3L1's Gun Mod Materials",
+	"itemGroup.agm_materials": "An0m3L1's Gun Mod Materials",
 	"death.attack.agm.bullet.killed": "%1$s was taken down by %2$s",
 	"death.attack.agm.bullet.eliminated": "%1$s was eliminated by %2$s",
 	"death.attack.agm.bullet.executed": "%1$s was executed by %2$s",

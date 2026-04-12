@@ -1,0 +1,107 @@
+[crosshair]
+#A custom crosshair to use for weapons. Available options: arrow, better_default, box, circle, dot, dynamic, filled_circle, hit_marker, line, round, smiley, square, t, tech.
+crosshair = "agm:dynamic"
+#Resting size of Dynamic Crosshair when spread is zero.
+#Range: 0.0 ~ 5.0
+dynamicCrosshairBaseSpread = 1.0
+#Bloom factor of Dynamic Crosshair when spread increases.
+#Range: 1.0 ~ 1.5
+dynamicCrosshairSpreadMultiplier = 1.0
+#How reactive Dynamic Crosshair is to shooting.
+#Range: 0.0 ~ 10.0
+dynamicCrosshairReactivity = 2.0
+#Rendering mode used for center dot of Dynamic Crosshair.
+#Allowed Values: NEVER, AT_MIN_SPREAD, THRESHOLD, ALWAYS
+dynamicCrosshairDotMode = "ALWAYS"
+#If enabled, center dot of Dynamic Crosshair will only render while aiming. Obeys dynamicCrosshairDotMode, and has no effect when mode is set to Never.
+onlyRenderDotWhileAiming = true
+#Threshold of spread (including modifiers) below which center dot of Dynamic Crosshair is rendered. Affects At Min Spread and Threshold modes only.
+#Range: 0.0 ~ 90.0
+dynamicCrosshairDotThreshold = 0.8
+#If enabled, weapons with sniper spreading enabled won't render the crosshair at all.
+disableCrosshairForSnipers = true
+#If enabled, blends all custom crosshairs to match behavior of default crosshair.
+blendCrosshair = true
+
+[weapon_animations]
+#If enabled, weapons will sway when you look around. This does not affect aiming and is only visual.
+weaponSway = true
+#Sensitivity of visual weapon sway.
+#Range: 0.0 ~ 1.0
+swaySensitivity = 0.2
+#Animation to use for sway. Directional follows the camera, while Drag lags behind and looks sloppy.
+#Allowed Values: DIRECTIONAL, DRAG
+swayType = "DIRECTIONAL"
+#Enables sprinting animation for weapons. This only applies to weapons that support a sprinting animation.
+sprintingAnimation = true
+#Intensity of the custom bobbing animation while holding a weapon.
+#Range: 0.0 ~ 2.0
+bobbingIntensity = 1.0
+
+[camera]
+#If enabled, the camera will roll when strafing while holding a weapon.
+cameraRollEffect = false
+#When Camera Roll Effect is enabled, this is the absolute maximum angle the roll on the camera can approach.
+#Range: 0.0 ~ 45.0
+cameraRollAngle = 1.5
+#When enabled, the Camera Roll Effect is only applied when holding a weapon.
+restrictCameraRollToWeapons = true
+#When enabled, temporarily switches the camera to first person while aiming. Aim zoom must be above firstPersonAimZoomThreshold, and only applies to third person rear camera modes.
+forceFirstPersonOnZoomedAim = true
+#The zoom threshold at which the camera switches to first person while aiming. Requires forceFirstPersonOnZoomedAim to be set to true.
+#Range: 0.0 ~ 1.0
+firstPersonAimZoomThreshold = 0.25
+#Mouse sensitivity will be multiplied by this value when ADS. If set to 1.0, mouse sensitivity won't be affected by ADS.
+#Range: 0.0 ~ 1.0
+aimDownSightSensitivity = 1.0
+
+[hud]
+#If enabled, renders a HUD element displaying current ammo count and ammo capacity.
+displayAmmoCount = true
+#If enabled, renders a cooldown indicator to make it easier to learn when you fire again.
+cooldownIndicator = false
+#The alignment of the button in the attachment screen.
+#Allowed Values: LEFT, RIGHT
+buttonAlignment = "RIGHT"
+#If enabled, hides the config button from the attachment screen.
+hideConfigButton = true
+
+[particles]
+#Duration in ticks before trail will disappear. Set to 0 to disable trails.
+#Range: > 0
+trailLife = 1
+#The minimum duration in ticks before bullet holes will disappear.
+#Range: > 0
+bulletHoleLifeMin = 200
+#The maximum duration in ticks before bullet holes will disappear.
+#Range: > 0
+bulletHoleLifeMax = 300
+#The percentage of the maximum life that must pass before particles begin fading away. 0 makes the particles always fade and 1 removes fading completely.
+#Range: 0.0 ~ 1.0
+bulletHoleFadeThreshold = 0.98
+#If true, particles will spawn from entities that are hit by a projectile.
+enableHitParticle = true
+#If true, particles will spawn from entities that are hit in the head.
+enableHeadshotParticle = true
+#If enabled, replaces hit particles with blood.
+enableBlood = true
+#The maximum distance impact particles can be seen from.
+#Range: 0.0 ~ 1.7976931348623157E308
+impactParticleDistance = 256.0
+
+[sounds]
+#If true, a sound will play when you hit an entity with a weapon.
+playHitSound = true
+#If true, the normal hit sound will only play when hitting players. Does not apply to headshots and crits.
+hitSoundOnlyAgainstPlayers = true
+#The sound to play when a hit occurs.
+hitSound = "minecraft:item.trident.hit"
+#If true, a sound will play when you hit a headshot.
+playSoundWhenHeadshot = false
+#The sound to play when a headshot occurs.
+headshotSound = "minecraft:entity.player.attack.crit"
+#If true, a sound will play when you hit a crit.
+playSoundWhenCritical = false
+#The sound to play when a crit occurs.
+criticalSound = "minecraft:entity.player.attack.crit"
+

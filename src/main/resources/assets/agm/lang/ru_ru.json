@@ -108,7 +108,7 @@
 	"item.minecraft.lingering_potion.effect.stunning": "Туманное зелье оглушения",
 	"item.minecraft.lingering_potion.effect.smoking": "Туманное зелье задымления",
 	"itemGroup.agm": "An0m3L1's Gun Mod Оружие",
-	"itemGroup.cgm_materials": "An0m3L1's Gun Mod Материалы",
+	"itemGroup.agm_materials": "An0m3L1's Gun Mod Материалы",
 	"death.attack.agm.bullet.killed": "%1$s был ликвидирован %2$s",
 	"death.attack.agm.bullet.eliminated": "%1$s был устранен %2$s",
 	"death.attack.agm.bullet.executed": "%1$s был казнен %2$s",

@@ -1,0 +1,79 @@
+#Enables debug logging. May affect performance negatively.
+showDebugMessages = false
+
+[griefing]
+#If enabled, explosions will destroy all blocks.
+universalExplosionGriefing = false
+#If enabled, projectiles and explosions will destroy fragile and destructible blocks. This doesn't require explosion griefing to be enabled.
+projectileGriefing = true
+#If enabled, fragile and destructible blocks will drop when broken.
+projectileGriefingBlockDrops = false
+
+[griefing.block_hardness_values]
+#The amount of penetration power required to break low hardness blocks. (Wooden doors/trapdoors, hay bales, etc.)
+#Range: > 1
+hardnessLowValue = 1
+#The amount of penetration power required to break medium hardness blocks. (Metal doors/trapdoors, planks, logs, etc.)
+#Range: > 1
+hardnessMediumValue = 3
+#The amount of penetration power required to break high hardness blocks. (Bricks, walls, etc.)
+#Range: > 1
+hardnessHighValue = 5
+
+[entities]
+#If true, nearby mobs are scared by weapon fire.
+scareMobs = true
+#If true, in addition to scaring mobs, firing a weapon will also cause nearby hostile mobs to target the shooter.
+angerHostileMobs = true
+#Any mobs from this list will not anger.
+exemptMobs = []
+#The extra amount to expand an entity's bounding box when checking for projectile collision.
+#Range: 0.0 ~ 1.0
+growBoundingBoxAmount = 0.1
+#If true, entities with tag 'hit_immune' can't be hit with projectiles.
+enableImmuneEntities = true
+#If true, entities with tag 'hit_resistant' take less damage from weapons and can't be pierced.
+enableResistantEntities = true
+#The value to multiply the damage by if projectile hits a resistant entity.
+#Range: 0.0 ~ 1.0
+resistantEntitiesDamageMultiplier = 0.5
+#Sets the multiplier to movement speed when aiming. Set to 1.0 to disable slowing down when aiming.
+#Range: 0.0 ~ 1.0
+aimingMovementSpeedMultiplier = 0.65
+#If true, improves the accuracy of weapons by considering the ping of the player. This has no effect on singleplayer. This will add a little overhead if enabled.
+improvedHitboxes = true
+#If true, hostile mobs will be unable to target entities while they are blinded by a Stun Grenade.
+blindMobs = true
+#If true, peaceful mobs will panic upon being stunned by a Stun Grenade.
+panicMobs = true
+
+[weapon_properties]
+#The value to multiply the damage by if a crit occurs.
+#Range: 1.0 ~ 1.7976931348623157E308
+criticalDamageMultiplier = 1.5
+#If true, headshots deal extra damage.
+enableHeadShots = true
+#The value to multiply the damage by if a headshot occurs.
+#Range: 1.0 ~ 1.7976931348623157E308
+headShotDamageMultiplier = 2.0
+#If true, projectiles will cause knockback when an entity is hit.
+enableKnockback = true
+#Sets the strength of knockback when hit. Knockback must be enabled for this to take effect. If value is equal to zero, knockback will use default minecraft value.
+#Range: 0.0 ~ 1.0
+knockbackStrength = 0.1
+#The amount of time in milliseconds (1/50th of a tick) before projectile spread resets to its resting value. The value indicates a reasonable amount of time before a weapon is considered stable again.
+#Range: 0 ~ 1000
+spreadThreshold = 350
+#The amount of times a player has to shoot within the spread threshold before the maximum amount of spread is applied. Setting the value higher means it will take longer for the spread to be applied.
+#Range: > 1
+maxCount = 9
+#When enabled, spread increases faster when not aiming, sprinting and jumping
+doSpreadPenalties = true
+#If true, weapons, explosions and certain projectiles will produce light. Requires dynamic lights reforged. Works best with 'Realtime' setting.
+enableDynamicLights = true
+#The distance players need to be within to be able to track new projectiles trails. Higher values means you can see projectiles from that start from further away.
+#Range: 1.0 ~ 1.7976931348623157E308
+projectileTrackingRange = 256.0
+#If true, weapons will decrease in durability and break.
+enableDurability = true
+

@@ -1,8 +1,8 @@
 {
 	"values": [
-		"cgm:cast_iron_sheet",
-		"cgm:steel_sheet",
-		"cgm:rubber_sheet",
-		"cgm:plastic_sheet"
+		"agm:cast_iron_sheet",
+		"agm:steel_sheet",
+		"agm:rubber_sheet",
+		"agm:plastic_sheet"
 	]
 }

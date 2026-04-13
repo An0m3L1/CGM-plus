@@ -1,9 +1,9 @@
 {
 	"replace": false,
 	"values": [
-		"cgm:cast_iron_block",
-		"cgm:steel_block",
-		"cgm:gun_workbench",
-		"cgm:gun_repair_kit"
+		"agm:cast_iron_block",
+		"agm:steel_block",
+		"agm:gun_workbench",
+		"agm:gun_repair_kit"
 	]
 }

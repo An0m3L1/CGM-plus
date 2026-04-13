@@ -1,10 +1,10 @@
 {
 	"values": [
-		"cgm:iron_rod",
-		"cgm:brass_rod",
-		"cgm:golden_rod",
-		"cgm:copper_rod",
-		"cgm:cast_iron_rod",
-		"cgm:steel_rod"
+		"agm:iron_rod",
+		"agm:brass_rod",
+		"agm:golden_rod",
+		"agm:copper_rod",
+		"agm:cast_iron_rod",
+		"agm:steel_rod"
 	]
 }

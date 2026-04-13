@@ -23,15 +23,17 @@ Make dependencies optional where applicable
 Overhaul repair kit recipe
 Return coloring weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
 Improve explosion VFX
+Improve block griefing logic (blocks broken by hand after being damaged by projectiles should break faster)
 Flashbangs should imprint the last seen environment with the white effect
 Update reload logic and animations:
     - When ammo is empty, slides should lock back/forward
     - If weapon is reloaded from a partially full state, loaded ammo should be maxAmmo+1 (i.e. 31/30)
     - Add reload empty animations to all applicable guns
+    - Disable reload cancelling if the weapon is fully loaded already but still in the process of reloading
+    - Disable reloding/unloading hotkeys if player is in any interface
 Clean up:
     - Gun model files (use automatic pistol as template)
     - Reorganize project files
-    - Check if OptifineHelper is needed
 Complete hardness tag lists:
     - None (glass, lanterns, wool, plants, small rocks)
     - Low (wooden doors, wooden trapdoors, fences, fence gates, furniture)

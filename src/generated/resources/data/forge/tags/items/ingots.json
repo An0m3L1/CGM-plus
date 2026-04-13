@@ -1,6 +1,6 @@
 {
 	"values": [
-		"cgm:cast_iron_ingot",
-		"cgm:steel_ingot"
+		"agm:cast_iron_ingot",
+		"agm:steel_ingot"
 	]
 }

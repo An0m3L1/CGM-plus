@@ -147,6 +147,7 @@ public class Config
 		public final ForgeConfigSpec.IntValue hardnessLowValue;
 		public final ForgeConfigSpec.IntValue hardnessMediumValue;
 		public final ForgeConfigSpec.IntValue hardnessHighValue;
+		public final ForgeConfigSpec.IntValue blockDamageResetThreshold;
 		
 		/* Entities */
 		public final ForgeConfigSpec.BooleanValue scareMobs;
@@ -191,6 +192,7 @@ public class Config
 				this.universalExplosionGriefing = builder.comment("If enabled, explosions will destroy all blocks.").define("universalExplosionGriefing", false);
 				this.projectileGriefing = builder.comment("If enabled, projectiles and explosions will destroy fragile and destructible blocks. This doesn't require explosion griefing to be enabled.").define("projectileGriefing", true);
 				this.projectileGriefingBlockDrops = builder.comment("If enabled, fragile and destructible blocks will drop when broken.").define("projectileGriefingBlockDrops", false);
+				this.blockDamageResetThreshold = builder.comment("The maximum amount of time (in ticks) before block damage from projectiles is removed.").defineInRange("blockDamageResetTime", 100, 5, Integer.MAX_VALUE);
 			}
 			builder.pop();
 			builder.push("entities");

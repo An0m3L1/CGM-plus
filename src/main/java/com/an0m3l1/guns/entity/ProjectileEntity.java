@@ -1334,8 +1334,7 @@ public class ProjectileEntity extends Entity implements IEntityAdditionalSpawnDa
 			map.entrySet().removeIf(entry ->
 			{
 				BlockDamageData data = entry.getValue();
-				/* After 3 seconds clean up any block damage from projectiles */
-				if(currentTime - data.lastHitTime > 60)
+				if(currentTime - data.lastHitTime > Config.COMMON.blockDamageResetThreshold.get())
 				{
 					level.destroyBlockProgress(getBreakerId(entry.getKey()), entry.getKey(), -1);
 					return true;

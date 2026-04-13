@@ -20,9 +20,7 @@ public class ProjectileBlockDamageHandler
 	{
 		if(!event.getLevel().isClientSide())
 		{
-			BlockPos pos = event.getPos();
-			Level level = event.getLevel();
-			ProjectileEntity.BlockDamageManager.removeDamage(level, pos);
+			ProjectileEntity.BlockDamageManager.removeDamage(event.getLevel(), event.getPos());
 		}
 	}
 	
@@ -31,23 +29,19 @@ public class ProjectileBlockDamageHandler
 	{
 		if(!event.getLevel().isClientSide())
 		{
-			BlockPos pos = event.getPos();
-			Level level = (Level) event.getLevel();
-			ProjectileEntity.BlockDamageManager.removeDamage(level, pos);
+			ProjectileEntity.BlockDamageManager.removeDamage((Level) event.getLevel(), event.getPos());
 		}
 	}
 	
 	@SubscribeEvent
 	public static void onExplosionDetonate(ExplosionEvent.Detonate event)
 	{
-		Level level = event.getLevel();
-		if(level.isClientSide())
+		if(!event.getLevel().isClientSide())
 		{
-			return;
-		}
-		for(BlockPos pos : event.getExplosion().getToBlow())
-		{
-			ProjectileEntity.BlockDamageManager.removeDamage(level, pos);
+			for(BlockPos pos : event.getExplosion().getToBlow())
+			{
+				ProjectileEntity.BlockDamageManager.removeDamage(event.getLevel(), pos);
+			}
 		}
 	}
 	

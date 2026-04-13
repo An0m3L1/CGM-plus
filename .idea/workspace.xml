@@ -5,74 +5,49 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Mod name and ID change.&#10;&#10;Changed mod name and mod ID.&#10;Animation and meta files use old extension for cross compatibility with 9-0s work.&#10;Fixed project structure.&#10;Renamed core project folders.">
-      <change afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/pack.mcmeta" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/MouseTweaks.cfg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/agm-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/agm-common.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/backpacked-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/backpacked-common.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/bettermodsbutton-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/clienttweaks-common.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/collective.json5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/configured-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/create-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/create-common.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/createdieselgenerators-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/curios-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/dynamic_lights_reforged.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/dynamictrees-common.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/embeddium-mixins.properties" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/embeddium-options.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/extendedcreativeinventory.json5" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/farmersdelight-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/farmersdelight-common.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/flywheel-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/fml.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/forge-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/forge-common.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/forge-resource-caching.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/ibeeditor-client.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/ibeeditor-common.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/ibeeditor-vault.dat" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jade/hide-blocks-1902.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jade/hide-entities-1902.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jade/jade.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jade/plugins.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jade/sort-order.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jei/ingredient-list-mod-sort-order.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jei/ingredient-list-type-sort-order.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jei/jei-client.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/jei/recipe-category-sort-order.ini" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/rubidium_extras.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/shouldersurfing-client.toml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/sulfurpotassiummod.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/torohealth.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/xaerominimap-common.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/xaerominimap.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/xaerominimap_entities.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/xaeropatreon.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/xaeroworldmap-common.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/config/xaeroworldmap.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/notes and misc/Settings/options.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/create/recipes/crafting/curiosities/cake.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/data/create/recipes/crafting/curiosities/cake.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/farmersdelight/recipes/bread_from_smelting.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/data/farmersdelight/recipes/bread_from_smelting.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/farmersdelight/recipes/bread_from_smoking.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/data/farmersdelight/recipes/bread_from_smoking.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/farmersdelight/recipes/cooking/dumplings.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/data/farmersdelight/recipes/cooking/dumplings.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/farmersdelight/recipes/cutting/tag_dough.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/data/farmersdelight/recipes/cutting/tag_dough.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/farmersdelight/recipes/wheat_dough_from_eggs.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/data/farmersdelight/recipes/wheat_dough_from_eggs.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/farmersdelight/recipes/wheat_dough_from_water.json" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/Debug/datapacks/AGM Tweaks/data/farmersdelight/recipes/wheat_dough_from_water.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/forge/tags/blocks/glass.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/minecraft/dimension/overworld.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/minecraft/tags/blocks/planks.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/minecraft/tags/blocks/wooden_slabs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/minecraft/tags/blocks/wooden_stairs.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/sulfurpotassiummod/loot_tables/blocks/potassium_ore.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/data/sulfurpotassiummod/recipes/gunpowder.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/notes and misc/Debug/datapacks/CGM+ Tweaks Datapack/pack.mcmeta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/agm/lang/en_us.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/agm/lang/en_us.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/assets/agm/lang/ru_ru.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/assets/agm/lang/ru_ru.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/curios/tags/items/belt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/curios/tags/items/belt.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/cast_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/steel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/crops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/crops.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/cast_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/steel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/cast_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/steel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/cast_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/plastic.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/plastic.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/rubber.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/rubber.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/steel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/brass.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/brass.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/cast_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/copper.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/copper.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/gold.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/gold.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/steel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds/hemp.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds/hemp.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/cast_iron.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/steel.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/crops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/crops.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/mineable/pickaxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/mineable/pickaxe.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_iron_tool.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_iron_tool.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/items/piglin_loved.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/items/piglin_loved.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/Config.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/LongScopeModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/MediumScopeModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/RocketLauncherModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/ShortScopeModel.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/entity/ProjectileEntity.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/util/OptifineHelper.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/world/ProjectileBlockDamageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/world/ProjectileBlockDamageHandler.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -206,7 +181,7 @@
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/An0m3L1s-Gun-Mod/notes and misc/Settings",
+    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/An0m3L1s-Gun-Mod/run",
     "project.structure.last.edited": "Modules",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.3411514",
@@ -216,11 +191,11 @@
 }]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\An0m3L1\Documents\GitHub\An0m3L1s-Gun-Mod\run" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\An0m3L1s-Gun-Mod\notes and misc\Settings" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\An0m3L1s-Gun-Mod\notes and misc\Debug\datapacks" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\An0m3L1s-Gun-Mod\run\saves" />
       <recent name="C:\Users\An0m3L1\Documents\GitHub\An0m3L1s-Gun-Mod\run\saves\Debug\datapacks" />
-      <recent name="C:\Users\An0m3L1\Documents\GitHub\An0m3L1s-Gun-Mod\notes and misc" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\CGM-plus\notes and misc\CGM+ Tweaks Datapack\data\minecraft\tags\blocks" />

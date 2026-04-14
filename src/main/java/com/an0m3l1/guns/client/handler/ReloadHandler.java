@@ -100,7 +100,7 @@ public class ReloadHandler
 	public void onKeyPressed(InputEvent.Key event)
 	{
 		Player player = Minecraft.getInstance().player;
-		if(player == null)
+		if(player == null || Minecraft.getInstance().screen != null)
 		{
 			return;
 		}

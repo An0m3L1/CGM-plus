@@ -4,50 +4,13 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Mod name and ID change.&#10;&#10;Changed mod name and mod ID.&#10;Animation and meta files use old extension for cross compatibility with 9-0s work.&#10;Fixed project structure.&#10;Renamed core project folders.">
+    <list default="true" id="0f653117-e108-4ce8-ba99-c7c5a06c5e00" name="Changes" comment="Small fixes.&#10;&#10;Block damage reset threshold is now configurable.&#10;Fixed generated data (changed cgm to agm)&#10;Removed redundant classes.">
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle.properties" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/notes and misc/notes.txt" beforeDir="false" afterPath="$PROJECT_DIR$/notes and misc/notes.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/curios/tags/items/belt.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/curios/tags/items/belt.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/cast_iron.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/blocks/storage_blocks/steel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/crops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/crops.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/cast_iron.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/ingots/steel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/cast_iron.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/nuggets/steel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/cast_iron.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/plastic.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/plastic.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/rubber.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/rubber.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/plates/steel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/brass.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/brass.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/cast_iron.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/copper.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/copper.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/gold.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/gold.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/iron.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/rods/steel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds/hemp.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/seeds/hemp.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/cast_iron.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/cast_iron.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/steel.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/forge/tags/items/storage_blocks/steel.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/crops.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/crops.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/mineable/pickaxe.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/mineable/pickaxe.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_iron_tool.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/blocks/needs_iron_tool.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/items/piglin_loved.json" beforeDir="false" afterPath="$PROJECT_DIR$/src/generated/resources/data/minecraft/tags/items/piglin_loved.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/Config.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/Config.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/LongScopeModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/MediumScopeModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/RocketLauncherModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/render/gun/model/ShortScopeModel.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/entity/ProjectileEntity.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/entity/ProjectileEntity.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/util/OptifineHelper.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/world/ProjectileBlockDamageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/world/ProjectileBlockDamageHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/handler/ReloadHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/client/handler/ReloadHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/common/network/ProjectileBlockDamageHandler.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/world/ProjectileBlockDamageHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/an0m3l1/guns/world/BlockProjectileDamageHandler.java" afterDir="false" />
     </list>
     <list id="e22d67f2-48d1-4a82-bc4a-3d7fb8628620" name="Local" comment="Local" />
     <option name="SHOW_DIALOG" value="false" />
@@ -118,6 +81,11 @@
     <setting file="jar://$USER_HOME$/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.4.20_mapped_parchment_2022.08.14-1.19.2/forge-1.19.2-43.4.20_mapped_parchment_2022.08.14-1.19.2-sources.jar!/net/minecraft/world/level/ExplosionDamageCalculator.java" root0="SKIP_INSPECTION" />
     <setting file="jar://$USER_HOME$/.gradle/caches/forge_gradle/minecraft_user_repo/net/minecraftforge/forge/1.19.2-43.4.20_mapped_parchment_2022.08.14-1.19.2/forge-1.19.2-43.4.20_mapped_parchment_2022.08.14-1.19.2-sources.jar!/net/minecraft/world/level/block/TntBlock.java" root0="SKIP_INSPECTION" />
   </component>
+  <component name="NamedScopeManager">
+    <order>
+      <scope name="Project Code" />
+    </order>
+  </component>
   <component name="OptimizeOnSaveOptions">
     <option name="myRunOnSave" value="true" />
   </component>
@@ -138,57 +106,57 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_MARK_IGNORED_FILES_AS_EXCLUDED": "true",
-    "Gradle.An0m3L1s-Gun-Mod [createMcpToSrg].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [dependencies].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [downloadAssets].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [downloadMCMeta].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [downloadMcpConfig].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [generateModInfo].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [init].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [jarJarRelease].executor": "Run",
-    "Gradle.An0m3L1s-Gun-Mod [jar].executor": "Run",
-    "Gradle.Build Mod.executor": "Run",
-    "Gradle.Build.executor": "Run",
-    "Gradle.C:/Users/An0m3L1/Documents/GitHub/An0m3L1s-Gun-Mod [createMcpToSrg].executor": "Run",
-    "Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [build].executor": "Run",
-    "Gradle.CGM-plus [createMcpToSrg].executor": "Run",
-    "Gradle.CGM-plus [genIntellijRuns].executor": "Run",
-    "Gradle.CGM-plus [prepareRunClientKanye].executor": "Run",
-    "Gradle.CGM-plus [runClient --warning-mode'none'].executor": "Run",
-    "Gradle.CGM-plus [runClient].executor": "Run",
-    "Gradle.Client An0m3L1.executor": "Run",
-    "Gradle.Client Kanye.executor": "Run",
-    "Gradle.Download Sources.executor": "Run",
-    "Gradle.Kanye West.executor": "Run",
-    "Gradle.Kanye.executor": "Run",
-    "Gradle.Run Kanye.executor": "Run",
-    "Gradle.Run Minecraft 2.executor": "Run",
-    "Gradle.Run Minecraft.executor": "Run",
-    "JavaClassFindUsagesOptions.isSearchForTextOccurrences": "false",
-    "Notification.DisplayName-DoNotAsk-Build sync orphan modules": "Modules no longer referenced by external system",
-    "Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed": "Sources download failed",
-    "Notification.DoNotAsk-Build sync orphan modules": "true",
-    "Notification.DoNotAsk-gradle.notifications.sources.download.failed": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252": "true",
-    "RunOnceActivity.git.unshallow": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "deletionFromPopupRequiresConfirmation": "false",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/Users/An0m3L1/Documents/GitHub/An0m3L1s-Gun-Mod/run",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.15",
-    "project.structure.side.proportion": "0.3411514",
-    "run.code.analysis.last.selected.profile": "pProject Default",
-    "settings.editor.selected.configurable": "diff.external"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_MARK_IGNORED_FILES_AS_EXCLUDED&quot;: &quot;true&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [dependencies].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [downloadAssets].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [downloadMCMeta].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [downloadMcpConfig].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [generateModInfo].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [init].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [jarJarRelease].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.An0m3L1s-Gun-Mod [jar].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build Mod.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Build.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.C:/Users/An0m3L1/Documents/GitHub/An0m3L1s-Gun-Mod [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.C:/Users/An0m3L1/Documents/GitHub/CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [build].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [createMcpToSrg].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [genIntellijRuns].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [prepareRunClientKanye].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient --warning-mode'none'].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.CGM-plus [runClient].executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Client An0m3L1.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Client Kanye.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Download Sources.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Kanye West.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Kanye.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Run Kanye.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Run Minecraft 2.executor&quot;: &quot;Run&quot;,
+    &quot;Gradle.Run Minecraft.executor&quot;: &quot;Run&quot;,
+    &quot;JavaClassFindUsagesOptions.isSearchForTextOccurrences&quot;: &quot;false&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-Build sync orphan modules&quot;: &quot;Modules no longer referenced by external system&quot;,
+    &quot;Notification.DisplayName-DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;Sources download failed&quot;,
+    &quot;Notification.DoNotAsk-Build sync orphan modules&quot;: &quot;true&quot;,
+    &quot;Notification.DoNotAsk-gradle.notifications.sources.download.failed&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.TerminalTabsStorage.copyFrom.TerminalArrangementManager.252&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;deletionFromPopupRequiresConfirmation&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/An0m3L1/Documents/GitHub/An0m3L1s-Gun-Mod/run&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.3411514&quot;,
+    &quot;run.code.analysis.last.selected.profile&quot;: &quot;pProject Default&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;diff.external&quot;
   }
-}]]></component>
+}</component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
       <recent name="C:\Users\An0m3L1\Documents\GitHub\An0m3L1s-Gun-Mod\run" />
@@ -253,14 +221,6 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1748328657724</updated>
-    </task>
-    <task id="LOCAL-00006" summary="Small tweak to gunfire light.">
-      <option name="closed" value="true" />
-      <created>1748815028788</created>
-      <option name="number" value="00006" />
-      <option name="presentableId" value="LOCAL-00006" />
-      <option name="project" value="LOCAL" />
-      <updated>1748815028788</updated>
     </task>
     <task id="LOCAL-00007" summary="Fixed datapack validation errors. More code changes in preparation for wallbang changes. Projectiles now continue flying if they destroy a fragile block (WIP).">
       <option name="closed" value="true" />
@@ -646,7 +606,15 @@
       <option name="project" value="LOCAL" />
       <updated>1775167477981</updated>
     </task>
-    <option name="localTasksCounter" value="55" />
+    <task id="LOCAL-00055" summary="Small fixes.&#10;&#10;Block damage reset threshold is now configurable.&#10;Fixed generated data (changed cgm to agm)&#10;Removed redundant classes.">
+      <option name="closed" value="true" />
+      <created>1776093450101</created>
+      <option name="number" value="00055" />
+      <option name="presentableId" value="LOCAL-00055" />
+      <option name="project" value="LOCAL" />
+      <updated>1776093450102</updated>
+    </task>
+    <option name="localTasksCounter" value="56" />
     <servers />
   </component>
   <component name="UnknownFeatures">
@@ -667,7 +635,6 @@
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT_PROFILE" value="Project Default" />
     <option name="CHECK_CODE_CLEANUP_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="ADD_EXTERNAL_FILES_SILENTLY" value="true" />
-    <MESSAGE value="Attachment update.&#10;&#10;Added solid stock and angled grip.&#10;Overhauled AR magwell, magazine and shotgun internal models.&#10;Various balance changes.&#10;Further tweaks to new animations." />
     <MESSAGE value="Model and sound update.&#10;&#10;Added thumb grip.&#10;Added an easter egg for unobtainable items.&#10;Renamed some models for clarity.&#10;Overhauled assault rifle barrel covers.&#10;Overhauled sniper rifle extended mag model.&#10;Added generic throw sound to all grenades.&#10;Rewrote code related to throw sounds.&#10;Added scope mount to tactical pistol.&#10;Added stock mount to semi auto shotgun." />
     <MESSAGE value="Small tweaks and fixes.&#10;&#10;Tweaked headshot tooltip to not show for identical damage to base damage.&#10;Registered weapon select sound.&#10;Added default weapon select sound to Gun.java.&#10;Added missing weapon select sound to guns.&#10;Added repair kit item class to show a custom tooltip.&#10;Updated test world.&#10;Updated icons for the mod and WIP resource pack.&#10;Slightly reduced horizontal recoil.&#10;Changed molotov recipe to use gasoline instead of ethanol." />
     <MESSAGE value="Grenade update.&#10;&#10;Added molotov bounce and break sounds." />
@@ -692,7 +659,8 @@
     <MESSAGE value="Explosion and QOL update.&#10;&#10;Explosion damage is now more consistent vertically and when hitting entities directly.&#10;Increased explosion damage reduction with distance.&#10;Slightly reduced grenade throw velocity.&#10;Guns now consume ammo, can't be fired when empty and show infinite reserve ammo when in creative.&#10;Guns now display their fire mode even if they don't have multiple modes.&#10;Changed default attachments screen keybind.&#10;Rebalanced explosion damage and radius.&#10;Tweaked tags." />
     <MESSAGE value="Major code reformat and clean up.&#10;&#10;Major code clean up.&#10;Moved some subtitles around.&#10;Reformatted all project code to a unified style guide." />
     <MESSAGE value="Automatic Pistol update.&#10;&#10;Overhauled automatic pistol internals (WIP).&#10;Further code clean up.&#10;Ammo HUD is now hidden when any overlays are rendered.&#10;Changed two-handed weapon sprint animation." />
-    <option name="LAST_COMMIT_MESSAGE" value="Automatic Pistol update.&#10;&#10;Overhauled automatic pistol internals (WIP).&#10;Further code clean up.&#10;Ammo HUD is now hidden when any overlays are rendered.&#10;Changed two-handed weapon sprint animation." />
+    <MESSAGE value="Small fixes.&#10;&#10;Block damage reset threshold is now configurable.&#10;Fixed generated data (changed cgm to agm)&#10;Removed redundant classes." />
+    <option name="LAST_COMMIT_MESSAGE" value="Small fixes.&#10;&#10;Block damage reset threshold is now configurable.&#10;Fixed generated data (changed cgm to agm)&#10;Removed redundant classes." />
     <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
     <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
   </component>

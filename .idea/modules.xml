@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.iml" filepath="$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.main.iml" filepath="$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.test.iml" filepath="$PROJECT_DIR$/.idea/modules/An0m3L1s-Gun-Mod.test.iml" />
     </modules>

@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.mixin.client;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.client.handler.AimingHandler;
 import com.an0m3l1.guns.common.Gun;
 import com.an0m3l1.guns.init.ModSyncedDataKeys;
@@ -43,7 +43,7 @@ public class MouseHandlerMixin
 				}
 			}
 		}
-		double adsSensitivity = Config.CLIENT.aimDownSightSensitivity.get();
+		double adsSensitivity = GunConfig.CLIENT.aimDownSightSensitivity.get();
 		return original * (1.0 - (1.0 - adsSensitivity) * AimingHandler.get().getNormalisedAdsProgress()) * additionalAdsSensitivity;
 	}
 }

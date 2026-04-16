@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.screen;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.client.handler.GunRenderingHandler;
 import com.an0m3l1.guns.client.screen.widget.MiniButton;
@@ -78,7 +78,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 		for(int i = 0; i < buttons.size(); i++)
 		{
 			MiniButton button = buttons.get(i);
-			switch(Config.CLIENT.buttonAlignment.get())
+			switch(GunConfig.CLIENT.buttonAlignment.get())
 			{
 				case LEFT ->
 				{
@@ -96,7 +96,7 @@ public class AttachmentScreen extends AbstractContainerScreen<AttachmentContaine
 	private List<MiniButton> gatherButtons()
 	{
 		List<MiniButton> buttons = new ArrayList<>();
-		if(!Config.CLIENT.hideConfigButton.get())
+		if(!GunConfig.CLIENT.hideConfigButton.get())
 		{
 			buttons.add(new MiniButton(0, 0, 210, 0, GUI_TEXTURES, onPress -> this.openConfigScreen(), (button, matrixStack, mouseX, mouseY) -> this.renderTooltip(matrixStack, CONFIG_TOOLTIP, mouseX, mouseY)));
 		}

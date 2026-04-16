@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.event;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.common.GripType;
 import com.an0m3l1.guns.common.Gun;
@@ -41,7 +41,7 @@ public class GunEventBus
 		if(heldItem.getItem() instanceof GunItem gunItem)
 		{
 			// Decreasing durability
-			if(heldItem.isDamageableItem() && Config.COMMON.enableDurability.get())
+			if(heldItem.isDamageableItem() && GunConfig.COMMON.enableDurability.get())
 			{
 				if(tag.getInt("AmmoCount") >= 1)
 				{
@@ -58,7 +58,7 @@ public class GunEventBus
 			// Fire light
 			Gun modifiedGun = gunItem.getModifiedGun(heldItem);
 			if(!level.isClientSide() && // Checks if world is on server-side
-					Config.COMMON.enableDynamicLights.get() && // Checks config
+					GunConfig.COMMON.enableDynamicLights.get() && // Checks config
 					GunMod.dynamicLightsLoaded && // Checks loaded dynamic lights mod
 					modifiedGun.getGeneral().shouldEmitLight()) // Checks if this gun should emit light while shooting
 			{

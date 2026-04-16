@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.render.crosshair;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
 import com.mojang.blaze3d.vertex.*;
@@ -50,6 +50,11 @@ public class TexturedCrosshair extends Crosshair
 	@Override
 	public void render(Minecraft mc, PoseStack stack, int windowWidth, int windowHeight, float partialTicks)
 	{
+		if(disableSniperCrosshair(mc))
+		{
+			return;
+		}
+		
 		stack.pushPose();
 		
 		float alpha = 1.0F;// - (float) AimingHandler.get().getNormalisedAdsProgress();
@@ -64,7 +69,7 @@ public class TexturedCrosshair extends Crosshair
 		RenderSystem.setShaderTexture(0, this.texture);
 		RenderSystem.enableBlend();
 		
-		boolean doBlend = this.blend && Config.CLIENT.blendCrosshair.get();
+		boolean doBlend = this.blend && GunConfig.CLIENT.blendCrosshair.get();
 		
 		if(doBlend)
 		{

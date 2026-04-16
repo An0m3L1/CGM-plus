@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.handler;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.client.GunButtonBindings;
 import com.an0m3l1.guns.client.screen.WorkbenchScreen;
@@ -103,7 +103,7 @@ public class ControllerHandler
 			ItemStack heldItem = player.getMainHandItem();
 			if(heldItem.getItem() instanceof GunItem && AimingHandler.get().isAiming())
 			{
-				double adsSensitivity = Config.CLIENT.aimDownSightSensitivity.get();
+				double adsSensitivity = GunConfig.CLIENT.aimDownSightSensitivity.get();
 				event.setYawSpeed(10.0F * (float) adsSensitivity);
 				event.setPitchSpeed(7.5F * (float) adsSensitivity);
 				

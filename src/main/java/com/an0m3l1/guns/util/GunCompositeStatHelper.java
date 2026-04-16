@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.util;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.common.Gun;
 import com.an0m3l1.guns.item.GunItem;
 import net.minecraft.world.entity.player.Player;
@@ -128,7 +128,7 @@ public class GunCompositeStatHelper
 		}
 		else
 		{
-			double hm = Config.COMMON.headShotDamageMultiplier.get();
+			double hm = GunConfig.COMMON.headShotDamageMultiplier.get();
 			float headshotMultiplier = (float) Math.max(hm, modifiedGun.getProjectile().getHeadshotMultiplierMin());
 			damage *= headshotMultiplier + modifiedGun.getProjectile().getHeadshotMultiplierBonus();
 		}

@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.mixin.client;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.init.ModEffects;
 import com.mojang.blaze3d.platform.Window;
 import com.mojang.blaze3d.vertex.PoseStack;
@@ -33,14 +33,14 @@ public class GameRendererMixin
 		if(smokeEffect != null)
 		{
 			Window window = Minecraft.getInstance().getWindow();
-			float percent = Math.min((smokeEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
+			float percent = Math.min((smokeEffect.getDuration() / (float) GunConfig.SERVER.alphaFadeThreshold.get()), 1);
 			GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * 248 + 0.5) << 24) | 8156784);
 		}
 		if(blindEffect != null)
 		{
-			float percent = Math.min((blindEffect.getDuration() / (float) Config.SERVER.alphaFadeThreshold.get()), 1);
+			float percent = Math.min((blindEffect.getDuration() / (float) GunConfig.SERVER.alphaFadeThreshold.get()), 1);
 			Window window = Minecraft.getInstance().getWindow();
-			GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * Config.SERVER.alphaOverlay.get() + 0.5) << 24) | 16777215);
+			GuiComponent.fill(new PoseStack(), 0, 0, window.getScreenWidth(), window.getScreenHeight(), ((int) (percent * GunConfig.SERVER.alphaOverlay.get() + 0.5) << 24) | 16777215);
 		}
 	}
 }

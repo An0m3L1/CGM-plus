@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.handler;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.client.audio.StunRingingSound;
 import com.an0m3l1.guns.init.ModEffects;
@@ -77,7 +77,7 @@ public class SoundHandler
 			}
 		}
 		
-		if(Config.SERVER.ringVolume.get() > 0 && (this.ringing == null || !Minecraft.getInstance().getSoundManager().isActive(this.ringing)))
+		if(GunConfig.SERVER.ringVolume.get() > 0 && (this.ringing == null || !Minecraft.getInstance().getSoundManager().isActive(this.ringing)))
 		{
 			this.ringing = new StunRingingSound();
 			Minecraft.getInstance().getSoundManager().play(this.ringing);
@@ -180,8 +180,8 @@ public class SoundHandler
 	
 	private float getMutedVolume(float duration, float volumeBase)
 	{
-		float volumeMin = (float) (volumeBase * Config.SERVER.soundPercentage.get());
-		float percent = Math.min((duration / Config.SERVER.soundFadeThreshold.get()), 1);
+		float volumeMin = (float) (volumeBase * GunConfig.SERVER.soundPercentage.get());
+		float percent = Math.min((duration / GunConfig.SERVER.soundFadeThreshold.get()), 1);
 		return volumeMin + (1 - percent) * (volumeBase - volumeMin);
 	}
 	

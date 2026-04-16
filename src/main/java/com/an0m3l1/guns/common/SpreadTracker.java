@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.common;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.init.ModSyncedDataKeys;
 import com.an0m3l1.guns.item.GunItem;
@@ -28,7 +28,7 @@ public class SpreadTracker
 	
 	private boolean isPenaltyActive(Player player)
 	{
-		return Config.COMMON.doSpreadPenalties.get() && (player.isSprinting() || !player.isOnGround());
+		return GunConfig.COMMON.doSpreadPenalties.get() && (player.isSprinting() || !player.isOnGround());
 	}
 	
 	private int getMinCount(int maxCount, Player player)
@@ -50,16 +50,16 @@ public class SpreadTracker
 		{
 			long deltaTime = System.currentTimeMillis() - lastFire.getValue();
 			int currentCount = spreadCount.getValue();
-			int maxCount = Config.COMMON.maxCount.get();
+			int maxCount = GunConfig.COMMON.maxCount.get();
 			int minCount = getMinCount(maxCount, player);
 			
-			if(deltaTime < Config.COMMON.spreadThreshold.get())
+			if(deltaTime < GunConfig.COMMON.spreadThreshold.get())
 			{
 				if(currentCount < maxCount)
 				{
 					int addCount = 1;
 					
-					if(Config.COMMON.doSpreadPenalties.get())
+					if(GunConfig.COMMON.doSpreadPenalties.get())
 					{
 						if(!ModSyncedDataKeys.AIMING.getValue(player))
 						{
@@ -93,11 +93,11 @@ public class SpreadTracker
 		if(entry != null)
 		{
 			int currentCount = entry.getRight().getValue();
-			int maxCount = Config.COMMON.maxCount.get();
+			int maxCount = GunConfig.COMMON.maxCount.get();
 			int minCount = getMinCount(maxCount, player);
 			
 			currentCount = Math.max(currentCount, minCount);
-			float nextSpread = (Config.COMMON.doSpreadPenalties.get() ? 1F + aim : 1F);
+			float nextSpread = (GunConfig.COMMON.doSpreadPenalties.get() ? 1F + aim : 1F);
 			float nextCount = Math.min(currentCount + nextSpread, maxCount);
 			nextCount = Math.max(nextCount, minCount);
 			
@@ -112,7 +112,7 @@ public class SpreadTracker
 		if(entry != null)
 		{
 			int currentCount = entry.getRight().getValue();
-			int maxCount = Config.COMMON.maxCount.get();
+			int maxCount = GunConfig.COMMON.maxCount.get();
 			int minCount = getMinCount(maxCount, player);
 			
 			currentCount = Math.max(currentCount, minCount);

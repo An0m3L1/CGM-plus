@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.handler;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.client.KeyBinds;
 import com.an0m3l1.guns.client.util.GunAnimationHelper;
@@ -147,11 +147,11 @@ public class AimingHandler
 			}
 			
 			/* Go from third to first person while aiming with a high enough zoom */
-			if(Config.CLIENT.forceFirstPersonOnZoomedAim.get() && getNormalisedAdsProgress() >= 0.2 && getNormalisedAdsProgress() <= 0.95)
+			if(GunConfig.CLIENT.forceFirstPersonOnZoomedAim.get() && getNormalisedAdsProgress() >= 0.2 && getNormalisedAdsProgress() <= 0.95)
 			{
 				if(!this.doTempFirstPerson && modifiedGun != null)
 				{
-					if(modifiedGun.getModules().getZoom() != null && Gun.getFovModifier(heldItem, modifiedGun) <= Config.CLIENT.firstPersonAimZoomThreshold.get())
+					if(modifiedGun.getModules().getZoom() != null && Gun.getFovModifier(heldItem, modifiedGun) <= GunConfig.CLIENT.firstPersonAimZoomThreshold.get())
 					{
 						if(ShoulderSurfingHelper.isShoulderSurfing())
 						{
@@ -196,13 +196,13 @@ public class AimingHandler
 			{
 				this.skipThirdPersonSwitch = true;
 			}
-			if(modifiedGun == null || modifiedGun.getModules().getZoom() == null || Gun.getFovModifier(heldItem, modifiedGun) > Config.CLIENT.firstPersonAimZoomThreshold.get())
+			if(modifiedGun == null || modifiedGun.getModules().getZoom() == null || Gun.getFovModifier(heldItem, modifiedGun) > GunConfig.CLIENT.firstPersonAimZoomThreshold.get())
 			{
 				resetPOV = true;
 			}
 		}
 		
-		if(resetPOV && Config.CLIENT.forceFirstPersonOnZoomedAim.get())
+		if(resetPOV && GunConfig.CLIENT.forceFirstPersonOnZoomedAim.get())
 		{
 			this.doTempFirstPerson = false;
 			if(mc.options.getCameraType() == CameraType.FIRST_PERSON && !skipThirdPersonSwitch)

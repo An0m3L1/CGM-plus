@@ -9,7 +9,7 @@ import org.apache.commons.lang3.tuple.Pair;
 import java.util.Collections;
 import java.util.List;
 
-public class Config
+public class GunConfig
 {
 	/**
 	 * Client config options
@@ -332,7 +332,7 @@ public class Config
 					builder.pop();
 					builder.push("stun");
 					{
-						this.stunCriteria = new EffectCriteria(builder, 16, 6, 1, 360, 0.75);
+						this.stunCriteria = new EffectCriteria(builder, 16, 6, 1, 360, 1.0);
 					}
 					builder.pop();
 					this.alphaOverlay = builder.comment("After the duration drops to this many ticks, the transparency of the overlay when blinded will gradually fade to 0 alpha.").defineInRange("alphaOverlay", 255, 0, 255);
@@ -385,17 +385,17 @@ public class Config
 	}
 	
 	static final ForgeConfigSpec clientSpec;
-	public static final Config.Client CLIENT;
+	public static final GunConfig.Client CLIENT;
 	
 	static final ForgeConfigSpec commonSpec;
-	public static final Config.Common COMMON;
+	public static final GunConfig.Common COMMON;
 	
 	static final ForgeConfigSpec serverSpec;
-	public static final Config.Server SERVER;
+	public static final GunConfig.Server SERVER;
 	
 	static
 	{
-		final Pair<Client, ForgeConfigSpec> clientSpecPair = new ForgeConfigSpec.Builder().configure(Config.Client::new);
+		final Pair<Client, ForgeConfigSpec> clientSpecPair = new ForgeConfigSpec.Builder().configure(GunConfig.Client::new);
 		clientSpec = clientSpecPair.getRight();
 		CLIENT = clientSpecPair.getLeft();
 		

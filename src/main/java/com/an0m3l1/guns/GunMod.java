@@ -95,9 +95,9 @@ public class GunMod
 	
 	public GunMod()
 	{
-		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, Config.clientSpec);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, Config.commonSpec);
-		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, Config.serverSpec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.CLIENT, GunConfig.clientSpec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.COMMON, GunConfig.commonSpec);
+		ModLoadingContext.get().registerConfig(ModConfig.Type.SERVER, GunConfig.serverSpec);
 		IEventBus bus = FMLJavaModLoadingContext.get().getModEventBus();
 		ModBlocks.REGISTER.register(bus);
 		ModContainers.REGISTER.register(bus);
@@ -154,7 +154,7 @@ public class GunMod
 			ProjectileManager.getInstance().registerFactory(ModItems.PIPE_GRENADE.get(), (worldIn, entity, weapon, item, modifiedGun) -> new PipeGrenadeEntity(ModEntities.PIPE_GRENADE.get(), worldIn, entity, weapon, item, modifiedGun));
 			ProjectileManager.getInstance().registerFactory(ModItems.ROCKET.get(), (worldIn, entity, weapon, item, modifiedGun) -> new RocketEntity(ModEntities.ROCKET.get(), worldIn, entity, weapon, item, modifiedGun));
 			
-			if(Config.COMMON.improvedHitboxes.get())
+			if(GunConfig.COMMON.improvedHitboxes.get())
 			{
 				MinecraftForge.EVENT_BUS.register(new BoundingBoxManager());
 			}

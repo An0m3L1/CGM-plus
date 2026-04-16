@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.effect;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.init.ModEffects;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.effect.MobEffectCategory;
@@ -19,7 +19,7 @@ public class SmokedEffect extends IncurableEffect
 	
 	public void applyEffectTick(LivingEntity entity, int amplifier)
 	{
-		double damage = Config.SERVER.smokeGrenadeDamage.get();
+		double damage = GunConfig.SERVER.smokeGrenadeDamage.get();
 		if(!entity.getCommandSenderWorld().isClientSide && entity.hasEffect(ModEffects.SMOKED.get()))
 		{
 			if(entity.getHealth() > 1.0F)

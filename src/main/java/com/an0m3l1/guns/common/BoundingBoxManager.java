@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.common;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.common.headshot.*;
 import com.an0m3l1.guns.interfaces.IHeadshotBox;
 import net.minecraft.util.Mth;
@@ -113,7 +113,7 @@ public class BoundingBoxManager
 	@SubscribeEvent(receiveCanceled = true)
 	public void onPlayerTick(TickEvent.PlayerTickEvent event)
 	{
-		if(!Config.COMMON.improvedHitboxes.get())
+		if(!GunConfig.COMMON.improvedHitboxes.get())
 		{
 			return;
 		}

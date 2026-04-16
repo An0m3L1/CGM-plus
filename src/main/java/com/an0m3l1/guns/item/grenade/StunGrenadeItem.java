@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.item.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.an0m3l1.guns.entity.grenade.ThrowableStunGrenadeEntity;
@@ -32,10 +32,10 @@ public class StunGrenadeItem extends GrenadeItem
 	                            @Nullable
 	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
-		double blindRadius = (Config.SERVER.blindCriteria.radius.get());
-		float maxBlindDuration = (float) (Config.SERVER.blindCriteria.durationMax.get());
-		double stunRadius = (Config.SERVER.stunCriteria.radius.get());
-		float maxStunDuration = (float) (Config.SERVER.stunCriteria.durationMax.get());
+		double blindRadius = (GunConfig.SERVER.blindCriteria.radius.get());
+		float maxBlindDuration = (float) (GunConfig.SERVER.blindCriteria.durationMax.get());
+		double stunRadius = (GunConfig.SERVER.stunCriteria.radius.get());
+		float maxStunDuration = (float) (GunConfig.SERVER.stunCriteria.durationMax.get());
 		float cookTime = (float) maxCookTime / 20;
 		if(Screen.hasControlDown())
 		{

@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.render.crosshair;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.mojang.blaze3d.platform.GlStateManager;
 import com.mojang.blaze3d.systems.RenderSystem;
@@ -49,11 +49,16 @@ public class TechCrosshair extends Crosshair
 	@Override
 	public void render(Minecraft mc, PoseStack stack, int windowWidth, int windowHeight, float partialTicks)
 	{
+		if(disableSniperCrosshair(mc))
+		{
+			return;
+		}
+		
 		float alpha = 1.0F;// - (float) AimingHandler.get().getNormalisedAdsProgress();
 		float size = 8.0F;
 		
 		RenderSystem.enableBlend();
-		boolean doBlend = Config.CLIENT.blendCrosshair.get();
+		boolean doBlend = GunConfig.CLIENT.blendCrosshair.get();
 		if(doBlend)
 		{
 			RenderSystem.blendFuncSeparate(GlStateManager.SourceFactor.ONE_MINUS_DST_COLOR, GlStateManager.DestFactor.ONE_MINUS_SRC_COLOR, GlStateManager.SourceFactor.ONE, GlStateManager.DestFactor.ZERO);

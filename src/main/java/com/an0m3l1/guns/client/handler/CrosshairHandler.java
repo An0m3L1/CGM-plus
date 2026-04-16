@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.handler;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.client.render.crosshair.*;
 import com.an0m3l1.guns.compat.ShoulderSurfingHelper;
@@ -96,7 +96,7 @@ public class CrosshairHandler
 	{
 		if(this.currentCrosshair == null && !this.registeredCrosshairs.isEmpty())
 		{
-			ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.crosshair.get());
+			ResourceLocation id = ResourceLocation.tryParse(GunConfig.CLIENT.crosshair.get());
 			this.currentCrosshair = id != null ? this.idToCrosshair.getOrDefault(id, Crosshair.DEFAULT) : Crosshair.DEFAULT;
 		}
 		return this.currentCrosshair;
@@ -204,7 +204,7 @@ public class CrosshairHandler
 		ModConfig config = event.getConfig();
 		if(config.getType() == ModConfig.Type.CLIENT && config.getModId().equals(GunMod.MOD_ID))
 		{
-			ResourceLocation id = ResourceLocation.tryParse(Config.CLIENT.crosshair.get());
+			ResourceLocation id = ResourceLocation.tryParse(GunConfig.CLIENT.crosshair.get());
 			if(id != null)
 			{
 				CrosshairHandler.get().setCrosshair(id);

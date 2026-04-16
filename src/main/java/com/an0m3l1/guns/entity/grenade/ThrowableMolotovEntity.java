@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.entity.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.client.audio.DistancedSound;
 import com.an0m3l1.guns.init.ModEntities;
 import com.an0m3l1.guns.init.ModItems;
@@ -35,8 +35,8 @@ import static com.an0m3l1.guns.entity.ProjectileEntity.createFireExplosion;
  */
 public class ThrowableMolotovEntity extends ThrowableGrenadeEntity
 {
-	protected final float radius = Config.SERVER.molotovExplosionRadius.get().floatValue();
-	protected final int fireDuration = Config.SERVER.molotovFireDuration.get();
+	protected final float radius = GunConfig.SERVER.molotovExplosionRadius.get().floatValue();
+	protected final int fireDuration = GunConfig.SERVER.molotovFireDuration.get();
 	private int bounceCount = 1;
 	private boolean wasInWater = false;
 	

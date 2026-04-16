@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.item.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.entity.grenade.ThrowableIncendiaryGrenadeEntity;
 import net.minecraft.ChatFormatting;
@@ -31,8 +31,8 @@ public class IncendiaryGrenadeItem extends GrenadeItem
 	                            @Nullable
 	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
-		double fireRadius = Config.SERVER.incendiaryGrenadeExplosionRadius.get();
-		int fireDuration = Config.SERVER.incendiaryGrenadeFireDuration.get();
+		double fireRadius = GunConfig.SERVER.incendiaryGrenadeExplosionRadius.get();
+		int fireDuration = GunConfig.SERVER.incendiaryGrenadeFireDuration.get();
 		float cookTime = (float) maxCookTime / 20;
 		if(Screen.hasControlDown())
 		{

@@ -122,6 +122,7 @@ dependencies {
     implementation fg.deobf("curse.maven:ibe-editor-256822:4216136")
     implementation fg.deobf("curse.maven:curios-309927:5843737")
     implementation fg.deobf("curse.maven:bookshelf-228525:4556697")
+    implementation fg.deobf("curse.maven:inventory-sorter-240633:3963662")
     //implementation fg.deobf("curse.maven:explosive-enhancement-reforged-1036246:5554087")
 
     implementation fg.deobf("curse.maven:shoulder-surfing-reloaded-243190:5441683")

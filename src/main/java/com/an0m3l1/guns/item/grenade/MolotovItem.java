@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.item.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.entity.grenade.ThrowableMolotovEntity;
 import net.minecraft.ChatFormatting;
@@ -37,8 +37,8 @@ public class MolotovItem extends GrenadeItem
 	                            @Nullable
 	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
-		double fireRadius = Config.SERVER.molotovExplosionRadius.get();
-		int fireDuration = Config.SERVER.molotovFireDuration.get();
+		double fireRadius = GunConfig.SERVER.molotovExplosionRadius.get();
+		int fireDuration = GunConfig.SERVER.molotovFireDuration.get();
 		if(Screen.hasControlDown())
 		{
 			tooltip.add(Component.translatable("info." + GunMod.MOD_ID + ".stats").withStyle(ChatFormatting.GOLD));

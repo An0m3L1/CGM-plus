@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.entity.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.entity.SmokeCloud;
 import com.an0m3l1.guns.init.ModEntities;
 import com.an0m3l1.guns.init.ModItems;
@@ -71,7 +71,7 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
 	{
 		if(result.getType() == HitResult.Type.BLOCK && !this.level.isClientSide)
 		{
-			double radius = Config.SERVER.smokeGrenadeCloudRadius.get() * 1.75;
+			double radius = GunConfig.SERVER.smokeGrenadeCloudRadius.get() * 1.75;
 			if(radius > 0)
 			{
 				BlockPos grenadePos = new BlockPos(this.getX(), this.getY(), this.getZ());
@@ -121,8 +121,8 @@ public class ThrowableSmokeGrenadeEntity extends ThrowableGrenadeEntity
 	public void onDeath()
 	{
 		double y = this.getY() + this.getType().getDimensions().height * 0.5;
-		double radius = Config.SERVER.smokeGrenadeCloudRadius.get();
-		double duration = ((Config.SERVER.smokeGrenadeCloudDuration.get() - 3) * 20);
+		double radius = GunConfig.SERVER.smokeGrenadeCloudRadius.get();
+		double duration = ((GunConfig.SERVER.smokeGrenadeCloudDuration.get() - 3) * 20);
 		@NotNull SimpleParticleType particle = ModParticleTypes.SMOKE_EFFECT.get();
 		if(!this.level.isClientSide)
 		{

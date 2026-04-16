@@ -1,7 +1,8 @@
 package com.an0m3l1.guns.entity.grenade;
 
-import com.an0m3l1.guns.Config;
-import com.an0m3l1.guns.Config.EffectCriteria;
+import com.an0m3l1.guns.GunConfig;
+import com.an0m3l1.guns.GunConfig.EffectCriteria;
+import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.init.ModEffects;
 import com.an0m3l1.guns.init.ModEntities;
 import com.an0m3l1.guns.init.ModItems;
@@ -63,7 +64,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
 	@SubscribeEvent
 	public static void blindMobs(LivingSetAttackTargetEvent event)
 	{
-		if(Config.COMMON.blindMobs.get() && event.getTarget() != null && event.getEntity() instanceof Mob && event.getEntity().hasEffect(ModEffects.BLINDED.get()))
+		if(GunConfig.COMMON.blindMobs.get() && event.getTarget() != null && event.getEntity() instanceof Mob && event.getEntity().hasEffect(ModEffects.BLINDED.get()))
 		{
 			((Mob) event.getEntity()).setTarget(null);
 		}
@@ -81,7 +82,7 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
 		PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(this.level, this.getX(), y, this.getZ(), 256), new S2CMessageStunGrenade(this.getX(), y, this.getZ()));
 		
 		// Calculate bounds of area where potentially effected players may be
-		double diameter = Math.max(Config.SERVER.stunCriteria.radius.get(), Config.SERVER.blindCriteria.radius.get()) * 2 + 1;
+		double diameter = Math.max(GunConfig.SERVER.stunCriteria.radius.get(), GunConfig.SERVER.blindCriteria.radius.get()) * 2 + 1;
 		int minX = Mth.floor(this.getX() - diameter);
 		int maxX = Mth.floor(this.getX() + diameter);
 		int minY = Mth.floor(y - diameter);
@@ -108,11 +109,11 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
 			double angle = Math.toDegrees(Math.acos(entity.getViewVector(1.0F).dot(directionGrenade.normalize())));
 			
 			// Apply effects as determined by their criteria
-			if(this.calculateAndApplyEffect(ModEffects.STUNNED.get(), Config.SERVER.stunCriteria, entity, grenade, eyes, distance, angle) && Config.COMMON.panicMobs.get())
+			if(this.calculateAndApplyEffect(ModEffects.STUNNED.get(), GunConfig.SERVER.stunCriteria, entity, grenade, eyes, distance, angle) && GunConfig.COMMON.panicMobs.get())
 			{
 				entity.setLastHurtByMob(entity);
 			}
-			if(this.calculateAndApplyEffect(ModEffects.BLINDED.get(), Config.SERVER.blindCriteria, entity, grenade, eyes, distance, angle) && Config.COMMON.blindMobs.get() && entity instanceof Mob)
+			if(this.calculateAndApplyEffect(ModEffects.BLINDED.get(), GunConfig.SERVER.blindCriteria, entity, grenade, eyes, distance, angle) && GunConfig.COMMON.blindMobs.get() && entity instanceof Mob)
 			{
 				((Mob) entity).setTarget(null);
 			}
@@ -122,23 +123,91 @@ public class ThrowableStunGrenadeEntity extends ThrowableGrenadeEntity
 	private boolean calculateAndApplyEffect(MobEffect effect, EffectCriteria criteria, LivingEntity entity, Vec3 grenade, Vec3 eyes, double distance, double angle)
 	{
 		double angleMax = criteria.angleEffect.get() * 0.5;
+		boolean debug = GunConfig.COMMON.showDebugMessages.get();
+		
+		if(debug)
+		{
+			String entityName = entity.getName().getString();
+			String effectName = effect.getDisplayName().getString();
+			GunMod.LOGGER.debug("[StunGrenade] Checking effect {} for {}", effectName, entityName);
+			GunMod.LOGGER.debug("[StunGrenade]   Distance: {} (radius: {})", String.format("%.2f", distance), criteria.radius.get());
+			GunMod.LOGGER.debug("[StunGrenade]   Angle: {} (max angle: {})", String.format("%.2f", angle), angleMax);
+		}
+		
 		if(distance <= criteria.radius.get() && angleMax > 0 && angle <= angleMax)
 		{
-			// Verify that light can pass through all blocks obstructing the entity's line of sight to the grenade
-			if(effect != ModEffects.BLINDED.get() || rayTraceOpaqueBlocks(this.level, eyes, grenade, false, false, false) == null)
+			if(debug)
 			{
-				// Duration attenuated by distance
-				int duration = (int) Math.round(criteria.durationMax.get() * 20 - (criteria.durationMax.get() * 20 - criteria.durationMin.get() * 20) * (distance / criteria.radius.get()));
-				
-				// Duration further attenuated by angle
-				duration *= (int) (1 - (angle * (1 - criteria.angleAttenuationMax.get())) / angleMax);
-				
-				entity.addEffect(new MobEffectInstance(effect, duration, 0, false, false));
-				
-				return !(entity instanceof Player);
+				GunMod.LOGGER.debug("[StunGrenade]   Entity passed distance and angle checks.");
 			}
+			
+			if(effect == ModEffects.BLINDED.get())
+			{
+				HitResult hit = rayTraceOpaqueBlocks(this.level, eyes, grenade, false, false, false);
+				if(hit != null)
+				{
+					if(debug)
+					{
+						GunMod.LOGGER.debug("[StunGrenade]   Ray blocked by: {} at {}", hit.getType(), hit.getLocation());
+						GunMod.LOGGER.debug("[StunGrenade]   Effect NOT applied due to obstruction.");
+					}
+					return false;
+				}
+				else
+				{
+					if(debug)
+					{
+						GunMod.LOGGER.debug("[StunGrenade]   Line of sight is clear.");
+					}
+				}
+			}
+			
+			int duration = (int) Math.round(criteria.durationMax.get() * 20 - (criteria.durationMax.get() * 20 - criteria.durationMin.get() * 20) * (distance / criteria.radius.get()));
+			if(debug)
+			{
+				GunMod.LOGGER.debug("[StunGrenade]   Base duration (distance-attenuated): {} ticks ({} sec)", duration, String.format("%.2f", duration / 20.0));
+			}
+			
+			double angleFactor = 1.0 - (angle * (1.0 - criteria.angleAttenuationMax.get())) / angleMax;
+			duration = (int) Math.round(duration * angleFactor);
+			if(debug)
+			{
+				GunMod.LOGGER.debug("[StunGrenade]   Duration after angle correction: {} ticks ({} sec)", duration, String.format("%.2f", duration / 20.0));
+			}
+			
+			entity.addEffect(new MobEffectInstance(effect, duration, 0, false, false));
+			if(debug)
+			{
+				GunMod.LOGGER.debug("[StunGrenade]   Effect {} successfully applied to {}", effect.getDisplayName().getString(), entity.getName().getString());
+			}
+			
+			boolean isMob = !(entity instanceof Player);
+			if(debug)
+			{
+				GunMod.LOGGER.debug("[StunGrenade]   Return value (for extra actions): {}", isMob);
+			}
+			return isMob;
 		}
-		return false;
+		else
+		{
+			if(debug)
+			{
+				if(distance > criteria.radius.get())
+				{
+					GunMod.LOGGER.debug("[StunGrenade]   Failure reason: distance exceeds radius ({} > {})", distance, criteria.radius.get());
+				}
+				else if(angleMax <= 0)
+				{
+					GunMod.LOGGER.debug("[StunGrenade]   Failure reason: max angle is zero");
+				}
+				else if(angle > angleMax)
+				{
+					GunMod.LOGGER.debug("[StunGrenade]   Failure reason: angle exceeds max ({} > {})", angle, angleMax);
+				}
+				GunMod.LOGGER.debug("[StunGrenade]   Effect NOT applied.");
+			}
+			return false;
+		}
 	}
 	
 	@Nullable

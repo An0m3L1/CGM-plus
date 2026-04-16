@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.entity.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.init.ModEntities;
 import com.an0m3l1.guns.init.ModItems;
 import com.an0m3l1.guns.init.ModSounds;
@@ -21,8 +21,8 @@ import static com.an0m3l1.guns.entity.ProjectileEntity.createFireExplosion;
  */
 public class ThrowableIncendiaryGrenadeEntity extends ThrowableGrenadeEntity
 {
-	protected final float radius = Config.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue();
-	protected final int fireDuration = Config.SERVER.incendiaryGrenadeFireDuration.get();
+	protected final float radius = GunConfig.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue();
+	protected final int fireDuration = GunConfig.SERVER.incendiaryGrenadeFireDuration.get();
 	
 	public ThrowableIncendiaryGrenadeEntity(EntityType<? extends ThrowableGrenadeEntity> entityType, Level world)
 	{

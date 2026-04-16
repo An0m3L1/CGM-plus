@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.handler;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.client.GunModel;
 import com.an0m3l1.guns.client.GunRenderType;
@@ -607,7 +607,7 @@ public class GunRenderingHandler
 			
 			/* Slows down the bob by half */
 			bobbing *= (float) (player.isSprinting() ? 8.0 : 4.0);
-			bobbing *= Config.CLIENT.bobbingIntensity.get();
+			bobbing *= GunConfig.CLIENT.bobbingIntensity.get();
 			
 			/* The new controlled bobbing */
 			double invertZoomProgress = 1.0 - AimingHandler.get().getNormalisedAdsProgress() * this.sprintIntensity;
@@ -640,7 +640,7 @@ public class GunRenderingHandler
 	
 	private void applySwayTransforms(PoseStack poseStack, Gun modifiedGun, LocalPlayer player, float x, float y, float z, float partialTicks)
 	{
-		if(Config.CLIENT.weaponSway.get() && player != null)
+		if(GunConfig.CLIENT.weaponSway.get() && player != null)
 		{
 			poseStack.translate(x, y, z);
 			
@@ -653,13 +653,13 @@ public class GunRenderingHandler
 			float headPitch = Mth.rotLerp(partialTicks, player.xRotO, player.getXRot());
 			float swayPitch = headPitch - bobPitch;
 			swayPitch *= (float) (1.0 - 0.5 * AimingHandler.get().getNormalisedAdsProgress());
-			poseStack.mulPose(Config.CLIENT.swayType.get().getPitchRotation().rotationDegrees(swayPitch * Config.CLIENT.swaySensitivity.get().floatValue()));
+			poseStack.mulPose(GunConfig.CLIENT.swayType.get().getPitchRotation().rotationDegrees(swayPitch * GunConfig.CLIENT.swaySensitivity.get().floatValue()));
 			
 			float bobYaw = Mth.rotLerp(partialTicks, player.yBobO, player.yBob);
 			float headYaw = Mth.rotLerp(partialTicks, player.yHeadRotO, player.yHeadRot);
 			float swayYaw = headYaw - bobYaw;
 			swayYaw *= (float) (1.0 - 0.5 * AimingHandler.get().getNormalisedAdsProgress());
-			poseStack.mulPose(Config.CLIENT.swayType.get().getYawRotation().rotationDegrees(swayYaw * Config.CLIENT.swaySensitivity.get().floatValue()));
+			poseStack.mulPose(GunConfig.CLIENT.swayType.get().getYawRotation().rotationDegrees(swayYaw * GunConfig.CLIENT.swaySensitivity.get().floatValue()));
 			
 			poseStack.translate(-x, -y, -z);
 		}
@@ -668,7 +668,7 @@ public class GunRenderingHandler
 	private void applySprintingTransforms(Gun modifiedGun, ItemStack item, HumanoidArm hand, PoseStack poseStack, float partialTicks)
 	{
 		GripType pose = PropertyHelper.getGripType(item, modifiedGun);
-		if(Config.CLIENT.sprintAnimation.get() && pose.getHeldAnimation().canApplySprintingAnimation())
+		if(GunConfig.CLIENT.sprintAnimation.get() && pose.getHeldAnimation().canApplySprintingAnimation())
 		{
 			float transition = (this.prevSprintTransition + (this.sprintTransition - this.prevSprintTransition) * partialTicks) / 5F;
 			transition = (float) Math.sin((transition * Math.PI) / 2);
@@ -723,7 +723,6 @@ public class GunRenderingHandler
 	
 	private void applyRecoilTransforms(PoseStack poseStack, LocalPlayer player, ItemStack item, Gun modifiedGun, float partialTicks)
 	{
-		// TODO: Add third person shooting/recoil animation
 		// Custom recoil animation
 		if(GunAnimationHelper.hasAnimation("recoil", item))
 		{
@@ -861,7 +860,7 @@ public class GunRenderingHandler
 		{
 			renderGunInfoHUD(event, heldItem);
 			
-			if(Config.CLIENT.cooldownIndicator.get())
+			if(GunConfig.CLIENT.cooldownIndicator.get())
 			{
 				//Gun gun = ((GunItem) heldItem.getItem()).getGun();
 				if(!Gun.isAuto(heldItem) && !Gun.hasBurstFire(heldItem))
@@ -895,7 +894,7 @@ public class GunRenderingHandler
 	
 	public void renderGunInfoHUD(TickEvent.RenderTickEvent event, ItemStack heldItem)
 	{
-		if(!Config.CLIENT.displayAmmoCount.get())
+		if(!GunConfig.CLIENT.displayAmmoCount.get())
 		{
 			return;
 		}
@@ -1517,14 +1516,14 @@ public class GunRenderingHandler
 		}
 		
 		ItemStack heldItem = mc.player.getMainHandItem();
-		float targetAngle = heldItem.getItem() instanceof GunItem || !Config.CLIENT.restrictCameraRollToWeapons.get() ? mc.player.input.leftImpulse : 0F;
+		float targetAngle = heldItem.getItem() instanceof GunItem || !GunConfig.CLIENT.restrictCameraRollToWeapons.get() ? mc.player.input.leftImpulse : 0F;
 		float speed = mc.player.input.leftImpulse != 0 ? 0.1F : 0.15F;
 		this.immersiveRoll = Mth.lerp(speed, this.immersiveRoll, targetAngle);
 		
 		float deltaY = (float) Mth.clamp((mc.player.yo - mc.player.getY()), -1.0, 1.0);
 		deltaY *= (float) (1.0 - AimingHandler.get().getNormalisedAdsProgress());
 		deltaY *= (float) (1.0 - (Mth.abs(mc.player.getXRot()) / 90.0F));
-		this.fallSway = Mth.approach(this.fallSway, deltaY * 60F * Config.CLIENT.swaySensitivity.get().floatValue(), 10.0F);
+		this.fallSway = Mth.approach(this.fallSway, deltaY * 60F * GunConfig.CLIENT.swaySensitivity.get().floatValue(), 10.0F);
 		
 		float intensity = mc.player.isSprinting() ? 0.75F : 1.0F;
 		this.sprintIntensity = Mth.approach(this.sprintIntensity, intensity, 0.1F);
@@ -1533,11 +1532,11 @@ public class GunRenderingHandler
 	@SubscribeEvent
 	public void onCameraSetup(ViewportEvent.ComputeCameraAngles event)
 	{
-		if(Config.CLIENT.cameraRollEffect.get())
+		if(GunConfig.CLIENT.cameraRollEffect.get())
 		{
 			float roll = (float) Mth.lerp(event.getPartialTick(), this.prevImmersiveRoll, this.immersiveRoll);
 			roll = (float) Math.sin((roll * Math.PI) / 2.0);
-			roll *= Config.CLIENT.cameraRollAngle.get().floatValue();
+			roll *= GunConfig.CLIENT.cameraRollAngle.get().floatValue();
 			event.setRoll(-roll);
 		}
 	}

@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.common.network;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.blockentity.WorkbenchBlockEntity;
 import com.an0m3l1.guns.common.*;
@@ -60,7 +60,7 @@ import java.util.function.Predicate;
  */
 public class ServerPlayHandler
 {
-	private static final Predicate<LivingEntity> HOSTILE_ENTITIES = entity -> entity.getSoundSource() == SoundSource.HOSTILE && !(entity instanceof NeutralMob) && !Config.COMMON.exemptEntities.get().contains(EntityType.getKey(entity.getType()).toString());
+	private static final Predicate<LivingEntity> HOSTILE_ENTITIES = entity -> entity.getSoundSource() == SoundSource.HOSTILE && !(entity instanceof NeutralMob) && !GunConfig.COMMON.exemptEntities.get().contains(EntityType.getKey(entity.getType()).toString());
 	
 	/**
 	 * Fires the weapon the player is currently holding.
@@ -103,7 +103,7 @@ public class ServerPlayHandler
 				}
 				
 				ShootTracker tracker = ShootTracker.getShootTracker(player);
-				if(tracker.hasCooldown(item) && tracker.getRemaining(item) > Config.SERVER.cooldownThreshold.get())
+				if(tracker.hasCooldown(item) && tracker.getRemaining(item) > GunConfig.SERVER.cooldownThreshold.get())
 				{
 					GunMod.LOGGER.warn("{}({}) tried to fire before cooldown finished! Is the server lagging? Remaining milliseconds: {}", player.getName().getContents(), player.getUUID(), tracker.getRemaining(item));
 					return;
@@ -149,7 +149,7 @@ public class ServerPlayHandler
 					double spawnX = player.getX();
 					double spawnY = player.getY() + 1.0;
 					double spawnZ = player.getZ();
-					double radius = Config.COMMON.projectileTrackingRange.get();
+					double radius = GunConfig.COMMON.projectileTrackingRange.get();
 					ParticleOptions data = new TrailData(heldItem.isEnchanted());
 					S2CMessageBulletTrail messageBulletTrail = new S2CMessageBulletTrail(spawnedProjectiles, projectileProps, player.getId(), data);
 					PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, spawnX, spawnY, spawnZ, radius), messageBulletTrail);
@@ -157,9 +157,9 @@ public class ServerPlayHandler
 				
 				MinecraftForge.EVENT_BUS.post(new GunFireEvent.Post(player, heldItem));
 				
-				if(Config.COMMON.scareMobs.get())
+				if(GunConfig.COMMON.scareMobs.get())
 				{
-					double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, Config.SERVER.gunShotSoundDistance.get());
+					double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, GunConfig.SERVER.gunShotSoundDistance.get());
 					double x = player.getX();
 					double y = player.getY() + 0.5;
 					double z = player.getZ();
@@ -173,7 +173,7 @@ public class ServerPlayHandler
 						dz = z - entity.getZ();
 						if(dx * dx + dy * dy + dz * dz <= radius)
 						{
-							entity.setLastHurtByMob(Config.COMMON.angerHostileMobs.get() ? player : entity);
+							entity.setLastHurtByMob(GunConfig.COMMON.angerHostileMobs.get() ? player : entity);
 						}
 					}
 				}
@@ -186,7 +186,7 @@ public class ServerPlayHandler
 					double posZ = player.getZ();
 					float volume = GunModifierHelper.getFireSoundVolume(heldItem);
 					float pitch = 0.9F + world.random.nextFloat() * 0.2F;
-					double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, Config.SERVER.gunShotSoundDistance.get());
+					double radius = GunModifierHelper.getModifiedFireSoundRadius(heldItem, GunConfig.SERVER.gunShotSoundDistance.get());
 					boolean muzzle = modifiedGun.getDisplay().getFlash() != null;
 					S2CMessageSound messageSound = new S2CMessageSound(fireSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, volume, pitch, player.getId(), muzzle, false);
 					PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
@@ -210,7 +210,7 @@ public class ServerPlayHandler
 								double posX = finalPlayer.getX();
 								double posY = finalPlayer.getY() + finalPlayer.getEyeHeight();
 								double posZ = finalPlayer.getZ();
-								double radius = Config.SERVER.reloadSoundDistance.get();
+								double radius = GunConfig.SERVER.reloadSoundDistance.get();
 								S2CMessageSound messageSound = new S2CMessageSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 								PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
 							}
@@ -221,7 +221,7 @@ public class ServerPlayHandler
 						double posX = player.getX();
 						double posY = player.getY() + player.getEyeHeight();
 						double posZ = player.getZ();
-						double radius = Config.SERVER.reloadSoundDistance.get();
+						double radius = GunConfig.SERVER.reloadSoundDistance.get();
 						S2CMessageSound messageSound = new S2CMessageSound(finalSound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 						PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
 					}
@@ -343,7 +343,7 @@ public class ServerPlayHandler
 		double posX = player.getX();
 		double posY = player.getY() + 1.0;
 		double posZ = player.getZ();
-		double radius = Config.SERVER.reloadSoundDistance.get();
+		double radius = GunConfig.SERVER.reloadSoundDistance.get();
 		S2CMessageSound messageSound = new S2CMessageSound(sound, SoundSource.PLAYERS, (float) posX, (float) posY, (float) posZ, 1.0F, 1.0F, player.getId(), false, true);
 		PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
 	}

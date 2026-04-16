@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.mixin.common;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.entity.DamageSourceProjectile;
 import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.LivingEntity;
@@ -31,12 +31,12 @@ public class LivingEntityMixin
 	{
 		if(this.source instanceof DamageSourceProjectile)
 		{
-			if(!Config.COMMON.enableKnockback.get())
+			if(!GunConfig.COMMON.enableKnockback.get())
 			{
 				return 0;
 			}
 			
-			double strength = Config.COMMON.knockbackStrength.get();
+			double strength = GunConfig.COMMON.knockbackStrength.get();
 			if(strength > 0)
 			{
 				return strength;

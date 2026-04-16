@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.network.message;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.init.ModSyncedDataKeys;
 import com.mrcrayfish.framework.api.network.MessageContext;
 import com.mrcrayfish.framework.api.network.message.PlayMessage;
@@ -59,7 +59,7 @@ public class C2SMessageAim extends PlayMessage<C2SMessageAim>
 					
 					if(message.aiming)
 					{
-						float reduction = 1.0F - Config.COMMON.aimingMovementSpeedMultiplier.get().floatValue();
+						float reduction = 1.0F - GunConfig.COMMON.aimingMovementSpeedMultiplier.get().floatValue();
 						speedAttribute.addTransientModifier(new AttributeModifier(AIMING_SPEED_UUID, "Aiming speed reduction", -reduction, AttributeModifier.Operation.MULTIPLY_TOTAL));
 					}
 				}

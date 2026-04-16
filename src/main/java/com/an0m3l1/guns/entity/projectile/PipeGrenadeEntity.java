@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.entity.projectile;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.common.Gun;
 import com.an0m3l1.guns.entity.LightSourceEntity;
 import com.an0m3l1.guns.entity.ProjectileEntity;
@@ -57,9 +57,9 @@ public class PipeGrenadeEntity extends ProjectileEntity
 		 * We check for explosion griefing so the projectile doesn't just disappear */
 		if(this.getProjectile() != null && state.is(ModTags.Blocks.HARDNESS_NONE))
 		{
-			if(!Config.COMMON.universalExplosionGriefing.get() && Config.COMMON.projectileGriefing.get() && this.getProjectile().isGriefing())
+			if(!GunConfig.COMMON.universalExplosionGriefing.get() && GunConfig.COMMON.projectileGriefing.get() && this.getProjectile().isGriefing())
 			{
-				this.level.destroyBlock(pos, Config.COMMON.projectileGriefingBlockDrops.get());
+				this.level.destroyBlock(pos, GunConfig.COMMON.projectileGriefingBlockDrops.get());
 			}
 			else
 			{

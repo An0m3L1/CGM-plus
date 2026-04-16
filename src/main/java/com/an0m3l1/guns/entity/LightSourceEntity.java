@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.entity;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.init.ModEntities;
 import dev.lambdaurora.lambdynlights.api.DynamicLightHandlers;
@@ -27,7 +27,7 @@ public class LightSourceEntity extends Entity implements IEntityAdditionalSpawnD
 	{
 		super(entityType, worldIn);
 		this.lightValue = lightValue;
-		if(GunMod.dynamicLightsLoaded && REGISTERED_TYPES.add(entityType) && Config.COMMON.enableDynamicLights.get())
+		if(GunMod.dynamicLightsLoaded && REGISTERED_TYPES.add(entityType) && GunConfig.COMMON.enableDynamicLights.get())
 		{
 			DynamicLightHandlers.registerDynamicLightHandler(entityType, entity -> ((LightSourceEntity) entity).getLightValue());
 		}

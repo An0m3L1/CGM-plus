@@ -14,17 +14,15 @@ Overhaul items:
     - Grenade Launcher (full overhaul)
     - Rocket Launcher (full overhaul)
     - Minigun (full overhaul)
-Overhaul textures for all gun models
+Touch up all gun models
 Fix recoil not working in third person (shoulder surfing)
+    - Crosshair stays in 1 place when looking directly at a block/entity
 Test dependency mod versions to figure out the lowest version where everything works correctly
 Remove redundant dependencies
 Make dependencies optional where applicable
 Overhaul repair kit recipe
 Return coloring weapons (if a weapon has a dye applied to it, change the texture of a model to white adjacent)
 Improve explosion VFX
-Improve block griefing logic (blocks broken by hand after being damaged by projectiles should break faster)
-Flashbangs should imprint the last seen environment with the white effect
-Check how all penalty modifiers work and standardize them
 Update reload logic and animations:
     - When ammo is empty, slides should lock back/forward
     - Add reload empty animations to all applicable guns

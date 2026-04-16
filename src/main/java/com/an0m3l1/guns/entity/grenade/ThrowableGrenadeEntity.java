@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.entity.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.entity.LightSourceEntity;
 import com.an0m3l1.guns.entity.ThrowableItemEntity;
 import com.an0m3l1.guns.init.ModEntities;
@@ -29,8 +29,8 @@ public class ThrowableGrenadeEntity extends ThrowableItemEntity
 {
 	public float rotation;
 	public float prevRotation;
-	protected final float radius = Config.SERVER.grenadeExplosionRadius.get().floatValue();
-	protected final boolean griefing = Config.SERVER.grenadeExplosionGriefing.get();
+	protected final float radius = GunConfig.SERVER.grenadeExplosionRadius.get().floatValue();
+	protected final boolean griefing = GunConfig.SERVER.grenadeExplosionGriefing.get();
 	public final int explosionLightValue = 12;
 	public final int explosionLightLife = 6;
 	

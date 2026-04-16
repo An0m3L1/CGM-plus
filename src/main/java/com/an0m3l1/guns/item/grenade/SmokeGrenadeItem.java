@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.item.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.an0m3l1.guns.entity.grenade.ThrowableSmokeGrenadeEntity;
@@ -32,9 +32,9 @@ public class SmokeGrenadeItem extends GrenadeItem
 	                            @Nullable
 	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
-		double damage = Config.SERVER.smokeGrenadeDamage.get();
-		double smokeDuration = Config.SERVER.smokeGrenadeCloudDuration.get();
-		double smokeRadius = Config.SERVER.smokeGrenadeCloudRadius.get();
+		double damage = GunConfig.SERVER.smokeGrenadeDamage.get();
+		double smokeDuration = GunConfig.SERVER.smokeGrenadeCloudDuration.get();
+		double smokeRadius = GunConfig.SERVER.smokeGrenadeCloudRadius.get();
 		float cookTime = (float) maxCookTime / 20;
 		if(Screen.hasControlDown())
 		{

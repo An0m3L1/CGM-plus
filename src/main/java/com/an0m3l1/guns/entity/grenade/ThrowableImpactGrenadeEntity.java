@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.entity.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.entity.ThrowableItemEntity;
 import com.an0m3l1.guns.init.ModEntities;
 import com.an0m3l1.guns.init.ModItems;
@@ -19,8 +19,8 @@ import static com.an0m3l1.guns.entity.ProjectileEntity.createExplosion;
  */
 public class ThrowableImpactGrenadeEntity extends ThrowableGrenadeEntity
 {
-	protected final float radius = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue();
-	protected final boolean griefing = Config.SERVER.impactGrenadeExplosionGriefing.get();
+	protected final float radius = GunConfig.SERVER.impactGrenadeExplosionRadius.get().floatValue();
+	protected final boolean griefing = GunConfig.SERVER.impactGrenadeExplosionGriefing.get();
 	
 	public ThrowableImpactGrenadeEntity(EntityType<? extends ThrowableItemEntity> entityType, Level worldIn)
 	{

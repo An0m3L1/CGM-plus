@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.item;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import net.minecraft.client.color.item.ItemColor;
 import net.minecraft.client.color.item.ItemColors;
 import net.minecraft.nbt.CompoundTag;
@@ -168,7 +168,7 @@ public interface IColored
 	{
 		if(stack.getItem() instanceof IColored colored)
 		{
-			return colored.canColor(stack) || Config.SERVER.forceDyeableAttachments.get();
+			return colored.canColor(stack) || GunConfig.SERVER.forceDyeableAttachments.get();
 		}
 		return false;
 	}

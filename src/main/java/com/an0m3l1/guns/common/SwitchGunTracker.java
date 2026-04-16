@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.common;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.init.ModSyncedDataKeys;
 import com.an0m3l1.guns.item.GunItem;
@@ -149,7 +149,7 @@ public class SwitchGunTracker
 			double soundX = player.getX();
 			double soundY = player.getY() + 1.0;
 			double soundZ = player.getZ();
-			double radius = Config.SERVER.switchSoundDistance.get();
+			double radius = GunConfig.SERVER.switchSoundDistance.get();
 			S2CMessageSound messageSound = new S2CMessageSound(sound, SoundSource.PLAYERS, (float) soundX, (float) soundY, (float) soundZ, 1.0F, 1.0F, player.getId(), false, true);
 			PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, soundX, soundY, soundZ, radius), messageSound);
 		}

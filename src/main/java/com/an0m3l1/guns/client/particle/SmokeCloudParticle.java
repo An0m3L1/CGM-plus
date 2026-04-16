@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.particle;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
 import net.minecraft.core.particles.SimpleParticleType;
@@ -25,7 +25,7 @@ public class SmokeCloudParticle extends TextureSheetParticle
 		this.setAlpha(1.00f);
 		this.setSize(0.25F, 0.25F);
 		
-		int life = (int) (Config.SERVER.smokeGrenadeCloudDuration.get() * 20);
+		int life = (int) (GunConfig.SERVER.smokeGrenadeCloudDuration.get() * 20);
 		this.lifetime = (int) (life + ((Math.random() - 0.5) * (life * 0.25)));
 		this.sprites = sprites;
 		this.gravity = 3.0E-6F;

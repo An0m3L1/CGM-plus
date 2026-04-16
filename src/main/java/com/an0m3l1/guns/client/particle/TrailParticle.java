@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.particle;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.particles.TrailData;
 import net.minecraft.client.multiplayer.ClientLevel;
 import net.minecraft.client.particle.*;
@@ -20,7 +20,7 @@ public class TrailParticle extends BaseAshSmokeParticle
 	protected TrailParticle(ClientLevel world, double x, double y, double z, float scale, float red, float green, float blue, SpriteSet spriteSet)
 	{
 		super(world, x, y, z, 0.0F, 0.0F, 0.0F, 0.0, 0.0, 0.0, scale, spriteSet, 0.2F, 0, 0, false);
-		this.lifetime = Config.CLIENT.trailLife.get() - 1;
+		this.lifetime = GunConfig.CLIENT.trailLife.get() - 1;
 		this.rCol = red;
 		this.gCol = green;
 		this.bCol = blue;

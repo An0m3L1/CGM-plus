@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.item.grenade;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.an0m3l1.guns.entity.grenade.ThrowableGrenadeEntity;
 import com.an0m3l1.guns.init.ModSounds;
@@ -49,8 +49,8 @@ public class GrenadeItem extends Item implements IGrenade
 	                            @Nullable
 	                            Level worldIn, @NotNull List<Component> tooltip, @NotNull TooltipFlag flag)
 	{
-		double damage = Config.SERVER.grenadeExplosionDamage.get();
-		double explosionRadius = (Config.SERVER.grenadeExplosionRadius.get());
+		double damage = GunConfig.SERVER.grenadeExplosionDamage.get();
+		double explosionRadius = (GunConfig.SERVER.grenadeExplosionRadius.get());
 		float cookTime = (float) maxCookTime / 20;
 		if(Screen.hasControlDown())
 		{
@@ -88,7 +88,7 @@ public class GrenadeItem extends Item implements IGrenade
 			float posX = (float) player.getX();
 			float posY = (float) player.getY() + player.getEyeHeight();
 			float posZ = (float) player.getZ();
-			double radius = Config.SERVER.grenadePinSoundDistance.get();
+			double radius = GunConfig.SERVER.grenadePinSoundDistance.get();
 			
 			S2CMessageSound messageSound = new S2CMessageSound(soundId, SoundSource.PLAYERS, posX, posY, posZ, 1.0F, 1.0F, player.getId(), false, false);
 			PacketHandler.getPlayChannel().sendToNearbyPlayers(() -> LevelLocation.create(player.level, posX, posY, posZ, radius), messageSound);
@@ -170,7 +170,7 @@ public class GrenadeItem extends Item implements IGrenade
 			float posX = (float) entity.getX();
 			float posY = (float) entity.getY();
 			float posZ = (float) entity.getZ();
-			double radius = Config.SERVER.grenadeThrowSoundDistance.get();
+			double radius = GunConfig.SERVER.grenadeThrowSoundDistance.get();
 			
 			// Generic throw sound
 			ResourceLocation throwSoundId = ModSounds.THROW.getId();

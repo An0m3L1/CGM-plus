@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.GunMod;
 import com.mrcrayfish.framework.api.serialize.DataObject;
 import com.mrcrayfish.framework.client.resources.IDataLoader;
@@ -43,7 +43,7 @@ public final class AnimationLoader implements IDataLoader<AnimationLoader.AnimRe
 	public DataObject getData(ResourceLocation key)
 	{
 		String newKey = new ResourceLocation(key.getNamespace(), key.getPath()).toString();
-		if(Config.COMMON.showDebugMessages.get())
+		if(GunConfig.COMMON.showDebugMessages.get())
 		{
 			GunMod.LOGGER.info("Searching for animation {}; HashMap contains the following keys: {}", newKey, resourceToData);
 		}
@@ -63,7 +63,7 @@ public final class AnimationLoader implements IDataLoader<AnimationLoader.AnimRe
 				ResourceLocation location = new ResourceLocation(key.getNamespace(), key.getPath());
 				String identifier = key.getNamespace() + ":" + convertToName(key.getPath());
 				resources.add(new AnimResource(identifier, location));
-				if(Config.COMMON.showDebugMessages.get())
+				if(GunConfig.COMMON.showDebugMessages.get())
 				{
 					GunMod.LOGGER.info("Added animation resource {} with resource location {}", identifier, location);
 				}
@@ -88,7 +88,7 @@ public final class AnimationLoader implements IDataLoader<AnimationLoader.AnimRe
 			{
 				AnimResource resource = pair.getLeft();
 				this.resourceToData.put(resource.identifier(), object);
-				if(Config.COMMON.showDebugMessages.get())
+				if(GunConfig.COMMON.showDebugMessages.get())
 				{
 					GunMod.LOGGER.info("Loaded animation {} at file location {}", resource.identifier(), resource.location());
 				}

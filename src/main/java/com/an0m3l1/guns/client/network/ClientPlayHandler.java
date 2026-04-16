@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.network;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.client.BulletTrail;
 import com.an0m3l1.guns.client.CustomGunManager;
 import com.an0m3l1.guns.client.audio.DistancedSound;
@@ -70,13 +70,13 @@ public class ClientPlayHandler
 	public static void handleMessageBlood(S2CMessageBlood message)
 	{
 		Level world = Minecraft.getInstance().level;
-		if(!Config.CLIENT.enableHitParticle.get())
+		if(!GunConfig.CLIENT.enableHitParticle.get())
 		{
 			return;
 		}
 		if(world != null)
 		{
-			if(Config.CLIENT.enableHeadshotParticle.get())
+			if(GunConfig.CLIENT.enableHeadshotParticle.get())
 			{
 				if(message.isHeadshot())
 				{
@@ -87,7 +87,7 @@ public class ClientPlayHandler
 				}
 			}
 			
-			if(Config.CLIENT.enableBlood.get() && message.getAllowBlood())
+			if(GunConfig.CLIENT.enableBlood.get() && message.getAllowBlood())
 			{
 				for(int i = 0; i < 10; i++)
 				{
@@ -132,7 +132,7 @@ public class ClientPlayHandler
 		SoundManager soundManager = mc.getSoundManager();
 		ParticleEngine particleManager = mc.particleEngine;
 		Level level = Objects.requireNonNull(mc.level);
-		float size = Config.SERVER.grenadeExplosionRadius.get().floatValue();
+		float size = GunConfig.SERVER.grenadeExplosionRadius.get().floatValue();
 		double x = message.getX();
 		double y = message.getY();
 		double z = message.getZ();
@@ -165,7 +165,7 @@ public class ClientPlayHandler
 		SoundManager soundManager = mc.getSoundManager();
 		ParticleEngine particleManager = mc.particleEngine;
 		Level level = Objects.requireNonNull(mc.level);
-		float size = Config.SERVER.impactGrenadeExplosionRadius.get().floatValue();
+		float size = GunConfig.SERVER.impactGrenadeExplosionRadius.get().floatValue();
 		double x = message.getX();
 		double y = message.getY();
 		double z = message.getZ();
@@ -264,7 +264,7 @@ public class ClientPlayHandler
 		SoundManager soundManager = mc.getSoundManager();
 		ParticleEngine particleManager = mc.particleEngine;
 		Level level = Objects.requireNonNull(mc.level);
-		float size = Config.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue();
+		float size = GunConfig.SERVER.incendiaryGrenadeExplosionRadius.get().floatValue();
 		double x = message.getX();
 		double y = message.getY();
 		double z = message.getZ();
@@ -310,7 +310,7 @@ public class ClientPlayHandler
 		SoundManager soundManager = mc.getSoundManager();
 		ParticleEngine particleManager = mc.particleEngine;
 		Level level = Objects.requireNonNull(mc.level);
-		float size = Config.SERVER.molotovExplosionRadius.get().floatValue();
+		float size = GunConfig.SERVER.molotovExplosionRadius.get().floatValue();
 		double x = message.getX();
 		double y = message.getY();
 		double z = message.getZ();
@@ -387,7 +387,7 @@ public class ClientPlayHandler
 		double x = message.getX();
 		double y = message.getY();
 		double z = message.getZ();
-		double diameter = Config.SERVER.smokeGrenadeCloudRadius.get() * 2F;
+		double diameter = GunConfig.SERVER.smokeGrenadeCloudRadius.get() * 2F;
 		double vel = 0.004;
 		int amount = (int) (diameter * 15);
 		
@@ -428,7 +428,7 @@ public class ClientPlayHandler
 			double holeZ = message.getZ() + 0.005 * message.getFace().getStepZ();
 			double distance = Math.sqrt(mc.player.distanceToSqr(message.getX(), message.getY(), message.getZ()));
 			world.addParticle(new BulletHoleData(message.getFace(), message.getPos()), true, holeX, holeY, holeZ, 0, 0, 0);
-			if(distance < Config.CLIENT.impactParticleDistance.get())
+			if(distance < GunConfig.CLIENT.impactParticleDistance.get())
 			{
 				for(int i = 0; i < 4; i++)
 				{
@@ -450,7 +450,7 @@ public class ClientPlayHandler
 				}
 			}
 			
-			if(!hasNearbyHit && distance <= Config.SERVER.projectileImpactSoundDistance.get())
+			if(!hasNearbyHit && distance <= GunConfig.SERVER.projectileImpactSoundDistance.get())
 			{
 				world.playLocalSound(message.getX(), message.getY(), message.getZ(), state.getSoundType().getBreakSound(), SoundSource.BLOCKS, 1.0F, 2.0F, false);
 			}
@@ -488,25 +488,25 @@ public class ClientPlayHandler
 	{
 		if(critical)
 		{
-			if(Config.CLIENT.playSoundWhenCritical.get())
+			if(GunConfig.CLIENT.playSoundWhenCritical.get())
 			{
-				SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.criticalSound.get()));
+				SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(GunConfig.CLIENT.criticalSound.get()));
 				return event != null ? event : SoundEvents.PLAYER_ATTACK_CRIT;
 			}
 		}
 		else if(headshot)
 		{
-			if(Config.CLIENT.playSoundWhenHeadshot.get())
+			if(GunConfig.CLIENT.playSoundWhenHeadshot.get())
 			{
-				SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.headshotSound.get()));
+				SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(GunConfig.CLIENT.headshotSound.get()));
 				return event != null ? event : SoundEvents.PLAYER_ATTACK_KNOCKBACK;
 			}
 		}
 		else
 		{
-			if(Config.CLIENT.playHitSound.get() && (!Config.CLIENT.hitSoundOnlyAgainstPlayers.get() || player))
+			if(GunConfig.CLIENT.playHitSound.get() && (!GunConfig.CLIENT.hitSoundOnlyAgainstPlayers.get() || player))
 			{
-				SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(Config.CLIENT.hitSound.get()));
+				SoundEvent event = ForgeRegistries.SOUND_EVENTS.getValue(new ResourceLocation(GunConfig.CLIENT.hitSound.get()));
 				return event != null ? event : SoundEvents.TRIDENT_HIT;
 			}
 		}

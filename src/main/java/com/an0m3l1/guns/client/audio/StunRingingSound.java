@@ -1,6 +1,6 @@
 package com.an0m3l1.guns.client.audio;
 
-import com.an0m3l1.guns.Config;
+import com.an0m3l1.guns.GunConfig;
 import com.an0m3l1.guns.init.ModEffects;
 import com.an0m3l1.guns.init.ModSounds;
 import net.minecraft.client.Minecraft;
@@ -32,8 +32,8 @@ public class StunRingingSound extends AbstractTickableSoundInstance
 				this.x = (float) player.getX();
 				this.y = (float) player.getY();
 				this.z = (float) player.getZ();
-				float percent = Math.min((effect.getDuration() / (float) Config.SERVER.soundFadeThreshold.get()), 1);
-				this.volume = (float) (percent * Config.SERVER.ringVolume.get());
+				float percent = Math.min((effect.getDuration() / (float) GunConfig.SERVER.soundFadeThreshold.get()), 1);
+				this.volume = (float) (percent * GunConfig.SERVER.ringVolume.get());
 				return;
 			}
 		}

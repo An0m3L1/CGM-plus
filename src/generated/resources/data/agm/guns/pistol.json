@@ -47,7 +47,7 @@
 	},
 	"projectile": {
 		"item": "agm:light_bullet",
-		"damage": 4.0,
+		"damage": 5.0,
 		"damageReduceOverLife": true,
 		"maxRangeDamageMultiplier": 0.5,
 		"headshotMultiplierOverride": 2.0,
@@ -61,9 +61,9 @@
 		
 		"griefing": true,
 		"maxPierceCount": 1,
-		"pierceDamagePenalty": 0.5,
-		"pierceDamageMaxPenalty": 0.5,
-		"waterDamagePenalty": 0.5
+		"pierceDamagePenalty": 0.4,
+		"pierceDamageMaxPenalty": 0.4,
+		"waterDamagePenalty": 0.4
 	},
 	"sounds": {
 		"fire": "agm:item.pistol.fire",

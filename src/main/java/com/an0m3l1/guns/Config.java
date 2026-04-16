@@ -184,9 +184,9 @@ public class Config
 			{
 				builder.push("block_hardness_values");
 				{
-					this.hardnessLowValue = builder.comment("The amount of penetration power required to break low hardness blocks. (Wooden doors/trapdoors, hay bales, etc.)").defineInRange("hardnessLowValue", 1, 1, Integer.MAX_VALUE);
-					this.hardnessMediumValue = builder.comment("The amount of penetration power required to break medium hardness blocks. (Metal doors/trapdoors, planks, logs, etc.)").defineInRange("hardnessMediumValue", 3, 1, Integer.MAX_VALUE);
-					this.hardnessHighValue = builder.comment("The amount of penetration power required to break high hardness blocks. (Bricks, walls, etc.)").defineInRange("hardnessHighValue", 5, 1, Integer.MAX_VALUE);
+					this.hardnessLowValue = builder.comment("The amount of penetration power required to break low hardness blocks. (Wooden doors/trapdoors, fences, etc.)").defineInRange("hardnessLowValue", 1, 1, Integer.MAX_VALUE);
+					this.hardnessMediumValue = builder.comment("The amount of penetration power required to break medium hardness blocks. (Planks, logs, furniture etc.)").defineInRange("hardnessMediumValue", 4, 1, Integer.MAX_VALUE);
+					this.hardnessHighValue = builder.comment("The amount of penetration power required to break high hardness blocks. (Bricks, stone walls, etc.)").defineInRange("hardnessHighValue", 7, 1, Integer.MAX_VALUE);
 				}
 				builder.pop();
 				this.universalExplosionGriefing = builder.comment("If enabled, explosions will destroy all blocks.").define("universalExplosionGriefing", false);

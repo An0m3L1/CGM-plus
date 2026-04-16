@@ -63,9 +63,9 @@
 		
 		"griefing": true,
 		"maxPierceCount": 2,
-		"pierceDamagePenalty": 0.25,
-		"pierceDamageMaxPenalty": 0.5,
-		"waterDamagePenalty": 0.6
+		"pierceDamagePenalty": 0.2,
+		"pierceDamageMaxPenalty": 0.4,
+		"waterDamagePenalty": 0.4
 	},
 	"sounds": {
 		"fire": "agm:item.tactical_pistol.fire",

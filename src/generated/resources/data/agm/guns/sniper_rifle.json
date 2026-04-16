@@ -51,8 +51,7 @@
 	"projectile": {
 		"item": "agm:heavy_bullet",
 		"damage": 16.0,
-		"headshotMultiplierOverride": 1.0,
-		"headshotExtraDamage": 14.0,
+		"headshotMultiplierOverride": 2.0,
 		
 		"size": 0.1,
 		"speed": 15.0,
@@ -62,9 +61,9 @@
 		"protectionBypass": 0.75,
 		
 		"griefing": true,
-		"maxPierceCount": 4,
+		"maxPierceCount": 6,
 		"pierceDamagePenalty": 0.125,
-		"pierceDamageMaxPenalty": 0.5,
+		"pierceDamageMaxPenalty": 0.75,
 		"waterDamagePenalty": 0.25
 	},
 	"sounds": {
